@@ -1,0 +1,159 @@
+.message-box{
+	-fx-background-color: #404040;
+	-fx-border-width: 2px 0px 0px 0px;
+	-fx-border-color: white;
+}
+
+.smiley-text-field *.scroll-pane{
+	-fx-background: #404040;
+	-fx-background-color: #404040;
+	-fx-border-width: 0px;
+}
+
+.scroll-pane{
+	-fx-background-color: #404040;
+}
+
+.scroll-pane .corner {
+	-fx-background-color: #404040;
+}
+
+.smiley-text-field *.jfx-text-field{
+	-fx-text-fill: white;
+	-fx-font-size: 20px;
+	-fx-min-height: 45px;
+	-fx-max-height: 45px;
+	-fx-pref-height: 45px;
+}
+
+.word-message-item{
+	-fx-text-fill: white;
+	-fx-font-size: 20px;
+}
+
+.smiley-message-item{
+	-fx-min-height: 45px;
+	-fx-max-height: 45px;
+	-fx-pref-height: 45px;
+}
+
+.paragraph-message-item{
+	-fx-min-height: 45px;
+	-fx-max-height: 45px;
+	-fx-pref-height: 45px;
+}
+
+.text-area{
+	-fx-text-fill: lightgray;
+}
+
+.smiley-scroll-pane{
+	-fx-background-color: #404040;
+	-fx-border-width: 0px;
+}
+
+.smiley-scroll-pane *.scroll-bar:vertical,
+.smiley-scroll-pane *.scroll.bar:horizontal{
+	-fx-background-color: transparent;
+}
+
+
+
+.smiley-scroll-pane *.scroll-bar:vertical *.decrement-button,
+.smiley-scroll-pane *.scroll-bar:horizontal *.decrement-button,
+.smiley-scroll-pane *.scroll-bar:vertical *.decrement-arrow,
+.smiley-scroll-pane *.scroll-bar:horizontal *.decrement-arrow,
+.smiley-scroll-pane *.scroll-bar:vertical *.increment-button,
+.smiley-scroll-pane *.scroll-bar:horizontal *.increment-button,
+.smiley-scroll-pane *.scroll-bar:vertical *.increment-arrow,
+.smiley-scroll-pane *.scroll-bar:horizontal *.increment-arrow{
+	-fx-background-color: transparent;
+}
+
+.smiley-scroll-pane *.scroll-pane *.scroll-bar:vertical .thumb{
+	-fx-border-radius: 5em;
+	-fx-background-radius: 5em;
+	-fx-background-color: gray;
+	-fx-pref-width: 3px;
+	-fx-min-width: 3px;
+	-fx-max-width: 3px;
+}
+
+.smiley-scroll-pane *.scroll-pane *.scroll-bar:horizontal .thumb{
+	-fx-border-radius: 5em;
+	-fx-background-radius: 5em;
+	-fx-background-color: gray;
+}
+
+.smiley-scroll-pane *.scroll-pane *.scroll-bar .decrement-arrow {
+    -fx-padding:1.25;
+ }
+.smiley-scroll-pane *.scroll-pane *.scroll-bar .increment-arrow {
+    -fx-padding:1.25;
+}
+
+.smiley-scroll-pane *.scroll-bar:horizontal .decrement-button, .scroll-bar:horizontal .increment-button{
+	-fx-min-width: 0px;
+	-fx-max-width: 0px;
+	-fx-pref-width: 0px;
+}
+
+.smiley-scroll-pane *.scroll-bar:vertical .decrement-button, .scroll-bar:vertical .increment-button{
+	-fx-min-height: 0px;
+	-fx-max-height: 0px;
+	-fx-pref-height: 0px;
+}
+
+.smiley-scroll-pane *.scroll-pane .corner {
+	-fx-background-color: #404040;
+}
+
+.smiley-flow-pane{
+	-fx-background-color: #404040;
+	-fx-border-width: 0px;
+}
+
+.smiley:hover
+{
+	-fx-effect: dropshadow(three-pass-box, rgb(255, 255, 255, 0.8), 5, 0, 0, 0);
+}
+
+.jfx-tab-pane {
+	-fx-background-color: #404040;
+}
+
+.tab{
+	-fx-background-color: #404040;
+	-fx-border-width: 0px;
+}
+
+.jfx-tab-pane .tab .tab-label {
+	-fx-font-weight: normal;
+	-fx-font-size: 20.0;
+	-fx-text-fill: -contrast-color;
+}
+
+.jfx-tab-pane .tab:selected .tab-label {
+	-fx-font-weight: bold;
+}
+
+.jfx-tab-pane .headers-region {
+	-fx-background-color: #404040;
+}
+
+.jfx-tab-pane .tab-header-background {
+	-fx-background-color: #404040;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+	-jfx-rippler-fill: white;
+}
+
+.jfx-tab-pane .tab-selected-line {
+	-fx-background-color: white;
+}
+
+.jfx-text-area{
+	-jfx-focus-color: transparent;
+	-jfx-unfocus-color: transparent;
+}

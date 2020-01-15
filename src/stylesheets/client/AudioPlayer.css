@@ -1,0 +1,67 @@
+.c-audio-library,
+.c-audio-library:focused,
+.c-audio-library .column-header,
+.c-audio-library .column-header-background,
+.c-audio-library .column-header-background .filler
+{
+	-fx-border-width: 0;
+	-fx-background-color: rgba(0, 0, 0, 0);
+	-fx-border-color: rgba(0, 0, 0, 0);
+}
+
+.c-audio-library *.scroll-bar:vertical *.increment-button,
+.c-audio-library *.scroll-bar:vertical *.decrement-button,
+.c-audio-library *.scroll-bar:vertical *.increment-arrow,
+.c-audio-library *.scroll-bar:vertical *.decrement-arrow
+{
+	-fx-visibility: hidden;
+}
+
+.c-audio-library .filler
+{
+	-fx-background-color: transparent;
+}
+
+.c-audio-library:focused
+{
+	-fx-border-width: 0;
+}
+
+.c-audio-library .column-header .label
+{
+	-fx-font-size: 20;
+	-fx-text-fill: white;
+}
+
+.c-audio-library .table-cell
+{
+	-fx-border-color: transparent;
+	-fx-font-size: 17;
+	-fx-alignment: center;
+	-fx-text-fill: white;
+}
+
+.c-audio-library .table-row-cell
+{
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+	-fx-cell-size: 40px;
+}
+
+.c-audio-library .table-row-cell:odd
+{
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+}
+
+.c-audio-library .table-row-cell:empty
+{
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+}
+
+.c-audio-library .table-row-cell:selected
+{
+	-fx-background-color: rgba(0, 0, 0, 0.75);
+	-fx-border-color: transparent;
+}
