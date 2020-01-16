@@ -56,8 +56,5 @@ public class ClientLauncher extends Application{
 		clientUI.attachStage(stage);
 		window.setScene(scene);
 		window.setTitle("ReelTalk - Launcher");
-		window.setTitle("huhu1");
-		window.setTitle("huhu2");
-		window.setIconified(false);
 	}
 }
