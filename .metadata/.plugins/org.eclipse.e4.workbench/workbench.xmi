@@ -3,7 +3,11 @@
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ClientLauncher.java&quot; tooltip=&quot;SSL_Chat/src/main/ClientLauncher.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/SSL_Chat/src/main/ClientLauncher.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
+<<<<<<< Updated upstream
   <children xsi:type="basic:TrimmedWindow" xmi:id="_DFaQwjemEeqwaZ_XugUmqQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_EYykMDemEeqwaZ_XugUmqQ" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
+=======
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_vxKxMTerEeqff_OK5gWRXQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_vxKxMjerEeqff_OK5gWRXQ" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
+>>>>>>> Stashed changes
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -73,11 +77,20 @@
           <tags>persp.newWizSC:org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard</tags>
           <tags>persp.actionSet:org.eclipse.jdt.junit.JUnitActionSet</tags>
           <tags>persp.viewSC:org.eclipse.ant.ui.views.AntView</tags>
+<<<<<<< Updated upstream
           <children xsi:type="basic:PartSashContainer" xmi:id="_E9MRwTemEeqwaZ_XugUmqQ" selectedElement="_E9MRyzemEeqwaZ_XugUmqQ" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_E9MRwjemEeqwaZ_XugUmqQ" containerData="2500" selectedElement="_E9MRwzemEeqwaZ_XugUmqQ">
               <children xsi:type="basic:PartStack" xmi:id="_E9MRwzemEeqwaZ_XugUmqQ" elementId="left" containerData="6000" selectedElement="_E9MRxDemEeqwaZ_XugUmqQ">
                 <tags>org.eclipse.e4.primaryNavigationStack</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_E9MRxDemEeqwaZ_XugUmqQ" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_E87MADemEeqwaZ_XugUmqQ" closeable="true">
+=======
+          <children xsi:type="basic:PartSashContainer" xmi:id="_vxKxNTerEeqff_OK5gWRXQ" selectedElement="_vxKxNjerEeqff_OK5gWRXQ" horizontal="true">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_vxKxNjerEeqff_OK5gWRXQ" containerData="2500" selectedElement="_vxKxNzerEeqff_OK5gWRXQ">
+              <children xsi:type="basic:PartStack" xmi:id="_vxKxNzerEeqff_OK5gWRXQ" elementId="left" containerData="6000" selectedElement="_vxKxODerEeqff_OK5gWRXQ">
+                <tags>org.eclipse.e4.primaryNavigationStack</tags>
+                <tags>active</tags>
+                <children xsi:type="advanced:Placeholder" xmi:id="_vxKxODerEeqff_OK5gWRXQ" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_vxLYlDerEeqff_OK5gWRXQ" closeable="true">
+>>>>>>> Stashed changes
                   <tags>View</tags>
                   <tags>categoryTag:Java</tags>
                 </children>
@@ -105,12 +118,21 @@
                 </children>
               </children>
             </children>
+<<<<<<< Updated upstream
             <children xsi:type="basic:PartSashContainer" xmi:id="_E9MRyzemEeqwaZ_XugUmqQ" containerData="7500" selectedElement="_E9MRzDemEeqwaZ_XugUmqQ">
               <children xsi:type="basic:PartSashContainer" xmi:id="_E9MRzDemEeqwaZ_XugUmqQ" containerData="7500" selectedElement="_E9MRzTemEeqwaZ_XugUmqQ" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_E9MRzTemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_E8wz8DemEeqwaZ_XugUmqQ"/>
                 <children xsi:type="basic:PartSashContainer" xmi:id="_E9MRzjemEeqwaZ_XugUmqQ" toBeRendered="false" containerData="2500">
                   <children xsi:type="basic:PartStack" xmi:id="_E9MRzzemEeqwaZ_XugUmqQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasksMStack" toBeRendered="false" containerData="5000">
                     <children xsi:type="advanced:Placeholder" xmi:id="_E9MR0DemEeqwaZ_XugUmqQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" toBeRendered="false" ref="_E9KckDemEeqwaZ_XugUmqQ" closeable="true">
+=======
+            <children xsi:type="basic:PartSashContainer" xmi:id="_vxKxPzerEeqff_OK5gWRXQ" containerData="7500" selectedElement="_vxKxSjerEeqff_OK5gWRXQ">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_vxKxQDerEeqff_OK5gWRXQ" containerData="3861" selectedElement="_vxKxQTerEeqff_OK5gWRXQ" horizontal="true">
+                <children xsi:type="advanced:Placeholder" xmi:id="_vxKxQTerEeqff_OK5gWRXQ" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_vxLYjjerEeqff_OK5gWRXQ"/>
+                <children xsi:type="basic:PartSashContainer" xmi:id="_vxKxQjerEeqff_OK5gWRXQ" toBeRendered="false" containerData="2500">
+                  <children xsi:type="basic:PartStack" xmi:id="_vxKxQzerEeqff_OK5gWRXQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasksMStack" toBeRendered="false" containerData="5000">
+                    <children xsi:type="advanced:Placeholder" xmi:id="_vxKxRDerEeqff_OK5gWRXQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" toBeRendered="false" ref="_vxLYyzerEeqff_OK5gWRXQ" closeable="true">
+>>>>>>> Stashed changes
                       <tags>View</tags>
                       <tags>categoryTag:Mylyn</tags>
                     </children>
@@ -136,9 +158,16 @@
                   </children>
                 </children>
               </children>
+<<<<<<< Updated upstream
               <children xsi:type="basic:PartStack" xmi:id="_E9MR1jemEeqwaZ_XugUmqQ" elementId="bottom" containerData="2500" selectedElement="_E9MR2zemEeqwaZ_XugUmqQ">
                 <tags>org.eclipse.e4.secondaryDataStack</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_E9MR1zemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.views.ProblemView" ref="_E89oQjemEeqwaZ_XugUmqQ" closeable="true">
+=======
+              <children xsi:type="basic:PartStack" xmi:id="_vxKxSjerEeqff_OK5gWRXQ" elementId="bottom" containerData="6139" selectedElement="__RoXsDhWEeqXdtQTOJpe7Q">
+                <tags>org.eclipse.e4.secondaryDataStack</tags>
+                <tags>Team</tags>
+                <children xsi:type="advanced:Placeholder" xmi:id="_vxKxSzerEeqff_OK5gWRXQ" elementId="org.eclipse.ui.views.ProblemView" ref="_vxLYtTerEeqff_OK5gWRXQ" closeable="true">
+>>>>>>> Stashed changes
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
                 </children>
@@ -165,6 +194,10 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_E9MR3TemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.views.ProgressView" toBeRendered="false" ref="_E9AEgTemEeqwaZ_XugUmqQ" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
+                </children>
+                <children xsi:type="advanced:Placeholder" xmi:id="__RoXsDhWEeqXdtQTOJpe7Q" elementId="org.eclipse.team.ui.GenericHistoryView" ref="__RnwoDhWEeqXdtQTOJpe7Q" closeable="true">
+                  <tags>View</tags>
+                  <tags>categoryTag:Team</tags>
                 </children>
               </children>
             </children>
@@ -219,6 +252,7 @@
       <children xsi:type="basic:PartStack" xmi:id="_E8xbADemEeqwaZ_XugUmqQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_zvVMsDenEeqstbp85cu_gA">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+<<<<<<< Updated upstream
         <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_zvVMsDenEeqstbp85cu_gA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ClientLauncher.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ClientLauncher.java&quot; partName=&quot;ClientLauncher.java&quot; title=&quot;ClientLauncher.java&quot; tooltip=&quot;SSL_Chat/src/main/ClientLauncher.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/SSL_Chat/src/main/ClientLauncher.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1176&quot; selectionTopPixel=&quot;471&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -227,6 +261,13 @@
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>active</tags>
           <tags>activeOnClose</tags>
+=======
+        <children xsi:type="basic:Part" xmi:id="_vxLYkDerEeqff_OK5gWRXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ClientLauncher.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ClientLauncher.java&quot; partName=&quot;ClientLauncher.java&quot; title=&quot;ClientLauncher.java&quot; tooltip=&quot;SSL_Chat/src/main/ClientLauncher.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/SSL_Chat/src/main/ClientLauncher.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;676&quot; selectionTopPixel=&quot;471&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>removeOnHide</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+>>>>>>> Stashed changes
         </children>
       </children>
     </sharedElements>
@@ -236,7 +277,13 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view group_libraries=&quot;1&quot; layout=&quot;2&quot; linkWithEditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;Aggregate for window 1579099704799&quot;>&#xD;&#xA;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;>&#xD;&#xA;&lt;xmlDefinedFilters>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.buildfolder&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.mylyn.java.ui.MembersFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.m2e.MavenModuleFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.subProject&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.DeprecatedMembersFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;/xmlDefinedFilters>&#xD;&#xA;&lt;/customFilters>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Java</tags>
+<<<<<<< Updated upstream
       <menus xmi:id="_FEwSUDemEeqwaZ_XugUmqQ" elementId="org.eclipse.jdt.ui.PackageExplorer">
+=======
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
+      <menus xmi:id="_vxLYlTerEeqff_OK5gWRXQ" elementId="org.eclipse.jdt.ui.PackageExplorer">
+>>>>>>> Stashed changes
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
@@ -300,7 +347,11 @@
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
+<<<<<<< Updated upstream
       <toolbar xmi:id="_OF7tATeoEeqstbp85cu_gA" elementId="org.eclipse.ui.console.ConsoleView"/>
+=======
+      <toolbar xmi:id="_vxLYvTerEeqff_OK5gWRXQ" elementId="org.eclipse.ui.console.ConsoleView" visible="false"/>
+>>>>>>> Stashed changes
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_E9AEgDemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.views.BookmarkView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Bookmarks" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/bkmrk_nav.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.views.markers.BookmarksView"/>
@@ -380,14 +431,35 @@
       </menus>
       <toolbar xmi:id="_rGHwoTemEeqstbp85cu_gA" elementId="org.eclipse.pde.runtime.LogView" visible="false"/>
     </sharedElements>
+<<<<<<< Updated upstream
     <trimBars xmi:id="_DFaQwzemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.main.toolbar" contributorURI="platform:/plugin/org.eclipse.platform">
       <children xsi:type="menu:ToolBar" xmi:id="_Eizb0DemEeqwaZ_XugUmqQ" elementId="group.file" toBeRendered="false">
+=======
+    <sharedElements xsi:type="basic:Part" xmi:id="__RnwoDhWEeqXdtQTOJpe7Q" elementId="org.eclipse.team.ui.GenericHistoryView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="History" iconURI="platform:/plugin/org.eclipse.team.ui/icons/full/eview16/history_view.png" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.team.ui"/>
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.team.internal.ui.history.GenericHistoryView"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
+      <tags>View</tags>
+      <tags>categoryTag:Team</tags>
+      <menus xmi:id="__R0k8DhWEeqXdtQTOJpe7Q" elementId="org.eclipse.team.ui.GenericHistoryView">
+        <tags>ViewMenu</tags>
+        <tags>menuContribution:menu</tags>
+      </menus>
+      <toolbar xmi:id="__R0k8ThWEeqXdtQTOJpe7Q" elementId="org.eclipse.team.ui.GenericHistoryView"/>
+    </sharedElements>
+    <trimBars xmi:id="_vxLY1DerEeqff_OK5gWRXQ" elementId="org.eclipse.ui.main.toolbar" contributorURI="platform:/plugin/org.eclipse.platform">
+      <children xsi:type="menu:ToolBar" xmi:id="_vxLY1TerEeqff_OK5gWRXQ" elementId="group.file" toBeRendered="false">
+>>>>>>> Stashed changes
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_Eizb0TemEeqwaZ_XugUmqQ" elementId="group.file" toBeRendered="false"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Ei0p8DemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
+<<<<<<< Updated upstream
         <children xsi:type="menu:HandledToolItem" xmi:id="_YRLF0DhUEeqFCqP8YXFDJA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_DJ02tjemEeqwaZ_XugUmqQ"/>
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Jgh0oDhXEeqJm_xK6WvSlQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_vxPruzerEeqff_OK5gWRXQ"/>
+>>>>>>> Stashed changes
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Ei1RADemEeqwaZ_XugUmqQ" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -418,9 +490,15 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Ei14EDemEeqwaZ_XugUmqQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
+<<<<<<< Updated upstream
         <children xsi:type="menu:HandledToolItem" xmi:id="_YRP-UDhUEeqFCqP8YXFDJA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_DJyakTemEeqwaZ_XugUmqQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Ei14ETemEeqwaZ_XugUmqQ" elementId="group.editor" toBeRendered="false">
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_JgmtIDhXEeqJm_xK6WvSlQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_vxPrMDerEeqff_OK5gWRXQ"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_vxLZOzerEeqff_OK5gWRXQ" elementId="group.editor" toBeRendered="false">
+>>>>>>> Stashed changes
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_Ei14EjemEeqwaZ_XugUmqQ" elementId="group.editor" toBeRendered="false"/>
       </children>
