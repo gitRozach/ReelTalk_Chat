@@ -465,13 +465,14 @@ public class MessageField extends VBox {
 			if(getCaretPosition() == getCurrentText().length() && getCurrentIndex() < length() - 1) {
 				String newInputFieldText = null;
 				Node nextItem = inputFlowPane.getChildren().get(getCurrentIndex() + 1);
+				int nextIndex = getCurrentIndex() + 1;
 				
 				if(hasCurrentSelectionSmileyRightSide())
-					addItem(getCurrentIndex(), getCurrentSelectionSmileyRightSide());
+					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, getCurrentSelectionSmileyRightSide());
 				if(hasCurrentSelectionText())
-					addItem(getCurrentIndex(), new WordMessageItem(getCurrentText()));
+					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, new WordMessageItem(getCurrentText()));
 				if(hasCurrentSelectionSmileyLeftSide())
-					addItem(getCurrentIndex(), getCurrentSelectionSmileyLeftSide());
+					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, getCurrentSelectionSmileyLeftSide());
 				
 				clearInputEmojis();
 				
@@ -487,9 +488,9 @@ public class MessageField extends VBox {
 					WordMessageItem word = (WordMessageItem) nextItem;
 					newInputFieldText = word.getWord();
 				}
-				if(removeItem(getCurrentIndex() + 1) != null) {
+				if(removeItem(nextItem)) {
 					inputField.setText(newInputFieldText);
-					setCaretPosition(newInputFieldText.length());
+					setCaretPosition(0);
 				}
 				event.consume();
 				
@@ -590,7 +591,7 @@ public class MessageField extends VBox {
 		}
 		
 		private boolean removeSmileyFromCurrentSelectionRightSide() {
-			return hasCurrentSelectionSmileyRightSide() && inputBox.getChildren().get(inputBox.getChildren().size() > 2 ? 2 : 1) != null;
+			return hasCurrentSelectionSmileyRightSide() && inputBox.getChildren().remove(inputBox.getChildren().size() - 1) != null;
 		}
 		
 		private boolean hasCurrentSelectionText() {
@@ -692,13 +693,14 @@ public class MessageField extends VBox {
 			}
 			else if(newItem instanceof SmileyMessageItem) {
 				SmileyMessageItem smiley = (SmileyMessageItem)newItem;
+				//smiley.setOnMouseClicked(a -> clearInputEmojis());
 				smiley.getStyleClass().add("smiley-message-item");
 				inputFlowPane.getChildren().add(index, new SmileyMessageItem(smiley.getFilePath()));	
 				added = true;
 			}
 			else if(newItem instanceof WordMessageItem) {
 				WordMessageItem word = (WordMessageItem)newItem;
-				word.setOnMouseClicked(a -> moveCaret(inputFlowPane.getChildren().indexOf(word), word.getText().length()));
+				word.setOnMouseClicked(a -> clearInputEmojis()/*moveCaret(inputFlowPane.getChildren().indexOf(word), word.getText().length())*/);
 				word.getStyleClass().add("word-message-item");
 				inputFlowPane.getChildren().add(index, word);
 				added = true;
