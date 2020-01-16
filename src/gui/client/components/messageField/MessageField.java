@@ -387,7 +387,7 @@ public class MessageField extends VBox {
 			if(wordText.trim().length() == 0)
 				return;
 			
-			inputField.clear();
+			//inputField.clear();
 			inputField.setText(leftInput);
 			addText(wordText);
 			//incrementCurrentIndex();
@@ -435,8 +435,13 @@ public class MessageField extends VBox {
 					addItem(getCurrentIndex() + 1, getCurrentSelectionSmileyRightSide());
 				if(hasText)
 					addItem(getCurrentIndex() + 1, new WordMessageItem(getCurrentText()));
-				if(hasSmileyLeft)
-					addItem(getCurrentIndex() + 1, getCurrentSelectionSmileyLeftSide());
+				if(hasSmileyLeft) {
+					addSmileyToCurrentSelectionRightSide(new SmileyMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
+					removeSmileyFromCurrentSelectionLeftSide();
+					return;
+					//addItem(getCurrentIndex() + 1, getCurrentSelectionSmileyLeftSide());
+				}
+					
 				
 				clearInputEmojis();
 				
@@ -462,17 +467,27 @@ public class MessageField extends VBox {
 		}
 		
 		private void onRightPressed(KeyEvent event) {
-			if(getCaretPosition() == getCurrentText().length() && getCurrentIndex() < length() - 1) {
+			if(getCaretPosition() == getCurrentText().length() && getCurrentIndex() < length()) {
 				String newInputFieldText = null;
-				Node nextItem = inputFlowPane.getChildren().get(getCurrentIndex() + 1);
-				int nextIndex = getCurrentIndex() + 1;
+				Node nextItem = getCurrentIndex() >= length() - 1 ? null : inputFlowPane.getChildren().get(getCurrentIndex() + 1);
 				
-				if(hasCurrentSelectionSmileyRightSide())
-					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, getCurrentSelectionSmileyRightSide());
-				if(hasCurrentSelectionText())
-					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, new WordMessageItem(getCurrentText()));
-				if(hasCurrentSelectionSmileyLeftSide())
-					addItem(getCurrentIndex() == 0 ? 0 : getCurrentIndex() - 1, getCurrentSelectionSmileyLeftSide());
+				if(hasCurrentSelectionSmileyRightSide()) {
+				
+					addSmileyToCurrentSelectionLeftSide(new SmileyMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
+					removeSmileyFromCurrentSelectionRightSide();
+					return;
+					//addItem(getCurrentIndex(), getCurrentSelectionSmileyRightSide());
+				}
+				if(hasCurrentSelectionText()) {
+//					if(nextItem == null)
+//						return;
+					addItem(getCurrentIndex(), new WordMessageItem(getCurrentText()));
+				}
+				if(hasCurrentSelectionSmileyLeftSide()) {
+//					if(nextItem == null)
+//						return;
+					addItem(getCurrentIndex(), getCurrentSelectionSmileyLeftSide());
+				}
 				
 				clearInputEmojis();
 				
@@ -545,7 +560,7 @@ public class MessageField extends VBox {
 			clearInputEmojis();
 			
 			if(item == null) {
-				inputField.clear();
+				clearInputText();
 				return;
 			}
 			
@@ -578,12 +593,21 @@ public class MessageField extends VBox {
 			}
 		}
 		
+		private void clearInputText() {
+			inputField.clear();
+		}
+		
 		private void clearInputEmojis() {
 			System.out.println("Has left: " + hasCurrentSelectionSmileyLeftSide());
 			System.out.println("Has right: " + hasCurrentSelectionSmileyRightSide());
 			
 			removeSmileyFromCurrentSelectionLeftSide();
 			removeSmileyFromCurrentSelectionRightSide();
+		}
+		
+		private void clearInput() {
+			clearInputEmojis();
+			clearInputText();
 		}
 		
 		private boolean removeSmileyFromCurrentSelectionLeftSide() {
@@ -706,6 +730,8 @@ public class MessageField extends VBox {
 				added = true;
 			}
 			if(added) {
+				clearInput();
+				
 				if(index <= getCurrentIndex())
 					incrementCurrentIndex();
 				inputField.requestFocus();
