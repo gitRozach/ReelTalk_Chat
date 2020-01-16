@@ -1,8 +1,0 @@
-id=1#username=Rozachos#profilePicture=default.png#profileLevel=0#adminLevel=5#password=rozett#ip=no_ip#
-id=2#username=Husseinikus#profilePicture=default.png#profileLevel=0#adminLevel=5#password=rozett#ip=no_ip#
-id=3#username=Jennson#profilePicture=default.png#profileLevel=0#adminLevel=5#password=rozett#ip=no_ip#
-id=100#username=Rozach#profilePicture=default.png#profileLevel=0#adminLevel=5#password=rozett#ip=no_ip#
-id=101#username=Jenn#profilePicture=default.png#profileLevel=0#adminLevel=0#password=jenn#ip=no_ip#
-id=102#username=Husseini#profilePicture=default.png#profileLevel=0#adminLevel=0#password=husseini#ip=no_ip#
-id=103#username=Max#profilePicture=default.png#profileLevel=0#adminLevel=0#password=max#ip=no_ip#
-id=104#username=Andrea#profilePicture=default.png#profileLevel=0#adminLevel=0#password=zelle#ip=no_ip#

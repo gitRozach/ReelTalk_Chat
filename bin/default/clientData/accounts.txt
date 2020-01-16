@@ -1,5 +1,0 @@
-id=0#username=Rozach#profilePicture=default.png#profileLevel=0#adminLevel=5#password=jajut#ip=no_ip#
-id=1#username=Jenn#profilePicture=default.png#profileLevel=0#adminLevel=0#password=jenn#ip=no_ip#
-id=2#username=Husseini#profilePicture=default.png#profileLevel=0#adminLevel=0#password=husseini#ip=no_ip#
-id=3#username=Max#profilePicture=default.png#profileLevel=0#adminLevel=0#password=max#ip=no_ip#
-id=4#username=Andrea#profilePicture=default.png#profileLevel=0#adminLevel=0#password=andrea#ip=no_ip#
