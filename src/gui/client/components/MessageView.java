@@ -4,7 +4,6 @@ import java.io.File;
 
 import gui.client.components.contextMenu.CustomContextMenu;
 import gui.client.components.contextMenu.MenuItemButton;
-import gui.client.components.layouts.LoadableStackPane;
 import gui.client.components.messages.GUIMessage;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -34,7 +33,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
-public class MessageView extends LoadableStackPane {
+public class MessageView extends StackPane {
 	private ScrollPane rootContent;
 	private StackPane messagesAndLoadButton;
 	private VBox messages;
@@ -108,8 +107,9 @@ public class MessageView extends LoadableStackPane {
 		this.setOnContextMenuRequested(a -> onContextMenuRequested(a));
 		this.setOnMouseClicked(b -> onMouseClicked(b));
 
-		this.rootContent.setContent(messagesAndLoadButton);
-		this.setContent(rootContent);
+		rootContent.setContent(messagesAndLoadButton);
+		//loadContent(rootContent);
+		getChildren().add(rootContent);
 	}
 
 	public void addMessageAnimated(GUIMessage message) {

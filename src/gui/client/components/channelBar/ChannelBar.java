@@ -11,7 +11,6 @@ import gui.client.components.channelBar.channelBarItems.GuestChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.VoiceChannelBarItem;
-import gui.client.components.layouts.LoadableStackPane;
 import gui.tools.GUITools;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -23,13 +22,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import network.ssl.client.SecuredChatClient;
 
-public class ChannelBar extends LoadableStackPane {
+public class ChannelBar extends StackPane {
 	private VBox contentBox;
 	private HBox serverBarBox;
 	private HBox buttonBox;
@@ -66,7 +66,8 @@ public class ChannelBar extends LoadableStackPane {
 		initClientAttachment();
 		initContentBox();
 		initMouseListener();
-		setContent(contentBox);
+		//loadContent(contentBox);
+		getChildren().add(contentBox);
 	}
 
 	private void initServerBar() {

@@ -8,7 +8,6 @@ import gui.client.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.VoiceChannelBarItem;
 import gui.client.components.clientBar.ClientBar;
-import gui.client.components.layouts.LoadableStackPane;
 import gui.client.components.messageField.MessageField;
 import gui.client.components.messages.GUIMessage;
 import gui.tools.GUITools;
@@ -17,10 +16,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public final class ClientChatView extends LoadableStackPane {
+public final class ClientChatView extends StackPane {
 	private double minWidth;
 	private double minHeight;
 	
@@ -70,7 +70,8 @@ public final class ClientChatView extends LoadableStackPane {
 		
 		setMinWidth(minWidth);
 		setMinHeight(minHeight);
-		loadContent(tabPane);
+		//loadContent(tabPane);
+		getChildren().add(tabPane);
 	}
 	
 	private void initStylesheets() {

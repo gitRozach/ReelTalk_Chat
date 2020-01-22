@@ -18,8 +18,7 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	private VBox loadingControls;
 	private JFXSpinner loadingSpinner;
 	private Label loadingText;
-
-	private ParallelTransition loadInAnimation;
+	private FadeTransition fadeIn;	private ScaleTransition scaleIn;	private ParallelTransition loadInAnimation;		private FadeTransition fadeOut;	private ScaleTransition scaleOut;
 	private ParallelTransition loadOutAnimation;
 
 	public LoadableStackPane() {
@@ -27,7 +26,7 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	}
 
 	public LoadableStackPane(Node content) {
-		super();		if(content != null)			setContent(content);		initialize();
+		super();		initialize();		if(content != null)			setContent(content);		else			setContent(new VBox());
 	}
 	
 	public void initialize() {
@@ -35,181 +34,174 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 		initLoadingControls();
 		initLoadingLayer();
 		initAnimations();		initListeners();
-		loadContent(getContent());
-		//setLoading(loading);
-		
 		setPickOnBounds(true);
-		getChildren().add(loadingLayer);
+		getChildren().add(loadingLayer);				setPickOnBounds(true);		setLoading(false);
 	}
 	
 	private void initProperties() {
-		this.contentProperty = new SimpleObjectProperty<>(new VBox());
-		this.loadingProperty = new SimpleBooleanProperty(false);
+		contentProperty = new SimpleObjectProperty<>(new VBox());
+		loadingProperty = new SimpleBooleanProperty(false);
 
-		this.fadeInValueProperty = new SimpleDoubleProperty(0.25d);
-		this.scaleInValueProperty = new SimpleDoubleProperty(3d);
-		this.loadingInDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.5d));
+		fadeInValueProperty = new SimpleDoubleProperty(0.25d);
+		scaleInValueProperty = new SimpleDoubleProperty(3d);
+		loadingInDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.5d));
 
-		this.fadeOutValueProperty = new SimpleDoubleProperty(1d);
-		this.scaleOutValueProperty = new SimpleDoubleProperty(1d);
-		this.loadingOutDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.1d));
+		fadeOutValueProperty = new SimpleDoubleProperty(1d);
+		scaleOutValueProperty = new SimpleDoubleProperty(1d);
+		loadingOutDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.1d));
 	}
 	
 	private void initLoadingControls() {
-		this.loadingSpinner = new JFXSpinner();
+		loadingSpinner = new JFXSpinner();
 		
-		this.loadingText = new Label("Loading ...");
-		this.loadingText.setFont(Font.font("Verdana", 22d));
-		this.loadingControls = new VBox(this.loadingSpinner, this.loadingText);
-		this.loadingControls.setAlignment(Pos.CENTER);
+		loadingText = new Label("Loading ...");
+		loadingText.setFont(Font.font("Verdana", 22d));
+		loadingControls = new VBox(loadingSpinner, loadingText);
+		loadingControls.setAlignment(Pos.CENTER);
 	}
 	
 	private void initLoadingLayer() {
-		this.loadingLayer = new HBox();
-		this.loadingLayer.setAlignment(Pos.CENTER);
-		this.loadingLayer.setFillHeight(true);
-		this.loadingLayer.getChildren().add(this.loadingControls);
+		loadingLayer = new HBox();		loadingLayer.setOnMouseClicked(a -> System.out.println("Click"));//		loadingLayer.setVisible(false);//		loadingLayer.setPickOnBounds(false);
+		loadingLayer.setAlignment(Pos.CENTER);
+		loadingLayer.setFillHeight(true);
+		loadingLayer.getChildren().add(loadingControls);
 	}
 	
 	private void initAnimations() {
-		FadeTransition fadeIn = new FadeTransition();
+		fadeIn = new FadeTransition();
 		fadeIn.setInterpolator(Interpolator.EASE_OUT);
-		fadeIn.nodeProperty().bind(this.contentProperty);
-		fadeIn.toValueProperty().bind(this.fadeInValueProperty);
-		fadeIn.durationProperty().bind(this.loadingInDurationProperty);
+		fadeIn.nodeProperty().bind(contentProperty);
+		fadeIn.toValueProperty().bind(fadeInValueProperty);
+		fadeIn.durationProperty().bind(loadingInDurationProperty);
 
-		ScaleTransition scaleIn = new ScaleTransition();
-		scaleIn.setNode(this.loadingSpinner);
+		scaleIn = new ScaleTransition();
+		scaleIn.setNode(loadingSpinner);
 		scaleIn.setInterpolator(Interpolator.EASE_OUT);
-		scaleIn.toXProperty().bind(this.scaleInValueProperty);
-		scaleIn.toYProperty().bind(this.scaleInValueProperty);
-		scaleIn.durationProperty().bind(this.loadingInDurationProperty);
+		scaleIn.toXProperty().bind(scaleInValueProperty);
+		scaleIn.toYProperty().bind(scaleInValueProperty);
+		scaleIn.durationProperty().bind(loadingInDurationProperty);
 
-		this.loadInAnimation = Animations.newParallelTransition(Interpolator.EASE_OUT, 1, false, fadeIn, scaleIn);
+		loadInAnimation = Animations.newParallelTransition(Interpolator.EASE_OUT, 1, false, /*fadeIn,*/ scaleIn);
 
-		FadeTransition fadeOut = new FadeTransition();
+		fadeOut = new FadeTransition();
 		fadeOut.setInterpolator(Interpolator.EASE_IN);
-		fadeOut.nodeProperty().bind(this.contentProperty);
-		fadeOut.toValueProperty().bind(this.fadeOutValueProperty);
-		fadeOut.durationProperty().bind(this.loadingOutDurationProperty);
+		fadeOut.nodeProperty().bind(contentProperty);
+		fadeOut.toValueProperty().bind(fadeOutValueProperty);
+		fadeOut.durationProperty().bind(loadingOutDurationProperty);
 
-		ScaleTransition scaleOut = new ScaleTransition();
-		scaleOut.setNode(this.loadingSpinner);
+		scaleOut = new ScaleTransition();
+		scaleOut.setNode(loadingSpinner);
 		scaleOut.setInterpolator(Interpolator.EASE_IN);
-		scaleOut.toXProperty().bind(this.scaleOutValueProperty);
-		scaleOut.toYProperty().bind(this.scaleOutValueProperty);
-		scaleOut.durationProperty().bind(this.loadingOutDurationProperty);
+		scaleOut.toXProperty().bind(scaleOutValueProperty);
+		scaleOut.toYProperty().bind(scaleOutValueProperty);
+		scaleOut.durationProperty().bind(loadingOutDurationProperty);
 
-		this.loadOutAnimation = Animations.newParallelTransition(Interpolator.EASE_IN, 1, false, fadeOut, scaleOut);
-		this.loadOutAnimation.setOnFinished(a -> {
-			this.loadingLayer.setVisible(false);
-			this.loadingLayer.setPickOnBounds(false);
+		loadOutAnimation = Animations.newParallelTransition(Interpolator.EASE_IN, 1, false, /*fadeOut,*/ scaleOut);
+		loadOutAnimation.setOnFinished(a -> {			System.out.println("FINISHED");
+			loadingLayer.setVisible(false);
+			loadingLayer.setPickOnBounds(false);
 		});
-	}		private void initListeners() {		this.loadingProperty.addListener(new LoadingListener());				this.loadingSpinner.scaleXProperty().addListener((obs, oldV, newV) -> {			this.loadingText.setPadding(new Insets(15d + ((newV.doubleValue() - 1d) * this.loadingSpinner.getWidth()), 0d, 0d, 0d));		});				contentProperty.addListener((obs, oldV, newV) -> { 		});	}
+	}		private void initListeners() {		loadingSpinner.scaleXProperty().addListener((obs, oldV, newV) -> {			loadingText.setPadding(new Insets(15d + ((newV.doubleValue() - 1d) * loadingSpinner.getWidth()), 0d, 0d, 0d));		});				loadingProperty.addListener(new LoadingListener());		//		contentProperty.addListener((obs, oldV, newV) -> { ////		});	}
 
 	/*
 	 *
 	 */
 
 	public BooleanProperty loadingProperty() {
-		return this.loadingProperty;
+		return loadingProperty;
 	}
 
 	public boolean isLoading() {
-		return this.loadingProperty.get();
+		return loadingProperty.get();
 	}
 
 	public void setLoading(boolean value) {
-		this.loadingProperty.set(value);
+		loadingProperty.set(value);
 	}
 
 	public DoubleProperty fadeInValueProperty() {
-		return this.fadeInValueProperty;
+		return fadeInValueProperty;
 	}
 
 	public double getFadeInValue() {
-		return this.fadeInValueProperty.get();
+		return fadeInValueProperty.get();
 	}
 
 	public void setFadeInValue(double value) {
-		this.fadeInValueProperty.set(value);
+		fadeInValueProperty.set(value);
 	}
 
 	public DoubleProperty fadeOutValueProperty() {
-		return this.fadeOutValueProperty;
+		return fadeOutValueProperty;
 	}
 
 	public double getFadeOutValue() {
-		return this.fadeOutValueProperty.get();
+		return fadeOutValueProperty.get();
 	}
 
 	public void setFadeOutValue(double value) {
-		this.fadeOutValueProperty.set(value);
+		fadeOutValueProperty.set(value);
 	}
 
 	public DoubleProperty scaleInValueProperty() {
-		return this.scaleInValueProperty;
+		return scaleInValueProperty;
 	}
 
 	public double getScaleInValue() {
-		return this.scaleInValueProperty.get();
+		return scaleInValueProperty.get();
 	}
 
 	public void setScaleInValue(double value) {
-		this.scaleInValueProperty.set(value);
+		scaleInValueProperty.set(value);
 	}
 
 	public DoubleProperty scaleOutValueProperty() {
-		return this.scaleOutValueProperty;
+		return scaleOutValueProperty;
 	}
 
 	public double getScaleOutValue() {
-		return this.scaleOutValueProperty.get();
+		return scaleOutValueProperty.get();
 	}
 
 	public void setScaleOutValue(double value) {
-		this.scaleOutValueProperty.set(value);
+		scaleOutValueProperty.set(value);
 	}
 
 	public ObjectProperty<Duration> loadingInDurationProperty() {
-		return this.loadingInDurationProperty;
+		return loadingInDurationProperty;
 	}
 
 	public Duration getLoadingInDuration() {
-		return this.loadingInDurationProperty.get();
+		return loadingInDurationProperty.get();
 	}
 
 	public void setLoadingInDuration(Duration value) {
-		this.loadingInDurationProperty().set(value);
+		loadingInDurationProperty().set(value);
 	}
 
 	public ObjectProperty<Duration> loadingOutDurationProperty() {
-		return this.loadingOutDurationProperty;
+		return loadingOutDurationProperty;
 	}
 
 	public Duration getLoadingOutDuration() {
-		return this.loadingOutDurationProperty.get();
+		return loadingOutDurationProperty.get();
 	}
 
 	public void setLoadingOutDuration(Duration value) {
-		this.loadingOutDurationProperty().set(value);
+		loadingOutDurationProperty().set(value);
 	}
 
 	public ObjectProperty<Node> contentProperty() {
-		return this.contentProperty;
-	}
+		return contentProperty;
+	}		public boolean hasContent() {		return getContent() != null;	}
 
 	public Node getContent() {
-		return this.contentProperty.get();
+		return contentProperty.get();
 	}
 
 	public void setContent(Node value) {		if(value == null)			return;		
-		Platform.runLater(() -> {
-			if (getContent() != null)
-				getChildren().remove(getContent());			contentProperty.set(value);			if(getContent() != null) {				getChildren().add(0, getContent());				getContent().setPickOnBounds(true);			}
-			//loadingLayer.setVisible(isLoading());
-		});
-	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {								@Override				protected Void call() throws Exception {					if(loadMinMillis > 0L)						Thread.sleep(loadMinMillis);					setContent(value);					return null;				}								@Override				protected void running() {					super.running();					loadingLayer.setVisible(true);					setLoading(true);				}								@Override 				protected void succeeded() {					super.succeeded();					loadingLayer.setVisible(false);					setLoading(false);				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
+		if (hasContent())			getChildren().remove(0);		contentProperty.set(value);		getChildren().add(0, getContent());		getContent().setPickOnBounds(true);		setLoading(false);
+	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {								@Override				protected Void call() throws Exception {					if(loadMinMillis > 0L)						Thread.sleep(loadMinMillis);					Platform.runLater(() -> setContent(value));					System.out.println("Setting content...");					return null;				}								@Override				protected void running() {					super.running();					Platform.runLater(() -> {						loadingLayer.setVisible(true);						loadingLayer.setPickOnBounds(true);						setLoading(true);						System.out.println("Running...");					});				}								@Override 				protected void succeeded() {					super.succeeded();					Platform.runLater(() -> {						loadingLayer.setVisible(false);						loadingLayer.setPickOnBounds(false);						setLoading(false);						System.out.println("Succeeded.");					});				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
 
 	/*
 	 *
@@ -217,7 +209,7 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 
 	private class LoadingListener implements ChangeListener<Boolean> {
 		@Override
-		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {			System.out.println("Loading: " + newValue.booleanValue());
 			if(newValue == null || oldValue == null)
 				return;
 			if (newValue.booleanValue() && !oldValue.booleanValue())
@@ -226,17 +218,17 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 				playLoadingOutAnimation();
 		}
 
-		private void playLoadingInAnimation() {
-			if (loadInAnimation == null || loadOutAnimation == null)
-				return;
+		private void playLoadingInAnimation() {			System.out.println("load in");
+			if (loadInAnimation == null || loadOutAnimation == null) {
+				System.out.println("loadIn: loadin or loadout = null");				return;			}
 
 			if (loadInAnimation.getStatus() != Status.RUNNING) {
 				if (loadOutAnimation.getStatus() == Status.RUNNING) {
 					loadOutAnimation.stop();
 					loadingSpinner.setScaleX(getScaleOutValue());
 					loadingSpinner.setScaleY(getScaleOutValue());
-					if (getContent() != null)
-						getContent().setOpacity(getFadeOutValue());
+//					if (getContent() != null)
+//						getContent().setOpacity(getFadeOutValue());
 				}
 				loadingLayer.setVisible(true);
 				loadingLayer.setPickOnBounds(true);
@@ -244,16 +236,16 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 			}
 		}
 
-		private void playLoadingOutAnimation() {
-			if (loadInAnimation == null || loadOutAnimation == null)
-				return;
+		private void playLoadingOutAnimation() {			System.out.println("load out");
+			if (loadInAnimation == null || loadOutAnimation == null) {
+				System.out.println("loadOut: loadin or loadout = null");				return;			}
 
 			if (loadInAnimation.getStatus() == Status.RUNNING) {
 				loadInAnimation.stop();
 				loadingSpinner.setScaleX(getScaleInValue());
 				loadingSpinner.setScaleY(getScaleInValue());
-				if (getContent() != null)
-					getContent().setOpacity(getFadeInValue());
+//				if (getContent() != null)
+//					getContent().setOpacity(getFadeInValue());
 			}
 			loadOutAnimation.playFromStart();
 		}

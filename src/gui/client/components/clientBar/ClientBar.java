@@ -83,6 +83,7 @@ public class ClientBar extends LoadableStackPane {
 	}
 
 	public void initialize() {
+		super.initialize();
 		initProfileBox();
 		initMessagesView();
 		initMemberTabPane();
@@ -92,8 +93,8 @@ public class ClientBar extends LoadableStackPane {
 		initStylesheets();
 		initMouseListener();
 		getStyleClass().add("root-content-box");
-		
-		setContent(rootContentBox);
+		//setContent(rootContentBox);
+		loadContent(rootContentBox);
 	}
 
 	private void initProfileBox() {
@@ -167,30 +168,6 @@ public class ClientBar extends LoadableStackPane {
 		profileTabPane = new JFXTabPane();
 		profileTabPane.getTabs().addAll(messagesTab, membersTab, mediaTab);
 		GUITools.hideTabs(profileTabPane);
-		
-//		Object scrollX = view.lookup(".scroll-bar:horizontal");
-//		Object scrollY = view.lookup(".scroll-bar:vertical");
-//		if(scrollX != null)
-//			((ScrollBar)scrollX).setDisable(true);
-//		if(scrollY != null)
-//			((ScrollBar)scrollY).setDisable(true);
-//		
-//		view.setExpanded(true);
-//		view.setVerticalGap(10d);
-//		view.setDepth(5);
-//		view.setEditable(false);
-//		
-//		view.setMinWidth(BAR_WIDTH);
-//		view.setMaxWidth(BAR_WIDTH);
-//		view.setPrefWidth(BAR_WIDTH);		
-//		view.setCellFactory(new Callback<ListView<CBasicClientData>, ListCell<CBasicClientData>>() {
-//			@Override 
-//			public ListCell<CBasicClientData> call(ListView<CBasicClientData> arg0) {
-//				return new CClientCell();
-//			}
-//		});
-//		
-//		dataView.getItems().addAll(data);
 	}
 	
 	private void initRootContentBox() {

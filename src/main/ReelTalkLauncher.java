@@ -30,8 +30,8 @@ public class ReelTalkLauncher extends Application {
 	}
 	
 	public void initialize(Stage stage) {
-		initRootPane();
 		initChatView();
+		initRootPane();
 		initStage(stage);
 		window.show();
 	}
@@ -44,14 +44,15 @@ public class ReelTalkLauncher extends Application {
 	
 	private void initRootPane() {
 		rootPane = new LoadableStackPane();
+		rootPane.initialize();
 	}
 	
 	private void initChatView() {
-		chatView = new ClientChatView();
+		chatView = new ClientChatView(true, window);
 	}
 	
 	public void loadView(Node view) {
-		rootPane.loadContent(view);
+		rootPane.loadContent(view, 1500L);
 	}
 
 }
