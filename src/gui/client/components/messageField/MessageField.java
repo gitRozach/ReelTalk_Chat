@@ -346,22 +346,16 @@ public class MessageField extends VBox {
 		private void initEventListeners() {
 			inputField.addEventFilter(KeyEvent.ANY, event -> {				
 				if(event.getEventType() == KeyEvent.KEY_PRESSED) {
-					if(event.getCode() == KeyCode.SPACE) {
+					if(event.getCode() == KeyCode.SPACE)
 						onSpaceKeyPressed(event);
-					}
-					else if(event.getCode() == KeyCode.ENTER) {
+					else if(event.getCode() == KeyCode.ENTER)
 						onEnterPressed(event);
-					}
-					else if(event.getCode() == KeyCode.BACK_SPACE) {
+					else if(event.getCode() == KeyCode.BACK_SPACE)
 						onBackSpacePressed(event);
-					}
-					else if(event.getCode() == KeyCode.LEFT) {
+					else if(event.getCode() == KeyCode.LEFT)
 						onLeftPressed(event);
-					}
-					else if(event.getCode() == KeyCode.RIGHT) {
+					else if(event.getCode() == KeyCode.RIGHT)
 						onRightPressed(event);
-					}
-					
 				}
 				if(event.getEventType() == KeyEvent.KEY_TYPED) {
 					if(event.getCharacter().equals(" "))
@@ -567,11 +561,15 @@ public class MessageField extends VBox {
 		}
 		
 		private void addSmileyToCurrentSelectionLeftSide(SmileyMessageItem message) {
+			if(message == null)
+				return;
 			removeSmileyFromCurrentSelectionLeftSide();
 			inputBox.getChildren().add(0, message);
 		}
 		
 		private void addSmileyToCurrentSelectionRightSide(SmileyMessageItem message) {
+			if(message == null)
+				return;
 			removeSmileyFromCurrentSelectionRightSide();
 			inputBox.getChildren().add(inputBox.getChildren().size(), message);
 		}
@@ -589,16 +587,45 @@ public class MessageField extends VBox {
 			if(inputFlowPane.getChildren().contains(inputBox))
 				inputFlowPane.getChildren().remove(inputBox);
 			inputFlowPane.getChildren().add(index, inputBox);
+			setCurrentIndex(index);
 			return true;
 		}
 		
-		public MessageFieldItem moveCaret(int itemIndex, int relativeCaretPos) {
-			int wordsAdded = addText(getCurrentText());
-			int newIndex = itemIndex > getCurrentIndex() ? itemIndex + wordsAdded : itemIndex;
-			
-			MessageFieldItem selectedItem = (MessageFieldItem) getItem(newIndex);
-			removeItem(newIndex); 				//Remove selected item
-			addInputBox(newIndex, selectedItem, relativeCaretPos);	//Replace selected item
+		private boolean moveInputBox(int index) {
+			Node selectedItem = getItem(index);
+			if(selectedItem == null)
+				return false;
+			if(selectedItem instanceof HBox)
+				return false;
+			else if(selectedItem instanceof WordMessageItem) {
+				WordMessageItem content = (WordMessageItem)selectedItem;
+				//addText(getCurrentText());
+				addCurrentInput();
+				setTextFieldContent(content, 0);
+			}
+			else if(selectedItem instanceof SmileyMessageItem) {
+
+			}
+			else if(selectedItem instanceof ParagraphMessageItem) {
+				
+			}
+			if(inputFlowPane.getChildren().contains(inputBox))
+				inputFlowPane.getChildren().remove(inputBox);
+			inputFlowPane.getChildren().remove(index);
+			inputFlowPane.getChildren().add(index, inputBox);
+			inputField.requestFocus();
+			setCurrentIndex(index);	
+			return true;
+		}
+		
+		public Node moveCaret(int itemIndex, int caretPos) {
+			Node selectedItem = getItem(itemIndex);
+			if(selectedItem instanceof HBox) {
+				
+			}
+			else if(selectedItem instanceof MessageFieldItem) {
+				moveInputBox(itemIndex);
+			}
 			return selectedItem;
 		}
 		
@@ -611,6 +638,21 @@ public class MessageField extends VBox {
 				}
 			}
 			return words.length;
+		}
+		
+		public int addCurrentInput() {
+			int addedItems = 0;
+			if(hasCurrentSelectionSmileyLeftSide()) {
+				addItem(new SmileyMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
+				++addedItems;
+			}
+			if(hasCurrentSelectionText())
+				addedItems += addText(getCurrentText());
+			if(hasCurrentSelectionSmileyRightSide()) {
+				addItem(new SmileyMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
+				++addedItems;
+			}
+			return addedItems;
 		}
 		
 		public void appendItem(MessageFieldItem newItem) {
@@ -631,7 +673,7 @@ public class MessageField extends VBox {
 				paragraph.getStyleClass().add("paragraph-message-item");
 				inputFlowPane.getChildren().add(index, paragraph);
 				added = true;
-			}
+			} 			
 			else if(newItem instanceof SmileyMessageItem) {
 				SmileyMessageItem smiley = (SmileyMessageItem)newItem;
 				smiley.getStyleClass().add("smiley-message-item");
@@ -640,16 +682,18 @@ public class MessageField extends VBox {
 			}
 			else if(newItem instanceof WordMessageItem) {
 				WordMessageItem word = (WordMessageItem)newItem;
-				word.setOnMouseClicked(a -> clearInputEmojis()/*moveCaret(inputFlowPane.getChildren().indexOf(word), word.getText().length())*/);
+				word.setOnMouseClicked(a -> moveCaret(inputFlowPane.getChildren().indexOf(word), word.getText().length()));
 				word.getStyleClass().add("word-message-item");
 				inputFlowPane.getChildren().add(index, word);
 				added = true;
 			}
 			if(added) {
 				clearInput();
-				if(index <= getCurrentIndex())
+				if(index <= getCurrentIndex()) {
 					incrementCurrentIndex();
-				inputField.requestFocus();
+					if(getCurrentIndex() < length() - 1)
+						addInputBox(getCurrentIndex() + 1, (MessageFieldItem)getItem(getCurrentIndex() + 1), 0);
+				}
 			}
 		}
 		
@@ -663,7 +707,7 @@ public class MessageField extends VBox {
 			Node item = null;
 			
 			if(index == getCurrentIndex()) {
-				setTextFieldContent(null, 0);
+				clearInput();
 				return inputBox;
 			}
 			else {
