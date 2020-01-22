@@ -1,6 +1,6 @@
 package main;
 
-import gui.client.views.ClientChat;
+import gui.client.views.ClientChatView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,7 +9,7 @@ import network.ssl.client.SecuredChatClient;
 public class ClientLauncher extends Application{
 	private Stage window;
 	private Scene scene;
-	private ClientChat clientUI;
+	private ClientChatView clientUI;
 	private SecuredChatClient client;
 	
 	public static void main(String[] args) {
@@ -35,7 +35,7 @@ public class ClientLauncher extends Application{
 	}
 	
 	private void initClientUI() {
-		clientUI = new ClientChat(true);
+		clientUI = new ClientChatView(true);
 	}
 	
 	private void initClient() {

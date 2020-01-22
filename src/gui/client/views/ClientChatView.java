@@ -20,7 +20,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public final class ClientChat extends LoadableStackPane {
+public final class ClientChatView extends LoadableStackPane {
 	private double minWidth;
 	private double minHeight;
 	
@@ -40,15 +40,15 @@ public final class ClientChat extends LoadableStackPane {
 	
 	private MessageField messageInputField;
 	
-	public ClientChat() {
+	public ClientChatView() {
 		this(false);
 	}
 	
-	public ClientChat(boolean initialize) {
+	public ClientChatView(boolean initialize) {
 		this(initialize, null);
 	}
 	
-	public ClientChat(boolean initialize, Stage parentWindow) {
+	public ClientChatView(boolean initialize, Stage parentWindow) {
 		super(true);
 		
 		if(initialize)
@@ -70,7 +70,7 @@ public final class ClientChat extends LoadableStackPane {
 		
 		setMinWidth(minWidth);
 		setMinHeight(minHeight);
-		setContent(tabPane);
+		loadContent(tabPane, 2500L);
 	}
 	
 	private void initStylesheets() {

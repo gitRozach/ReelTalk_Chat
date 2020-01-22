@@ -1,6 +1,6 @@
 package main;
 
-import gui.client.views.ClientChat;
+import gui.client.views.ClientChatView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ public class ClientChatTest extends Application {
 	
 	@Override
 	public void start(Stage window) {
-		ClientChat clientGui = new ClientChat(true, window);
+		ClientChatView clientGui = new ClientChatView(true, window);
 		
 		Scene scene = new Scene(clientGui, 1000d, 800d);
 		

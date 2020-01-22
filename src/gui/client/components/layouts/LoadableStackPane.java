@@ -1,5 +1,5 @@
 package gui.client.components.layouts;
-import com.jfoenix.controls.JFXSpinner;import gui.animations.Animations;import javafx.animation.Animation.Status;import javafx.animation.FadeTransition;import javafx.animation.Interpolator;import javafx.animation.ParallelTransition;import javafx.animation.ScaleTransition;import javafx.application.Platform;import javafx.beans.property.BooleanProperty;import javafx.beans.property.DoubleProperty;import javafx.beans.property.ObjectProperty;import javafx.beans.property.SimpleBooleanProperty;import javafx.beans.property.SimpleDoubleProperty;import javafx.beans.property.SimpleObjectProperty;import javafx.beans.value.ChangeListener;import javafx.beans.value.ObservableValue;import javafx.geometry.Insets;import javafx.geometry.Pos;import javafx.scene.Node;import javafx.scene.control.Label;import javafx.scene.layout.HBox;import javafx.scene.layout.StackPane;import javafx.scene.layout.VBox;import javafx.scene.text.Font;import javafx.util.Duration;
+import java.util.concurrent.CountDownLatch;import com.jfoenix.controls.JFXSpinner;import gui.animations.Animations;import javafx.animation.Animation.Status;import javafx.animation.FadeTransition;import javafx.animation.Interpolator;import javafx.animation.ParallelTransition;import javafx.animation.ScaleTransition;import javafx.application.Platform;import javafx.beans.property.BooleanProperty;import javafx.beans.property.DoubleProperty;import javafx.beans.property.ObjectProperty;import javafx.beans.property.SimpleBooleanProperty;import javafx.beans.property.SimpleDoubleProperty;import javafx.beans.property.SimpleObjectProperty;import javafx.beans.value.ChangeListener;import javafx.beans.value.ObservableValue;import javafx.concurrent.Service;import javafx.concurrent.Task;import javafx.geometry.Insets;import javafx.geometry.Pos;import javafx.scene.Node;import javafx.scene.control.Label;import javafx.scene.layout.HBox;import javafx.scene.layout.StackPane;import javafx.scene.layout.VBox;import javafx.scene.text.Font;import javafx.util.Duration;
 
 public class LoadableStackPane extends StackPane {
 	private ObjectProperty<Node> contentProperty;
@@ -43,7 +43,7 @@ public class LoadableStackPane extends StackPane {
 		initLoadingControls();
 		initLoadingLayer();
 		initAnimations();		initListeners();
-		setContent(content);
+		loadContent(content, 3000L);
 		//setLoading(loading);
 		
 		setPickOnBounds(true);
@@ -51,7 +51,7 @@ public class LoadableStackPane extends StackPane {
 	}
 	
 	private void initProperties() {
-		this.contentProperty = new SimpleObjectProperty<>(null);
+		this.contentProperty = new SimpleObjectProperty<>(new VBox());
 		this.loadingProperty = new SimpleBooleanProperty(false);
 
 		this.fadeInValueProperty = new SimpleDoubleProperty(0.25d);
@@ -215,14 +215,13 @@ public class LoadableStackPane extends StackPane {
 		if(value == null)
 			return;
 		Platform.runLater(() -> {
-			if (this.getContent() != null)
-				this.getChildren().remove(this.getContent());
-			this.getChildren().add(0, value);
-			value.setPickOnBounds(true);
-			this.contentProperty.set(value);
-			this.loadingLayer.setVisible(this.isLoading());
+			if (getContent() != null)
+				getChildren().remove(getContent());			contentProperty.set(value);
+			getChildren().add(0, getContent());
+			getContent().setPickOnBounds(true);
+			loadingLayer.setVisible(isLoading());
 		});
-	}
+	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {				volatile CountDownLatch startLatch = new CountDownLatch(1);				volatile CountDownLatch doneLatch = new CountDownLatch(1);								@Override				protected Void call() {					try {						if(loadMinMillis > 0L)							Thread.sleep(loadMinMillis);						startLatch.await();						setContent(value);						doneLatch.countDown();					}					catch(Exception e) {						e.printStackTrace();					}					return null;				}								@Override				protected void running() {					super.running();					loadingLayer.setVisible(true);					setLoading(true);					startLatch.countDown();				}								@Override 				protected void succeeded() {					try {						doneLatch.await();						super.succeeded();						loadingLayer.setVisible(false);						setLoading(false);					} 					catch (Exception e) {						e.printStackTrace();					}				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
 
 	/*
 	 *
@@ -231,7 +230,7 @@ public class LoadableStackPane extends StackPane {
 	private class LoadingListener implements ChangeListener<Boolean> {
 		@Override
 		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-			if(/*loadInAnimation != null || loadOutAnimation == null ||*/ newValue == null || oldValue == null)
+			if(newValue == null || oldValue == null)
 				return;
 			if (newValue.booleanValue() && !oldValue.booleanValue())
 				playLoadingInAnimation();
