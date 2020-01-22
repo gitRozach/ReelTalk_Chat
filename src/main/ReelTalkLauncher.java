@@ -43,11 +43,11 @@ public class ReelTalkLauncher extends Application {
 	}
 	
 	private void initRootPane() {
-		rootPane = new LoadableStackPane(true);
+		rootPane = new LoadableStackPane();
 	}
 	
 	private void initChatView() {
-		chatView = new ClientChatView(true);
+		chatView = new ClientChatView();
 	}
 	
 	public void loadView(Node view) {

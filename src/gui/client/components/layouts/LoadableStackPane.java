@@ -1,7 +1,7 @@
 package gui.client.components.layouts;
-import java.util.concurrent.CountDownLatch;import com.jfoenix.controls.JFXSpinner;import gui.animations.Animations;import javafx.animation.Animation.Status;import javafx.animation.FadeTransition;import javafx.animation.Interpolator;import javafx.animation.ParallelTransition;import javafx.animation.ScaleTransition;import javafx.application.Platform;import javafx.beans.property.BooleanProperty;import javafx.beans.property.DoubleProperty;import javafx.beans.property.ObjectProperty;import javafx.beans.property.SimpleBooleanProperty;import javafx.beans.property.SimpleDoubleProperty;import javafx.beans.property.SimpleObjectProperty;import javafx.beans.value.ChangeListener;import javafx.beans.value.ObservableValue;import javafx.concurrent.Service;import javafx.concurrent.Task;import javafx.geometry.Insets;import javafx.geometry.Pos;import javafx.scene.Node;import javafx.scene.control.Label;import javafx.scene.layout.HBox;import javafx.scene.layout.StackPane;import javafx.scene.layout.VBox;import javafx.scene.text.Font;import javafx.util.Duration;
+import com.jfoenix.controls.JFXSpinner;import gui.animations.Animations;import gui.client.components.InitializableNode;import javafx.animation.Animation.Status;import javafx.animation.FadeTransition;import javafx.animation.Interpolator;import javafx.animation.ParallelTransition;import javafx.animation.ScaleTransition;import javafx.application.Platform;import javafx.beans.property.BooleanProperty;import javafx.beans.property.DoubleProperty;import javafx.beans.property.ObjectProperty;import javafx.beans.property.SimpleBooleanProperty;import javafx.beans.property.SimpleDoubleProperty;import javafx.beans.property.SimpleObjectProperty;import javafx.beans.value.ChangeListener;import javafx.beans.value.ObservableValue;import javafx.concurrent.Service;import javafx.concurrent.Task;import javafx.geometry.Insets;import javafx.geometry.Pos;import javafx.scene.Node;import javafx.scene.control.Label;import javafx.scene.layout.HBox;import javafx.scene.layout.StackPane;import javafx.scene.layout.VBox;import javafx.scene.text.Font;import javafx.util.Duration;
 
-public class LoadableStackPane extends StackPane {
+public class LoadableStackPane extends StackPane implements InitializableNode {
 	private ObjectProperty<Node> contentProperty;
 
 	private BooleanProperty loadingProperty;
@@ -23,27 +23,19 @@ public class LoadableStackPane extends StackPane {
 	private ParallelTransition loadOutAnimation;
 
 	public LoadableStackPane() {
-		this(null, false);
+		this(null);
 	}
 
 	public LoadableStackPane(Node content) {
-		this(content, false);
+		super();		if(content != null)			setContent(content);		initialize();
 	}
 	
-	public LoadableStackPane(boolean loading) {
-		this(null, loading);
-	}
-
-	public LoadableStackPane(Node content, boolean loading) {
-		super();		initialize(content, loading);
-	}
-	
-	public void initialize(Node content, boolean loading) {
+	public void initialize() {
 		initProperties();
 		initLoadingControls();
 		initLoadingLayer();
 		initAnimations();		initListeners();
-		loadContent(content, 3000L);
+		loadContent(getContent());
 		//setLoading(loading);
 		
 		setPickOnBounds(true);
@@ -211,17 +203,13 @@ public class LoadableStackPane extends StackPane {
 		return this.contentProperty.get();
 	}
 
-	public void setContent(Node value) {
-		if(value == null)
-			return;
+	public void setContent(Node value) {		if(value == null)			return;		
 		Platform.runLater(() -> {
 			if (getContent() != null)
-				getChildren().remove(getContent());			contentProperty.set(value);
-			getChildren().add(0, getContent());
-			getContent().setPickOnBounds(true);
-			loadingLayer.setVisible(isLoading());
+				getChildren().remove(getContent());			contentProperty.set(value);			if(getContent() != null) {				getChildren().add(0, getContent());				getContent().setPickOnBounds(true);			}
+			//loadingLayer.setVisible(isLoading());
 		});
-	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {				volatile CountDownLatch startLatch = new CountDownLatch(1);				volatile CountDownLatch doneLatch = new CountDownLatch(1);								@Override				protected Void call() {					try {						if(loadMinMillis > 0L)							Thread.sleep(loadMinMillis);						startLatch.await();						setContent(value);						doneLatch.countDown();					}					catch(Exception e) {						e.printStackTrace();					}					return null;				}								@Override				protected void running() {					super.running();					loadingLayer.setVisible(true);					setLoading(true);					startLatch.countDown();				}								@Override 				protected void succeeded() {					try {						doneLatch.await();						super.succeeded();						loadingLayer.setVisible(false);						setLoading(false);					} 					catch (Exception e) {						e.printStackTrace();					}				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
+	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {								@Override				protected Void call() throws Exception {					if(loadMinMillis > 0L)						Thread.sleep(loadMinMillis);					setContent(value);					return null;				}								@Override				protected void running() {					super.running();					loadingLayer.setVisible(true);					setLoading(true);				}								@Override 				protected void succeeded() {					super.succeeded();					loadingLayer.setVisible(false);					setLoading(false);				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
 
 	/*
 	 *

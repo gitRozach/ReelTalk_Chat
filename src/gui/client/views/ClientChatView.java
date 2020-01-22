@@ -49,7 +49,7 @@ public final class ClientChatView extends LoadableStackPane {
 	}
 	
 	public ClientChatView(boolean initialize, Stage parentWindow) {
-		super(true);
+		super();
 		
 		if(initialize)
 			initialize();
@@ -70,7 +70,7 @@ public final class ClientChatView extends LoadableStackPane {
 		
 		setMinWidth(minWidth);
 		setMinHeight(minHeight);
-		loadContent(tabPane, 2500L);
+		loadContent(tabPane);
 	}
 	
 	private void initStylesheets() {
