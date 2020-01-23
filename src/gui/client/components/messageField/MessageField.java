@@ -142,8 +142,7 @@ public class MessageField extends VBox {
 		smileyPane.setOpacity(0d);
 		smileyPane.setOnKeyPressed(a -> onEnterPressed.handle(a));
 
-		onEnterPressed = (keyEvent -> {
-		});
+		onEnterPressed = (keyEvent -> {});
 		onSmileyButtonClicked = (mouseEvent -> {
 			if (mouseEvent.getButton() == MouseButton.PRIMARY) {
 				if (isOpen())
@@ -223,6 +222,10 @@ public class MessageField extends VBox {
 			setOpen(false);
 			smileyOut.playFromStart();
 		}
+	}
+	
+	public String getText() {
+		return inputField.getText();
 	}
 
 	public BooleanProperty openProperty() {
@@ -505,12 +508,10 @@ public class MessageField extends VBox {
 		
 		private void onEnterPressed(KeyEvent event) {
 			if(event.getCode() == KeyCode.ENTER) {
-				if(event.isShiftDown()) {
+				if(event.isShiftDown())
 					addItem(new ParagraphMessageItem());
-				}
-				else {
-					
-				}
+				else
+					onEnterPressed.handle(event);
 			}
 		}
 		
@@ -718,6 +719,23 @@ public class MessageField extends VBox {
 			return item;
 		}
 		
+		public String getText() {
+			StringBuilder builder = new StringBuilder();
+			for(Node currentNode : inputFlowPane.getChildren()) {
+				if(currentNode instanceof MessageFieldItem)
+					builder.append(((MessageFieldItem)currentNode).toMessageString() + " ");
+				else if(currentNode instanceof HBox) {
+					if(hasCurrentSelectionSmileyLeftSide())
+						builder.append(getCurrentSelectionSmileyLeftSide().toMessageString() + " ");
+					if(hasCurrentSelectionText())
+						builder.append(getCurrentText() + " ");
+					if(hasCurrentSelectionSmileyRightSide())
+						builder.append(getCurrentSelectionSmileyRightSide().toMessageString() + " ");
+				}
+			}
+			return builder.toString().trim();
+		}
+		
 		public int clear() {
 			int removedItems = inputFlowPane.getChildren().size();
 			inputFlowPane.getChildren().clear();
@@ -743,10 +761,6 @@ public class MessageField extends VBox {
 			if(index < 0 || index >= inputFlowPane.getChildren().size())
 				return null;
 			return inputFlowPane.getChildren().get(index);
-		}
-		
-		public String getText() {
-			return null;
 		}
 		
 		public IntegerProperty oldCaretPositionProperty() {

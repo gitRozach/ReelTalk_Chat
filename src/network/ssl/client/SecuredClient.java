@@ -17,9 +17,9 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLSession;
 
 import network.ssl.SecuredPeer;
-import network.ssl.client.handler.EventHandler;
+import network.ssl.client.handler.ByteReceiver;
 
-public class SecuredClient extends SecuredPeer implements EventHandler {
+public class SecuredClient extends SecuredPeer implements ByteReceiver {
 	protected String remoteAddress;
 	protected int port;
 	protected volatile boolean connected;
@@ -306,8 +306,8 @@ public class SecuredClient extends SecuredPeer implements EventHandler {
     }
     
     @Override
-	public void handleEvent(byte[] eventBytes) {
-		System.out.println("Client received: " + new String(eventBytes));
+	public void onBytesReceived(byte[] bytes) {
+		System.out.println("Client received: " + new String(bytes));
 	}
 
     /**
@@ -470,7 +470,7 @@ public class SecuredClient extends SecuredPeer implements EventHandler {
 				try {
 					byte[] message = receptionQueue.poll();
 					if(message != null)
-						handleEvent(message);
+						onBytesReceived(message);
 				}
 				catch(Exception io) {
 					io.printStackTrace();

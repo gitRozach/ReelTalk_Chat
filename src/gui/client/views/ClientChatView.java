@@ -19,8 +19,12 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import network.ssl.client.SecuredChatClient;
+import network.ssl.communication.requests.ChannelMessageRequest;
 
 public final class ClientChatView extends StackPane {
+	private SecuredChatClient client = null;
+	
 	private double minWidth;
 	private double minHeight;
 	
@@ -53,7 +57,7 @@ public final class ClientChatView extends StackPane {
 		
 		if(initialize)
 			initialize();
-		this.attachStage(parentWindow);
+		setStage(parentWindow);
 	}
 	
 	public void initialize() {
@@ -183,20 +187,33 @@ public final class ClientChatView extends StackPane {
 	
 	private void initMessageView() {
 		messageView = new MessageView();
-		messageView.addMessage(0, new GUIMessage("Rouman", "Jojo :A7:"));
-		messageView.addMessage(1, new GUIMessage("Jenn", "Gleich ins Gym? :A2:"));
-		messageView.addMessage(2, new GUIMessage("Rouman", "www.google.de Ne keinen Bock Bro sorry :A11:"));
-		messageView.addMessage(3, new GUIMessage("Jenn", "Jojo fauler Spast HAUSTE REIN :B9:"));
-		messageView.addMessage(4, new GUIMessage("Rouman", "Alles klar :C8:"));
-		messageView.addMessage(5, new GUIMessage("Rouman", "LOL :D7:"));
-		messageView.addMessage(6, new GUIMessage("Jenn", "Jojo!!!!!!!!! :B7:"));
 	}
 	
 	private void initMessageInputField() {
 		messageInputField = new MessageField();
+		messageInputField.setOnEnterPressed(a -> {
+			System.out.println("Enter pressed");
+			client.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, messageInputField.getText()));
+		});
 	}
 	
-	public void attachStage(Stage parentWindow) {
+	public void insertMessage(GUIMessage message) {
+		messageView.addMessage(0, message);
+	}
+	
+	public void appendMessage(GUIMessage message) {
+		messageView.addMessage(message);
+	}
+	
+	public void addMessage(int index, GUIMessage message) {
+		messageView.addMessage(index, message);
+	}
+	
+	public void setClient(SecuredChatClient chatClient) {
+		client = chatClient;
+	}
+	
+	public void setStage(Stage parentWindow) {
 		if(parentWindow == null)
 			return;
 		this.parentWindow = parentWindow;

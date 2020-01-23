@@ -29,8 +29,8 @@ import network.ssl.server.handler.RequestHandler;
 public class SecuredServer extends SecuredPeer implements RequestHandler {
 
 	/** Declares if the server is active to serve and create new connections. */
-	private volatile boolean active;
-	private volatile int receptionCounter;
+	protected volatile boolean active;
+	protected volatile int receptionCounter;
 
 	protected ServerSocketChannel serverSocketChannel;
 
@@ -39,18 +39,18 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	 * then be used to create {@link SSLEngine} classes for each new connection that
 	 * arrives to the server.
 	 */
-	private SSLContext context;
+	protected SSLContext context;
 
 	/**
 	 * A part of Java NIO that will be used to serve all connections to the server
 	 * in one thread.
 	 */
-	private Selector selector;
-	private Queue<ByteMessage> sendingQueue;
-	private Queue<ByteMessage> receptionQueue;
-	private ServerMessageReceiver receiver;
-	private ServerMessageSender sender;
-	private ServerMessageHandler handler;
+	protected Selector selector;
+	protected Queue<ByteMessage> sendingQueue;
+	protected Queue<ByteMessage> receptionQueue;
+	protected ServerMessageReceiver receiver;
+	protected ServerMessageSender sender;
+	protected ServerMessageHandler handler;
 
 	/**
 	 * Server is designed to apply an SSL/TLS protocol and listen to an IP address

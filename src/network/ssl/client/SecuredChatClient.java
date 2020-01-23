@@ -1,8 +1,13 @@
 package network.ssl.client;
 
+import gui.client.components.messages.GUIMessage;
+import gui.client.views.ClientChatView;
 import network.ssl.communication.MessagePacket;
+import network.ssl.communication.events.ChannelMessageEvent;
 
 public class SecuredChatClient extends SecuredClient {
+	protected ClientChatView chatUI = null;
+	
 	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
 	}
@@ -11,8 +16,8 @@ public class SecuredChatClient extends SecuredClient {
 		sendBytes(message.serialize());
 		try {
 			Thread.sleep(50L);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
@@ -34,7 +39,7 @@ public class SecuredChatClient extends SecuredClient {
     }
 
 	@Override
-	public void handleEvent(byte[] reception) {
+	public void onBytesReceived(byte[] reception) {
 		try {
 			if(reception == null) {
 				System.out.println("null reception");
@@ -54,6 +59,7 @@ public class SecuredChatClient extends SecuredClient {
 			case "ChannelDataEvent":
 				break;
 			case "ChannelMessageEvent":
+				onChannelMessageEvent((ChannelMessageEvent)event);
 				break;
 			case "ClientJoinedChannelEvent":
 				break;
@@ -82,5 +88,14 @@ public class SecuredChatClient extends SecuredClient {
 		catch(Exception e) {
 			log.info(e.toString());
 		}	
+	}
+	
+	protected void onChannelMessageEvent(ChannelMessageEvent event) {
+		GUIMessage channelMessage = new GUIMessage(event.getSender(), event.getMessage());
+		chatUI.appendMessage(channelMessage);
+	}
+	
+	public void setChatView(ClientChatView ui) {
+		chatUI = ui;
 	}
 }

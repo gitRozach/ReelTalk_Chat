@@ -8,6 +8,7 @@ import network.ssl.client.id.ClientAccountData;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
 import network.ssl.communication.events.ChannelDataEvent;
+import network.ssl.communication.events.ChannelMessageEvent;
 import network.ssl.communication.events.RequestDeniedEvent;
 import network.ssl.communication.requests.ChannelDataRequest;
 import network.ssl.communication.requests.ChannelJoinRequest;
@@ -146,7 +147,12 @@ public class SecuredChatServer extends SecuredServer {
 	}
 	
 	private void handleChannelMessageRequest(SelectionKey clientKey, ChannelMessageRequest request) {
-		System.out.println("Received ChannelMessageRequest");
+		for(SelectionKey key : selector.keys()) {
+			if(key.channel() instanceof SocketChannel) {
+				ChannelMessageEvent eventMessage = new ChannelMessageEvent(0, request.getUsername(), request.getMessage());
+				sendMessage(key, eventMessage);
+			}
+		}
 	}
 	
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
