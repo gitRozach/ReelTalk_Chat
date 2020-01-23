@@ -66,7 +66,7 @@ public class GUIMessage extends HBox {
 		
 		rootContent = new BorderPane();
 		contextMenu = createContextMenu();
-
+		
 		senderLabel = new Label(getSender());
 		senderLabel.setTextFill(getColor());
 		senderLabel.setFont(CUtils.CFont(18d, FontWeight.BOLD));
@@ -83,7 +83,7 @@ public class GUIMessage extends HBox {
 		senderBox.getChildren().addAll(profilePic, senderLabel);
 
 		FlowPane messagePane = splitMessage();
-
+		
 		timeLabel = new Label(getTime());
 		timeLabel.setTextFill(Color.web("#" + getColor().toString().substring(2)));
 		timeLabel.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 13d));

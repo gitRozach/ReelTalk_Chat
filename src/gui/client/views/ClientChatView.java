@@ -186,9 +186,9 @@ public final class ClientChatView extends StackPane {
 		messageView.addMessage(0, new GUIMessage("Rouman", "Jojo :A7:"));
 		messageView.addMessage(1, new GUIMessage("Jenn", "Gleich ins Gym? :A2:"));
 		messageView.addMessage(2, new GUIMessage("Rouman", "www.google.de Ne keinen Bock Bro sorry :A11:"));
-		messageView.addMessage(3, new GUIMessage("Jenn", "Jojo fauler Spast HAUSTÄH RINNÄH!!! :B9:"));
-		messageView.addMessage(4, new GUIMessage("Rouman", "Alles klärle :C8:"));
-		messageView.addMessage(5, new GUIMessage("Rouman", "Krasser Spast :D7:"));
+		messageView.addMessage(3, new GUIMessage("Jenn", "Jojo fauler Spast HAUSTE REIN :B9:"));
+		messageView.addMessage(4, new GUIMessage("Rouman", "Alles klar :C8:"));
+		messageView.addMessage(5, new GUIMessage("Rouman", "LOL :D7:"));
 		messageView.addMessage(6, new GUIMessage("Jenn", "Jojo!!!!!!!!! :B7:"));
 	}
 	

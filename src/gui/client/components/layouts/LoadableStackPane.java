@@ -6,13 +6,13 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 
 	private BooleanProperty loadingProperty;
 
-	private DoubleProperty fadeInValueProperty;
-	private DoubleProperty scaleInValueProperty;
-	private ObjectProperty<Duration> loadingInDurationProperty;
+	private DoubleProperty fadeStartValueProperty;
+	private DoubleProperty scaleStartValueProperty;
+	private ObjectProperty<Duration> loadingStartDurationProperty;
 
-	private DoubleProperty fadeOutValueProperty;
-	private DoubleProperty scaleOutValueProperty;
-	private ObjectProperty<Duration> loadingOutDurationProperty;
+	private DoubleProperty fadeEndValueProperty;
+	private DoubleProperty scaleEndValueProperty;
+	private ObjectProperty<Duration> loadingEndDurationProperty;
 	
 	private HBox loadingLayer;
 	private VBox loadingControls;
@@ -22,33 +22,28 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	private ParallelTransition loadOutAnimation;
 
 	public LoadableStackPane() {
-		this(null);
+		this(false);
 	}
-
-	public LoadableStackPane(Node content) {
-		super();		initialize();		if(content != null)			setContent(content);		else			setContent(new VBox());
-	}
-	
+	public LoadableStackPane(boolean initialize) {		if(initialize)			initialize();	}
+		@Override
 	public void initialize() {
 		initProperties();
 		initLoadingControls();
 		initLoadingLayer();
 		initAnimations();		initListeners();
-		setPickOnBounds(true);
-		getChildren().add(loadingLayer);				setPickOnBounds(true);		setLoading(false);
-	}
+		initRoot();	}
 	
 	private void initProperties() {
 		contentProperty = new SimpleObjectProperty<>(new VBox());
 		loadingProperty = new SimpleBooleanProperty(false);
 
-		fadeInValueProperty = new SimpleDoubleProperty(0.25d);
-		scaleInValueProperty = new SimpleDoubleProperty(3d);
-		loadingInDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.5d));
+		fadeStartValueProperty = new SimpleDoubleProperty(0.25d);
+		scaleStartValueProperty = new SimpleDoubleProperty(3d);
+		loadingStartDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.5d));
 
-		fadeOutValueProperty = new SimpleDoubleProperty(1d);
-		scaleOutValueProperty = new SimpleDoubleProperty(1d);
-		loadingOutDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.1d));
+		fadeEndValueProperty = new SimpleDoubleProperty(1d);
+		scaleEndValueProperty = new SimpleDoubleProperty(1d);
+		loadingEndDurationProperty = new SimpleObjectProperty<>(Duration.seconds(0.1d));
 	}
 	
 	private void initLoadingControls() {
@@ -61,7 +56,7 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	}
 	
 	private void initLoadingLayer() {
-		loadingLayer = new HBox();		loadingLayer.setOnMouseClicked(a -> System.out.println("Click"));//		loadingLayer.setVisible(false);//		loadingLayer.setPickOnBounds(false);
+		loadingLayer = new HBox();		loadingLayer.setOnMouseClicked(a -> System.out.println("Click"));
 		loadingLayer.setAlignment(Pos.CENTER);
 		loadingLayer.setFillHeight(true);
 		loadingLayer.getChildren().add(loadingControls);
@@ -71,37 +66,37 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 		fadeIn = new FadeTransition();
 		fadeIn.setInterpolator(Interpolator.EASE_OUT);
 		fadeIn.nodeProperty().bind(contentProperty);
-		fadeIn.toValueProperty().bind(fadeInValueProperty);
-		fadeIn.durationProperty().bind(loadingInDurationProperty);
+		fadeIn.toValueProperty().bind(fadeStartValueProperty);
+		fadeIn.durationProperty().bind(loadingStartDurationProperty);
 
 		scaleIn = new ScaleTransition();
 		scaleIn.setNode(loadingSpinner);
 		scaleIn.setInterpolator(Interpolator.EASE_OUT);
-		scaleIn.toXProperty().bind(scaleInValueProperty);
-		scaleIn.toYProperty().bind(scaleInValueProperty);
-		scaleIn.durationProperty().bind(loadingInDurationProperty);
+		scaleIn.toXProperty().bind(scaleStartValueProperty);
+		scaleIn.toYProperty().bind(scaleStartValueProperty);
+		scaleIn.durationProperty().bind(loadingStartDurationProperty);
 
-		loadInAnimation = Animations.newParallelTransition(Interpolator.EASE_OUT, 1, false, /*fadeIn,*/ scaleIn);
+		loadInAnimation = Animations.newParallelTransition(Interpolator.EASE_OUT, 1, false, fadeIn, scaleIn);
 
 		fadeOut = new FadeTransition();
 		fadeOut.setInterpolator(Interpolator.EASE_IN);
 		fadeOut.nodeProperty().bind(contentProperty);
-		fadeOut.toValueProperty().bind(fadeOutValueProperty);
-		fadeOut.durationProperty().bind(loadingOutDurationProperty);
+		fadeOut.toValueProperty().bind(fadeEndValueProperty);
+		fadeOut.durationProperty().bind(loadingEndDurationProperty);
 
 		scaleOut = new ScaleTransition();
 		scaleOut.setNode(loadingSpinner);
 		scaleOut.setInterpolator(Interpolator.EASE_IN);
-		scaleOut.toXProperty().bind(scaleOutValueProperty);
-		scaleOut.toYProperty().bind(scaleOutValueProperty);
-		scaleOut.durationProperty().bind(loadingOutDurationProperty);
+		scaleOut.toXProperty().bind(scaleEndValueProperty);
+		scaleOut.toYProperty().bind(scaleEndValueProperty);
+		scaleOut.durationProperty().bind(loadingEndDurationProperty);
 
-		loadOutAnimation = Animations.newParallelTransition(Interpolator.EASE_IN, 1, false, /*fadeOut,*/ scaleOut);
+		loadOutAnimation = Animations.newParallelTransition(Interpolator.EASE_IN, 1, false, fadeOut, scaleOut);
 		loadOutAnimation.setOnFinished(a -> {			System.out.println("FINISHED");
 			loadingLayer.setVisible(false);
 			loadingLayer.setPickOnBounds(false);
 		});
-	}		private void initListeners() {		loadingSpinner.scaleXProperty().addListener((obs, oldV, newV) -> {			loadingText.setPadding(new Insets(15d + ((newV.doubleValue() - 1d) * loadingSpinner.getWidth()), 0d, 0d, 0d));		});				loadingProperty.addListener(new LoadingListener());		//		contentProperty.addListener((obs, oldV, newV) -> { ////		});	}
+	}		private void initListeners() {		loadingSpinner.scaleXProperty().addListener((obs, oldV, newV) -> {			loadingText.setPadding(new Insets(15d + ((newV.doubleValue() - 1d) * loadingSpinner.getWidth()), 0d, 0d, 0d));		});				loadingProperty.addListener(new LoadingListener());	}		private void initRoot()  {		setPickOnBounds(true);		getChildren().add(loadingLayer);	}
 
 	/*
 	 *
@@ -120,59 +115,59 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	}
 
 	public DoubleProperty fadeInValueProperty() {
-		return fadeInValueProperty;
+		return fadeStartValueProperty;
 	}
 
 	public double getFadeInValue() {
-		return fadeInValueProperty.get();
+		return fadeStartValueProperty.get();
 	}
 
 	public void setFadeInValue(double value) {
-		fadeInValueProperty.set(value);
+		fadeStartValueProperty.set(value);
 	}
 
 	public DoubleProperty fadeOutValueProperty() {
-		return fadeOutValueProperty;
+		return fadeEndValueProperty;
 	}
 
 	public double getFadeOutValue() {
-		return fadeOutValueProperty.get();
+		return fadeEndValueProperty.get();
 	}
 
 	public void setFadeOutValue(double value) {
-		fadeOutValueProperty.set(value);
+		fadeEndValueProperty.set(value);
 	}
 
 	public DoubleProperty scaleInValueProperty() {
-		return scaleInValueProperty;
+		return scaleStartValueProperty;
 	}
 
 	public double getScaleInValue() {
-		return scaleInValueProperty.get();
+		return scaleStartValueProperty.get();
 	}
 
 	public void setScaleInValue(double value) {
-		scaleInValueProperty.set(value);
+		scaleStartValueProperty.set(value);
 	}
 
 	public DoubleProperty scaleOutValueProperty() {
-		return scaleOutValueProperty;
+		return scaleEndValueProperty;
 	}
 
 	public double getScaleOutValue() {
-		return scaleOutValueProperty.get();
+		return scaleEndValueProperty.get();
 	}
 
 	public void setScaleOutValue(double value) {
-		scaleOutValueProperty.set(value);
+		scaleEndValueProperty.set(value);
 	}
 
 	public ObjectProperty<Duration> loadingInDurationProperty() {
-		return loadingInDurationProperty;
+		return loadingStartDurationProperty;
 	}
 
 	public Duration getLoadingInDuration() {
-		return loadingInDurationProperty.get();
+		return loadingStartDurationProperty.get();
 	}
 
 	public void setLoadingInDuration(Duration value) {
@@ -180,11 +175,11 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 	}
 
 	public ObjectProperty<Duration> loadingOutDurationProperty() {
-		return loadingOutDurationProperty;
+		return loadingEndDurationProperty;
 	}
 
 	public Duration getLoadingOutDuration() {
-		return loadingOutDurationProperty.get();
+		return loadingEndDurationProperty.get();
 	}
 
 	public void setLoadingOutDuration(Duration value) {
@@ -227,8 +222,8 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 					loadOutAnimation.stop();
 					loadingSpinner.setScaleX(getScaleOutValue());
 					loadingSpinner.setScaleY(getScaleOutValue());
-//					if (getContent() != null)
-//						getContent().setOpacity(getFadeOutValue());
+					if (getContent() != null)
+						getContent().setOpacity(getFadeOutValue());
 				}
 				loadingLayer.setVisible(true);
 				loadingLayer.setPickOnBounds(true);
@@ -244,8 +239,8 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 				loadInAnimation.stop();
 				loadingSpinner.setScaleX(getScaleInValue());
 				loadingSpinner.setScaleY(getScaleInValue());
-//				if (getContent() != null)
-//					getContent().setOpacity(getFadeInValue());
+				if (getContent() != null)
+					getContent().setOpacity(getFadeInValue());
 			}
 			loadOutAnimation.playFromStart();
 		}

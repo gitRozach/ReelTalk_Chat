@@ -23,6 +23,8 @@ dependencies {
 	testCompile group: 'org.testfx', name: 'testfx-core', version: '4.0.15-alpha'
 	// https://mvnrepository.com/artifact/org.testfx/testfx-junit
 	testCompile group: 'org.testfx', name: 'testfx-junit', version: '4.0.15-alpha'
+	// https://mvnrepository.com/artifact/javax.sip/jain-sip-ri
+	compile group: 'javax.sip', name: 'jain-sip-ri', version: '1.3.0-91'
 	
 	compile 'de.jensd:fontawesomefx-commons:8.12'
 	compile 'de.jensd:fontawesomefx-controls:8.12'
