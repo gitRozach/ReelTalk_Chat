@@ -6,8 +6,8 @@
 
 .root-content-box{
 	-fx-border-width: 0px;
-	-fx-border-color: #404040;
-	-fx-background-color: #404040;
+	-fx-border-color: -theme-color;
+	-fx-background-color: -theme-color;
 }
 
 .title-bar{
@@ -51,13 +51,6 @@
 
 .jfx-tab-pane .tab-selected-line {
 	-fx-background-color: -contrast-color;
-}
-
-.jfx-text-field {
-	-fx-font-size: 15.0;
-	-fx-text-fill: -contrast-color;
-	-fx-prompt-text-fill: -contrast-color;
-	-fx-focus-color: -theme-color;
 }
 
 .jfx-password-field {

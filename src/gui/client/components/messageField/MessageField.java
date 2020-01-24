@@ -31,6 +31,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -55,7 +56,6 @@ public class MessageField extends VBox {
 
 	// Main Components
 	private SmileyTabPane smileyPane;
-	//private JFXTextArea inputField;
 	private SmileyTextField inputField;
 	private ImageView smileyButton;
 	private ImageView fileButton;
@@ -124,7 +124,7 @@ public class MessageField extends VBox {
 	}
 
 	public MessageField() {
-		getStylesheets().add("/stylesheets/client/ChatMessageField.css");
+		getStylesheets().add("/stylesheets/client/MessageField.css");
 
 		messageBox = new HBox();
 		messageBox.setFillHeight(true);
@@ -282,7 +282,7 @@ public class MessageField extends VBox {
 		
 		private FlowPane inputFlowPane;
 		private HBox inputBox;
-		private JFXTextField inputField;
+		private TextField inputField;
 		
 		public SmileyTextField() {
 			initProperties();
@@ -310,7 +310,7 @@ public class MessageField extends VBox {
 		}
 		
 		private void initInputField(String initText) {
-			inputField = new JFXTextField(initText);
+			inputField = new TextField(initText);
 			inputField.caretPositionProperty().addListener((obs, oldV, newV) -> {
 				setOldCaretPosition(oldV.intValue());
 			});
@@ -330,6 +330,7 @@ public class MessageField extends VBox {
 		
 		private void initInputBox() {
 			inputBox = new HBox(inputField);
+			inputBox.getStyleClass().add("input-box");
 			inputBox.setAlignment(Pos.CENTER_LEFT);
 			inputBox.setSpacing(0d);
 		}
@@ -796,7 +797,7 @@ public class MessageField extends VBox {
 			currentIndexProperty.set(index);
 		}
 		
-		public JFXTextField getTextField() {
+		public TextField getTextField() {
 			return inputField;
 		}
 	}

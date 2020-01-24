@@ -4,10 +4,20 @@
 	-fx-border-color: white;
 }
 
-.smiley-text-field *.scroll-pane{
-	-fx-background: #404040;
-	-fx-background-color: #404040;
+.smiley-text-field .text-field{
+	-fx-background-color: lightgray;
+	-fx-text-fill: white;
+	-fx-font-size: 20px;
 	-fx-border-width: 0px;
+	-fx-padding: 0px;
+	
+	-fx-min-height: 45px;
+	-fx-max-height: 45px;
+	-fx-pref-height: 45px;
+}
+
+.smiley-text-field .text-field:focused{
+	-fx-padding: -5px;
 }
 
 .scroll-pane{
@@ -16,14 +26,6 @@
 
 .scroll-pane .corner {
 	-fx-background-color: #404040;
-}
-
-.smiley-text-field *.jfx-text-field{
-	-fx-text-fill: white;
-	-fx-font-size: 20px;
-	-fx-min-height: 45px;
-	-fx-max-height: 45px;
-	-fx-pref-height: 45px;
 }
 
 .word-message-item{
@@ -43,10 +45,6 @@
 	-fx-pref-height: 45px;
 }
 
-.text-area{
-	-fx-text-fill: lightgray;
-}
-
 .smiley-scroll-pane{
 	-fx-background-color: #404040;
 	-fx-border-width: 0px;
@@ -56,8 +54,6 @@
 .smiley-scroll-pane *.scroll.bar:horizontal{
 	-fx-background-color: transparent;
 }
-
-
 
 .smiley-scroll-pane *.scroll-bar:vertical *.decrement-button,
 .smiley-scroll-pane *.scroll-bar:horizontal *.decrement-button,
@@ -113,18 +109,12 @@
 	-fx-border-width: 0px;
 }
 
-.smiley:hover
-{
+.smiley:hover{
 	-fx-effect: dropshadow(three-pass-box, rgb(255, 255, 255, 0.8), 5, 0, 0, 0);
 }
 
 .jfx-tab-pane {
 	-fx-background-color: #404040;
-}
-
-.tab{
-	-fx-background-color: #404040;
-	-fx-border-width: 0px;
 }
 
 .jfx-tab-pane .tab .tab-label {
@@ -153,7 +143,7 @@
 	-fx-background-color: white;
 }
 
-.jfx-text-area{
-	-jfx-focus-color: transparent;
-	-jfx-unfocus-color: transparent;
+.tab{
+	-fx-background-color: #404040;
+	-fx-border-width: 0px;
 }
