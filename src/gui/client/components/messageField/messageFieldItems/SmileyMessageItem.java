@@ -29,7 +29,7 @@ public class SmileyMessageItem extends ImageView implements MessageFieldItem {
 	}
 	
 	public SmileyMessageItem(String path) {
-		this(path, CUtils.getFileName(path), SmileySize.NORMAL);
+		this(path, ":" + CUtils.getFileName(path, false) + ":", SmileySize.NORMAL);
 	}
 	
 	public SmileyMessageItem(String path, String name) {

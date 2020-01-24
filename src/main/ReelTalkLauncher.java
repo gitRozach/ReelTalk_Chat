@@ -42,12 +42,12 @@ public class ReelTalkLauncher extends Application {
 	
 	private void startServer() throws Exception {
 		chatServer.start();
-		Thread.sleep(100L);
+		//Thread.sleep(100L);
 	}
 	
 	private void startClient() throws Exception {
 		chatClient.connect();
-		Thread.sleep(100L);
+		//Thread.sleep(100L);
 	}
 	
 	public void closeAll() {

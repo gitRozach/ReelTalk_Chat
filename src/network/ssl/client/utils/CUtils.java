@@ -53,11 +53,11 @@ public class CUtils
 		return "";
 	}
 	
-	public static String getFileName(String path)
+	public static String getFileName(String path, boolean withTypeEnding)
 	{
 		String[] allParts = path.split("[\\\\|/]");
 		if(allParts != null && allParts.length > 0)
-			return allParts[allParts.length-1];
+			return withTypeEnding ? allParts[allParts.length-1] : allParts[allParts.length-1].substring(0, allParts[allParts.length-1].lastIndexOf("."));
 		else
 			return null;
 	}
