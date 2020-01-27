@@ -4,14 +4,20 @@ package controller;
 import java.io.IOException;
 
 import gui.client.components.layouts.LoadableStackPane;
+import gui.client.components.messageField.EmojiTextField;
+import gui.client.components.messageField.messageFieldItems.EmojiMessageItem;
+import gui.client.components.messages.GUIMessage;
 import gui.client.views.ClientChatView;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import network.client.eventHandlers.ObjectEvent;
+import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.SecuredChatClient;
 import network.ssl.communication.MessagePacket;
+import network.ssl.communication.events.ChannelMessageEvent;
+import network.ssl.communication.requests.ChannelMessageRequest;
 import network.ssl.server.SecuredChatServer;
 
 public class ReelTalkSession extends Application {
@@ -25,7 +31,6 @@ public class ReelTalkSession extends Application {
 	
 	private SecuredChatServer chatServer;
 	private SecuredChatClient chatClient;
-	
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -63,6 +68,7 @@ public class ReelTalkSession extends Application {
 		initChatView();
 		initRootPane();
 		initClient();
+		initEventHandlers();
 		initStage(stage);
 		window.show();
 	}
@@ -91,28 +97,56 @@ public class ReelTalkSession extends Application {
 		chatView = new ClientChatView(true, window);
 	}
 	
-	protected void onKeyPressed(KeyEvent event) {
+	private void initEventHandlers() {
+		chatClient.setMessageHandler(new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {
+				if(event.getEventType() == ObjectEvent.ANY) {
+					MessagePacket reception = (MessagePacket)event.getAttachedObject();
+					
+					if(reception instanceof ChannelMessageEvent) {
+						ChannelMessageEvent channelMessage = (ChannelMessageEvent) reception;
+						chatView.getMessageView().addMessage(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
+					}
+				}
+			}
+		});
 		
-	}
-	
-	private void onMessageReceived(MessagePacket message) {
+		chatView.getMessageInputField().setOnEnterPressed(a -> {
+			chatClient.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, chatView.getMessageInputField().getText()));
+			chatView.getMessageInputField().getInputField().clear();
+		});
 		
-	}
-	
-	private void onMessageSent(MessagePacket message) {
-		
-	}
-	
-	private void onMessageAcknowledged(MessagePacket message) {
-		
-	}
-	
-	private void onMessageFailedTimeout(MessagePacket message) {
-		
-	}
-	
-	private void onMessageFailedOffline(MessagePacket message) {
-		
+		chatView.getMessageInputField().setOnEmojiPressed(new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {
+				EmojiTextField emojiTextField = chatView.getMessageInputField().getInputField();
+				String smileyText = (String)event.getAttachedObject();
+				
+				String currentText = emojiTextField.getCurrentText();
+				int currentTextPos = emojiTextField.getOldCaretPosition();
+				
+				System.out.println("Current Text: " + currentText);
+				System.out.println("Current Pos: " + currentTextPos);
+				
+				if(!currentText.isEmpty()) {
+					String firstWord = currentText.substring(0, currentTextPos);
+					String secondWord = currentText.substring(currentTextPos);
+					
+					System.out.println("First Word: " + firstWord);
+					System.out.println("Second Word: " + secondWord);
+					
+					if(!firstWord.isEmpty())
+						emojiTextField.addText(firstWord);
+					emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
+					if(!secondWord.isEmpty())
+						emojiTextField.addText(secondWord);
+				}			
+				else
+					emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
+				emojiTextField.getTextField().requestFocus();				
+			}
+		});
 	}
 	
 	public void loadView(Node view) {

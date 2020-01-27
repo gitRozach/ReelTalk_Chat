@@ -6,7 +6,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -20,14 +19,14 @@ public class EmojiSkinChooser extends HBox {
 	private ObjectProperty<Color> toColorProperty;
 	private IntegerProperty currentColorIndexProperty;
 
-	public static final Color[] skinColors = { Color.web("ffd766"), Color.web("fae0c1"), Color.web("e3c29c"),
+	public static final Color[] SKIN_COLORS = { Color.web("ffd766"), Color.web("fae0c1"), Color.web("e3c29c"),
 			Color.web("c6956c"), Color.web("a06940"), Color.web("5c473c") };
 
 	public EmojiSkinChooser() {
 		getStyleClass().add("smiley-skin-chooser");
 		
 		Circle circle = new Circle(12.5d);
-		circle.setFill(skinColors[0]);
+		circle.setFill(SKIN_COLORS[0]);
 		setShape(circle);
 		setVisible(true);
 
@@ -39,7 +38,7 @@ public class EmojiSkinChooser extends HBox {
 			fillAnimation.playFromStart();
 		});
 
-		toColorProperty = new SimpleObjectProperty<>(skinColors[0]);
+		toColorProperty = new SimpleObjectProperty<>(SKIN_COLORS[0]);
 		toColorProperty.addListener((obs, oldV, newV) -> {
 			fillAnimation = new JFXFillTransition(getDuration(), this, oldV, newV);
 			fillAnimation.playFromStart();
@@ -51,17 +50,17 @@ public class EmojiSkinChooser extends HBox {
 			int toColorIndex = newV.intValue();
 
 			if (fromColorIndex < 0)
-				fromColorIndex = skinColors.length - 1;
-			else if (fromColorIndex >= skinColors.length)
+				fromColorIndex = SKIN_COLORS.length - 1;
+			else if (fromColorIndex >= SKIN_COLORS.length)
 				fromColorIndex = 0;
 
 			if (toColorIndex < 0)
-				toColorIndex = skinColors.length - 1;
-			else if (toColorIndex >= skinColors.length)
+				toColorIndex = SKIN_COLORS.length - 1;
+			else if (toColorIndex >= SKIN_COLORS.length)
 				toColorIndex = 0;
 
-			fromColorProperty.set(skinColors[fromColorIndex]);
-			toColorProperty.set(skinColors[toColorIndex]);
+			fromColorProperty.set(SKIN_COLORS[fromColorIndex]);
+			toColorProperty.set(SKIN_COLORS[toColorIndex]);
 		});
 
 		fillAnimation = new JFXFillTransition();
@@ -75,13 +74,13 @@ public class EmojiSkinChooser extends HBox {
 	}
 
 	public void handleAction(MouseEvent mouse) {
-		if (mouse.getButton() == MouseButton.PRIMARY) {
-			fillAnimation.playFromStart();
-			currentColorIndexProperty.set((getCurrentColorIndex() + 1) >= skinColors.length ? 0 : currentColorIndexProperty.get() + 1);
-
-			for (int i = 0; i < EmojiCategory.values().length; i++)
-				smileyPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(getCurrentColorIndex()), true);
-		}
+//		if (mouse.getButton() == MouseButton.PRIMARY) {
+//			fillAnimation.playFromStart();
+//			currentColorIndexProperty.set((getCurrentColorIndex() + 1) >= skinColors.length ? 0 : currentColorIndexProperty.get() + 1);
+//
+//			for (int i = 0; i < EmojiCategory.values().length; i++)
+//				smileyPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(getCurrentColorIndex()), true);
+//		}
 	}
 
 	public ObjectProperty<Duration> durationProperty() {

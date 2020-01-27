@@ -187,12 +187,32 @@ public final class ClientChatView extends StackPane {
 	
 	private void initMessageInputField() {
 		messageInputField = new MessageField();
-		messageInputField.setOnEnterPressed(a -> {
-			System.out.println("Enter pressed");
-			//client.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, messageInputField.getText()));
-		});
 	}
 	
+	public Stage getParentWindow() {
+		return parentWindow;
+	}
+
+	public VBox getContentRoot() {
+		return contentRoot;
+	}
+
+	public ChannelBar getChannelBar() {
+		return channelBar;
+	}
+
+	public ClientBar getClientBar() {
+		return clientBar;
+	}
+
+	public MessageView getMessageView() {
+		return messageView;
+	}
+
+	public MessageField getMessageInputField() {
+		return messageInputField;
+	}
+
 	public void insertMessage(GUIMessage message) {
 		messageView.addMessage(0, message);
 	}

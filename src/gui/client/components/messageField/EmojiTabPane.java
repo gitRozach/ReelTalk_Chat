@@ -2,11 +2,8 @@ package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXTabPane;
 
-import gui.client.components.messageField.messageFieldItems.SmileyMessageItem;
 import gui.tools.GUITools;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -14,11 +11,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import network.client.eventHandlers.ObjectEvent;
 import network.ssl.client.utils.CUtils;
 
-public class EmojiTabPane extends StackPane {
-	private EventHandler<ActionEvent> onEmojiPressed;
-	
+public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;
 	private EmojiSkinChooser skinChooser;
 
@@ -43,7 +39,6 @@ public class EmojiTabPane extends StackPane {
 	private final int CATEGORY_I_LENGTH = 0;
 
 	public EmojiTabPane() {
-		initEventHandlers();
 		tabPane = new JFXTabPane();
 		tabPane.setPickOnBounds(true);
 		tabPane.setTabMaxHeight(35d);
@@ -113,7 +108,7 @@ public class EmojiTabPane extends StackPane {
 		initSmileys(EmojiCategory.I, false);
 
 		skinChooser = new EmojiSkinChooser();
-		skinChooser.setFromColor(skinChooser.skinColors[0]);
+		skinChooser.setFromColor(EmojiSkinChooser.SKIN_COLORS[0]);
 		skinChooser.setPickOnBounds(true);
 		GUITools.setFixedSizeOf(skinChooser, 25d, 25d);
 		EmojiTabPane.setAlignment(skinChooser, Pos.TOP_RIGHT);
@@ -123,10 +118,6 @@ public class EmojiTabPane extends StackPane {
 				smileyTabG, smileyTabH, smileyTabI);
 
 		getChildren().addAll(tabPane, skinChooser);
-	}
-	
-	private void initEventHandlers() {
-		onEmojiPressed = actionEvent -> {};
 	}
 
 	private void initSmileys(EmojiCategory category, EmojiSkinColor color, boolean override) {
@@ -200,8 +191,11 @@ public class EmojiTabPane extends StackPane {
 				
 				currentImageView.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, a -> {});
 				
-				currentImageView.setOnMouseClicked(a -> onSmileyClicked(currentImageTitle
-						+ (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : "")));
+				currentImageView.setOnMouseClicked(a -> {
+					fireEvent(new ObjectEvent(ObjectEvent.ANY, new String(currentImageTitle + (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : ""))) {
+						private static final long serialVersionUID = -1195663894069989722L;
+					});
+				});
 
 				Platform.runLater(() -> {
 					if (override)
@@ -212,40 +206,8 @@ public class EmojiTabPane extends StackPane {
 			}
 		}).start();
 	}
-	
-	private void onSmileyClicked(String smileyText) {
-		String currentText = inputField.getCurrentText();
-		int currentTextPos = inputField.getOldCaretPosition();
-		
-		System.out.println("Current Text: " + currentText);
-		System.out.println("Current Pos: " + currentTextPos);
-		
-		if(!currentText.isEmpty()) {
-			String firstWord = currentText.substring(0, currentTextPos);
-			String secondWord = currentText.substring(currentTextPos);
-			
-			System.out.println("First Word: " + firstWord);
-			System.out.println("Second Word: " + secondWord);
-			
-			if(!firstWord.isEmpty())
-				inputField.addText(firstWord);
-			inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
-			if(!secondWord.isEmpty())
-				inputField.addText(secondWord);
-		}			
-		else
-			inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
-		inputField.getTextField().requestFocus();
-	}
 
 	private void initSmileys(EmojiCategory category, boolean override) {
 		initSmileys(category, EmojiSkinColor.YELLOW, override);
-	}
-	
-	public void setOnEmojiClicked(EventHandler<ActionEvent> handler) {
-		if(handler == null)
-			onEmojiPressed = event -> {};
-		else
-			onEmojiPressed = handler;	
 	}
 }

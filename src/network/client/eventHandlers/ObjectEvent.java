@@ -8,7 +8,7 @@ public abstract class ObjectEvent extends Event {
 	private static final long serialVersionUID = 5975228043408569550L;
 	protected Object attachedObject;
 	
-	public static EventType<ObjectEvent> type = new EventType<ObjectEvent>(ObjectEvent.ANY);
+	public static EventType<ObjectEvent> ANY = new EventType<ObjectEvent>("ANY");
 
 	public ObjectEvent(EventType<? extends Event> type) {
 		this(type, null);
@@ -16,6 +16,7 @@ public abstract class ObjectEvent extends Event {
 	
 	public ObjectEvent(EventType<? extends Event> type, Object attachment) {
 		super(type);
+		attachObject(attachment);
 	}
 	
 	public ObjectEvent(Object source, EventTarget target, EventType<? extends Event> type) {

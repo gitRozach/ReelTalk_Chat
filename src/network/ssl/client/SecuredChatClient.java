@@ -1,13 +1,17 @@
 package network.ssl.client;
 
+import network.client.eventHandlers.ObjectEvent;
+import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.communication.MessagePacket;
+import network.ssl.communication.events.ChannelMessageEvent;
 
 public class SecuredChatClient extends SecuredClient {
+	protected ObjectEventHandler messageHandler;
 	
 	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
 	}
-	
+
 	public void sendMessage(MessagePacket message) {
 		sendBytes(message.serialize());
 		try {
@@ -55,7 +59,9 @@ public class SecuredChatClient extends SecuredClient {
 			case "ChannelDataEvent":
 				break;
 			case "ChannelMessageEvent":
-				//onChannelMessageEvent((ChannelMessageEvent)event);
+				messageHandler.handle(new ObjectEvent(ObjectEvent.ANY, (ChannelMessageEvent)event) {
+					private static final long serialVersionUID = 6882651385899629774L;
+				});
 				break;
 			case "ClientJoinedChannelEvent":
 				break;
@@ -84,6 +90,14 @@ public class SecuredChatClient extends SecuredClient {
 		catch(Exception e) {
 			log.info(e.toString());
 		}	
+	}
+	
+	public ObjectEventHandler getMessageHandler() {
+		return messageHandler;
+	}
+
+	public void setMessageHandler(ObjectEventHandler handler) {
+		messageHandler = handler;
 	}
 	
 //	protected void onChannelMessageEvent(ChannelMessageEvent event) {

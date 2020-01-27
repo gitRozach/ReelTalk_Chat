@@ -17,7 +17,7 @@
 }
 
 .smiley-text-field .text-field:focused{
-	-fx-padding: -5px;
+	-fx-padding: 0px;
 }
 
 .scroll-pane{

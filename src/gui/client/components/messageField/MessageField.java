@@ -1,70 +1,45 @@
 package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXNodesList;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.transitions.JFXFillTransition;
 
 import gui.animations.Animations;
-import gui.client.components.messageField.messageFieldItems.MessageFieldItem;
-import gui.client.components.messageField.messageFieldItems.ParagraphMessageItem;
-import gui.client.components.messageField.messageFieldItems.SmileyMessageItem;
-import gui.client.components.messageField.messageFieldItems.WordMessageItem;
 import gui.tools.GUITools;
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;
 import javafx.animation.Interpolator;
-import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
-import network.ssl.client.utils.CUtils;
+import network.client.eventHandlers.ObjectEvent;
+import network.client.eventHandlers.ObjectEventHandler;
 
 //
 public class MessageField extends VBox {
 	private HBox messageBox;
 
-	private EmojiTabPane smileyPane;
-	private EmojiTextField inputField;
-	private ImageView smileyButton;
+	private EmojiTabPane emojiPane;
+	private EmojiTextField emojiTextField;
+	private ImageView emojiButton;
 	private ImageView fileButton;
 
 	private BooleanProperty openProperty;
 
 	// EventHandler
-	private EventHandler<? super KeyEvent> onEnterPressed;
-	private EventHandler<? super MouseEvent> onSmileyButtonClicked;
-	private EventHandler<? super MouseEvent> onFileButtonClicked;
-	private EventHandler<ActionEvent> onEmojiPressed;
+	private EventHandler<KeyEvent> onEnterPressed;
+	private EventHandler<MouseEvent> onEmojiButtonClicked;
+	private EventHandler<MouseEvent> onFileButtonClicked;
+	private ObjectEventHandler onEmojiPressed;
+
 	// Animations
 	private Animation smileyIn;
 	private Animation smileyOut;
@@ -81,59 +56,33 @@ public class MessageField extends VBox {
 
 		openProperty = new SimpleBooleanProperty(false);
 
-		smileyPane = new EmojiTabPane();
-		smileyPane.setMinHeight(0d);
-		smileyPane.setPrefHeight(0d);
-		smileyPane.setMaxHeight(0d);
-		smileyPane.setOpacity(0d);
-		smileyPane.setOnKeyPressed(a -> onEnterPressed.handle(a));
+		emojiPane = new EmojiTabPane();
+		emojiPane.setMinHeight(0d);
+		emojiPane.setPrefHeight(0d);
+		emojiPane.setMaxHeight(0d);
+		emojiPane.setOpacity(0d);
 
 		onEnterPressed = (keyEvent -> {});
-		onSmileyButtonClicked = (mouseEvent -> {
+		onEmojiButtonClicked = (mouseEvent -> {
 			if (mouseEvent.getButton() == MouseButton.PRIMARY) {
 				if (isOpen())
-					closeSmileyPane();
+					closeEmojiPane();
 				else
-					openSmileyPane();
+					openEmojiPane();
 			}
 		});
 		onFileButtonClicked = (mouseEvent -> {
 		});
 		
-		onEmojiPressed = event -> {
-			String currentText = inputField.getCurrentText();
-			int currentTextPos = inputField.getOldCaretPosition();
-			
-			System.out.println("Current Text: " + currentText);
-			System.out.println("Current Pos: " + currentTextPos);
-			
-			if(!currentText.isEmpty()) {
-				String firstWord = currentText.substring(0, currentTextPos);
-				String secondWord = currentText.substring(currentTextPos);
-				
-				System.out.println("First Word: " + firstWord);
-				System.out.println("Second Word: " + secondWord);
-				
-				if(!firstWord.isEmpty())
-					inputField.addText(firstWord);
-				inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
-				if(!secondWord.isEmpty())
-					inputField.addText(secondWord);
-			}			
-			else
-				inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
-			inputField.getTextField().requestFocus();
-		};
-		
-		inputField = new EmojiTextField();
-		GUITools.setFixedHeightOf(inputField, 50d);
-		HBox.setHgrow(inputField, Priority.ALWAYS);
+		emojiTextField = new EmojiTextField();
+		GUITools.setFixedHeightOf(emojiTextField, 50d);
+		HBox.setHgrow(emojiTextField, Priority.ALWAYS);
 
-		smileyButton = new ImageView(new Image("/resources/icons/img_smiley.png"));
-		smileyButton.setSmooth(true);
-		smileyButton.getStyleClass().add("smiley-button");
-		smileyButton.setPickOnBounds(true);
-		smileyButton.setOnMouseClicked(a -> onSmileyButtonClicked.handle(a));
+		emojiButton = new ImageView(new Image("/resources/icons/img_smiley.png"));
+		emojiButton.setSmooth(true);
+		emojiButton.getStyleClass().add("smiley-button");
+		emojiButton.setPickOnBounds(true);
+		emojiButton.setOnMouseClicked(a -> onEmojiButtonClicked.handle(a));
 
 		JFXNodesList fileButtons = new JFXNodesList();
 		fileButtons.setRotate(90d);
@@ -161,14 +110,14 @@ public class MessageField extends VBox {
 		fileButtons.addAnimatedNode(new VBox(fileButton1));
 		fileButtons.addAnimatedNode(new VBox(fileButton2));
 
-		Animation resizeInAnimation = Animations.newResizeAnimation(smileyPane, Duration.seconds(0.4d), false, 0d, 200d,
+		Animation resizeInAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.4d), false, 0d, 200d,
 				Interpolator.EASE_BOTH);
-		Animation fadeInAnimation = Animations.newFadeAnimation(smileyPane, Duration.seconds(0.5d), 0d, 1d,
+		Animation fadeInAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.5d), 0d, 1d,
 				Interpolator.EASE_BOTH);
 
-		Animation resizeOutAnimation = Animations.newResizeAnimation(smileyPane, Duration.seconds(0.3d), false, 200d,
+		Animation resizeOutAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.3d), false, 200d,
 				0d, Interpolator.EASE_BOTH);
-		Animation fadeOutAnimation = Animations.newFadeAnimation(smileyPane, Duration.seconds(0.4d), 1d, 0d,
+		Animation fadeOutAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.4d), 1d, 0d,
 				Interpolator.EASE_BOTH);
 
 		smileyIn = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeInAnimation,
@@ -176,19 +125,19 @@ public class MessageField extends VBox {
 		smileyOut = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeOutAnimation,
 				fadeOutAnimation);
 
-		messageBox.getChildren().addAll(smileyButton, inputField, fileButtons);
+		messageBox.getChildren().addAll(emojiButton, emojiTextField, fileButtons);
 
-		getChildren().addAll(messageBox, smileyPane);
+		getChildren().addAll(messageBox, emojiPane);
 	}
 
-	public void openSmileyPane() {
+	public void openEmojiPane() {
 		if (!isOpen() && smileyIn != null && smileyOut.getStatus() != Status.RUNNING) {
 			setOpen(true);
 			smileyIn.playFromStart();
 		}
 	}
 
-	public void closeSmileyPane() {
+	public void closeEmojiPane() {
 		if (isOpen() && smileyOut != null && smileyIn.getStatus() != Status.RUNNING) {
 			setOpen(false);
 			smileyOut.playFromStart();
@@ -196,7 +145,7 @@ public class MessageField extends VBox {
 	}
 	
 	public String getText() {
-		return inputField.getText();
+		return emojiTextField.getText();
 	}
 
 	public BooleanProperty openProperty() {
@@ -212,34 +161,44 @@ public class MessageField extends VBox {
 	}
 
 	public EmojiTabPane getSmileyPane() {
-		return smileyPane;
+		return emojiPane;
 	}
 
 	public EmojiTextField getInputField() {
-		return inputField;
+		return emojiTextField;
 	}
 
 	public EventHandler<? super KeyEvent> getOnEnterPressed() {
 		return onEnterPressed;
 	}
 
-	public void setOnEnterPressed(EventHandler<? super KeyEvent> ke) {
+	public void setOnEnterPressed(EventHandler<KeyEvent> ke) {
 		onEnterPressed = ke;
+		addEventHandler(KeyEvent.KEY_TYPED, onEnterPressed);
 	}
 
-	public EventHandler<? super MouseEvent> getOnSmileyButtonClicked() {
-		return onSmileyButtonClicked;
+	public EventHandler<? super MouseEvent> getOnEmojiButtonClicked() {
+		return onEmojiButtonClicked;
 	}
 
-	public void setOnSmileyButtonClicked(EventHandler<? super MouseEvent> me) {
-		onSmileyButtonClicked = me;
+	public void setOnEmojiButtonClicked(EventHandler<MouseEvent> me) {
+		onEmojiButtonClicked = me;
 	}
 
 	public EventHandler<? super MouseEvent> getOnFileButtonClicked() {
 		return onFileButtonClicked;
 	}
 
-	public void setOnFileButtonClicked(EventHandler<? super MouseEvent> me) {
+	public void setOnFileButtonClicked(EventHandler<MouseEvent> me) {
 		onFileButtonClicked = me;
+	}
+	
+	public ObjectEventHandler getOnEmojiPressed() {
+		return onEmojiPressed;
+	}
+
+	public void setOnEmojiPressed(ObjectEventHandler handler) {
+		onEmojiPressed = handler;
+		emojiPane.addEventFilter(ObjectEvent.ANY, onEmojiPressed);
 	}
 }

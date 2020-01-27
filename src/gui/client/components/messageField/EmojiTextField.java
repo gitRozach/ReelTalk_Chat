@@ -2,7 +2,7 @@ package gui.client.components.messageField;
 
 import gui.client.components.messageField.messageFieldItems.MessageFieldItem;
 import gui.client.components.messageField.messageFieldItems.ParagraphMessageItem;
-import gui.client.components.messageField.messageFieldItems.SmileyMessageItem;
+import gui.client.components.messageField.messageFieldItems.EmojiMessageItem;
 import gui.client.components.messageField.messageFieldItems.WordMessageItem;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
@@ -137,7 +137,7 @@ public class EmojiTextField extends ScrollPane {
 				newInputFieldText = "";
 				newCaretPos = 0;
 			}
-			else if(itemToRemove instanceof SmileyMessageItem) {
+			else if(itemToRemove instanceof EmojiMessageItem) {
 				newInputFieldText = "";
 				newCaretPos = 0;
 			}
@@ -168,7 +168,7 @@ public class EmojiTextField extends ScrollPane {
 			if(hasText)
 				addItem(getCurrentIndex() + 1, new WordMessageItem(getCurrentText()));
 			if(hasSmileyLeft) {
-				addSmileyToCurrentSelectionRightSide(new SmileyMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
+				addSmileyToCurrentSelectionRightSide(new EmojiMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
 				removeSmileyFromCurrentSelectionLeftSide();
 				return;
 			}
@@ -177,10 +177,10 @@ public class EmojiTextField extends ScrollPane {
 			if(previousItem instanceof ParagraphMessageItem) {
 				newInputFieldText = "";
 			}
-			else if(previousItem instanceof SmileyMessageItem) {
-				SmileyMessageItem smiley = (SmileyMessageItem)previousItem;
+			else if(previousItem instanceof EmojiMessageItem) {
+				EmojiMessageItem smiley = (EmojiMessageItem)previousItem;
 				newInputFieldText = "";
-				addSmileyToCurrentSelectionLeftSide(new SmileyMessageItem(smiley.getFilePath()));
+				addSmileyToCurrentSelectionLeftSide(new EmojiMessageItem(smiley.getFilePath()));
 			}
 			else if(previousItem instanceof WordMessageItem) {
 				WordMessageItem word = (WordMessageItem) previousItem;
@@ -200,7 +200,7 @@ public class EmojiTextField extends ScrollPane {
 			Node nextItem = getCurrentIndex() >= length() - 1 ? null : inputFlowPane.getChildren().get(getCurrentIndex() + 1);
 			
 			if(hasCurrentSelectionSmileyRightSide()) {
-				addSmileyToCurrentSelectionLeftSide(new SmileyMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
+				addSmileyToCurrentSelectionLeftSide(new EmojiMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
 				removeSmileyFromCurrentSelectionRightSide();
 				return;
 			}
@@ -213,10 +213,10 @@ public class EmojiTextField extends ScrollPane {
 			if(nextItem instanceof ParagraphMessageItem) {
 				newInputFieldText = "";
 			}
-			else if(nextItem instanceof SmileyMessageItem) {
-				SmileyMessageItem smiley = (SmileyMessageItem) nextItem;
+			else if(nextItem instanceof EmojiMessageItem) {
+				EmojiMessageItem smiley = (EmojiMessageItem) nextItem;
 				newInputFieldText = "";
-				addSmileyToCurrentSelectionRightSide(new SmileyMessageItem(smiley.getFilePath()));
+				addSmileyToCurrentSelectionRightSide(new EmojiMessageItem(smiley.getFilePath()));
 			}
 			else if(nextItem instanceof WordMessageItem) {
 				WordMessageItem word = (WordMessageItem) nextItem;
@@ -240,8 +240,8 @@ public class EmojiTextField extends ScrollPane {
 		if(item instanceof ParagraphMessageItem) {
 			newInputFieldText = "";
 		}
-		else if(item instanceof SmileyMessageItem) {
-			SmileyMessageItem smiley = (SmileyMessageItem)item;
+		else if(item instanceof EmojiMessageItem) {
+			EmojiMessageItem smiley = (EmojiMessageItem)item;
 			newInputFieldText = "";
 			if(caretPos == 0)
 				addSmileyToCurrentSelectionLeftSide(smiley);
@@ -298,26 +298,26 @@ public class EmojiTextField extends ScrollPane {
 		return inputBox.getChildren().size() - 1 > inputBox.getChildren().indexOf(inputField);
 	}
 	
-	private SmileyMessageItem getCurrentSelectionSmileyLeftSide() {
+	private EmojiMessageItem getCurrentSelectionSmileyLeftSide() {
 		if(!hasCurrentSelectionSmileyLeftSide())
 			return null;
-		return (SmileyMessageItem) inputBox.getChildren().get(0);
+		return (EmojiMessageItem) inputBox.getChildren().get(0);
 	}
 	
-	private SmileyMessageItem getCurrentSelectionSmileyRightSide() {
+	private EmojiMessageItem getCurrentSelectionSmileyRightSide() {
 		if(!hasCurrentSelectionSmileyRightSide())
 			return null;
-		return (SmileyMessageItem) inputBox.getChildren().get(inputBox.getChildren().size() > 2 ? 2 : 1);
+		return (EmojiMessageItem) inputBox.getChildren().get(inputBox.getChildren().size() > 2 ? 2 : 1);
 	}
 	
-	private void addSmileyToCurrentSelectionLeftSide(SmileyMessageItem message) {
+	private void addSmileyToCurrentSelectionLeftSide(EmojiMessageItem message) {
 		if(message == null)
 			return;
 		removeSmileyFromCurrentSelectionLeftSide();
 		inputBox.getChildren().add(0, message);
 	}
 	
-	private void addSmileyToCurrentSelectionRightSide(SmileyMessageItem message) {
+	private void addSmileyToCurrentSelectionRightSide(EmojiMessageItem message) {
 		if(message == null)
 			return;
 		removeSmileyFromCurrentSelectionRightSide();
@@ -353,7 +353,7 @@ public class EmojiTextField extends ScrollPane {
 			addCurrentInput();
 			setTextFieldContent(content, 0);
 		}
-		else if(selectedItem instanceof SmileyMessageItem) {
+		else if(selectedItem instanceof EmojiMessageItem) {
 
 		}
 		else if(selectedItem instanceof ParagraphMessageItem) {
@@ -393,13 +393,13 @@ public class EmojiTextField extends ScrollPane {
 	public int addCurrentInput() {
 		int addedItems = 0;
 		if(hasCurrentSelectionSmileyLeftSide()) {
-			addItem(new SmileyMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
+			addItem(new EmojiMessageItem(getCurrentSelectionSmileyLeftSide().getFilePath()));
 			++addedItems;
 		}
 		if(hasCurrentSelectionText())
 			addedItems += addText(getCurrentText());
 		if(hasCurrentSelectionSmileyRightSide()) {
-			addItem(new SmileyMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
+			addItem(new EmojiMessageItem(getCurrentSelectionSmileyRightSide().getFilePath()));
 			++addedItems;
 		}
 		return addedItems;
@@ -424,10 +424,10 @@ public class EmojiTextField extends ScrollPane {
 			inputFlowPane.getChildren().add(index, paragraph);
 			added = true;
 		} 			
-		else if(newItem instanceof SmileyMessageItem) {
-			SmileyMessageItem smiley = (SmileyMessageItem)newItem;
+		else if(newItem instanceof EmojiMessageItem) {
+			EmojiMessageItem smiley = (EmojiMessageItem)newItem;
 			smiley.getStyleClass().add("smiley-message-item");
-			inputFlowPane.getChildren().add(index, new SmileyMessageItem(smiley.getFilePath()));	
+			inputFlowPane.getChildren().add(index, new EmojiMessageItem(smiley.getFilePath()));	
 			added = true;
 		}
 		else if(newItem instanceof WordMessageItem) {
