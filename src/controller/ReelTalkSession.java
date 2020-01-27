@@ -1,4 +1,4 @@
-package main;
+package controller;
 
 
 import java.io.IOException;
@@ -8,24 +8,23 @@ import gui.client.views.ClientChatView;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import network.ssl.client.SecuredChatClient;
+import network.ssl.communication.MessagePacket;
 import network.ssl.server.SecuredChatServer;
 
-public class ReelTalkLauncher extends Application {
-	private Stage window;
-	private LoadableStackPane rootPane;
-	
+public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";
 	private static final String HOST_ADDRESS = "localhost";
 	private static final int HOST_PORT = 2199;
-	private SecuredChatServer chatServer;
 	
-	private SecuredChatClient chatClient;
-	
-//	private LoginView loginView;
+	private Stage window;
+	private LoadableStackPane rootPane;
 	private ClientChatView chatView;
-//	private ServerHostView hostView;
+	
+	private SecuredChatServer chatServer;
+	private SecuredChatClient chatClient;
 	
 	
 	public static void main(String[] args) {
@@ -74,8 +73,6 @@ public class ReelTalkLauncher extends Application {
 	
 	private void initClient() throws Exception {
 		chatClient = new SecuredChatClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
-		chatClient.setChatView(chatView);
-		chatView.setClient(chatClient);
 	}
 	
 	private void initStage(Stage stage) {
@@ -92,6 +89,30 @@ public class ReelTalkLauncher extends Application {
 	
 	private void initChatView() {
 		chatView = new ClientChatView(true, window);
+	}
+	
+	protected void onKeyPressed(KeyEvent event) {
+		
+	}
+	
+	private void onMessageReceived(MessagePacket message) {
+		
+	}
+	
+	private void onMessageSent(MessagePacket message) {
+		
+	}
+	
+	private void onMessageAcknowledged(MessagePacket message) {
+		
+	}
+	
+	private void onMessageFailedTimeout(MessagePacket message) {
+		
+	}
+	
+	private void onMessageFailedOffline(MessagePacket message) {
+		
 	}
 	
 	public void loadView(Node view) {

@@ -1,53 +1,38 @@
 package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXNodesList;
+<<<<<<< HEAD
+=======
 import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.JFXFillTransition;
+>>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 
 import gui.animations.Animations;
-import gui.client.components.messageField.messageFieldItems.MessageFieldItem;
-import gui.client.components.messageField.messageFieldItems.ParagraphMessageItem;
 import gui.client.components.messageField.messageFieldItems.SmileyMessageItem;
-import gui.client.components.messageField.messageFieldItems.WordMessageItem;
 import gui.tools.GUITools;
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;
 import javafx.animation.Interpolator;
-import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
+<<<<<<< HEAD
+=======
+import network.ssl.client.handler.ObjectEvent;
+import network.ssl.client.handler.ObjectEventHandler;
 import network.ssl.client.utils.CUtils;
+>>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 
 //
 public class MessageField extends VBox {
@@ -55,8 +40,8 @@ public class MessageField extends VBox {
 	private HBox messageBox;
 
 	// Main Components
-	private SmileyTabPane smileyPane;
-	private SmileyTextField inputField;
+	private EmojiTabPane smileyPane;
+	private EmojiTextField inputField;
 	private ImageView smileyButton;
 	private ImageView fileButton;
 
@@ -67,61 +52,10 @@ public class MessageField extends VBox {
 	private EventHandler<? super KeyEvent> onEnterPressed;
 	private EventHandler<? super MouseEvent> onSmileyButtonClicked;
 	private EventHandler<? super MouseEvent> onFileButtonClicked;
+	private EventHandler<ActionEvent> onEmojiPressed;
 	// Animations
 	private Animation smileyIn;
 	private Animation smileyOut;
-
-	public enum SmileyCategory {
-		A, B, C, D, E, F, G, H, I;
-
-		public static SmileyCategory getByInt(int value) {
-			switch (value) {
-			case 0:
-				return A;
-			case 1:
-				return B;
-			case 2:
-				return C;
-			case 3:
-				return D;
-			case 4:
-				return E;
-			case 5:
-				return F;
-			case 6:
-				return G;
-			case 7:
-				return H;
-			case 8:
-				return I;
-			default:
-				return null;
-			}
-		}
-	}
-
-	public enum SmileySkinColor {
-		YELLOW, LIGHT_WHITE, WHITE, DEEP_WHITE, LIGHT_BLACK, BLACK;
-
-		public static SmileySkinColor getByInt(int value) {
-			switch (value) {
-			case 0:
-				return YELLOW;
-			case 1:
-				return LIGHT_WHITE;
-			case 2:
-				return WHITE;
-			case 3:
-				return DEEP_WHITE;
-			case 4:
-				return LIGHT_BLACK;
-			case 5:
-				return BLACK;
-			default:
-				return null;
-			}
-		}
-	}
 
 	public MessageField() {
 		getStylesheets().add("/stylesheets/client/MessageField.css");
@@ -135,7 +69,7 @@ public class MessageField extends VBox {
 
 		openProperty = new SimpleBooleanProperty(false);
 
-		smileyPane = new SmileyTabPane();
+		smileyPane = new EmojiTabPane();
 		smileyPane.setMinHeight(0d);
 		smileyPane.setPrefHeight(0d);
 		smileyPane.setMaxHeight(0d);
@@ -154,7 +88,32 @@ public class MessageField extends VBox {
 		onFileButtonClicked = (mouseEvent -> {
 		});
 		
-		inputField = new SmileyTextField();
+		onEmojiPressed = event -> {
+			String currentText = inputField.getCurrentText();
+			int currentTextPos = inputField.getOldCaretPosition();
+			
+			System.out.println("Current Text: " + currentText);
+			System.out.println("Current Pos: " + currentTextPos);
+			
+			if(!currentText.isEmpty()) {
+				String firstWord = currentText.substring(0, currentTextPos);
+				String secondWord = currentText.substring(currentTextPos);
+				
+				System.out.println("First Word: " + firstWord);
+				System.out.println("Second Word: " + secondWord);
+				
+				if(!firstWord.isEmpty())
+					inputField.addText(firstWord);
+				inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
+				if(!secondWord.isEmpty())
+					inputField.addText(secondWord);
+			}			
+			else
+				inputField.addItem(new SmileyMessageItem("/resources/smileys/category" + smileyText.charAt(0) + "/" + smileyText + ".png", smileyText));
+			inputField.getTextField().requestFocus();
+		};
+		
+		inputField = new EmojiTextField();
 		GUITools.setFixedHeightOf(inputField, 50d);
 		HBox.setHgrow(inputField, Priority.ALWAYS);
 
@@ -240,11 +199,11 @@ public class MessageField extends VBox {
 		openProperty.set(value);
 	}
 
-	public SmileyTabPane getSmileyPane() {
+	public EmojiTabPane getSmileyPane() {
 		return smileyPane;
 	}
 
-	public SmileyTextField getInputField() {
+	public EmojiTextField getInputField() {
 		return inputField;
 	}
 
@@ -271,6 +230,8 @@ public class MessageField extends VBox {
 	public void setOnFileButtonClicked(EventHandler<? super MouseEvent> me) {
 		onFileButtonClicked = me;
 	}
+<<<<<<< HEAD
+=======
 	
 	/*
 	 * 
@@ -1022,6 +983,26 @@ public class MessageField extends VBox {
 					smileyTabG, smileyTabH, smileyTabI);
 
 			getChildren().addAll(tabPane, skinChooser);
+			
+			setOnMouseClicked(a -> {
+				System.out.println("Event fired!");
+				fireEvent(new ObjectEvent(ObjectEvent.type) {
+					private static final long serialVersionUID = 6183639490477754270L;
+				});
+			});
+			
+			tabPane.addEventHandler(ObjectEvent.type, new ObjectEventHandler() {
+				
+				@Override
+				public void handle(ObjectEvent event) {
+					System.out.println("handle called.");					
+				}
+				
+				@Override
+				public void handleObject(Object obj) {
+					System.out.println("handleObject called");
+				}
+			});
 		}
 
 		private void initSmileys(SmileyCategory category, SmileySkinColor color, boolean override) {
@@ -1210,4 +1191,5 @@ public class MessageField extends VBox {
 			return smileyFlowPane.getChildren();
 		}
 	}
+>>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 }

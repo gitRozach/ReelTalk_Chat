@@ -19,12 +19,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import network.ssl.client.SecuredChatClient;
-import network.ssl.communication.requests.ChannelMessageRequest;
 
-public final class ClientChatView extends StackPane {
-	private SecuredChatClient client = null;
-	
+public final class ClientChatView extends StackPane {	
 	private double minWidth;
 	private double minHeight;
 	
@@ -193,7 +189,7 @@ public final class ClientChatView extends StackPane {
 		messageInputField = new MessageField();
 		messageInputField.setOnEnterPressed(a -> {
 			System.out.println("Enter pressed");
-			client.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, messageInputField.getText()));
+			//client.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, messageInputField.getText()));
 		});
 	}
 	
@@ -207,10 +203,6 @@ public final class ClientChatView extends StackPane {
 	
 	public void addMessage(int index, GUIMessage message) {
 		messageView.addMessage(index, message);
-	}
-	
-	public void setClient(SecuredChatClient chatClient) {
-		client = chatClient;
 	}
 	
 	public void setStage(Stage parentWindow) {

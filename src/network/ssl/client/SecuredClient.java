@@ -116,7 +116,6 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
      * @throws IOException if an I/O error occurs to the socket channel.
      */
     @Override
-    //synchronized sendingLock
     protected void write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
     	SSLEngineResult result = null;
     	
@@ -161,8 +160,8 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
             }
             try {
 				Thread.sleep(50L);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+			} 
+            catch (InterruptedException e) {
 				e.printStackTrace();
 			}
         }

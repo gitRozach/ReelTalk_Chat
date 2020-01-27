@@ -1,12 +1,8 @@
 package network.ssl.client;
 
-import gui.client.components.messages.GUIMessage;
-import gui.client.views.ClientChatView;
 import network.ssl.communication.MessagePacket;
-import network.ssl.communication.events.ChannelMessageEvent;
 
 public class SecuredChatClient extends SecuredClient {
-	protected ClientChatView chatUI = null;
 	
 	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
@@ -59,7 +55,7 @@ public class SecuredChatClient extends SecuredClient {
 			case "ChannelDataEvent":
 				break;
 			case "ChannelMessageEvent":
-				onChannelMessageEvent((ChannelMessageEvent)event);
+				//onChannelMessageEvent((ChannelMessageEvent)event);
 				break;
 			case "ClientJoinedChannelEvent":
 				break;
@@ -90,12 +86,12 @@ public class SecuredChatClient extends SecuredClient {
 		}	
 	}
 	
-	protected void onChannelMessageEvent(ChannelMessageEvent event) {
-		GUIMessage channelMessage = new GUIMessage(event.getSender(), event.getMessage());
-		chatUI.appendMessage(channelMessage);
-	}
+//	protected void onChannelMessageEvent(ChannelMessageEvent event) {
+//		GUIMessage channelMessage = new GUIMessage(event.getSender(), event.getMessage());
+//		chatUI.appendMessage(channelMessage);
+//	}
 	
-	public void setChatView(ClientChatView ui) {
-		chatUI = ui;
-	}
+//	public void setChatView(ClientChatView ui) {
+//		chatUI = ui;
+//	}
 }

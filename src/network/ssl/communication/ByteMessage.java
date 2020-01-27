@@ -10,25 +10,25 @@ public class ByteMessage {
 		this(null, null);
 	}
 	
-	public ByteMessage(SelectionKey clientKey, byte[] messageBytes) {
-		this.clientKey = clientKey;
-		this.messageBytes = messageBytes;
+	public ByteMessage(SelectionKey key, byte[] bytes) {
+		clientKey = key;
+		messageBytes = bytes;
 	}
 
 	public SelectionKey getClientKey() {
 		return clientKey;
 	}
 
-	public void putClientKey(SelectionKey clientKey) {
-		this.clientKey = clientKey;
+	public void putClientKey(SelectionKey key) {
+		clientKey = key;
 	}
 
 	public byte[] getMessageBytes() {
 		return messageBytes;
 	}
 
-	public void putMessageBytes(byte[] messageBytes) {
-		this.messageBytes = messageBytes;
+	public void putMessageBytes(byte[] bytes) {
+		messageBytes = bytes;
 	}
 	
 	
