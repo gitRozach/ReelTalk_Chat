@@ -2,7 +2,6 @@ package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.JFXFillTransition;
 
 import gui.animations.Animations;
@@ -47,6 +46,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import network.ssl.client.handler.ObjectEvent;
+import network.ssl.client.handler.ObjectEventHandler;
 import network.ssl.client.utils.CUtils;
 
 //
@@ -1022,6 +1023,26 @@ public class MessageField extends VBox {
 					smileyTabG, smileyTabH, smileyTabI);
 
 			getChildren().addAll(tabPane, skinChooser);
+			
+			setOnMouseClicked(a -> {
+				System.out.println("Event fired!");
+				fireEvent(new ObjectEvent(ObjectEvent.type) {
+					private static final long serialVersionUID = 6183639490477754270L;
+				});
+			});
+			
+			tabPane.addEventHandler(ObjectEvent.type, new ObjectEventHandler() {
+				
+				@Override
+				public void handle(ObjectEvent event) {
+					System.out.println("handle called.");					
+				}
+				
+				@Override
+				public void handleObject(Object obj) {
+					System.out.println("handleObject called");
+				}
+			});
 		}
 
 		private void initSmileys(SmileyCategory category, SmileySkinColor color, boolean override) {
