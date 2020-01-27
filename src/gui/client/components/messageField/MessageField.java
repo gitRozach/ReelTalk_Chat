@@ -1,11 +1,8 @@
 package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXNodesList;
-<<<<<<< HEAD
-=======
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.transitions.JFXFillTransition;
->>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 
 import gui.animations.Animations;
 import gui.client.components.messageField.messageFieldItems.SmileyMessageItem;
@@ -27,12 +24,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-<<<<<<< HEAD
-=======
 import network.ssl.client.handler.ObjectEvent;
 import network.ssl.client.handler.ObjectEventHandler;
 import network.ssl.client.utils.CUtils;
->>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 
 //
 public class MessageField extends VBox {
@@ -230,8 +224,6 @@ public class MessageField extends VBox {
 	public void setOnFileButtonClicked(EventHandler<? super MouseEvent> me) {
 		onFileButtonClicked = me;
 	}
-<<<<<<< HEAD
-=======
 	
 	/*
 	 * 
@@ -1191,5 +1183,4 @@ public class MessageField extends VBox {
 			return smileyFlowPane.getChildren();
 		}
 	}
->>>>>>> 11f594d016af11595c3816f7675ec6f8e4e76166
 }
