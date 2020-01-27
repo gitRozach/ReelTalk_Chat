@@ -1,10 +1,13 @@
 package network.client.eventHandlers;
 
-import javafx.event.EventHandler;
-
-public class MessageEventHandler implements EventHandler<MessageEvent>{
+public class MessageEventHandler extends ObjectEventHandler {
 	@Override
-	public void handle(MessageEvent event) {
+	public void handle(ObjectEvent event) {
+		handleObject(event.getAttachedObject());
+	}
+
+	@Override
+	public void handleObject(Object obj) {
 		
 	}
 }

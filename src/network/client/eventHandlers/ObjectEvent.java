@@ -1,4 +1,4 @@
-package network.ssl.client.handler;
+package network.client.eventHandlers;
 
 import javafx.event.Event;
 import javafx.event.EventTarget;
