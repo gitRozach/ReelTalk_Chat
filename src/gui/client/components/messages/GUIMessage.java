@@ -110,6 +110,12 @@ public class GUIMessage extends HBox {
 
 	public static Image getSmileyFor(String value) {
 		try {
+			if(value == null || value.isEmpty())
+				return null;
+			if(value.startsWith(":"))
+				value = value.substring(1);
+			if(value.endsWith(":"))
+				value = value.substring(0, value.length() - 1);
 			String prefix; // Category (A, B, C, ..., H)
 			String infix; // Index (1, 2, 3, ...)
 			String postfix; // Skin color (A, B, C, D, E or F)

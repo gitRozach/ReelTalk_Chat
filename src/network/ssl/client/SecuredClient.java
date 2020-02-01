@@ -26,6 +26,10 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
     protected SSLEngine engine;
     protected SocketChannel socketChannel;
     
+    private final Object readLock = new Object();
+    private final Object writeLock = new Object();
+    private final Object engineLock = new Object();
+    
     protected Queue<byte[]> receptionQueue;
     protected Queue<byte[]> sendingQueue;
     
@@ -78,7 +82,7 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
     	socketChannel.configureBlocking(false);
     	socketChannel.connect(new InetSocketAddress(remoteAddress, port));
     	while (!socketChannel.finishConnect()) 
-    		System.out.println("Loading");
+    		System.out.println("Connecting...");
     		
     	engine.beginHandshake();
     	if(doHandshake(socketChannel, engine)) {
@@ -117,57 +121,24 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
      */
     @Override
     protected void write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
-    	SSLEngineResult result = null;
-    	
         log.fine("About to write to the server...");
 
-        myAppData.clear();
-        myAppData.put(message);
-        myAppData.flip();
-        while (socketChannel.isOpen() && myAppData.hasRemaining()) {
-        	try {
-        		 myNetData.clear();
-                 result = engine.wrap(myAppData, myNetData);	
-        	}
-        	catch(SSLException ssle) {
-        		log.severe(ssle.toString());
-        		return;
-        	}
-            
-            switch (result.getStatus()) {
-            case OK:
-            	try {
-	                myNetData.flip();
-	                while (myNetData.hasRemaining())
-	                    socketChannel.write(myNetData);
-            	}
-            	catch(IOException io) {
-            		log.severe(io.toString());
-            		return;
-            	}
-                return;
-            case BUFFER_OVERFLOW:
-                myNetData = enlargePacketBuffer(engine, myNetData);
-                break;
-            case BUFFER_UNDERFLOW:
-                throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
-            case CLOSED:
-            	System.out.println("WRITE DISCONNECT");
-            	disconnect();
-            	return;
-            default:
-                throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+        synchronized (writeLock) {
+            myAppData.clear();
+            myAppData.put(message);
+            myAppData.flip();
+            while (socketChannel.isOpen() && myAppData.hasRemaining()) {
+    			if(handleWrapResult(encryptBufferedData()))
+    				writeSocketBytes();
+    			 
+    	         try {
+    				Thread.sleep(50L);
+    	         } 
+    	         catch (InterruptedException e) {
+    				e.printStackTrace();
+    	         }
             }
-            try {
-				Thread.sleep(50L);
-			} 
-            catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-        }
-//    	do {
-//    		
-//    	} while(socketChannel.isOpen() && !engine.isOutboundDone() /*result.getStatus() != Status.CLOSED*/);
+		} 
     }
 
     /**
@@ -189,68 +160,114 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
      * 
      * @param message - message to be sent to the server.
      * @param engine - the engine used for encryption/decryption of the data exchanged between the two peers.
+     * @throws IOException 
      * @throws Exception
      */
-    @Override
-    protected synchronized byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception  {
-    	
-    	log.fine("About to read from the server...");
-    	if(!socketChannel.isOpen())
-    		return null;
-
-        peerNetData.clear();
-        boolean exitReadLoop = false;
-        while (!exitReadLoop) {
-        	peerNetData.clear();
-            int bytesRead = 0;
+    
+    private int writeSocketBytes() throws IOException {
+    	int counter = 0;
+    	myNetData.flip();
+        while (myNetData.hasRemaining())
+        	counter += socketChannel.write(myNetData);
+        return counter;
+    }
+    
+    private boolean handleWrapResult(SSLEngineResult result) throws IOException {
+    	switch (result.getStatus()) {
+		 case OK:
+			 return true;
+		 case BUFFER_OVERFLOW:
+		     myNetData = enlargePacketBuffer(engine, myNetData);
+		     break;
+		 case BUFFER_UNDERFLOW:
+		     throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
+		 case CLOSED:
+		 	System.out.println("WRITE DISCONNECT");
+		 	disconnect();
+		 default:
+		     throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+    	}
+    	return false;
+    }
+    
+    private SSLEngineResult encryptBufferedData() throws SSLException {
+    	myNetData.clear();
+		return engine.wrap(myAppData, myNetData);
+    }
+    
+    private int readSocketBytes() throws IOException {
+    	synchronized (readLock) {
+	    	int readBytes = 0;
+	    	peerNetData.clear();        
+	        try {
+	        	readBytes = socketChannel.read(peerNetData);
+	        } 
+	        catch(IOException io) {
+	        	disconnect();
+	        	return -1;
+	        }
+	    	return readBytes;
+    	}
+    }
+    
+    private byte[] retrieveDecryptedBytes() throws IOException {
+    	SSLEngineResult result = null;
+        peerNetData.flip();
+        while (peerNetData.hasRemaining()) {
+            result = decryptBufferedData();
             
-            try {
-                bytesRead = socketChannel.read(peerNetData);
-            } 
-            //If Client disconnected
-            catch(IOException io) {
-            	//System.out.println("READ DISCONNECT 1");
-            	disconnect();
+            if(result == null)
             	return null;
-//            	Thread.sleep(50L);
-//            	continue;
-            }
             
-            if (bytesRead > 0) {
-            	SSLEngineResult result = null;
-                peerNetData.flip();
-                while (peerNetData.hasRemaining()) {
-                    peerAppData.clear();
-                    
-                    try {
-                    	result = engine.unwrap(peerNetData, peerAppData);
-                    } 
-                    catch(SSLException se) {
-                    	return null;
-                    }
-                    switch (result.getStatus()) {
-                    case OK:
-                        peerAppData.flip();
-                        log.fine("Server response: " + new String(peerAppData.array(), StandardCharsets.UTF_8));
-                        return Arrays.copyOf(peerAppData.array(), peerAppData.remaining());
-                    case BUFFER_OVERFLOW:
-                        peerAppData = enlargeApplicationBuffer(engine, peerAppData);
-                        break;
-                    case BUFFER_UNDERFLOW:
-                        peerNetData = handleBufferUnderflow(engine, peerNetData);
-                        break;
-                    case CLOSED:
-                    	System.out.println("READ DISCONNECT 2");
-                    	disconnect();
-                    	return null;
-                    default:
-                        throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
-                    }
-                }
+            if(handleUnwrapResult(result)) {
+            	peerAppData.flip();
+            	return Arrays.copyOf(peerAppData.array(), peerAppData.remaining());
             }
-            Thread.sleep(10L);
         }
         return null;
+    }
+    
+    private SSLEngineResult decryptBufferedData() {
+    	synchronized (engineLock) {
+    		try {
+        		peerAppData.clear();
+    			return engine.unwrap(peerNetData, peerAppData);
+    		} 
+        	catch (SSLException e) {
+    			return null;
+    		}
+		}
+    }
+    
+    private boolean handleUnwrapResult(SSLEngineResult result) throws IOException {
+    	switch (result.getStatus()) {
+        case OK:
+            log.fine("Server response: " + new String(peerAppData.array(), StandardCharsets.UTF_8));
+            return true;
+        case BUFFER_OVERFLOW:
+            peerAppData = enlargeApplicationBuffer(engine, peerAppData);
+            break;
+        case BUFFER_UNDERFLOW:
+            peerNetData = handleBufferUnderflow(engine, peerNetData);
+            break;
+        case CLOSED:
+        	disconnect();
+        default:
+            throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+        }
+    	return false;
+    }
+    
+    @Override
+    protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+    	synchronized (readLock) {
+    		if(!socketChannel.isOpen())
+        		return null;
+        	log.fine("About to read from the server...");
+            if (readSocketBytes() > 0)
+            	return retrieveDecryptedBytes();
+            return null;
+		}
     }
     
     @Override
@@ -299,7 +316,8 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
     	sendingQueue.offer(byteMessage);
     	try {
 			Thread.sleep(1L);
-		} catch (InterruptedException e) {
+		} 
+    	catch (InterruptedException e) {
 			e.printStackTrace();
 		}
     }

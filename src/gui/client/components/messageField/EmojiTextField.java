@@ -1,8 +1,8 @@
 package gui.client.components.messageField;
 
+import gui.client.components.messageField.messageFieldItems.EmojiMessageItem;
 import gui.client.components.messageField.messageFieldItems.MessageFieldItem;
 import gui.client.components.messageField.messageFieldItems.ParagraphMessageItem;
-import gui.client.components.messageField.messageFieldItems.EmojiMessageItem;
 import gui.client.components.messageField.messageFieldItems.WordMessageItem;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class EmojiTextField extends ScrollPane {
@@ -57,6 +58,7 @@ public class EmojiTextField extends ScrollPane {
 	
 	private void initInputField(String initText) {
 		inputField = new TextField(initText);
+		inputField.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/OpenSansEmoji.ttf"), 15f));
 		inputField.caretPositionProperty().addListener((obs, oldV, newV) -> {
 			setOldCaretPosition(oldV.intValue());
 		});
@@ -82,8 +84,9 @@ public class EmojiTextField extends ScrollPane {
 	}
 	
 	private void initInputFlowPane() {
-		inputFlowPane = new FlowPane(6d, 10d);
+		inputFlowPane = new FlowPane(6d, 8d);
 		inputFlowPane.setRowValignment(VPos.CENTER);
+		inputFlowPane.setAlignment(Pos.TOP_LEFT);
 		inputFlowPane.getChildren().add(inputBox);
 	}
 	
@@ -427,7 +430,7 @@ public class EmojiTextField extends ScrollPane {
 		else if(newItem instanceof EmojiMessageItem) {
 			EmojiMessageItem smiley = (EmojiMessageItem)newItem;
 			smiley.getStyleClass().add("smiley-message-item");
-			inputFlowPane.getChildren().add(index, new EmojiMessageItem(smiley.getFilePath()));	
+			inputFlowPane.getChildren().add(index, smiley);	
 			added = true;
 		}
 		else if(newItem instanceof WordMessageItem) {
@@ -474,6 +477,9 @@ public class EmojiTextField extends ScrollPane {
 			if(currentNode instanceof MessageFieldItem)
 				builder.append(((MessageFieldItem)currentNode).toMessageString() + " ");
 			else if(currentNode instanceof HBox) {
+				System.out.println("has text? : " + hasCurrentSelectionText());
+				System.out.println(getCurrentText());
+				
 				if(hasCurrentSelectionSmileyLeftSide())
 					builder.append(getCurrentSelectionSmileyLeftSide().toMessageString() + " ");
 				if(hasCurrentSelectionText())
@@ -487,8 +493,9 @@ public class EmojiTextField extends ScrollPane {
 	
 	public int clear() {
 		int removedItems = inputFlowPane.getChildren().size();
+		inputField.clear();
 		inputFlowPane.getChildren().clear();
-		inputFlowPane.getChildren().add(inputField);
+		inputFlowPane.getChildren().add(inputBox);
 		inputField.requestFocus();
 		setCurrentIndex(0);
 		return removedItems;
@@ -545,7 +552,7 @@ public class EmojiTextField extends ScrollPane {
 		currentIndexProperty.set(index);
 	}
 	
-	public TextField getTextField() {
+	public TextField getInputField() {
 		return inputField;
 	}
 	

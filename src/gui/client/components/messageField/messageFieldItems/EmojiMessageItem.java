@@ -58,7 +58,7 @@ public class EmojiMessageItem extends ImageView implements MessageFieldItem {
 
 	@Override
 	public String toMessageString() {
-		return smileyName;
+		return ":" + smileyName + ":";
 	}
 	
 	public String getFilePath() {

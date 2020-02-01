@@ -23,7 +23,6 @@ import javafx.util.Duration;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 
-//
 public class MessageField extends VBox {
 	private HBox messageBox;
 
@@ -34,13 +33,11 @@ public class MessageField extends VBox {
 
 	private BooleanProperty openProperty;
 
-	// EventHandler
 	private EventHandler<KeyEvent> onEnterPressed;
 	private EventHandler<MouseEvent> onEmojiButtonClicked;
 	private EventHandler<MouseEvent> onFileButtonClicked;
 	private ObjectEventHandler onEmojiPressed;
 
-	// Animations
 	private Animation smileyIn;
 	private Animation smileyOut;
 
@@ -164,7 +161,7 @@ public class MessageField extends VBox {
 		return emojiPane;
 	}
 
-	public EmojiTextField getInputField() {
+	public EmojiTextField getTextField() {
 		return emojiTextField;
 	}
 
@@ -200,5 +197,25 @@ public class MessageField extends VBox {
 	public void setOnEmojiPressed(ObjectEventHandler handler) {
 		onEmojiPressed = handler;
 		emojiPane.addEventFilter(ObjectEvent.ANY, onEmojiPressed);
+	}
+	
+	public HBox getMessageBox() {
+		return messageBox;
+	}
+
+	public EmojiTabPane getEmojiPane() {
+		return emojiPane;
+	}
+
+	public EmojiTextField getEmojiTextField() {
+		return emojiTextField;
+	}
+
+	public ImageView getEmojiButton() {
+		return emojiButton;
+	}
+
+	public ImageView getFileButton() {
+		return fileButton;
 	}
 }

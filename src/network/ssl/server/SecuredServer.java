@@ -31,6 +31,9 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	/** Declares if the server is active to serve and create new connections. */
 	protected volatile boolean active;
 	protected volatile int receptionCounter;
+	
+	private final Object readLock = new Object();
+	private final Object writeLock = new Object();
 
 	protected ServerSocketChannel serverSocketChannel;
 
@@ -227,56 +230,59 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	 * @throws IOException if an I/O error occurs to the socket channel.
 	 */
 	@Override
-	protected synchronized byte[] read(SocketChannel socketChannel, SSLEngine engine) throws IOException {
-		peerNetData.clear();
-		int bytesRead = 0;
-		try {
-			bytesRead = socketChannel.read(peerNetData);
-		} 
-		catch (IOException io) {
-			log.info(io.toString());
-		}
-		
-		if (bytesRead > 0) {
-			peerNetData.flip();
-			while (peerNetData.hasRemaining()) {
-				peerAppData.clear();
-				SSLEngineResult result = null;
-
-				try {
-					result = engine.unwrap(peerNetData, peerAppData);
-				} 
-				catch (SSLException se) {
-					log.severe(se.toString());
-					return null;
-				}
-
-				switch (result.getStatus()) {
-				case OK:
-					peerAppData.flip();
-					return Arrays.copyOf(peerAppData.array(), peerAppData.remaining());
-				case BUFFER_OVERFLOW:
-					peerAppData = enlargeApplicationBuffer(engine, peerAppData);
-					break;
-				case BUFFER_UNDERFLOW:
-					peerNetData = handleBufferUnderflow(engine, peerNetData);
-					break;
-				case CLOSED:
-					closeConnection(socketChannel, engine);
-					log.info("Client closed connection.");
-					return null;
-				default:
-					throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
-				}
+	protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+		synchronized (readLock) {
+			peerNetData.clear();
+			int bytesRead = 0;
+			try {
+				bytesRead = socketChannel.read(peerNetData);
+			} 
+			catch (IOException io) {
+				log.info(io.toString());
 			}
+			
+			if (bytesRead > 0) {
+				peerNetData.flip();
+				while (peerNetData.hasRemaining()) {
+					peerAppData.clear();
+					SSLEngineResult result = null;
+					
+					try {
+						result = engine.unwrap(peerNetData, peerAppData);
+					} 
+					catch (SSLException se) {
+						log.severe(se.toString());
+						return null;
+					}
+					
+					switch (result.getStatus()) {
+					case OK:
+						peerAppData.flip();
+						return Arrays.copyOf(peerAppData.array(), peerAppData.remaining());
+					case BUFFER_OVERFLOW:
+						peerAppData = enlargeApplicationBuffer(engine, peerAppData);
+						break;
+					case BUFFER_UNDERFLOW:
+						peerNetData = handleBufferUnderflow(engine, peerNetData);
+						break;
+					case CLOSED:
+						closeConnection(socketChannel, engine);
+						log.info("Client closed connection.");
+						return null;
+					default:
+						throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+					}
+					
+					try {
+						Thread.sleep(50L);
+					} 
+					catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}	
+			}
+			return null;
 		}
-//		try {
-//			Thread.sleep(50L);
-//		} 
-//		catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		return null;
 	}
 
 	public boolean hasReceptionMessage() {
@@ -323,56 +329,57 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	 */
 	
 	@Override
-	protected synchronized void write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
-
-		if (!socketChannel.isOpen())
-			return;
-		
-		putDataIntoBufferAndFlip(message, true);
-		while (myAppData.hasRemaining()) {
-			// The loop has a meaning for (outgoing) messages larger than 16KB. Each loop removes 16KB from the buffer
-			
-//			SSLEngineResult encryptionResult = encryptBufferedData(engine);
-//        	if(encryptionSucceed(encryptionResult))
-//        		writeEncryptedData(socketChannel);
-//        	else
-//        		handleEncryptionError(engine, socketChannel, encryptionResult);
-
-			myNetData.clear();
-			SSLEngineResult result = null;
-			try {
-				result = engine.wrap(myAppData, myNetData);
-			}
-			catch(SSLException ssl) {
-				log.severe(ssl.toString());
+	protected void write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
+		synchronized (writeLock) {
+			if (!socketChannel.isOpen())
 				return;
-			}
 			
-			switch (result.getStatus()) {
-			case OK:
-				myNetData.flip();
-				while (myNetData.hasRemaining())
-					socketChannel.write(myNetData);
-				log.info("Message sent to the client: " + new String(message, StandardCharsets.UTF_8));
-				break;
-			case BUFFER_OVERFLOW:
-				myNetData = enlargePacketBuffer(engine, myNetData);
-				break;
-			case BUFFER_UNDERFLOW:
-				throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
-			case CLOSED:
-				closeConnection(socketChannel, engine);
-				return;
-			default:
-				throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+			putDataIntoBufferAndFlip(message, true);
+			while (myAppData.hasRemaining()) {
+				// The loop has a meaning for (outgoing) messages larger than 16KB. Each loop removes 16KB from the buffer
+				
+//				SSLEngineResult encryptionResult = encryptBufferedData(engine);
+//	        	if(encryptionSucceed(encryptionResult))
+//	        		writeEncryptedData(socketChannel);
+//	        	else
+//	        		handleEncryptionError(engine, socketChannel, encryptionResult);
+
+				myNetData.clear();
+				SSLEngineResult result = null;
+				try {
+					result = engine.wrap(myAppData, myNetData);
+				}
+				catch(SSLException ssl) {
+					log.severe(ssl.toString());
+					return;
+				}
+				
+				switch (result.getStatus()) {
+				case OK:
+					myNetData.flip();
+					while (myNetData.hasRemaining())
+						socketChannel.write(myNetData);
+					log.info("Message sent to the client: " + new String(message, StandardCharsets.UTF_8));
+					break;
+				case BUFFER_OVERFLOW:
+					myNetData = enlargePacketBuffer(engine, myNetData);
+					break;
+				case BUFFER_UNDERFLOW:
+					throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
+				case CLOSED:
+					closeConnection(socketChannel, engine);
+					return;
+				default:
+					throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+				}
 			}
-		}
-//		try {
+//			try {
 //			Thread.sleep(10L);
 //		} catch (InterruptedException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		}
 	}
 
 	/*

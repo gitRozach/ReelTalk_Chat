@@ -43,6 +43,7 @@ class SecuredServerClientTest {
 			
 		Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> c1.hasReadableBytes());
 		assertTrue(message.equals(new String(c1.readBytes(), StandardCharsets.UTF_8)));
+		c1.disconnect();
 	}
 	
 	@Test
@@ -52,6 +53,7 @@ class SecuredServerClientTest {
 		
 		client.connect();
 		Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.isConnected());
+		client.disconnect();
 	}
 	
 	@Test 
@@ -91,6 +93,7 @@ class SecuredServerClientTest {
 			System.out.println("Received No. " + (b+1));
 			assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 		}
+		client.disconnect();
 	}
 	
 	@Test
@@ -114,6 +117,8 @@ class SecuredServerClientTest {
 			System.out.println("Received No. " + (b+1));
 			assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 		}
+		client1.disconnect();
+		client2.disconnect();
 	}
 	
 	@Test
@@ -161,6 +166,17 @@ class SecuredServerClientTest {
 			System.out.println("Received No. " + (b+1));
 			assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 		}
+		
+		client1.disconnect();
+		client2.disconnect();
+		client3.disconnect();
+		client4.disconnect();
+		client5.disconnect();
+		client6.disconnect();
+		client7.disconnect();
+		client8.disconnect();
+		client9.disconnect();
+		client10.disconnect();
 	}
 	
 	@Test
@@ -268,5 +284,37 @@ class SecuredServerClientTest {
 			System.out.println("Received No. " + (b+1));
 			assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 		}
+		
+		client1.disconnect();
+		client2.disconnect();
+		client3.disconnect();
+		client4.disconnect();
+		client5.disconnect();
+		client6.disconnect();
+		client7.disconnect();
+		client8.disconnect();
+		client9.disconnect();
+		client10.disconnect();
+		client11.disconnect();
+		client12.disconnect();
+		client13.disconnect();
+		client14.disconnect();
+		client15.disconnect();
+		client16.disconnect();
+		client17.disconnect();
+		client18.disconnect();
+		client19.disconnect();
+		client20.disconnect();
+		client21.disconnect();
+		client22.disconnect();
+		client23.disconnect();
+		client24.disconnect();
+		client25.disconnect();
+		client26.disconnect();
+		client27.disconnect();
+		client28.disconnect();
+		client29.disconnect();
+		client30.disconnect();
 	}
+	
 }

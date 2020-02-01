@@ -120,7 +120,7 @@ public class EmojiTabPane extends StackPane {
 		getChildren().addAll(tabPane, skinChooser);
 	}
 
-	private void initSmileys(EmojiCategory category, EmojiSkinColor color, boolean override) {
+	public void initSmileys(EmojiCategory category, EmojiSkinColor color, boolean override) {
 		final EmojiTab smileyTab;
 		final int smileyCount;
 		final String smileyCategory = category.name();
@@ -209,5 +209,9 @@ public class EmojiTabPane extends StackPane {
 
 	private void initSmileys(EmojiCategory category, boolean override) {
 		initSmileys(category, EmojiSkinColor.YELLOW, override);
+	}
+	
+	public EmojiSkinChooser getEmojiSkinChooser() {
+		return skinChooser;
 	}
 }

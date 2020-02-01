@@ -6,6 +6,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -18,6 +20,8 @@ public class EmojiSkinChooser extends HBox {
 	private ObjectProperty<Color> fromColorProperty;
 	private ObjectProperty<Color> toColorProperty;
 	private IntegerProperty currentColorIndexProperty;
+	
+	private EventHandler<MouseEvent> onSkinChooserClicked;
 
 	public static final Color[] SKIN_COLORS = { Color.web("ffd766"), Color.web("fae0c1"), Color.web("e3c29c"),
 			Color.web("c6956c"), Color.web("a06940"), Color.web("5c473c") };
@@ -70,17 +74,18 @@ public class EmojiSkinChooser extends HBox {
 		fillAnimation.toValueProperty().bindBidirectional(toColorProperty);
 		fillAnimation.playFromStart();
 
-		setOnMouseClicked(a -> handleAction(a));
+		setOnMouseClicked(a -> {
+			handleAction(a);
+			if(onSkinChooserClicked != null)
+				onSkinChooserClicked.handle(a);
+		});
 	}
 
 	public void handleAction(MouseEvent mouse) {
-//		if (mouse.getButton() == MouseButton.PRIMARY) {
-//			fillAnimation.playFromStart();
-//			currentColorIndexProperty.set((getCurrentColorIndex() + 1) >= skinColors.length ? 0 : currentColorIndexProperty.get() + 1);
-//
-//			for (int i = 0; i < EmojiCategory.values().length; i++)
-//				smileyPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(getCurrentColorIndex()), true);
-//		}
+		if (mouse.getButton() == MouseButton.PRIMARY) {
+			fillAnimation.playFromStart();
+			currentColorIndexProperty.set((getCurrentColorIndex() + 1) >= SKIN_COLORS.length ? 0 : currentColorIndexProperty.get() + 1);
+		}	
 	}
 
 	public ObjectProperty<Duration> durationProperty() {
@@ -119,7 +124,15 @@ public class EmojiSkinChooser extends HBox {
 		toColorProperty.set(value);
 	}
 
-	private int getCurrentColorIndex() {
+	public int getCurrentColorIndex() {
 		return currentColorIndexProperty.get();
+	}
+	
+	public EventHandler<MouseEvent> getOnSkinChooserClicked() {
+		return onSkinChooserClicked;
+	}
+	
+	public void setOnSkinChooserClicked(EventHandler<MouseEvent> handler) {
+		addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
 	}
 }
