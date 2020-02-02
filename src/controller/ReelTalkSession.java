@@ -130,7 +130,7 @@ public class ReelTalkSession extends Application {
 					
 					if(reception instanceof ChannelMessageEvent) {
 						ChannelMessageEvent channelMessage = (ChannelMessageEvent) reception;
-						chatView.getMessageView().addMessage(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
+						chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
 					}
 				}
 			}

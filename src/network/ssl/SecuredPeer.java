@@ -1,11 +1,14 @@
 package network.ssl;
 
+import java.io.Closeable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -22,7 +25,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-public abstract class SecuredPeer {	
+public abstract class SecuredPeer implements Closeable{	
 	protected final Logger log = Logger.getLogger(getClass().getSimpleName());
 	//protected final Object socketLock = new Object();
 
@@ -209,10 +212,12 @@ public abstract class SecuredPeer {
 		myAppData.flip();
 	}
 
-	protected synchronized void writeEncryptedData(SocketChannel clientChannel) throws IOException {
+	protected synchronized int writeEncryptedData(SocketChannel clientChannel) throws IOException {
+		int writtenBytes = 0;
 		myNetData.flip();
 		while (myNetData.hasRemaining())
-			clientChannel.write(myNetData);
+			writtenBytes += clientChannel.write(myNetData);
+		return writtenBytes;
 	}
 
 	protected synchronized SSLEngineResult encryptBufferedData(SSLEngine engine) {
@@ -250,7 +255,79 @@ public abstract class SecuredPeer {
 		}
 		return false;
 	}
+	
+	protected int readChannelBytes(SocketChannel socketChannel) throws IOException {
+		peerNetData.clear();        
+        try {
+        	return socketChannel.read(peerNetData);
+        } 
+        catch(IOException io) {
+        	return -1;
+        }
+    }
+	
+	protected SSLEngineResult decryptBufferedData(SSLEngine engine) {
+		try {
+    		peerAppData.clear();
+			return engine.unwrap(peerNetData, peerAppData);
+		} 
+    	catch (SSLException e) {
+			return null;
+		}
+    }
+	
+	protected boolean handleWrapResult(SocketChannel socketChannel, SSLEngine engine, SSLEngineResult result) throws IOException {
+    	switch (result.getStatus()) {
+		 case OK:
+			 return true;
+		 case BUFFER_OVERFLOW:
+		     myNetData = enlargePacketBuffer(engine, myNetData);
+		     break;
+		 case BUFFER_UNDERFLOW:
+		     throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
+		 case CLOSED:
+		 	closeConnection(socketChannel, engine);
+		 default:
+		     throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+    	}
+    	return false;
+    }
 
+	protected boolean handleUnwrapResult(SocketChannel socketChannel, SSLEngine engine, SSLEngineResult result) throws IOException {
+    	switch (result.getStatus()) {
+        case OK:
+            log.fine("Server response: " + new String(peerAppData.array(), StandardCharsets.UTF_8));
+            return true;
+        case BUFFER_OVERFLOW:
+            peerAppData = enlargeApplicationBuffer(engine, peerAppData);
+            break;
+        case BUFFER_UNDERFLOW:
+            peerNetData = handleBufferUnderflow(engine, peerNetData);
+            break;
+        case CLOSED:
+        	closeConnection(socketChannel, engine);
+        	//disconnect();
+        default:
+            throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
+        }
+    	return false;
+    }
+	
+	protected byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+    	SSLEngineResult result = null;
+        peerNetData.flip();
+        while (peerNetData.hasRemaining()) {
+            result = decryptBufferedData(engine);
+            if(result == null)
+            	return null;
+            if(handleUnwrapResult(socketChannel, engine, result)) {
+            	peerAppData.flip();
+            	return Arrays.copyOf(peerAppData.array(), peerAppData.remaining());
+            }
+        }
+        return null;
+    }
+	
     protected synchronized ByteBuffer enlargePacketBuffer(SSLEngine engine, ByteBuffer buffer) {
         return enlargeBuffer(buffer, engine.getSession().getPacketBufferSize());
     }
