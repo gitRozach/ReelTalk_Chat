@@ -59,8 +59,24 @@ class SecuredMessageServerClientTest {
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReadableBytes());
-				MessagePacket reception = client1.readMessage();
-				assertTrue(reception instanceof ClientLoggedInEvent);
+				MessagePacket reception1 = client1.readMessage();
+				assertTrue(reception1 instanceof ClientLoggedInEvent);
+				
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client2.hasReadableBytes());
+				MessagePacket reception2 = client2.readMessage();
+				assertTrue(reception2 instanceof ClientLoggedInEvent);
+				
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client3.hasReadableBytes());
+				MessagePacket reception3 = client3.readMessage();
+				assertTrue(reception3 instanceof ClientLoggedInEvent);
+				
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client4.hasReadableBytes());
+				MessagePacket reception4 = client4.readMessage();
+				assertTrue(reception4 instanceof ClientLoggedInEvent);
+				
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client5.hasReadableBytes());
+				MessagePacket reception5 = client5.readMessage();
+				assertTrue(reception5 instanceof ClientLoggedInEvent);
 			}
 		}
 	}

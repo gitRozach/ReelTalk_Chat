@@ -161,7 +161,7 @@ public class SecuredClient extends SecuredPeer implements ByteReceiver {
         		return null;
         	log.fine("About to read from the server...");
         	int readBytes = 0;
-            if ((readBytes = readChannelBytes(socketChannel)) > 0)
+            if ((readBytes = readSocketBytes(socketChannel)) > 0)
             	return retrieveDecryptedBytes(socketChannel, engine);
             if(readBytes == -1)
             	disconnect();

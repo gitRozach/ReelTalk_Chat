@@ -67,7 +67,7 @@ class SecuredServerClientTest {
 		try(SecuredClient client = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.isConnected());
-			testHost.kick(testHost.getLocalSocketChannel(client.getChannel()));
+			testHost.kick(client.getChannel());
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> !client.isConnected());
 		}
 	}

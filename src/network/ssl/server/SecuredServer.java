@@ -135,7 +135,7 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	}
 
 	public void kick(SocketChannel clientChannel) throws IOException {
-		closeConnection(clientChannel, getEngineFrom(clientChannel));
+		closeConnection(clientChannel, getEngineFrom(getLocalSocketChannel(clientChannel)));
 	}
 
 	public SSLEngine getEngineFrom(SocketChannel localClientChannel) throws IOException {
@@ -170,7 +170,7 @@ public class SecuredServer extends SecuredPeer implements RequestHandler {
 	protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws IOException {
 		synchronized (readLock) {
 			int readBytes = 0;
-			if ((readBytes = readChannelBytes(socketChannel)) > 0)
+			if ((readBytes = readSocketBytes(socketChannel)) > 0)
 				return retrieveDecryptedBytes(socketChannel, engine);
 			if(readBytes == -1)
 				closeConnection(socketChannel, engine);

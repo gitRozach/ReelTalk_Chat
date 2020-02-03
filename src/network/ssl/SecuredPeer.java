@@ -213,6 +213,8 @@ public abstract class SecuredPeer implements Closeable{
 	}
 
 	protected synchronized int writeEncryptedData(SocketChannel clientChannel) throws IOException {
+		if(!clientChannel.isOpen())
+			return -1;
 		int writtenBytes = 0;
 		myNetData.flip();
 		while (myNetData.hasRemaining())
@@ -256,9 +258,11 @@ public abstract class SecuredPeer implements Closeable{
 		return false;
 	}
 	
-	protected int readChannelBytes(SocketChannel socketChannel) throws IOException {
-		peerNetData.clear();        
+	protected int readSocketBytes(SocketChannel socketChannel) throws IOException {
+		if(!socketChannel.isOpen())
+			return -1;
         try {
+        	peerNetData.clear();
         	return socketChannel.read(peerNetData);
         } 
         catch(IOException io) {
@@ -306,7 +310,6 @@ public abstract class SecuredPeer implements Closeable{
             break;
         case CLOSED:
         	closeConnection(socketChannel, engine);
-        	//disconnect();
         default:
             throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
         }
