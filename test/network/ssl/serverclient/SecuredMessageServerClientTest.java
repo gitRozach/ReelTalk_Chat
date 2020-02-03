@@ -27,7 +27,7 @@ class SecuredMessageServerClientTest {
 	@BeforeAll
 	public static void setUp() throws Exception {
 		server = new SecuredChatServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-		server.enableMessageHandler(false);
+		server.setBufferReceivedBytes(true);
 		server.start();
 		Thread.sleep(50L);
 	}
@@ -40,15 +40,15 @@ class SecuredMessageServerClientTest {
 			SecuredChatClient client4 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredChatClient client5 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
-			client1.enableMessageHandler(false);
+			client1.setBufferReceivedBytes(true);
 			client2.connect();
-			client2.enableMessageHandler(false);
+			client2.setBufferReceivedBytes(true);
 			client3.connect();
-			client3.enableMessageHandler(false);
+			client3.setBufferReceivedBytes(true);
 			client4.connect();
-			client4.enableMessageHandler(false);
+			client4.setBufferReceivedBytes(true);
 			client5.connect();
-			client5.enableMessageHandler(false);
+			client5.setBufferReceivedBytes(true);
 			
 			for(int i = 0; i < 100; ++i) {
 				server.sendMessage(server.getLocalSocketChannel(client1.getChannel()), new ClientLoggedInEvent());
@@ -86,7 +86,7 @@ class SecuredMessageServerClientTest {
 		ClientLoggedInEvent messageToReceive = new ClientLoggedInEvent();
 		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
-			client.enableMessageHandler(false);
+			client.setBufferReceivedBytes(true);
 			
 			Thread.sleep(250L);
 			

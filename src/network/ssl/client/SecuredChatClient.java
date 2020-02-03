@@ -3,15 +3,28 @@ package network.ssl.client;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.communication.MessagePacket;
-import network.ssl.communication.events.ChannelMessageEvent;
 
 public class SecuredChatClient extends SecuredClient {
-	protected ObjectEventHandler messageHandler;
+	protected ObjectEventHandler onMessageReceivedHandler;
+	protected ObjectEventHandler onMessageSentHandler;
 	
 	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
+		initHandlers();
 	}
 
+	private void initHandlers() {
+		onMessageReceivedHandler = new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {System.out.println("Message received");}
+		};
+		
+		onMessageSentHandler = new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {System.out.println("Message sent");}
+		};
+	}
+	
 	public void sendMessage(MessagePacket message) {
 		sendBytes(message.serialize());
 		try {
@@ -30,7 +43,7 @@ public class SecuredChatClient extends SecuredClient {
     }
     
     public MessagePacket readMessage(Class<?> messageClass) {
-    	for(byte[] currentBytes : receptionQueue) {
+    	for(byte[] currentBytes : receivedBytes) {
     		MessagePacket currentPacket = MessagePacket.deserialize(currentBytes);
     		if(currentPacket != null && currentPacket.getClass().equals(messageClass))
     			return currentPacket;
@@ -40,72 +53,37 @@ public class SecuredChatClient extends SecuredClient {
 
 	@Override
 	public void onBytesReceived(byte[] reception) {
-		try {
-			if(reception == null) {
-				System.out.println("null reception");
-				return;
-			}
-			System.out.println("Reception size: " + reception.length);
-			MessagePacket event = MessagePacket.deserialize(reception);
-			if(event == null) {
-				System.out.println("Returning...");
-				return;
-			}
-			switch(event.getClass().getSimpleName()) {
-			case "RequestDeniedEvent":
-				break;
-			case "AccountDataEvent":
-				break;
-			case "ChannelDataEvent":
-				break;
-			case "ChannelMessageEvent":
-				messageHandler.handle(new ObjectEvent(ObjectEvent.ANY, (ChannelMessageEvent)event) {
-					private static final long serialVersionUID = 6882651385899629774L;
-				});
-				break;
-			case "ClientJoinedChannelEvent":
-				break;
-			case "ClientLeftChannelEvent":
-				break;
-			case "ClientLoggedInEvent":
-				System.out.println("LOGGED IN EVENT!");
-				break;
-			case "ClientLoggedOutEvent":
-				break;
-			case "ClientRegisteredEvent":
-				break;
-			case "FileDownloadEvent":
-				break;
-			case "FileUploadEvent":
-				break;
-			case "PingEvent":
-				break;
-			case "PrivateMessageEvent":
-				System.out.println("Private Message!");
-				break;
-			case "ProfileDataEvent":
-				break;
-			}	
-		}
-		catch(Exception e) {
-			log.info(e.toString());
-		}	
+		MessagePacket receivedBytes = MessagePacket.deserialize(reception);
+		if(receivedBytes == null)
+			return;
+		onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, receivedBytes) {
+			private static final long serialVersionUID = 6882651385899629774L;
+		});
 	}
 	
-	public ObjectEventHandler getMessageHandler() {
-		return messageHandler;
+	@Override
+	public void onBytesSent(byte[] sent) {
+		MessagePacket sentBytes = MessagePacket.deserialize(sent);
+		if(sentBytes == null)
+			return;
+		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {
+			private static final long serialVersionUID = 6882651385899629774L;
+		});
+	}
+	
+	public ObjectEventHandler getOnMessageReceived() {
+		return onMessageReceivedHandler;
 	}
 
-	public void setMessageHandler(ObjectEventHandler handler) {
-		messageHandler = handler;
+	public void setOnMessageReceived(ObjectEventHandler handler) {
+		onMessageReceivedHandler = handler;
 	}
 	
-//	protected void onChannelMessageEvent(ChannelMessageEvent event) {
-//		GUIMessage channelMessage = new GUIMessage(event.getSender(), event.getMessage());
-//		chatUI.appendMessage(channelMessage);
-//	}
+	public ObjectEventHandler getOnMessageSent() {
+		return onMessageSentHandler;
+	}
 	
-//	public void setChatView(ClientChatView ui) {
-//		chatUI = ui;
-//	}
+	public void setOnMessageSent(ObjectEventHandler handler) {
+		onMessageSentHandler = handler;
+	}
 }

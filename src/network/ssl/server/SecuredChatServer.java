@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
+import network.client.eventHandlers.ObjectEvent;
+import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.id.ClientAccountData;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
@@ -25,11 +27,30 @@ import network.ssl.communication.requests.ProfileDataRequest;
 import network.ssl.server.database.ClientDatabase;
 
 public class SecuredChatServer extends SecuredServer {
-	private ClientDatabase<ClientAccountData> clients;
+	protected ClientDatabase<ClientAccountData> clients;
+	protected ObjectEventHandler onMessageReceivedHandler;
+	protected ObjectEventHandler onMessageSentHandler;
 
 	public SecuredChatServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
+		initClientDatabase();
+		initHandlers();
+	}
+	
+	private void initClientDatabase() throws IOException {
 		clients = new ClientDatabase<ClientAccountData>("src/clientData/accounts.txt");
+	}
+	
+	private void initHandlers() {
+		onMessageReceivedHandler = new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {}
+		};
+		
+		onMessageSentHandler = new ObjectEventHandler() {
+			@Override
+			public void handle(ObjectEvent event) {}
+		};
 	}
 	
 	public void sendMessage(SelectionKey receiverKey, MessagePacket message) {
@@ -41,8 +62,11 @@ public class SecuredChatServer extends SecuredServer {
 	}
 	
 	@Override
-	public void handleRequest(SelectionKey clientKey, byte[] requestBytes) {
+	public void onBytesReceived(SelectionKey clientKey, byte[] requestBytes) {
 		try {
+			onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, requestBytes) {
+				private static final long serialVersionUID = -1115235010001672312L;
+			});
 			MessagePacket messagePacket = MessagePacket.deserialize(requestBytes);
 			if(messagePacket != null) {
 				switch(messagePacket.getClass().getSimpleName()) {
@@ -86,8 +110,15 @@ public class SecuredChatServer extends SecuredServer {
 			}
 		}
 		catch(Exception e) {
-			log.info(e.toString());
+			logger.info(e.toString());
 		}
+	}
+	
+	@Override
+	public void onBytesSent(SelectionKey clientKey, byte[] sentBytes) {
+		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {
+			private static final long serialVersionUID = 8588402449968090480L;
+		});
 	}
 	
 	@Override
@@ -229,5 +260,21 @@ public class SecuredChatServer extends SecuredServer {
 			RequestDeniedEvent rejMessage = new RequestDeniedEvent(ClientLoginRequest.class);
 			sendMessage(clientKey, rejMessage);
 		}
+	}
+	
+	public ObjectEventHandler getOnMessageReceived() {
+		return onMessageReceivedHandler;
+	}
+
+	public void setOnMessageReceived(ObjectEventHandler handler) {
+		onMessageReceivedHandler = handler;
+	}
+	
+	public ObjectEventHandler getOnMessageSent() {
+		return onMessageSentHandler;
+	}
+	
+	public void setOnMessageSent(ObjectEventHandler handler) {
+		onMessageSentHandler = handler;
 	}
 }

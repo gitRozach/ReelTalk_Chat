@@ -122,7 +122,7 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initEventHandlers() {
-		chatClient.setMessageHandler(new ObjectEventHandler() {
+		chatClient.setOnMessageReceived(new ObjectEventHandler() {
 			@Override
 			public void handle(ObjectEvent event) {
 				if(event.getEventType() == ObjectEvent.ANY) {

@@ -31,7 +31,7 @@ class SecuredServerClientTest {
 	void sendBytes_serverSendsStringAndClientReceivesSameString() throws Exception{
 		String message = "Hallo Client!";
 		try(SecuredClient c1  = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);){
-			c1.enableMessageHandler(false);
+			c1.setBufferReceivedBytes(true);
 			c1.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> c1.isConnected());
 			
@@ -74,7 +74,7 @@ class SecuredServerClientTest {
 	
 	@Test
 	void sendBytes_clientSendsMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.enableMessageHandler(false);
+		testHost.setBufferReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
@@ -92,7 +92,7 @@ class SecuredServerClientTest {
 	
 	@Test
 	void sendBytes_twoClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.enableMessageHandler(false);
+		testHost.setBufferReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
@@ -114,7 +114,7 @@ class SecuredServerClientTest {
 	
 	@Test
 	void sendBytes_tenClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.enableMessageHandler(false);
+		testHost.setBufferReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
@@ -160,7 +160,7 @@ class SecuredServerClientTest {
 	
 	@Test
 	void sendBytes_thirtyClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.enableMessageHandler(false);
+		testHost.setBufferReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
