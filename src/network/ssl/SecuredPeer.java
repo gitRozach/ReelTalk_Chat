@@ -67,7 +67,7 @@ public abstract class SecuredPeer implements Closeable {
     	synchronized (handshakeLock) {
     		logger.fine("About to do handshake...");
 
-            SSLEngineResult result = null;
+    		SSLEngineResult result = null;
             HandshakeStatus handshakeStatus = null;
             myNetworkBuffer.clear();
             peerNetworkBuffer.clear();
@@ -77,7 +77,7 @@ public abstract class SecuredPeer implements Closeable {
                 switch (handshakeStatus) {
                 case NEED_UNWRAP:
                 	try {
-    		            if (socketChannel.read(peerNetworkBuffer) < 0) {
+    		            if (readEncryptedData(socketChannel, false) < 0) {
     		            	logger.info("Handshake read < 0");
     		            	if(!socketChannel.isOpen()) {
     		            		engine.closeInbound();
@@ -88,15 +88,13 @@ public abstract class SecuredPeer implements Closeable {
     		                break;
     		            }
                     	peerNetworkBuffer.flip();
-                        result = engine.unwrap(peerNetworkBuffer, peerApplicationBuffer);
+                        result = decryptBufferedData(engine);
                         peerNetworkBuffer.compact();
                         handshakeStatus = result.getHandshakeStatus();
                     } 
                     catch (Exception sslException) {
-                    	if(!socketChannel.isOpen()) {
-                    		logger.severe("A problem was encountered while processing the data that caused the SSLEngine to abort. Will try to properly close connection...");
+                    	if(!socketChannel.isOpen())
                             engine.closeOutbound();
-                    	}
                     	handshakeStatus = engine.getHandshakeStatus();
                         break;
                     }
@@ -126,19 +124,9 @@ public abstract class SecuredPeer implements Closeable {
                     break;
                     
                 case NEED_WRAP:
-                    myNetworkBuffer.clear();
-                    try {
-                        result = engine.wrap(myApplicationBuffer, myNetworkBuffer);
-                        handshakeStatus = result.getHandshakeStatus();
-                    } 
-                    catch (SSLException sslException) {
-                    	if(!socketChannel.isOpen()) {
-                    		logger.severe("A problem was encountered while processing the data that caused the SSLEngine to abort. Will try to properly close connection...");
-                            engine.closeOutbound();
-                    	}
-                        handshakeStatus = engine.getHandshakeStatus();
-                        break;
-                    }
+                	//myNetworkBuffer.clear();
+                    result = encryptBufferedData(engine);//engine.wrap(myApplicationBuffer, myNetworkBuffer);
+                    handshakeStatus = result.getHandshakeStatus();
                     
                     switch (result.getStatus()) {
                     case OK:
@@ -188,7 +176,7 @@ public abstract class SecuredPeer implements Closeable {
     protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
     	synchronized (readLock) {
 			int readBytes = 0;
-			if ((readBytes = readSocketBytes(socketChannel)) > 0)
+			if ((readBytes = readEncryptedData(socketChannel)) > 0)
 				return retrieveDecryptedBytes(socketChannel, engine);
 			if(readBytes == -1)
 				closeConnection(socketChannel, engine);
@@ -221,27 +209,54 @@ public abstract class SecuredPeer implements Closeable {
 		} 
     }
     
-    protected void putDataIntoBufferAndFlip(byte[] data) {
-    	putDataIntoBufferAndFlip(data, true);
+    protected byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+        peerNetworkBuffer.flip();
+        while (peerNetworkBuffer.hasRemaining()) {
+        	SSLEngineResult result = decryptBufferedData(engine);
+            if(result == null)
+            	return null;
+            if(checkEngineResult(result)) {
+            	peerApplicationBuffer.flip();
+            	return Arrays.copyOf(peerApplicationBuffer.array(), peerApplicationBuffer.remaining());
+            }
+            else
+            	handleDecryptionResult(socketChannel, engine, result);
+        }
+        return null;
     }
-    
-    protected synchronized void putDataIntoBufferAndFlip(byte[] data, boolean clearBufferBeforeAdding) {
-    	if(clearBufferBeforeAdding)
-			myApplicationBuffer.clear();
-		myApplicationBuffer.put(data);
-		myApplicationBuffer.flip();
-	}
 
-	protected synchronized int writeEncryptedData(SocketChannel clientChannel) throws IOException {
+	protected synchronized int writeEncryptedData(SocketChannel clientChannel) {
 		if(!clientChannel.isOpen())
 			return -1;
-		int writtenBytes = 0;
-		myNetworkBuffer.flip();
-		while (myNetworkBuffer.hasRemaining())
-			writtenBytes += clientChannel.write(myNetworkBuffer);
-		return writtenBytes;
+		try {
+			int writtenBytes = 0;
+			myNetworkBuffer.flip();
+			while (myNetworkBuffer.hasRemaining())
+				writtenBytes += clientChannel.write(myNetworkBuffer);
+			return writtenBytes;
+		}
+		catch(IOException io) {
+			return -1;
+		}
 	}
-
+	
+	protected int readEncryptedData(SocketChannel socketChannel, boolean clearBeforeRead) {
+		if(!socketChannel.isOpen())
+			return -1;
+        try {
+        	if(clearBeforeRead)
+        		peerNetworkBuffer.clear();
+        	return socketChannel.read(peerNetworkBuffer);
+        } 
+        catch(IOException io) {
+        	return -1;
+        }
+	}
+	
+	protected int readEncryptedData(SocketChannel socketChannel) {
+		return readEncryptedData(socketChannel, true);
+    }
+	
 	protected synchronized SSLEngineResult encryptBufferedData(SSLEngine engine) {
 		try {
 			myNetworkBuffer.clear();
@@ -251,26 +266,6 @@ public abstract class SecuredPeer implements Closeable {
 			return null;
 		}
 	}
-
-	protected boolean checkEngineResult(SSLEngineResult result) {
-		if (result == null)
-			return false;
-		if (result.getStatus() == Status.OK)
-			return true;
-		return false;
-	}
-	
-	protected int readSocketBytes(SocketChannel socketChannel) throws IOException {
-		if(!socketChannel.isOpen())
-			return -1;
-        try {
-        	peerNetworkBuffer.clear();
-        	return socketChannel.read(peerNetworkBuffer);
-        } 
-        catch(IOException io) {
-        	return -1;
-        }
-    }
 	
 	protected SSLEngineResult decryptBufferedData(SSLEngine engine) {
 		try {
@@ -281,6 +276,14 @@ public abstract class SecuredPeer implements Closeable {
 			return null;
 		}
     }
+	
+	protected boolean checkEngineResult(SSLEngineResult result) {
+		if (result == null)
+			return false;
+		if (result.getStatus() == Status.OK)
+			return true;
+		return false;
+	}
 	
 	protected boolean handleEncryptionResult(SocketChannel socketChannel, SSLEngine engine, SSLEngineResult result) throws IOException {
     	switch (result.getStatus()) {
@@ -319,39 +322,7 @@ public abstract class SecuredPeer implements Closeable {
     	return false;
     }
 	
-	protected byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) throws IOException {
-        peerNetworkBuffer.flip();
-        while (peerNetworkBuffer.hasRemaining()) {
-        	SSLEngineResult result = decryptBufferedData(engine);
-            if(result == null)
-            	return null;
-            if(checkEngineResult(result)) {
-            	peerApplicationBuffer.flip();
-            	return Arrays.copyOf(peerApplicationBuffer.array(), peerApplicationBuffer.remaining());
-            }
-            else
-            	handleDecryptionResult(socketChannel, engine, result);
-        }
-        return null;
-    }
-	
-    protected synchronized ByteBuffer enlargePacketBuffer(SSLEngine engine, ByteBuffer buffer) {
-        return enlargeBuffer(buffer, engine.getSession().getPacketBufferSize());
-    }
-
-    protected synchronized ByteBuffer enlargeApplicationBuffer(SSLEngine engine, ByteBuffer buffer) {
-        return enlargeBuffer(buffer, engine.getSession().getApplicationBufferSize());
-    }
-
-    protected synchronized ByteBuffer enlargeBuffer(ByteBuffer buffer, int sessionProposedCapacity) {
-        if (sessionProposedCapacity > buffer.capacity())
-            buffer = ByteBuffer.allocate(sessionProposedCapacity);
-        else
-            buffer = ByteBuffer.allocate(buffer.capacity() * 2);
-        return buffer;
-    }
-
-    protected ByteBuffer handleBufferUnderflow(SSLEngine engine, ByteBuffer buffer) {
+	protected ByteBuffer handleBufferUnderflow(SSLEngine engine, ByteBuffer buffer) {
         if (engine.getSession().getPacketBufferSize() < buffer.limit())
             return buffer;
         else {
@@ -370,6 +341,33 @@ public abstract class SecuredPeer implements Closeable {
         catch (Exception e) {
             logger.severe(e.toString());
         }
+    }
+	
+	protected void putDataIntoBufferAndFlip(byte[] data) {
+    	putDataIntoBufferAndFlip(data, true);
+    }
+    
+    protected synchronized void putDataIntoBufferAndFlip(byte[] data, boolean clearBufferBeforeAdding) {
+    	if(clearBufferBeforeAdding)
+			myApplicationBuffer.clear();
+		myApplicationBuffer.put(data);
+		myApplicationBuffer.flip();
+	}
+	
+    protected synchronized ByteBuffer enlargePacketBuffer(SSLEngine engine, ByteBuffer buffer) {
+        return enlargeBuffer(buffer, engine.getSession().getPacketBufferSize());
+    }
+
+    protected synchronized ByteBuffer enlargeApplicationBuffer(SSLEngine engine, ByteBuffer buffer) {
+        return enlargeBuffer(buffer, engine.getSession().getApplicationBufferSize());
+    }
+
+    protected synchronized ByteBuffer enlargeBuffer(ByteBuffer buffer, int sessionProposedCapacity) {
+        if (sessionProposedCapacity > buffer.capacity())
+            buffer = ByteBuffer.allocate(sessionProposedCapacity);
+        else
+            buffer = ByteBuffer.allocate(buffer.capacity() * 2);
+        return buffer;
     }
     
     protected void closeConnection(SocketChannel socketChannel, SSLEngine engine) throws IOException  {
