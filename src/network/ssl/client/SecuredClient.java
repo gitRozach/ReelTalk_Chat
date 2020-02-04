@@ -15,6 +15,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
 import network.ssl.SecuredPeer;
+import network.ssl.client.utils.CUtils;
 
 public class SecuredClient extends SecuredPeer implements SecuredClientByteReceiver , SecuredClientByteSender {
 	protected String remoteAddress;
@@ -131,12 +132,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     
     public void sendBytes(byte[] byteMessage) {
     	orderedBytes.offer(byteMessage);
-    	try {
-			Thread.sleep(1L);
-		} 
-    	catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+    	CUtils.sleep(1L);
     }
     
     @Override
@@ -239,14 +235,9 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 					logger.severe(e.toString());
 					continue;
 				}
-				
-				try {
-					Thread.sleep(loopDelayMillis);
-				} 
-				catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				CUtils.sleep(loopDelayMillis);
 			}
+	        logger.info("ClientReceiver beendet.");
 		}
 		
 		public void stop() {
@@ -299,10 +290,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 		    			continue;
 		    		}
 				}
-				try {
-					Thread.sleep(loopDelayMillis);
-				} 
-				catch (InterruptedException e) {}
+				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ClientSender beendet.");
 		}

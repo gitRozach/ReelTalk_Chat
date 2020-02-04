@@ -19,6 +19,9 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLEngineResult;
 import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.net.ssl.SSLEngineResult.Status;
+
+import network.ssl.client.utils.CUtils;
+
 import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
@@ -41,7 +44,6 @@ public abstract class SecuredPeer implements Closeable {
     /**
      * <p/>
      * A typical handshake will usually contain the following steps:
-     *
      * <ul>
      *   <li>1. wrap:     ClientHello</li>
      *   <li>2. unwrap:   ServerHello/Cert/ServerHelloDone</li>
@@ -52,125 +54,89 @@ public abstract class SecuredPeer implements Closeable {
      *   <li>7. unwrap:   Finished</li>
      * </ul>
      * <p/>
-     * Handshake is also used during the end of the session, in order to properly close the connection between the two peers.
-     * A proper connection close will typically include the one peer sending a CLOSE message to another, and then wait for
-     * the other's CLOSE message to close the transport link. The other peer from his perspective would read a CLOSE message
-     * from his peer and then enter the handshake procedure to send his own CLOSE message as well.
-     *
-     * @param socketChannel - the socket channel that connects the two peers.
-     * @param engine - the engine that will be used for encryption/decryption of the data exchanged with the other peer.
-     * @return True if the connection handshake was successful or false if an error occurred.
-     * @throws IOException - if an error occurs during read/write to the socket channel.
      */
     
     protected boolean doHandshake(SocketChannel socketChannel, SSLEngine engine) throws IOException {
     	synchronized (handshakeLock) {
     		logger.fine("About to do handshake...");
-
-    		SSLEngineResult result = null;
-            HandshakeStatus handshakeStatus = null;
-            myNetworkBuffer.clear();
-            peerNetworkBuffer.clear();
-
-            handshakeStatus = engine.getHandshakeStatus();
+            HandshakeStatus handshakeStatus = engine.getHandshakeStatus();
             while (socketChannel.isOpen() && handshakeStatus != HandshakeStatus.FINISHED && handshakeStatus != HandshakeStatus.NOT_HANDSHAKING) {
                 switch (handshakeStatus) {
                 case NEED_UNWRAP:
-                	try {
-    		            if (readEncryptedData(socketChannel, false) < 0) {
-    		            	logger.info("Handshake read < 0");
-    		            	if(!socketChannel.isOpen()) {
-    		            		engine.closeInbound();
-    		            		engine.closeOutbound();
-    		            		return false;
-    		            	}    		                
-    		                handshakeStatus = engine.getHandshakeStatus();
-    		                break;
-    		            }
-                    	peerNetworkBuffer.flip();
-                        result = decryptBufferedData(engine);
-                        peerNetworkBuffer.compact();
-                        handshakeStatus = result.getHandshakeStatus();
-                    } 
-                    catch (Exception sslException) {
-                    	if(!socketChannel.isOpen())
-                            engine.closeOutbound();
-                    	handshakeStatus = engine.getHandshakeStatus();
-                        break;
-                    }
-                    
-                    switch (result.getStatus()) {
-                    case OK:
-                        break;
-                    case BUFFER_OVERFLOW:
-                        // Will occur when peerAppData's capacity is smaller than the data derived from peerNetData's unwrap.
-                        peerApplicationBuffer = enlargeApplicationBuffer(engine, peerApplicationBuffer);
-                        break;
-                    case BUFFER_UNDERFLOW:
-                        // Will occur either when no data was read from the peer or when the peerNetData buffer was too small to hold all peer's data.
-                        peerNetworkBuffer = handleBufferUnderflow(engine, peerNetworkBuffer);
-                        break;
-                    case CLOSED:
-                    	if(engine.isOutboundDone())
-                    		return false;
-                    	else {
-                    		engine.closeOutbound();
-                    		handshakeStatus = engine.getHandshakeStatus();
-                    		break;
-                    	}
-                    default:
-                        throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
-                    }
-                    break;
-                    
+                	if (readEncryptedData(socketChannel, false) >= 0)
+                        handshakeStatus = handleHandshakeUnwrap(engine, decryptBufferedBytes(engine, true));
+		            else if(handleHandshakeReadError(socketChannel, engine))
+		            	handshakeStatus = engine.getHandshakeStatus();		                
+		            else
+		            	return false;
+                	break;
                 case NEED_WRAP:
-                	//myNetworkBuffer.clear();
-                    result = encryptBufferedData(engine);//engine.wrap(myApplicationBuffer, myNetworkBuffer);
-                    handshakeStatus = result.getHandshakeStatus();
-                    
-                    switch (result.getStatus()) {
-                    case OK:
-                        myNetworkBuffer.flip();
-                        while (myNetworkBuffer.hasRemaining())
-                            socketChannel.write(myNetworkBuffer);
-                        break;
-                    case BUFFER_OVERFLOW:
-                        myNetworkBuffer = enlargePacketBuffer(engine, myNetworkBuffer);
-                        break;
-                    case BUFFER_UNDERFLOW:
-                        throw new SSLException("Buffer underflow occured after a wrap. I don't think we should ever get here.");
-                    case CLOSED:
-                        try {
-                            myNetworkBuffer.flip();
-                            while (myNetworkBuffer.hasRemaining())
-                                socketChannel.write(myNetworkBuffer);
-                            peerNetworkBuffer.clear();
-                        } 
-                        catch (Exception e) {
-                            logger.severe("Failed to send server's CLOSE message due to socket channel's failure.");
-                            handshakeStatus = engine.getHandshakeStatus();
-                        }
-                        break;
-                    default:
-                        throw new IllegalStateException("Invalid SSL status: " + result.getStatus());
-                    }
+                    handshakeStatus = handleHandshakeWrap(socketChannel, engine, encryptBufferedBytes(engine));
                     break;
                 case NEED_TASK:
-                    Runnable task;
-                    while ((task = engine.getDelegatedTask()) != null)
-                        asyncTaskExecutor.execute(task);
-                    handshakeStatus = engine.getHandshakeStatus();
-                    break;
-                case FINISHED:
-                    break;
-                case NOT_HANDSHAKING:
+                    handshakeStatus = executeHandshakeDelegatedTasks(engine);
                     break;
                 default:
-                    throw new IllegalStateException("Invalid SSL status: " + handshakeStatus);
+                    handshakeStatus = engine.getHandshakeStatus();
+                    break;
                 }
             }
             return true;
 		}
+    }
+    
+    private HandshakeStatus handleHandshakeWrap(SocketChannel socketChannel, SSLEngine engine, SSLEngineResult result) throws IOException {
+    	 switch (result.getStatus()) {
+         case OK:
+             writeEncryptedData(socketChannel);
+             break;
+         case BUFFER_OVERFLOW:
+             myNetworkBuffer = enlargePacketBuffer(engine, myNetworkBuffer);
+             break;
+         case CLOSED:
+        	 writeEncryptedData(socketChannel);
+             break;
+         default:
+        	 break;
+    	 }
+    	 return engine.getHandshakeStatus();
+    }
+    
+    private HandshakeStatus handleHandshakeUnwrap(SSLEngine engine, SSLEngineResult result) {
+    	switch (result.getStatus()) {
+        case OK:
+            break;
+        case BUFFER_OVERFLOW:
+            // Will occur when peerAppData's capacity is smaller than the data derived from peerNetData's unwrap.
+            peerApplicationBuffer = enlargeApplicationBuffer(engine, peerApplicationBuffer);
+            break;
+        case BUFFER_UNDERFLOW:
+            // Will occur either when no data was read from the peer or when the peerNetData buffer was too small to hold all peer's data.
+            peerNetworkBuffer = handleBufferUnderflow(engine, peerNetworkBuffer);
+            break;
+        case CLOSED:
+        	engine.closeOutbound();
+        	break;
+        default:
+	        break;
+        }
+    	return engine.getHandshakeStatus();
+    }
+    
+    private boolean handleHandshakeReadError(SocketChannel socketChannel, SSLEngine engine) throws SSLException {
+    	if(!socketChannel.isOpen()) {
+    		engine.closeInbound();
+        	engine.closeOutbound();
+    		return false;
+    	}
+    	return true;
+    }
+    
+    private HandshakeStatus executeHandshakeDelegatedTasks(SSLEngine engine) {
+    	Runnable task;
+        while ((task = engine.getDelegatedTask()) != null)
+            asyncTaskExecutor.execute(task);
+        return engine.getHandshakeStatus();
     }
     
     protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
@@ -180,12 +146,7 @@ public abstract class SecuredPeer implements Closeable {
 				return retrieveDecryptedBytes(socketChannel, engine);
 			if(readBytes == -1)
 				closeConnection(socketChannel, engine);
-			try {
-				Thread.sleep(1L);
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			CUtils.sleep(1L);
 			return null;
 		}
     }
@@ -194,25 +155,19 @@ public abstract class SecuredPeer implements Closeable {
         synchronized (writeLock) {
             putDataIntoBufferAndFlip(message);
             while (myApplicationBuffer.hasRemaining()) {
-            	SSLEngineResult encryptionResult = encryptBufferedData(engine);
+            	SSLEngineResult encryptionResult = encryptBufferedBytes(engine);
     			if(checkEngineResult(encryptionResult))
     				writeEncryptedData(socketChannel);
     			else
     				handleEncryptionResult(socketChannel, engine, encryptionResult);
             }
-            try {
-				Thread.sleep(1L);
-			} 
-            catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+            CUtils.sleep(1L);
 		} 
     }
     
     protected byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) throws IOException {
-        peerNetworkBuffer.flip();
         while (peerNetworkBuffer.hasRemaining()) {
-        	SSLEngineResult result = decryptBufferedData(engine);
+        	SSLEngineResult result = decryptBufferedBytes(engine, true);
             if(result == null)
             	return null;
             if(checkEngineResult(result)) {
@@ -257,8 +212,14 @@ public abstract class SecuredPeer implements Closeable {
 		return readEncryptedData(socketChannel, true);
     }
 	
-	protected synchronized SSLEngineResult encryptBufferedData(SSLEngine engine) {
+	protected SSLEngineResult encryptBufferedBytes(SSLEngine engine) {
+		return encryptBufferedBytes(engine, false);
+	}
+	
+	protected synchronized SSLEngineResult encryptBufferedBytes(SSLEngine engine, boolean flipApplicationBuffer) {
 		try {
+			if(flipApplicationBuffer)
+				myApplicationBuffer.flip();
 			myNetworkBuffer.clear();
 			return engine.wrap(myApplicationBuffer, myNetworkBuffer);
 		} 
@@ -267,10 +228,18 @@ public abstract class SecuredPeer implements Closeable {
 		}
 	}
 	
-	protected SSLEngineResult decryptBufferedData(SSLEngine engine) {
+	protected SSLEngineResult decryptBufferedBytes(SSLEngine engine) {
+		return decryptBufferedBytes(engine, false);
+	}
+	
+	protected SSLEngineResult decryptBufferedBytes(SSLEngine engine, boolean flipNetworkBuffer) {
 		try {
+			if(flipNetworkBuffer)
+				peerNetworkBuffer.flip();
     		peerApplicationBuffer.clear();
-			return engine.unwrap(peerNetworkBuffer, peerApplicationBuffer);
+			SSLEngineResult res = engine.unwrap(peerNetworkBuffer, peerApplicationBuffer);
+			peerNetworkBuffer.compact();
+			return res;
 		} 
     	catch (SSLException e) {
 			return null;
@@ -363,11 +332,12 @@ public abstract class SecuredPeer implements Closeable {
     }
 
     protected synchronized ByteBuffer enlargeBuffer(ByteBuffer buffer, int sessionProposedCapacity) {
+    	ByteBuffer enlargedBuffer = null;
         if (sessionProposedCapacity > buffer.capacity())
-            buffer = ByteBuffer.allocate(sessionProposedCapacity);
+        	enlargedBuffer = ByteBuffer.allocate(sessionProposedCapacity);
         else
-            buffer = ByteBuffer.allocate(buffer.capacity() * 2);
-        return buffer;
+        	enlargedBuffer = ByteBuffer.allocate(buffer.capacity() * 2);
+        return enlargedBuffer;
     }
     
     protected void closeConnection(SocketChannel socketChannel, SSLEngine engine) throws IOException  {
@@ -386,14 +356,9 @@ public abstract class SecuredPeer implements Closeable {
      */
     protected KeyManager[] createKeyManagers(String filepath, String keystorePassword, String keyPassword) throws Exception {
         KeyStore keyStore = KeyStore.getInstance("JKS");
-        InputStream keyStoreIS = new FileInputStream(filepath);
-        try {
+        try(InputStream keyStoreIS = new FileInputStream(filepath)) {
             keyStore.load(keyStoreIS, keystorePassword.toCharArray());
         } 
-        finally {
-            if (keyStoreIS != null)
-                keyStoreIS.close();
-        }
         KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
         kmf.init(keyStore, keyPassword.toCharArray());
         return kmf.getKeyManagers();
@@ -409,14 +374,9 @@ public abstract class SecuredPeer implements Closeable {
      */
     protected TrustManager[] createTrustManagers(String filepath, String keystorePassword) throws Exception {
         KeyStore trustStore = KeyStore.getInstance("JKS");
-        InputStream trustStoreIS = new FileInputStream(filepath);
-        try {
+        try(InputStream trustStoreIS = new FileInputStream(filepath)) {
             trustStore.load(trustStoreIS, keystorePassword.toCharArray());
         } 
-        finally {
-            if (trustStoreIS != null)
-                trustStoreIS.close();
-        }
         TrustManagerFactory trustFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         trustFactory.init(trustStore);
         return trustFactory.getTrustManagers();

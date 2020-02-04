@@ -23,6 +23,7 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
 import network.ssl.SecuredPeer;
+import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
 
 public class SecuredServer extends SecuredPeer implements SecuredServerByteReceiver , SecuredServerByteSender {
@@ -321,11 +322,7 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 				catch (Exception e) {
 					logger.severe(e.toString());
 				}
-				try {
-					Thread.sleep(loopDelayMillis);
-				} 
-				catch (InterruptedException e) {
-				}
+				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageReceiver beendet.");
 		}
@@ -376,10 +373,7 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 				catch (Exception e) {
 					logger.severe(e.toString());
 				}
-				try {
-					Thread.sleep(loopDelayMillis);
-				} 
-				catch (InterruptedException e) {}
+				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageSender beendet.");
 		}

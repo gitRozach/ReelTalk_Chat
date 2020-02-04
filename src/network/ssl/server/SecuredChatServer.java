@@ -44,12 +44,12 @@ public class SecuredChatServer extends SecuredServer {
 	private void initHandlers() {
 		onMessageReceivedHandler = new ObjectEventHandler() {
 			@Override
-			public void handle(ObjectEvent event) {}
+			public void handle(ObjectEvent event) {System.out.println("Server received a message.");}
 		};
 		
 		onMessageSentHandler = new ObjectEventHandler() {
 			@Override
-			public void handle(ObjectEvent event) {}
+			public void handle(ObjectEvent event) {System.out.println("Server sent a message.");}
 		};
 	}
 	

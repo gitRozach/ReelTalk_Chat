@@ -16,6 +16,28 @@ import javafx.util.Duration;
 
 public class CUtils
 {
+	public static void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		}
+		catch(InterruptedException ie) {
+			ie.printStackTrace();
+		}
+	}
+	
+	public static Thread createNewThreadAndStart(Runnable runnable) {
+		return CUtils.createNewThread(runnable, true);
+	}
+	
+	public static Thread createNewThread(Runnable runnable, boolean start) {
+		if(runnable == null)
+			return null;
+		Thread newThread = new Thread(runnable);
+		if(start)
+			newThread.start();
+		return newThread;
+	}
+	
 	public static String trimFront(String value) {
 		if(value == null || value.isEmpty() || !value.startsWith(" "))
 			return value;

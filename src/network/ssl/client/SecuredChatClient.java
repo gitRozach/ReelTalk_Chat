@@ -16,23 +16,23 @@ public class SecuredChatClient extends SecuredClient {
 	private void initHandlers() {
 		onMessageReceivedHandler = new ObjectEventHandler() {
 			@Override
-			public void handle(ObjectEvent event) {System.out.println("Message received");}
+			public void handle(ObjectEvent event) {System.out.println("Client received a message.");}
 		};
 		
 		onMessageSentHandler = new ObjectEventHandler() {
 			@Override
-			public void handle(ObjectEvent event) {System.out.println("Message sent");}
+			public void handle(ObjectEvent event) {System.out.println("Client sent a message.");}
 		};
 	}
 	
 	public void sendMessage(MessagePacket message) {
 		sendBytes(message.serialize());
-		try {
-			Thread.sleep(50L);
-		} 
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(50L);
+//		} 
+//		catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	public MessagePacket readMessage() {
