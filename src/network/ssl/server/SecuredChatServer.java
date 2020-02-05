@@ -7,6 +7,7 @@ import java.nio.channels.SocketChannel;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.id.ClientAccountData;
+import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
 import network.ssl.communication.events.ChannelDataEvent;
@@ -53,58 +54,58 @@ public class SecuredChatServer extends SecuredServer {
 		};
 	}
 	
-	public void sendMessage(SelectionKey receiverKey, MessagePacket message) {
-		sendBytes(receiverKey, message.serialize());
+	public boolean sendMessage(SelectionKey receiverKey, MessagePacket message) {
+		return sendBytes((SocketChannel)receiverKey.channel(), message.serialize());
 	}
 	
-	public void sendMessage(SocketChannel receiverChannel, MessagePacket message) {
-		sendBytes(receiverChannel, message.serialize());
+	public boolean sendMessage(SocketChannel receiverChannel, MessagePacket message) {
+		return sendBytes(receiverChannel, message.serialize());
 	}
 	
 	@Override
-	public void onBytesReceived(SelectionKey clientKey, byte[] requestBytes) {
+	public void onBytesReceived(ByteMessage byteMessage) {
 		try {
-			onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, requestBytes) {
+			onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, byteMessage.getMessageBytes()) {
 				private static final long serialVersionUID = -1115235010001672312L;
 			});
-			MessagePacket messagePacket = MessagePacket.deserialize(requestBytes);
+			MessagePacket messagePacket = MessagePacket.deserialize(byteMessage.getMessageBytes());
 			if(messagePacket != null) {
 				switch(messagePacket.getClass().getSimpleName()) {
 				case "ChannelDataRequest":
-					handleChannelDataRequest(clientKey, (ChannelDataRequest)messagePacket);
+					handleChannelDataRequest(byteMessage.getSocketChannel().keyFor(selector), (ChannelDataRequest)messagePacket);
 					break;
 				case "ChannelJoinRequest":
-					handleChannelJoinRequest(clientKey, (ChannelJoinRequest)messagePacket);
+					handleChannelJoinRequest(byteMessage.getSocketChannel().keyFor(selector), (ChannelJoinRequest)messagePacket);
 					break;
 				case "ChannelLeaveRequest":
-					handleChannelLeaveRequest(clientKey, (ChannelLeaveRequest)messagePacket);
+					handleChannelLeaveRequest(byteMessage.getSocketChannel().keyFor(selector), (ChannelLeaveRequest)messagePacket);
 					break;
 				case "ChannelMessageRequest":
-					handleChannelMessageRequest(clientKey, (ChannelMessageRequest)messagePacket);
+					handleChannelMessageRequest(byteMessage.getSocketChannel().keyFor(selector), (ChannelMessageRequest)messagePacket);
 					break;
 				case "ClientLoginRequest":
-					handleClientLoginRequest(clientKey, (ClientLoginRequest)messagePacket);
+					handleClientLoginRequest(byteMessage.getSocketChannel().keyFor(selector), (ClientLoginRequest)messagePacket);
 					break;
 				case "ClientLogoutRequest":
-					handleClientLogoutRequest(clientKey, (ClientLogoutRequest)messagePacket);
+					handleClientLogoutRequest(byteMessage.getSocketChannel().keyFor(selector), (ClientLogoutRequest)messagePacket);
 					break;
 				case "ClientRegistrationRequest":
-					handleClientRegistrationRequest(clientKey, (ClientRegistrationRequest)messagePacket);
+					handleClientRegistrationRequest(byteMessage.getSocketChannel().keyFor(selector), (ClientRegistrationRequest)messagePacket);
 					break;
 				case "FileDownloadRequest":
-					handleFileDownloadRequest(clientKey, (FileDownloadRequest)messagePacket);
+					handleFileDownloadRequest(byteMessage.getSocketChannel().keyFor(selector), (FileDownloadRequest)messagePacket);
 					break;
 				case "FileUploadRequest":
-					handleFileUploadRequest(clientKey, (FileUploadRequest)messagePacket);
+					handleFileUploadRequest(byteMessage.getSocketChannel().keyFor(selector), (FileUploadRequest)messagePacket);
 					break;
 				case "PingRequest":
-					handlePingRequest(clientKey, (PingRequest)messagePacket);
+					handlePingRequest(byteMessage.getSocketChannel().keyFor(selector), (PingRequest)messagePacket);
 					break;
 				case "PrivateMessageRequest":
-					handlePrivateMessageRequest(clientKey, (PrivateMessageRequest)messagePacket);
+					handlePrivateMessageRequest(byteMessage.getSocketChannel().keyFor(selector), (PrivateMessageRequest)messagePacket);
 					break;
 				case "ProfileDataRequest":
-					handleProfileDataRequest(clientKey, (ProfileDataRequest)messagePacket);
+					handleProfileDataRequest(byteMessage.getSocketChannel().keyFor(selector), (ProfileDataRequest)messagePacket);
 					break;
 				}
 			}
@@ -115,8 +116,8 @@ public class SecuredChatServer extends SecuredServer {
 	}
 	
 	@Override
-	public void onBytesSent(SelectionKey clientKey, byte[] sentBytes) {
-		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {
+	public void onBytesSent(ByteMessage byteMessage) {
+		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, byteMessage.getMessageBytes()) {
 			private static final long serialVersionUID = 8588402449968090480L;
 		});
 	}

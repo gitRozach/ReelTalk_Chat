@@ -1,10 +1,10 @@
 package network.ssl.communication;
 
-import java.nio.channels.SelectionKey;
+import java.nio.channels.SocketChannel;
 
 public class ByteMessage {
-	private SelectionKey clientKey;
-	private byte[] messageBytes;
+	protected SocketChannel socketChannel;
+	protected byte[] messageBytes;
 	
 	public ByteMessage() {
 		this(null, null);
@@ -14,17 +14,17 @@ public class ByteMessage {
 		this(null, bytes);
 	}
 	
-	public ByteMessage(SelectionKey key, byte[] bytes) {
-		clientKey = key;
+	public ByteMessage(SocketChannel channel, byte[] bytes) {
+		socketChannel = channel;
 		messageBytes = bytes;
 	}
 
-	public SelectionKey getClientKey() {
-		return clientKey;
+	public SocketChannel getSocketChannel() {
+		return socketChannel;
 	}
 
-	public void putClientKey(SelectionKey key) {
-		clientKey = key;
+	public void putSocketChannel(SocketChannel channel) {
+		socketChannel = channel;
 	}
 
 	public byte[] getMessageBytes() {
@@ -35,8 +35,8 @@ public class ByteMessage {
 		messageBytes = bytes;
 	}
 	
-	public boolean hasClientKey() {
-		return clientKey != null;
+	public boolean hasSocketChannel() {
+		return socketChannel != null;
 	}
 	
 	public boolean hasMessageBytes() {

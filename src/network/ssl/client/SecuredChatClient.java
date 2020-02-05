@@ -53,8 +53,8 @@ public class SecuredChatClient extends SecuredClient {
     }
 
 	@Override
-	public void onBytesReceived(byte[] reception) {
-		MessagePacket receivedBytes = MessagePacket.deserialize(reception);
+	public void onBytesReceived(ByteMessage byteMessage) {
+		MessagePacket receivedBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
 		if(receivedBytes == null)
 			return;
 		onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, receivedBytes) {
@@ -63,8 +63,8 @@ public class SecuredChatClient extends SecuredClient {
 	}
 	
 	@Override
-	public void onBytesSent(byte[] sent) {
-		MessagePacket sentBytes = MessagePacket.deserialize(sent);
+	public void onBytesSent(ByteMessage byteMessage) {
+		MessagePacket sentBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
 		if(sentBytes == null)
 			return;
 		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {

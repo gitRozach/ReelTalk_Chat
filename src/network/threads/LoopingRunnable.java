@@ -9,8 +9,13 @@ public abstract class LoopingRunnable implements Runnable {
 	}
 	
 	public LoopingRunnable(long delayMillis) {
-		setRunning(true);
+		setRunning(false);
 		loopDelayMillis = delayMillis;
+	}
+	
+	@Override
+	public void run() {
+		setRunning(true);
 	}
 	
 	public void stop() {
