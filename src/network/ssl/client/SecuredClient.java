@@ -17,10 +17,11 @@ import javax.net.ssl.SSLEngine;
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
+import network.threads.LoopingRunnable;
 
 public class SecuredClient extends SecuredPeer implements SecuredClientByteReceiver , SecuredClientByteSender {
 	protected String remoteAddress;
-	protected int port;
+	protected int remotePort;
 	protected volatile boolean connected;
 	protected volatile boolean bufferReceivedBytes;
 	protected volatile boolean bufferSentBytes;
@@ -38,7 +39,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 
     public SecuredClient(String protocol, String hostAddress, int hostPort) throws Exception  {
     	remoteAddress = hostAddress;
-    	port = hostPort;
+    	remotePort = hostPort;
     	connected = false;
     	bufferReceivedBytes = false;
     	bufferSentBytes = false;
@@ -47,7 +48,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     	
         SSLContext context = SSLContext.getInstance(protocol);
         context.init(createKeyManagers("src/resources/client.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
-        engine = context.createSSLEngine(remoteAddress, port);
+        engine = context.createSSLEngine(remoteAddress, remotePort);
         engine.setUseClientMode(true);
 
         myApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
@@ -63,21 +64,27 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
         orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();       
     }
 
-    public boolean connect() throws IOException {
-    	socketChannel = SocketChannel.open();
-    	socketChannel.configureBlocking(false);
-    	socketChannel.connect(new InetSocketAddress(remoteAddress, port));
-    	while (!socketChannel.finishConnect()) 
-    		logger.info("Client connecting...");
-    		
-    	engine.beginHandshake();
-    	if(doHandshake(socketChannel, engine)) {
-    		ioExecutor.submit(sender);
-        	ioExecutor.submit(receiver);
-        	setConnected(true);
-        	return true;
+    public boolean connect() {
+    	try {
+	    	socketChannel = SocketChannel.open();
+	    	socketChannel.configureBlocking(false);
+	    	socketChannel.connect(new InetSocketAddress(remoteAddress, remotePort));
+	    	while (!socketChannel.finishConnect()) 
+	    		logger.info("Client connecting...");
+	    		
+	    	engine.beginHandshake();
+	    	if(doHandshake(socketChannel, engine)) {
+	    		ioExecutor.submit(sender);
+	        	ioExecutor.submit(receiver);
+	        	setConnected(true);
+	        	return true;
+	    	}
+	    	return false;
     	}
-    	return false;
+    	catch(IOException io) {
+    		logger.severe(io.toString());
+    		return false;
+    	}
     }
     
     //TODO
@@ -206,19 +213,11 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     	return socketChannel;
     }
 
-	protected class ClientByteReceiver implements Runnable {
-    	private volatile boolean running;
-    	private long loopDelayMillis;
-    	
-    	public ClientByteReceiver() {
-    		this(100L);
-    	}
-    	
-    	public ClientByteReceiver(long delayMillis) {
-    		setRunning(true);
-    		loopDelayMillis = delayMillis;
-    	}
-    	
+	protected class ClientByteReceiver extends LoopingRunnable {
+		public ClientByteReceiver(long loopingDelay) {
+			super(loopingDelay);
+		}
+		
 		@Override
 		public void run() {
 			logger.info("ClientReceiver startet...");
@@ -240,38 +239,14 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 			}
 	        logger.info("ClientReceiver beendet.");
 		}
-		
-		public void stop() {
-			setRunning(false);
-		}
-		
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
-		}
 	}
 	    
-    protected class ClientByteSender implements Runnable {
-    	private volatile boolean running;
-    	private long loopDelayMillis;
+    protected class ClientByteSender extends LoopingRunnable {
+    	public ClientByteSender(long loopingDelay) {
+			super(loopingDelay);
+		}
     	
-    	public ClientByteSender() {
-    		this(100L);
-    	}
-    	
-    	public ClientByteSender(long delayMillis) {
-    		setRunning(true);
-    		loopDelayMillis = delayMillis;
-    	}
-    	
-		@Override
+    	@Override
 		public void run() {
 			logger.info("ClientSender startet...");
 			
@@ -294,22 +269,6 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ClientSender beendet.");
-		}
-		
-		public void stop() {
-			setRunning(false);
-		}
-		
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
 		}
     }
 }

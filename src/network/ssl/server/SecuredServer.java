@@ -25,6 +25,7 @@ import javax.net.ssl.SSLSession;
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
+import network.threads.LoopingRunnable;
 
 public class SecuredServer extends SecuredPeer implements SecuredServerByteReceiver , SecuredServerByteSender {
 	protected volatile boolean active;
@@ -275,20 +276,11 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		return receptionCounter;
 	}
 
-	protected class ServerByteReceiver implements Runnable {
-
-		private volatile boolean running;
-		private long loopDelayMillis;
-
-		public ServerByteReceiver() {
-			this(25L);
+	protected class ServerByteReceiver extends LoopingRunnable {
+		public ServerByteReceiver(long loopingDelay) {
+			super(loopingDelay);
 		}
-
-		public ServerByteReceiver(long loopingDelayMillis) {
-			this.setRunning(true);
-			this.loopDelayMillis = loopingDelayMillis;
-		}
-
+		
 		@Override
 		public void run() {
 			logger.info("ServerMessageReceiver startet...");
@@ -325,37 +317,13 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 			}
 			logger.info("ServerMessageReceiver beendet.");
 		}
-
-		public void stop() {
-			setRunning(false);
-		}
-
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
-		}
 	}
 
-	protected class ServerByteSender implements Runnable {
-		private volatile boolean running;
-		private long loopDelayMillis;
-
-		public ServerByteSender() {
-			this(25L);
+	protected class ServerByteSender extends LoopingRunnable {
+		public ServerByteSender(long loopingDelay) {
+			super(loopingDelay);
 		}
-
-		public ServerByteSender(long loopingDelayMillis) {
-			this.setRunning(true);
-			this.loopDelayMillis = loopingDelayMillis;
-		}
-
+		
 		@Override
 		public void run() {
 			logger.info("ServerMessageSender startet...");
@@ -377,22 +345,6 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageSender beendet.");
-		}
-
-		public void stop() {
-			setRunning(false);
-		}
-
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
 		}
 	}
 }
