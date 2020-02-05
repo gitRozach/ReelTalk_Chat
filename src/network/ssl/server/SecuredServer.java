@@ -8,12 +8,10 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -25,13 +23,10 @@ import javax.net.ssl.SSLSession;
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
+import network.threads.LoopingRunnable;
 
-public class SecuredServer extends SecuredPeer implements SecuredServerByteReceiver , SecuredServerByteSender {
+public class SecuredServer extends SecuredPeer {
 	protected volatile boolean active;
-	protected volatile boolean bufferReceivedBytes;
-	protected volatile boolean bufferSentBytes;
-    protected volatile boolean receptionHandlerEnabled;
-    protected volatile boolean sendingHandlerEnabled;
 	protected volatile int receptionCounter;
 
 	protected ServerSocketChannel serverSocketChannel;
@@ -39,8 +34,6 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 	protected Selector selector;
 	
 	protected Queue<ByteMessage> orderedBytes;
-	protected List<ByteMessage> receivedBytes;
-	protected List<ByteMessage> sentBytes;
 	
 	protected ServerByteReceiver receiver;
 	protected ServerByteSender sender;
@@ -213,17 +206,17 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 	}
 	
 	public boolean sendBytes(SelectionKey clientKey, byte[] message) {
-		return orderedBytes.offer(new ByteMessage(clientKey, message));
+		return orderedBytes.offer(new ByteMessage((SocketChannel)clientKey.channel(), message));
 	}
 
 	@Override
-	public void onBytesReceived(SelectionKey clientKey, byte[] requestBytes) {
-		logger.info("Bytes received: " + new String(requestBytes, StandardCharsets.UTF_8));
+	public void onBytesReceived(ByteMessage byteMessage) {
+		logger.info("Bytes received: " + new String(byteMessage.getMessageBytes()));
 	}
 	
 	@Override
-	public void onBytesSent(SelectionKey clientKey, byte[] sentBytes) {
-		logger.info("Bytes sent: " + new String(sentBytes, StandardCharsets.UTF_8));
+	public void onBytesSent(ByteMessage byteMessage) {
+		logger.info("Bytes sent: " + new String(byteMessage.getMessageBytes()));
 	}
 	
 	@Override
@@ -235,38 +228,6 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		return active;
 	}
 	
-	public boolean isBufferingReceivedBytes() {
-    	return bufferReceivedBytes;
-    }
-    
-    public void setBufferingReceivedBytes(boolean value) {
-    	bufferReceivedBytes = value;
-    }
-    
-    public boolean isBufferingSentBytes() {
-    	return bufferSentBytes;
-    }
-    
-    public void setBufferingSentBytes(boolean value) {
-    	bufferSentBytes = value;
-    }
-    
-    public boolean isByteReceptionHandlerEnabled() {
-		return receptionHandlerEnabled;
-	}
-	
-	public boolean isByteSendingHandlerEnabled() {
-		return sendingHandlerEnabled;
-	}
-	
-	public void setByteReceptionHandlerEnabled(boolean value) {
-		receptionHandlerEnabled = value;
-	}
-	
-	public void setByteSendingHandlerEnabled(boolean value) {
-		sendingHandlerEnabled = value;
-	}
-
 	public Selector getSelector() {
 		return selector;
 	}
@@ -274,28 +235,23 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 	public int getReceptionCount() {
 		return receptionCounter;
 	}
+	
+	private Set<SelectionKey> selectClientKeys() throws IOException {
+		selector.selectNow();
+		return selector.selectedKeys();
+	}
 
-	protected class ServerByteReceiver implements Runnable {
-
-		private volatile boolean running;
-		private long loopDelayMillis;
-
-		public ServerByteReceiver() {
-			this(25L);
+	protected class ServerByteReceiver extends LoopingRunnable {
+		public ServerByteReceiver(long loopDelay) {
+			super(loopDelay);
 		}
-
-		public ServerByteReceiver(long loopingDelayMillis) {
-			this.setRunning(true);
-			this.loopDelayMillis = loopingDelayMillis;
-		}
-
+		
 		@Override
 		public void run() {
 			logger.info("ServerMessageReceiver startet...");
 			while (isRunning()) {
 				try {
-					selector.select();
-					Set<SelectionKey> selectedKeys = selector.selectedKeys();
+					Set<SelectionKey> selectedKeys = selectClientKeys();
 					Iterator<SelectionKey> keyIt = selectedKeys.iterator();
 					while (!selectedKeys.isEmpty()) {
 						SelectionKey currentKey = keyIt.next();
@@ -307,11 +263,11 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 						else if (currentKey.isReadable()) {
 							byte[] readMessage = null;
 							if ((readMessage = read((SocketChannel) currentKey.channel(), (SSLEngine) currentKey.attachment())) != null) {
-								if(isByteReceptionHandlerEnabled())
-									onBytesReceived(currentKey, readMessage);
-								if(isBufferingReceivedBytes())
-									if (receivedBytes.add(new ByteMessage(currentKey, readMessage)))
-										++receptionCounter;
+//								if(isByteReceptionHandlerEnabled())
+//									onBytesReceived(new ByteMessage((SocketChannel) currentKey.channel(), readMessage));
+//								if(isBufferingReceivedBytes())
+//									if (receivedBytes.add(new ByteMessage((SocketChannel) currentKey.channel(), readMessage)))
+//										++receptionCounter;
 							} 
 							else if (!currentKey.isValid())
 								currentKey.cancel();
@@ -325,37 +281,13 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 			}
 			logger.info("ServerMessageReceiver beendet.");
 		}
-
-		public void stop() {
-			setRunning(false);
-		}
-
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
-		}
 	}
 
-	protected class ServerByteSender implements Runnable {
-		private volatile boolean running;
-		private long loopDelayMillis;
-
-		public ServerByteSender() {
-			this(25L);
+	protected class ServerByteSender extends LoopingRunnable {		
+		public ServerByteSender(long loopDelay) {
+			super(loopDelay);
 		}
-
-		public ServerByteSender(long loopingDelayMillis) {
-			this.setRunning(true);
-			this.loopDelayMillis = loopingDelayMillis;
-		}
-
+		
 		@Override
 		public void run() {
 			logger.info("ServerMessageSender startet...");
@@ -363,9 +295,9 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 				ByteMessage currentMessage = null;
 				try {
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						write((SocketChannel) currentMessage.getClientKey().channel(), (SSLEngine) currentMessage.getClientKey().attachment(), currentMessage.getMessageBytes());
+						write(currentMessage.getSocketChannel(), (SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), currentMessage.getMessageBytes());
 						if(isByteSendingHandlerEnabled())
-							onBytesSent(currentMessage.getClientKey(), currentMessage.getMessageBytes());
+							onBytesSent(currentMessage);
 						if(isBufferingSentBytes())
 							sentBytes.add(currentMessage);
 						pollOrderedBytes();
@@ -377,22 +309,6 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 				CUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageSender beendet.");
-		}
-
-		public void stop() {
-			setRunning(false);
-		}
-
-		public long getLoopDelayMillis() {
-			return loopDelayMillis;
-		}
-
-		public boolean isRunning() {
-			return running;
-		}
-
-		private void setRunning(boolean value) {
-			running = value;
 		}
 	}
 }

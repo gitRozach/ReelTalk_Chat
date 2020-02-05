@@ -7,7 +7,10 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.security.KeyStore;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -21,12 +24,13 @@ import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.net.ssl.SSLEngineResult.Status;
 
 import network.ssl.client.utils.CUtils;
+import network.ssl.communication.ByteMessage;
 
 import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-public abstract class SecuredPeer implements Closeable {	
+public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, ByteMessageSender {	
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
 
 	protected ByteBuffer myApplicationBuffer;
@@ -34,12 +38,29 @@ public abstract class SecuredPeer implements Closeable {
     protected ByteBuffer peerApplicationBuffer;
     protected ByteBuffer peerNetworkBuffer;
     
+    protected volatile boolean bufferReceivedBytes;
+	protected volatile boolean bufferSentBytes;
+    protected volatile boolean receptionHandlerEnabled;
+    protected volatile boolean sendingHandlerEnabled;
+    
+    protected List<ByteMessage> receivedBytes;
+	protected List<ByteMessage> sentBytes;
+    
     private final Object handshakeLock = new Object();
     private final Object readLock = new Object();
     private final Object writeLock = new Object();
     
     protected ExecutorService asyncTaskExecutor = Executors.newSingleThreadExecutor();
     protected ExecutorService ioExecutor = Executors.newCachedThreadPool();
+    
+    public SecuredPeer() {
+    	bufferReceivedBytes = true;
+    	bufferSentBytes = false;
+    	receptionHandlerEnabled = true;
+    	sendingHandlerEnabled = true;
+    	receivedBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
+        sentBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
+    }
     
     /**
      * <p/>
@@ -150,8 +171,16 @@ public abstract class SecuredPeer implements Closeable {
     protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
     	synchronized (readLock) {
 			int readBytes = 0;
-			if ((readBytes = readEncryptedBytes(socketChannel)) > 0)
-				return retrieveDecryptedBytes(socketChannel, engine);
+			byte[] decryptedBytes = null;
+			
+			if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
+				if((decryptedBytes = retrieveDecryptedBytes(socketChannel, engine)) != null){
+					if(isByteReceptionHandlerEnabled())
+						onBytesReceived(new ByteMessage(socketChannel, decryptedBytes));
+					if(isBufferingReceivedBytes())
+						receivedBytes.add(new ByteMessage(socketChannel, decryptedBytes));
+				}
+			}
 			if(readBytes == -1)
 				closeConnection(socketChannel, engine);
 			CUtils.sleep(1L);
@@ -388,4 +417,35 @@ public abstract class SecuredPeer implements Closeable {
         return trustFactory.getTrustManagers();
     }
 
+    public boolean isBufferingReceivedBytes() {
+    	return bufferReceivedBytes;
+    }
+    
+    public void setBufferingReceivedBytes(boolean value) {
+    	bufferReceivedBytes = value;
+    }
+    
+    public boolean isBufferingSentBytes() {
+    	return bufferSentBytes;
+    }
+    
+    public void setBufferingSentBytes(boolean value) {
+    	bufferSentBytes = value;
+    }
+    
+    public boolean isByteReceptionHandlerEnabled() {
+		return receptionHandlerEnabled;
+	}
+	
+	public boolean isByteSendingHandlerEnabled() {
+		return sendingHandlerEnabled;
+	}
+	
+	public void setByteReceptionHandlerEnabled(boolean value) {
+		receptionHandlerEnabled = value;
+	}
+	
+	public void setByteSendingHandlerEnabled(boolean value) {
+		sendingHandlerEnabled = value;
+	}
 }
