@@ -19,14 +19,12 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
-import network.ssl.ByteMessageReceiver;
-import network.ssl.ByteMessageSender;
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
 import network.threads.LoopingRunnable;
 
-public class SecuredServer extends SecuredPeer implements ByteMessageReceiver , ByteMessageSender {
+public class SecuredServer extends SecuredPeer {
 	protected volatile boolean active;
 	protected volatile int receptionCounter;
 	protected volatile boolean connected;

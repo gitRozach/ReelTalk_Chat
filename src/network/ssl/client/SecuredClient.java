@@ -11,14 +11,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
-import network.ssl.ByteMessageReceiver;
-import network.ssl.ByteMessageSender;
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
 import network.threads.LoopingRunnable;
 
-public class SecuredClient extends SecuredPeer implements ByteMessageReceiver , ByteMessageSender {
+public class SecuredClient extends SecuredPeer {
 	protected String remoteAddress;
 	protected int remotePort;
 	protected volatile boolean connected;

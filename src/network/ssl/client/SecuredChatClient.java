@@ -28,12 +28,6 @@ public class SecuredChatClient extends SecuredClient {
 	
 	public void sendMessage(MessagePacket message) {
 		sendBytes(message.serialize());
-//		try {
-//			Thread.sleep(50L);
-//		} 
-//		catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
 	}
 	
 	public MessagePacket readMessage() {
