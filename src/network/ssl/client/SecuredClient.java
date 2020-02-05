@@ -94,7 +94,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     }
     
     @Override
-    protected boolean closeConnection(SocketChannel channel, SSLEngine engine) throws IOException {
+    protected boolean closeConnection(SocketChannel channel, SSLEngine engine) {
     	boolean closeResult = super.closeConnection(channel, engine);
     	setConnected(false);
     	return closeResult;
