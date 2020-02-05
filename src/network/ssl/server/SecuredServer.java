@@ -54,12 +54,9 @@ public class SecuredServer extends SecuredPeer {
 		serverSocketChannel.configureBlocking(false);
 		serverSocketChannel.bind(new InetSocketAddress(hostAddress, hostPort));
 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-
 		orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
-    
 		receiver = new ServerByteReceiver(1L);
 		sender = new ServerByteSender(1L);
-
 		active = true;
 		receptionCounter = 0;
 	}

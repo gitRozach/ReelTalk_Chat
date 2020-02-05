@@ -38,16 +38,14 @@ public class SecuredClient extends SecuredPeer {
         context.init(createKeyManagers("src/resources/client.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
         engine = context.createSSLEngine(remoteAddress, remotePort);
         engine.setUseClientMode(true);
-
+        
         myApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
         myNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
         peerApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
         peerNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
-        
+        orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
         sender = new ClientByteSender(1L);
         receiver = new ClientByteReceiver(1L);
-        
-        orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();       
     }
 
     public boolean connect() {

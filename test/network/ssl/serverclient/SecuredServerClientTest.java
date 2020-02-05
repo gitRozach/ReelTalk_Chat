@@ -14,7 +14,6 @@ import network.ssl.client.SecuredClient;
 import network.ssl.server.SecuredServer;
 
 class SecuredServerClientTest {
-
 	private static final String TEST_PROTOCOL = "TLSv1.2";
 	private static final String TEST_HOST_ADDRESS = "localhost";
 	private static final int TEST_HOST_PORT = 2197;

@@ -56,10 +56,8 @@ public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, Byt
     	bufferingSentBytes = false;
     	receptionHandlerEnabled = true;
     	sendingHandlerEnabled = true;
-    	
     	receivedBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
         sentBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
-    	
     	asyncTaskExecutor = Executors.newSingleThreadExecutor();
     	ioExecutor = Executors.newCachedThreadPool();
     }
