@@ -28,6 +28,12 @@ public class SecuredChatClient extends SecuredClient {
 	
 	public void sendMessage(MessagePacket message) {
 		sendBytes(message.serialize());
+//		try {
+//			Thread.sleep(50L);
+//		} 
+//		catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	public MessagePacket readMessage() {
@@ -47,21 +53,21 @@ public class SecuredChatClient extends SecuredClient {
     }
 
 	@Override
-	public void onBytesReceived(ByteMessage reception) {
-		MessagePacket receivedBytes = MessagePacket.deserialize(reception.getMessageBytes());
+	public void onBytesReceived(byte[] reception) {
+		MessagePacket receivedBytes = MessagePacket.deserialize(reception);
 		if(receivedBytes == null)
 			return;
-		onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, reception.getMessageBytes()) {
+		onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, receivedBytes) {
 			private static final long serialVersionUID = 6882651385899629774L;
 		});
 	}
 	
 	@Override
-	public void onBytesSent(ByteMessage sent) {
-		MessagePacket sentBytes = MessagePacket.deserialize(sent.getMessageBytes());
+	public void onBytesSent(byte[] sent) {
+		MessagePacket sentBytes = MessagePacket.deserialize(sent);
 		if(sentBytes == null)
 			return;
-		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sent.getMessageBytes()) {
+		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {
 			private static final long serialVersionUID = 6882651385899629774L;
 		});
 	}
