@@ -16,6 +16,7 @@ import javax.net.ssl.SSLEngine;
 
 import network.ssl.SecuredPeer;
 import network.ssl.client.utils.CUtils;
+import network.ssl.communication.ByteMessage;
 
 public class SecuredClient extends SecuredPeer implements SecuredClientByteReceiver , SecuredClientByteSender {
 	protected String remoteAddress;
@@ -28,12 +29,12 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 	protected SSLEngine engine;
     protected SocketChannel socketChannel;
     
-    protected List<byte[]> receivedBytes;
-    protected List<byte[]> sentBytes;
-    protected Queue<byte[]> orderedBytes;
+    protected List<ByteMessage> receivedBytes;
+    protected List<ByteMessage> sentBytes;
+    protected Queue<ByteMessage> orderedBytes;
     
-    protected ClientSender sender;
-    protected ClientReceiver receiver;
+    protected ClientByteSender sender;
+    protected ClientByteReceiver receiver;
 
     public SecuredClient(String protocol, String hostAddress, int hostPort) throws Exception  {
     	remoteAddress = hostAddress;
@@ -54,12 +55,12 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
         peerApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
         peerNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
         
-        sender = new ClientSender(1L);
-        receiver = new ClientReceiver(1L);
+        sender = new ClientByteSender(1L);
+        receiver = new ClientByteReceiver(1L);
         
-        receivedBytes = Collections.synchronizedList(new ArrayList<byte[]>());
-        sentBytes = Collections.synchronizedList(new ArrayList<byte[]>());
-        orderedBytes = new ConcurrentLinkedQueue<byte[]>();       
+        receivedBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
+        sentBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
+        orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();       
     }
 
     public boolean connect() throws IOException {
@@ -84,8 +85,8 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     	return false;
     }
 
-    protected void write(byte[] message) throws IOException {
-        write(socketChannel, engine, message);
+    protected int write(byte[] message) throws IOException {
+        return write(socketChannel, engine, message);
     }
 
     protected byte[] read() throws Exception {
@@ -93,12 +94,13 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     }
     
     @Override
-    protected void closeConnection(SocketChannel channel, SSLEngine engine) throws IOException {
-    	super.closeConnection(channel, engine);
+    protected boolean closeConnection(SocketChannel channel, SSLEngine engine) throws IOException {
+    	boolean closeResult = super.closeConnection(channel, engine);
     	setConnected(false);
+    	return closeResult;
     }
     
-    public void enableSender(boolean value) {
+    public void enableByteSender(boolean value) {
 		if (sender.isRunning() == value)
 			return;
 		sender.setRunning(value);
@@ -106,7 +108,7 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 			ioExecutor.submit(sender);
 	}
 
-	public void enableReceiver(boolean value) {
+	public void enableByteReceiver(boolean value) {
 		if (receiver.isRunning() == value)
 			return;
 		receiver.setRunning(value);
@@ -114,24 +116,24 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 			ioExecutor.submit(receiver);
 	}
 	
-	public boolean hasReadableBytes() {
-		return peekBytes() != null;
+	public boolean hasReceivableBytes() {
+		return peekReceptionBytes() != null;
 	}
     
-    public byte[] peekBytes() {
+    public ByteMessage peekReceptionBytes() {
     	if(receivedBytes.isEmpty())
     		return null;
     	return receivedBytes.get(0);
     }
     
-    public byte[] readBytes() {
+    public ByteMessage pollReceptionBytes() {
     	if(receivedBytes.isEmpty())
     		return null;
     	return receivedBytes.remove(0);
     }
     
-    public void sendBytes(byte[] byteMessage) {
-    	orderedBytes.offer(byteMessage);
+    public void sendBytes(byte[] messageBytes) {
+    	orderedBytes.offer(new ByteMessage(messageBytes));
     	CUtils.sleep(1L);
     }
     
@@ -168,19 +170,19 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     	return connected;
     }
     
-    public boolean bufferReceivedBytes() {
+    public boolean isBufferingReceivedBytes() {
     	return bufferReceivedBytes;
     }
     
-    public void setBufferReceivedBytes(boolean value) {
+    public void setBufferingReceivedBytes(boolean value) {
     	bufferReceivedBytes = value;
     }
     
-    public boolean bufferSentBytes() {
+    public boolean isBufferingSentBytes() {
     	return bufferSentBytes;
     }
     
-    public void setBufferSentBytes(boolean value) {
+    public void setBufferingSentBytes(boolean value) {
     	bufferSentBytes = value;
     }
     
@@ -204,15 +206,15 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
     	return socketChannel;
     }
 
-	protected class ClientReceiver implements Runnable {
+	protected class ClientByteReceiver implements Runnable {
     	private volatile boolean running;
     	private long loopDelayMillis;
     	
-    	public ClientReceiver() {
+    	public ClientByteReceiver() {
     		this(100L);
     	}
     	
-    	public ClientReceiver(long delayMillis) {
+    	public ClientByteReceiver(long delayMillis) {
     		setRunning(true);
     		loopDelayMillis = delayMillis;
     	}
@@ -220,15 +222,14 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 		@Override
 		public void run() {
 			logger.info("ClientReceiver startet...");
-	    	
 	        while (isRunning()) {
 				try {
 					byte[] receptionBuffer = read();
 					if(receptionBuffer != null) {
-						if(bufferReceivedBytes())
-							receivedBytes.add(receptionBuffer);
 						if(isByteReceptionHandlerEnabled())
 							onBytesReceived(receptionBuffer);
+						if(isBufferingReceivedBytes())
+							receivedBytes.add(new ByteMessage(receptionBuffer));
 					}
 				}
 				catch(Exception e) {
@@ -257,15 +258,15 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 		}
 	}
 	    
-    protected class ClientSender implements Runnable {
+    protected class ClientByteSender implements Runnable {
     	private volatile boolean running;
     	private long loopDelayMillis;
     	
-    	public ClientSender() {
+    	public ClientByteSender() {
     		this(100L);
     	}
     	
-    	public ClientSender(long delayMillis) {
+    	public ClientByteSender(long delayMillis) {
     		setRunning(true);
     		loopDelayMillis = delayMillis;
     	}
@@ -275,14 +276,14 @@ public class SecuredClient extends SecuredPeer implements SecuredClientByteRecei
 			logger.info("ClientSender startet...");
 			
 			while(isRunning()) {
-				byte[] sendingBuffer = null;
-				if((sendingBuffer = orderedBytes.peek()) != null) {
+				ByteMessage sendingMessage = null;
+				if((sendingMessage = orderedBytes.peek()) != null) {
 					try {
-						write(sendingBuffer);
+						write(sendingMessage.getMessageBytes());
 						if(isByteSendingHandlerEnabled())
-							onBytesSent(sendingBuffer);
-						if(bufferSentBytes())
-							sentBytes.add(sendingBuffer);
+							onBytesSent(sendingMessage.getMessageBytes());
+						if(isBufferingSentBytes())
+							sentBytes.add(sendingMessage);
 						orderedBytes.poll();
 		    		}
 		    		catch(Exception e) {

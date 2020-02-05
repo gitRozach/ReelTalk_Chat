@@ -31,14 +31,14 @@ class SecuredServerClientTest {
 	void sendBytes_serverSendsStringAndClientReceivesSameString() throws Exception{
 		String message = "Hallo Client!";
 		try(SecuredClient c1  = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);){
-			c1.setBufferReceivedBytes(true);
+			c1.setBufferingReceivedBytes(true);
 			c1.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> c1.isConnected());
 			
 			testHost.sendBytes(testHost.getLocalSocketChannel(c1.getChannel()), message.getBytes(StandardCharsets.UTF_8));
 				
-			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> c1.hasReadableBytes());
-			assertTrue(message.equals(new String(c1.readBytes(), StandardCharsets.UTF_8)));
+			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> c1.hasReceivableBytes());
+			assertTrue(message.equals(new String(c1.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8)));
 		}
 	}
 	
@@ -74,7 +74,7 @@ class SecuredServerClientTest {
 	
 	@Test
 	void sendBytes_clientSendsMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.setBufferReceivedBytes(true);
+		testHost.setBufferingReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
@@ -83,16 +83,16 @@ class SecuredServerClientTest {
 			for(int a = 0; a < 200; ++a)
 				client.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 			for(int b = 0; b < 200; ++b) {
-				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceptionMessage());
+				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceivableBytes());
 				System.out.println("Received No. " + (b+1));
-				assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
+				assertEquals(new String(testHost.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 			}
 		}
 	}
 	
 	@Test
 	void sendBytes_twoClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.setBufferReceivedBytes(true);
+		testHost.setBufferingReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
@@ -105,16 +105,16 @@ class SecuredServerClientTest {
 				client2.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 			}
 			for(int b = 0; b < 100; ++b) {
-				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceptionMessage());
+				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceivableBytes());
 				System.out.println("Received No. " + (b+1));
-				assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
+				assertEquals(new String(testHost.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 			}
 		}
 	}
 	
 	@Test
 	void sendBytes_tenClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.setBufferReceivedBytes(true);
+		testHost.setBufferingReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
@@ -151,16 +151,16 @@ class SecuredServerClientTest {
 				client10.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 			}
 			for(int b = 0; b < 100; ++b) {
-				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceptionMessage());
+				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceivableBytes());
 				System.out.println("Received No. " + (b+1));
-				assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
+				assertEquals(new String(testHost.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 			}
 		}
 	}
 	
 	@Test
 	void sendBytes_thirtyClientsSendMultipleStringsAndServerReceivesAllStrings() throws Exception {
-		testHost.setBufferReceivedBytes(true);
+		testHost.setBufferingReceivedBytes(true);
 		String testMessage = new String("HeLlo_SerVER! This iS a tEsT.");
 		try(SecuredClient client1 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredClient client2 = new SecuredClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
@@ -257,9 +257,9 @@ class SecuredServerClientTest {
 				client30.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 			}
 			for(int b = 0; b < 300; ++b) {
-				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceptionMessage());
+				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceivableBytes());
 				System.out.println("Received No. " + (b+1));
-				assertEquals(new String(testHost.pollReceptionMessage().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
+				assertEquals(new String(testHost.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
 			}
 		}
 	}

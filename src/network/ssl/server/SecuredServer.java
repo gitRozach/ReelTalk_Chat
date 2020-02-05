@@ -42,8 +42,8 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 	protected List<ByteMessage> receivedBytes;
 	protected List<ByteMessage> sentBytes;
 	
-	protected ServerMessageReceiver receiver;
-	protected ServerMessageSender sender;
+	protected ServerByteReceiver receiver;
+	protected ServerByteSender sender;
 
 	public SecuredServer(String protocol, String hostAddress, int hostPort) throws Exception {
 		context = SSLContext.getInstance(protocol);
@@ -65,10 +65,9 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
 		receivedBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
         sentBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
-       
-
-		receiver = new ServerMessageReceiver(1L);
-		sender = new ServerMessageSender(1L);
+    
+		receiver = new ServerByteReceiver(1L);
+		sender = new ServerByteSender(1L);
 
 		active = true;
 		bufferReceivedBytes = false;
@@ -97,7 +96,7 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		logger.info("Der Server wurde heruntergefahren.");
 	}
 
-	public void enableMessageSender(boolean value) {
+	public void enableByteSender(boolean value) {
 		if (sender.isRunning() == value)
 			return;
 		sender.setRunning(value);
@@ -105,7 +104,7 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 			ioExecutor.submit(sender);
 	}
 
-	public void enableMessageReceiver(boolean value) {
+	public void enableByteReceiver(boolean value) {
 		if (receiver.isRunning() == value)
 			return;
 		receiver.setRunning(value);
@@ -128,7 +127,8 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		if (doHandshake(socketChannel, engine)) {
 			socketChannel.register(selector, SelectionKey.OP_READ, engine);
 			logger.info("Ein neuer Client hat sich verbunden.");
-		} else {
+		} 
+		else {
 			closeConnection(socketChannel, engine);
 			logger.info("Die Verbindung zum Client wurde aufgrund eines Handshake-Fehlers geschlossen.");
 		}
@@ -166,31 +166,31 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		return localClientChannel.keyFor(selector);
 	}
 
-	public boolean hasReceptionMessage() {
-		return peekReceptionMessage() != null;
+	public boolean hasReceivableBytes() {
+		return peekReceptionBytes() != null;
 	}
 
-	public ByteMessage peekReceptionMessage() {
+	public ByteMessage peekReceptionBytes() {
 		if(receivedBytes.isEmpty())
 			return null;
 		return receivedBytes.get(0);
 	}
 
-	public ByteMessage pollReceptionMessage() {
+	public ByteMessage pollReceptionBytes() {
 		if(receivedBytes.isEmpty())
 			return null;
 		return receivedBytes.remove(0);
 	}
 	
-	public boolean hasOrderedMessage() {
-		return peekOrderedMessage() != null;
+	public boolean hasOrderedBytes() {
+		return peekOrderedBytes() != null;
 	}
 
-	public ByteMessage peekOrderedMessage() {
+	public ByteMessage peekOrderedBytes() {
 		return orderedBytes.peek();
 	}
 
-	public ByteMessage pollOrderedMessage() {
+	public ByteMessage pollOrderedBytes() {
 		return orderedBytes.poll();
 	}
 
@@ -235,19 +235,19 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		return active;
 	}
 	
-	public boolean bufferReceivedBytes() {
+	public boolean isBufferingReceivedBytes() {
     	return bufferReceivedBytes;
     }
     
-    public void setBufferReceivedBytes(boolean value) {
+    public void setBufferingReceivedBytes(boolean value) {
     	bufferReceivedBytes = value;
     }
     
-    public boolean bufferSentBytes() {
+    public boolean isBufferingSentBytes() {
     	return bufferSentBytes;
     }
     
-    public void setBufferSentBytes(boolean value) {
+    public void setBufferingSentBytes(boolean value) {
     	bufferSentBytes = value;
     }
     
@@ -275,16 +275,16 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		return receptionCounter;
 	}
 
-	protected class ServerMessageReceiver implements Runnable {
+	protected class ServerByteReceiver implements Runnable {
 
 		private volatile boolean running;
 		private long loopDelayMillis;
 
-		public ServerMessageReceiver() {
+		public ServerByteReceiver() {
 			this(25L);
 		}
 
-		public ServerMessageReceiver(long loopingDelayMillis) {
+		public ServerByteReceiver(long loopingDelayMillis) {
 			this.setRunning(true);
 			this.loopDelayMillis = loopingDelayMillis;
 		}
@@ -307,12 +307,11 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 						else if (currentKey.isReadable()) {
 							byte[] readMessage = null;
 							if ((readMessage = read((SocketChannel) currentKey.channel(), (SSLEngine) currentKey.attachment())) != null) {
-								if(bufferReceivedBytes()) {
+								if(isByteReceptionHandlerEnabled())
+									onBytesReceived(currentKey, readMessage);
+								if(isBufferingReceivedBytes())
 									if (receivedBytes.add(new ByteMessage(currentKey, readMessage)))
 										++receptionCounter;
-								}
-								if(isByteReceptionHandlerEnabled())
-									onBytesReceived(currentKey, readMessage);		
 							} 
 							else if (!currentKey.isValid())
 								currentKey.cancel();
@@ -344,15 +343,15 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 		}
 	}
 
-	protected class ServerMessageSender implements Runnable {
+	protected class ServerByteSender implements Runnable {
 		private volatile boolean running;
 		private long loopDelayMillis;
 
-		public ServerMessageSender() {
+		public ServerByteSender() {
 			this(25L);
 		}
 
-		public ServerMessageSender(long loopingDelayMillis) {
+		public ServerByteSender(long loopingDelayMillis) {
 			this.setRunning(true);
 			this.loopDelayMillis = loopingDelayMillis;
 		}
@@ -363,11 +362,13 @@ public class SecuredServer extends SecuredPeer implements SecuredServerByteRecei
 			while (isRunning()) {
 				ByteMessage currentMessage = null;
 				try {
-					if ((currentMessage = peekOrderedMessage()) != null) {
+					if ((currentMessage = peekOrderedBytes()) != null) {
 						write((SocketChannel) currentMessage.getClientKey().channel(), (SSLEngine) currentMessage.getClientKey().attachment(), currentMessage.getMessageBytes());
 						if(isByteSendingHandlerEnabled())
 							onBytesSent(currentMessage.getClientKey(), currentMessage.getMessageBytes());
-						pollOrderedMessage();
+						if(isBufferingSentBytes())
+							sentBytes.add(currentMessage);
+						pollOrderedBytes();
 					}
 				} 
 				catch (Exception e) {

@@ -27,7 +27,7 @@ class SecuredMessageServerClientTest {
 	@BeforeAll
 	public static void setUp() throws Exception {
 		server = new SecuredChatServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-		server.setBufferReceivedBytes(true);
+		server.setBufferingReceivedBytes(true);
 		server.start();
 		Thread.sleep(50L);
 	}
@@ -40,15 +40,15 @@ class SecuredMessageServerClientTest {
 			SecuredChatClient client4 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			SecuredChatClient client5 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
-			client1.setBufferReceivedBytes(true);
+			client1.setBufferingReceivedBytes(true);
 			client2.connect();
-			client2.setBufferReceivedBytes(true);
+			client2.setBufferingReceivedBytes(true);
 			client3.connect();
-			client3.setBufferReceivedBytes(true);
+			client3.setBufferingReceivedBytes(true);
 			client4.connect();
-			client4.setBufferReceivedBytes(true);
+			client4.setBufferingReceivedBytes(true);
 			client5.connect();
-			client5.setBufferReceivedBytes(true);
+			client5.setBufferingReceivedBytes(true);
 			
 			for(int i = 0; i < 100; ++i) {
 				server.sendMessage(server.getLocalSocketChannel(client1.getChannel()), new ClientLoggedInEvent());
@@ -58,23 +58,23 @@ class SecuredMessageServerClientTest {
 				server.sendMessage(server.getLocalSocketChannel(client5.getChannel()), new ClientLoggedInEvent());
 			}
 			for(int a = 0; a < 100; ++a) {
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReadableBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());
 				MessagePacket reception1 = client1.readMessage();
 				assertTrue(reception1 instanceof ClientLoggedInEvent);
 				
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client2.hasReadableBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client2.hasReceivableBytes());
 				MessagePacket reception2 = client2.readMessage();
 				assertTrue(reception2 instanceof ClientLoggedInEvent);
 				
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client3.hasReadableBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client3.hasReceivableBytes());
 				MessagePacket reception3 = client3.readMessage();
 				assertTrue(reception3 instanceof ClientLoggedInEvent);
 				
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client4.hasReadableBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client4.hasReceivableBytes());
 				MessagePacket reception4 = client4.readMessage();
 				assertTrue(reception4 instanceof ClientLoggedInEvent);
 				
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client5.hasReadableBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client5.hasReceivableBytes());
 				MessagePacket reception5 = client5.readMessage();
 				assertTrue(reception5 instanceof ClientLoggedInEvent);
 			}
@@ -86,12 +86,12 @@ class SecuredMessageServerClientTest {
 		ClientLoggedInEvent messageToReceive = new ClientLoggedInEvent();
 		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
-			client.setBufferReceivedBytes(true);
+			client.setBufferingReceivedBytes(true);
 			
 			Thread.sleep(250L);
 			
 			server.sendMessage(server.getLocalSocketChannel(client.getChannel()), messageToReceive);
-			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReadableBytes());
+			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReceivableBytes());
 			MessagePacket reception = client.readMessage();
 			assertTrue(reception.getClass().equals(messageToReceive.getClass()));
 		}
@@ -126,8 +126,8 @@ class SecuredMessageServerClientTest {
 		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
 			client.sendMessage(req);
-			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceptionMessage());
-			ByteMessage byteMessage = server.pollReceptionMessage();
+			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
+			ByteMessage byteMessage = server.pollReceptionBytes();
 			MessagePacket message = MessagePacket.deserialize(byteMessage.getMessageBytes());
 			assertTrue(message instanceof ClientLoginRequest);
 		}
@@ -140,8 +140,8 @@ class SecuredMessageServerClientTest {
 			client.connect();
 			client.sendMessage(req);
 			
-			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceptionMessage());
-			ByteMessage byteMessage = server.pollReceptionMessage();
+			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
+			ByteMessage byteMessage = server.pollReceptionBytes();
 			MessagePacket message = MessagePacket.deserialize(byteMessage.getMessageBytes());
 			assertTrue(message instanceof ClientLoginRequest);
 		}
@@ -183,8 +183,8 @@ class SecuredMessageServerClientTest {
 				client10.sendMessage(requestMessage);
 			}
 			for(int y = 0; y < 100; ++y) {
-				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> server.hasReceptionMessage());
-				MessagePacket currentMes = MessagePacket.deserialize(server.pollReceptionMessage().getMessageBytes());
+				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> server.hasReceivableBytes());
+				MessagePacket currentMes = MessagePacket.deserialize(server.pollReceptionBytes().getMessageBytes());
 				PrivateMessageRequest receptionMessage = (PrivateMessageRequest)currentMes;
 				assertTrue(receptionMessage.getReceiverId() == (requestMessage.getReceiverId()));
 				assertTrue(receptionMessage.getUsername().equals(requestMessage.getUsername()));

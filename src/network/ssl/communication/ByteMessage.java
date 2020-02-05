@@ -10,6 +10,10 @@ public class ByteMessage {
 		this(null, null);
 	}
 	
+	public ByteMessage(byte[] bytes) {
+		this(null, bytes);
+	}
+	
 	public ByteMessage(SelectionKey key, byte[] bytes) {
 		clientKey = key;
 		messageBytes = bytes;
@@ -31,5 +35,11 @@ public class ByteMessage {
 		messageBytes = bytes;
 	}
 	
+	public boolean hasClientKey() {
+		return clientKey != null;
+	}
 	
+	public boolean hasMessageBytes() {
+		return messageBytes != null;
+	}
 }

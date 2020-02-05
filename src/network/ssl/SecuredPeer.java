@@ -63,18 +63,15 @@ public abstract class SecuredPeer implements Closeable {
             while (socketChannel.isOpen() && handshakeStatus != HandshakeStatus.FINISHED && handshakeStatus != HandshakeStatus.NOT_HANDSHAKING) {
                 switch (handshakeStatus) {
                 case NEED_UNWRAP:
-                	if (readEncryptedData(socketChannel, false) >= 0)
-                        handshakeStatus = handleHandshakeUnwrap(engine, decryptBufferedBytes(engine, true));
-		            else if(handleHandshakeReadError(socketChannel, engine))
-		            	handshakeStatus = engine.getHandshakeStatus();		                
-		            else
+                	if((handshakeStatus = doHandshakeUnwrap(socketChannel, engine)) == null)               
 		            	return false;
                 	break;
                 case NEED_WRAP:
-                    handshakeStatus = handleHandshakeWrap(socketChannel, engine, encryptBufferedBytes(engine));
+                    if((handshakeStatus = doHandshakeWrap(socketChannel, engine)) == null)
+                    	return false;
                     break;
                 case NEED_TASK:
-                    handshakeStatus = executeHandshakeDelegatedTasks(engine);
+                    handshakeStatus = doHandshakeDelegatedTasks(engine);
                     break;
                 default:
                     handshakeStatus = engine.getHandshakeStatus();
@@ -85,16 +82,20 @@ public abstract class SecuredPeer implements Closeable {
 		}
     }
     
-    private HandshakeStatus handleHandshakeWrap(SocketChannel socketChannel, SSLEngine engine, SSLEngineResult result) throws IOException {
-    	 switch (result.getStatus()) {
+    private HandshakeStatus doHandshakeWrap(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+    	SSLEngineResult wrapResult = encryptBufferedBytes(engine);
+    	if(wrapResult == null)
+    		return null;
+    	switch (wrapResult.getStatus()) {
          case OK:
-             writeEncryptedData(socketChannel);
+             if(writeEncryptedBytes(socketChannel) < 0 && !handleHandshakeError(socketChannel, engine))
+            	 return null;
              break;
          case BUFFER_OVERFLOW:
              myNetworkBuffer = enlargePacketBuffer(engine, myNetworkBuffer);
              break;
          case CLOSED:
-        	 writeEncryptedData(socketChannel);
+        	 writeEncryptedBytes(socketChannel);
              break;
          default:
         	 break;
@@ -102,8 +103,15 @@ public abstract class SecuredPeer implements Closeable {
     	 return engine.getHandshakeStatus();
     }
     
-    private HandshakeStatus handleHandshakeUnwrap(SSLEngine engine, SSLEngineResult result) {
-    	switch (result.getStatus()) {
+    private HandshakeStatus doHandshakeUnwrap(SocketChannel socketChannel, SSLEngine engine) throws IOException {
+    	SSLEngineResult unwrapResult = null;
+    	if(readEncryptedBytes(socketChannel, false) >= 0)
+    		unwrapResult = decryptBufferedBytes(engine, true);
+    	else if(handleHandshakeError(socketChannel, engine))
+    		return engine.getHandshakeStatus();
+    	if(unwrapResult == null)
+    		return null;
+    	switch (unwrapResult.getStatus()) {
         case OK:
             break;
         case BUFFER_OVERFLOW:
@@ -123,7 +131,7 @@ public abstract class SecuredPeer implements Closeable {
     	return engine.getHandshakeStatus();
     }
     
-    private boolean handleHandshakeReadError(SocketChannel socketChannel, SSLEngine engine) throws SSLException {
+    private boolean handleHandshakeError(SocketChannel socketChannel, SSLEngine engine) throws SSLException {
     	if(!socketChannel.isOpen()) {
     		engine.closeInbound();
         	engine.closeOutbound();
@@ -132,7 +140,7 @@ public abstract class SecuredPeer implements Closeable {
     	return true;
     }
     
-    private HandshakeStatus executeHandshakeDelegatedTasks(SSLEngine engine) {
+    private HandshakeStatus doHandshakeDelegatedTasks(SSLEngine engine) {
     	Runnable task;
         while ((task = engine.getDelegatedTask()) != null)
             asyncTaskExecutor.execute(task);
@@ -142,7 +150,7 @@ public abstract class SecuredPeer implements Closeable {
     protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
     	synchronized (readLock) {
 			int readBytes = 0;
-			if ((readBytes = readEncryptedData(socketChannel)) > 0)
+			if ((readBytes = readEncryptedBytes(socketChannel)) > 0)
 				return retrieveDecryptedBytes(socketChannel, engine);
 			if(readBytes == -1)
 				closeConnection(socketChannel, engine);
@@ -151,17 +159,19 @@ public abstract class SecuredPeer implements Closeable {
 		}
     }
     
-    protected void write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
+    protected int write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
         synchronized (writeLock) {
-            putDataIntoBufferAndFlip(message);
+        	int writtenBytes = 0;
+            putBytesIntoBufferAndFlip(message);
             while (myApplicationBuffer.hasRemaining()) {
             	SSLEngineResult encryptionResult = encryptBufferedBytes(engine);
     			if(checkEngineResult(encryptionResult))
-    				writeEncryptedData(socketChannel);
+    				writtenBytes += writeEncryptedBytes(socketChannel);
     			else
     				handleEncryptionResult(socketChannel, engine, encryptionResult);
             }
             CUtils.sleep(1L);
+            return writtenBytes;
 		} 
     }
     
@@ -180,7 +190,7 @@ public abstract class SecuredPeer implements Closeable {
         return null;
     }
 
-	protected synchronized int writeEncryptedData(SocketChannel clientChannel) {
+	protected synchronized int writeEncryptedBytes(SocketChannel clientChannel) {
 		if(!clientChannel.isOpen())
 			return -1;
 		try {
@@ -195,7 +205,11 @@ public abstract class SecuredPeer implements Closeable {
 		}
 	}
 	
-	protected int readEncryptedData(SocketChannel socketChannel, boolean clearBeforeRead) {
+	protected int readEncryptedBytes(SocketChannel socketChannel) {
+		return readEncryptedBytes(socketChannel, true);
+    }
+	
+	protected int readEncryptedBytes(SocketChannel socketChannel, boolean clearBeforeRead) {
 		if(!socketChannel.isOpen())
 			return -1;
         try {
@@ -207,10 +221,6 @@ public abstract class SecuredPeer implements Closeable {
         	return -1;
         }
 	}
-	
-	protected int readEncryptedData(SocketChannel socketChannel) {
-		return readEncryptedData(socketChannel, true);
-    }
 	
 	protected SSLEngineResult encryptBufferedBytes(SSLEngine engine) {
 		return encryptBufferedBytes(engine, false);
@@ -302,21 +312,16 @@ public abstract class SecuredPeer implements Closeable {
         }
     }
     
-    protected void handleEndOfStream(SocketChannel socketChannel, SSLEngine engine)  {
-        try {
-            closeConnection(socketChannel, engine);
-            engine.closeInbound();
-        } 
-        catch (Exception e) {
-            logger.severe(e.toString());
-        }
+    protected void handleEndOfStream(SocketChannel socketChannel, SSLEngine engine) throws IOException  {
+    	closeConnection(socketChannel, engine);
+        engine.closeInbound();
     }
 	
-	protected void putDataIntoBufferAndFlip(byte[] data) {
-    	putDataIntoBufferAndFlip(data, true);
+	protected void putBytesIntoBufferAndFlip(byte[] data) {
+    	putBytesIntoBufferAndFlip(data, true);
     }
     
-    protected synchronized void putDataIntoBufferAndFlip(byte[] data, boolean clearBufferBeforeAdding) {
+    protected synchronized void putBytesIntoBufferAndFlip(byte[] data, boolean clearBufferBeforeAdding) {
     	if(clearBufferBeforeAdding)
 			myApplicationBuffer.clear();
 		myApplicationBuffer.put(data);
@@ -340,9 +345,10 @@ public abstract class SecuredPeer implements Closeable {
         return enlargedBuffer;
     }
     
-    protected void closeConnection(SocketChannel socketChannel, SSLEngine engine) throws IOException  {
+    protected boolean closeConnection(SocketChannel socketChannel, SSLEngine engine) throws IOException  {
         engine.closeOutbound();
         socketChannel.close();
+        return !socketChannel.isConnected();
     }
 
     /**

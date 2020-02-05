@@ -2,6 +2,7 @@ package network.ssl.client;
 
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
+import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 
 public class SecuredChatClient extends SecuredClient {
@@ -36,15 +37,15 @@ public class SecuredChatClient extends SecuredClient {
 	}
 	
 	public MessagePacket readMessage() {
-    	byte[] messageBytes = readBytes();
-    	if(messageBytes == null)
+    	ByteMessage message = pollReceptionBytes();
+    	if(message == null)
     		return null;
-    	return MessagePacket.deserialize(messageBytes);
+    	return MessagePacket.deserialize(message.getMessageBytes());
     }
     
     public MessagePacket readMessage(Class<?> messageClass) {
-    	for(byte[] currentBytes : receivedBytes) {
-    		MessagePacket currentPacket = MessagePacket.deserialize(currentBytes);
+    	for(ByteMessage currentMessage : receivedBytes) {
+    		MessagePacket currentPacket = MessagePacket.deserialize(currentMessage.getMessageBytes());
     		if(currentPacket != null && currentPacket.getClass().equals(messageClass))
     			return currentPacket;
     	}
