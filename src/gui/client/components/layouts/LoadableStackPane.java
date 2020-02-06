@@ -196,7 +196,7 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 
 	public void setContent(Node value) {		if(value == null)			return;		
 		if (hasContent())			getChildren().remove(0);		contentProperty.set(value);		getChildren().add(0, getContent());		getContent().setPickOnBounds(true);		setLoading(false);
-	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {								@Override				protected Void call() throws Exception {					if(loadMinMillis > 0L)						Thread.sleep(loadMinMillis);					Platform.runLater(() -> setContent(value));					System.out.println("Setting content...");					return null;				}								@Override				protected void running() {					super.running();					Platform.runLater(() -> {						loadingLayer.setVisible(true);						loadingLayer.setPickOnBounds(true);						setLoading(true);						System.out.println("Running...");					});				}								@Override 				protected void succeeded() {					super.succeeded();					Platform.runLater(() -> {						loadingLayer.setVisible(false);						loadingLayer.setPickOnBounds(false);						setLoading(false);						System.out.println("Succeeded.");					});				}			};						@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
+	}		public void loadContent(Node value) {		loadContent(value, 0L);	}		public void loadContent(Node value, long loadMinMillis) {		if(value == null)			return;		Service<Void> loadingService = new Service<Void>() {						Task<Void> loadingTask = new Task<Void>() {								@Override				protected Void call() throws Exception {					if(loadMinMillis > 0L)						Thread.sleep(loadMinMillis);					Platform.runLater(() -> setContent(value));					System.out.println("Setting content...");					return null;				}				@Override				protected void running() {					super.running();					Platform.runLater(() -> {						loadingLayer.setVisible(true);						loadingLayer.setPickOnBounds(true);						setLoading(true);						System.out.println("Running...");					});				}				@Override 				protected void succeeded() {					super.succeeded();					Platform.runLater(() -> {						loadingLayer.setVisible(false);						loadingLayer.setPickOnBounds(false);						setLoading(false);						System.out.println("Succeeded.");					});				}			};			@Override			protected Task<Void> createTask() {				return loadingTask;			}					};		loadingService.start();	}
 
 	/*
 	 *
@@ -216,7 +216,6 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 		private void playLoadingInAnimation() {			System.out.println("load in");
 			if (loadInAnimation == null || loadOutAnimation == null) {
 				System.out.println("loadIn: loadin or loadout = null");				return;			}
-
 			if (loadInAnimation.getStatus() != Status.RUNNING) {
 				if (loadOutAnimation.getStatus() == Status.RUNNING) {
 					loadOutAnimation.stop();
@@ -234,7 +233,6 @@ public class LoadableStackPane extends StackPane implements InitializableNode {
 		private void playLoadingOutAnimation() {			System.out.println("load out");
 			if (loadInAnimation == null || loadOutAnimation == null) {
 				System.out.println("loadOut: loadin or loadout = null");				return;			}
-
 			if (loadInAnimation.getStatus() == Status.RUNNING) {
 				loadInAnimation.stop();
 				loadingSpinner.setScaleX(getScaleInValue());
