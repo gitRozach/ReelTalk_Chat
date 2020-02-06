@@ -43,6 +43,7 @@ public class SecuredClient extends SecuredPeer {
         myNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
         peerApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
         peerNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
+        
         orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
         sender = new ClientByteSender(1L);
         receiver = new ClientByteReceiver(1L);
@@ -180,8 +181,7 @@ public class SecuredClient extends SecuredPeer {
 	protected class ClientByteReceiver extends LoopingRunnable {
 		public ClientByteReceiver(long loopingDelay) {
 			super(loopingDelay);
-		}
-		
+		}	
 		@Override
 		public void run() {
 			super.run();
@@ -204,7 +204,6 @@ public class SecuredClient extends SecuredPeer {
     	public ClientByteSender(long loopingDelay) {
 			super(loopingDelay);
 		}
-    	
     	@Override
 		public void run() {
     		super.run();

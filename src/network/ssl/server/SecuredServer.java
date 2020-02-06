@@ -96,30 +96,37 @@ public class SecuredServer extends SecuredPeer {
 			ioExecutor.submit(receiver);
 	}
 
-	private void accept(SelectionKey key) throws Exception {
-		logger.fine("Ein neuer Client moechte sich verbinden...");
-
-		SocketChannel socketChannel = ((ServerSocketChannel) key.channel()).accept();
-		socketChannel.configureBlocking(false);
-		while (!socketChannel.finishConnect())
-			logger.info("Client connecting...");
-
-		SSLEngine engine = context.createSSLEngine();
-		engine.setUseClientMode(false);
-		engine.beginHandshake();
-
-		if (doHandshake(socketChannel, engine)) {
-			socketChannel.register(selector, SelectionKey.OP_READ, engine);
-			logger.info("Ein neuer Client hat sich verbunden.");
-		} 
-		else {
-			closeConnection(socketChannel, engine);
-			logger.info("Die Verbindung zum Client wurde aufgrund eines Handshake-Fehlers geschlossen.");
+	private boolean accept(SelectionKey key) {
+		try {
+			logger.fine("Ein neuer Client moechte sich verbinden...");
+			SocketChannel socketChannel = ((ServerSocketChannel) key.channel()).accept();
+			socketChannel.configureBlocking(false);
+			while (!socketChannel.finishConnect())
+				logger.info("Client connecting...");
+	
+			SSLEngine engine = context.createSSLEngine();
+			engine.setUseClientMode(false);
+			engine.beginHandshake();
+	
+			if (doHandshake(socketChannel, engine)) {
+				socketChannel.register(selector, SelectionKey.OP_READ, engine);
+				logger.info("Ein neuer Client hat sich verbunden.");
+				return true;
+			} 
+			else {
+				closeConnection(socketChannel, engine);
+				logger.info("Die Verbindung zum Client wurde aufgrund eines Handshake-Fehlers geschlossen.");
+				return false;
+			}
+		}
+		catch(IOException io) {
+			logger.severe(io.toString());
+			return false;
 		}
 	}
 
-	public void kick(SocketChannel clientChannel) throws IOException {
-		closeConnection(clientChannel, getEngineFrom(getLocalSocketChannel(clientChannel)));
+	public boolean kick(SocketChannel clientChannel) throws IOException {
+		return closeConnection(clientChannel, getEngineFrom(getLocalSocketChannel(clientChannel)));
 	}
 
 	public SSLEngine getEngineFrom(SocketChannel localClientChannel) throws IOException {
@@ -230,8 +237,7 @@ public class SecuredServer extends SecuredPeer {
 	protected class ServerByteReceiver extends LoopingRunnable {
 		public ServerByteReceiver(long loopingDelay) {
 			super(loopingDelay);
-		}
-		
+		}	
 		@Override
 		public void run() {
 			super.run();
@@ -266,8 +272,7 @@ public class SecuredServer extends SecuredPeer {
 	protected class ServerByteSender extends LoopingRunnable {
 		public ServerByteSender(long loopingDelay) {
 			super(loopingDelay);
-		}
-		
+		}		
 		@Override
 		public void run() {
 			super.run();

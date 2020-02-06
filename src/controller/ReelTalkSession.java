@@ -22,8 +22,10 @@ import javafx.stage.Stage;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.SecuredChatClient;
+import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.ChannelMessageEvent;
+import network.ssl.communication.events.ClientEvent;
 import network.ssl.communication.requests.ChannelMessageRequest;
 import network.ssl.server.SecuredChatServer;
 
@@ -122,31 +124,49 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initEventHandlers() {
-		chatClient.setOnMessageReceived(new ObjectEventHandler() {
+		chatClient.setOnMessageReceived(new ObjectEventHandler<ByteMessage>() {
 			@Override
-			public void handle(ObjectEvent event) {
-				if(event.getEventType() == ObjectEvent.ANY) {
-					MessagePacket reception = (MessagePacket)event.getAttachedObject();
-					
-					if(reception instanceof ChannelMessageEvent) {
-						ChannelMessageEvent channelMessage = (ChannelMessageEvent) reception;
-						chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
-					}
-				}
+			public void handle(ObjectEvent<ByteMessage> event) {
+				if(event != null && event.getAttachedObject() != null)
+					handleClientReception(event.getAttachedObject());
+			}
+		});
+		
+		chatClient.setOnMessageSent(new ObjectEventHandler<ByteMessage>() {
+			@Override
+			public void handle(ObjectEvent<ByteMessage> event) {
+				
 			}
 		});
 		
 		chatView.getMessageInputField().setOnEnterPressed(a -> onInputFieldEnterPressed());
 		chatView.getMessageInputField().getTextField().setOnEnterPressed(b -> onInputFieldEnterPressed());
 		
-		chatView.getMessageInputField().setOnEmojiPressed(new ObjectEventHandler() {
+		chatView.getMessageInputField().setOnEmojiPressed(new ObjectEventHandler<String>() {
 			@Override
-			public void handle(ObjectEvent event) {
+			public void handle(ObjectEvent<String> event) {
 				onEmojiPressed(event);
 			}
 		});
 		
 		chatView.getMessageInputField().getEmojiPane().getEmojiSkinChooser().setOnSkinChooserClicked(c -> onSkinChooserClicked());
+	}
+	
+	private void handleClientReception(ByteMessage byteMessage) {
+		MessagePacket reception = MessagePacket.deserialize(byteMessage.getMessageBytes());
+		if(reception == null)
+			return;
+		if(reception instanceof ClientEvent)
+			handleClientEvent((ClientEvent)reception);
+	}
+	
+	private void handleClientEvent(ClientEvent event) {
+		if(event == null)
+			return;
+		if(event instanceof ChannelMessageEvent) {
+			ChannelMessageEvent channelMessage = (ChannelMessageEvent) event;
+			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
+		}
 	}
 	
 	public void loadView(Node view) {
@@ -158,9 +178,9 @@ public class ReelTalkSession extends Application {
 		chatView.getMessageInputField().getTextField().clear();
 	}
 	
-	private void onEmojiPressed(ObjectEvent event) {		
+	private void onEmojiPressed(ObjectEvent<String> event) {		
 		EmojiTextField emojiTextField = chatView.getMessageInputField().getTextField();
-		String smileyText = (String)event.getAttachedObject();
+		String smileyText = event.getAttachedObject();
 		
 		String currentText = emojiTextField.getCurrentText();
 		int currentTextPos = emojiTextField.getOldCaretPosition();

@@ -6,8 +6,8 @@ import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 
 public class SecuredChatClient extends SecuredClient {
-	protected ObjectEventHandler onMessageReceivedHandler;
-	protected ObjectEventHandler onMessageSentHandler;
+	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
+	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
 	
 	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
@@ -15,14 +15,14 @@ public class SecuredChatClient extends SecuredClient {
 	}
 
 	private void initHandlers() {
-		onMessageReceivedHandler = new ObjectEventHandler() {
+		onMessageReceivedHandler = new ObjectEventHandler<ByteMessage>() {
 			@Override
-			public void handle(ObjectEvent event) {System.out.println("Client received a message.");}
+			public void handle(ObjectEvent<ByteMessage> event) {System.out.println("Client received a message.");}
 		};
 		
-		onMessageSentHandler = new ObjectEventHandler() {
+		onMessageSentHandler = new ObjectEventHandler<ByteMessage>() {
 			@Override
-			public void handle(ObjectEvent event) {System.out.println("Client sent a message.");}
+			public void handle(ObjectEvent<ByteMessage> event) {System.out.println("Client sent a message.");}
 		};
 	}
 	
@@ -51,7 +51,7 @@ public class SecuredChatClient extends SecuredClient {
 		MessagePacket receivedBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
 		if(receivedBytes == null)
 			return;
-		onMessageReceivedHandler.handle(new ObjectEvent(ObjectEvent.ANY, receivedBytes) {
+		onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
 			private static final long serialVersionUID = 6882651385899629774L;
 		});
 	}
@@ -61,24 +61,24 @@ public class SecuredChatClient extends SecuredClient {
 		MessagePacket sentBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
 		if(sentBytes == null)
 			return;
-		onMessageSentHandler.handle(new ObjectEvent(ObjectEvent.ANY, sentBytes) {
+		onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
 			private static final long serialVersionUID = 6882651385899629774L;
 		});
 	}
 	
-	public ObjectEventHandler getOnMessageReceived() {
+	public ObjectEventHandler<ByteMessage> getOnMessageReceived() {
 		return onMessageReceivedHandler;
 	}
 
-	public void setOnMessageReceived(ObjectEventHandler handler) {
+	public void setOnMessageReceived(ObjectEventHandler<ByteMessage> handler) {
 		onMessageReceivedHandler = handler;
 	}
 	
-	public ObjectEventHandler getOnMessageSent() {
+	public ObjectEventHandler<ByteMessage> getOnMessageSent() {
 		return onMessageSentHandler;
 	}
 	
-	public void setOnMessageSent(ObjectEventHandler handler) {
+	public void setOnMessageSent(ObjectEventHandler<ByteMessage> handler) {
 		onMessageSentHandler = handler;
 	}
 }

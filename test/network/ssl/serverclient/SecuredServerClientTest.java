@@ -79,9 +79,9 @@ class SecuredServerClientTest {
 			client.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.isConnected());
 			
-			for(int a = 0; a < 200; ++a)
+			for(int a = 0; a < 100; ++a)
 				client.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
-			for(int b = 0; b < 200; ++b) {
+			for(int b = 0; b < 100; ++b) {
 				Awaitility.await().atMost(Duration.ofSeconds(10L)).until(() -> testHost.hasReceivableBytes());
 				System.out.println("Received No. " + (b+1));
 				assertEquals(new String(testHost.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8), testMessage);
@@ -99,7 +99,7 @@ class SecuredServerClientTest {
 			client2.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client2.isConnected());
 			
-			for(int a = 0; a < 100; ++a) {
+			for(int a = 0; a < 50; ++a) {
 				client1.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 				client2.sendBytes(testMessage.getBytes(StandardCharsets.UTF_8));
 			}
