@@ -27,9 +27,11 @@ import network.ssl.communication.requests.PingRequest;
 import network.ssl.communication.requests.PrivateMessageRequest;
 import network.ssl.communication.requests.ProfileDataRequest;
 import network.ssl.server.database.ClientDatabase;
+import network.ssl.server.database.ServerChannelManager;
 
 public class SecuredChatServer extends SecuredServer {
 	protected ClientDatabase<ClientAccountData> clients;
+	protected ServerChannelManager channelManager;
 	
 	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
@@ -37,11 +39,17 @@ public class SecuredChatServer extends SecuredServer {
 	public SecuredChatServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
 		initClientDatabase();
+		initChannelManager();
 		initHandlers();
 	}
 	
 	private void initClientDatabase() throws IOException {
 		clients = new ClientDatabase<ClientAccountData>("src/clientData/accounts.txt");
+	}
+	
+	private void initChannelManager() throws IOException {
+		channelManager = new ServerChannelManager("src/clientData/channels.txt");
+		channelManager.initialize();
 	}
 	
 	private void initHandlers() {

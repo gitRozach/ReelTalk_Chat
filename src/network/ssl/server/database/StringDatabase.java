@@ -122,34 +122,39 @@ public class StringDatabase implements Closeable {
 		return itemCtr;
 	}
 	
-	public boolean addItem(String item) throws IOException {
+	public boolean addItem(String item) {
 		return addItem(items.size(), item);
 	}
 	
-	public synchronized boolean addItem(int index, String item) throws IOException {
+	public synchronized boolean addItem(int index, String item) {
 		if(isClosed())
-			throw new IOException("Database closed");
+			return false;
 		if(item == null)
 			return false;	
 		item = item.trim();
 		if(index < 0 || index > items.size() || item.isEmpty())
 			return false;
 		
-		ByteBuffer bytesToWrite = encoding.encode(item + System.lineSeparator());
-		int adjustmentValue = bytesToWrite.array().length;
-		int bytePos = seekTo(index);
-		
-		if(bytePos != -1 && databaseChannel.write(encoding.encode(item + System.lineSeparator())) > 0) {
-			items.add(index, item);
-			itemIndexes.add(index, (int)databaseChannel.position());
+		try {
+			ByteBuffer bytesToWrite = encoding.encode(item + System.lineSeparator());
+			int adjustmentValue = bytesToWrite.array().length;
+			int bytePos = seekTo(index);
 			
-			for(int h = index + 1; h < items.size(); ++h)
-				databaseChannel.write(encoding.encode(items.get(h) + System.lineSeparator()));
-			for(int i = index + 1; i < itemIndexes.size(); ++i)
-				itemIndexes.set(i, itemIndexes.get(i) + adjustmentValue);
-			return true;
-		} 
-		return false;
+			if(bytePos != -1 && databaseChannel.write(encoding.encode(item + System.lineSeparator())) > 0) {
+				items.add(index, item);
+				itemIndexes.add(index, (int)databaseChannel.position());
+				
+				for(int h = index + 1; h < items.size(); ++h)
+					databaseChannel.write(encoding.encode(items.get(h) + System.lineSeparator()));
+				for(int i = index + 1; i < itemIndexes.size(); ++i)
+					itemIndexes.set(i, itemIndexes.get(i) + adjustmentValue);
+				return true;
+			} 
+			return false;
+		}
+		catch(IOException io) {
+			return false;
+		}
 	}
 	
 	public boolean removeItem(int index) throws IOException {

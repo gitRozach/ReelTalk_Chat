@@ -3,7 +3,7 @@ package network.ssl.server.database;
 import java.io.File;
 import java.io.IOException;
 
-public class Database<T extends DatabaseObject> extends StringDatabase {
+public abstract class Database<T extends DatabaseObject> extends StringDatabase {
 	protected Class<T> databaseItemClass;
 	
 	public Database(Class<T> itemClass, File databaseFile) throws IOException {
@@ -23,7 +23,21 @@ public class Database<T extends DatabaseObject> extends StringDatabase {
 		databaseItemClass = itemClass;
 	}
 	
-	public DatabaseObject getDatabaseItem(int index) throws IOException, InstantiationException, IllegalAccessException {
-		return null;
+	public boolean addItem(T item) {
+		return addItem(item.toDatabaseString());
+	}
+	
+	public DatabaseObject getDatabaseItem(int index) {
+		try {
+			String stringItem = getItem(index);
+			if(stringItem == null)
+				return null;
+			T databaseItem = databaseItemClass.getDeclaredConstructor().newInstance();
+			databaseItem.initFromDatabaseString(stringItem);
+			return databaseItem;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

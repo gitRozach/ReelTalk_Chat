@@ -57,7 +57,6 @@ public class ClientData implements Serializable, DatabaseObject {
 	
 	@Override
 	public int initFromDatabaseString(String databaseString) {
-		
 		String[] namesAndValues = databaseString.split(PROPERTY_END);
 		int propSetCounter = 0;
 		
