@@ -57,7 +57,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import javafx.util.Duration;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
 
 public class AudioPlayer {
 	//
@@ -221,13 +221,13 @@ public class AudioPlayer {
 				double sliderMax = this.gui.getTimeSlider().getMax();
 				this.gui.getTimeSlider()
 						.setValue((newV.toMillis() / mediaPlayer.getTotalDuration().toMillis()) * sliderMax);
-				this.gui.setCurrentTime(CUtils.durationToMMSS(newV));
+				this.gui.setCurrentTime(Utils.durationToMMSS(newV));
 				// this.audioController.setTotalTime("-" +
 				// CUtils.durationToMMSS(media.getDuration().subtract(newV)));
 			}
 		});
 		mediaPlayer.totalDurationProperty().addListener((obs, oldV, newV) -> {
-			this.gui.setTotalTime(CUtils.durationToMMSS(newV));
+			this.gui.setTotalTime(Utils.durationToMMSS(newV));
 		});
 
 		mediaPlayer.setOnEndOfMedia(() -> this.onMediaEnd());
@@ -606,7 +606,7 @@ public class AudioPlayer {
 					@Override
 					protected String computeValue() {
 						if (player != null && player.getTotalDuration() != null)
-							return CUtils.durationToMMSS(Duration.seconds((timeSlider.getValue() / timeSlider.getMax())
+							return Utils.durationToMMSS(Duration.seconds((timeSlider.getValue() / timeSlider.getMax())
 									* player.getTotalDuration().toSeconds()));
 						else
 							return "";
@@ -789,7 +789,7 @@ public class AudioPlayer {
 			this.replayFromSlider = new JFXSlider();
 			this.replayFromSlider.valueProperty().addListener((obs, oldV, newV) -> {
 				if (player != null && player.getTotalDuration() != null)
-					setReplayFromDuration(CUtils.sliderValueToDuration(replayFromSlider, player.getTotalDuration()));
+					setReplayFromDuration(Utils.sliderValueToDuration(replayFromSlider, player.getTotalDuration()));
 				if (this.replayToSlider != null && this.replayToSlider.getValue() < newV.doubleValue())
 					this.replayToSlider.setValue(newV.doubleValue());
 			});
@@ -803,7 +803,7 @@ public class AudioPlayer {
 					@Override
 					protected String computeValue() {
 						if (player != null && player.getTotalDuration() != null)
-							return CUtils.durationToMMSS(
+							return Utils.durationToMMSS(
 									Duration.seconds((replayFromSlider.getValue() / replayFromSlider.getMax())
 											* player.getTotalDuration().toSeconds()));
 						else
@@ -816,7 +816,7 @@ public class AudioPlayer {
 			this.replayToSlider = new JFXSlider();
 			this.replayToSlider.valueProperty().addListener((obs, oldV, newV) -> {
 				if (player != null && player.getTotalDuration() != null)
-					setReplayToDuration(CUtils.sliderValueToDuration(replayToSlider, player.getTotalDuration()));
+					setReplayToDuration(Utils.sliderValueToDuration(replayToSlider, player.getTotalDuration()));
 				if (this.replayFromSlider != null && this.replayFromSlider.getValue() > newV.doubleValue())
 					this.replayFromSlider.setValue(newV.doubleValue());
 			});
@@ -830,7 +830,7 @@ public class AudioPlayer {
 					@Override
 					protected String computeValue() {
 						if (player != null && player.getTotalDuration() != null)
-							return CUtils.durationToMMSS(
+							return Utils.durationToMMSS(
 									Duration.seconds((replayToSlider.getValue() / replayToSlider.getMax())
 											* player.getTotalDuration().toSeconds()));
 						else

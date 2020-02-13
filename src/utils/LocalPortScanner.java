@@ -1,4 +1,4 @@
-package network.ssl.client.utils;
+package utils;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class CLocalPortScanner 
+public class LocalPortScanner 
 {
 	private int fromPort;
 	private int toPort;
@@ -17,7 +17,7 @@ public class CLocalPortScanner
 	private ArrayList<Integer> availablePorts;
 	private ArrayList<Integer> unavailablePorts;
 	
-	public CLocalPortScanner(CPortMode mode)
+	public LocalPortScanner(CPortMode mode)
 	{
 		this.fromPort = 0;
 		this.toPort = 110000;
@@ -35,7 +35,7 @@ public class CLocalPortScanner
 	
 	public static void main(String[] args)
 	{
-		CLocalPortScanner finder = new CLocalPortScanner(CPortMode.TCP);
+		LocalPortScanner finder = new LocalPortScanner(CPortMode.TCP);
 		finder.startScanning();
 		finder.printAvailable();
 		finder.printUnavailable();

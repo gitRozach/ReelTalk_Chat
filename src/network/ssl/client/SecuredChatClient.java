@@ -62,7 +62,7 @@ public class SecuredChatClient extends SecuredClient {
 		if(sentBytes == null)
 			return;
 		onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
-			private static final long serialVersionUID = 6882651385899629774L;
+			private static final long serialVersionUID = 2936930616791779331L;
 		});
 	}
 	

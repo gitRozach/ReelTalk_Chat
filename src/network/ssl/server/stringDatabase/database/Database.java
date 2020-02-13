@@ -1,25 +1,19 @@
-package network.ssl.server.database;
+package network.ssl.server.stringDatabase.database;
 
 import java.io.File;
 import java.io.IOException;
 
-public abstract class Database<T extends DatabaseObject> extends StringDatabase {
+import network.ssl.server.stringDatabase.StringDatabase;
+
+public abstract class Database<T extends StringDatabaseItem> extends StringDatabase {
 	protected Class<T> databaseItemClass;
 	
 	public Database(Class<T> itemClass, File databaseFile) throws IOException {
-		this(itemClass, databaseFile.getPath(), false);
+		this(itemClass, databaseFile.getPath());
 	}
 	
 	public Database(Class<T> itemClass, String databaseFilePath) throws IOException {
-		this(itemClass, databaseFilePath, false);
-	}
-	
-	public Database(Class<T> itemClass, File databaseFile, boolean initFromFile) throws IOException {
-		this(itemClass, databaseFile.getPath(), initFromFile);
-	}
-	
-	public Database(Class<T> itemClass, String databaseFilePath, boolean initFromFile) throws IOException {
-		super(databaseFilePath, initFromFile);
+		super(databaseFilePath);
 		databaseItemClass = itemClass;
 	}
 	
@@ -27,7 +21,7 @@ public abstract class Database<T extends DatabaseObject> extends StringDatabase 
 		return addItem(item.toDatabaseString());
 	}
 	
-	public DatabaseObject getDatabaseItem(int index) {
+	public StringDatabaseItem getDatabaseItem(int index) {
 		try {
 			String stringItem = getItem(index);
 			if(stringItem == null)

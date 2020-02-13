@@ -25,7 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
 
 public class CFileUploadMessage extends GUIMessage implements FileMessage {
 	private VBox content;
@@ -78,7 +78,7 @@ public class CFileUploadMessage extends GUIMessage implements FileMessage {
 
 		this.resultLabel = new Label();
 		this.resultLabel.setPadding(new Insets(10d, 0d, 10d, 0d));
-		this.resultLabel.setFont(CUtils.CFont(15d, FontWeight.SEMI_BOLD));
+		this.resultLabel.setFont(Utils.CFont(15d, FontWeight.SEMI_BOLD));
 
 		this.stateProperty = new SimpleObjectProperty<>(FileClientState.NEW);
 
@@ -86,7 +86,7 @@ public class CFileUploadMessage extends GUIMessage implements FileMessage {
 		this.messageIconLabel.setAlignment(Pos.CENTER_LEFT);
 		this.messageIconLabel.setPadding(new Insets(0d, 0d, 15d, 0d));
 		this.messageLabel = new Label(this.getMessage());
-		this.messageLabel.setFont(CUtils.CFont(16d, FontWeight.BOLD));
+		this.messageLabel.setFont(Utils.CFont(16d, FontWeight.BOLD));
 		this.fileIcon = new FontAwesomeIconView(
 				FileMessage.getFileIcon(this.getMessage().substring(this.getMessage().lastIndexOf(".") + 1)));
 		this.fileIcon.fillProperty().bind(this.messageLabel.textFillProperty());
@@ -125,9 +125,9 @@ public class CFileUploadMessage extends GUIMessage implements FileMessage {
 		this.messageProgressStatus.setAlignment(Pos.CENTER_LEFT);
 		this.progressSpeed = new Label();
 		this.progressSpeed.setTextFill(Color.GREEN);
-		this.progressSpeed.setFont(CUtils.CFont(12d, FontWeight.SEMI_BOLD));
+		this.progressSpeed.setFont(Utils.CFont(12d, FontWeight.SEMI_BOLD));
 		this.progressStatus = new Label();
-		this.progressStatus.setFont(CUtils.CFont(12d, FontWeight.SEMI_BOLD));
+		this.progressStatus.setFont(Utils.CFont(12d, FontWeight.SEMI_BOLD));
 		this.progressStatus.setTextFill(Color.GREEN);
 		HBox progressStatusSpacer = new HBox();
 		HBox.setHgrow(progressStatusSpacer, Priority.SOMETIMES);

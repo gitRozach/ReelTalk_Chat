@@ -1,4 +1,4 @@
-package network.ssl.server.database;
+package network.ssl.server.stringDatabase;
 
 import java.io.Closeable;
 import java.io.File;
@@ -21,31 +21,21 @@ public class StringDatabase implements Closeable {
 	protected final Charset encoding;
 
 	public StringDatabase(String databaseFilePath) throws IOException {
-		this(new File(databaseFilePath), false);
-	}
-	
-	public StringDatabase(String databaseFilePath, boolean initFromFile) throws IOException {
-		this(new File(databaseFilePath), initFromFile);
-	}
-	
-	public StringDatabase(final File databaseFile) throws IOException {
-		this(databaseFile, false);
+		this(new File(databaseFilePath));
 	}
 
-	public StringDatabase(final File databaseFile, boolean initialize) throws IOException {
-		this.initialized = false;
-		this.closed = false;
-		this.items = new ArrayList<String>();
-		this.itemIndexes = new ArrayList<Integer>();
-		this.databaseFile = new RandomAccessFile(databaseFile, "rwd");
-		this.databaseChannel = this.databaseFile.getChannel();
-		this.databaseFilePath = databaseFile.getPath();
-		this.encoding = Charset.forName("UTF-8");
-		if(initialize)
-			this.initialize();
+	public StringDatabase(final File file) throws IOException {
+		initialized = false;
+		closed = false;
+		items = new ArrayList<String>();
+		itemIndexes = new ArrayList<Integer>();
+		databaseFile = new RandomAccessFile(file, "rwd");
+		databaseChannel = this.databaseFile.getChannel();
+		databaseFilePath = file.getPath();
+		encoding = Charset.forName("UTF-8");
 	}
 	
-	protected synchronized String readItem(int index) throws IOException {
+	public synchronized String readItem(int index) throws IOException {
 		if(isClosed())
 			throw new IOException("Database closed");
 		if(index < 0)
@@ -85,7 +75,7 @@ public class StringDatabase implements Closeable {
 		return itemList.toArray(new String[itemList.size()]);
 	}
 	
-	protected synchronized int seekTo(int index) throws IOException {
+	public synchronized int seekTo(int index) throws IOException {
 		if(isClosed())
 			throw new IOException("Database closed");
 		if(index < 0 || index > items.size())
@@ -291,11 +281,11 @@ public class StringDatabase implements Closeable {
 		return closed;
 	}
 
-	protected List<String> getItems() throws IOException {
+	public List<String> getItems() throws IOException {
 		return this.items;
 	}
 	
-	protected List<Integer> getItemIndexes() {
+	public List<Integer> getItemIndexes() {
 		return itemIndexes;
 	}
 }

@@ -22,7 +22,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
 
 public class CFileDownloadMessage extends GUIMessage implements FileMessage {
 	private final String key;
@@ -71,7 +71,7 @@ public class CFileDownloadMessage extends GUIMessage implements FileMessage {
 		this.downloadLabel.setGraphic(downloadIcon);
 
 		this.messageLabel = new Label(this.getMessage());
-		this.messageLabel.setFont(CUtils.CFont(18d, FontWeight.BOLD));
+		this.messageLabel.setFont(Utils.CFont(18d, FontWeight.BOLD));
 
 		this.retryLabel = new Label();
 		this.retryLabel.setPickOnBounds(false);
@@ -89,7 +89,7 @@ public class CFileDownloadMessage extends GUIMessage implements FileMessage {
 
 		this.resultLabel = new Label();
 		this.resultLabel.setPadding(new Insets(10d, 0d, 10d, 0d));
-		this.resultLabel.setFont(CUtils.CFont(15d, FontWeight.SEMI_BOLD));
+		this.resultLabel.setFont(Utils.CFont(15d, FontWeight.SEMI_BOLD));
 
 		this.stateProperty = new SimpleObjectProperty<>(FileClientState.NEW);
 

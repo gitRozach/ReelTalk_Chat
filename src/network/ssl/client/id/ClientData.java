@@ -2,9 +2,9 @@ package network.ssl.client.id;
 
 import java.io.Serializable;
 
-import network.ssl.server.database.DatabaseObject;
+import network.ssl.server.stringDatabase.database.StringDatabaseItem;
 
-public class ClientData implements Serializable, DatabaseObject {
+public class ClientData implements Serializable, StringDatabaseItem {
 	private static final long serialVersionUID = -1649645536049458115L;
 	public static final String PROPERTY_START = "=";
 	public static final String PROPERTY_END = "#";
@@ -23,8 +23,8 @@ public class ClientData implements Serializable, DatabaseObject {
 		initFromDatabaseString(databaseString);
 	}
 
-	public ClientData(int id) {
-		this.id = id;
+	public ClientData(int clientId) {
+		id = clientId;
 	}
 
 	public boolean isDefaultInstance() {
@@ -47,7 +47,7 @@ public class ClientData implements Serializable, DatabaseObject {
 
 	@Override
 	public String toString() {
-		return "[Id: " + this.getId() + " ]";
+		return "[Id: " + getId() + " ]";
 	}
 
 	@Override

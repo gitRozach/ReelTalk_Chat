@@ -1,4 +1,4 @@
-package network.ssl.client.utils;
+package utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,7 +14,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
-public class CUtils
+public class Utils
 {
 	public static void sleep(long millis) {
 		try {
@@ -26,7 +26,7 @@ public class CUtils
 	}
 	
 	public static Thread createNewThreadAndStart(Runnable runnable) {
-		return CUtils.createNewThread(runnable, true);
+		return Utils.createNewThread(runnable, true);
 	}
 	
 	public static Thread createNewThread(Runnable runnable, boolean start) {
@@ -54,15 +54,15 @@ public class CUtils
 		{
 			if((fileSize / (currentDividor*1024L)) <= 0)
 			{
-				if(CUtils.isIntBetween(digitCounter, 0, 2))
+				if(Utils.isIntBetween(digitCounter, 0, 2))
 					return (int)(Math.pow(10d, digitCounter) * ((double)fileSize / (double)(currentDividor))) + " Bytes";
-				else if(CUtils.isIntBetween(digitCounter, 3, 5))
+				else if(Utils.isIntBetween(digitCounter, 3, 5))
 					return (int)(Math.pow(10d, digitCounter-3) * ((double)fileSize / (double)(currentDividor))) + " kB";
-				else if(CUtils.isIntBetween(digitCounter, 6, 8))
+				else if(Utils.isIntBetween(digitCounter, 6, 8))
 					return (int)(Math.pow(10d, digitCounter-6) * ((double)fileSize / (double)(currentDividor))) + " MB";
-				else if(CUtils.isIntBetween(digitCounter, 9, 11))
+				else if(Utils.isIntBetween(digitCounter, 9, 11))
 					return (int)(Math.pow(10d, digitCounter-9) * ((double)fileSize / (double)(currentDividor))) + " GB";
-				else if(CUtils.isIntBetween(digitCounter, 12, 14))
+				else if(Utils.isIntBetween(digitCounter, 12, 14))
 					return (int)(Math.pow(10d, digitCounter-12) * ((double)fileSize / (double)(currentDividor))) + " TB";
 			}
 			else
@@ -291,13 +291,13 @@ public class CUtils
 	//
 	public static Font CFont(double fontSize)
 	{
-		return CUtils.CFont(fontSize, null, FontPosture.REGULAR);
+		return Utils.CFont(fontSize, null, FontPosture.REGULAR);
 	}
 
 	//
 	public static Font CFont(double fontSize, FontWeight fontWeight)
 	{
-		return CUtils.CFont(fontSize, fontWeight, FontPosture.REGULAR);
+		return Utils.CFont(fontSize, fontWeight, FontPosture.REGULAR);
 	}
 
 	//

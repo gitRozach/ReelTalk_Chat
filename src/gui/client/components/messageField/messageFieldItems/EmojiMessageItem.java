@@ -2,7 +2,7 @@ package gui.client.components.messageField.messageFieldItems;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
 
 public class EmojiMessageItem extends ImageView implements MessageFieldItem {
 	protected String filePath;
@@ -29,7 +29,7 @@ public class EmojiMessageItem extends ImageView implements MessageFieldItem {
 	}
 	
 	public EmojiMessageItem(String path) {
-		this(path, ":" + CUtils.getFileName(path, false) + ":", EmojiSize.NORMAL);
+		this(path, ":" + Utils.getFileName(path, false) + ":", EmojiSize.NORMAL);
 	}
 	
 	public EmojiMessageItem(String path, String name) {

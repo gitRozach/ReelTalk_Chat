@@ -1,41 +1,28 @@
-package network.ssl.server.database;
+package network.ssl.server.manager;
 
 import java.io.File;
 import java.io.IOException;
 
 import network.ssl.client.id.ClientData;
+import network.ssl.server.stringDatabase.database.propertyValueDatabase.PropertyValueDatabase;
+import network.ssl.server.stringDatabase.database.propertyValueDatabase.PropertyValueDatabaseObject;
 
-public class ClientDatabase<T extends ClientData> extends StringDatabase {
-	public static final String ITEM_PROP_START = "=";
-	public static final String ITEM_PROP_END = "#";
-	
-	public ClientDatabase(String databaseFilePath) throws IOException {
-		this(new File(databaseFilePath), true);
+public class ClientDataManager<T extends ClientData> extends PropertyValueDatabase<T> {	
+	public ClientDataManager(Class<T> itemClass, String databaseFilePath) throws IOException {
+		this(itemClass, new File(databaseFilePath));
 	}
 	
-	public ClientDatabase(String databaseFilePath, boolean initialize) throws IOException {
-		this(new File(databaseFilePath), initialize);
-	}
-	
-	public ClientDatabase(File databaseFile) throws IOException {
-		this(databaseFile, false);
-	}
-	
-	public ClientDatabase(File databaseFile, boolean initialize) throws IOException {
-		super(databaseFile, initialize);
-	}
-	
-	public boolean addItem(T data) throws IOException {
-		return addItem(data.toDatabaseString());
+	public ClientDataManager(Class<T> itemClass, File databaseFile) throws IOException {
+		super(itemClass, databaseFile);
 	}
 	
 	public String getByProperty(String propertyName, String propertyValue) {
 		try {
 			for(String databaseString : items) {
-				String[] namesAndValues = databaseString.split(ITEM_PROP_END);
+				String[] namesAndValues = databaseString.split(PropertyValueDatabaseObject.PROPERTY_END);
 				
 				for(String current : namesAndValues) {
-					String currentSplit[] = current.split(ITEM_PROP_START);
+					String currentSplit[] = current.split(PropertyValueDatabaseObject.PROPERTY_START);
 					String propName = currentSplit[0];
 					String propValue = currentSplit[1];
 					if(propName.equals(propertyName) && propValue.equals(propertyValue))
@@ -63,8 +50,7 @@ public class ClientDatabase<T extends ClientData> extends StringDatabase {
 		for(int a = minId; a <= maxId; ++a) {
 			boolean found = false;
 			for(int b = 0; b < items.size(); ++b) {
-				ClientData currentData = new ClientData(items.get(b));
-				if(currentData.getId() == a) {
+				if(new ClientData(items.get(b)).getId() == a) {
 					found = true;
 					break;
 				}

@@ -7,6 +7,7 @@ import java.nio.channels.SocketChannel;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.id.ClientAccountData;
+import network.ssl.client.id.ClientData;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
@@ -26,11 +27,11 @@ import network.ssl.communication.requests.FileUploadRequest;
 import network.ssl.communication.requests.PingRequest;
 import network.ssl.communication.requests.PrivateMessageRequest;
 import network.ssl.communication.requests.ProfileDataRequest;
-import network.ssl.server.database.ClientDatabase;
-import network.ssl.server.database.ServerChannelManager;
+import network.ssl.server.manager.ClientDataManager;
+import network.ssl.server.stringDatabase.database.channelDatabase.ServerChannelManager;
 
 public class SecuredChatServer extends SecuredServer {
-	protected ClientDatabase<ClientAccountData> clients;
+	protected ClientDataManager clients;
 	protected ServerChannelManager channelManager;
 	
 	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
@@ -44,7 +45,8 @@ public class SecuredChatServer extends SecuredServer {
 	}
 	
 	private void initClientDatabase() throws IOException {
-		clients = new ClientDatabase<ClientAccountData>("src/clientData/accounts.txt");
+		clients = new ClientDataManager(ClientData.class, "src/clientData/accounts.txt");
+		clients.initialize();
 	}
 	
 	private void initChannelManager() throws IOException {
@@ -85,16 +87,6 @@ public class SecuredChatServer extends SecuredServer {
 		onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
 			private static final long serialVersionUID = 8588402449968090480L;
 		});
-	}
-	
-	@Override
-	public void start() {
-		super.start();
-		try {
-			clients.initialize();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public boolean checkLogin(String username, String password) {

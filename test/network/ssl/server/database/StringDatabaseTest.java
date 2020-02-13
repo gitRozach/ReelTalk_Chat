@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.base.Charsets;
 
+import network.ssl.server.stringDatabase.StringDatabase;
+
 class StringDatabaseTest {
 	private StringDatabase database;
 	
@@ -45,7 +47,8 @@ class StringDatabaseTest {
 	
 	@Test
 	void readItem_readsCorrectItems() throws IOException {
-		database = new StringDatabase("test/databaseResources/testRead.txt", true);
+		database = new StringDatabase("test/databaseResources/testRead.txt");
+		database.initialize();
 		
 		String item1 = database.readItem(499); //Text500
 		String item2 = database.readItem(0); //Text1
@@ -62,7 +65,8 @@ class StringDatabaseTest {
 	
 	@Test 
 	void clear_databaseIsEmpty() throws IOException {
-		database = new StringDatabase("test/databaseResources/testClear.txt", true);
+		database = new StringDatabase("test/databaseResources/testClear.txt");
+		database.initialize();
 		
 		assertTrue(database.addItem(0, "Text1"));
 		assertTrue(database.addItem(0, "Text2"));
@@ -79,21 +83,14 @@ class StringDatabaseTest {
 	
 	@Test
 	void close_accessingFileAfterwardsThrowsExceptions() throws IOException {
-		database = new StringDatabase("test/databaseResources/testClose.txt", true);
+		database = new StringDatabase("test/databaseResources/testClose.txt");
+		database.initialize();
 		database.close();
 		
-		assertThrows(IOException.class, () -> {
-			database.addItem("NEWITEM");
-		});
-		assertThrows(IOException.class, () -> {
-			database.removeItem(0);
-		});
-		assertThrows(IOException.class, () -> {
-			database.replaceItem(0, "NEWITEM");
-		});
-		assertThrows(IOException.class, () -> {
-			database.readItem(0);
-		});
+		assertFalse(database.addItem("NEWITEM"));
+		assertThrows(IOException.class, () -> database.removeItem(0));
+		assertThrows(IOException.class, () -> database.replaceItem(0, "NEWITEM"));
+		assertThrows(IOException.class, () -> database.readItem(0));
 	}
 	
 	@Test

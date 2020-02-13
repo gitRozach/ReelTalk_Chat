@@ -9,7 +9,6 @@ import gui.client.components.clientBar.clientIBarItems.ClientBarItem;
 import gui.client.components.clientBar.clientIBarItems.ClientBarMemberItem;
 import gui.client.components.clientBar.clientIBarItems.FriendClientBarItem;
 import gui.client.components.layouts.LoadableStackPane;
-import gui.tools.GUITools;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -26,6 +25,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import network.ssl.client.SecuredChatClient;
+import utils.GUITools;
 
 public class ClientBar extends LoadableStackPane {
 	private VBox rootContentBox;

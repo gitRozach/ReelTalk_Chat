@@ -1,6 +1,6 @@
-package network.ssl.server.database;
+package network.ssl.server.stringDatabase.database;
 
-public interface DatabaseObject {
+public interface StringDatabaseItem {
 	public String toDatabaseString();
 	public int initFromDatabaseString(String databaseString);
 }

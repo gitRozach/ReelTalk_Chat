@@ -11,7 +11,6 @@ import gui.client.components.channelBar.channelBarItems.GuestChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.client.components.channelBar.channelBarItems.VoiceChannelBarItem;
-import gui.tools.GUITools;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -28,6 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import network.ssl.client.SecuredChatClient;
+import utils.GUITools;
 
 public class ChannelBar extends StackPane {
 	private VBox contentBox;

@@ -20,9 +20,9 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
 import network.ssl.SecuredPeer;
-import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
 import network.threads.LoopingRunnable;
+import utils.Utils;
 
 public class SecuredServer extends SecuredPeer {
 	protected volatile boolean active;
@@ -126,7 +126,7 @@ public class SecuredServer extends SecuredPeer {
 	}
 
 	public boolean kick(SocketChannel clientChannel) throws IOException {
-		return closeConnection(clientChannel, getEngineFrom(getLocalSocketChannel(clientChannel)));
+		return closeConnection(clientChannel, getEngineFrom(clientChannel));
 	}
 
 	public SSLEngine getEngineFrom(SocketChannel localClientChannel) throws IOException {
@@ -263,7 +263,7 @@ public class SecuredServer extends SecuredPeer {
 				catch (Exception e) {
 					logger.severe(e.toString());
 				}
-				CUtils.sleep(loopDelayMillis);
+				Utils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageReceiver beendet.");
 		}
@@ -288,7 +288,7 @@ public class SecuredServer extends SecuredPeer {
 				catch (Exception e) {
 					logger.severe(e.toString());
 				}
-				CUtils.sleep(loopDelayMillis);
+				Utils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerMessageSender beendet.");
 		}

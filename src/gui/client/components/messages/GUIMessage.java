@@ -34,7 +34,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import network.ssl.client.message.CMessage;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
 
 public class GUIMessage extends HBox {
 	private StringProperty senderProperty;
@@ -59,7 +59,7 @@ public class GUIMessage extends HBox {
 		
 		senderProperty = new SimpleStringProperty(sender != null ? sender : "");
 		messageProperty = new SimpleStringProperty(message != null ? message : "");
-		timeProperty = new SimpleStringProperty(CUtils.getCurrentTimeHM());
+		timeProperty = new SimpleStringProperty(Utils.getCurrentTimeHM());
 		colorProperty = new SimpleObjectProperty<>(Color.BLACK);
 		colorProperty.addListener(new ColorListener());
 		statusProperty = new SimpleObjectProperty<>(MessageStatus.NEW);
@@ -69,7 +69,7 @@ public class GUIMessage extends HBox {
 		
 		senderLabel = new Label(getSender());
 		senderLabel.setTextFill(getColor());
-		senderLabel.setFont(CUtils.CFont(18d, FontWeight.BOLD));
+		senderLabel.setFont(Utils.CFont(18d, FontWeight.BOLD));
 		
 		Image pic = new Image("/resources/icons/member.png", 26d, 26d, true, true);
 		Circle profilePic = new Circle(13d);
@@ -158,7 +158,7 @@ public class GUIMessage extends HBox {
 				if (isLink(w)) // Falls Link
 				{
 					Hyperlink link = new Hyperlink(w);
-					link.setFont(font == null ? CUtils.CFont(18) : font);
+					link.setFont(font == null ? Utils.CFont(18) : font);
 
 					link.setOnAction(a -> {
 						try {
@@ -180,14 +180,14 @@ public class GUIMessage extends HBox {
 					} 
 					else {
 						Label messageLabel = new Label(w);
-						messageLabel.setFont(font == null ? CUtils.CFont(18) : font);
+						messageLabel.setFont(font == null ? Utils.CFont(18) : font);
 						messagePane.getChildren().add(messageLabel);
 					}
 				} 
 				//Ansonsten normaler Text
 				else {
 					Label messageLabel = new Label(w);
-					messageLabel.setFont(font == null ? CUtils.CFont(18) : font);
+					messageLabel.setFont(font == null ? Utils.CFont(18) : font);
 					messagePane.getChildren().add(messageLabel);
 				}
 			}

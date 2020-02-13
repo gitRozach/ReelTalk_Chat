@@ -3,7 +3,6 @@ package gui.client.components.messageField;
 import com.jfoenix.controls.JFXNodesList;
 
 import gui.animations.Animations;
-import gui.tools.GUITools;
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;
 import javafx.animation.Interpolator;
@@ -22,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
+import utils.GUITools;
 
 public class MessageField extends VBox {
 	private HBox messageBox;

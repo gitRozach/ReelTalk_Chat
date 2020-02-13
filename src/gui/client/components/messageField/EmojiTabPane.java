@@ -2,7 +2,6 @@ package gui.client.components.messageField;
 
 import com.jfoenix.controls.JFXTabPane;
 
-import gui.tools.GUITools;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,7 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import network.client.eventHandlers.ObjectEvent;
-import network.ssl.client.utils.CUtils;
+import utils.Utils;
+import utils.GUITools;
 
 public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;
@@ -46,63 +46,63 @@ public class EmojiTabPane extends StackPane {
 
 		smileyTabA = new EmojiTab();
 		Label labelTabA = new Label("A");
-		labelTabA.setFont(CUtils.CFont(15d));
+		labelTabA.setFont(Utils.CFont(15d));
 		labelTabA.setTextFill(Color.DARKGRAY);
 		smileyTabA.setGraphic(labelTabA);
 		initSmileys(EmojiCategory.A, false);
 
 		smileyTabB = new EmojiTab();
 		Label labelTabB = new Label("B");
-		labelTabB.setFont(CUtils.CFont(15d));
+		labelTabB.setFont(Utils.CFont(15d));
 		labelTabB.setTextFill(Color.DARKGRAY);
 		smileyTabB.setGraphic(labelTabB);
 		initSmileys(EmojiCategory.B, false);
 
 		smileyTabC = new EmojiTab();
 		Label labelTabC = new Label("C");
-		labelTabC.setFont(CUtils.CFont(15d));
+		labelTabC.setFont(Utils.CFont(15d));
 		labelTabC.setTextFill(Color.DARKGRAY);
 		smileyTabC.setGraphic(labelTabC);
 		initSmileys(EmojiCategory.C, false);
 
 		smileyTabD = new EmojiTab();
 		Label labelTabD = new Label("D");
-		labelTabD.setFont(CUtils.CFont(15d));
+		labelTabD.setFont(Utils.CFont(15d));
 		labelTabD.setTextFill(Color.DARKGRAY);
 		smileyTabD.setGraphic(labelTabD);
 		initSmileys(EmojiCategory.D, false);
 
 		smileyTabE = new EmojiTab();
 		Label labelTabE = new Label("E");
-		labelTabE.setFont(CUtils.CFont(15d));
+		labelTabE.setFont(Utils.CFont(15d));
 		labelTabE.setTextFill(Color.DARKGRAY);
 		smileyTabE.setGraphic(labelTabE);
 		initSmileys(EmojiCategory.E, false);
 
 		smileyTabF = new EmojiTab();
 		Label labelTabF = new Label("F");
-		labelTabF.setFont(CUtils.CFont(15d));
+		labelTabF.setFont(Utils.CFont(15d));
 		labelTabF.setTextFill(Color.DARKGRAY);
 		smileyTabF.setGraphic(labelTabF);
 		initSmileys(EmojiCategory.F, false);
 
 		smileyTabG = new EmojiTab();
 		Label labelTabG = new Label("G");
-		labelTabG.setFont(CUtils.CFont(15d));
+		labelTabG.setFont(Utils.CFont(15d));
 		labelTabG.setTextFill(Color.DARKGRAY);
 		smileyTabG.setGraphic(labelTabG);
 		initSmileys(EmojiCategory.G, false);
 
 		smileyTabH = new EmojiTab();
 		Label labelTabH = new Label("H");
-		labelTabH.setFont(CUtils.CFont(15d));
+		labelTabH.setFont(Utils.CFont(15d));
 		labelTabH.setTextFill(Color.DARKGRAY);
 		smileyTabH.setGraphic(labelTabH);
 		initSmileys(EmojiCategory.H, false);
 
 		smileyTabI = new EmojiTab();
 		Label labelTabI = new Label("I");
-		labelTabI.setFont(CUtils.CFont(15d));
+		labelTabI.setFont(Utils.CFont(15d));
 		labelTabI.setTextFill(Color.DARKGRAY);
 		smileyTabI.setGraphic(labelTabI);
 		initSmileys(EmojiCategory.I, false);

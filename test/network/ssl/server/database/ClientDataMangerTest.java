@@ -8,12 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import network.ssl.client.id.ClientAccountData;
 import network.ssl.client.id.ClientProfileData;
+import network.ssl.server.manager.ClientDataManager;
 
-class ClientDatabaseTest {
+class ClientDataMangerTest {
 	
 	@Test
 	void addItemsAndInitFromDatabase_clientProfileDataTest() throws IOException {
-		ClientDatabase<ClientProfileData> database = new ClientDatabase<ClientProfileData>("test/clientDatabaseResources/clientProfileDataTest.txt");
+		ClientDataManager<ClientProfileData> database = new ClientDataManager<ClientProfileData>(ClientProfileData.class, "test/clientDatabaseResources/clientProfileDataTest.txt");
 		database.clear();
 		
 		ClientProfileData b1 = new ClientProfileData(0, "Rozach", "default.png", 0, 5);
@@ -22,11 +23,11 @@ class ClientDatabaseTest {
 		ClientProfileData b4 = new ClientProfileData(3, "Max", "default.png", 0, 0);
 		ClientProfileData b5 = new ClientProfileData(4, "Andrea", "default.png", 0, 0);
 		
-		assertTrue(database.addItem(new ClientProfileData(0, "Rozach", "default.png", 0, 5)));
-		assertTrue(database.addItem(new ClientProfileData(1, "Jenn", "default.png", 0, 0)));
-		assertTrue(database.addItem(new ClientProfileData(2, "Husseini", "default.png", 0, 0)));
-		assertTrue(database.addItem(new ClientProfileData(3, "Max", "default.png", 0, 0)));
-		assertTrue(database.addItem(new ClientProfileData(4, "Andrea", "default.png", 0, 0)));
+		assertTrue(database.addItem(b1));
+		assertTrue(database.addItem(b2));
+		assertTrue(database.addItem(b3));
+		assertTrue(database.addItem(b4));
+		assertTrue(database.addItem(b5));
 		
 		ClientProfileData c1 = new ClientProfileData(database.getItem(0));
 		ClientProfileData c2 = new ClientProfileData(database.getItem(1));
@@ -45,7 +46,7 @@ class ClientDatabaseTest {
 
 	@Test
 	void addItemsAndInitFromDatabase_clientAccountDataTest() throws IOException {
-		ClientDatabase<ClientAccountData> database = new ClientDatabase<ClientAccountData>("test/clientDatabaseResources/clientAccountDataTest.txt");
+		ClientDataManager<ClientAccountData> database = new ClientDataManager<ClientAccountData>(ClientAccountData.class, "test/clientDatabaseResources/clientAccountDataTest.txt");
 		database.clear();
 		
 		ClientAccountData b1 = new ClientAccountData(0, "Rozach", "default.png", 0, 5, "rozett", "no_ip");
@@ -77,7 +78,7 @@ class ClientDatabaseTest {
 	
 	@Test
 	void addItemsAndGenerateUniqueIds_clientAccountDataTest() throws IOException {
-		ClientDatabase<ClientAccountData> database = new ClientDatabase<ClientAccountData>("test/clientDatabaseResources/generateUniqueIdsTest.txt");
+		ClientDataManager<ClientAccountData> database = new ClientDataManager<ClientAccountData>(ClientAccountData.class, "test/clientDatabaseResources/generateUniqueIdsTest.txt");
 		database.clear();
 		
 		assertTrue(database.addItem(new ClientAccountData(database.generateUniqueId(), "Rozachos", "default.png", 0, 5, "rozett", "no_ip")));
@@ -121,7 +122,7 @@ class ClientDatabaseTest {
 	
 	@Test
 	void getByProperty_clientProfileDataTest() throws IOException {
-		ClientDatabase<ClientAccountData> database = new ClientDatabase<ClientAccountData>("src/clientData/accounts.txt");
+		ClientDataManager<ClientAccountData> database = new ClientDataManager<ClientAccountData>(ClientAccountData.class, "src/clientData/accounts.txt");
 		database.clear();
 		
 		ClientAccountData b1 = new ClientAccountData(0, "Rozach", "default.png", 0, 5, "jajut", "no_ip");

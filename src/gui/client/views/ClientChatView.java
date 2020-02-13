@@ -10,7 +10,6 @@ import gui.client.components.channelBar.channelBarItems.VoiceChannelBarItem;
 import gui.client.components.clientBar.ClientBar;
 import gui.client.components.messageField.MessageField;
 import gui.client.components.messages.GUIMessage;
-import gui.tools.GUITools;
 import javafx.geometry.Pos;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
@@ -19,6 +18,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import utils.GUITools;
 
 public final class ClientChatView extends StackPane {	
 	private double minWidth;

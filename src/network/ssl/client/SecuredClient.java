@@ -12,9 +12,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
 import network.ssl.SecuredPeer;
-import network.ssl.client.utils.CUtils;
 import network.ssl.communication.ByteMessage;
 import network.threads.LoopingRunnable;
+import utils.Utils;
 
 public class SecuredClient extends SecuredPeer {
 	protected String remoteAddress;
@@ -138,7 +138,7 @@ public class SecuredClient extends SecuredPeer {
     
     public void sendBytes(byte[] messageBytes) {
     	orderedBytes.offer(new ByteMessage(messageBytes));
-    	CUtils.sleep(1L);
+    	Utils.sleep(1L);
     }
     
     @Override
@@ -194,7 +194,7 @@ public class SecuredClient extends SecuredPeer {
 					logger.severe(e.toString());
 					continue;
 				}
-				CUtils.sleep(loopDelayMillis);
+				Utils.sleep(loopDelayMillis);
 			}
 	        logger.info("ClientReceiver beendet.");
 		}
@@ -220,7 +220,7 @@ public class SecuredClient extends SecuredPeer {
 		    			continue;
 		    		}
 				}
-				CUtils.sleep(loopDelayMillis);
+				Utils.sleep(loopDelayMillis);
 			}
 			logger.info("ClientSender beendet.");
 		}
