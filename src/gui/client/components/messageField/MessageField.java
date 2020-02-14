@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
-import utils.GUITools;
+import utils.gui.GUITools;
 
 public class MessageField extends VBox {
 	private HBox messageBox;

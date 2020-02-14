@@ -27,8 +27,8 @@ import network.ssl.communication.requests.FileUploadRequest;
 import network.ssl.communication.requests.PingRequest;
 import network.ssl.communication.requests.PrivateMessageRequest;
 import network.ssl.communication.requests.ProfileDataRequest;
-import network.ssl.server.manager.ClientDataManager;
-import network.ssl.server.stringDatabase.database.channelDatabase.ServerChannelManager;
+import network.ssl.server.manager.channelDatabase.ServerChannelManager;
+import network.ssl.server.manager.clientManager.ClientDataManager;
 
 public class SecuredChatServer extends SecuredServer {
 	protected ClientDataManager clients;

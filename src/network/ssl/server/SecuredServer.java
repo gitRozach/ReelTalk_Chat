@@ -21,8 +21,8 @@ import javax.net.ssl.SSLSession;
 
 import network.ssl.SecuredPeer;
 import network.ssl.communication.ByteMessage;
-import network.threads.LoopingRunnable;
 import utils.Utils;
+import utils.concurrency.LoopingRunnable;
 
 public class SecuredServer extends SecuredPeer {
 	protected volatile boolean active;

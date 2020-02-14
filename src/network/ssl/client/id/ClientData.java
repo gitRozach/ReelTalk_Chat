@@ -2,7 +2,7 @@ package network.ssl.client.id;
 
 import java.io.Serializable;
 
-import network.ssl.server.stringDatabase.database.StringDatabaseItem;
+import network.ssl.server.manager.database.StringDatabaseItem;
 
 public class ClientData implements Serializable, StringDatabaseItem {
 	private static final long serialVersionUID = -1649645536049458115L;

@@ -25,7 +25,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import network.ssl.client.SecuredChatClient;
-import utils.GUITools;
+import utils.gui.GUITools;
 
 public class ClientBar extends LoadableStackPane {
 	private VBox rootContentBox;

@@ -27,7 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import network.ssl.client.SecuredChatClient;
-import utils.GUITools;
+import utils.gui.GUITools;
 
 public class ChannelBar extends StackPane {
 	private VBox contentBox;

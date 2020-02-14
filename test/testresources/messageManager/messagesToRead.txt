@@ -1,0 +1,10 @@
+messageId=1#senderName=Rozach#senderId=10#messageText=Hallo Jann!#receiverId=11#receiverName=Jann#
+messageId=2#senderName=Rozach#senderId=10#messageText=Hallo Hendrik!#receiverId=12#receiverName=Hendrik#
+messageId=3#senderName=Rozach#senderId=10#messageText=Hallo Hasan!#receiverId=13#receiverName=Hasan#
+messageId=4#senderName=Rozach#senderId=10#messageText=Hallo Joel!#receiverId=14#receiverName=Joel#
+messageId=5#senderName=Rozach#senderId=10#messageText=Hallo Jaal!#receiverId=15#receiverName=Jaal#
+messageId=6#senderName=Rozach#senderId=10#messageText=Hallo Channel 2!#channelId=2#channelName=Channel 2#
+messageId=7#senderName=Rozach#senderId=10#messageText=Hallo Channel 3!#channelId=3#channelName=Channel 3#
+messageId=8#senderName=Rozach#senderId=10#messageText=Hallo Channel 4!#channelId=4#channelName=Channel 4#
+messageId=9#senderName=Rozach#senderId=10#messageText=Hallo Channel 5!#channelId=5#channelName=Channel 5#
+messageId=10#senderName=Rozach#senderId=10#messageText=Hallo Channel 6!#channelId=6#channelName=Channel 6#

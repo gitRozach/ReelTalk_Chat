@@ -13,8 +13,8 @@ import javax.net.ssl.SSLEngine;
 
 import network.ssl.SecuredPeer;
 import network.ssl.communication.ByteMessage;
-import network.threads.LoopingRunnable;
 import utils.Utils;
+import utils.concurrency.LoopingRunnable;
 
 public class SecuredClient extends SecuredPeer {
 	protected String remoteAddress;

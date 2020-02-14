@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import network.client.eventHandlers.ObjectEvent;
 import utils.Utils;
-import utils.GUITools;
+import utils.gui.GUITools;
 
 public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;

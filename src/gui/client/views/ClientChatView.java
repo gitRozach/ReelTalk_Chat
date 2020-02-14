@@ -18,7 +18,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import utils.GUITools;
+import utils.gui.GUITools;
 
 public final class ClientChatView extends StackPane {	
 	private double minWidth;
