@@ -3,7 +3,7 @@ package network.ssl.server.manager.database;
 import java.io.File;
 import java.io.IOException;
 
-import network.ssl.server.manager.stringDatabase.StringFileDatabase;
+import network.ssl.server.manager.stringFileDatabase.StringFileDatabase;
 
 public abstract class Database<T extends StringDatabaseItem> extends StringFileDatabase {
 	protected Class<T> databaseItemClass;

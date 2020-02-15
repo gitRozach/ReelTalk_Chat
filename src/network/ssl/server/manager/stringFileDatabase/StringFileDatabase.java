@@ -1,4 +1,4 @@
-package network.ssl.server.manager.stringDatabase;
+package network.ssl.server.manager.stringFileDatabase;
 
 import java.io.Closeable;
 import java.io.File;
@@ -194,17 +194,17 @@ public class StringFileDatabase implements Closeable {
 	
 	@Override
 	public void close() {
-		if(isClosed())
-			return;
 		try {
+			if(isClosed())
+				return;
 			databaseFile.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			items.clear();
+			itemIndexes.clear();
+			closed = true;
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
-		items.clear();
-		itemIndexes.clear();
-		closed = true;
 	}
 	
 	public boolean replaceItem(String oldItem, String newItem) {

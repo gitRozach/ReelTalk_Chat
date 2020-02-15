@@ -1,4 +1,4 @@
-package network.ssl.server.manager;
+package network.ssl.server.stringFileDatabase;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.base.Charsets;
 
-import network.ssl.server.manager.stringDatabase.StringFileDatabase;
+import network.ssl.server.manager.stringFileDatabase.StringFileDatabase;
 
 class StringFileDatabaseTest {
 	protected StringFileDatabase database;
