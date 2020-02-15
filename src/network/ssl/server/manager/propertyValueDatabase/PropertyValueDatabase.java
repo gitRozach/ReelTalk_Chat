@@ -2,11 +2,11 @@ package network.ssl.server.manager.propertyValueDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import network.ssl.server.manager.database.Database;
-import network.ssl.server.manager.database.StringDatabaseItem;
 
-public class PropertyValueDatabase<T extends StringDatabaseItem> extends Database<T> {
+public class PropertyValueDatabase<T extends PropertyValueDatabaseObject> extends Database<T> {
 	
 	public PropertyValueDatabase(Class<T> itemClass, String databaseFilePath) throws IOException {
 		this(itemClass, new File(databaseFilePath));
@@ -22,5 +22,26 @@ public class PropertyValueDatabase<T extends StringDatabaseItem> extends Databas
 	
 	public static String getPropertyEnd() {
 		return PropertyValueDatabaseObject.PROPERTY_END;
+	}
+	
+	public String[] getByProperty(String propertyName, String propertyValue) {
+		try {
+			ArrayList<String> resultList = new ArrayList<>();
+			for(String databaseString : items) {
+				String[] namesAndValues = databaseString.split(getPropertyEnd());
+				
+				for(String current : namesAndValues) {
+					String currentSplit[] = current.split(getPropertyStart());
+					String propName = currentSplit[0];
+					String propValue = currentSplit[1];
+					if(propName.equals(propertyName) && propValue.equals(propertyValue))
+						resultList.add(databaseString);
+				}
+			}
+			return resultList.toArray(new String[resultList.size()]);
+		}
+		catch(Exception e) {
+			return null;
+		}
 	}
 }

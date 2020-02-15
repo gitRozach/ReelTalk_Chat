@@ -6,8 +6,6 @@ import java.nio.channels.SocketChannel;
 
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
-import network.ssl.client.id.ClientAccountData;
-import network.ssl.client.id.ClientData;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
@@ -28,30 +26,45 @@ import network.ssl.communication.requests.PingRequest;
 import network.ssl.communication.requests.PrivateMessageRequest;
 import network.ssl.communication.requests.ProfileDataRequest;
 import network.ssl.server.manager.channelDatabase.ServerChannelManager;
-import network.ssl.server.manager.clientManager.ClientDataManager;
+import network.ssl.server.manager.clientDataManager.ClientAccountManager;
+import network.ssl.server.manager.clientDataManager.items.ClientAccountData;
+import network.ssl.server.manager.messageManager.ClientMessageManager;
+import network.ssl.server.manager.messageManager.items.ChannelMessage;
 
 public class SecuredChatServer extends SecuredServer {
-	protected ClientDataManager clients;
+	protected ClientAccountManager clients;
 	protected ServerChannelManager channelManager;
+	protected ClientMessageManager messageManager;
 	
 	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
 
 	public SecuredChatServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
-		initClientDatabase();
-		initChannelManager();
+		int camRes = initClientDatabase();
+		int cmRes = initChannelManager();
+		initMessageManager();
 		initHandlers();
+		logger.info(camRes + " Clients loaded.");
+		logger.info(cmRes + " Channels loaded.");
 	}
 	
-	private void initClientDatabase() throws IOException {
-		clients = new ClientDataManager(ClientData.class, "src/clientData/accounts.txt");
-		clients.initialize();
+	private int initClientDatabase() throws IOException {
+		clients = new ClientAccountManager("src/clientData/accounts.txt");
+		return clients.initialize();
 	}
 	
-	private void initChannelManager() throws IOException {
+	private int initChannelManager() throws IOException {
 		channelManager = new ServerChannelManager("src/clientData/channels.txt");
-		channelManager.initialize();
+		return channelManager.initialize();
+	}
+	
+	private void initMessageManager() throws IOException {
+		messageManager = new ClientMessageManager();
+		messageManager.configurePrivateMessageManagerPath("src/clientData/messages/privateMessages.txt");
+		messageManager.configureChannelMessageManagerPath("src/clientData/messages/channelMessages.txt");
+		messageManager.configureProfileCommentManagerPath("src/clientData/messages/profileComments.txt");
+		messageManager.initialize();
 	}
 	
 	private void initHandlers() {
@@ -94,12 +107,14 @@ public class SecuredChatServer extends SecuredServer {
 	}
 	
 	public ClientAccountData login(String username, String password) {
-		String clientDataString = clients.getByProperty("username", username);
-		if(clientDataString == null)
+		String[] clientDataStrings = clients.getByProperty("username", username);
+		if(clientDataStrings == null)
 			return null;
-		ClientAccountData clientData = new ClientAccountData(clientDataString);
-		if(clientData != null && clientData.getPassword().equals(password))
-			return clientData;
+		for(String currentClientDataString : clientDataStrings) {
+			ClientAccountData clientData = new ClientAccountData(currentClientDataString);
+			if(clientData != null && clientData.getPassword().equals(password))
+				return clientData;
+		}
 		return null;
 	}
 	
@@ -187,8 +202,11 @@ public class SecuredChatServer extends SecuredServer {
 	private void handleChannelMessageRequest(SelectionKey clientKey, ChannelMessageRequest request) {
 		for(SelectionKey key : selector.keys()) {
 			if(key.channel() instanceof SocketChannel) {
-				ChannelMessageEvent eventMessage = new ChannelMessageEvent(0, request.getUsername(), request.getMessage());
+				ChannelMessageEvent eventMessage = new ChannelMessageEvent(0, 0, request.getUsername(), request.getMessage(), 0, "");
 				sendMessage(key, eventMessage);
+				messageManager.addChannelMessage(new ChannelMessage(eventMessage.getMessageId(), eventMessage.getSenderName(), 
+																	eventMessage.getClientId(), eventMessage.getMessageText(), 
+																	eventMessage.getChannelId(), eventMessage.getChannelName()));
 			}
 		}
 	}
@@ -198,6 +216,17 @@ public class SecuredChatServer extends SecuredServer {
 		if(clientData != null) {
 			AccountDataEvent dataMessage = new AccountDataEvent(clientData);
 			sendMessage(clientKey, dataMessage);
+			for(ChannelMessage message : messageManager.getChannelMessages()) {
+				sendMessage(clientKey, new ChannelMessageEvent(	message.getSenderId(), message.getMessageId(), 
+																message.getSenderName(), message.getMessageText(),
+																message.getChannelId(), message.getChannelName()));
+				try {
+					Thread.sleep(50L);
+				} 
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		else {
 			RequestDeniedEvent rejMessage = new RequestDeniedEvent(ClientLoginRequest.class);

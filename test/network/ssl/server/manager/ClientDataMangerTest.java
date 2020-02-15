@@ -6,9 +6,9 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import network.ssl.client.id.ClientAccountData;
-import network.ssl.client.id.ClientProfileData;
-import network.ssl.server.manager.clientManager.ClientDataManager;
+import network.ssl.server.manager.clientDataManager.ClientDataManager;
+import network.ssl.server.manager.clientDataManager.items.ClientAccountData;
+import network.ssl.server.manager.clientDataManager.items.ClientProfileData;
 
 class ClientDataMangerTest {
 	
@@ -137,11 +137,11 @@ class ClientDataMangerTest {
 		assertTrue(database.addItem(b4));
 		assertTrue(database.addItem(b5));
 		
-		ClientAccountData c1 = new ClientAccountData(database.getByProperty("username", "Rozach"));
-		ClientAccountData c2 = new ClientAccountData(database.getByProperty("id", "1"));
-		ClientAccountData c3 = new ClientAccountData(database.getByProperty("password", "husseini"));
-		ClientAccountData c4 = new ClientAccountData(database.getByProperty("username", "Max"));
-		ClientAccountData c5 = new ClientAccountData(database.getByProperty("id", "4"));
+		ClientAccountData c1 = new ClientAccountData(database.getByProperty("username", "Rozach")[0]);
+		ClientAccountData c2 = new ClientAccountData(database.getByProperty("id", "1")[0]);
+		ClientAccountData c3 = new ClientAccountData(database.getByProperty("password", "husseini")[0]);
+		ClientAccountData c4 = new ClientAccountData(database.getByProperty("username", "Max")[0]);
+		ClientAccountData c5 = new ClientAccountData(database.getByProperty("id", "4")[0]);
 		
 		assertTrue(c1.equals(b1));
 		assertTrue(c2.equals(b2));

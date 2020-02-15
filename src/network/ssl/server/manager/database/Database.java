@@ -21,7 +21,7 @@ public abstract class Database<T extends StringDatabaseItem> extends StringFileD
 		return addItem(item.toDatabaseString());
 	}
 	
-	public StringDatabaseItem getDatabaseItem(int index) {
+	public T getDatabaseItem(int index) {
 		try {
 			String stringItem = getItem(index);
 			if(stringItem == null)

@@ -7,8 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import network.ssl.server.manager.database.StringDatabaseItem;
-
 public abstract class MessagePacket implements Serializable {
 	private static final long serialVersionUID = -6165719430033337912L;
 

@@ -2,9 +2,7 @@ package network.ssl.server.manager.messageManager.items;
 
 import java.util.Map;
 
-import network.ssl.server.manager.messageManager.Message;
-
-public class PrivateMessage extends Message {
+public class PrivateMessage extends ClientMessage {
 	protected static final String RECEIVER_ID_PROPERTY_NAME = "receiverId";
 	protected static final String RECEIVER_NAME_PROPERTY_NAME = "receiverName";
 	
@@ -16,6 +14,11 @@ public class PrivateMessage extends Message {
 	
 	public PrivateMessage() {
 		this(DEFAULT_MESSAGE_ID, DEFAULT_SENDER_NAME, DEFAULT_SENDER_ID, DEFAULT_MESSAGE_TEXT);
+	}
+	
+	public PrivateMessage(String databaseString) {
+		super(databaseString);
+		initFromDatabaseString(databaseString);
 	}
 	
 	public PrivateMessage(int messageId, String messageSenderName, int messageSenderId, String messageText) {

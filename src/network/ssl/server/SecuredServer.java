@@ -239,7 +239,7 @@ public class SecuredServer extends SecuredPeer {
 			super(loopingDelay);
 		}	
 		@Override
-		public void run() {
+		public synchronized void run() {
 			super.run();
 			logger.info("ServerMessageReceiver startet...");
 			while (isRunning()) {
@@ -261,7 +261,7 @@ public class SecuredServer extends SecuredPeer {
 					}
 				} 
 				catch (Exception e) {
-					logger.severe(e.toString());
+					//logger.severe(e.toString());
 				}
 				Utils.sleep(loopDelayMillis);
 			}

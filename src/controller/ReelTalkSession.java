@@ -27,6 +27,7 @@ import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.ChannelMessageEvent;
 import network.ssl.communication.events.ClientEvent;
 import network.ssl.communication.requests.ChannelMessageRequest;
+import network.ssl.communication.requests.ClientLoginRequest;
 import network.ssl.server.SecuredChatServer;
 
 public class ReelTalkSession extends Application {
@@ -58,7 +59,9 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void startClient() throws Exception {
-		chatClient.connect();
+		if(chatClient.connect()) {
+			chatClient.sendMessage(new ClientLoginRequest("Rozach", "jajut"));
+		}
 	}
 	
 	public void closeAll() {
@@ -165,7 +168,7 @@ public class ReelTalkSession extends Application {
 			return;
 		if(event instanceof ChannelMessageEvent) {
 			ChannelMessageEvent channelMessage = (ChannelMessageEvent) event;
-			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSender(), channelMessage.getMessage()));
+			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSenderName(), channelMessage.getMessageText()));
 		}
 	}
 	

@@ -1,6 +1,6 @@
 package network.ssl.communication.events;
 
-import network.ssl.client.id.ClientProfileData;
+import network.ssl.server.manager.clientDataManager.items.ClientProfileData;
 
 public class ClientLoggedInEvent extends ClientEvent {
 	private static final long serialVersionUID = 7043498716902054709L;

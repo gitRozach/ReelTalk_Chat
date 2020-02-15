@@ -2,7 +2,7 @@ package network.ssl.server.manager;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
@@ -82,15 +82,15 @@ class StringFileDatabaseTest {
 	}
 	
 	@Test
-	void close_accessingFileAfterwardsThrowsExceptions() throws IOException {
+	void close_accessingFileAfterwardsReturnsNullOrFalse() throws IOException {
 		database = new StringFileDatabase("test/testresources/stringFileDatabase/testClose.txt");
 		database.initialize();
 		database.close();
 		
 		assertFalse(database.addItem("NEWITEM"));
-		assertThrows(IOException.class, () -> database.removeItem(0));
-		assertThrows(IOException.class, () -> database.replaceItem(0, "NEWITEM"));
-		assertThrows(IOException.class, () -> database.readItem(0));
+		assertFalse(database.removeItem(0));
+		assertFalse(database.replaceItem(0, "NEWITEM"));
+		assertEquals(database.readItem(0), null);
 	}
 	
 	@Test

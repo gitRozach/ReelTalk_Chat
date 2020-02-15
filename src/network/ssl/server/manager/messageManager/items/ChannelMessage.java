@@ -2,9 +2,7 @@ package network.ssl.server.manager.messageManager.items;
 
 import java.util.Map;
 
-import network.ssl.server.manager.messageManager.Message;
-
-public class ChannelMessage extends Message {
+public class ChannelMessage extends ClientMessage {
 	protected static final String CHANNEL_ID_PROPERTY_NAME = "channelId";
 	protected static final String CHANNEL_NAME_PROPERTY_NAME = "channelName";
 	

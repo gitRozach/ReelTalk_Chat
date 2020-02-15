@@ -10,6 +10,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Charsets;
+
 public class StringFileDatabase implements Closeable {
 	protected volatile boolean initialized;
 	protected volatile boolean closed;
@@ -32,38 +34,38 @@ public class StringFileDatabase implements Closeable {
 		databaseFile = new RandomAccessFile(file, "rwd");
 		databaseChannel = this.databaseFile.getChannel();
 		databaseFilePath = file.getPath();
-		encoding = Charset.forName("UTF-8");
+		encoding = Charsets.UTF_8;
 	}
-	
-	public synchronized String readItem(int index) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		if(index < 0)
-			return null;
-		
-		if(index < itemIndexes.size())
-			databaseFile.seek(index == 0 ? 0 : itemIndexes.get(index - 1));
-		else {
-			String currentItem = null;
-			String currentTmp = null;
-			int tempIndexCtr = itemIndexes.isEmpty() ? 0 : itemIndexes.size() - 1;
+
+	public synchronized String readItem(int index) {
+		try {
+			if(index < 0)
+				return null;
 			
-			databaseFile.seek(tempIndexCtr <= 0 ? 0L : itemIndexes.get(tempIndexCtr));
-			while((currentItem = databaseFile.readLine()) != null && (tempIndexCtr - 1) < index) {
-				currentTmp = currentItem;
-				++tempIndexCtr;
+			if(index < itemIndexes.size())
+				databaseFile.seek(index == 0 ? 0 : itemIndexes.get(index - 1));
+			else {
+				String currentItem = null;
+				String currentTmp = null;
+				int tempIndexCtr = itemIndexes.isEmpty() ? 0 : itemIndexes.size() - 1;
+				
+				databaseFile.seek(tempIndexCtr <= 0 ? 0L : itemIndexes.get(tempIndexCtr));
+				while((currentItem = databaseFile.readLine()) != null && (tempIndexCtr - 1) < index) {
+					currentTmp = currentItem;
+					++tempIndexCtr;
+				}
+				if((tempIndexCtr - 1) == index)
+					return currentTmp.trim();
+				return null;
 			}
-			if((tempIndexCtr - 1) == index)
-				return currentTmp.trim();
+			return databaseFile.readLine().trim();
+		}
+		catch(IOException io) {
 			return null;
 		}
-		return databaseFile.readLine().trim();
 	}
 	
-	protected synchronized String[] readAllItems() throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		
+	protected synchronized String[] readAllItems() {		
 		int currentIndex = 0;
 		String currentItem = null;
 		List<String> itemList = new ArrayList<String>();
@@ -75,9 +77,7 @@ public class StringFileDatabase implements Closeable {
 		return itemList.toArray(new String[itemList.size()]);
 	}
 	
-	public synchronized int seekTo(int index) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized int seekTo(int index) {
 		if(index < 0 || index > items.size())
 			return -1;
 		try {
@@ -90,26 +90,28 @@ public class StringFileDatabase implements Closeable {
 		}
 	}
 
-	public int initialize() throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		
-		items.clear();
-		itemIndexes.clear();
-		databaseFile.seek(0L);
-		
-		String currentItem = null;
-		int itemCtr = 0;
-		while((currentItem = databaseFile.readLine()) != null) {
-			currentItem = currentItem.trim();
-			if(currentItem.isEmpty())
-				continue;
-			items.add(currentItem);
-			itemIndexes.add((int)databaseFile.getFilePointer());
-			++itemCtr;
+	public int initialize() {
+		try {
+			items.clear();
+			itemIndexes.clear();
+			databaseFile.seek(0L);
+			
+			String currentItem = null;
+			int itemCtr = 0;
+			while((currentItem = databaseFile.readLine()) != null) {
+				currentItem = currentItem.trim();
+				if(currentItem.isEmpty())
+					continue;
+				items.add(currentItem);
+				itemIndexes.add((int)databaseFile.getFilePointer());
+				++itemCtr;
+			}
+			initialized = true;
+			return itemCtr;
 		}
-		initialized = true;
-		return itemCtr;
+		catch(IOException io) {
+			return -1;
+		}
 	}
 	
 	public boolean addItem(String item) {
@@ -147,28 +149,31 @@ public class StringFileDatabase implements Closeable {
 		}
 	}
 	
-	public boolean removeItem(int index) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		if(index < 0 || index >= items.size())
-			return false;
-		
-		if(seekTo(index) != -1) {
-			String removedItem = items.remove(index) + System.lineSeparator();
-			itemIndexes.remove(index);
-			int adjustmentValue = removedItem.getBytes(encoding).length;
+	public boolean removeItem(int index) {
+		try {
+			if(index < 0 || index >= items.size())
+				return false;
 			
-			for(int i = index; i < items.size(); ++i)
-				databaseChannel.write(encoding.encode(items.get(i) + System.lineSeparator()));
-			for(int j = index; j < itemIndexes.size(); ++j)
-				itemIndexes.set(j, itemIndexes.get(j) - adjustmentValue);
-			databaseChannel.truncate(databaseChannel.size() - adjustmentValue);
-			return true;
+			if(seekTo(index) != -1) {
+				String removedItem = items.remove(index) + System.lineSeparator();
+				itemIndexes.remove(index);
+				int adjustmentValue = removedItem.getBytes(encoding).length;
+				
+				for(int i = index; i < items.size(); ++i)
+					databaseChannel.write(encoding.encode(items.get(i) + System.lineSeparator()));
+				for(int j = index; j < itemIndexes.size(); ++j)
+					itemIndexes.set(j, itemIndexes.get(j) - adjustmentValue);
+				databaseChannel.truncate(databaseChannel.size() - adjustmentValue);
+				return true;
+			}
+			return false;
 		}
-		return false;	
+		catch(IOException io) {
+			return false;
+		}
 	}
 	
-	public boolean removeItem(String item) throws IOException {
+	public boolean removeItem(String item) {
 		return removeItem(items.indexOf(item));
 	}
 
@@ -188,89 +193,87 @@ public class StringFileDatabase implements Closeable {
 	}
 	
 	@Override
-	public void close() throws IOException {
+	public void close() {
 		if(isClosed())
 			return;
-		databaseFile.close();
+		try {
+			databaseFile.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		items.clear();
 		itemIndexes.clear();
 		closed = true;
 	}
 	
-	public boolean replaceItem(String oldItem, String newItem) throws IOException {
+	public boolean replaceItem(String oldItem, String newItem) {
 		return replaceItem(indexOf(oldItem), newItem);
 	}
 	
-	public synchronized boolean replaceItem(int index, String newItem) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized boolean replaceItem(int index, String newItem) {
 		if(newItem == null || index < 0 || index >= items.size() || newItem.trim().isEmpty())
 			return false;
-		
-		String oldItem = getItem(index);
-		int oldItemByteLength = oldItem.getBytes(encoding).length;
-		int newItemByteLength = newItem.getBytes(encoding).length;
-		int pos = seekTo(index);
-		int adjustmentValue = newItemByteLength - oldItemByteLength;
-		
-		if(pos == -1)
+		try {
+			String oldItem = getItem(index);
+			int oldItemByteLength = oldItem.getBytes(encoding).length;
+			int newItemByteLength = newItem.getBytes(encoding).length;
+			int pos = seekTo(index);
+			int adjustmentValue = newItemByteLength - oldItemByteLength;
+			
+			if(pos == -1)
+				return false;
+			
+			items.set(index, newItem);
+			itemIndexes.set(index, itemIndexes.get(index) + adjustmentValue);
+			
+			databaseChannel.truncate(pos);
+			databaseChannel.write(encoding.encode(newItem + System.lineSeparator()));
+			
+			for(int i = index + 1; i < items.size(); ++i)
+				databaseChannel.write(encoding.encode(items.get(i) + System.lineSeparator()));
+			for(int j = index + 1; j < itemIndexes.size(); ++j)
+				itemIndexes.set(j, itemIndexes.get(j) + adjustmentValue);
+			return true;
+		}
+		catch (IOException e) {
 			return false;
-		
-		items.set(index, newItem);
-		itemIndexes.set(index, itemIndexes.get(index) + adjustmentValue);
-		
-		databaseChannel.truncate(pos);
-		databaseChannel.write(encoding.encode(newItem + System.lineSeparator()));
-		
-		for(int i = index + 1; i < items.size(); ++i)
-			databaseChannel.write(encoding.encode(items.get(i) + System.lineSeparator()));
-		for(int j = index + 1; j < itemIndexes.size(); ++j)
-			itemIndexes.set(j, itemIndexes.get(j) + adjustmentValue);
-		return true;
+		}
 	}
 	
-	public synchronized String getItem(int index) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		if(index < 0 || index >= items.size())
-			return null;
-		return items.get(index);
+	public synchronized String getItem(int index) {
+		return (index < 0 || index >= items.size()) ? null : items.get(index);
 	}
 
-	public synchronized int indexOf(String item) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized int indexOf(String item) {
 		return items.indexOf(item);
 	}
 
-	public synchronized int lastIndexOf(String item) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized int lastIndexOf(String item) {
 		return items.lastIndexOf(item);
 	}
 
-	public synchronized int size() throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized int size() {
 		return items.size();
 	}
 
-	public synchronized boolean isEmpty() throws IOException {
+	public synchronized boolean isEmpty() {
 		return size() == 0;
 	}
 	
-	public synchronized boolean exists(String item) throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
+	public synchronized boolean exists(String item) {
 		return items.contains(item);
 	}
 
-	public synchronized void clear() throws IOException {
-		if(isClosed())
-			throw new IOException("Database closed");
-		databaseChannel.truncate(0L);
-		items.clear();
-		itemIndexes.clear();
+	public synchronized void clear() {
+		try {
+			databaseChannel.truncate(0L);
+			items.clear();
+			itemIndexes.clear();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean isInitialized() {
@@ -281,11 +284,27 @@ public class StringFileDatabase implements Closeable {
 		return closed;
 	}
 
-	public List<String> getItems() throws IOException {
+	public List<String> getItems() {
 		return this.items;
 	}
 	
 	public List<Integer> getItemIndexes() {
 		return itemIndexes;
+	}
+	
+	public RandomAccessFile getDatabaseFile() {
+		return databaseFile;
+	}
+
+	public FileChannel getDatabaseChannel() {
+		return databaseChannel;
+	}
+
+	public String getDatabaseFilePath() {
+		return databaseFilePath;
+	}
+
+	public Charset getEncoding() {
+		return encoding;
 	}
 }

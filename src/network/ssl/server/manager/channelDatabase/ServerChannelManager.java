@@ -3,6 +3,7 @@ package network.ssl.server.manager.channelDatabase;
 import java.io.File;
 import java.io.IOException;
 
+import network.ssl.server.manager.channelDatabase.items.ServerChannel;
 import network.ssl.server.manager.propertyValueDatabase.PropertyValueDatabase;
 
 public class ServerChannelManager extends PropertyValueDatabase<ServerChannel> {

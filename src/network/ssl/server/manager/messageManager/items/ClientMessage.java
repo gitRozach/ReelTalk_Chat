@@ -1,32 +1,32 @@
-package network.ssl.server.manager.messageManager;
+package network.ssl.server.manager.messageManager.items;
 
 import java.util.Map;
 
-import network.ssl.server.manager.propertyValueDatabase.PropertyValueDatabaseObject;
-
-public abstract class Message extends PropertyValueDatabaseObject {
-	
-	protected static final String MESSAGE_ID_PROPERTY_NAME = "messageId";
+public abstract class ClientMessage extends DatabaseMessage {
 	protected static final String SENDER_NAME_PROPERTY_NAME = "senderName";
 	protected static final String SENDER_ID_PROPERTY_NAME = "senderId";
 	protected static final String MESSAGE_TEXT_PROPERTY_NAME = "messageText";
 	
-	protected static final int DEFAULT_MESSAGE_ID = -1;
+	
 	protected static final String DEFAULT_SENDER_NAME = "UNKNOWN_SENDER_NAME";
 	protected static final int DEFAULT_SENDER_ID = -1;
 	protected static final String DEFAULT_MESSAGE_TEXT = "UNKNOWN_MESSAGE_TEXT";
 	
-	protected int messageId;
 	protected String senderName;
 	protected int senderId;
 	protected String messageText;
 	
-	public Message() {
+	public ClientMessage() {
 		this(DEFAULT_MESSAGE_ID, DEFAULT_SENDER_NAME, DEFAULT_SENDER_ID, DEFAULT_MESSAGE_TEXT);
 	}
 	
-	public Message(int id, String messageSenderName, int messageSenderId, String text) {
-		messageId = id;
+	public ClientMessage(String databaseString) {
+		super(databaseString);
+		initFromDatabaseString(databaseString);
+	}
+	
+	public ClientMessage(int id, String messageSenderName, int messageSenderId, String text) {
+		super(id);
 		senderName = messageSenderName;
 		senderId = messageSenderId;
 		messageText = text;
@@ -36,11 +36,11 @@ public abstract class Message extends PropertyValueDatabaseObject {
 	public boolean equals(Object other) {
 		if(other == null)
 			return false;
-		if(!(other instanceof Message))
+		if(!(other instanceof ClientMessage))
 			return false;
 		if(this == other)
 			return true;
-		Message otherMessage = (Message)other;
+		ClientMessage otherMessage = (ClientMessage)other;
 		return 	getMessageId() == otherMessage.getMessageId() &&
 				getSenderName().equals(otherMessage.getSenderName()) &&
 				getSenderId() == otherMessage.getSenderId() &&
@@ -76,14 +76,6 @@ public abstract class Message extends PropertyValueDatabaseObject {
 			++counter;
 		}
 		return counter;
-	}
-	
-	public int getMessageId() {
-		return messageId;
-	}
-
-	public void setMessageId(int id) {
-		messageId = id;
 	}
 
 	public String getSenderName() {

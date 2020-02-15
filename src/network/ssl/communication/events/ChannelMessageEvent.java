@@ -1,43 +1,34 @@
 package network.ssl.communication.events;
 
-public class ChannelMessageEvent extends ClientEvent {
+public class ChannelMessageEvent extends ClientMessageEvent {
 	private static final long serialVersionUID = 269486691458818300L;
-	private int id;
-	private String sender;
-	private String message;
+	protected int channelId;
+	protected String channelName;
 	
 	public ChannelMessageEvent() {
-		this(-1, "", "");
+		this(-1, -1, "", "", -1, "");
 	}
 	
-	public ChannelMessageEvent(int messageId, String messageSender, String messageText) {
-		super();
-		id = messageId;
-		sender = messageSender;
-		message = messageText;
+	public ChannelMessageEvent(	int senderId, int messageId, String senderName, String messageText, 
+								int _channelId, String _channelName) {
+		super(senderId, messageId, senderName, messageText);
+		channelId = _channelId;
+		channelName = _channelName;
 	}
 
-	public int getId() {
-		return id;
+	public int getChannelId() {
+		return channelId;
 	}
 
-	public void setId(int messageId) {
-		id = messageId;
-	}
-	
-	public String getSender() {
-		return sender;
+	public void setChannelId(int channelId) {
+		this.channelId = channelId;
 	}
 
-	public void setSender(String messageSender){
-		sender = messageSender;
-	}
-	
-	public String getMessage() {
-		return message;
+	public String getChannelName() {
+		return channelName;
 	}
 
-	public void setMessage(String messageText) {
-		message = messageText;
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
 	}
 }
