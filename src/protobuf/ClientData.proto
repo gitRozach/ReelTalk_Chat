@@ -1,0 +1,38 @@
+syntax = "proto2";
+package protobuf.clientData;
+
+option java_package = "protobuf";
+option java_outer_classname = "ClientData";
+
+message ClientAccount {
+	required ClientProfile profile = 1;
+	required string password = 2;
+	required bool banned = 3;
+	required bool deleted = 4;
+}
+
+message ClientProfile {
+	required ClientIdentity identity = 1;
+	required string profilePicture = 2;
+	required uint32 serverGroup = 3;
+	required uint32 adminGroup = 4;
+	repeated uint32 friends = 5;
+}
+
+message ClientIdentity {
+	optional ClientDevice device = 1;
+	required int32 id = 2;
+	required string username = 3;
+}
+
+message ClientDevice {
+	optional ClientDeviceType deviceType = 1 [default = DESKTOP];
+	optional string deviceName = 2;
+	optional string deviceIp = 3;
+	
+	enum ClientDeviceType {
+		DESKTOP = 0;
+		BROWSER = 1;
+		MOBILE = 2;
+	}
+}

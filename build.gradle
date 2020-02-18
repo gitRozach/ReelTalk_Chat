@@ -9,6 +9,7 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
     
+    compile 'com.google.protobuf:protobuf-java:3.11.4';
     //testImplementation 'junit:junit:4.12'
     testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
     // https://mvnrepository.com/artifact/org.awaitility/awaitility
