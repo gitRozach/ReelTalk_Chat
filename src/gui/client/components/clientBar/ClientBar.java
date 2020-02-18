@@ -93,7 +93,6 @@ public class ClientBar extends LoadableStackPane {
 		initStylesheets();
 		initMouseListener();
 		getStyleClass().add("root-content-box");
-		//setContent(rootContentBox);
 		loadContent(rootContentBox);
 	}
 
@@ -370,10 +369,114 @@ public class ClientBar extends LoadableStackPane {
 	public void attachClient(SecuredChatClient client) {
 		
 	}
-	
-	/*
-	 * 
-	 */
+
+	public VBox getRootContentBox() {
+		return rootContentBox;
+	}
+
+	public VBox getProfileBox() {
+		return profileBox;
+	}
+
+	public HBox getProfileImageBox() {
+		return profileImageBox;
+	}
+
+	public VBox getLevelImagesBox() {
+		return levelImagesBox;
+	}
+
+	public ImageView getProfilePictureView() {
+		return profilePictureView;
+	}
+
+	public Label getProfileNameLabel() {
+		return profileNameLabel;
+	}
+
+	public ImageView getAdminLevelView() {
+		return adminLevelView;
+	}
+
+	public ImageView getProfileLevelView() {
+		return profileLevelView;
+	}
+
+	public JFXTabPane getProfileTabPane() {
+		return profileTabPane;
+	}
+
+	public VBox getMessageView() {
+		return messageView;
+	}
+
+	public Tab getMessagesTab() {
+		return messagesTab;
+	}
+
+	public HBox getProfileTabButtonBox() {
+		return profileTabButtonBox;
+	}
+
+	public JFXButton getMessagesButton() {
+		return messagesButton;
+	}
+
+	public JFXButton getMembersButton() {
+		return membersButton;
+	}
+
+	public JFXButton getAppsButton() {
+		return appsButton;
+	}
+
+	public VBox getMediaView() {
+		return mediaView;
+	}
+
+	public Tab getMediaTab() {
+		return mediaTab;
+	}
+
+	public JFXButton getAudioPlayerButton() {
+		return audioPlayerButton;
+	}
+
+	public JFXButton getVideoPlayerButton() {
+		return videoPlayerButton;
+	}
+
+	public JFXButton getImageViewerButton() {
+		return imageViewerButton;
+	}
+
+	public JFXTabPane getMemberTabPane() {
+		return memberTabPane;
+	}
+
+	public JFXListView<ClientBarItem> getFriendsView() {
+		return friendsView;
+	}
+
+	public Tab getFriendsTab() {
+		return friendsTab;
+	}
+
+	public JFXListView<ClientBarItem> getNonFriendsView() {
+		return nonFriendsView;
+	}
+
+	public Tab getMembersTab() {
+		return membersTab;
+	}
+
+	public JFXListView<ClientBarItem> getOnlineView() {
+		return onlineView;
+	}
+
+	public Tab getOnlineTab() {
+		return onlineTab;
+	}
 
 	private class ClientCell extends JFXListCell<ClientBarItem> {
 		

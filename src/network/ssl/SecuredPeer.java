@@ -26,7 +26,10 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import network.ssl.communication.ByteMessage;
+import protobuf.ClientData.ClientAccount;
 
 public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, ByteMessageSender {	
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
@@ -180,6 +183,15 @@ public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, Byt
 				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
 				if(receptionBuffer == null)
 					return null;
+				
+				try {
+					ClientAccount account = ClientAccount.parseFrom(receptionBuffer);
+					System.out.println(account.toString());
+				} 
+				catch (InvalidProtocolBufferException e) {
+					e.printStackTrace();
+				}
+				
 				if(isBufferingReceivedBytes())
 					receivedBytes.add(new ByteMessage(socketChannel, receptionBuffer));	
 				if(isByteReceptionHandlerEnabled())

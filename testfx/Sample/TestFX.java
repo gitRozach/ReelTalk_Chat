@@ -10,16 +10,16 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import com.jfoenix.controls.JFXButton;
 
+import controller.ReelTalkSession;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import main.SSLTest;
 
 class TestFX extends ApplicationTest {
 	@BeforeAll
 	public static void setUpClass() throws Exception {
-		ApplicationTest.launch(SSLTest.class);
+		ApplicationTest.launch(ReelTalkSession.class);
 	}
 	
 	protected Node findButtonById(String id) {

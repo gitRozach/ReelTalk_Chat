@@ -1,0 +1,35 @@
+syntax = "proto2";
+package protobuf.channelData;
+
+option java_package = "protobuf";
+option java_outer_classname = "ChannelData";
+
+message TextChannel {
+	
+}
+
+message VoiceChannel {
+	
+}
+
+message ChannelIdentity {
+	required int32 channelId;
+	required string channelName;
+}
+
+message ChannelMembers {
+	repeated int32 memberId;
+}
+
+message ChannelRestriction {
+	required ChannelRestrictionType type = 1;
+	
+	enum ChannelRestrictionType {
+		PUBLIC = 0;
+		WHITELIST_ONLY = 1;
+		INVITE_ONLY = 2;
+		CLIENT_GROUP_LEVEL = 3;
+		ADMIN_GROUP_LEVEL = 4;
+	}
+}
+

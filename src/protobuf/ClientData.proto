@@ -20,15 +20,18 @@ message ClientProfile {
 }
 
 message ClientIdentity {
-	optional ClientDevice device = 1;
-	required int32 id = 2;
-	required string username = 3;
-}
-
-message ClientDevice {
-	optional ClientDeviceType deviceType = 1 [default = DESKTOP];
-	optional string deviceName = 2;
-	optional string deviceIp = 3;
+	required int32 id = 1;
+	required string username = 2;
+	optional string ipv4 = 3;
+	optional ClientDeviceOs = 4;
+	optional ClientDeviceType deviceType = 5;
+	
+	enum ClientDeviceOs {
+		WINDOWS = 0;
+		LINUX = 1;
+		IOS = 2;
+		ANDROID = 3;
+	}
 	
 	enum ClientDeviceType {
 		DESKTOP = 0;

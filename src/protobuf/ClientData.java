@@ -16,7 +16,6 @@ public final class ClientData {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface ClientAccountOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientData.ClientAccount)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4250,6 +4249,4 @@ public final class ClientData {
         internal_static_protobuf_clientData_ClientDevice_descriptor,
         new java.lang.String[] { "DeviceType", "DeviceName", "DeviceIp", });
   }
-
-  // @@protoc_insertion_point(outer_class_scope)
 }

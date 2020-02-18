@@ -36,11 +36,8 @@ public class ChannelBar extends StackPane {
 	private ScrollPane channels;
 	private JFXButton microphoneButton;
 	private JFXButton speakersButton;
-	//private JFXButton callButton;
 	private JFXTreeView<ChannelBarItem> channelView;
 	
-	//private SecuredChatClient client;
-
 	public ChannelBar()	{
 		this(false, null);
 	}
@@ -178,7 +175,7 @@ public class ChannelBar extends StackPane {
 		return false;
 	}
 	
-	private TreeItem<ChannelBarItem> getChannelById(int id) {
+	public TreeItem<ChannelBarItem> getChannelById(int id) {
 		if(channelView == null || channelView.getRoot() == null)
 			return null;
 		for(int i = 0; i < channelView.getRoot().getChildren().size(); ++i) {
@@ -189,7 +186,7 @@ public class ChannelBar extends StackPane {
 		return null;
 	}
 	
-	private TreeItem<ChannelBarItem> getClientById(int id) {
+	public TreeItem<ChannelBarItem> getClientById(int id) {
 		if(channelView == null || channelView.getRoot() == null)
 			return null;
 		for(int i = 0; i < channelView.getRoot().getChildren().size(); ++i) {

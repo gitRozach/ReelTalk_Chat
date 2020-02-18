@@ -13,6 +13,11 @@ import javax.net.ssl.SSLEngine;
 
 import network.ssl.SecuredPeer;
 import network.ssl.communication.ByteMessage;
+import protobuf.ClientData.ClientAccount;
+import protobuf.ClientData.ClientDevice;
+import protobuf.ClientData.ClientDevice.ClientDeviceType;
+import protobuf.ClientData.ClientIdentity;
+import protobuf.ClientData.ClientProfile;
 import utils.Utils;
 import utils.concurrency.LoopingRunnable;
 
@@ -212,8 +217,16 @@ public class SecuredClient extends SecuredPeer {
 				ByteMessage sendingMessage = null;
 				if((sendingMessage = peekOrderedBytes()) != null) {
 					try {
-						if(write(sendingMessage.getMessageBytes()) > 0);
-							pollOrderedBytes();
+						ClientDevice device = ClientDevice.newBuilder().setDeviceType(ClientDeviceType.DESKTOP).setDeviceName("Windows 10 Desktop").setDeviceIp("127.0.0.1").build();
+						ClientIdentity identity = ClientIdentity.newBuilder().setId(0).setUsername("Rozach").build();
+						ClientProfile profile = ClientProfile.newBuilder().setIdentity(identity).setProfilePicture("/empty/path").setServerGroup(0).setAdminGroup(0).addFriends(101).addFriends(102).build();
+						ClientAccount account = ClientAccount.newBuilder().setProfile(profile).setBanned(false).setDeleted(false).setPassword("123").build();
+						
+						if(write(account.toByteArray()) > 0)
+							System.out.println("Jaujau");
+						
+						//if(write(sendingMessage.getMessageBytes()) > 0)
+							//pollOrderedBytes();
 		    		}
 		    		catch(Exception e) {
 		    			logger.severe(e.toString());

@@ -9,6 +9,7 @@ public abstract class ObjectEvent<T> extends Event {
 	protected T attachedObject;
 	
 	public static EventType<ObjectEvent<?>> ANY = new EventType<ObjectEvent<?>>("ANY");
+	public static EventType<ObjectEvent<String>> STRING = new EventType<ObjectEvent<String>>("STRING");
 
 	public ObjectEvent(EventType<? extends Event> type) {
 		this(type, null);

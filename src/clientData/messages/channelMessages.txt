@@ -15,3 +15,9 @@ messageId=0#senderName=Rozach#senderId=0#messageText=�#channelId=0#channelName=#
 messageId=0#senderName=Rozach#senderId=0#messageText=haha#channelId=0#channelName=#
 messageId=0#senderName=Rozach#senderId=0#messageText=äääääääääää#channelId=0#channelName=#
 messageId=0#senderName=Rozach#senderId=0#messageText=äää#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=hahahaha#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=leude ich chille gerade bei der IVU#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=JAUJAU!#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=:A1: :A1: :A1: :A1: :A1: :A1: :A1:#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=:H9: :H9: :H9: :H9: :F4:#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=::F81:: ::F81:: ::F81:: ::F81:: ::F81::#channelId=0#channelName=#

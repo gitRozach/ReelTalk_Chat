@@ -36,7 +36,7 @@ public class MessageField extends VBox {
 	private EventHandler<KeyEvent> onEnterPressed;
 	private EventHandler<MouseEvent> onEmojiButtonClicked;
 	private EventHandler<MouseEvent> onFileButtonClicked;
-	private ObjectEventHandler onEmojiPressed;
+	private ObjectEventHandler<String> onEmojiPressed;
 
 	private Animation smileyIn;
 	private Animation smileyOut;
@@ -68,8 +68,7 @@ public class MessageField extends VBox {
 					openEmojiPane();
 			}
 		});
-		onFileButtonClicked = (mouseEvent -> {
-		});
+		onFileButtonClicked = (mouseEvent -> {});
 		
 		emojiTextField = new EmojiTextField();
 		GUITools.setFixedHeightOf(emojiTextField, 50d);
@@ -190,13 +189,13 @@ public class MessageField extends VBox {
 		onFileButtonClicked = me;
 	}
 	
-	public ObjectEventHandler getOnEmojiPressed() {
+	public ObjectEventHandler<String> getOnEmojiPressed() {
 		return onEmojiPressed;
 	}
 
-	public void setOnEmojiPressed(ObjectEventHandler handler) {
+	public void setOnEmojiPressed(ObjectEventHandler<String> handler) {
 		onEmojiPressed = handler;
-		emojiPane.addEventFilter(ObjectEvent.ANY, onEmojiPressed);
+		addEventFilter(ObjectEvent.STRING, onEmojiPressed);
 	}
 	
 	public HBox getMessageBox() {

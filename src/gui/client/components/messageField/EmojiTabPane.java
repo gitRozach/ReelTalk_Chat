@@ -192,7 +192,7 @@ public class EmojiTabPane extends StackPane {
 				currentImageView.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, a -> {});
 				
 				currentImageView.setOnMouseClicked(a -> {
-					fireEvent(new ObjectEvent(ObjectEvent.ANY, new String(currentImageTitle + (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : ""))) {
+					fireEvent(new ObjectEvent<String>(ObjectEvent.STRING, new String(currentImageTitle + (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : ""))) {
 						private static final long serialVersionUID = -1195663894069989722L;
 					});
 				});
