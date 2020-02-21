@@ -1,0 +1,41 @@
+syntax = "proto2";
+package protobuf.clientidentities;
+
+option java_package = "protobuf";
+option java_outer_classname = "ClientIdentities";
+
+message ClientBase {
+	required int32 id = 1;
+	required string username = 2;
+	optional string ipv4 = 3;
+	optional ClientDeviceOs deviceOs = 4;
+	optional ClientDeviceType deviceType = 5;
+	
+	enum ClientDeviceOs {
+		WINDOWS = 0;
+		LINUX = 1;
+		IOS = 2;
+		ANDROID = 3;
+	}
+	
+	enum ClientDeviceType {
+		DESKTOP = 0;
+		BROWSER = 1;
+		MOBILE = 2;
+	}
+}
+
+message ClientProfile {
+	required ClientBase base = 1;
+	required int32 serverGroup = 2;
+	required int32 adminGroup = 3;
+	repeated int32 friend = 4;
+	required string profilePictureURI = 5;
+	required bool banned = 6;
+	required bool deleted = 7;
+}
+
+message ClientAccount {
+	required ClientProfile clientProfile = 1;
+	required string password = 2;
+}

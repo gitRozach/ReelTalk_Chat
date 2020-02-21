@@ -10,8 +10,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Charsets;
-
 public class StringFileDatabase implements Closeable {
 	protected volatile boolean initialized;
 	protected volatile boolean closed;
@@ -34,7 +32,7 @@ public class StringFileDatabase implements Closeable {
 		databaseFile = new RandomAccessFile(file, "rwd");
 		databaseChannel = this.databaseFile.getChannel();
 		databaseFilePath = file.getPath();
-		encoding = Charsets.UTF_8;
+		encoding = Charset.forName("utf-8");
 	}
 
 	public synchronized String readItem(int index) {

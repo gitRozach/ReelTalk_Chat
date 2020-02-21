@@ -5,11 +5,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-import com.google.common.base.Charsets;
 
 import network.ssl.server.manager.stringFileDatabase.StringFileDatabase;
 
@@ -104,10 +103,10 @@ class StringFileDatabaseTest {
 		assertTrue(database.addItem(0, "Text5"));
 		
 		int pos0 = 0;
-		int pos1 = ("Text1" +  System.lineSeparator()).getBytes(Charsets.UTF_8).length;
-		int pos2 = pos1 + ("Text2" +  System.lineSeparator()).getBytes(Charsets.UTF_8).length;
-		int pos3 = pos2 + ("Text3" +  System.lineSeparator()).getBytes(Charsets.UTF_8).length;
-		int pos4 = pos3 + ("Text4" +  System.lineSeparator()).getBytes(Charsets.UTF_8).length;
+		int pos1 = ("Text1" +  System.lineSeparator()).getBytes(Charset.forName("utf-8")).length;
+		int pos2 = pos1 + ("Text2" +  System.lineSeparator()).getBytes(Charset.forName("utf-8")).length;
+		int pos3 = pos2 + ("Text3" +  System.lineSeparator()).getBytes(Charset.forName("utf-8")).length;
+		int pos4 = pos3 + ("Text4" +  System.lineSeparator()).getBytes(Charset.forName("utf-8")).length;
 		
 		int nPos0 = database.seekTo(0);
 		int nPos1 = database.seekTo(1);

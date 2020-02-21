@@ -6,6 +6,7 @@ import java.nio.channels.SocketChannel;
 
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
+import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.AccountDataEvent;
@@ -31,7 +32,7 @@ import network.ssl.server.manager.clientDataManager.items.ClientAccountData;
 import network.ssl.server.manager.messageManager.ClientMessageManager;
 import network.ssl.server.manager.messageManager.items.ChannelMessage;
 
-public class SecuredChatServer extends SecuredServer {
+public class SecuredMessageServer extends SecuredServer {
 	protected ClientAccountManager clients;
 	protected ServerChannelManager channelManager;
 	protected ClientMessageManager messageManager;
@@ -39,12 +40,13 @@ public class SecuredChatServer extends SecuredServer {
 	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
 
-	public SecuredChatServer(String protocol, String hostAddress, int port) throws Exception {
+	public SecuredMessageServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
 		int camRes = initClientDatabase();
 		int cmRes = initChannelManager();
 		initMessageManager();
 		initHandlers();
+		initCallbacks();
 		logger.info(camRes + " Clients loaded.");
 		logger.info(cmRes + " Channels loaded.");
 	}
@@ -79,27 +81,34 @@ public class SecuredChatServer extends SecuredServer {
 		};
 	}
 	
+	private void initCallbacks() {
+		setPeerCallback(new PeerCallback() {
+			@Override
+			public void messageReceived(ByteMessage byteMessage) {
+				handleMessageReception(byteMessage);
+				onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+					private static final long serialVersionUID = -1115235010001672312L;
+				});	
+			}
+			@Override
+			public void messageSent(ByteMessage byteMessage) {
+				onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+					private static final long serialVersionUID = 8588402449968090480L;
+				});
+			}
+			@Override
+			public void connectionLost(Throwable throwable) {
+				
+			}
+		});
+	}
+	
 	public boolean sendMessage(SelectionKey receiverKey, MessagePacket message) {
 		return sendBytes((SocketChannel)receiverKey.channel(), message.serialize());
 	}
 	
 	public boolean sendMessage(SocketChannel receiverChannel, MessagePacket message) {
 		return sendBytes(receiverChannel, message.serialize());
-	}
-	
-	@Override
-	public void onBytesReceived(ByteMessage byteMessage) {
-		handleMessageReception(byteMessage);
-		onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
-			private static final long serialVersionUID = -1115235010001672312L;
-		});	
-	}
-	
-	@Override
-	public void onBytesSent(ByteMessage byteMessage) {
-		onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
-			private static final long serialVersionUID = 8588402449968090480L;
-		});
 	}
 	
 	public boolean checkLogin(String username, String password) {

@@ -1,0 +1,48 @@
+syntax = "proto2";
+package protobuf.clientmessages;
+
+option java_package = "protobuf";
+option java_outer_classname = "ClientMessages";
+
+message ClientBase {
+	required int32 id = 1;
+	required string username = 2;
+}
+
+message ChannelBase {
+	required int32 id = 1;
+	required string name = 2;
+}
+
+message ClientMessageBase {
+	required ClientBase senderBase = 1;
+	required int32 messageId = 2;
+	required string messageText = 3;
+}
+
+message ChannelClientMessage {
+	required ClientMessageBase messageBase = 1;
+	required ChannelBase receiverBase = 2;
+}
+
+message ChannelClientMessageAnswer {
+	required ClientMessageBase messageBase = 1;
+	required ChannelClientMessage messageToAnswer = 2;
+}
+
+message PrivateClientMessage {
+	required ClientMessageBase messageBase = 1;
+	required ClientBase receiverBase = 2;
+}
+
+message ProfileComment {
+	required ClientMessageBase messageBase = 1;
+	required ClientBase receiverBase = 2;
+}
+
+message ProfileCommentAnswer {
+	required ClientMessageBase messageBase = 1;
+	required ProfileComment messageToAnswer = 2;
+}
+
+

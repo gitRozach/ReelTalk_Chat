@@ -19,8 +19,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
-import network.ssl.SecuredPeer;
+import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ByteMessage;
+import network.ssl.peer.SecuredPeer;
 import utils.Utils;
 import utils.concurrency.LoopingRunnable;
 
@@ -49,6 +50,21 @@ public class SecuredServer extends SecuredPeer {
 		peerNetworkBuffer = ByteBuffer.allocate(dummySession.getPacketBufferSize());
 		dummySession.invalidate();
 
+		setPeerCallback(new PeerCallback() {
+			@Override
+			public void messageReceived(ByteMessage byteMessage) {
+				logger.info("Server received: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
+			}
+			@Override
+			public void messageSent(ByteMessage byteMessage) {
+				logger.info("Server sent: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
+			}
+			@Override
+			public void connectionLost(Throwable throwable) {
+				logger.info("Server lost network connection: " + throwable.getMessage());
+			}
+		});
+		
 		selector = SelectorProvider.provider().openSelector();
 		serverSocketChannel = ServerSocketChannel.open();
 		serverSocketChannel.configureBlocking(false);
@@ -205,16 +221,6 @@ public class SecuredServer extends SecuredPeer {
 	
 	public boolean sendBytes(ByteMessage byteMessage) {
 		return orderedBytes.offer(byteMessage);
-	}
-
-	@Override
-	public void onBytesReceived(ByteMessage byteMessage) {
-		logger.info("Bytes received: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
-	}
-	
-	@Override
-	public void onBytesSent(ByteMessage byteMessage) {
-		logger.info("Bytes sent: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
 	}
 	
 	@Override

@@ -4,8 +4,6 @@ import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.google.common.base.Charsets;
-
 import network.ssl.server.manager.database.StringDatabaseItem;
 
 public abstract class PropertyValueDatabaseObject implements StringDatabaseItem {
@@ -28,6 +26,6 @@ public abstract class PropertyValueDatabaseObject implements StringDatabaseItem 
 	
 	@Override
 	public Charset getEncoding() {
-		return Charsets.UTF_8;
+		return Charset.forName("utf-8");
 	}
 }

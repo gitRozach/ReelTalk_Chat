@@ -21,14 +21,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
-import network.ssl.client.SecuredChatClient;
+import network.ssl.client.SecuredMessageClient;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.ChannelMessageEvent;
 import network.ssl.communication.events.ClientEvent;
 import network.ssl.communication.requests.ChannelMessageRequest;
 import network.ssl.communication.requests.ClientLoginRequest;
-import network.ssl.server.SecuredChatServer;
+import network.ssl.server.SecuredMessageServer;
 
 public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";
@@ -39,8 +39,8 @@ public class ReelTalkSession extends Application {
 	private LoadableStackPane rootPane;
 	private ClientChatView chatView;
 	
-	private SecuredChatServer chatServer;
-	private SecuredChatClient chatClient;
+	private SecuredMessageServer chatServer;
+	private SecuredMessageClient chatClient;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -87,11 +87,11 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initServer() throws Exception {
-		chatServer = new SecuredChatServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
+		chatServer = new SecuredMessageServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initClient() throws Exception {
-		chatClient = new SecuredChatClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
+		chatClient = new SecuredMessageClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initStage(Stage stage) {

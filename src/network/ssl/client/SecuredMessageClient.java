@@ -2,16 +2,18 @@ package network.ssl.client;
 
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
+import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 
-public class SecuredChatClient extends SecuredClient {
+public class SecuredMessageClient extends SecuredClient {
 	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
 	
-	public SecuredChatClient(String protocol, String remoteAddress, int port) throws Exception {
+	public SecuredMessageClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
 		initHandlers();
+		initCallbacks();
 	}
 
 	private void initHandlers() {
@@ -24,6 +26,33 @@ public class SecuredChatClient extends SecuredClient {
 			@Override
 			public void handle(ObjectEvent<ByteMessage> event) {System.out.println("Client sent a message.");}
 		};
+	}
+	
+	private void initCallbacks() {
+		setPeerCallback(new PeerCallback() {
+			@Override
+			public void messageReceived(ByteMessage byteMessage) {
+				MessagePacket receivedBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
+				if(receivedBytes == null)
+					return;
+				onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+					private static final long serialVersionUID = 6882651385899629774L;
+				});
+			}
+			@Override
+			public void messageSent(ByteMessage byteMessage) {
+				MessagePacket sentBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
+				if(sentBytes == null)
+					return;
+				onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+					private static final long serialVersionUID = 2936930616791779331L;
+				});
+			}
+			@Override
+			public void connectionLost(Throwable throwable) {
+				
+			}
+		});
 	}
 	
 	public void sendMessage(MessagePacket message) {
@@ -45,26 +74,6 @@ public class SecuredChatClient extends SecuredClient {
     	}
     	return null;
     }
-
-	@Override
-	public void onBytesReceived(ByteMessage byteMessage) {
-		MessagePacket receivedBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
-		if(receivedBytes == null)
-			return;
-		onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
-			private static final long serialVersionUID = 6882651385899629774L;
-		});
-	}
-	
-	@Override
-	public void onBytesSent(ByteMessage byteMessage) {
-		MessagePacket sentBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
-		if(sentBytes == null)
-			return;
-		onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
-			private static final long serialVersionUID = 2936930616791779331L;
-		});
-	}
 	
 	public ObjectEventHandler<ByteMessage> getOnMessageReceived() {
 		return onMessageReceivedHandler;

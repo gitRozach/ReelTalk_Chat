@@ -1,4 +1,4 @@
-package network.ssl;
+package network.ssl.peer;
 
 import java.io.Closeable;
 import java.io.FileInputStream;
@@ -26,14 +26,14 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-import com.google.protobuf.InvalidProtocolBufferException;
-
+import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ByteMessage;
-import protobuf.ClientData.ClientAccount;
 
-public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, ByteMessageSender {	
+public abstract class SecuredPeer implements Closeable {	
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
-
+	
+	protected PeerCallback peerCallback;
+	
 	protected ByteBuffer myApplicationBuffer;
     protected ByteBuffer myNetworkBuffer;
     protected ByteBuffer peerApplicationBuffer;
@@ -183,19 +183,10 @@ public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, Byt
 				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
 				if(receptionBuffer == null)
 					return null;
-				
-				try {
-					ClientAccount account = ClientAccount.parseFrom(receptionBuffer);
-					System.out.println(account.toString());
-				} 
-				catch (InvalidProtocolBufferException e) {
-					e.printStackTrace();
-				}
-				
 				if(isBufferingReceivedBytes())
 					receivedBytes.add(new ByteMessage(socketChannel, receptionBuffer));	
 				if(isByteReceptionHandlerEnabled())
-					onBytesReceived(new ByteMessage(socketChannel, receptionBuffer));
+					peerCallback.messageReceived(new ByteMessage(socketChannel, receptionBuffer));
 				return receptionBuffer;
 			}
 			if(readBytes == -1)
@@ -219,7 +210,7 @@ public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, Byt
             	if(isBufferingSentBytes())
             		sentBytes.add(new ByteMessage(socketChannel, message));		
             	if(isByteSendingHandlerEnabled())
-					onBytesSent(new ByteMessage(socketChannel, message));
+            		peerCallback.messageSent(new ByteMessage(socketChannel, message));
             }
             return writtenBytes;
 		} 
@@ -412,6 +403,14 @@ public abstract class SecuredPeer implements Closeable, ByteMessageReceiver, Byt
     		logger.severe(io.toString());
     	}
     	return !socketChannel.isConnected();
+    }
+    
+    public PeerCallback getPeerCallback() {
+    	return peerCallback;
+    }
+    
+    public void setPeerCallback(PeerCallback callback) {
+    	peerCallback = callback;
     }
     
     public boolean isByteReceptionHandlerEnabled() {

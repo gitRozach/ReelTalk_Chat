@@ -8,17 +8,17 @@ import org.awaitility.Awaitility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.client.SecuredChatClient;
+import network.ssl.client.SecuredMessageClient;
 import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
 import network.ssl.communication.events.ClientLoggedInEvent;
 import network.ssl.communication.requests.ClientLoginRequest;
 import network.ssl.communication.requests.PrivateMessageRequest;
-import network.ssl.server.SecuredChatServer;
+import network.ssl.server.SecuredMessageServer;
 
 class SecuredMessageServerClientTest {
 
-	private static SecuredChatServer server;
+	private static SecuredMessageServer server;
 	
 	private static final String TEST_PROTOCOL = "TLSv1.2";
 	private static final String TEST_HOST_ADDRESS = "localhost";
@@ -26,7 +26,7 @@ class SecuredMessageServerClientTest {
 	
 	@BeforeAll
 	public static void setUp() throws Exception {
-		server = new SecuredChatServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+		server = new SecuredMessageServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 		server.setBufferingReceivedBytes(true);
 		server.start();
 		Thread.sleep(50L);
@@ -34,11 +34,11 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void sendMessage_serverSendsMultipleMessagesAndClientReceivesAllMessages() throws Exception {
-		try(SecuredChatClient client1 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client2 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client3 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client4 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client5 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(SecuredMessageClient client1 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client2 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client3 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client4 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client5 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
 			client1.setBufferingReceivedBytes(true);
 			client2.connect();
@@ -84,7 +84,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
 		ClientLoggedInEvent messageToReceive = new ClientLoggedInEvent();
-		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedBytes(true);
 			
@@ -123,7 +123,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void clientLogin_validLoginTest() throws Exception {
 		ClientLoginRequest req = new ClientLoginRequest("Rozach", "jajut");
-		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
 			client.sendMessage(req);
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
@@ -136,7 +136,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void clientLogin_invalidLoginTest() throws Exception {
 		ClientLoginRequest req = new ClientLoginRequest("Does_not_exist", "wrong_anyway");
-		try(SecuredChatClient client = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.sendMessage(req);
 			
@@ -150,16 +150,16 @@ class SecuredMessageServerClientTest {
 	@Test
 	void sendMessage_tenClientsSendMultipleMessagesAndServerReceivesAllMessages() throws Exception {
 		PrivateMessageRequest requestMessage = new PrivateMessageRequest("rozach", "testpass", 12, "Hallo Client mit ID 12!");
-		try(SecuredChatClient client1 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client2 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client3 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client4 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client5 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client6 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client7 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client8 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client9 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredChatClient client10 = new SecuredChatClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(SecuredMessageClient client1 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client2 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client3 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client4 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client5 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client6 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client7 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client8 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client9 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			SecuredMessageClient client10 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
 			client2.connect();
 			client3.connect();
