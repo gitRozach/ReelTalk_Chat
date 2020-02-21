@@ -1,0 +1,57 @@
+syntax = "proto2";
+package protobuf.clientevents;
+
+option java_package = "protobuf";
+option java_outer_classname = "ClientEvents";
+
+message ClientEventBase {
+	
+}
+
+message ClientDataEvent	{
+	
+}
+
+message ChannelDataEvent {
+	
+}
+
+message ChannelMessageEvent {
+	
+}
+
+message PrivateMessageEvent {
+	
+}
+
+message ClientJoinedChannelEvent {
+	
+}
+
+message ClientLeftChannelEvent {
+	
+}
+
+message ClientLoggedInEvent {
+	
+}
+
+message ClientLoggedOutEvent {
+	
+}
+
+message ClientRegisteredEvent {
+	
+}
+
+message ClientDownloadedFileEvent {
+	
+}
+
+message ClientUploadedFileEvent {
+	
+}
+
+message PingMeasuredEvent {
+	
+}

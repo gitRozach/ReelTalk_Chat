@@ -1,0 +1,71 @@
+syntax = "proto2";
+package protobuf.clientrequests;
+
+option java_package = "protobuf";
+option java_outer_classname = "ClientRequests";
+
+import "protobuf/ClientData.proto";
+
+message ClientRequestBase {
+	required int32 requestorId = 1;
+	required string requestorUsername = 2;
+	required string requestorPassword = 3;
+}
+
+message ChannelJoinRequest {
+	required protobuf.clientdata.ClientIdentity identity = 1;
+	required int32 requestedChannelId = 2;
+	required string requestedChannelName = 3;
+}
+
+message ChannelLeaveRequest {
+	required ClientRequestBase requestorBase = 1;
+	required int32 requestedChannelId = 2;
+	optional string requestedChannelName = 3;
+}
+
+message ChannelDataRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientDataRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ChannelMessageRequest {
+	required ClientRequestBase requestorBase = 1;
+	
+}
+
+message ChannelMessageAnswerRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message PrivateMessageRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientLoginRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientLogoutRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientRegistrationRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientFileDownloadRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientFileUploadRequest {
+	required ClientRequestBase requestorBase = 1;
+}
+
+message ClientPingMeasurementRequest {
+	
+}
+
