@@ -186,7 +186,8 @@ public class ReelTalkSession extends Application {
 	private void onInputFieldEnterPressed() {
 		ClientRequestBase base = ClientRequestBase	.newBuilder()
 													.setRequestorId(0)
-													.setRequestorUsername("Rozach")
+													.setRequestorUsername("TestoRozach")
+													.setRequestorPassword("rozachPass")
 													.build();
 		ClientMessageBase messageBase = ClientMessageBase.newBuilder()	.setSenderBase(ClientBase	.newBuilder()
 																									.setId(0)
