@@ -1,9 +1,9 @@
 package network.ssl.client.callbacks;
 
-import network.ssl.communication.ByteMessage;
+import network.ssl.communication.ProtobufMessage;
 
 public interface PeerCallback {
 	public void connectionLost(Throwable throwable);
-	public void messageSent(ByteMessage message);
-	public void messageReceived(ByteMessage message);
+	public void messageSent(ProtobufMessage message);
+	public void messageReceived(ProtobufMessage message);
 }

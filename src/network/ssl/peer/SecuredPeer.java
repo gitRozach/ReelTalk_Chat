@@ -26,8 +26,10 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
+import com.google.protobuf.GeneratedMessageV3;
+
 import network.ssl.client.callbacks.PeerCallback;
-import network.ssl.communication.ByteMessage;
+import network.ssl.communication.ProtobufMessage;
 
 public abstract class SecuredPeer implements Closeable {	
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
@@ -48,8 +50,8 @@ public abstract class SecuredPeer implements Closeable {
     protected volatile boolean receptionHandlerEnabled;
     protected volatile boolean sendingHandlerEnabled;
     
-    protected List<ByteMessage> receivedBytes;
-    protected List<ByteMessage> sentBytes;
+    protected List<ProtobufMessage> receivedBytes;
+    protected List<ProtobufMessage> sentBytes;
     
     protected ExecutorService asyncTaskExecutor;
     protected ExecutorService ioExecutor;
@@ -59,8 +61,8 @@ public abstract class SecuredPeer implements Closeable {
     	bufferingSentBytes = false;
     	receptionHandlerEnabled = true;
     	sendingHandlerEnabled = true;
-    	receivedBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
-        sentBytes = Collections.synchronizedList(new ArrayList<ByteMessage>());
+    	receivedBytes = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
+        sentBytes = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
     	asyncTaskExecutor = Executors.newSingleThreadExecutor();
     	ioExecutor = Executors.newCachedThreadPool();
     }
@@ -176,17 +178,18 @@ public abstract class SecuredPeer implements Closeable {
         return engine.getHandshakeStatus();
     }
     
-    protected byte[] read(SocketChannel socketChannel, SSLEngine engine) {
+    protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
     	synchronized (readLock) {
 			int readBytes = 0;
 			if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
 				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
-				if(receptionBuffer == null)
+				GeneratedMessageV3 message = (GeneratedMessageV3) GeneratedMessageV3.class.getDeclaredMethod("parseFrom", byte[].class).invoke(receptionBuffer);
+				if(receptionBuffer == null || message == null)
 					return null;
 				if(isBufferingReceivedBytes())
-					receivedBytes.add(new ByteMessage(socketChannel, receptionBuffer));	
+					receivedBytes.add(new ProtobufMessage(socketChannel, message));	
 				if(isByteReceptionHandlerEnabled())
-					peerCallback.messageReceived(new ByteMessage(socketChannel, receptionBuffer));
+					peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
 				return receptionBuffer;
 			}
 			if(readBytes == -1)
@@ -195,10 +198,10 @@ public abstract class SecuredPeer implements Closeable {
 		}
     }
     
-    protected int write(SocketChannel socketChannel, SSLEngine engine, byte[] message) throws IOException {
+    protected int write(SocketChannel socketChannel, SSLEngine engine, GeneratedMessageV3 message) throws IOException {
         synchronized (writeLock) {
         	int writtenBytes = 0;
-            putBytesIntoBufferAndFlip(message);
+            putBytesIntoBufferAndFlip(message.toByteArray());
             while (myApplicationBuffer.hasRemaining()) {
             	SSLEngineResult encryptionResult = encryptBufferedBytes(engine);
     			if(checkEngineResult(encryptionResult))
@@ -208,9 +211,9 @@ public abstract class SecuredPeer implements Closeable {
             }
             if(writtenBytes > 0) {
             	if(isBufferingSentBytes())
-            		sentBytes.add(new ByteMessage(socketChannel, message));		
+            		sentBytes.add(new ProtobufMessage(socketChannel, message));		
             	if(isByteSendingHandlerEnabled())
-            		peerCallback.messageSent(new ByteMessage(socketChannel, message));
+            		peerCallback.messageSent(new ProtobufMessage(socketChannel, message));
             }
             return writtenBytes;
 		} 

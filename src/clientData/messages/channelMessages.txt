@@ -21,3 +21,8 @@ messageId=0#senderName=Rozach#senderId=0#messageText=JAUJAU!#channelId=0#channel
 messageId=0#senderName=Rozach#senderId=0#messageText=:A1: :A1: :A1: :A1: :A1: :A1: :A1:#channelId=0#channelName=#
 messageId=0#senderName=Rozach#senderId=0#messageText=:H9: :H9: :H9: :H9: :F4:#channelId=0#channelName=#
 messageId=0#senderName=Rozach#senderId=0#messageText=::F81:: ::F81:: ::F81:: ::F81:: ::F81::#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=hahaha#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=LOL!#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=lal#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=awdwdwda#channelId=0#channelName=#
+messageId=0#senderName=Rozach#senderId=0#messageText=awhd awhdoihaw#channelId=0#channelName=#

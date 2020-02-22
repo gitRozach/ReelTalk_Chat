@@ -11,8 +11,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
-import network.ssl.client.callbacks.PeerCallback;
-import network.ssl.communication.ByteMessage;
+import com.google.protobuf.GeneratedMessageV3;
+
+import network.ssl.client.callbacks.LoggerCallback;
+import network.ssl.communication.ProtobufMessage;
 import network.ssl.peer.SecuredPeer;
 import utils.Utils;
 import utils.concurrency.LoopingRunnable;
@@ -25,7 +27,7 @@ public class SecuredClient extends SecuredPeer {
 	
 	protected SSLEngine engine;
     protected SocketChannel socketChannel;
-    protected Queue<ByteMessage> orderedBytes;
+    protected Queue<ProtobufMessage> orderedBytes;
     
     protected ClientByteSender sender;
     protected ClientByteReceiver receiver;
@@ -47,22 +49,9 @@ public class SecuredClient extends SecuredPeer {
         peerApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
         peerNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
         
-        setPeerCallback(new PeerCallback() {
-        	@Override
-        	public void messageReceived(ByteMessage byteMessage) {
-        		logger.info("Client received: " + new String(byteMessage.getMessageBytes()));
-        	}
-            @Override
-            public void messageSent(ByteMessage byteMessage) {
-            	logger.info("Client sent: " + new String(byteMessage.getMessageBytes()));
-            }
-            @Override
-            public void connectionLost(Throwable throwable) {
-            	logger.info("Client lost connection to the server: " + throwable.getMessage());
-            }
-		});
+        setPeerCallback(new LoggerCallback(logger));
         
-        orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
+        orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
         sender = new ClientByteSender(1L);
         receiver = new ClientByteReceiver(1L);
     }
@@ -95,7 +84,7 @@ public class SecuredClient extends SecuredPeer {
     	return false;
     }
 
-    protected int write(byte[] message) throws IOException {
+    protected int write(GeneratedMessageV3 message) throws IOException {
         return write(socketChannel, engine, message);
     }
 
@@ -130,13 +119,13 @@ public class SecuredClient extends SecuredPeer {
 		return peekReceptionBytes() != null;
 	}
     
-    public ByteMessage peekReceptionBytes() {
+    public ProtobufMessage peekReceptionBytes() {
     	if(receivedBytes.isEmpty())
     		return null;
     	return receivedBytes.get(0);
     }
     
-    public ByteMessage pollReceptionBytes() {
+    public ProtobufMessage pollReceptionBytes() {
     	if(receivedBytes.isEmpty())
     		return null;
     	return receivedBytes.remove(0);
@@ -146,16 +135,18 @@ public class SecuredClient extends SecuredPeer {
 		return peekOrderedBytes() != null;
 	}
 
-	public ByteMessage peekOrderedBytes() {
+	public ProtobufMessage peekOrderedBytes() {
 		return orderedBytes.peek();
 	}
 
-	public ByteMessage pollOrderedBytes() {
+	public ProtobufMessage pollOrderedBytes() {
 		return orderedBytes.poll();
 	}
     
-    public void sendBytes(byte[] messageBytes) {
-    	orderedBytes.offer(new ByteMessage(messageBytes));
+    public void sendMessage(ProtobufMessage message) {
+    	if(!message.hasMessage())
+    		return;
+    	orderedBytes.offer(message);
     	Utils.sleep(1L);
     }
     
@@ -217,10 +208,10 @@ public class SecuredClient extends SecuredPeer {
     		super.run();
 			logger.info("ClientSender startet...");
 			while(isRunning()) {
-				ByteMessage sendingMessage = null;
+				ProtobufMessage sendingMessage = null;
 				if((sendingMessage = peekOrderedBytes()) != null) {
 					try {						
-						if(write(sendingMessage.getMessageBytes()) > 0)
+						if(write(sendingMessage.getMessage()) > 0)
 							pollOrderedBytes();
 		    		}
 		    		catch(Exception e) {

@@ -8,7 +8,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Queue;
@@ -20,7 +19,7 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
 import network.ssl.client.callbacks.PeerCallback;
-import network.ssl.communication.ByteMessage;
+import network.ssl.communication.ProtobufMessage;
 import network.ssl.peer.SecuredPeer;
 import utils.Utils;
 import utils.concurrency.LoopingRunnable;
@@ -33,10 +32,10 @@ public class SecuredServer extends SecuredPeer {
 	protected ServerSocketChannel serverSocketChannel;
 	protected SSLContext context;
 	protected Selector selector;
-	protected Queue<ByteMessage> orderedBytes;
+	protected Queue<ProtobufMessage> orderedBytes;
 	
-	protected ServerByteReceiver receiver;
-	protected ServerByteSender sender;
+	protected ServerMessageReceiver receiver;
+	protected ServerMessageSender sender;
 
 	public SecuredServer(String protocol, String hostAddress, int hostPort) throws Exception {
 		super();
@@ -52,12 +51,12 @@ public class SecuredServer extends SecuredPeer {
 
 		setPeerCallback(new PeerCallback() {
 			@Override
-			public void messageReceived(ByteMessage byteMessage) {
-				logger.info("Server received: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
+			public void messageReceived(ProtobufMessage byteMessage) {
+				logger.info("Server received: " + byteMessage.getMessage().toString());
 			}
 			@Override
-			public void messageSent(ByteMessage byteMessage) {
-				logger.info("Server sent: " + new String(byteMessage.getMessageBytes(), StandardCharsets.UTF_8));
+			public void messageSent(ProtobufMessage byteMessage) {
+				logger.info("Server sent: " + byteMessage.getMessage().toString());
 			}
 			@Override
 			public void connectionLost(Throwable throwable) {
@@ -70,9 +69,9 @@ public class SecuredServer extends SecuredPeer {
 		serverSocketChannel.configureBlocking(false);
 		serverSocketChannel.bind(new InetSocketAddress(hostAddress, hostPort));
 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-		orderedBytes = new ConcurrentLinkedQueue<ByteMessage>();
-		receiver = new ServerByteReceiver(1L);
-		sender = new ServerByteSender(1L);
+		orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
+		receiver = new ServerMessageReceiver(1L);
+		sender = new ServerMessageSender(1L);
 		active = true;
 		receptionCounter = 0;
 	}
@@ -177,13 +176,13 @@ public class SecuredServer extends SecuredPeer {
 		return peekReceptionBytes() != null;
 	}
 
-	public ByteMessage peekReceptionBytes() {
+	public ProtobufMessage peekReceptionBytes() {
 		if(receivedBytes.isEmpty())
 			return null;
 		return receivedBytes.get(0);
 	}
 
-	public ByteMessage pollReceptionBytes() {
+	public ProtobufMessage pollReceptionBytes() {
 		if(receivedBytes.isEmpty())
 			return null;
 		return receivedBytes.remove(0);
@@ -193,11 +192,11 @@ public class SecuredServer extends SecuredPeer {
 		return peekOrderedBytes() != null;
 	}
 
-	public ByteMessage peekOrderedBytes() {
+	public ProtobufMessage peekOrderedBytes() {
 		return orderedBytes.peek();
 	}
 
-	public ByteMessage pollOrderedBytes() {
+	public ProtobufMessage pollOrderedBytes() {
 		return orderedBytes.poll();
 	}
 
@@ -211,15 +210,19 @@ public class SecuredServer extends SecuredPeer {
 //    	}
 //    	return null;
 //    }
+	
+	public boolean sendMessage(SelectionKey clientKey, ProtobufMessage message) {
+		return sendMessage((SocketChannel)clientKey.channel(), message);
+	}
 
-	public boolean sendBytes(SocketChannel clientChannel, byte[] message) {
+	public boolean sendMessage(SocketChannel clientChannel, ProtobufMessage message) {
 		SelectionKey clientKey = clientChannel.keyFor(selector);
 		if(clientKey != null)
-			return sendBytes(new ByteMessage(clientChannel, message));
+			return sendMessage(message);
 		return false;
 	}
 	
-	public boolean sendBytes(ByteMessage byteMessage) {
+	public boolean sendMessage(ProtobufMessage byteMessage) {
 		return orderedBytes.offer(byteMessage);
 	}
 	
@@ -240,8 +243,8 @@ public class SecuredServer extends SecuredPeer {
 		return receptionCounter;
 	}
 
-	protected class ServerByteReceiver extends LoopingRunnable {
-		public ServerByteReceiver(long loopingDelay) {
+	protected class ServerMessageReceiver extends LoopingRunnable {
+		public ServerMessageReceiver(long loopingDelay) {
 			super(loopingDelay);
 		}	
 		@Override
@@ -275,8 +278,8 @@ public class SecuredServer extends SecuredPeer {
 		}
 	}
 
-	protected class ServerByteSender extends LoopingRunnable {
-		public ServerByteSender(long loopingDelay) {
+	protected class ServerMessageSender extends LoopingRunnable {
+		public ServerMessageSender(long loopingDelay) {
 			super(loopingDelay);
 		}		
 		@Override
@@ -285,9 +288,9 @@ public class SecuredServer extends SecuredPeer {
 			logger.info("ServerMessageSender startet...");
 			while (isRunning()) {
 				try {
-					ByteMessage currentMessage = null;
+					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						write((SocketChannel) currentMessage.getSocketChannel(), (SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), currentMessage.getMessageBytes());
+						write((SocketChannel) currentMessage.getSocketChannel(), (SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), currentMessage.getMessage());
 						pollOrderedBytes();
 					}
 				} 

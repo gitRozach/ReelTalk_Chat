@@ -4,18 +4,21 @@ package protobuf.clientrequests;
 option java_package = "protobuf";
 option java_outer_classname = "ClientRequests";
 
-import "protobuf/ClientData.proto";
+import "protobuf/ClientIdentities.proto";
+import "protobuf/ClientMessages.proto";
 
 message ClientRequestBase {
-	required int32 requestorId = 1;
-	required string requestorUsername = 2;
-	required string requestorPassword = 3;
+	required string requestorUsername = 1;
+	required string requestorPassword = 2;
+	optional int32 requestorId = 3 [default = -1];
+	optional int32 requestId = 4 [default = -1];
+	optional int64 requestTimestamp = 5 [default = -1];
 }
 
 message ChannelJoinRequest {
-	required protobuf.clientdata.ClientIdentity identity = 1;
+	required ClientRequestBase requestorBase = 1;
 	required int32 requestedChannelId = 2;
-	required string requestedChannelName = 3;
+	optional string requestedChannelName = 3;
 }
 
 message ChannelLeaveRequest {
@@ -24,48 +27,62 @@ message ChannelLeaveRequest {
 	optional string requestedChannelName = 3;
 }
 
-message ChannelDataRequest {
+message ChannelMessageDataRequest {
 	required ClientRequestBase requestorBase = 1;
+	optional int32 lastLoadedMessageId = 2 [default = -1];
+	optional int32 messageCount = 3 [default = 10];
 }
 
-message ClientDataRequest {
+message ClientProfileDataRequest {
 	required ClientRequestBase requestorBase = 1;
+	required protobuf.clientidentities.ClientBase requestedBase = 2;
 }
 
 message ChannelMessageRequest {
 	required ClientRequestBase requestorBase = 1;
-	
+	required protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;
 }
 
 message ChannelMessageAnswerRequest {
 	required ClientRequestBase requestorBase = 1;
+	required protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;
 }
 
 message PrivateMessageRequest {
 	required ClientRequestBase requestorBase = 1;
+	required protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;
 }
 
 message ClientLoginRequest {
-	required ClientRequestBase requestorBase = 1;
+	required string requestedUsername = 1;
+	required string requestedPassword = 2;
 }
 
 message ClientLogoutRequest {
-	required ClientRequestBase requestorBase = 1;
+	required string requestedUsername = 1;
+	required string requestedPassword = 2;
+	optional protobuf.clientidentities.ClientDevice requestedDevice = 3;
 }
 
 message ClientRegistrationRequest {
-	required ClientRequestBase requestorBase = 1;
+	required string requestedUsername = 1;
+	required string requestedPassword = 2;
+	required string requestedPasswordRepeat = 3;
+	optional string requestedEmail = 4;
+	optional string invitationKey = 5;
 }
 
 message ClientFileDownloadRequest {
 	required ClientRequestBase requestorBase = 1;
+	required string requestedDownloadFileURI = 2;
 }
 
 message ClientFileUploadRequest {
 	required ClientRequestBase requestorBase = 1;
+	required string requestedUploadFileURI = 2;
 }
 
 message ClientPingMeasurementRequest {
-	
+	required ClientRequestBase requestorBase = 1;
 }
 

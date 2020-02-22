@@ -7,6 +7,8 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.google.protobuf.GeneratedMessageV3;
+
 import gui.client.components.layouts.LoadableStackPane;
 import gui.client.components.messageField.EmojiCategory;
 import gui.client.components.messageField.EmojiSkinColor;
@@ -22,13 +24,15 @@ import javafx.stage.Stage;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.SecuredMessageClient;
-import network.ssl.communication.ByteMessage;
-import network.ssl.communication.MessagePacket;
-import network.ssl.communication.events.ChannelMessageEvent;
-import network.ssl.communication.events.ClientEvent;
-import network.ssl.communication.requests.ChannelMessageRequest;
-import network.ssl.communication.requests.ClientLoginRequest;
+import network.ssl.communication.ProtobufMessage;
 import network.ssl.server.SecuredMessageServer;
+import protobuf.ClientEvents.ChannelMessageEvent;
+import protobuf.ClientIdentities.ClientBase;
+import protobuf.ClientMessages.ChannelClientMessage;
+import protobuf.ClientMessages.ClientMessageBase;
+import protobuf.ClientRequests.ChannelMessageRequest;
+import protobuf.ClientRequests.ClientLoginRequest;
+import protobuf.ClientRequests.ClientRequestBase;
 
 public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";
@@ -60,7 +64,7 @@ public class ReelTalkSession extends Application {
 	
 	private void startClient() throws Exception {
 		if(chatClient.connect()) {
-			chatClient.sendMessage(new ClientLoginRequest("Rozach", "jajut"));
+			chatClient.sendMessage(new ProtobufMessage(ClientLoginRequest.newBuilder().setRequestedUsername("TestoRozach").setRequestedPassword("rozachPass").build()));
 		}
 	}
 	
@@ -127,17 +131,17 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initEventHandlers() {
-		chatClient.setOnMessageReceived(new ObjectEventHandler<ByteMessage>() {
+		chatClient.setOnMessageReceived(new ObjectEventHandler<ProtobufMessage>() {
 			@Override
-			public void handle(ObjectEvent<ByteMessage> event) {
+			public void handle(ObjectEvent<ProtobufMessage> event) {
 				if(event != null && event.getAttachedObject() != null)
 					handleClientReception(event.getAttachedObject());
 			}
 		});
 		
-		chatClient.setOnMessageSent(new ObjectEventHandler<ByteMessage>() {
+		chatClient.setOnMessageSent(new ObjectEventHandler<ProtobufMessage>() {
 			@Override
-			public void handle(ObjectEvent<ByteMessage> event) {
+			public void handle(ObjectEvent<ProtobufMessage> event) {
 				
 			}
 		});
@@ -155,20 +159,23 @@ public class ReelTalkSession extends Application {
 		chatView.getMessageInputField().getEmojiPane().getEmojiSkinChooser().setOnSkinChooserClicked(c -> onSkinChooserClicked());
 	}
 	
-	private void handleClientReception(ByteMessage byteMessage) {
-		MessagePacket reception = MessagePacket.deserialize(byteMessage.getMessageBytes());
-		if(reception == null)
-			return;
-		if(reception instanceof ClientEvent)
-			handleClientEvent((ClientEvent)reception);
+	private void handleClientReception(ProtobufMessage byteMessage) {
+		if(byteMessage.hasMessage())
+			handleClientEvent(byteMessage.getMessage());
 	}
 	
-	private void handleClientEvent(ClientEvent event) {
+	private void handleClientEvent(GeneratedMessageV3 event) {
 		if(event == null)
 			return;
 		if(event instanceof ChannelMessageEvent) {
 			ChannelMessageEvent channelMessage = (ChannelMessageEvent) event;
-			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage.getSenderName(), channelMessage.getMessageText()));
+			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getChannelMessage()
+																						.getMessageBase()
+																						.getSenderBase()
+																						.getUsername(), 
+																		channelMessage	.getChannelMessage()
+																						.getMessageBase()
+																						.getMessageText()));
 		}
 	}
 	
@@ -177,7 +184,25 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void onInputFieldEnterPressed() {
-		chatClient.sendMessage(new ChannelMessageRequest("Rozach", "testo", 0, chatView.getMessageInputField().getText()));
+		ClientRequestBase base = ClientRequestBase	.newBuilder()
+													.setRequestorId(0)
+													.setRequestorUsername("Rozach")
+													.build();
+		ClientMessageBase messageBase = ClientMessageBase.newBuilder()	.setSenderBase(ClientBase	.newBuilder()
+																									.setId(0)
+																									.setUsername("Rozach")
+																									.build())
+																		.setMessageId(0)
+																		.setMessageText(chatView.getMessageInputField().getText())
+																		.build();
+		ChannelClientMessage message = ChannelClientMessage	.newBuilder()
+															.setMessageBase(messageBase)
+															.build();
+		ChannelMessageRequest request = ChannelMessageRequest	.newBuilder()
+																.setRequestorBase(base)
+																.setRequestedMessage(message)
+																.build();
+		chatClient.sendMessage(new ProtobufMessage(request));
 		chatView.getMessageInputField().getTextField().clear();
 	}
 	
@@ -188,15 +213,9 @@ public class ReelTalkSession extends Application {
 		String currentText = emojiTextField.getCurrentText();
 		int currentTextPos = emojiTextField.getOldCaretPosition();
 		
-		System.out.println("Current Text: " + currentText);
-		System.out.println("Current Pos: " + currentTextPos);
-		
 		if(!currentText.isEmpty()) {
 			String firstWord = currentText.substring(0, currentTextPos);
 			String secondWord = currentText.substring(currentTextPos);
-			
-			System.out.println("First Word: " + firstWord);
-			System.out.println("Second Word: " + secondWord);
 			
 			if(!firstWord.isEmpty())
 				emojiTextField.addText(firstWord);

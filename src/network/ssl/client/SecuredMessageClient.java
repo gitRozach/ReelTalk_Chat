@@ -1,14 +1,15 @@
 package network.ssl.client;
 
+import com.google.protobuf.GeneratedMessageV3;
+
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.callbacks.PeerCallback;
-import network.ssl.communication.ByteMessage;
-import network.ssl.communication.MessagePacket;
+import network.ssl.communication.ProtobufMessage;
 
 public class SecuredMessageClient extends SecuredClient {
-	protected ObjectEventHandler<ByteMessage> onMessageReceivedHandler;
-	protected ObjectEventHandler<ByteMessage> onMessageSentHandler;
+	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
+	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
 	
 	public SecuredMessageClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
@@ -17,34 +18,28 @@ public class SecuredMessageClient extends SecuredClient {
 	}
 
 	private void initHandlers() {
-		onMessageReceivedHandler = new ObjectEventHandler<ByteMessage>() {
+		onMessageReceivedHandler = new ObjectEventHandler<ProtobufMessage>() {
 			@Override
-			public void handle(ObjectEvent<ByteMessage> event) {System.out.println("Client received a message.");}
+			public void handle(ObjectEvent<ProtobufMessage> event) {System.out.println("Client received a message.");}
 		};
 		
-		onMessageSentHandler = new ObjectEventHandler<ByteMessage>() {
+		onMessageSentHandler = new ObjectEventHandler<ProtobufMessage>() {
 			@Override
-			public void handle(ObjectEvent<ByteMessage> event) {System.out.println("Client sent a message.");}
+			public void handle(ObjectEvent<ProtobufMessage> event) {System.out.println("Client sent a message.");}
 		};
 	}
 	
 	private void initCallbacks() {
 		setPeerCallback(new PeerCallback() {
 			@Override
-			public void messageReceived(ByteMessage byteMessage) {
-				MessagePacket receivedBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
-				if(receivedBytes == null)
-					return;
-				onMessageReceivedHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+			public void messageReceived(ProtobufMessage byteMessage) {
+				onMessageReceivedHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, byteMessage) {
 					private static final long serialVersionUID = 6882651385899629774L;
 				});
 			}
 			@Override
-			public void messageSent(ByteMessage byteMessage) {
-				MessagePacket sentBytes = MessagePacket.deserialize(byteMessage.getMessageBytes());
-				if(sentBytes == null)
-					return;
-				onMessageSentHandler.handle(new ObjectEvent<ByteMessage>(ObjectEvent.ANY, byteMessage) {
+			public void messageSent(ProtobufMessage byteMessage) {
+				onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, byteMessage) {
 					private static final long serialVersionUID = 2936930616791779331L;
 				});
 			}
@@ -55,39 +50,34 @@ public class SecuredMessageClient extends SecuredClient {
 		});
 	}
 	
-	public void sendMessage(MessagePacket message) {
-		sendBytes(message.serialize());
-	}
-	
-	public MessagePacket readMessage() {
-    	ByteMessage message = pollReceptionBytes();
+	public GeneratedMessageV3 readMessage() {
+    	ProtobufMessage message = pollReceptionBytes();
     	if(message == null)
     		return null;
-    	return MessagePacket.deserialize(message.getMessageBytes());
+    	return message.getMessage();
     }
     
-    public MessagePacket readMessage(Class<?> messageClass) {
-    	for(ByteMessage currentMessage : receivedBytes) {
-    		MessagePacket currentPacket = MessagePacket.deserialize(currentMessage.getMessageBytes());
-    		if(currentPacket != null && currentPacket.getClass().equals(messageClass))
-    			return currentPacket;
+    public GeneratedMessageV3 readMessage(Class<?> messageClass) {
+    	for(ProtobufMessage currentMessage : receivedBytes) {
+    		if(currentMessage.hasMessage() && currentMessage.getMessage().getClass().equals(messageClass))
+    			return currentMessage.getMessage();
     	}
     	return null;
     }
 	
-	public ObjectEventHandler<ByteMessage> getOnMessageReceived() {
+	public ObjectEventHandler<ProtobufMessage> getOnMessageReceived() {
 		return onMessageReceivedHandler;
 	}
 
-	public void setOnMessageReceived(ObjectEventHandler<ByteMessage> handler) {
+	public void setOnMessageReceived(ObjectEventHandler<ProtobufMessage> handler) {
 		onMessageReceivedHandler = handler;
 	}
 	
-	public ObjectEventHandler<ByteMessage> getOnMessageSent() {
+	public ObjectEventHandler<ProtobufMessage> getOnMessageSent() {
 		return onMessageSentHandler;
 	}
 	
-	public void setOnMessageSent(ObjectEventHandler<ByteMessage> handler) {
+	public void setOnMessageSent(ObjectEventHandler<ProtobufMessage> handler) {
 		onMessageSentHandler = handler;
 	}
 }

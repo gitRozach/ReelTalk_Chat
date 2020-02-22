@@ -8,8 +8,8 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.messageManager.MessageManager;
 import network.ssl.server.manager.messageManager.items.PrivateMessage;
+import network.ssl.server.manager.protobufDatabase.MessageManager;
 
 class MessageManagerTest {
 	protected MessageManager<PrivateMessage> messageDatabase;

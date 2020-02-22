@@ -9,12 +9,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import network.ssl.client.SecuredMessageClient;
-import network.ssl.communication.ByteMessage;
 import network.ssl.communication.MessagePacket;
-import network.ssl.communication.events.ClientLoggedInEvent;
-import network.ssl.communication.requests.ClientLoginRequest;
-import network.ssl.communication.requests.PrivateMessageRequest;
+import network.ssl.communication.ProtobufMessage;
 import network.ssl.server.SecuredMessageServer;
+import protobuf.ClientEvents.ClientLoggedInEvent;
+import protobuf.ClientRequests.ClientLoginRequest;
+import protobuf.ClientRequests.PrivateMessageRequest;
 
 class SecuredMessageServerClientTest {
 
@@ -127,7 +127,7 @@ class SecuredMessageServerClientTest {
 			assertTrue(client.connect());
 			client.sendMessage(req);
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
-			ByteMessage byteMessage = server.pollReceptionBytes();
+			ProtobufMessage byteMessage = server.pollReceptionBytes();
 			MessagePacket message = MessagePacket.deserialize(byteMessage.getMessageBytes());
 			assertTrue(message instanceof ClientLoginRequest);
 		}
@@ -141,7 +141,7 @@ class SecuredMessageServerClientTest {
 			client.sendMessage(req);
 			
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
-			ByteMessage byteMessage = server.pollReceptionBytes();
+			ProtobufMessage byteMessage = server.pollReceptionBytes();
 			MessagePacket message = MessagePacket.deserialize(byteMessage.getMessageBytes());
 			assertTrue(message instanceof ClientLoginRequest);
 		}

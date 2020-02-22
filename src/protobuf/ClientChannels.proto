@@ -4,7 +4,7 @@ package protobuf.clientchannels;
 option java_package = "protobuf";
 option java_outer_classname = "ClientChannels";
 
-message ClientChannelBase {
+message ChannelBase {
 	required int32 channelId = 1;
 	required string channelName = 2;
 	repeated int32 memberId = 3;
@@ -19,11 +19,11 @@ message ClientChannelBase {
 }
 
 message TextChannel {
-	required ClientChannelBase channelBase = 1;
+	required ChannelBase channelBase = 1;
 }
 
 message VoiceChannel {
-	required ClientChannelBase channelBase = 1;
+	required ChannelBase channelBase = 1;
 }
 
 

@@ -2,7 +2,7 @@ package network.ssl.client.callbacks;
 
 import java.util.logging.Logger;
 
-import network.ssl.communication.ByteMessage;
+import network.ssl.communication.ProtobufMessage;
 
 public class LoggerCallback implements PeerCallback {
 	protected Logger logger;
@@ -17,13 +17,13 @@ public class LoggerCallback implements PeerCallback {
 	}
 
 	@Override
-	public void messageSent(ByteMessage message) {
-		logger.info("Message (" + message.getMessageBytes().length + " Bytes) sent.");		
+	public void messageSent(ProtobufMessage message) {
+		logger.info("Message (" + message.getMessage().getSerializedSize() + " Bytes) sent.");		
 	}
 
 	@Override
-	public void messageReceived(ByteMessage message) {
-		logger.info("Message (" + message.getMessageBytes().length + " Bytes) received.");
+	public void messageReceived(ProtobufMessage message) {
+		logger.info("Message (" + message.getMessage().getSerializedSize() + " Bytes) received.");
 	}
 
 	public Logger getLogger() {
