@@ -3,6 +3,7 @@ package protobuf.wrapper;
 import com.google.protobuf.GeneratedMessageV3;
 
 import protobuf.ClientIdentities.ClientBase;
+import protobuf.ClientMessages.ChannelClientMessage;
 import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
 import protobuf.ClientRequests.ChannelMessageAnswerRequest;
@@ -115,7 +116,8 @@ public class ClientRequest {
 																	String requestorPassword) {
 		
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
-		return null;
+		return ChannelMessageRequest.newBuilder()	.setRequestorBase(requestorBase)
+													.setRequestedMessage(ChannelClientMessage.newBuilder().set);
 	}
 	
 	public static ChannelMessageAnswerRequest newChannelMessageAnswerRequest() {

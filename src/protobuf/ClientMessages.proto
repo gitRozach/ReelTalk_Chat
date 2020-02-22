@@ -14,7 +14,7 @@ message ClientMessageBase {
 }
 
 message ChannelClientMessage {
-	required ClientMessageBase messageBase = 1;
+	required ClientMessageBase messageBase = 1; 
 	required protobuf.clientchannels.ChannelBase receiverBase = 2;
 }
 
