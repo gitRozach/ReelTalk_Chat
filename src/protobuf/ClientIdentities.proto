@@ -1,32 +1,35 @@
-syntax = "proto2";
+syntax = "proto3";
 package protobuf.clientidentities;
 
 option java_package = "protobuf";
 option java_outer_classname = "ClientIdentities";
 
 message ClientBase {
-	required int32 id = 1;
-	required string username = 2;
+	int32 id = 1;
+	string username = 2;
 }
 
 message ClientPictures {
-	optional string profileImageURI = 1;
-	optional string titleImageURI = 2;
-	optional string backgroundImageURI = 3;
+	string profileImageURI = 1;
+	string titleImageURI = 2;
+	string backgroundImageURI = 3;
 }
 
 message ClientDevice {
-	optional string deviceIpV4 = 1;
-	optional ClientDeviceOs deviceOs = 2;
-	optional ClientDeviceType deviceType = 3;	
+	ClientDeviceAddress deviceAddress = 1;
+	ClientDeviceOs deviceOs = 2;
+	ClientDeviceType deviceType = 3;	
 	
+	message ClientDeviceAddress {
+		string deviceIpV4 = 1;
+		string deviceIpV6 = 2;
+	}
 	enum ClientDeviceOs {
 		WINDOWS = 0;
 		LINUX = 1;
 		IOS = 2;
 		ANDROID = 3;
 	}
-	
 	enum ClientDeviceType {
 		DESKTOP = 0;
 		BROWSER = 1;
@@ -35,23 +38,22 @@ message ClientDevice {
 }
 
 message ClientProfile {
-	required ClientBase base = 1;
-	optional ClientDevice device = 2;
-	optional ClientPictures pictures = 3;
-	optional int32 serverGroup = 4;
-	optional int32 adminGroup = 5;
-	optional int32 friend = 6;
-	required bool banned = 7;
-	required bool deleted = 8;
+	int32 id = 1;
+	string username = 2;
+	int32 serverGroup = 3;
+	int32 adminGroup = 4;
+	repeated int32 friend = 6;
+	bool banned = 7;
+	bool deleted = 8;
 }
 
 message ClientAccount {
-	required ClientBase base = 1;
-	required string password = 2;
-	required ClientPictures pictures = 3;
-	required int32 serverGroup = 4;
-	required int32 adminGroup = 5;
+	ClientBase base = 1;
+	string password = 2;
+	ClientPictures pictures = 3;
+	int32 serverGroup = 4;
+	int32 adminGroup = 5;
 	repeated int32 friend = 6;
-	required bool banned = 7;
-	required bool deleted = 8;
+	bool banned = 7;
+	bool deleted = 8;
 }

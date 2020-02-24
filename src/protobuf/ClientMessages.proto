@@ -1,39 +1,64 @@
-syntax = "proto2";
+syntax = "proto3";
 package protobuf.clientmessages;
 
 option java_package = "protobuf";
 option java_outer_classname = "ClientMessages";
 
 import "protobuf/ClientIdentities.proto";
-import "protobuf/ClientChannels.proto";
 
-message ClientMessageBase {
-	required protobuf.clientidentities.ClientBase senderBase = 1;
-	required int32 messageId = 2;
-	required string messageText = 3;
+message MessageBase {
+	int32 messageId = 1;
+	string messageText = 2;
 }
 
-message ChannelClientMessage {
-	required ClientMessageBase messageBase = 1; 
-	required protobuf.clientchannels.ChannelBase receiverBase = 2;
+message ChannelMessage {
+	int32 messageId = 1;
+	string messageText = 2;
+	int32 senderId = 3;
+	string senderUsername = 4;
+	int32 channelId = 5;
+	string channelName = 6;
+	int64 timestampMillis = 7;
 }
 
-message ChannelClientMessageAnswer {
-	required ClientMessageBase messageBase = 1;
-	required ChannelClientMessage messageToAnswer = 2;
+message ChannelMessageAnswer {
+	int32 messageId = 1;
+	int32 messageToAnswerId = 2;
+	string messageText = 3;
+	int32 senderId = 4;
+	string senderUsername = 5;
+	int32 channelId = 6;
+	string channelName = 7;
+	int64 timestampMillis = 8;
 }
 
-message PrivateClientMessage {
-	required ClientMessageBase messageBase = 1;
-	required protobuf.clientidentities.ClientBase receiverBase = 2;
+message PrivateMessage {
+	int32 messageId = 1;
+	string messageText = 2;
+	int32 senderId = 3;
+	string senderUsername = 4;
+	int32 receiverId = 5;
+	string receiverUsername = 6;
+	int64 timestampMillis = 7;
 }
 
 message ProfileComment {
-	required ClientMessageBase messageBase = 1;
-	required protobuf.clientidentities.ClientBase receiverBase = 2;
+	int32 messageId = 1;
+	string messageText = 2;
+	int32 senderId = 3;
+	string senderUsername = 4;
+	int32 receiverId = 5;
+	string receiverUsername = 6;
+	int64 timestampMillis = 7;
 }
 
 message ProfileCommentAnswer {
-	required ClientMessageBase messageBase = 1;
-	required ProfileComment messageToAnswer = 2;
+	int32 commentId = 1;
+	int32 commentToAnswerId = 2;
+	string commentText = 3;
+	int32 senderId = 4;
+	string senderUsername = 5;
+	int32 receiverId = 6;
+	string receiverUsername = 7;
+	int64 timestampMillis = 8;
 }

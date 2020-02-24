@@ -5,6 +5,7 @@ option java_package = "protobuf";
 option java_outer_classname = "ClientRequests";
 
 import "protobuf/ClientIdentities.proto";
+import "protobuf/ClientChannels.proto";
 import "protobuf/ClientMessages.proto";
 
 message ClientRequestBase {
@@ -17,14 +18,12 @@ message ClientRequestBase {
 
 message ChannelJoinRequest {
 	required ClientRequestBase requestorBase = 1;
-	required int32 requestedChannelId = 2;
-	optional string requestedChannelName = 3;
+	required protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
 }
 
 message ChannelLeaveRequest {
 	required ClientRequestBase requestorBase = 1;
-	required int32 requestedChannelId = 2;
-	optional string requestedChannelName = 3;
+	required protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
 }
 
 message ChannelMessageDataRequest {
@@ -35,12 +34,13 @@ message ChannelMessageDataRequest {
 
 message ClientProfileDataRequest {
 	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientidentities.ClientBase requestedBase = 2;
+	required protobuf.clientidentities.ClientBase requestedClientBase = 2;
 }
 
 message ChannelMessageRequest {
 	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;
+	required int32 requestedMessageId = 2;
+	optional int32 requestedChannelId = 3;
 }
 
 message ChannelMessageAnswerRequest {
@@ -50,7 +50,8 @@ message ChannelMessageAnswerRequest {
 
 message PrivateMessageRequest {
 	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;
+	required protobuf.clientidentities.ClientBase receiverBase = 2;
+	required string messageText = 3;
 }
 
 message ClientLoginRequest {
