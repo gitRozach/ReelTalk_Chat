@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 package protobuf.clientrequests;
 
 option java_package = "protobuf";
@@ -9,81 +9,107 @@ import "protobuf/ClientChannels.proto";
 import "protobuf/ClientMessages.proto";
 
 message ClientRequestBase {
-	required string requestorUsername = 1;
-	required string requestorPassword = 2;
-	optional int32 requestorId = 3 [default = -1];
-	optional int32 requestId = 4 [default = -1];
-	optional int64 requestTimestamp = 5 [default = -1];
+	int32 requestId = 1;
+	int32 requestorClientId = 2;
+	string requestorClientUsername = 3;
+	string requestorClientPassword = 4;
+	int64 timestampMillis = 5;
+}
+
+message FileDownloadBase {
+	int32 downloadFileId = 1;
+	string downloadFileName = 2;
+	string downloadFilePath = 3;
+	string downloadKey = 4;
+}
+
+message FileUploadBase {
+	string uploadFileName = 1;
+	string uploadFilePath = 2;
+	int64 uploadFileSize = 3;
 }
 
 message ChannelJoinRequest {
-	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	string requestedChannelPassword = 3;
 }
 
 message ChannelLeaveRequest {
-	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
 }
 
-message ChannelMessageDataRequest {
-	required ClientRequestBase requestorBase = 1;
-	optional int32 lastLoadedMessageId = 2 [default = -1];
-	optional int32 messageCount = 3 [default = 10];
-}
-
-message ClientProfileDataRequest {
-	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientidentities.ClientBase requestedClientBase = 2;
+message ClientProfileRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase requestedClientBase = 2;
 }
 
 message ChannelMessageRequest {
-	required ClientRequestBase requestorBase = 1;
-	required int32 requestedMessageId = 2;
-	optional int32 requestedChannelId = 3;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	int32 messageCount = 3;
+	int32 startMessageId = 4;
 }
 
 message ChannelMessageAnswerRequest {
-	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;
+	string answerText = 4;
 }
 
 message PrivateMessageRequest {
-	required ClientRequestBase requestorBase = 1;
-	required protobuf.clientidentities.ClientBase receiverBase = 2;
-	required string messageText = 3;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase receiverClientBase = 2;
+	string messageText = 3;
+}
+
+message ChannelFileDownloadRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	FileDownloadBase requestedFileBase = 3;
+}
+
+message ChannelFileUploadRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	FileUploadBase requestedFileBase = 3;
+}
+
+message PrivateFileDownloadRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase requestedClientBase = 2;
+	FileDownloadBase requestedFileBase = 3;
+}
+
+message PrivateFileUploadRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase requestedClientBase = 2;
+	FileUploadBase requestedFileBase = 3;
 }
 
 message ClientLoginRequest {
-	required string requestedUsername = 1;
-	required string requestedPassword = 2;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientDevice requestedDevice = 2;
 }
 
 message ClientLogoutRequest {
-	required string requestedUsername = 1;
-	required string requestedPassword = 2;
-	optional protobuf.clientidentities.ClientDevice requestedDevice = 3;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientDevice requestedDevice = 2;
 }
 
 message ClientRegistrationRequest {
-	required string requestedUsername = 1;
-	required string requestedPassword = 2;
-	required string requestedPasswordRepeat = 3;
-	optional string requestedEmail = 4;
-	optional string invitationKey = 5;
-}
-
-message ClientFileDownloadRequest {
-	required ClientRequestBase requestorBase = 1;
-	required string requestedDownloadFileURI = 2;
-}
-
-message ClientFileUploadRequest {
-	required ClientRequestBase requestorBase = 1;
-	required string requestedUploadFileURI = 2;
+	string username = 1;
+	string password = 2;
+	string passwordRepeat = 3;
+	string email = 4;
+	string invitationKey = 5;
+	protobuf.clientidentities.ClientDevice device = 6;
 }
 
 message ClientPingMeasurementRequest {
-	required ClientRequestBase requestorBase = 1;
+	ClientRequestBase requestorBase = 1;
+	protobuf.clientidentities.ClientDevice requestedDevice = 2;
 }
 

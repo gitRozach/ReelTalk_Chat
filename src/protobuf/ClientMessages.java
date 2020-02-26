@@ -19,37 +19,46 @@ public final class ClientMessages {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     * @return Whether the senderBase field is set.
-     */
-    boolean hasSenderBase();
-    /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     * @return The senderBase.
-     */
-    protobuf.ClientIdentities.ClientBase getSenderBase();
-    /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getSenderBaseOrBuilder();
-
-    /**
-     * <code>int32 messageId = 2;</code>
+     * <code>int32 messageId = 1;</code>
      * @return The messageId.
      */
     int getMessageId();
 
     /**
-     * <code>string messageText = 3;</code>
+     * <code>string messageText = 2;</code>
      * @return The messageText.
      */
     java.lang.String getMessageText();
     /**
-     * <code>string messageText = 3;</code>
+     * <code>string messageText = 2;</code>
      * @return The bytes for messageText.
      */
     com.google.protobuf.ByteString
         getMessageTextBytes();
+
+    /**
+     * <code>int32 senderId = 3;</code>
+     * @return The senderId.
+     */
+    int getSenderId();
+
+    /**
+     * <code>string senderUsername = 4;</code>
+     * @return The senderUsername.
+     */
+    java.lang.String getSenderUsername();
+    /**
+     * <code>string senderUsername = 4;</code>
+     * @return The bytes for senderUsername.
+     */
+    com.google.protobuf.ByteString
+        getSenderUsernameBytes();
+
+    /**
+     * <code>int64 timestampMillis = 5;</code>
+     * @return The timestampMillis.
+     */
+    long getTimestampMillis();
   }
   /**
    * Protobuf type {@code protobuf.clientmessages.ClientMessageBase}
@@ -65,6 +74,7 @@ public final class ClientMessages {
     }
     private ClientMessageBase() {
       messageText_ = "";
+      senderUsername_ = "";
     }
 
     @java.lang.Override
@@ -97,28 +107,31 @@ public final class ClientMessages {
             case 0:
               done = true;
               break;
-            case 10: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (senderBase_ != null) {
-                subBuilder = senderBase_.toBuilder();
-              }
-              senderBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(senderBase_);
-                senderBase_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
+            case 8: {
 
               messageId_ = input.readInt32();
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               messageText_ = s;
+              break;
+            }
+            case 24: {
+
+              senderId_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              senderUsername_ = s;
+              break;
+            }
+            case 40: {
+
+              timestampMillis_ = input.readInt64();
               break;
             }
             default: {
@@ -153,43 +166,20 @@ public final class ClientMessages {
               protobuf.ClientMessages.ClientMessageBase.class, protobuf.ClientMessages.ClientMessageBase.Builder.class);
     }
 
-    public static final int SENDERBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientIdentities.ClientBase senderBase_;
-    /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     * @return Whether the senderBase field is set.
-     */
-    public boolean hasSenderBase() {
-      return senderBase_ != null;
-    }
-    /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     * @return The senderBase.
-     */
-    public protobuf.ClientIdentities.ClientBase getSenderBase() {
-      return senderBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : senderBase_;
-    }
-    /**
-     * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-     */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getSenderBaseOrBuilder() {
-      return getSenderBase();
-    }
-
-    public static final int MESSAGEID_FIELD_NUMBER = 2;
+    public static final int MESSAGEID_FIELD_NUMBER = 1;
     private int messageId_;
     /**
-     * <code>int32 messageId = 2;</code>
+     * <code>int32 messageId = 1;</code>
      * @return The messageId.
      */
     public int getMessageId() {
       return messageId_;
     }
 
-    public static final int MESSAGETEXT_FIELD_NUMBER = 3;
+    public static final int MESSAGETEXT_FIELD_NUMBER = 2;
     private volatile java.lang.Object messageText_;
     /**
-     * <code>string messageText = 3;</code>
+     * <code>string messageText = 2;</code>
      * @return The messageText.
      */
     public java.lang.String getMessageText() {
@@ -205,7 +195,7 @@ public final class ClientMessages {
       }
     }
     /**
-     * <code>string messageText = 3;</code>
+     * <code>string messageText = 2;</code>
      * @return The bytes for messageText.
      */
     public com.google.protobuf.ByteString
@@ -222,6 +212,62 @@ public final class ClientMessages {
       }
     }
 
+    public static final int SENDERID_FIELD_NUMBER = 3;
+    private int senderId_;
+    /**
+     * <code>int32 senderId = 3;</code>
+     * @return The senderId.
+     */
+    public int getSenderId() {
+      return senderId_;
+    }
+
+    public static final int SENDERUSERNAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object senderUsername_;
+    /**
+     * <code>string senderUsername = 4;</code>
+     * @return The senderUsername.
+     */
+    public java.lang.String getSenderUsername() {
+      java.lang.Object ref = senderUsername_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        senderUsername_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string senderUsername = 4;</code>
+     * @return The bytes for senderUsername.
+     */
+    public com.google.protobuf.ByteString
+        getSenderUsernameBytes() {
+      java.lang.Object ref = senderUsername_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        senderUsername_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMPMILLIS_FIELD_NUMBER = 5;
+    private long timestampMillis_;
+    /**
+     * <code>int64 timestampMillis = 5;</code>
+     * @return The timestampMillis.
+     */
+    public long getTimestampMillis() {
+      return timestampMillis_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -229,12 +275,6 @@ public final class ClientMessages {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasSenderBase()) {
-        if (!getSenderBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -242,14 +282,20 @@ public final class ClientMessages {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (senderBase_ != null) {
-        output.writeMessage(1, getSenderBase());
-      }
       if (messageId_ != 0) {
-        output.writeInt32(2, messageId_);
+        output.writeInt32(1, messageId_);
       }
       if (!getMessageTextBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, messageText_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, messageText_);
+      }
+      if (senderId_ != 0) {
+        output.writeInt32(3, senderId_);
+      }
+      if (!getSenderUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, senderUsername_);
+      }
+      if (timestampMillis_ != 0L) {
+        output.writeInt64(5, timestampMillis_);
       }
       unknownFields.writeTo(output);
     }
@@ -260,16 +306,23 @@ public final class ClientMessages {
       if (size != -1) return size;
 
       size = 0;
-      if (senderBase_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getSenderBase());
-      }
       if (messageId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, messageId_);
+          .computeInt32Size(1, messageId_);
       }
       if (!getMessageTextBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, messageText_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, messageText_);
+      }
+      if (senderId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, senderId_);
+      }
+      if (!getSenderUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, senderUsername_);
+      }
+      if (timestampMillis_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, timestampMillis_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -286,15 +339,16 @@ public final class ClientMessages {
       }
       protobuf.ClientMessages.ClientMessageBase other = (protobuf.ClientMessages.ClientMessageBase) obj;
 
-      if (hasSenderBase() != other.hasSenderBase()) return false;
-      if (hasSenderBase()) {
-        if (!getSenderBase()
-            .equals(other.getSenderBase())) return false;
-      }
       if (getMessageId()
           != other.getMessageId()) return false;
       if (!getMessageText()
           .equals(other.getMessageText())) return false;
+      if (getSenderId()
+          != other.getSenderId()) return false;
+      if (!getSenderUsername()
+          .equals(other.getSenderUsername())) return false;
+      if (getTimestampMillis()
+          != other.getTimestampMillis()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -306,14 +360,17 @@ public final class ClientMessages {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasSenderBase()) {
-        hash = (37 * hash) + SENDERBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getSenderBase().hashCode();
-      }
       hash = (37 * hash) + MESSAGEID_FIELD_NUMBER;
       hash = (53 * hash) + getMessageId();
       hash = (37 * hash) + MESSAGETEXT_FIELD_NUMBER;
       hash = (53 * hash) + getMessageText().hashCode();
+      hash = (37 * hash) + SENDERID_FIELD_NUMBER;
+      hash = (53 * hash) + getSenderId();
+      hash = (37 * hash) + SENDERUSERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getSenderUsername().hashCode();
+      hash = (37 * hash) + TIMESTAMPMILLIS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestampMillis());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -447,15 +504,15 @@ public final class ClientMessages {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (senderBaseBuilder_ == null) {
-          senderBase_ = null;
-        } else {
-          senderBase_ = null;
-          senderBaseBuilder_ = null;
-        }
         messageId_ = 0;
 
         messageText_ = "";
+
+        senderId_ = 0;
+
+        senderUsername_ = "";
+
+        timestampMillis_ = 0L;
 
         return this;
       }
@@ -483,13 +540,11 @@ public final class ClientMessages {
       @java.lang.Override
       public protobuf.ClientMessages.ClientMessageBase buildPartial() {
         protobuf.ClientMessages.ClientMessageBase result = new protobuf.ClientMessages.ClientMessageBase(this);
-        if (senderBaseBuilder_ == null) {
-          result.senderBase_ = senderBase_;
-        } else {
-          result.senderBase_ = senderBaseBuilder_.build();
-        }
         result.messageId_ = messageId_;
         result.messageText_ = messageText_;
+        result.senderId_ = senderId_;
+        result.senderUsername_ = senderUsername_;
+        result.timestampMillis_ = timestampMillis_;
         onBuilt();
         return result;
       }
@@ -538,15 +593,22 @@ public final class ClientMessages {
 
       public Builder mergeFrom(protobuf.ClientMessages.ClientMessageBase other) {
         if (other == protobuf.ClientMessages.ClientMessageBase.getDefaultInstance()) return this;
-        if (other.hasSenderBase()) {
-          mergeSenderBase(other.getSenderBase());
-        }
         if (other.getMessageId() != 0) {
           setMessageId(other.getMessageId());
         }
         if (!other.getMessageText().isEmpty()) {
           messageText_ = other.messageText_;
           onChanged();
+        }
+        if (other.getSenderId() != 0) {
+          setSenderId(other.getSenderId());
+        }
+        if (!other.getSenderUsername().isEmpty()) {
+          senderUsername_ = other.senderUsername_;
+          onChanged();
+        }
+        if (other.getTimestampMillis() != 0L) {
+          setTimestampMillis(other.getTimestampMillis());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -555,11 +617,6 @@ public final class ClientMessages {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (hasSenderBase()) {
-          if (!getSenderBase().isInitialized()) {
-            return false;
-          }
-        }
         return true;
       }
 
@@ -582,135 +639,16 @@ public final class ClientMessages {
         return this;
       }
 
-      private protobuf.ClientIdentities.ClientBase senderBase_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> senderBaseBuilder_;
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       * @return Whether the senderBase field is set.
-       */
-      public boolean hasSenderBase() {
-        return senderBaseBuilder_ != null || senderBase_ != null;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       * @return The senderBase.
-       */
-      public protobuf.ClientIdentities.ClientBase getSenderBase() {
-        if (senderBaseBuilder_ == null) {
-          return senderBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : senderBase_;
-        } else {
-          return senderBaseBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public Builder setSenderBase(protobuf.ClientIdentities.ClientBase value) {
-        if (senderBaseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          senderBase_ = value;
-          onChanged();
-        } else {
-          senderBaseBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public Builder setSenderBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (senderBaseBuilder_ == null) {
-          senderBase_ = builderForValue.build();
-          onChanged();
-        } else {
-          senderBaseBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public Builder mergeSenderBase(protobuf.ClientIdentities.ClientBase value) {
-        if (senderBaseBuilder_ == null) {
-          if (senderBase_ != null) {
-            senderBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(senderBase_).mergeFrom(value).buildPartial();
-          } else {
-            senderBase_ = value;
-          }
-          onChanged();
-        } else {
-          senderBaseBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public Builder clearSenderBase() {
-        if (senderBaseBuilder_ == null) {
-          senderBase_ = null;
-          onChanged();
-        } else {
-          senderBase_ = null;
-          senderBaseBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public protobuf.ClientIdentities.ClientBase.Builder getSenderBaseBuilder() {
-        
-        onChanged();
-        return getSenderBaseFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getSenderBaseOrBuilder() {
-        if (senderBaseBuilder_ != null) {
-          return senderBaseBuilder_.getMessageOrBuilder();
-        } else {
-          return senderBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : senderBase_;
-        }
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientBase senderBase = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getSenderBaseFieldBuilder() {
-        if (senderBaseBuilder_ == null) {
-          senderBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getSenderBase(),
-                  getParentForChildren(),
-                  isClean());
-          senderBase_ = null;
-        }
-        return senderBaseBuilder_;
-      }
-
       private int messageId_ ;
       /**
-       * <code>int32 messageId = 2;</code>
+       * <code>int32 messageId = 1;</code>
        * @return The messageId.
        */
       public int getMessageId() {
         return messageId_;
       }
       /**
-       * <code>int32 messageId = 2;</code>
+       * <code>int32 messageId = 1;</code>
        * @param value The messageId to set.
        * @return This builder for chaining.
        */
@@ -721,7 +659,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>int32 messageId = 2;</code>
+       * <code>int32 messageId = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessageId() {
@@ -733,7 +671,7 @@ public final class ClientMessages {
 
       private java.lang.Object messageText_ = "";
       /**
-       * <code>string messageText = 3;</code>
+       * <code>string messageText = 2;</code>
        * @return The messageText.
        */
       public java.lang.String getMessageText() {
@@ -749,7 +687,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>string messageText = 3;</code>
+       * <code>string messageText = 2;</code>
        * @return The bytes for messageText.
        */
       public com.google.protobuf.ByteString
@@ -766,7 +704,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>string messageText = 3;</code>
+       * <code>string messageText = 2;</code>
        * @param value The messageText to set.
        * @return This builder for chaining.
        */
@@ -781,7 +719,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>string messageText = 3;</code>
+       * <code>string messageText = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessageText() {
@@ -791,7 +729,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>string messageText = 3;</code>
+       * <code>string messageText = 2;</code>
        * @param value The bytes for messageText to set.
        * @return This builder for chaining.
        */
@@ -803,6 +741,142 @@ public final class ClientMessages {
   checkByteStringIsUtf8(value);
         
         messageText_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int senderId_ ;
+      /**
+       * <code>int32 senderId = 3;</code>
+       * @return The senderId.
+       */
+      public int getSenderId() {
+        return senderId_;
+      }
+      /**
+       * <code>int32 senderId = 3;</code>
+       * @param value The senderId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderId(int value) {
+        
+        senderId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 senderId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSenderId() {
+        
+        senderId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object senderUsername_ = "";
+      /**
+       * <code>string senderUsername = 4;</code>
+       * @return The senderUsername.
+       */
+      public java.lang.String getSenderUsername() {
+        java.lang.Object ref = senderUsername_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          senderUsername_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string senderUsername = 4;</code>
+       * @return The bytes for senderUsername.
+       */
+      public com.google.protobuf.ByteString
+          getSenderUsernameBytes() {
+        java.lang.Object ref = senderUsername_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          senderUsername_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string senderUsername = 4;</code>
+       * @param value The senderUsername to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        senderUsername_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string senderUsername = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSenderUsername() {
+        
+        senderUsername_ = getDefaultInstance().getSenderUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string senderUsername = 4;</code>
+       * @param value The bytes for senderUsername to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        senderUsername_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long timestampMillis_ ;
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @return The timestampMillis.
+       */
+      public long getTimestampMillis() {
+        return timestampMillis_;
+      }
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @param value The timestampMillis to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestampMillis(long value) {
+        
+        timestampMillis_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestampMillis() {
+        
+        timestampMillis_ = 0L;
         onChanged();
         return this;
       }
@@ -859,2208 +933,8 @@ public final class ClientMessages {
 
   }
 
-  public interface ChannelClientMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ChannelClientMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 messageId = 1;</code>
-     * @return The messageId.
-     */
-    int getMessageId();
-
-    /**
-     * <code>int32 senderId = 2;</code>
-     * @return The senderId.
-     */
-    int getSenderId();
-
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The senderUsername.
-     */
-    java.lang.String getSenderUsername();
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The bytes for senderUsername.
-     */
-    com.google.protobuf.ByteString
-        getSenderUsernameBytes();
-
-    /**
-     * <code>int32 channelId = 4;</code>
-     * @return The channelId.
-     */
-    int getChannelId();
-
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The channelName.
-     */
-    java.lang.String getChannelName();
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The bytes for channelName.
-     */
-    com.google.protobuf.ByteString
-        getChannelNameBytes();
-
-    /**
-     * <code>string messageText = 6;</code>
-     * @return The messageText.
-     */
-    java.lang.String getMessageText();
-    /**
-     * <code>string messageText = 6;</code>
-     * @return The bytes for messageText.
-     */
-    com.google.protobuf.ByteString
-        getMessageTextBytes();
-  }
-  /**
-   * Protobuf type {@code protobuf.clientmessages.ChannelClientMessage}
-   */
-  public  static final class ChannelClientMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ChannelClientMessage)
-      ChannelClientMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ChannelClientMessage.newBuilder() to construct.
-    private ChannelClientMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ChannelClientMessage() {
-      senderUsername_ = "";
-      channelName_ = "";
-      messageText_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ChannelClientMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ChannelClientMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              messageId_ = input.readInt32();
-              break;
-            }
-            case 16: {
-
-              senderId_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              senderUsername_ = s;
-              break;
-            }
-            case 32: {
-
-              channelId_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              channelName_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              messageText_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ChannelClientMessage.class, protobuf.ClientMessages.ChannelClientMessage.Builder.class);
-    }
-
-    public static final int MESSAGEID_FIELD_NUMBER = 1;
-    private int messageId_;
-    /**
-     * <code>int32 messageId = 1;</code>
-     * @return The messageId.
-     */
-    public int getMessageId() {
-      return messageId_;
-    }
-
-    public static final int SENDERID_FIELD_NUMBER = 2;
-    private int senderId_;
-    /**
-     * <code>int32 senderId = 2;</code>
-     * @return The senderId.
-     */
-    public int getSenderId() {
-      return senderId_;
-    }
-
-    public static final int SENDERUSERNAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object senderUsername_;
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The senderUsername.
-     */
-    public java.lang.String getSenderUsername() {
-      java.lang.Object ref = senderUsername_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        senderUsername_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The bytes for senderUsername.
-     */
-    public com.google.protobuf.ByteString
-        getSenderUsernameBytes() {
-      java.lang.Object ref = senderUsername_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        senderUsername_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int CHANNELID_FIELD_NUMBER = 4;
-    private int channelId_;
-    /**
-     * <code>int32 channelId = 4;</code>
-     * @return The channelId.
-     */
-    public int getChannelId() {
-      return channelId_;
-    }
-
-    public static final int CHANNELNAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object channelName_;
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The channelName.
-     */
-    public java.lang.String getChannelName() {
-      java.lang.Object ref = channelName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        channelName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The bytes for channelName.
-     */
-    public com.google.protobuf.ByteString
-        getChannelNameBytes() {
-      java.lang.Object ref = channelName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        channelName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MESSAGETEXT_FIELD_NUMBER = 6;
-    private volatile java.lang.Object messageText_;
-    /**
-     * <code>string messageText = 6;</code>
-     * @return The messageText.
-     */
-    public java.lang.String getMessageText() {
-      java.lang.Object ref = messageText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        messageText_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string messageText = 6;</code>
-     * @return The bytes for messageText.
-     */
-    public com.google.protobuf.ByteString
-        getMessageTextBytes() {
-      java.lang.Object ref = messageText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        messageText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (messageId_ != 0) {
-        output.writeInt32(1, messageId_);
-      }
-      if (senderId_ != 0) {
-        output.writeInt32(2, senderId_);
-      }
-      if (!getSenderUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, senderUsername_);
-      }
-      if (channelId_ != 0) {
-        output.writeInt32(4, channelId_);
-      }
-      if (!getChannelNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, channelName_);
-      }
-      if (!getMessageTextBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, messageText_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (messageId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, messageId_);
-      }
-      if (senderId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, senderId_);
-      }
-      if (!getSenderUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, senderUsername_);
-      }
-      if (channelId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, channelId_);
-      }
-      if (!getChannelNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, channelName_);
-      }
-      if (!getMessageTextBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, messageText_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientMessages.ChannelClientMessage)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientMessages.ChannelClientMessage other = (protobuf.ClientMessages.ChannelClientMessage) obj;
-
-      if (getMessageId()
-          != other.getMessageId()) return false;
-      if (getSenderId()
-          != other.getSenderId()) return false;
-      if (!getSenderUsername()
-          .equals(other.getSenderUsername())) return false;
-      if (getChannelId()
-          != other.getChannelId()) return false;
-      if (!getChannelName()
-          .equals(other.getChannelName())) return false;
-      if (!getMessageText()
-          .equals(other.getMessageText())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MESSAGEID_FIELD_NUMBER;
-      hash = (53 * hash) + getMessageId();
-      hash = (37 * hash) + SENDERID_FIELD_NUMBER;
-      hash = (53 * hash) + getSenderId();
-      hash = (37 * hash) + SENDERUSERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getSenderUsername().hashCode();
-      hash = (37 * hash) + CHANNELID_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelId();
-      hash = (37 * hash) + CHANNELNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelName().hashCode();
-      hash = (37 * hash) + MESSAGETEXT_FIELD_NUMBER;
-      hash = (53 * hash) + getMessageText().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientMessages.ChannelClientMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientmessages.ChannelClientMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ChannelClientMessage)
-        protobuf.ClientMessages.ChannelClientMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ChannelClientMessage.class, protobuf.ClientMessages.ChannelClientMessage.Builder.class);
-      }
-
-      // Construct using protobuf.ClientMessages.ChannelClientMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        messageId_ = 0;
-
-        senderId_ = 0;
-
-        senderUsername_ = "";
-
-        channelId_ = 0;
-
-        channelName_ = "";
-
-        messageText_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessage getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessage build() {
-        protobuf.ClientMessages.ChannelClientMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessage buildPartial() {
-        protobuf.ClientMessages.ChannelClientMessage result = new protobuf.ClientMessages.ChannelClientMessage(this);
-        result.messageId_ = messageId_;
-        result.senderId_ = senderId_;
-        result.senderUsername_ = senderUsername_;
-        result.channelId_ = channelId_;
-        result.channelName_ = channelName_;
-        result.messageText_ = messageText_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ChannelClientMessage) {
-          return mergeFrom((protobuf.ClientMessages.ChannelClientMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientMessages.ChannelClientMessage other) {
-        if (other == protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance()) return this;
-        if (other.getMessageId() != 0) {
-          setMessageId(other.getMessageId());
-        }
-        if (other.getSenderId() != 0) {
-          setSenderId(other.getSenderId());
-        }
-        if (!other.getSenderUsername().isEmpty()) {
-          senderUsername_ = other.senderUsername_;
-          onChanged();
-        }
-        if (other.getChannelId() != 0) {
-          setChannelId(other.getChannelId());
-        }
-        if (!other.getChannelName().isEmpty()) {
-          channelName_ = other.channelName_;
-          onChanged();
-        }
-        if (!other.getMessageText().isEmpty()) {
-          messageText_ = other.messageText_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientMessages.ChannelClientMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ChannelClientMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int messageId_ ;
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @return The messageId.
-       */
-      public int getMessageId() {
-        return messageId_;
-      }
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @param value The messageId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageId(int value) {
-        
-        messageId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageId() {
-        
-        messageId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int senderId_ ;
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @return The senderId.
-       */
-      public int getSenderId() {
-        return senderId_;
-      }
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @param value The senderId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderId(int value) {
-        
-        senderId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSenderId() {
-        
-        senderId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object senderUsername_ = "";
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return The senderUsername.
-       */
-      public java.lang.String getSenderUsername() {
-        java.lang.Object ref = senderUsername_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          senderUsername_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return The bytes for senderUsername.
-       */
-      public com.google.protobuf.ByteString
-          getSenderUsernameBytes() {
-        java.lang.Object ref = senderUsername_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          senderUsername_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @param value The senderUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        senderUsername_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSenderUsername() {
-        
-        senderUsername_ = getDefaultInstance().getSenderUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @param value The bytes for senderUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        senderUsername_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int channelId_ ;
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @return The channelId.
-       */
-      public int getChannelId() {
-        return channelId_;
-      }
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @param value The channelId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelId(int value) {
-        
-        channelId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChannelId() {
-        
-        channelId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object channelName_ = "";
-      /**
-       * <code>string channelName = 5;</code>
-       * @return The channelName.
-       */
-      public java.lang.String getChannelName() {
-        java.lang.Object ref = channelName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          channelName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @return The bytes for channelName.
-       */
-      public com.google.protobuf.ByteString
-          getChannelNameBytes() {
-        java.lang.Object ref = channelName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          channelName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @param value The channelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        channelName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChannelName() {
-        
-        channelName_ = getDefaultInstance().getChannelName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @param value The bytes for channelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        channelName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object messageText_ = "";
-      /**
-       * <code>string messageText = 6;</code>
-       * @return The messageText.
-       */
-      public java.lang.String getMessageText() {
-        java.lang.Object ref = messageText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          messageText_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string messageText = 6;</code>
-       * @return The bytes for messageText.
-       */
-      public com.google.protobuf.ByteString
-          getMessageTextBytes() {
-        java.lang.Object ref = messageText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          messageText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string messageText = 6;</code>
-       * @param value The messageText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageText(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        messageText_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string messageText = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageText() {
-        
-        messageText_ = getDefaultInstance().getMessageText();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string messageText = 6;</code>
-       * @param value The bytes for messageText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        messageText_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ChannelClientMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ChannelClientMessage)
-    private static final protobuf.ClientMessages.ChannelClientMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ChannelClientMessage();
-    }
-
-    public static protobuf.ClientMessages.ChannelClientMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ChannelClientMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelClientMessage>() {
-      @java.lang.Override
-      public ChannelClientMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelClientMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ChannelClientMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ChannelClientMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientMessages.ChannelClientMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ChannelClientMessageAnswerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ChannelClientMessageAnswer)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 messageId = 1;</code>
-     * @return The messageId.
-     */
-    int getMessageId();
-
-    /**
-     * <code>int32 senderId = 2;</code>
-     * @return The senderId.
-     */
-    int getSenderId();
-
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The senderUsername.
-     */
-    java.lang.String getSenderUsername();
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The bytes for senderUsername.
-     */
-    com.google.protobuf.ByteString
-        getSenderUsernameBytes();
-
-    /**
-     * <code>int32 channelId = 4;</code>
-     * @return The channelId.
-     */
-    int getChannelId();
-
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The channelName.
-     */
-    java.lang.String getChannelName();
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The bytes for channelName.
-     */
-    com.google.protobuf.ByteString
-        getChannelNameBytes();
-
-    /**
-     * <code>int32 messageToAnswerId = 6;</code>
-     * @return The messageToAnswerId.
-     */
-    int getMessageToAnswerId();
-
-    /**
-     * <code>string answerText = 7;</code>
-     * @return The answerText.
-     */
-    java.lang.String getAnswerText();
-    /**
-     * <code>string answerText = 7;</code>
-     * @return The bytes for answerText.
-     */
-    com.google.protobuf.ByteString
-        getAnswerTextBytes();
-  }
-  /**
-   * Protobuf type {@code protobuf.clientmessages.ChannelClientMessageAnswer}
-   */
-  public  static final class ChannelClientMessageAnswer extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ChannelClientMessageAnswer)
-      ChannelClientMessageAnswerOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ChannelClientMessageAnswer.newBuilder() to construct.
-    private ChannelClientMessageAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ChannelClientMessageAnswer() {
-      senderUsername_ = "";
-      channelName_ = "";
-      answerText_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ChannelClientMessageAnswer();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ChannelClientMessageAnswer(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              messageId_ = input.readInt32();
-              break;
-            }
-            case 16: {
-
-              senderId_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              senderUsername_ = s;
-              break;
-            }
-            case 32: {
-
-              channelId_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              channelName_ = s;
-              break;
-            }
-            case 48: {
-
-              messageToAnswerId_ = input.readInt32();
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              answerText_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ChannelClientMessageAnswer.class, protobuf.ClientMessages.ChannelClientMessageAnswer.Builder.class);
-    }
-
-    public static final int MESSAGEID_FIELD_NUMBER = 1;
-    private int messageId_;
-    /**
-     * <code>int32 messageId = 1;</code>
-     * @return The messageId.
-     */
-    public int getMessageId() {
-      return messageId_;
-    }
-
-    public static final int SENDERID_FIELD_NUMBER = 2;
-    private int senderId_;
-    /**
-     * <code>int32 senderId = 2;</code>
-     * @return The senderId.
-     */
-    public int getSenderId() {
-      return senderId_;
-    }
-
-    public static final int SENDERUSERNAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object senderUsername_;
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The senderUsername.
-     */
-    public java.lang.String getSenderUsername() {
-      java.lang.Object ref = senderUsername_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        senderUsername_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string senderUsername = 3;</code>
-     * @return The bytes for senderUsername.
-     */
-    public com.google.protobuf.ByteString
-        getSenderUsernameBytes() {
-      java.lang.Object ref = senderUsername_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        senderUsername_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int CHANNELID_FIELD_NUMBER = 4;
-    private int channelId_;
-    /**
-     * <code>int32 channelId = 4;</code>
-     * @return The channelId.
-     */
-    public int getChannelId() {
-      return channelId_;
-    }
-
-    public static final int CHANNELNAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object channelName_;
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The channelName.
-     */
-    public java.lang.String getChannelName() {
-      java.lang.Object ref = channelName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        channelName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string channelName = 5;</code>
-     * @return The bytes for channelName.
-     */
-    public com.google.protobuf.ByteString
-        getChannelNameBytes() {
-      java.lang.Object ref = channelName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        channelName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MESSAGETOANSWERID_FIELD_NUMBER = 6;
-    private int messageToAnswerId_;
-    /**
-     * <code>int32 messageToAnswerId = 6;</code>
-     * @return The messageToAnswerId.
-     */
-    public int getMessageToAnswerId() {
-      return messageToAnswerId_;
-    }
-
-    public static final int ANSWERTEXT_FIELD_NUMBER = 7;
-    private volatile java.lang.Object answerText_;
-    /**
-     * <code>string answerText = 7;</code>
-     * @return The answerText.
-     */
-    public java.lang.String getAnswerText() {
-      java.lang.Object ref = answerText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        answerText_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string answerText = 7;</code>
-     * @return The bytes for answerText.
-     */
-    public com.google.protobuf.ByteString
-        getAnswerTextBytes() {
-      java.lang.Object ref = answerText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        answerText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (messageId_ != 0) {
-        output.writeInt32(1, messageId_);
-      }
-      if (senderId_ != 0) {
-        output.writeInt32(2, senderId_);
-      }
-      if (!getSenderUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, senderUsername_);
-      }
-      if (channelId_ != 0) {
-        output.writeInt32(4, channelId_);
-      }
-      if (!getChannelNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, channelName_);
-      }
-      if (messageToAnswerId_ != 0) {
-        output.writeInt32(6, messageToAnswerId_);
-      }
-      if (!getAnswerTextBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, answerText_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (messageId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, messageId_);
-      }
-      if (senderId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, senderId_);
-      }
-      if (!getSenderUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, senderUsername_);
-      }
-      if (channelId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, channelId_);
-      }
-      if (!getChannelNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, channelName_);
-      }
-      if (messageToAnswerId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, messageToAnswerId_);
-      }
-      if (!getAnswerTextBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, answerText_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientMessages.ChannelClientMessageAnswer)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientMessages.ChannelClientMessageAnswer other = (protobuf.ClientMessages.ChannelClientMessageAnswer) obj;
-
-      if (getMessageId()
-          != other.getMessageId()) return false;
-      if (getSenderId()
-          != other.getSenderId()) return false;
-      if (!getSenderUsername()
-          .equals(other.getSenderUsername())) return false;
-      if (getChannelId()
-          != other.getChannelId()) return false;
-      if (!getChannelName()
-          .equals(other.getChannelName())) return false;
-      if (getMessageToAnswerId()
-          != other.getMessageToAnswerId()) return false;
-      if (!getAnswerText()
-          .equals(other.getAnswerText())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MESSAGEID_FIELD_NUMBER;
-      hash = (53 * hash) + getMessageId();
-      hash = (37 * hash) + SENDERID_FIELD_NUMBER;
-      hash = (53 * hash) + getSenderId();
-      hash = (37 * hash) + SENDERUSERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getSenderUsername().hashCode();
-      hash = (37 * hash) + CHANNELID_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelId();
-      hash = (37 * hash) + CHANNELNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelName().hashCode();
-      hash = (37 * hash) + MESSAGETOANSWERID_FIELD_NUMBER;
-      hash = (53 * hash) + getMessageToAnswerId();
-      hash = (37 * hash) + ANSWERTEXT_FIELD_NUMBER;
-      hash = (53 * hash) + getAnswerText().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientMessages.ChannelClientMessageAnswer prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientmessages.ChannelClientMessageAnswer}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ChannelClientMessageAnswer)
-        protobuf.ClientMessages.ChannelClientMessageAnswerOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ChannelClientMessageAnswer.class, protobuf.ClientMessages.ChannelClientMessageAnswer.Builder.class);
-      }
-
-      // Construct using protobuf.ClientMessages.ChannelClientMessageAnswer.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        messageId_ = 0;
-
-        senderId_ = 0;
-
-        senderUsername_ = "";
-
-        channelId_ = 0;
-
-        channelName_ = "";
-
-        messageToAnswerId_ = 0;
-
-        answerText_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessageAnswer getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ChannelClientMessageAnswer.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessageAnswer build() {
-        protobuf.ClientMessages.ChannelClientMessageAnswer result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientMessages.ChannelClientMessageAnswer buildPartial() {
-        protobuf.ClientMessages.ChannelClientMessageAnswer result = new protobuf.ClientMessages.ChannelClientMessageAnswer(this);
-        result.messageId_ = messageId_;
-        result.senderId_ = senderId_;
-        result.senderUsername_ = senderUsername_;
-        result.channelId_ = channelId_;
-        result.channelName_ = channelName_;
-        result.messageToAnswerId_ = messageToAnswerId_;
-        result.answerText_ = answerText_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ChannelClientMessageAnswer) {
-          return mergeFrom((protobuf.ClientMessages.ChannelClientMessageAnswer)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientMessages.ChannelClientMessageAnswer other) {
-        if (other == protobuf.ClientMessages.ChannelClientMessageAnswer.getDefaultInstance()) return this;
-        if (other.getMessageId() != 0) {
-          setMessageId(other.getMessageId());
-        }
-        if (other.getSenderId() != 0) {
-          setSenderId(other.getSenderId());
-        }
-        if (!other.getSenderUsername().isEmpty()) {
-          senderUsername_ = other.senderUsername_;
-          onChanged();
-        }
-        if (other.getChannelId() != 0) {
-          setChannelId(other.getChannelId());
-        }
-        if (!other.getChannelName().isEmpty()) {
-          channelName_ = other.channelName_;
-          onChanged();
-        }
-        if (other.getMessageToAnswerId() != 0) {
-          setMessageToAnswerId(other.getMessageToAnswerId());
-        }
-        if (!other.getAnswerText().isEmpty()) {
-          answerText_ = other.answerText_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientMessages.ChannelClientMessageAnswer parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ChannelClientMessageAnswer) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int messageId_ ;
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @return The messageId.
-       */
-      public int getMessageId() {
-        return messageId_;
-      }
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @param value The messageId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageId(int value) {
-        
-        messageId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 messageId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageId() {
-        
-        messageId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int senderId_ ;
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @return The senderId.
-       */
-      public int getSenderId() {
-        return senderId_;
-      }
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @param value The senderId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderId(int value) {
-        
-        senderId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 senderId = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSenderId() {
-        
-        senderId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object senderUsername_ = "";
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return The senderUsername.
-       */
-      public java.lang.String getSenderUsername() {
-        java.lang.Object ref = senderUsername_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          senderUsername_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return The bytes for senderUsername.
-       */
-      public com.google.protobuf.ByteString
-          getSenderUsernameBytes() {
-        java.lang.Object ref = senderUsername_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          senderUsername_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @param value The senderUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        senderUsername_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSenderUsername() {
-        
-        senderUsername_ = getDefaultInstance().getSenderUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string senderUsername = 3;</code>
-       * @param value The bytes for senderUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSenderUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        senderUsername_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int channelId_ ;
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @return The channelId.
-       */
-      public int getChannelId() {
-        return channelId_;
-      }
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @param value The channelId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelId(int value) {
-        
-        channelId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 channelId = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChannelId() {
-        
-        channelId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object channelName_ = "";
-      /**
-       * <code>string channelName = 5;</code>
-       * @return The channelName.
-       */
-      public java.lang.String getChannelName() {
-        java.lang.Object ref = channelName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          channelName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @return The bytes for channelName.
-       */
-      public com.google.protobuf.ByteString
-          getChannelNameBytes() {
-        java.lang.Object ref = channelName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          channelName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @param value The channelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        channelName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChannelName() {
-        
-        channelName_ = getDefaultInstance().getChannelName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string channelName = 5;</code>
-       * @param value The bytes for channelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        channelName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int messageToAnswerId_ ;
-      /**
-       * <code>int32 messageToAnswerId = 6;</code>
-       * @return The messageToAnswerId.
-       */
-      public int getMessageToAnswerId() {
-        return messageToAnswerId_;
-      }
-      /**
-       * <code>int32 messageToAnswerId = 6;</code>
-       * @param value The messageToAnswerId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageToAnswerId(int value) {
-        
-        messageToAnswerId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 messageToAnswerId = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageToAnswerId() {
-        
-        messageToAnswerId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object answerText_ = "";
-      /**
-       * <code>string answerText = 7;</code>
-       * @return The answerText.
-       */
-      public java.lang.String getAnswerText() {
-        java.lang.Object ref = answerText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          answerText_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string answerText = 7;</code>
-       * @return The bytes for answerText.
-       */
-      public com.google.protobuf.ByteString
-          getAnswerTextBytes() {
-        java.lang.Object ref = answerText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          answerText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string answerText = 7;</code>
-       * @param value The answerText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnswerText(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        answerText_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string answerText = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnswerText() {
-        
-        answerText_ = getDefaultInstance().getAnswerText();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string answerText = 7;</code>
-       * @param value The bytes for answerText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnswerTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        answerText_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ChannelClientMessageAnswer)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ChannelClientMessageAnswer)
-    private static final protobuf.ClientMessages.ChannelClientMessageAnswer DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ChannelClientMessageAnswer();
-    }
-
-    public static protobuf.ClientMessages.ChannelClientMessageAnswer getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ChannelClientMessageAnswer>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelClientMessageAnswer>() {
-      @java.lang.Override
-      public ChannelClientMessageAnswer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelClientMessageAnswer(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ChannelClientMessageAnswer> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ChannelClientMessageAnswer> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientMessages.ChannelClientMessageAnswer getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface PrivateClientMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.PrivateClientMessage)
+  public interface ChannelMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ChannelMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3079,40 +953,40 @@ public final class ClientMessages {
     protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return Whether the receiverBase field is set.
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return Whether the receiverChannelBase field is set.
      */
-    boolean hasReceiverBase();
+    boolean hasReceiverChannelBase();
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return The receiverBase.
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return The receiverChannelBase.
      */
-    protobuf.ClientIdentities.ClientBase getReceiverBase();
+    protobuf.ClientChannels.ChannelBase getReceiverChannelBase();
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder();
+    protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.PrivateClientMessage}
+   * Protobuf type {@code protobuf.clientmessages.ChannelMessage}
    */
-  public  static final class PrivateClientMessage extends
+  public  static final class ChannelMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.PrivateClientMessage)
-      PrivateClientMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ChannelMessage)
+      ChannelMessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use PrivateClientMessage.newBuilder() to construct.
-    private PrivateClientMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ChannelMessage.newBuilder() to construct.
+    private ChannelMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private PrivateClientMessage() {
+    private ChannelMessage() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new PrivateClientMessage();
+      return new ChannelMessage();
     }
 
     @java.lang.Override
@@ -3120,7 +994,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private PrivateClientMessage(
+    private ChannelMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3152,14 +1026,14 @@ public final class ClientMessages {
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (receiverBase_ != null) {
-                subBuilder = receiverBase_.toBuilder();
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (receiverChannelBase_ != null) {
+                subBuilder = receiverChannelBase_.toBuilder();
               }
-              receiverBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              receiverChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(receiverBase_);
-                receiverBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(receiverChannelBase_);
+                receiverChannelBase_ = subBuilder.buildPartial();
               }
 
               break;
@@ -3185,15 +1059,15 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateClientMessage_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.PrivateClientMessage.class, protobuf.ClientMessages.PrivateClientMessage.Builder.class);
+              protobuf.ClientMessages.ChannelMessage.class, protobuf.ClientMessages.ChannelMessage.Builder.class);
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
@@ -3219,27 +1093,27 @@ public final class ClientMessages {
       return getMessageBase();
     }
 
-    public static final int RECEIVERBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase receiverBase_;
+    public static final int RECEIVERCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase receiverChannelBase_;
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return Whether the receiverBase field is set.
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return Whether the receiverChannelBase field is set.
      */
-    public boolean hasReceiverBase() {
-      return receiverBase_ != null;
+    public boolean hasReceiverChannelBase() {
+      return receiverChannelBase_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return The receiverBase.
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return The receiverChannelBase.
      */
-    public protobuf.ClientIdentities.ClientBase getReceiverBase() {
-      return receiverBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+    public protobuf.ClientChannels.ChannelBase getReceiverChannelBase() {
+      return receiverChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder() {
-      return getReceiverBase();
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder() {
+      return getReceiverChannelBase();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3249,18 +1123,6 @@ public final class ClientMessages {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasMessageBase()) {
-        if (!getMessageBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasReceiverBase()) {
-        if (!getReceiverBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3271,8 +1133,8 @@ public final class ClientMessages {
       if (messageBase_ != null) {
         output.writeMessage(1, getMessageBase());
       }
-      if (receiverBase_ != null) {
-        output.writeMessage(2, getReceiverBase());
+      if (receiverChannelBase_ != null) {
+        output.writeMessage(2, getReceiverChannelBase());
       }
       unknownFields.writeTo(output);
     }
@@ -3287,9 +1149,9 @@ public final class ClientMessages {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getMessageBase());
       }
-      if (receiverBase_ != null) {
+      if (receiverChannelBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getReceiverBase());
+          .computeMessageSize(2, getReceiverChannelBase());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3301,20 +1163,20 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.PrivateClientMessage)) {
+      if (!(obj instanceof protobuf.ClientMessages.ChannelMessage)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.PrivateClientMessage other = (protobuf.ClientMessages.PrivateClientMessage) obj;
+      protobuf.ClientMessages.ChannelMessage other = (protobuf.ClientMessages.ChannelMessage) obj;
 
       if (hasMessageBase() != other.hasMessageBase()) return false;
       if (hasMessageBase()) {
         if (!getMessageBase()
             .equals(other.getMessageBase())) return false;
       }
-      if (hasReceiverBase() != other.hasReceiverBase()) return false;
-      if (hasReceiverBase()) {
-        if (!getReceiverBase()
-            .equals(other.getReceiverBase())) return false;
+      if (hasReceiverChannelBase() != other.hasReceiverChannelBase()) return false;
+      if (hasReceiverChannelBase()) {
+        if (!getReceiverChannelBase()
+            .equals(other.getReceiverChannelBase())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -3331,78 +1193,78 @@ public final class ClientMessages {
         hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageBase().hashCode();
       }
-      if (hasReceiverBase()) {
-        hash = (37 * hash) + RECEIVERBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getReceiverBase().hashCode();
+      if (hasReceiverChannelBase()) {
+        hash = (37 * hash) + RECEIVERCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverChannelBase().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(byte[] data)
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ChannelMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseDelimitedFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.PrivateClientMessage parseFrom(
+    public static protobuf.ClientMessages.ChannelMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3415,7 +1277,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.PrivateClientMessage prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.ChannelMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3431,26 +1293,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.PrivateClientMessage}
+     * Protobuf type {@code protobuf.clientmessages.ChannelMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.PrivateClientMessage)
-        protobuf.ClientMessages.PrivateClientMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ChannelMessage)
+        protobuf.ClientMessages.ChannelMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateClientMessage_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.PrivateClientMessage.class, protobuf.ClientMessages.PrivateClientMessage.Builder.class);
+                protobuf.ClientMessages.ChannelMessage.class, protobuf.ClientMessages.ChannelMessage.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.PrivateClientMessage.newBuilder()
+      // Construct using protobuf.ClientMessages.ChannelMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3474,11 +1336,11 @@ public final class ClientMessages {
           messageBase_ = null;
           messageBaseBuilder_ = null;
         }
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = null;
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = null;
         } else {
-          receiverBase_ = null;
-          receiverBaseBuilder_ = null;
+          receiverChannelBase_ = null;
+          receiverChannelBaseBuilder_ = null;
         }
         return this;
       }
@@ -3486,17 +1348,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessage_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.PrivateClientMessage getDefaultInstanceForType() {
-        return protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance();
+      public protobuf.ClientMessages.ChannelMessage getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ChannelMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.PrivateClientMessage build() {
-        protobuf.ClientMessages.PrivateClientMessage result = buildPartial();
+      public protobuf.ClientMessages.ChannelMessage build() {
+        protobuf.ClientMessages.ChannelMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3504,17 +1366,17 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.PrivateClientMessage buildPartial() {
-        protobuf.ClientMessages.PrivateClientMessage result = new protobuf.ClientMessages.PrivateClientMessage(this);
+      public protobuf.ClientMessages.ChannelMessage buildPartial() {
+        protobuf.ClientMessages.ChannelMessage result = new protobuf.ClientMessages.ChannelMessage(this);
         if (messageBaseBuilder_ == null) {
           result.messageBase_ = messageBase_;
         } else {
           result.messageBase_ = messageBaseBuilder_.build();
         }
-        if (receiverBaseBuilder_ == null) {
-          result.receiverBase_ = receiverBase_;
+        if (receiverChannelBaseBuilder_ == null) {
+          result.receiverChannelBase_ = receiverChannelBase_;
         } else {
-          result.receiverBase_ = receiverBaseBuilder_.build();
+          result.receiverChannelBase_ = receiverChannelBaseBuilder_.build();
         }
         onBuilt();
         return result;
@@ -3554,21 +1416,21 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.PrivateClientMessage) {
-          return mergeFrom((protobuf.ClientMessages.PrivateClientMessage)other);
+        if (other instanceof protobuf.ClientMessages.ChannelMessage) {
+          return mergeFrom((protobuf.ClientMessages.ChannelMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.PrivateClientMessage other) {
-        if (other == protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.ChannelMessage other) {
+        if (other == protobuf.ClientMessages.ChannelMessage.getDefaultInstance()) return this;
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
-        if (other.hasReceiverBase()) {
-          mergeReceiverBase(other.getReceiverBase());
+        if (other.hasReceiverChannelBase()) {
+          mergeReceiverChannelBase(other.getReceiverChannelBase());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3577,16 +1439,6 @@ public final class ClientMessages {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (hasMessageBase()) {
-          if (!getMessageBase().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasReceiverBase()) {
-          if (!getReceiverBase().isInitialized()) {
-            return false;
-          }
-        }
         return true;
       }
 
@@ -3595,11 +1447,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.PrivateClientMessage parsedMessage = null;
+        protobuf.ClientMessages.ChannelMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.PrivateClientMessage) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.ChannelMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3728,123 +1580,123 @@ public final class ClientMessages {
         return messageBaseBuilder_;
       }
 
-      private protobuf.ClientIdentities.ClientBase receiverBase_;
+      private protobuf.ClientChannels.ChannelBase receiverChannelBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverBaseBuilder_;
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> receiverChannelBaseBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-       * @return Whether the receiverBase field is set.
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       * @return Whether the receiverChannelBase field is set.
        */
-      public boolean hasReceiverBase() {
-        return receiverBaseBuilder_ != null || receiverBase_ != null;
+      public boolean hasReceiverChannelBase() {
+        return receiverChannelBaseBuilder_ != null || receiverChannelBase_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-       * @return The receiverBase.
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       * @return The receiverChannelBase.
        */
-      public protobuf.ClientIdentities.ClientBase getReceiverBase() {
-        if (receiverBaseBuilder_ == null) {
-          return receiverBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+      public protobuf.ClientChannels.ChannelBase getReceiverChannelBase() {
+        if (receiverChannelBaseBuilder_ == null) {
+          return receiverChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
         } else {
-          return receiverBaseBuilder_.getMessage();
+          return receiverChannelBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public Builder setReceiverBase(protobuf.ClientIdentities.ClientBase value) {
-        if (receiverBaseBuilder_ == null) {
+      public Builder setReceiverChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (receiverChannelBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          receiverBase_ = value;
+          receiverChannelBase_ = value;
           onChanged();
         } else {
-          receiverBaseBuilder_.setMessage(value);
+          receiverChannelBaseBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public Builder setReceiverBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = builderForValue.build();
+      public Builder setReceiverChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = builderForValue.build();
           onChanged();
         } else {
-          receiverBaseBuilder_.setMessage(builderForValue.build());
+          receiverChannelBaseBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public Builder mergeReceiverBase(protobuf.ClientIdentities.ClientBase value) {
-        if (receiverBaseBuilder_ == null) {
-          if (receiverBase_ != null) {
-            receiverBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(receiverBase_).mergeFrom(value).buildPartial();
+      public Builder mergeReceiverChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (receiverChannelBaseBuilder_ == null) {
+          if (receiverChannelBase_ != null) {
+            receiverChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(receiverChannelBase_).mergeFrom(value).buildPartial();
           } else {
-            receiverBase_ = value;
+            receiverChannelBase_ = value;
           }
           onChanged();
         } else {
-          receiverBaseBuilder_.mergeFrom(value);
+          receiverChannelBaseBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public Builder clearReceiverBase() {
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = null;
+      public Builder clearReceiverChannelBase() {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = null;
           onChanged();
         } else {
-          receiverBase_ = null;
-          receiverBaseBuilder_ = null;
+          receiverChannelBase_ = null;
+          receiverChannelBaseBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getReceiverBaseBuilder() {
+      public protobuf.ClientChannels.ChannelBase.Builder getReceiverChannelBaseBuilder() {
         
         onChanged();
-        return getReceiverBaseFieldBuilder().getBuilder();
+        return getReceiverChannelBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder() {
-        if (receiverBaseBuilder_ != null) {
-          return receiverBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder() {
+        if (receiverChannelBaseBuilder_ != null) {
+          return receiverChannelBaseBuilder_.getMessageOrBuilder();
         } else {
-          return receiverBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+          return receiverChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getReceiverBaseFieldBuilder() {
-        if (receiverBaseBuilder_ == null) {
-          receiverBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getReceiverBase(),
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getReceiverChannelBaseFieldBuilder() {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getReceiverChannelBase(),
                   getParentForChildren(),
                   isClean());
-          receiverBase_ = null;
+          receiverChannelBase_ = null;
         }
-        return receiverBaseBuilder_;
+        return receiverChannelBaseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3859,41 +1711,1745 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.PrivateClientMessage)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ChannelMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.PrivateClientMessage)
-    private static final protobuf.ClientMessages.PrivateClientMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ChannelMessage)
+    private static final protobuf.ClientMessages.ChannelMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.PrivateClientMessage();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ChannelMessage();
     }
 
-    public static protobuf.ClientMessages.PrivateClientMessage getDefaultInstance() {
+    public static protobuf.ClientMessages.ChannelMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PrivateClientMessage>
-        PARSER = new com.google.protobuf.AbstractParser<PrivateClientMessage>() {
+    private static final com.google.protobuf.Parser<ChannelMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessage>() {
       @java.lang.Override
-      public PrivateClientMessage parsePartialFrom(
+      public ChannelMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PrivateClientMessage(input, extensionRegistry);
+        return new ChannelMessage(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PrivateClientMessage> parser() {
+    public static com.google.protobuf.Parser<ChannelMessage> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PrivateClientMessage> getParserForType() {
+    public com.google.protobuf.Parser<ChannelMessage> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.PrivateClientMessage getDefaultInstanceForType() {
+    public protobuf.ClientMessages.ChannelMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChannelMessageAnswerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ChannelMessageAnswer)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return Whether the messageBase field is set.
+     */
+    boolean hasMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return The messageBase.
+     */
+    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     */
+    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return Whether the receiverChannelBase field is set.
+     */
+    boolean hasReceiverChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return The receiverChannelBase.
+     */
+    protobuf.ClientChannels.ChannelBase getReceiverChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder();
+
+    /**
+     * <code>int32 messageToAnswerId = 3;</code>
+     * @return The messageToAnswerId.
+     */
+    int getMessageToAnswerId();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientmessages.ChannelMessageAnswer}
+   */
+  public  static final class ChannelMessageAnswer extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ChannelMessageAnswer)
+      ChannelMessageAnswerOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelMessageAnswer.newBuilder() to construct.
+    private ChannelMessageAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelMessageAnswer() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelMessageAnswer();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelMessageAnswer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              if (messageBase_ != null) {
+                subBuilder = messageBase_.toBuilder();
+              }
+              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(messageBase_);
+                messageBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (receiverChannelBase_ != null) {
+                subBuilder = receiverChannelBase_.toBuilder();
+              }
+              receiverChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(receiverChannelBase_);
+                receiverChannelBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+
+              messageToAnswerId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessageAnswer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientMessages.ChannelMessageAnswer.class, protobuf.ClientMessages.ChannelMessageAnswer.Builder.class);
+    }
+
+    public static final int MESSAGEBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return Whether the messageBase field is set.
+     */
+    public boolean hasMessageBase() {
+      return messageBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return The messageBase.
+     */
+    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     */
+    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      return getMessageBase();
+    }
+
+    public static final int RECEIVERCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase receiverChannelBase_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return Whether the receiverChannelBase field is set.
+     */
+    public boolean hasReceiverChannelBase() {
+      return receiverChannelBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     * @return The receiverChannelBase.
+     */
+    public protobuf.ClientChannels.ChannelBase getReceiverChannelBase() {
+      return receiverChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder() {
+      return getReceiverChannelBase();
+    }
+
+    public static final int MESSAGETOANSWERID_FIELD_NUMBER = 3;
+    private int messageToAnswerId_;
+    /**
+     * <code>int32 messageToAnswerId = 3;</code>
+     * @return The messageToAnswerId.
+     */
+    public int getMessageToAnswerId() {
+      return messageToAnswerId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (messageBase_ != null) {
+        output.writeMessage(1, getMessageBase());
+      }
+      if (receiverChannelBase_ != null) {
+        output.writeMessage(2, getReceiverChannelBase());
+      }
+      if (messageToAnswerId_ != 0) {
+        output.writeInt32(3, messageToAnswerId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (messageBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getMessageBase());
+      }
+      if (receiverChannelBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getReceiverChannelBase());
+      }
+      if (messageToAnswerId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, messageToAnswerId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientMessages.ChannelMessageAnswer)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientMessages.ChannelMessageAnswer other = (protobuf.ClientMessages.ChannelMessageAnswer) obj;
+
+      if (hasMessageBase() != other.hasMessageBase()) return false;
+      if (hasMessageBase()) {
+        if (!getMessageBase()
+            .equals(other.getMessageBase())) return false;
+      }
+      if (hasReceiverChannelBase() != other.hasReceiverChannelBase()) return false;
+      if (hasReceiverChannelBase()) {
+        if (!getReceiverChannelBase()
+            .equals(other.getReceiverChannelBase())) return false;
+      }
+      if (getMessageToAnswerId()
+          != other.getMessageToAnswerId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMessageBase()) {
+        hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageBase().hashCode();
+      }
+      if (hasReceiverChannelBase()) {
+        hash = (37 * hash) + RECEIVERCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverChannelBase().hashCode();
+      }
+      hash = (37 * hash) + MESSAGETOANSWERID_FIELD_NUMBER;
+      hash = (53 * hash) + getMessageToAnswerId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.ChannelMessageAnswer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientMessages.ChannelMessageAnswer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientmessages.ChannelMessageAnswer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ChannelMessageAnswer)
+        protobuf.ClientMessages.ChannelMessageAnswerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessageAnswer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientMessages.ChannelMessageAnswer.class, protobuf.ClientMessages.ChannelMessageAnswer.Builder.class);
+      }
+
+      // Construct using protobuf.ClientMessages.ChannelMessageAnswer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = null;
+        } else {
+          messageBase_ = null;
+          messageBaseBuilder_ = null;
+        }
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = null;
+        } else {
+          receiverChannelBase_ = null;
+          receiverChannelBaseBuilder_ = null;
+        }
+        messageToAnswerId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.ChannelMessageAnswer getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.ChannelMessageAnswer build() {
+        protobuf.ClientMessages.ChannelMessageAnswer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.ChannelMessageAnswer buildPartial() {
+        protobuf.ClientMessages.ChannelMessageAnswer result = new protobuf.ClientMessages.ChannelMessageAnswer(this);
+        if (messageBaseBuilder_ == null) {
+          result.messageBase_ = messageBase_;
+        } else {
+          result.messageBase_ = messageBaseBuilder_.build();
+        }
+        if (receiverChannelBaseBuilder_ == null) {
+          result.receiverChannelBase_ = receiverChannelBase_;
+        } else {
+          result.receiverChannelBase_ = receiverChannelBaseBuilder_.build();
+        }
+        result.messageToAnswerId_ = messageToAnswerId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientMessages.ChannelMessageAnswer) {
+          return mergeFrom((protobuf.ClientMessages.ChannelMessageAnswer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientMessages.ChannelMessageAnswer other) {
+        if (other == protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance()) return this;
+        if (other.hasMessageBase()) {
+          mergeMessageBase(other.getMessageBase());
+        }
+        if (other.hasReceiverChannelBase()) {
+          mergeReceiverChannelBase(other.getReceiverChannelBase());
+        }
+        if (other.getMessageToAnswerId() != 0) {
+          setMessageToAnswerId(other.getMessageToAnswerId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientMessages.ChannelMessageAnswer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientMessages.ChannelMessageAnswer) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * @return Whether the messageBase field is set.
+       */
+      public boolean hasMessageBase() {
+        return messageBaseBuilder_ != null || messageBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * @return The messageBase.
+       */
+      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+        if (messageBaseBuilder_ == null) {
+          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+        } else {
+          return messageBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (messageBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          messageBase_ = value;
+          onChanged();
+        } else {
+          messageBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder setMessageBase(
+          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          messageBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (messageBaseBuilder_ == null) {
+          if (messageBase_ != null) {
+            messageBase_ =
+              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+          } else {
+            messageBase_ = value;
+          }
+          onChanged();
+        } else {
+          messageBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder clearMessageBase() {
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = null;
+          onChanged();
+        } else {
+          messageBase_ = null;
+          messageBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+        
+        onChanged();
+        return getMessageBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+        if (messageBaseBuilder_ != null) {
+          return messageBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return messageBase_ == null ?
+              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          getMessageBaseFieldBuilder() {
+        if (messageBaseBuilder_ == null) {
+          messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+                  getMessageBase(),
+                  getParentForChildren(),
+                  isClean());
+          messageBase_ = null;
+        }
+        return messageBaseBuilder_;
+      }
+
+      private protobuf.ClientChannels.ChannelBase receiverChannelBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> receiverChannelBaseBuilder_;
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       * @return Whether the receiverChannelBase field is set.
+       */
+      public boolean hasReceiverChannelBase() {
+        return receiverChannelBaseBuilder_ != null || receiverChannelBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       * @return The receiverChannelBase.
+       */
+      public protobuf.ClientChannels.ChannelBase getReceiverChannelBase() {
+        if (receiverChannelBaseBuilder_ == null) {
+          return receiverChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
+        } else {
+          return receiverChannelBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public Builder setReceiverChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (receiverChannelBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          receiverChannelBase_ = value;
+          onChanged();
+        } else {
+          receiverChannelBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public Builder setReceiverChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          receiverChannelBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public Builder mergeReceiverChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (receiverChannelBaseBuilder_ == null) {
+          if (receiverChannelBase_ != null) {
+            receiverChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(receiverChannelBase_).mergeFrom(value).buildPartial();
+          } else {
+            receiverChannelBase_ = value;
+          }
+          onChanged();
+        } else {
+          receiverChannelBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public Builder clearReceiverChannelBase() {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBase_ = null;
+          onChanged();
+        } else {
+          receiverChannelBase_ = null;
+          receiverChannelBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBase.Builder getReceiverChannelBaseBuilder() {
+        
+        onChanged();
+        return getReceiverChannelBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getReceiverChannelBaseOrBuilder() {
+        if (receiverChannelBaseBuilder_ != null) {
+          return receiverChannelBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return receiverChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : receiverChannelBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase receiverChannelBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getReceiverChannelBaseFieldBuilder() {
+        if (receiverChannelBaseBuilder_ == null) {
+          receiverChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getReceiverChannelBase(),
+                  getParentForChildren(),
+                  isClean());
+          receiverChannelBase_ = null;
+        }
+        return receiverChannelBaseBuilder_;
+      }
+
+      private int messageToAnswerId_ ;
+      /**
+       * <code>int32 messageToAnswerId = 3;</code>
+       * @return The messageToAnswerId.
+       */
+      public int getMessageToAnswerId() {
+        return messageToAnswerId_;
+      }
+      /**
+       * <code>int32 messageToAnswerId = 3;</code>
+       * @param value The messageToAnswerId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageToAnswerId(int value) {
+        
+        messageToAnswerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 messageToAnswerId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessageToAnswerId() {
+        
+        messageToAnswerId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ChannelMessageAnswer)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ChannelMessageAnswer)
+    private static final protobuf.ClientMessages.ChannelMessageAnswer DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ChannelMessageAnswer();
+    }
+
+    public static protobuf.ClientMessages.ChannelMessageAnswer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelMessageAnswer>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageAnswer>() {
+      @java.lang.Override
+      public ChannelMessageAnswer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelMessageAnswer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelMessageAnswer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelMessageAnswer> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientMessages.ChannelMessageAnswer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PrivateMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.PrivateMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return Whether the messageBase field is set.
+     */
+    boolean hasMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return The messageBase.
+     */
+    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     */
+    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
+     */
+    boolean hasReceiverClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
+     */
+    protobuf.ClientIdentities.ClientBase getReceiverClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientmessages.PrivateMessage}
+   */
+  public  static final class PrivateMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.PrivateMessage)
+      PrivateMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PrivateMessage.newBuilder() to construct.
+    private PrivateMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PrivateMessage() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PrivateMessage();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PrivateMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              if (messageBase_ != null) {
+                subBuilder = messageBase_.toBuilder();
+              }
+              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(messageBase_);
+                messageBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (receiverClientBase_ != null) {
+                subBuilder = receiverClientBase_.toBuilder();
+              }
+              receiverClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(receiverClientBase_);
+                receiverClientBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientMessages.PrivateMessage.class, protobuf.ClientMessages.PrivateMessage.Builder.class);
+    }
+
+    public static final int MESSAGEBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return Whether the messageBase field is set.
+     */
+    public boolean hasMessageBase() {
+      return messageBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * @return The messageBase.
+     */
+    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     */
+    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      return getMessageBase();
+    }
+
+    public static final int RECEIVERCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase receiverClientBase_;
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
+     */
+    public boolean hasReceiverClientBase() {
+      return receiverClientBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
+     */
+    public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+      return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+      return getReceiverClientBase();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (messageBase_ != null) {
+        output.writeMessage(1, getMessageBase());
+      }
+      if (receiverClientBase_ != null) {
+        output.writeMessage(2, getReceiverClientBase());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (messageBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getMessageBase());
+      }
+      if (receiverClientBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getReceiverClientBase());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientMessages.PrivateMessage)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientMessages.PrivateMessage other = (protobuf.ClientMessages.PrivateMessage) obj;
+
+      if (hasMessageBase() != other.hasMessageBase()) return false;
+      if (hasMessageBase()) {
+        if (!getMessageBase()
+            .equals(other.getMessageBase())) return false;
+      }
+      if (hasReceiverClientBase() != other.hasReceiverClientBase()) return false;
+      if (hasReceiverClientBase()) {
+        if (!getReceiverClientBase()
+            .equals(other.getReceiverClientBase())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMessageBase()) {
+        hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageBase().hashCode();
+      }
+      if (hasReceiverClientBase()) {
+        hash = (37 * hash) + RECEIVERCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverClientBase().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientMessages.PrivateMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientMessages.PrivateMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientmessages.PrivateMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.PrivateMessage)
+        protobuf.ClientMessages.PrivateMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientMessages.PrivateMessage.class, protobuf.ClientMessages.PrivateMessage.Builder.class);
+      }
+
+      // Construct using protobuf.ClientMessages.PrivateMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = null;
+        } else {
+          messageBase_ = null;
+          messageBaseBuilder_ = null;
+        }
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
+        } else {
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_PrivateMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.PrivateMessage getDefaultInstanceForType() {
+        return protobuf.ClientMessages.PrivateMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.PrivateMessage build() {
+        protobuf.ClientMessages.PrivateMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientMessages.PrivateMessage buildPartial() {
+        protobuf.ClientMessages.PrivateMessage result = new protobuf.ClientMessages.PrivateMessage(this);
+        if (messageBaseBuilder_ == null) {
+          result.messageBase_ = messageBase_;
+        } else {
+          result.messageBase_ = messageBaseBuilder_.build();
+        }
+        if (receiverClientBaseBuilder_ == null) {
+          result.receiverClientBase_ = receiverClientBase_;
+        } else {
+          result.receiverClientBase_ = receiverClientBaseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientMessages.PrivateMessage) {
+          return mergeFrom((protobuf.ClientMessages.PrivateMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientMessages.PrivateMessage other) {
+        if (other == protobuf.ClientMessages.PrivateMessage.getDefaultInstance()) return this;
+        if (other.hasMessageBase()) {
+          mergeMessageBase(other.getMessageBase());
+        }
+        if (other.hasReceiverClientBase()) {
+          mergeReceiverClientBase(other.getReceiverClientBase());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientMessages.PrivateMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientMessages.PrivateMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * @return Whether the messageBase field is set.
+       */
+      public boolean hasMessageBase() {
+        return messageBaseBuilder_ != null || messageBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * @return The messageBase.
+       */
+      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+        if (messageBaseBuilder_ == null) {
+          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+        } else {
+          return messageBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (messageBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          messageBase_ = value;
+          onChanged();
+        } else {
+          messageBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder setMessageBase(
+          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          messageBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (messageBaseBuilder_ == null) {
+          if (messageBase_ != null) {
+            messageBase_ =
+              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+          } else {
+            messageBase_ = value;
+          }
+          onChanged();
+        } else {
+          messageBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public Builder clearMessageBase() {
+        if (messageBaseBuilder_ == null) {
+          messageBase_ = null;
+          onChanged();
+        } else {
+          messageBase_ = null;
+          messageBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+        
+        onChanged();
+        return getMessageBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+        if (messageBaseBuilder_ != null) {
+          return messageBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return messageBase_ == null ?
+              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          getMessageBaseFieldBuilder() {
+        if (messageBaseBuilder_ == null) {
+          messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+                  getMessageBase(),
+                  getParentForChildren(),
+                  isClean());
+          messageBase_ = null;
+        }
+        return messageBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientBase receiverClientBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverClientBaseBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return Whether the receiverClientBase field is set.
+       */
+      public boolean hasReceiverClientBase() {
+        return receiverClientBaseBuilder_ != null || receiverClientBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return The receiverClientBase.
+       */
+      public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
+        } else {
+          return receiverClientBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public Builder setReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          receiverClientBase_ = value;
+          onChanged();
+        } else {
+          receiverClientBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public Builder setReceiverClientBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          receiverClientBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public Builder mergeReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
+          if (receiverClientBase_ != null) {
+            receiverClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(receiverClientBase_).mergeFrom(value).buildPartial();
+          } else {
+            receiverClientBase_ = value;
+          }
+          onChanged();
+        } else {
+          receiverClientBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public Builder clearReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
+          onChanged();
+        } else {
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBase.Builder getReceiverClientBaseBuilder() {
+        
+        onChanged();
+        return getReceiverClientBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+        if (receiverClientBaseBuilder_ != null) {
+          return receiverClientBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return receiverClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getReceiverClientBaseFieldBuilder() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getReceiverClientBase(),
+                  getParentForChildren(),
+                  isClean());
+          receiverClientBase_ = null;
+        }
+        return receiverClientBaseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.PrivateMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.PrivateMessage)
+    private static final protobuf.ClientMessages.PrivateMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.PrivateMessage();
+    }
+
+    public static protobuf.ClientMessages.PrivateMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PrivateMessage>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateMessage>() {
+      @java.lang.Override
+      public PrivateMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PrivateMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PrivateMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PrivateMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientMessages.PrivateMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3919,19 +3475,19 @@ public final class ClientMessages {
     protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return Whether the receiverBase field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    boolean hasReceiverBase();
+    boolean hasReceiverClientBase();
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return The receiverBase.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    protobuf.ClientIdentities.ClientBase getReceiverBase();
+    protobuf.ClientIdentities.ClientBase getReceiverClientBase();
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder();
+    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientmessages.ProfileComment}
@@ -3993,13 +3549,13 @@ public final class ClientMessages {
             }
             case 18: {
               protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (receiverBase_ != null) {
-                subBuilder = receiverBase_.toBuilder();
+              if (receiverClientBase_ != null) {
+                subBuilder = receiverClientBase_.toBuilder();
               }
-              receiverBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              receiverClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(receiverBase_);
-                receiverBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(receiverClientBase_);
+                receiverClientBase_ = subBuilder.buildPartial();
               }
 
               break;
@@ -4059,27 +3615,27 @@ public final class ClientMessages {
       return getMessageBase();
     }
 
-    public static final int RECEIVERBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase receiverBase_;
+    public static final int RECEIVERCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase receiverClientBase_;
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return Whether the receiverBase field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    public boolean hasReceiverBase() {
-      return receiverBase_ != null;
+    public boolean hasReceiverClientBase() {
+      return receiverClientBase_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-     * @return The receiverBase.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    public protobuf.ClientIdentities.ClientBase getReceiverBase() {
-      return receiverBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+    public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+      return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder() {
-      return getReceiverBase();
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+      return getReceiverClientBase();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4089,18 +3645,6 @@ public final class ClientMessages {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasMessageBase()) {
-        if (!getMessageBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasReceiverBase()) {
-        if (!getReceiverBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4111,8 +3655,8 @@ public final class ClientMessages {
       if (messageBase_ != null) {
         output.writeMessage(1, getMessageBase());
       }
-      if (receiverBase_ != null) {
-        output.writeMessage(2, getReceiverBase());
+      if (receiverClientBase_ != null) {
+        output.writeMessage(2, getReceiverClientBase());
       }
       unknownFields.writeTo(output);
     }
@@ -4127,9 +3671,9 @@ public final class ClientMessages {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getMessageBase());
       }
-      if (receiverBase_ != null) {
+      if (receiverClientBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getReceiverBase());
+          .computeMessageSize(2, getReceiverClientBase());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4151,10 +3695,10 @@ public final class ClientMessages {
         if (!getMessageBase()
             .equals(other.getMessageBase())) return false;
       }
-      if (hasReceiverBase() != other.hasReceiverBase()) return false;
-      if (hasReceiverBase()) {
-        if (!getReceiverBase()
-            .equals(other.getReceiverBase())) return false;
+      if (hasReceiverClientBase() != other.hasReceiverClientBase()) return false;
+      if (hasReceiverClientBase()) {
+        if (!getReceiverClientBase()
+            .equals(other.getReceiverClientBase())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -4171,9 +3715,9 @@ public final class ClientMessages {
         hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageBase().hashCode();
       }
-      if (hasReceiverBase()) {
-        hash = (37 * hash) + RECEIVERBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getReceiverBase().hashCode();
+      if (hasReceiverClientBase()) {
+        hash = (37 * hash) + RECEIVERCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverClientBase().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4314,11 +3858,11 @@ public final class ClientMessages {
           messageBase_ = null;
           messageBaseBuilder_ = null;
         }
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = null;
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
         } else {
-          receiverBase_ = null;
-          receiverBaseBuilder_ = null;
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
         return this;
       }
@@ -4351,10 +3895,10 @@ public final class ClientMessages {
         } else {
           result.messageBase_ = messageBaseBuilder_.build();
         }
-        if (receiverBaseBuilder_ == null) {
-          result.receiverBase_ = receiverBase_;
+        if (receiverClientBaseBuilder_ == null) {
+          result.receiverClientBase_ = receiverClientBase_;
         } else {
-          result.receiverBase_ = receiverBaseBuilder_.build();
+          result.receiverClientBase_ = receiverClientBaseBuilder_.build();
         }
         onBuilt();
         return result;
@@ -4407,8 +3951,8 @@ public final class ClientMessages {
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
-        if (other.hasReceiverBase()) {
-          mergeReceiverBase(other.getReceiverBase());
+        if (other.hasReceiverClientBase()) {
+          mergeReceiverClientBase(other.getReceiverClientBase());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4417,16 +3961,6 @@ public final class ClientMessages {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (hasMessageBase()) {
-          if (!getMessageBase().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasReceiverBase()) {
-          if (!getReceiverBase().isInitialized()) {
-            return false;
-          }
-        }
         return true;
       }
 
@@ -4568,123 +4102,123 @@ public final class ClientMessages {
         return messageBaseBuilder_;
       }
 
-      private protobuf.ClientIdentities.ClientBase receiverBase_;
+      private protobuf.ClientIdentities.ClientBase receiverClientBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverBaseBuilder_;
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverClientBaseBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-       * @return Whether the receiverBase field is set.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return Whether the receiverClientBase field is set.
        */
-      public boolean hasReceiverBase() {
-        return receiverBaseBuilder_ != null || receiverBase_ != null;
+      public boolean hasReceiverClientBase() {
+        return receiverClientBaseBuilder_ != null || receiverClientBase_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
-       * @return The receiverBase.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return The receiverClientBase.
        */
-      public protobuf.ClientIdentities.ClientBase getReceiverBase() {
-        if (receiverBaseBuilder_ == null) {
-          return receiverBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+      public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         } else {
-          return receiverBaseBuilder_.getMessage();
+          return receiverClientBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setReceiverBase(protobuf.ClientIdentities.ClientBase value) {
-        if (receiverBaseBuilder_ == null) {
+      public Builder setReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          receiverBase_ = value;
+          receiverClientBase_ = value;
           onChanged();
         } else {
-          receiverBaseBuilder_.setMessage(value);
+          receiverClientBaseBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setReceiverBase(
+      public Builder setReceiverClientBase(
           protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = builderForValue.build();
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = builderForValue.build();
           onChanged();
         } else {
-          receiverBaseBuilder_.setMessage(builderForValue.build());
+          receiverClientBaseBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder mergeReceiverBase(protobuf.ClientIdentities.ClientBase value) {
-        if (receiverBaseBuilder_ == null) {
-          if (receiverBase_ != null) {
-            receiverBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(receiverBase_).mergeFrom(value).buildPartial();
+      public Builder mergeReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
+          if (receiverClientBase_ != null) {
+            receiverClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(receiverClientBase_).mergeFrom(value).buildPartial();
           } else {
-            receiverBase_ = value;
+            receiverClientBase_ = value;
           }
           onChanged();
         } else {
-          receiverBaseBuilder_.mergeFrom(value);
+          receiverClientBaseBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder clearReceiverBase() {
-        if (receiverBaseBuilder_ == null) {
-          receiverBase_ = null;
+      public Builder clearReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
           onChanged();
         } else {
-          receiverBase_ = null;
-          receiverBaseBuilder_ = null;
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getReceiverBaseBuilder() {
+      public protobuf.ClientIdentities.ClientBase.Builder getReceiverClientBaseBuilder() {
         
         onChanged();
-        return getReceiverBaseFieldBuilder().getBuilder();
+        return getReceiverClientBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverBaseOrBuilder() {
-        if (receiverBaseBuilder_ != null) {
-          return receiverBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+        if (receiverClientBaseBuilder_ != null) {
+          return receiverClientBaseBuilder_.getMessageOrBuilder();
         } else {
-          return receiverBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverBase_;
+          return receiverClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBase receiverBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getReceiverBaseFieldBuilder() {
-        if (receiverBaseBuilder_ == null) {
-          receiverBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getReceiverClientBaseFieldBuilder() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getReceiverBase(),
+                  getReceiverClientBase(),
                   getParentForChildren(),
                   isClean());
-          receiverBase_ = null;
+          receiverClientBase_ = null;
         }
-        return receiverBaseBuilder_;
+        return receiverClientBaseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4759,19 +4293,25 @@ public final class ClientMessages {
     protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-     * @return Whether the messageToAnswer field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    boolean hasMessageToAnswer();
+    boolean hasReceiverClientBase();
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-     * @return The messageToAnswer.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    protobuf.ClientMessages.ProfileComment getMessageToAnswer();
+    protobuf.ClientIdentities.ClientBase getReceiverClientBase();
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    protobuf.ClientMessages.ProfileCommentOrBuilder getMessageToAnswerOrBuilder();
+    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder();
+
+    /**
+     * <code>int32 commentToAnswerId = 3;</code>
+     * @return The commentToAnswerId.
+     */
+    int getCommentToAnswerId();
   }
   /**
    * Protobuf type {@code protobuf.clientmessages.ProfileCommentAnswer}
@@ -4832,16 +4372,21 @@ public final class ClientMessages {
               break;
             }
             case 18: {
-              protobuf.ClientMessages.ProfileComment.Builder subBuilder = null;
-              if (messageToAnswer_ != null) {
-                subBuilder = messageToAnswer_.toBuilder();
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (receiverClientBase_ != null) {
+                subBuilder = receiverClientBase_.toBuilder();
               }
-              messageToAnswer_ = input.readMessage(protobuf.ClientMessages.ProfileComment.parser(), extensionRegistry);
+              receiverClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(messageToAnswer_);
-                messageToAnswer_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(receiverClientBase_);
+                receiverClientBase_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 24: {
+
+              commentToAnswerId_ = input.readInt32();
               break;
             }
             default: {
@@ -4899,27 +4444,37 @@ public final class ClientMessages {
       return getMessageBase();
     }
 
-    public static final int MESSAGETOANSWER_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.ProfileComment messageToAnswer_;
+    public static final int RECEIVERCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase receiverClientBase_;
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-     * @return Whether the messageToAnswer field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    public boolean hasMessageToAnswer() {
-      return messageToAnswer_ != null;
+    public boolean hasReceiverClientBase() {
+      return receiverClientBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-     * @return The messageToAnswer.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    public protobuf.ClientMessages.ProfileComment getMessageToAnswer() {
-      return messageToAnswer_ == null ? protobuf.ClientMessages.ProfileComment.getDefaultInstance() : messageToAnswer_;
+    public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+      return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    public protobuf.ClientMessages.ProfileCommentOrBuilder getMessageToAnswerOrBuilder() {
-      return getMessageToAnswer();
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+      return getReceiverClientBase();
+    }
+
+    public static final int COMMENTTOANSWERID_FIELD_NUMBER = 3;
+    private int commentToAnswerId_;
+    /**
+     * <code>int32 commentToAnswerId = 3;</code>
+     * @return The commentToAnswerId.
+     */
+    public int getCommentToAnswerId() {
+      return commentToAnswerId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4929,18 +4484,6 @@ public final class ClientMessages {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasMessageBase()) {
-        if (!getMessageBase().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasMessageToAnswer()) {
-        if (!getMessageToAnswer().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4951,8 +4494,11 @@ public final class ClientMessages {
       if (messageBase_ != null) {
         output.writeMessage(1, getMessageBase());
       }
-      if (messageToAnswer_ != null) {
-        output.writeMessage(2, getMessageToAnswer());
+      if (receiverClientBase_ != null) {
+        output.writeMessage(2, getReceiverClientBase());
+      }
+      if (commentToAnswerId_ != 0) {
+        output.writeInt32(3, commentToAnswerId_);
       }
       unknownFields.writeTo(output);
     }
@@ -4967,9 +4513,13 @@ public final class ClientMessages {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getMessageBase());
       }
-      if (messageToAnswer_ != null) {
+      if (receiverClientBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getMessageToAnswer());
+          .computeMessageSize(2, getReceiverClientBase());
+      }
+      if (commentToAnswerId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, commentToAnswerId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4991,11 +4541,13 @@ public final class ClientMessages {
         if (!getMessageBase()
             .equals(other.getMessageBase())) return false;
       }
-      if (hasMessageToAnswer() != other.hasMessageToAnswer()) return false;
-      if (hasMessageToAnswer()) {
-        if (!getMessageToAnswer()
-            .equals(other.getMessageToAnswer())) return false;
+      if (hasReceiverClientBase() != other.hasReceiverClientBase()) return false;
+      if (hasReceiverClientBase()) {
+        if (!getReceiverClientBase()
+            .equals(other.getReceiverClientBase())) return false;
       }
+      if (getCommentToAnswerId()
+          != other.getCommentToAnswerId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5011,10 +4563,12 @@ public final class ClientMessages {
         hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageBase().hashCode();
       }
-      if (hasMessageToAnswer()) {
-        hash = (37 * hash) + MESSAGETOANSWER_FIELD_NUMBER;
-        hash = (53 * hash) + getMessageToAnswer().hashCode();
+      if (hasReceiverClientBase()) {
+        hash = (37 * hash) + RECEIVERCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverClientBase().hashCode();
       }
+      hash = (37 * hash) + COMMENTTOANSWERID_FIELD_NUMBER;
+      hash = (53 * hash) + getCommentToAnswerId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5154,12 +4708,14 @@ public final class ClientMessages {
           messageBase_ = null;
           messageBaseBuilder_ = null;
         }
-        if (messageToAnswerBuilder_ == null) {
-          messageToAnswer_ = null;
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
         } else {
-          messageToAnswer_ = null;
-          messageToAnswerBuilder_ = null;
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
+        commentToAnswerId_ = 0;
+
         return this;
       }
 
@@ -5191,11 +4747,12 @@ public final class ClientMessages {
         } else {
           result.messageBase_ = messageBaseBuilder_.build();
         }
-        if (messageToAnswerBuilder_ == null) {
-          result.messageToAnswer_ = messageToAnswer_;
+        if (receiverClientBaseBuilder_ == null) {
+          result.receiverClientBase_ = receiverClientBase_;
         } else {
-          result.messageToAnswer_ = messageToAnswerBuilder_.build();
+          result.receiverClientBase_ = receiverClientBaseBuilder_.build();
         }
+        result.commentToAnswerId_ = commentToAnswerId_;
         onBuilt();
         return result;
       }
@@ -5247,8 +4804,11 @@ public final class ClientMessages {
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
-        if (other.hasMessageToAnswer()) {
-          mergeMessageToAnswer(other.getMessageToAnswer());
+        if (other.hasReceiverClientBase()) {
+          mergeReceiverClientBase(other.getReceiverClientBase());
+        }
+        if (other.getCommentToAnswerId() != 0) {
+          setCommentToAnswerId(other.getCommentToAnswerId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5257,16 +4817,6 @@ public final class ClientMessages {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (hasMessageBase()) {
-          if (!getMessageBase().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasMessageToAnswer()) {
-          if (!getMessageToAnswer().isInitialized()) {
-            return false;
-          }
-        }
         return true;
       }
 
@@ -5408,123 +4958,153 @@ public final class ClientMessages {
         return messageBaseBuilder_;
       }
 
-      private protobuf.ClientMessages.ProfileComment messageToAnswer_;
+      private protobuf.ClientIdentities.ClientBase receiverClientBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ProfileComment, protobuf.ClientMessages.ProfileComment.Builder, protobuf.ClientMessages.ProfileCommentOrBuilder> messageToAnswerBuilder_;
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverClientBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-       * @return Whether the messageToAnswer field is set.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return Whether the receiverClientBase field is set.
        */
-      public boolean hasMessageToAnswer() {
-        return messageToAnswerBuilder_ != null || messageToAnswer_ != null;
+      public boolean hasReceiverClientBase() {
+        return receiverClientBaseBuilder_ != null || receiverClientBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
-       * @return The messageToAnswer.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return The receiverClientBase.
        */
-      public protobuf.ClientMessages.ProfileComment getMessageToAnswer() {
-        if (messageToAnswerBuilder_ == null) {
-          return messageToAnswer_ == null ? protobuf.ClientMessages.ProfileComment.getDefaultInstance() : messageToAnswer_;
+      public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         } else {
-          return messageToAnswerBuilder_.getMessage();
+          return receiverClientBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setMessageToAnswer(protobuf.ClientMessages.ProfileComment value) {
-        if (messageToAnswerBuilder_ == null) {
+      public Builder setReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          messageToAnswer_ = value;
+          receiverClientBase_ = value;
           onChanged();
         } else {
-          messageToAnswerBuilder_.setMessage(value);
+          receiverClientBaseBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setMessageToAnswer(
-          protobuf.ClientMessages.ProfileComment.Builder builderForValue) {
-        if (messageToAnswerBuilder_ == null) {
-          messageToAnswer_ = builderForValue.build();
+      public Builder setReceiverClientBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = builderForValue.build();
           onChanged();
         } else {
-          messageToAnswerBuilder_.setMessage(builderForValue.build());
+          receiverClientBaseBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder mergeMessageToAnswer(protobuf.ClientMessages.ProfileComment value) {
-        if (messageToAnswerBuilder_ == null) {
-          if (messageToAnswer_ != null) {
-            messageToAnswer_ =
-              protobuf.ClientMessages.ProfileComment.newBuilder(messageToAnswer_).mergeFrom(value).buildPartial();
+      public Builder mergeReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
+          if (receiverClientBase_ != null) {
+            receiverClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(receiverClientBase_).mergeFrom(value).buildPartial();
           } else {
-            messageToAnswer_ = value;
+            receiverClientBase_ = value;
           }
           onChanged();
         } else {
-          messageToAnswerBuilder_.mergeFrom(value);
+          receiverClientBaseBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder clearMessageToAnswer() {
-        if (messageToAnswerBuilder_ == null) {
-          messageToAnswer_ = null;
+      public Builder clearReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
           onChanged();
         } else {
-          messageToAnswer_ = null;
-          messageToAnswerBuilder_ = null;
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientMessages.ProfileComment.Builder getMessageToAnswerBuilder() {
+      public protobuf.ClientIdentities.ClientBase.Builder getReceiverClientBaseBuilder() {
         
         onChanged();
-        return getMessageToAnswerFieldBuilder().getBuilder();
+        return getReceiverClientBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentOrBuilder getMessageToAnswerOrBuilder() {
-        if (messageToAnswerBuilder_ != null) {
-          return messageToAnswerBuilder_.getMessageOrBuilder();
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+        if (receiverClientBaseBuilder_ != null) {
+          return receiverClientBaseBuilder_.getMessageOrBuilder();
         } else {
-          return messageToAnswer_ == null ?
-              protobuf.ClientMessages.ProfileComment.getDefaultInstance() : messageToAnswer_;
+          return receiverClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ProfileComment messageToAnswer = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ProfileComment, protobuf.ClientMessages.ProfileComment.Builder, protobuf.ClientMessages.ProfileCommentOrBuilder> 
-          getMessageToAnswerFieldBuilder() {
-        if (messageToAnswerBuilder_ == null) {
-          messageToAnswerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ProfileComment, protobuf.ClientMessages.ProfileComment.Builder, protobuf.ClientMessages.ProfileCommentOrBuilder>(
-                  getMessageToAnswer(),
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getReceiverClientBaseFieldBuilder() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getReceiverClientBase(),
                   getParentForChildren(),
                   isClean());
-          messageToAnswer_ = null;
+          receiverClientBase_ = null;
         }
-        return messageToAnswerBuilder_;
+        return receiverClientBaseBuilder_;
+      }
+
+      private int commentToAnswerId_ ;
+      /**
+       * <code>int32 commentToAnswerId = 3;</code>
+       * @return The commentToAnswerId.
+       */
+      public int getCommentToAnswerId() {
+        return commentToAnswerId_;
+      }
+      /**
+       * <code>int32 commentToAnswerId = 3;</code>
+       * @param value The commentToAnswerId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommentToAnswerId(int value) {
+        
+        commentToAnswerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 commentToAnswerId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommentToAnswerId() {
+        
+        commentToAnswerId_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5585,20 +5165,20 @@ public final class ClientMessages {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor;
+    internal_static_protobuf_clientmessages_ChannelMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ChannelClientMessage_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ChannelMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor;
+    internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ChannelMessageAnswer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor;
+    internal_static_protobuf_clientmessages_PrivateMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_PrivateClientMessage_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientmessages_ProfileComment_descriptor;
   private static final 
@@ -5620,73 +5200,77 @@ public final class ClientMessages {
     java.lang.String[] descriptorData = {
       "\n\035protobuf/ClientMessages.proto\022\027protobu" +
       "f.clientmessages\032\037protobuf/ClientIdentit" +
-      "ies.proto\"v\n\021ClientMessageBase\0229\n\nsender" +
-      "Base\030\001 \001(\0132%.protobuf.clientidentities.C" +
-      "lientBase\022\021\n\tmessageId\030\002 \001(\005\022\023\n\013messageT" +
-      "ext\030\003 \001(\t\"\220\001\n\024ChannelClientMessage\022\021\n\tme" +
-      "ssageId\030\001 \001(\005\022\020\n\010senderId\030\002 \001(\005\022\026\n\016sende" +
-      "rUsername\030\003 \001(\t\022\021\n\tchannelId\030\004 \001(\005\022\023\n\013ch" +
-      "annelName\030\005 \001(\t\022\023\n\013messageText\030\006 \001(\t\"\260\001\n" +
-      "\032ChannelClientMessageAnswer\022\021\n\tmessageId" +
-      "\030\001 \001(\005\022\020\n\010senderId\030\002 \001(\005\022\026\n\016senderUserna" +
-      "me\030\003 \001(\t\022\021\n\tchannelId\030\004 \001(\005\022\023\n\013channelNa" +
-      "me\030\005 \001(\t\022\031\n\021messageToAnswerId\030\006 \001(\005\022\022\n\na" +
-      "nswerText\030\007 \001(\t\"\224\001\n\024PrivateClientMessage" +
-      "\022?\n\013messageBase\030\001 \001(\0132*.protobuf.clientm" +
-      "essages.ClientMessageBase\022;\n\014receiverBas" +
-      "e\030\002 \001(\0132%.protobuf.clientidentities.Clie" +
-      "ntBase\"\216\001\n\016ProfileComment\022?\n\013messageBase" +
-      "\030\001 \001(\0132*.protobuf.clientmessages.ClientM" +
-      "essageBase\022;\n\014receiverBase\030\002 \001(\0132%.proto" +
-      "buf.clientidentities.ClientBase\"\231\001\n\024Prof" +
-      "ileCommentAnswer\022?\n\013messageBase\030\001 \001(\0132*." +
-      "protobuf.clientmessages.ClientMessageBas" +
-      "e\022@\n\017messageToAnswer\030\002 \001(\0132\'.protobuf.cl" +
-      "ientmessages.ProfileCommentB\032\n\010protobufB" +
-      "\016ClientMessagesb\006proto3"
+      "ies.proto\032\035protobuf/ClientChannels.proto" +
+      "\"~\n\021ClientMessageBase\022\021\n\tmessageId\030\001 \001(\005" +
+      "\022\023\n\013messageText\030\002 \001(\t\022\020\n\010senderId\030\003 \001(\005\022" +
+      "\026\n\016senderUsername\030\004 \001(\t\022\027\n\017timestampMill" +
+      "is\030\005 \001(\003\"\224\001\n\016ChannelMessage\022?\n\013messageBa" +
+      "se\030\001 \001(\0132*.protobuf.clientmessages.Clien" +
+      "tMessageBase\022A\n\023receiverChannelBase\030\002 \001(" +
+      "\0132$.protobuf.clientchannels.ChannelBase\"" +
+      "\265\001\n\024ChannelMessageAnswer\022?\n\013messageBase\030" +
+      "\001 \001(\0132*.protobuf.clientmessages.ClientMe" +
+      "ssageBase\022A\n\023receiverChannelBase\030\002 \001(\0132$" +
+      ".protobuf.clientchannels.ChannelBase\022\031\n\021" +
+      "messageToAnswerId\030\003 \001(\005\"\224\001\n\016PrivateMessa" +
+      "ge\022?\n\013messageBase\030\001 \001(\0132*.protobuf.clien" +
+      "tmessages.ClientMessageBase\022A\n\022receiverC" +
+      "lientBase\030\002 \001(\0132%.protobuf.clientidentit" +
+      "ies.ClientBase\"\224\001\n\016ProfileComment\022?\n\013mes" +
+      "sageBase\030\001 \001(\0132*.protobuf.clientmessages" +
+      ".ClientMessageBase\022A\n\022receiverClientBase" +
+      "\030\002 \001(\0132%.protobuf.clientidentities.Clien" +
+      "tBase\"\265\001\n\024ProfileCommentAnswer\022?\n\013messag" +
+      "eBase\030\001 \001(\0132*.protobuf.clientmessages.Cl" +
+      "ientMessageBase\022A\n\022receiverClientBase\030\002 " +
+      "\001(\0132%.protobuf.clientidentities.ClientBa" +
+      "se\022\031\n\021commentToAnswerId\030\003 \001(\005B\032\n\010protobu" +
+      "fB\016ClientMessagesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           protobuf.ClientIdentities.getDescriptor(),
+          protobuf.ClientChannels.getDescriptor(),
         });
     internal_static_protobuf_clientmessages_ClientMessageBase_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientmessages_ClientMessageBase_descriptor,
-        new java.lang.String[] { "SenderBase", "MessageId", "MessageText", });
-    internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor =
+        new java.lang.String[] { "MessageId", "MessageText", "SenderId", "SenderUsername", "TimestampMillis", });
+    internal_static_protobuf_clientmessages_ChannelMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_protobuf_clientmessages_ChannelClientMessage_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ChannelMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ChannelClientMessage_descriptor,
-        new java.lang.String[] { "MessageId", "SenderId", "SenderUsername", "ChannelId", "ChannelName", "MessageText", });
-    internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor =
+        internal_static_protobuf_clientmessages_ChannelMessage_descriptor,
+        new java.lang.String[] { "MessageBase", "ReceiverChannelBase", });
+    internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ChannelMessageAnswer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ChannelClientMessageAnswer_descriptor,
-        new java.lang.String[] { "MessageId", "SenderId", "SenderUsername", "ChannelId", "ChannelName", "MessageToAnswerId", "AnswerText", });
-    internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor =
+        internal_static_protobuf_clientmessages_ChannelMessageAnswer_descriptor,
+        new java.lang.String[] { "MessageBase", "ReceiverChannelBase", "MessageToAnswerId", });
+    internal_static_protobuf_clientmessages_PrivateMessage_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_protobuf_clientmessages_PrivateClientMessage_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_PrivateClientMessage_descriptor,
-        new java.lang.String[] { "MessageBase", "ReceiverBase", });
+        internal_static_protobuf_clientmessages_PrivateMessage_descriptor,
+        new java.lang.String[] { "MessageBase", "ReceiverClientBase", });
     internal_static_protobuf_clientmessages_ProfileComment_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientmessages_ProfileComment_descriptor,
-        new java.lang.String[] { "MessageBase", "ReceiverBase", });
+        new java.lang.String[] { "MessageBase", "ReceiverClientBase", });
     internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor,
-        new java.lang.String[] { "MessageBase", "MessageToAnswer", });
+        new java.lang.String[] { "MessageBase", "ReceiverClientBase", "CommentToAnswerId", });
     protobuf.ClientIdentities.getDescriptor();
+    protobuf.ClientChannels.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -19,71 +19,46 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return Whether the requestorUsername field is set.
-     */
-    boolean hasRequestorUsername();
-    /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return The requestorUsername.
-     */
-    java.lang.String getRequestorUsername();
-    /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return The bytes for requestorUsername.
-     */
-    com.google.protobuf.ByteString
-        getRequestorUsernameBytes();
-
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return Whether the requestorPassword field is set.
-     */
-    boolean hasRequestorPassword();
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return The requestorPassword.
-     */
-    java.lang.String getRequestorPassword();
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return The bytes for requestorPassword.
-     */
-    com.google.protobuf.ByteString
-        getRequestorPasswordBytes();
-
-    /**
-     * <code>optional int32 requestorId = 3 [default = -1];</code>
-     * @return Whether the requestorId field is set.
-     */
-    boolean hasRequestorId();
-    /**
-     * <code>optional int32 requestorId = 3 [default = -1];</code>
-     * @return The requestorId.
-     */
-    int getRequestorId();
-
-    /**
-     * <code>optional int32 requestId = 4 [default = -1];</code>
-     * @return Whether the requestId field is set.
-     */
-    boolean hasRequestId();
-    /**
-     * <code>optional int32 requestId = 4 [default = -1];</code>
+     * <code>int32 requestId = 1;</code>
      * @return The requestId.
      */
     int getRequestId();
 
     /**
-     * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-     * @return Whether the requestTimestamp field is set.
+     * <code>int32 requestorClientId = 2;</code>
+     * @return The requestorClientId.
      */
-    boolean hasRequestTimestamp();
+    int getRequestorClientId();
+
     /**
-     * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-     * @return The requestTimestamp.
+     * <code>string requestorClientUsername = 3;</code>
+     * @return The requestorClientUsername.
      */
-    long getRequestTimestamp();
+    java.lang.String getRequestorClientUsername();
+    /**
+     * <code>string requestorClientUsername = 3;</code>
+     * @return The bytes for requestorClientUsername.
+     */
+    com.google.protobuf.ByteString
+        getRequestorClientUsernameBytes();
+
+    /**
+     * <code>string requestorClientPassword = 4;</code>
+     * @return The requestorClientPassword.
+     */
+    java.lang.String getRequestorClientPassword();
+    /**
+     * <code>string requestorClientPassword = 4;</code>
+     * @return The bytes for requestorClientPassword.
+     */
+    com.google.protobuf.ByteString
+        getRequestorClientPasswordBytes();
+
+    /**
+     * <code>int64 timestampMillis = 5;</code>
+     * @return The timestampMillis.
+     */
+    long getTimestampMillis();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ClientRequestBase}
@@ -98,11 +73,8 @@ public final class ClientRequests {
       super(builder);
     }
     private ClientRequestBase() {
-      requestorUsername_ = "";
-      requestorPassword_ = "";
-      requestorId_ = -1;
-      requestId_ = -1;
-      requestTimestamp_ = -1L;
+      requestorClientUsername_ = "";
+      requestorClientPassword_ = "";
     }
 
     @java.lang.Override
@@ -125,7 +97,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -136,31 +107,31 @@ public final class ClientRequests {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              requestorUsername_ = bs;
-              break;
-            }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestorPassword_ = bs;
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              requestorId_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
+            case 8: {
+
               requestId_ = input.readInt32();
               break;
             }
+            case 16: {
+
+              requestorClientId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              requestorClientUsername_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              requestorClientPassword_ = s;
+              break;
+            }
             case 40: {
-              bitField0_ |= 0x00000010;
-              requestTimestamp_ = input.readInt64();
+
+              timestampMillis_ = input.readInt64();
               break;
             }
             default: {
@@ -195,146 +166,106 @@ public final class ClientRequests {
               protobuf.ClientRequests.ClientRequestBase.class, protobuf.ClientRequests.ClientRequestBase.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORUSERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object requestorUsername_;
-    /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return Whether the requestorUsername field is set.
-     */
-    public boolean hasRequestorUsername() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return The requestorUsername.
-     */
-    public java.lang.String getRequestorUsername() {
-      java.lang.Object ref = requestorUsername_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestorUsername_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string requestorUsername = 1;</code>
-     * @return The bytes for requestorUsername.
-     */
-    public com.google.protobuf.ByteString
-        getRequestorUsernameBytes() {
-      java.lang.Object ref = requestorUsername_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestorUsername_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int REQUESTORPASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestorPassword_;
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return Whether the requestorPassword field is set.
-     */
-    public boolean hasRequestorPassword() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return The requestorPassword.
-     */
-    public java.lang.String getRequestorPassword() {
-      java.lang.Object ref = requestorPassword_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestorPassword_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string requestorPassword = 2;</code>
-     * @return The bytes for requestorPassword.
-     */
-    public com.google.protobuf.ByteString
-        getRequestorPasswordBytes() {
-      java.lang.Object ref = requestorPassword_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestorPassword_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int REQUESTORID_FIELD_NUMBER = 3;
-    private int requestorId_;
-    /**
-     * <code>optional int32 requestorId = 3 [default = -1];</code>
-     * @return Whether the requestorId field is set.
-     */
-    public boolean hasRequestorId() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional int32 requestorId = 3 [default = -1];</code>
-     * @return The requestorId.
-     */
-    public int getRequestorId() {
-      return requestorId_;
-    }
-
-    public static final int REQUESTID_FIELD_NUMBER = 4;
+    public static final int REQUESTID_FIELD_NUMBER = 1;
     private int requestId_;
     /**
-     * <code>optional int32 requestId = 4 [default = -1];</code>
-     * @return Whether the requestId field is set.
-     */
-    public boolean hasRequestId() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional int32 requestId = 4 [default = -1];</code>
+     * <code>int32 requestId = 1;</code>
      * @return The requestId.
      */
     public int getRequestId() {
       return requestId_;
     }
 
-    public static final int REQUESTTIMESTAMP_FIELD_NUMBER = 5;
-    private long requestTimestamp_;
+    public static final int REQUESTORCLIENTID_FIELD_NUMBER = 2;
+    private int requestorClientId_;
     /**
-     * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-     * @return Whether the requestTimestamp field is set.
+     * <code>int32 requestorClientId = 2;</code>
+     * @return The requestorClientId.
      */
-    public boolean hasRequestTimestamp() {
-      return ((bitField0_ & 0x00000010) != 0);
+    public int getRequestorClientId() {
+      return requestorClientId_;
+    }
+
+    public static final int REQUESTORCLIENTUSERNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object requestorClientUsername_;
+    /**
+     * <code>string requestorClientUsername = 3;</code>
+     * @return The requestorClientUsername.
+     */
+    public java.lang.String getRequestorClientUsername() {
+      java.lang.Object ref = requestorClientUsername_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        requestorClientUsername_ = s;
+        return s;
+      }
     }
     /**
-     * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-     * @return The requestTimestamp.
+     * <code>string requestorClientUsername = 3;</code>
+     * @return The bytes for requestorClientUsername.
      */
-    public long getRequestTimestamp() {
-      return requestTimestamp_;
+    public com.google.protobuf.ByteString
+        getRequestorClientUsernameBytes() {
+      java.lang.Object ref = requestorClientUsername_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        requestorClientUsername_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int REQUESTORCLIENTPASSWORD_FIELD_NUMBER = 4;
+    private volatile java.lang.Object requestorClientPassword_;
+    /**
+     * <code>string requestorClientPassword = 4;</code>
+     * @return The requestorClientPassword.
+     */
+    public java.lang.String getRequestorClientPassword() {
+      java.lang.Object ref = requestorClientPassword_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        requestorClientPassword_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string requestorClientPassword = 4;</code>
+     * @return The bytes for requestorClientPassword.
+     */
+    public com.google.protobuf.ByteString
+        getRequestorClientPasswordBytes() {
+      java.lang.Object ref = requestorClientPassword_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        requestorClientPassword_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMPMILLIS_FIELD_NUMBER = 5;
+    private long timestampMillis_;
+    /**
+     * <code>int64 timestampMillis = 5;</code>
+     * @return The timestampMillis.
+     */
+    public long getTimestampMillis() {
+      return timestampMillis_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -344,14 +275,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorUsername()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestorPassword()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -359,20 +282,20 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestorUsername_);
+      if (requestId_ != 0) {
+        output.writeInt32(1, requestId_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestorPassword_);
+      if (requestorClientId_ != 0) {
+        output.writeInt32(2, requestorClientId_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, requestorId_);
+      if (!getRequestorClientUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, requestorClientUsername_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, requestId_);
+      if (!getRequestorClientPasswordBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, requestorClientPassword_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt64(5, requestTimestamp_);
+      if (timestampMillis_ != 0L) {
+        output.writeInt64(5, timestampMillis_);
       }
       unknownFields.writeTo(output);
     }
@@ -383,23 +306,23 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestorUsername_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestorPassword_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (requestId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, requestorId_);
+          .computeInt32Size(1, requestId_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (requestorClientId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, requestId_);
+          .computeInt32Size(2, requestorClientId_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (!getRequestorClientUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, requestorClientUsername_);
+      }
+      if (!getRequestorClientPasswordBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, requestorClientPassword_);
+      }
+      if (timestampMillis_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, requestTimestamp_);
+          .computeInt64Size(5, timestampMillis_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -416,31 +339,16 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ClientRequestBase other = (protobuf.ClientRequests.ClientRequestBase) obj;
 
-      if (hasRequestorUsername() != other.hasRequestorUsername()) return false;
-      if (hasRequestorUsername()) {
-        if (!getRequestorUsername()
-            .equals(other.getRequestorUsername())) return false;
-      }
-      if (hasRequestorPassword() != other.hasRequestorPassword()) return false;
-      if (hasRequestorPassword()) {
-        if (!getRequestorPassword()
-            .equals(other.getRequestorPassword())) return false;
-      }
-      if (hasRequestorId() != other.hasRequestorId()) return false;
-      if (hasRequestorId()) {
-        if (getRequestorId()
-            != other.getRequestorId()) return false;
-      }
-      if (hasRequestId() != other.hasRequestId()) return false;
-      if (hasRequestId()) {
-        if (getRequestId()
-            != other.getRequestId()) return false;
-      }
-      if (hasRequestTimestamp() != other.hasRequestTimestamp()) return false;
-      if (hasRequestTimestamp()) {
-        if (getRequestTimestamp()
-            != other.getRequestTimestamp()) return false;
-      }
+      if (getRequestId()
+          != other.getRequestId()) return false;
+      if (getRequestorClientId()
+          != other.getRequestorClientId()) return false;
+      if (!getRequestorClientUsername()
+          .equals(other.getRequestorClientUsername())) return false;
+      if (!getRequestorClientPassword()
+          .equals(other.getRequestorClientPassword())) return false;
+      if (getTimestampMillis()
+          != other.getTimestampMillis()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -452,27 +360,17 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorUsername()) {
-        hash = (37 * hash) + REQUESTORUSERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorUsername().hashCode();
-      }
-      if (hasRequestorPassword()) {
-        hash = (37 * hash) + REQUESTORPASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorPassword().hashCode();
-      }
-      if (hasRequestorId()) {
-        hash = (37 * hash) + REQUESTORID_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorId();
-      }
-      if (hasRequestId()) {
-        hash = (37 * hash) + REQUESTID_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestId();
-      }
-      if (hasRequestTimestamp()) {
-        hash = (37 * hash) + REQUESTTIMESTAMP_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getRequestTimestamp());
-      }
+      hash = (37 * hash) + REQUESTID_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestId();
+      hash = (37 * hash) + REQUESTORCLIENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestorClientId();
+      hash = (37 * hash) + REQUESTORCLIENTUSERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestorClientUsername().hashCode();
+      hash = (37 * hash) + REQUESTORCLIENTPASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestorClientPassword().hashCode();
+      hash = (37 * hash) + TIMESTAMPMILLIS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestampMillis());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -606,16 +504,16 @@ public final class ClientRequests {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        requestorUsername_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestorPassword_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestorId_ = -1;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestId_ = -1;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        requestTimestamp_ = -1L;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        requestId_ = 0;
+
+        requestorClientId_ = 0;
+
+        requestorClientUsername_ = "";
+
+        requestorClientPassword_ = "";
+
+        timestampMillis_ = 0L;
+
         return this;
       }
 
@@ -642,29 +540,11 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ClientRequestBase buildPartial() {
         protobuf.ClientRequests.ClientRequestBase result = new protobuf.ClientRequests.ClientRequestBase(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.requestorUsername_ = requestorUsername_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.requestorPassword_ = requestorPassword_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.requestorId_ = requestorId_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.requestId_ = requestId_;
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.requestTimestamp_ = requestTimestamp_;
-        result.bitField0_ = to_bitField0_;
+        result.requestorClientId_ = requestorClientId_;
+        result.requestorClientUsername_ = requestorClientUsername_;
+        result.requestorClientPassword_ = requestorClientPassword_;
+        result.timestampMillis_ = timestampMillis_;
         onBuilt();
         return result;
       }
@@ -713,24 +593,22 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ClientRequestBase other) {
         if (other == protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) return this;
-        if (other.hasRequestorUsername()) {
-          bitField0_ |= 0x00000001;
-          requestorUsername_ = other.requestorUsername_;
-          onChanged();
-        }
-        if (other.hasRequestorPassword()) {
-          bitField0_ |= 0x00000002;
-          requestorPassword_ = other.requestorPassword_;
-          onChanged();
-        }
-        if (other.hasRequestorId()) {
-          setRequestorId(other.getRequestorId());
-        }
-        if (other.hasRequestId()) {
+        if (other.getRequestId() != 0) {
           setRequestId(other.getRequestId());
         }
-        if (other.hasRequestTimestamp()) {
-          setRequestTimestamp(other.getRequestTimestamp());
+        if (other.getRequestorClientId() != 0) {
+          setRequestorClientId(other.getRequestorClientId());
+        }
+        if (!other.getRequestorClientUsername().isEmpty()) {
+          requestorClientUsername_ = other.requestorClientUsername_;
+          onChanged();
+        }
+        if (!other.getRequestorClientPassword().isEmpty()) {
+          requestorClientPassword_ = other.requestorClientPassword_;
+          onChanged();
+        }
+        if (other.getTimestampMillis() != 0L) {
+          setTimestampMillis(other.getTimestampMillis());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -739,12 +617,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorUsername()) {
-          return false;
-        }
-        if (!hasRequestorPassword()) {
-          return false;
-        }
         return true;
       }
 
@@ -766,283 +638,245 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object requestorUsername_ = "";
+      private int requestId_ ;
       /**
-       * <code>required string requestorUsername = 1;</code>
-       * @return Whether the requestorUsername field is set.
-       */
-      public boolean hasRequestorUsername() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string requestorUsername = 1;</code>
-       * @return The requestorUsername.
-       */
-      public java.lang.String getRequestorUsername() {
-        java.lang.Object ref = requestorUsername_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestorUsername_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string requestorUsername = 1;</code>
-       * @return The bytes for requestorUsername.
-       */
-      public com.google.protobuf.ByteString
-          getRequestorUsernameBytes() {
-        java.lang.Object ref = requestorUsername_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestorUsername_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string requestorUsername = 1;</code>
-       * @param value The requestorUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestorUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestorUsername_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestorUsername = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestorUsername() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestorUsername_ = getDefaultInstance().getRequestorUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestorUsername = 1;</code>
-       * @param value The bytes for requestorUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestorUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestorUsername_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object requestorPassword_ = "";
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @return Whether the requestorPassword field is set.
-       */
-      public boolean hasRequestorPassword() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @return The requestorPassword.
-       */
-      public java.lang.String getRequestorPassword() {
-        java.lang.Object ref = requestorPassword_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestorPassword_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @return The bytes for requestorPassword.
-       */
-      public com.google.protobuf.ByteString
-          getRequestorPasswordBytes() {
-        java.lang.Object ref = requestorPassword_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestorPassword_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @param value The requestorPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestorPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestorPassword_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestorPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestorPassword_ = getDefaultInstance().getRequestorPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestorPassword = 2;</code>
-       * @param value The bytes for requestorPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestorPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestorPassword_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int requestorId_ = -1;
-      /**
-       * <code>optional int32 requestorId = 3 [default = -1];</code>
-       * @return Whether the requestorId field is set.
-       */
-      public boolean hasRequestorId() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional int32 requestorId = 3 [default = -1];</code>
-       * @return The requestorId.
-       */
-      public int getRequestorId() {
-        return requestorId_;
-      }
-      /**
-       * <code>optional int32 requestorId = 3 [default = -1];</code>
-       * @param value The requestorId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestorId(int value) {
-        bitField0_ |= 0x00000004;
-        requestorId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 requestorId = 3 [default = -1];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestorId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestorId_ = -1;
-        onChanged();
-        return this;
-      }
-
-      private int requestId_ = -1;
-      /**
-       * <code>optional int32 requestId = 4 [default = -1];</code>
-       * @return Whether the requestId field is set.
-       */
-      public boolean hasRequestId() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional int32 requestId = 4 [default = -1];</code>
+       * <code>int32 requestId = 1;</code>
        * @return The requestId.
        */
       public int getRequestId() {
         return requestId_;
       }
       /**
-       * <code>optional int32 requestId = 4 [default = -1];</code>
+       * <code>int32 requestId = 1;</code>
        * @param value The requestId to set.
        * @return This builder for chaining.
        */
       public Builder setRequestId(int value) {
-        bitField0_ |= 0x00000008;
+        
         requestId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 requestId = 4 [default = -1];</code>
+       * <code>int32 requestId = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearRequestId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        requestId_ = -1;
+        
+        requestId_ = 0;
         onChanged();
         return this;
       }
 
-      private long requestTimestamp_ = -1L;
+      private int requestorClientId_ ;
       /**
-       * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-       * @return Whether the requestTimestamp field is set.
+       * <code>int32 requestorClientId = 2;</code>
+       * @return The requestorClientId.
        */
-      public boolean hasRequestTimestamp() {
-        return ((bitField0_ & 0x00000010) != 0);
+      public int getRequestorClientId() {
+        return requestorClientId_;
       }
       /**
-       * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-       * @return The requestTimestamp.
-       */
-      public long getRequestTimestamp() {
-        return requestTimestamp_;
-      }
-      /**
-       * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
-       * @param value The requestTimestamp to set.
+       * <code>int32 requestorClientId = 2;</code>
+       * @param value The requestorClientId to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestTimestamp(long value) {
-        bitField0_ |= 0x00000010;
-        requestTimestamp_ = value;
+      public Builder setRequestorClientId(int value) {
+        
+        requestorClientId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 requestTimestamp = 5 [default = -1];</code>
+       * <code>int32 requestorClientId = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        requestTimestamp_ = -1L;
+      public Builder clearRequestorClientId() {
+        
+        requestorClientId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object requestorClientUsername_ = "";
+      /**
+       * <code>string requestorClientUsername = 3;</code>
+       * @return The requestorClientUsername.
+       */
+      public java.lang.String getRequestorClientUsername() {
+        java.lang.Object ref = requestorClientUsername_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          requestorClientUsername_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string requestorClientUsername = 3;</code>
+       * @return The bytes for requestorClientUsername.
+       */
+      public com.google.protobuf.ByteString
+          getRequestorClientUsernameBytes() {
+        java.lang.Object ref = requestorClientUsername_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          requestorClientUsername_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string requestorClientUsername = 3;</code>
+       * @param value The requestorClientUsername to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequestorClientUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        requestorClientUsername_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string requestorClientUsername = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRequestorClientUsername() {
+        
+        requestorClientUsername_ = getDefaultInstance().getRequestorClientUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string requestorClientUsername = 3;</code>
+       * @param value The bytes for requestorClientUsername to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequestorClientUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        requestorClientUsername_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object requestorClientPassword_ = "";
+      /**
+       * <code>string requestorClientPassword = 4;</code>
+       * @return The requestorClientPassword.
+       */
+      public java.lang.String getRequestorClientPassword() {
+        java.lang.Object ref = requestorClientPassword_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          requestorClientPassword_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string requestorClientPassword = 4;</code>
+       * @return The bytes for requestorClientPassword.
+       */
+      public com.google.protobuf.ByteString
+          getRequestorClientPasswordBytes() {
+        java.lang.Object ref = requestorClientPassword_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          requestorClientPassword_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string requestorClientPassword = 4;</code>
+       * @param value The requestorClientPassword to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequestorClientPassword(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        requestorClientPassword_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string requestorClientPassword = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRequestorClientPassword() {
+        
+        requestorClientPassword_ = getDefaultInstance().getRequestorClientPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string requestorClientPassword = 4;</code>
+       * @param value The bytes for requestorClientPassword to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequestorClientPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        requestorClientPassword_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long timestampMillis_ ;
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @return The timestampMillis.
+       */
+      public long getTimestampMillis() {
+        return timestampMillis_;
+      }
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @param value The timestampMillis to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestampMillis(long value) {
+        
+        timestampMillis_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestampMillis = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestampMillis() {
+        
+        timestampMillis_ = 0L;
         onChanged();
         return this;
       }
@@ -1072,7 +906,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientRequestBase>
+    private static final com.google.protobuf.Parser<ClientRequestBase>
         PARSER = new com.google.protobuf.AbstractParser<ClientRequestBase>() {
       @java.lang.Override
       public ClientRequestBase parsePartialFrom(
@@ -1099,52 +933,1764 @@ public final class ClientRequests {
 
   }
 
+  public interface FileDownloadBaseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.FileDownloadBase)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 downloadFileId = 1;</code>
+     * @return The downloadFileId.
+     */
+    int getDownloadFileId();
+
+    /**
+     * <code>string downloadFileName = 2;</code>
+     * @return The downloadFileName.
+     */
+    java.lang.String getDownloadFileName();
+    /**
+     * <code>string downloadFileName = 2;</code>
+     * @return The bytes for downloadFileName.
+     */
+    com.google.protobuf.ByteString
+        getDownloadFileNameBytes();
+
+    /**
+     * <code>string downloadFilePath = 3;</code>
+     * @return The downloadFilePath.
+     */
+    java.lang.String getDownloadFilePath();
+    /**
+     * <code>string downloadFilePath = 3;</code>
+     * @return The bytes for downloadFilePath.
+     */
+    com.google.protobuf.ByteString
+        getDownloadFilePathBytes();
+
+    /**
+     * <code>string downloadKey = 4;</code>
+     * @return The downloadKey.
+     */
+    java.lang.String getDownloadKey();
+    /**
+     * <code>string downloadKey = 4;</code>
+     * @return The bytes for downloadKey.
+     */
+    com.google.protobuf.ByteString
+        getDownloadKeyBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.FileDownloadBase}
+   */
+  public  static final class FileDownloadBase extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.FileDownloadBase)
+      FileDownloadBaseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FileDownloadBase.newBuilder() to construct.
+    private FileDownloadBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FileDownloadBase() {
+      downloadFileName_ = "";
+      downloadFilePath_ = "";
+      downloadKey_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FileDownloadBase();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileDownloadBase(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              downloadFileId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              downloadFileName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              downloadFilePath_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              downloadKey_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileDownloadBase_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileDownloadBase_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.FileDownloadBase.class, protobuf.ClientRequests.FileDownloadBase.Builder.class);
+    }
+
+    public static final int DOWNLOADFILEID_FIELD_NUMBER = 1;
+    private int downloadFileId_;
+    /**
+     * <code>int32 downloadFileId = 1;</code>
+     * @return The downloadFileId.
+     */
+    public int getDownloadFileId() {
+      return downloadFileId_;
+    }
+
+    public static final int DOWNLOADFILENAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object downloadFileName_;
+    /**
+     * <code>string downloadFileName = 2;</code>
+     * @return The downloadFileName.
+     */
+    public java.lang.String getDownloadFileName() {
+      java.lang.Object ref = downloadFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        downloadFileName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string downloadFileName = 2;</code>
+     * @return The bytes for downloadFileName.
+     */
+    public com.google.protobuf.ByteString
+        getDownloadFileNameBytes() {
+      java.lang.Object ref = downloadFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        downloadFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DOWNLOADFILEPATH_FIELD_NUMBER = 3;
+    private volatile java.lang.Object downloadFilePath_;
+    /**
+     * <code>string downloadFilePath = 3;</code>
+     * @return The downloadFilePath.
+     */
+    public java.lang.String getDownloadFilePath() {
+      java.lang.Object ref = downloadFilePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        downloadFilePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string downloadFilePath = 3;</code>
+     * @return The bytes for downloadFilePath.
+     */
+    public com.google.protobuf.ByteString
+        getDownloadFilePathBytes() {
+      java.lang.Object ref = downloadFilePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        downloadFilePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DOWNLOADKEY_FIELD_NUMBER = 4;
+    private volatile java.lang.Object downloadKey_;
+    /**
+     * <code>string downloadKey = 4;</code>
+     * @return The downloadKey.
+     */
+    public java.lang.String getDownloadKey() {
+      java.lang.Object ref = downloadKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        downloadKey_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string downloadKey = 4;</code>
+     * @return The bytes for downloadKey.
+     */
+    public com.google.protobuf.ByteString
+        getDownloadKeyBytes() {
+      java.lang.Object ref = downloadKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        downloadKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (downloadFileId_ != 0) {
+        output.writeInt32(1, downloadFileId_);
+      }
+      if (!getDownloadFileNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, downloadFileName_);
+      }
+      if (!getDownloadFilePathBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, downloadFilePath_);
+      }
+      if (!getDownloadKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, downloadKey_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (downloadFileId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, downloadFileId_);
+      }
+      if (!getDownloadFileNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, downloadFileName_);
+      }
+      if (!getDownloadFilePathBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, downloadFilePath_);
+      }
+      if (!getDownloadKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, downloadKey_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.FileDownloadBase)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.FileDownloadBase other = (protobuf.ClientRequests.FileDownloadBase) obj;
+
+      if (getDownloadFileId()
+          != other.getDownloadFileId()) return false;
+      if (!getDownloadFileName()
+          .equals(other.getDownloadFileName())) return false;
+      if (!getDownloadFilePath()
+          .equals(other.getDownloadFilePath())) return false;
+      if (!getDownloadKey()
+          .equals(other.getDownloadKey())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DOWNLOADFILEID_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadFileId();
+      hash = (37 * hash) + DOWNLOADFILENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadFileName().hashCode();
+      hash = (37 * hash) + DOWNLOADFILEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadFilePath().hashCode();
+      hash = (37 * hash) + DOWNLOADKEY_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadKey().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileDownloadBase parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.FileDownloadBase prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.FileDownloadBase}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.FileDownloadBase)
+        protobuf.ClientRequests.FileDownloadBaseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileDownloadBase_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileDownloadBase_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.FileDownloadBase.class, protobuf.ClientRequests.FileDownloadBase.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.FileDownloadBase.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        downloadFileId_ = 0;
+
+        downloadFileName_ = "";
+
+        downloadFilePath_ = "";
+
+        downloadKey_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileDownloadBase_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileDownloadBase getDefaultInstanceForType() {
+        return protobuf.ClientRequests.FileDownloadBase.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileDownloadBase build() {
+        protobuf.ClientRequests.FileDownloadBase result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileDownloadBase buildPartial() {
+        protobuf.ClientRequests.FileDownloadBase result = new protobuf.ClientRequests.FileDownloadBase(this);
+        result.downloadFileId_ = downloadFileId_;
+        result.downloadFileName_ = downloadFileName_;
+        result.downloadFilePath_ = downloadFilePath_;
+        result.downloadKey_ = downloadKey_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.FileDownloadBase) {
+          return mergeFrom((protobuf.ClientRequests.FileDownloadBase)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.FileDownloadBase other) {
+        if (other == protobuf.ClientRequests.FileDownloadBase.getDefaultInstance()) return this;
+        if (other.getDownloadFileId() != 0) {
+          setDownloadFileId(other.getDownloadFileId());
+        }
+        if (!other.getDownloadFileName().isEmpty()) {
+          downloadFileName_ = other.downloadFileName_;
+          onChanged();
+        }
+        if (!other.getDownloadFilePath().isEmpty()) {
+          downloadFilePath_ = other.downloadFilePath_;
+          onChanged();
+        }
+        if (!other.getDownloadKey().isEmpty()) {
+          downloadKey_ = other.downloadKey_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.FileDownloadBase parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.FileDownloadBase) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int downloadFileId_ ;
+      /**
+       * <code>int32 downloadFileId = 1;</code>
+       * @return The downloadFileId.
+       */
+      public int getDownloadFileId() {
+        return downloadFileId_;
+      }
+      /**
+       * <code>int32 downloadFileId = 1;</code>
+       * @param value The downloadFileId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadFileId(int value) {
+        
+        downloadFileId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 downloadFileId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadFileId() {
+        
+        downloadFileId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object downloadFileName_ = "";
+      /**
+       * <code>string downloadFileName = 2;</code>
+       * @return The downloadFileName.
+       */
+      public java.lang.String getDownloadFileName() {
+        java.lang.Object ref = downloadFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          downloadFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string downloadFileName = 2;</code>
+       * @return The bytes for downloadFileName.
+       */
+      public com.google.protobuf.ByteString
+          getDownloadFileNameBytes() {
+        java.lang.Object ref = downloadFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          downloadFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string downloadFileName = 2;</code>
+       * @param value The downloadFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        downloadFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadFileName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadFileName() {
+        
+        downloadFileName_ = getDefaultInstance().getDownloadFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadFileName = 2;</code>
+       * @param value The bytes for downloadFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        downloadFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object downloadFilePath_ = "";
+      /**
+       * <code>string downloadFilePath = 3;</code>
+       * @return The downloadFilePath.
+       */
+      public java.lang.String getDownloadFilePath() {
+        java.lang.Object ref = downloadFilePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          downloadFilePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string downloadFilePath = 3;</code>
+       * @return The bytes for downloadFilePath.
+       */
+      public com.google.protobuf.ByteString
+          getDownloadFilePathBytes() {
+        java.lang.Object ref = downloadFilePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          downloadFilePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string downloadFilePath = 3;</code>
+       * @param value The downloadFilePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadFilePath(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        downloadFilePath_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadFilePath = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadFilePath() {
+        
+        downloadFilePath_ = getDefaultInstance().getDownloadFilePath();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadFilePath = 3;</code>
+       * @param value The bytes for downloadFilePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        downloadFilePath_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object downloadKey_ = "";
+      /**
+       * <code>string downloadKey = 4;</code>
+       * @return The downloadKey.
+       */
+      public java.lang.String getDownloadKey() {
+        java.lang.Object ref = downloadKey_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          downloadKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string downloadKey = 4;</code>
+       * @return The bytes for downloadKey.
+       */
+      public com.google.protobuf.ByteString
+          getDownloadKeyBytes() {
+        java.lang.Object ref = downloadKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          downloadKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string downloadKey = 4;</code>
+       * @param value The downloadKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        downloadKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadKey = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadKey() {
+        
+        downloadKey_ = getDefaultInstance().getDownloadKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string downloadKey = 4;</code>
+       * @param value The bytes for downloadKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        downloadKey_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.FileDownloadBase)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.FileDownloadBase)
+    private static final protobuf.ClientRequests.FileDownloadBase DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.FileDownloadBase();
+    }
+
+    public static protobuf.ClientRequests.FileDownloadBase getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FileDownloadBase>
+        PARSER = new com.google.protobuf.AbstractParser<FileDownloadBase>() {
+      @java.lang.Override
+      public FileDownloadBase parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileDownloadBase(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FileDownloadBase> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileDownloadBase> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.FileDownloadBase getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FileUploadBaseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.FileUploadBase)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string uploadFileName = 1;</code>
+     * @return The uploadFileName.
+     */
+    java.lang.String getUploadFileName();
+    /**
+     * <code>string uploadFileName = 1;</code>
+     * @return The bytes for uploadFileName.
+     */
+    com.google.protobuf.ByteString
+        getUploadFileNameBytes();
+
+    /**
+     * <code>string uploadFilePath = 2;</code>
+     * @return The uploadFilePath.
+     */
+    java.lang.String getUploadFilePath();
+    /**
+     * <code>string uploadFilePath = 2;</code>
+     * @return The bytes for uploadFilePath.
+     */
+    com.google.protobuf.ByteString
+        getUploadFilePathBytes();
+
+    /**
+     * <code>int64 uploadFileSize = 3;</code>
+     * @return The uploadFileSize.
+     */
+    long getUploadFileSize();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.FileUploadBase}
+   */
+  public  static final class FileUploadBase extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.FileUploadBase)
+      FileUploadBaseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FileUploadBase.newBuilder() to construct.
+    private FileUploadBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FileUploadBase() {
+      uploadFileName_ = "";
+      uploadFilePath_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FileUploadBase();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileUploadBase(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              uploadFileName_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              uploadFilePath_ = s;
+              break;
+            }
+            case 24: {
+
+              uploadFileSize_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileUploadBase_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileUploadBase_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.FileUploadBase.class, protobuf.ClientRequests.FileUploadBase.Builder.class);
+    }
+
+    public static final int UPLOADFILENAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object uploadFileName_;
+    /**
+     * <code>string uploadFileName = 1;</code>
+     * @return The uploadFileName.
+     */
+    public java.lang.String getUploadFileName() {
+      java.lang.Object ref = uploadFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uploadFileName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string uploadFileName = 1;</code>
+     * @return The bytes for uploadFileName.
+     */
+    public com.google.protobuf.ByteString
+        getUploadFileNameBytes() {
+      java.lang.Object ref = uploadFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uploadFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UPLOADFILEPATH_FIELD_NUMBER = 2;
+    private volatile java.lang.Object uploadFilePath_;
+    /**
+     * <code>string uploadFilePath = 2;</code>
+     * @return The uploadFilePath.
+     */
+    public java.lang.String getUploadFilePath() {
+      java.lang.Object ref = uploadFilePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uploadFilePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string uploadFilePath = 2;</code>
+     * @return The bytes for uploadFilePath.
+     */
+    public com.google.protobuf.ByteString
+        getUploadFilePathBytes() {
+      java.lang.Object ref = uploadFilePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uploadFilePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UPLOADFILESIZE_FIELD_NUMBER = 3;
+    private long uploadFileSize_;
+    /**
+     * <code>int64 uploadFileSize = 3;</code>
+     * @return The uploadFileSize.
+     */
+    public long getUploadFileSize() {
+      return uploadFileSize_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUploadFileNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uploadFileName_);
+      }
+      if (!getUploadFilePathBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uploadFilePath_);
+      }
+      if (uploadFileSize_ != 0L) {
+        output.writeInt64(3, uploadFileSize_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUploadFileNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uploadFileName_);
+      }
+      if (!getUploadFilePathBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uploadFilePath_);
+      }
+      if (uploadFileSize_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, uploadFileSize_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.FileUploadBase)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.FileUploadBase other = (protobuf.ClientRequests.FileUploadBase) obj;
+
+      if (!getUploadFileName()
+          .equals(other.getUploadFileName())) return false;
+      if (!getUploadFilePath()
+          .equals(other.getUploadFilePath())) return false;
+      if (getUploadFileSize()
+          != other.getUploadFileSize()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + UPLOADFILENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUploadFileName().hashCode();
+      hash = (37 * hash) + UPLOADFILEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getUploadFilePath().hashCode();
+      hash = (37 * hash) + UPLOADFILESIZE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUploadFileSize());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.FileUploadBase parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.FileUploadBase prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.FileUploadBase}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.FileUploadBase)
+        protobuf.ClientRequests.FileUploadBaseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileUploadBase_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileUploadBase_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.FileUploadBase.class, protobuf.ClientRequests.FileUploadBase.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.FileUploadBase.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        uploadFileName_ = "";
+
+        uploadFilePath_ = "";
+
+        uploadFileSize_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_FileUploadBase_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileUploadBase getDefaultInstanceForType() {
+        return protobuf.ClientRequests.FileUploadBase.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileUploadBase build() {
+        protobuf.ClientRequests.FileUploadBase result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.FileUploadBase buildPartial() {
+        protobuf.ClientRequests.FileUploadBase result = new protobuf.ClientRequests.FileUploadBase(this);
+        result.uploadFileName_ = uploadFileName_;
+        result.uploadFilePath_ = uploadFilePath_;
+        result.uploadFileSize_ = uploadFileSize_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.FileUploadBase) {
+          return mergeFrom((protobuf.ClientRequests.FileUploadBase)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.FileUploadBase other) {
+        if (other == protobuf.ClientRequests.FileUploadBase.getDefaultInstance()) return this;
+        if (!other.getUploadFileName().isEmpty()) {
+          uploadFileName_ = other.uploadFileName_;
+          onChanged();
+        }
+        if (!other.getUploadFilePath().isEmpty()) {
+          uploadFilePath_ = other.uploadFilePath_;
+          onChanged();
+        }
+        if (other.getUploadFileSize() != 0L) {
+          setUploadFileSize(other.getUploadFileSize());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.FileUploadBase parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.FileUploadBase) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object uploadFileName_ = "";
+      /**
+       * <code>string uploadFileName = 1;</code>
+       * @return The uploadFileName.
+       */
+      public java.lang.String getUploadFileName() {
+        java.lang.Object ref = uploadFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          uploadFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string uploadFileName = 1;</code>
+       * @return The bytes for uploadFileName.
+       */
+      public com.google.protobuf.ByteString
+          getUploadFileNameBytes() {
+        java.lang.Object ref = uploadFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uploadFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string uploadFileName = 1;</code>
+       * @param value The uploadFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUploadFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        uploadFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uploadFileName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUploadFileName() {
+        
+        uploadFileName_ = getDefaultInstance().getUploadFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uploadFileName = 1;</code>
+       * @param value The bytes for uploadFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUploadFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        uploadFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object uploadFilePath_ = "";
+      /**
+       * <code>string uploadFilePath = 2;</code>
+       * @return The uploadFilePath.
+       */
+      public java.lang.String getUploadFilePath() {
+        java.lang.Object ref = uploadFilePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          uploadFilePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string uploadFilePath = 2;</code>
+       * @return The bytes for uploadFilePath.
+       */
+      public com.google.protobuf.ByteString
+          getUploadFilePathBytes() {
+        java.lang.Object ref = uploadFilePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uploadFilePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string uploadFilePath = 2;</code>
+       * @param value The uploadFilePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUploadFilePath(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        uploadFilePath_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uploadFilePath = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUploadFilePath() {
+        
+        uploadFilePath_ = getDefaultInstance().getUploadFilePath();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uploadFilePath = 2;</code>
+       * @param value The bytes for uploadFilePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUploadFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        uploadFilePath_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long uploadFileSize_ ;
+      /**
+       * <code>int64 uploadFileSize = 3;</code>
+       * @return The uploadFileSize.
+       */
+      public long getUploadFileSize() {
+        return uploadFileSize_;
+      }
+      /**
+       * <code>int64 uploadFileSize = 3;</code>
+       * @param value The uploadFileSize to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUploadFileSize(long value) {
+        
+        uploadFileSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 uploadFileSize = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUploadFileSize() {
+        
+        uploadFileSize_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.FileUploadBase)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.FileUploadBase)
+    private static final protobuf.ClientRequests.FileUploadBase DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.FileUploadBase();
+    }
+
+    public static protobuf.ClientRequests.FileUploadBase getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FileUploadBase>
+        PARSER = new com.google.protobuf.AbstractParser<FileUploadBase>() {
+      @java.lang.Override
+      public FileUploadBase parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileUploadBase(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FileUploadBase> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileUploadBase> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.FileUploadBase getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ChannelJoinRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ChannelJoinRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return Whether the requestedChannelId field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    boolean hasRequestedChannelId();
+    boolean hasRequestedChannelBase();
     /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return The requestedChannelId.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    int getRequestedChannelId();
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
 
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return Whether the requestedChannelName field is set.
+     * <code>string requestedChannelPassword = 3;</code>
+     * @return The requestedChannelPassword.
      */
-    boolean hasRequestedChannelName();
+    java.lang.String getRequestedChannelPassword();
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The requestedChannelName.
-     */
-    java.lang.String getRequestedChannelName();
-    /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The bytes for requestedChannelName.
+     * <code>string requestedChannelPassword = 3;</code>
+     * @return The bytes for requestedChannelPassword.
      */
     com.google.protobuf.ByteString
-        getRequestedChannelNameBytes();
+        getRequestedChannelPasswordBytes();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelJoinRequest}
@@ -1159,7 +2705,7 @@ public final class ClientRequests {
       super(builder);
     }
     private ChannelJoinRequest() {
-      requestedChannelName_ = "";
+      requestedChannelPassword_ = "";
     }
 
     @java.lang.Override
@@ -1182,7 +2728,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1195,26 +2740,34 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              requestedChannelId_ = input.readInt32();
+            case 18: {
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
+              }
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              requestedChannelName_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              requestedChannelPassword_ = s;
               break;
             }
             default: {
@@ -1249,86 +2802,82 @@ public final class ClientRequests {
               protobuf.ClientRequests.ChannelJoinRequest.class, protobuf.ClientRequests.ChannelJoinRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-
-    public static final int REQUESTEDCHANNELID_FIELD_NUMBER = 2;
-    private int requestedChannelId_;
-    /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return Whether the requestedChannelId field is set.
-     */
-    public boolean hasRequestedChannelId() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return The requestedChannelId.
-     */
-    public int getRequestedChannelId() {
-      return requestedChannelId_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDCHANNELNAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object requestedChannelName_;
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return Whether the requestedChannelName field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    public boolean hasRequestedChannelName() {
-      return ((bitField0_ & 0x00000004) != 0);
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
     }
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The requestedChannelName.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    public java.lang.String getRequestedChannelName() {
-      java.lang.Object ref = requestedChannelName_;
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
+    }
+
+    public static final int REQUESTEDCHANNELPASSWORD_FIELD_NUMBER = 3;
+    private volatile java.lang.Object requestedChannelPassword_;
+    /**
+     * <code>string requestedChannelPassword = 3;</code>
+     * @return The requestedChannelPassword.
+     */
+    public java.lang.String getRequestedChannelPassword() {
+      java.lang.Object ref = requestedChannelPassword_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedChannelName_ = s;
-        }
+        requestedChannelPassword_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The bytes for requestedChannelName.
+     * <code>string requestedChannelPassword = 3;</code>
+     * @return The bytes for requestedChannelPassword.
      */
     public com.google.protobuf.ByteString
-        getRequestedChannelNameBytes() {
-      java.lang.Object ref = requestedChannelName_;
+        getRequestedChannelPasswordBytes() {
+      java.lang.Object ref = requestedChannelPassword_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestedChannelName_ = b;
+        requestedChannelPassword_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1342,18 +2891,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedChannelId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1361,14 +2898,14 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, requestedChannelId_);
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, requestedChannelName_);
+      if (!getRequestedChannelPasswordBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, requestedChannelPassword_);
       }
       unknownFields.writeTo(output);
     }
@@ -1379,16 +2916,16 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (requestedChannelBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, requestedChannelId_);
+          .computeMessageSize(2, getRequestedChannelBase());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, requestedChannelName_);
+      if (!getRequestedChannelPasswordBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, requestedChannelPassword_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1405,21 +2942,18 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ChannelJoinRequest other = (protobuf.ClientRequests.ChannelJoinRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedChannelId() != other.hasRequestedChannelId()) return false;
-      if (hasRequestedChannelId()) {
-        if (getRequestedChannelId()
-            != other.getRequestedChannelId()) return false;
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
       }
-      if (hasRequestedChannelName() != other.hasRequestedChannelName()) return false;
-      if (hasRequestedChannelName()) {
-        if (!getRequestedChannelName()
-            .equals(other.getRequestedChannelName())) return false;
-      }
+      if (!getRequestedChannelPassword()
+          .equals(other.getRequestedChannelPassword())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1431,18 +2965,16 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedChannelId()) {
-        hash = (37 * hash) + REQUESTEDCHANNELID_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedChannelId();
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
       }
-      if (hasRequestedChannelName()) {
-        hash = (37 * hash) + REQUESTEDCHANNELNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedChannelName().hashCode();
-      }
+      hash = (37 * hash) + REQUESTEDCHANNELPASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestedChannelPassword().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1571,22 +3103,25 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedChannelId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedChannelName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+        requestedChannelPassword_ = "";
+
         return this;
       }
 
@@ -1613,25 +3148,17 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ChannelJoinRequest buildPartial() {
         protobuf.ClientRequests.ChannelJoinRequest result = new protobuf.ClientRequests.ChannelJoinRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.requestedChannelId_ = requestedChannelId_;
-          to_bitField0_ |= 0x00000002;
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.requestedChannelName_ = requestedChannelName_;
-        result.bitField0_ = to_bitField0_;
+        result.requestedChannelPassword_ = requestedChannelPassword_;
         onBuilt();
         return result;
       }
@@ -1680,15 +3207,14 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ChannelJoinRequest other) {
         if (other == protobuf.ClientRequests.ChannelJoinRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedChannelId()) {
-          setRequestedChannelId(other.getRequestedChannelId());
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
         }
-        if (other.hasRequestedChannelName()) {
-          bitField0_ |= 0x00000004;
-          requestedChannelName_ = other.requestedChannelName_;
+        if (!other.getRequestedChannelPassword().isEmpty()) {
+          requestedChannelPassword_ = other.requestedChannelPassword_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1698,15 +3224,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedChannelId()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -1728,245 +3245,317 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private int requestedChannelId_ ;
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return Whether the requestedChannelId field is set.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
        */
-      public boolean hasRequestedChannelId() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
       }
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return The requestedChannelId.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
        */
-      public int getRequestedChannelId() {
-        return requestedChannelId_;
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        } else {
+          return requestedChannelBaseBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @param value The requestedChannelId to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedChannelId(int value) {
-        bitField0_ |= 0x00000002;
-        requestedChannelId_ = value;
-        onChanged();
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedChannelBase_ = value;
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder clearRequestedChannelId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedChannelId_ = 0;
-        onChanged();
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
       }
-
-      private java.lang.Object requestedChannelName_ = "";
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return Whether the requestedChannelName field is set.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public boolean hasRequestedChannelName() {
-        return ((bitField0_ & 0x00000004) != 0);
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedChannelBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return The requestedChannelName.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public java.lang.String getRequestedChannelName() {
-        java.lang.Object ref = requestedChannelName_;
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+          onChanged();
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
+        onChanged();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedChannelBase_ = null;
+        }
+        return requestedChannelBaseBuilder_;
+      }
+
+      private java.lang.Object requestedChannelPassword_ = "";
+      /**
+       * <code>string requestedChannelPassword = 3;</code>
+       * @return The requestedChannelPassword.
+       */
+      public java.lang.String getRequestedChannelPassword() {
+        java.lang.Object ref = requestedChannelPassword_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedChannelName_ = s;
-          }
+          requestedChannelPassword_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return The bytes for requestedChannelName.
+       * <code>string requestedChannelPassword = 3;</code>
+       * @return The bytes for requestedChannelPassword.
        */
       public com.google.protobuf.ByteString
-          getRequestedChannelNameBytes() {
-        java.lang.Object ref = requestedChannelName_;
+          getRequestedChannelPasswordBytes() {
+        java.lang.Object ref = requestedChannelPassword_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestedChannelName_ = b;
+          requestedChannelPassword_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @param value The requestedChannelName to set.
+       * <code>string requestedChannelPassword = 3;</code>
+       * @param value The requestedChannelPassword to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedChannelName(
+      public Builder setRequestedChannelPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        requestedChannelName_ = value;
+  
+        requestedChannelPassword_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
+       * <code>string requestedChannelPassword = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestedChannelName() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestedChannelName_ = getDefaultInstance().getRequestedChannelName();
+      public Builder clearRequestedChannelPassword() {
+        
+        requestedChannelPassword_ = getDefaultInstance().getRequestedChannelPassword();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @param value The bytes for requestedChannelName to set.
+       * <code>string requestedChannelPassword = 3;</code>
+       * @param value The bytes for requestedChannelPassword to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedChannelNameBytes(
+      public Builder setRequestedChannelPasswordBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        requestedChannelName_ = value;
+  checkByteStringIsUtf8(value);
+        
+        requestedChannelPassword_ = value;
         onChanged();
         return this;
       }
@@ -1996,7 +3585,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelJoinRequest>
+    private static final com.google.protobuf.Parser<ChannelJoinRequest>
         PARSER = new com.google.protobuf.AbstractParser<ChannelJoinRequest>() {
       @java.lang.Override
       public ChannelJoinRequest parsePartialFrom(
@@ -2028,47 +3617,34 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return Whether the requestedChannelId field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    boolean hasRequestedChannelId();
+    boolean hasRequestedChannelBase();
     /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return The requestedChannelId.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    int getRequestedChannelId();
-
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return Whether the requestedChannelName field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    boolean hasRequestedChannelName();
-    /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The requestedChannelName.
-     */
-    java.lang.String getRequestedChannelName();
-    /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The bytes for requestedChannelName.
-     */
-    com.google.protobuf.ByteString
-        getRequestedChannelNameBytes();
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelLeaveRequest}
@@ -2083,7 +3659,6 @@ public final class ClientRequests {
       super(builder);
     }
     private ChannelLeaveRequest() {
-      requestedChannelName_ = "";
     }
 
     @java.lang.Override
@@ -2106,7 +3681,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2119,26 +3693,28 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              requestedChannelId_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              requestedChannelName_ = bs;
+            case 18: {
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
+              }
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -2173,90 +3749,50 @@ public final class ClientRequests {
               protobuf.ClientRequests.ChannelLeaveRequest.class, protobuf.ClientRequests.ChannelLeaveRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-
-    public static final int REQUESTEDCHANNELID_FIELD_NUMBER = 2;
-    private int requestedChannelId_;
-    /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return Whether the requestedChannelId field is set.
-     */
-    public boolean hasRequestedChannelId() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required int32 requestedChannelId = 2;</code>
-     * @return The requestedChannelId.
-     */
-    public int getRequestedChannelId() {
-      return requestedChannelId_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDCHANNELNAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object requestedChannelName_;
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return Whether the requestedChannelName field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    public boolean hasRequestedChannelName() {
-      return ((bitField0_ & 0x00000004) != 0);
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
     }
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The requestedChannelName.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    public java.lang.String getRequestedChannelName() {
-      java.lang.Object ref = requestedChannelName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedChannelName_ = s;
-        }
-        return s;
-      }
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
     }
     /**
-     * <code>optional string requestedChannelName = 3;</code>
-     * @return The bytes for requestedChannelName.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getRequestedChannelNameBytes() {
-      java.lang.Object ref = requestedChannelName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedChannelName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2266,18 +3802,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedChannelId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2285,14 +3809,11 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, requestedChannelId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, requestedChannelName_);
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
       }
       unknownFields.writeTo(output);
     }
@@ -2303,16 +3824,13 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (requestedChannelBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, requestedChannelId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, requestedChannelName_);
+          .computeMessageSize(2, getRequestedChannelBase());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2329,20 +3847,15 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ChannelLeaveRequest other = (protobuf.ClientRequests.ChannelLeaveRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedChannelId() != other.hasRequestedChannelId()) return false;
-      if (hasRequestedChannelId()) {
-        if (getRequestedChannelId()
-            != other.getRequestedChannelId()) return false;
-      }
-      if (hasRequestedChannelName() != other.hasRequestedChannelName()) return false;
-      if (hasRequestedChannelName()) {
-        if (!getRequestedChannelName()
-            .equals(other.getRequestedChannelName())) return false;
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2355,17 +3868,13 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedChannelId()) {
-        hash = (37 * hash) + REQUESTEDCHANNELID_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedChannelId();
-      }
-      if (hasRequestedChannelName()) {
-        hash = (37 * hash) + REQUESTEDCHANNELNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedChannelName().hashCode();
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2495,22 +4004,23 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedChannelId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedChannelName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
         return this;
       }
 
@@ -2537,25 +4047,16 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ChannelLeaveRequest buildPartial() {
         protobuf.ClientRequests.ChannelLeaveRequest result = new protobuf.ClientRequests.ChannelLeaveRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.requestedChannelId_ = requestedChannelId_;
-          to_bitField0_ |= 0x00000002;
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.requestedChannelName_ = requestedChannelName_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2604,16 +4105,11 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ChannelLeaveRequest other) {
         if (other == protobuf.ClientRequests.ChannelLeaveRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedChannelId()) {
-          setRequestedChannelId(other.getRequestedChannelId());
-        }
-        if (other.hasRequestedChannelName()) {
-          bitField0_ |= 0x00000004;
-          requestedChannelName_ = other.requestedChannelName_;
-          onChanged();
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2622,15 +4118,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedChannelId()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -2652,247 +4139,243 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private int requestedChannelId_ ;
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return Whether the requestedChannelId field is set.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
        */
-      public boolean hasRequestedChannelId() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
       }
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return The requestedChannelId.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
        */
-      public int getRequestedChannelId() {
-        return requestedChannelId_;
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        } else {
+          return requestedChannelBaseBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @param value The requestedChannelId to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedChannelId(int value) {
-        bitField0_ |= 0x00000002;
-        requestedChannelId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 requestedChannelId = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedChannelId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedChannelId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object requestedChannelName_ = "";
-      /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return Whether the requestedChannelName field is set.
-       */
-      public boolean hasRequestedChannelName() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return The requestedChannelName.
-       */
-      public java.lang.String getRequestedChannelName() {
-        java.lang.Object ref = requestedChannelName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedChannelName_ = s;
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
-          return s;
+          requestedChannelBase_ = value;
+          onChanged();
         } else {
-          return (java.lang.String) ref;
+          requestedChannelBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedChannelBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+          onChanged();
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
+        onChanged();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
         }
       }
       /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return The bytes for requestedChannelName.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getRequestedChannelNameBytes() {
-        java.lang.Object ref = requestedChannelName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedChannelName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedChannelBase_ = null;
         }
-      }
-      /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @param value The requestedChannelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedChannelName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        requestedChannelName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedChannelName() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestedChannelName_ = getDefaultInstance().getRequestedChannelName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string requestedChannelName = 3;</code>
-       * @param value The bytes for requestedChannelName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedChannelNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        requestedChannelName_ = value;
-        onChanged();
-        return this;
+        return requestedChannelBaseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2920,7 +4403,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelLeaveRequest>
+    private static final com.google.protobuf.Parser<ChannelLeaveRequest>
         PARSER = new com.google.protobuf.AbstractParser<ChannelLeaveRequest>() {
       @java.lang.Override
       public ChannelLeaveRequest parsePartialFrom(
@@ -2947,69 +4430,60 @@ public final class ClientRequests {
 
   }
 
-  public interface ChannelMessageDataRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ChannelMessageDataRequest)
+  public interface ClientProfileRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientProfileRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-     * @return Whether the lastLoadedMessageId field is set.
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
      */
-    boolean hasLastLoadedMessageId();
+    boolean hasRequestedClientBase();
     /**
-     * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-     * @return The lastLoadedMessageId.
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
      */
-    int getLastLoadedMessageId();
-
+    protobuf.ClientIdentities.ClientBase getRequestedClientBase();
     /**
-     * <code>optional int32 messageCount = 3 [default = 10];</code>
-     * @return Whether the messageCount field is set.
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
      */
-    boolean hasMessageCount();
-    /**
-     * <code>optional int32 messageCount = 3 [default = 10];</code>
-     * @return The messageCount.
-     */
-    int getMessageCount();
+    protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientrequests.ChannelMessageDataRequest}
+   * Protobuf type {@code protobuf.clientrequests.ClientProfileRequest}
    */
-  public  static final class ChannelMessageDataRequest extends
+  public  static final class ClientProfileRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ChannelMessageDataRequest)
-      ChannelMessageDataRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ClientProfileRequest)
+      ClientProfileRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ChannelMessageDataRequest.newBuilder() to construct.
-    private ChannelMessageDataRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientProfileRequest.newBuilder() to construct.
+    private ClientProfileRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ChannelMessageDataRequest() {
-      lastLoadedMessageId_ = -1;
-      messageCount_ = 10;
+    private ClientProfileRequest() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ChannelMessageDataRequest();
+      return new ClientProfileRequest();
     }
 
     @java.lang.Override
@@ -3017,7 +4491,7 @@ public final class ClientRequests {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ChannelMessageDataRequest(
+    private ClientProfileRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3025,7 +4499,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3038,854 +4511,28 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              lastLoadedMessageId_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              messageCount_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor;
-    }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelMessageDataRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientRequests.ChannelMessageDataRequest.class, protobuf.ClientRequests.ChannelMessageDataRequest.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-
-    public static final int LASTLOADEDMESSAGEID_FIELD_NUMBER = 2;
-    private int lastLoadedMessageId_;
-    /**
-     * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-     * @return Whether the lastLoadedMessageId field is set.
-     */
-    public boolean hasLastLoadedMessageId() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-     * @return The lastLoadedMessageId.
-     */
-    public int getLastLoadedMessageId() {
-      return lastLoadedMessageId_;
-    }
-
-    public static final int MESSAGECOUNT_FIELD_NUMBER = 3;
-    private int messageCount_;
-    /**
-     * <code>optional int32 messageCount = 3 [default = 10];</code>
-     * @return Whether the messageCount field is set.
-     */
-    public boolean hasMessageCount() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional int32 messageCount = 3 [default = 10];</code>
-     * @return The messageCount.
-     */
-    public int getMessageCount() {
-      return messageCount_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, lastLoadedMessageId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, messageCount_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, lastLoadedMessageId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, messageCount_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientRequests.ChannelMessageDataRequest)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientRequests.ChannelMessageDataRequest other = (protobuf.ClientRequests.ChannelMessageDataRequest) obj;
-
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
-      }
-      if (hasLastLoadedMessageId() != other.hasLastLoadedMessageId()) return false;
-      if (hasLastLoadedMessageId()) {
-        if (getLastLoadedMessageId()
-            != other.getLastLoadedMessageId()) return false;
-      }
-      if (hasMessageCount() != other.hasMessageCount()) return false;
-      if (hasMessageCount()) {
-        if (getMessageCount()
-            != other.getMessageCount()) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
-      }
-      if (hasLastLoadedMessageId()) {
-        hash = (37 * hash) + LASTLOADEDMESSAGEID_FIELD_NUMBER;
-        hash = (53 * hash) + getLastLoadedMessageId();
-      }
-      if (hasMessageCount()) {
-        hash = (37 * hash) + MESSAGECOUNT_FIELD_NUMBER;
-        hash = (53 * hash) + getMessageCount();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ChannelMessageDataRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientRequests.ChannelMessageDataRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientrequests.ChannelMessageDataRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ChannelMessageDataRequest)
-        protobuf.ClientRequests.ChannelMessageDataRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelMessageDataRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientRequests.ChannelMessageDataRequest.class, protobuf.ClientRequests.ChannelMessageDataRequest.Builder.class);
-      }
-
-      // Construct using protobuf.ClientRequests.ChannelMessageDataRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        lastLoadedMessageId_ = -1;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        messageCount_ = 10;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ChannelMessageDataRequest getDefaultInstanceForType() {
-        return protobuf.ClientRequests.ChannelMessageDataRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ChannelMessageDataRequest build() {
-        protobuf.ClientRequests.ChannelMessageDataRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ChannelMessageDataRequest buildPartial() {
-        protobuf.ClientRequests.ChannelMessageDataRequest result = new protobuf.ClientRequests.ChannelMessageDataRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.lastLoadedMessageId_ = lastLoadedMessageId_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.messageCount_ = messageCount_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientRequests.ChannelMessageDataRequest) {
-          return mergeFrom((protobuf.ClientRequests.ChannelMessageDataRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientRequests.ChannelMessageDataRequest other) {
-        if (other == protobuf.ClientRequests.ChannelMessageDataRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
-        }
-        if (other.hasLastLoadedMessageId()) {
-          setLastLoadedMessageId(other.getLastLoadedMessageId());
-        }
-        if (other.hasMessageCount()) {
-          setMessageCount(other.getMessageCount());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientRequests.ChannelMessageDataRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientRequests.ChannelMessageDataRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
-       */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
-       */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        } else {
-          return requestorBaseBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          requestorBase_ = value;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(
-          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
-          } else {
-            requestorBase_ = value;
-          }
-          onChanged();
-        } else {
-          requestorBaseBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
-        } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
-                  getParentForChildren(),
-                  isClean());
-          requestorBase_ = null;
-        }
-        return requestorBaseBuilder_;
-      }
-
-      private int lastLoadedMessageId_ = -1;
-      /**
-       * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-       * @return Whether the lastLoadedMessageId field is set.
-       */
-      public boolean hasLastLoadedMessageId() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-       * @return The lastLoadedMessageId.
-       */
-      public int getLastLoadedMessageId() {
-        return lastLoadedMessageId_;
-      }
-      /**
-       * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-       * @param value The lastLoadedMessageId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLastLoadedMessageId(int value) {
-        bitField0_ |= 0x00000002;
-        lastLoadedMessageId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 lastLoadedMessageId = 2 [default = -1];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLastLoadedMessageId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        lastLoadedMessageId_ = -1;
-        onChanged();
-        return this;
-      }
-
-      private int messageCount_ = 10;
-      /**
-       * <code>optional int32 messageCount = 3 [default = 10];</code>
-       * @return Whether the messageCount field is set.
-       */
-      public boolean hasMessageCount() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional int32 messageCount = 3 [default = 10];</code>
-       * @return The messageCount.
-       */
-      public int getMessageCount() {
-        return messageCount_;
-      }
-      /**
-       * <code>optional int32 messageCount = 3 [default = 10];</code>
-       * @param value The messageCount to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageCount(int value) {
-        bitField0_ |= 0x00000004;
-        messageCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 messageCount = 3 [default = 10];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageCount() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        messageCount_ = 10;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ChannelMessageDataRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ChannelMessageDataRequest)
-    private static final protobuf.ClientRequests.ChannelMessageDataRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientRequests.ChannelMessageDataRequest();
-    }
-
-    public static protobuf.ClientRequests.ChannelMessageDataRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelMessageDataRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageDataRequest>() {
-      @java.lang.Override
-      public ChannelMessageDataRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelMessageDataRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ChannelMessageDataRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ChannelMessageDataRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientRequests.ChannelMessageDataRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ClientProfileDataRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientProfileDataRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    boolean hasRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
-
-    /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-     * @return Whether the requestedBase field is set.
-     */
-    boolean hasRequestedBase();
-    /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-     * @return The requestedBase.
-     */
-    protobuf.ClientIdentities.ClientBase getRequestedBase();
-    /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-     */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedBaseOrBuilder();
-  }
-  /**
-   * Protobuf type {@code protobuf.clientrequests.ClientProfileDataRequest}
-   */
-  public  static final class ClientProfileDataRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ClientProfileDataRequest)
-      ClientProfileDataRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ClientProfileDataRequest.newBuilder() to construct.
-    private ClientProfileDataRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ClientProfileDataRequest() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ClientProfileDataRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ClientProfileDataRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
-              }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
               break;
             }
             case 18: {
               protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = requestedBase_.toBuilder();
+              if (requestedClientBase_ != null) {
+                subBuilder = requestedClientBase_.toBuilder();
               }
-              requestedBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              requestedClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestedBase_);
-                requestedBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestedClientBase_);
+                requestedClientBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -3909,62 +4556,61 @@ public final class ClientRequests {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor;
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileDataRequest_fieldAccessorTable
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientRequests.ClientProfileDataRequest.class, protobuf.ClientRequests.ClientProfileDataRequest.Builder.class);
+              protobuf.ClientRequests.ClientProfileRequest.class, protobuf.ClientRequests.ClientProfileRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase requestedBase_;
+    public static final int REQUESTEDCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase requestedClientBase_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-     * @return Whether the requestedBase field is set.
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
      */
-    public boolean hasRequestedBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasRequestedClientBase() {
+      return requestedClientBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-     * @return The requestedBase.
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
      */
-    public protobuf.ClientIdentities.ClientBase getRequestedBase() {
-      return requestedBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedBase_;
+    public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+      return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedBaseOrBuilder() {
-      return requestedBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedBase_;
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+      return getRequestedClientBase();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3974,22 +4620,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestedBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3997,11 +4627,11 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getRequestedBase());
+      if (requestedClientBase_ != null) {
+        output.writeMessage(2, getRequestedClientBase());
       }
       unknownFields.writeTo(output);
     }
@@ -4012,13 +4642,13 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (requestedClientBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRequestedBase());
+          .computeMessageSize(2, getRequestedClientBase());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4030,20 +4660,20 @@ public final class ClientRequests {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientRequests.ClientProfileDataRequest)) {
+      if (!(obj instanceof protobuf.ClientRequests.ClientProfileRequest)) {
         return super.equals(obj);
       }
-      protobuf.ClientRequests.ClientProfileDataRequest other = (protobuf.ClientRequests.ClientProfileDataRequest) obj;
+      protobuf.ClientRequests.ClientProfileRequest other = (protobuf.ClientRequests.ClientProfileRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedBase() != other.hasRequestedBase()) return false;
-      if (hasRequestedBase()) {
-        if (!getRequestedBase()
-            .equals(other.getRequestedBase())) return false;
+      if (hasRequestedClientBase() != other.hasRequestedClientBase()) return false;
+      if (hasRequestedClientBase()) {
+        if (!getRequestedClientBase()
+            .equals(other.getRequestedClientBase())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -4056,82 +4686,82 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedBase()) {
-        hash = (37 * hash) + REQUESTEDBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedBase().hashCode();
+      if (hasRequestedClientBase()) {
+        hash = (37 * hash) + REQUESTEDCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedClientBase().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(byte[] data)
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(java.io.InputStream input)
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientRequests.ClientProfileRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseDelimitedFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientRequests.ClientProfileDataRequest parseFrom(
+    public static protobuf.ClientRequests.ClientProfileRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4144,7 +4774,7 @@ public final class ClientRequests {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientRequests.ClientProfileDataRequest prototype) {
+    public static Builder newBuilder(protobuf.ClientRequests.ClientProfileRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4160,26 +4790,26 @@ public final class ClientRequests {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientrequests.ClientProfileDataRequest}
+     * Protobuf type {@code protobuf.clientrequests.ClientProfileRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ClientProfileDataRequest)
-        protobuf.ClientRequests.ClientProfileDataRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ClientProfileRequest)
+        protobuf.ClientRequests.ClientProfileRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor;
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileDataRequest_fieldAccessorTable
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientRequests.ClientProfileDataRequest.class, protobuf.ClientRequests.ClientProfileDataRequest.Builder.class);
+                protobuf.ClientRequests.ClientProfileRequest.class, protobuf.ClientRequests.ClientProfileRequest.Builder.class);
       }
 
-      // Construct using protobuf.ClientRequests.ClientProfileDataRequest.newBuilder()
+      // Construct using protobuf.ClientRequests.ClientProfileRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4192,42 +4822,40 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-          getRequestedBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (requestedBaseBuilder_ == null) {
-          requestedBase_ = null;
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
         } else {
-          requestedBaseBuilder_.clear();
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor;
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientRequests.ClientProfileDataRequest getDefaultInstanceForType() {
-        return protobuf.ClientRequests.ClientProfileDataRequest.getDefaultInstance();
+      public protobuf.ClientRequests.ClientProfileRequest getDefaultInstanceForType() {
+        return protobuf.ClientRequests.ClientProfileRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientRequests.ClientProfileDataRequest build() {
-        protobuf.ClientRequests.ClientProfileDataRequest result = buildPartial();
+      public protobuf.ClientRequests.ClientProfileRequest build() {
+        protobuf.ClientRequests.ClientProfileRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4235,27 +4863,18 @@ public final class ClientRequests {
       }
 
       @java.lang.Override
-      public protobuf.ClientRequests.ClientProfileDataRequest buildPartial() {
-        protobuf.ClientRequests.ClientProfileDataRequest result = new protobuf.ClientRequests.ClientProfileDataRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientProfileRequest buildPartial() {
+        protobuf.ClientRequests.ClientProfileRequest result = new protobuf.ClientRequests.ClientProfileRequest(this);
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (requestedBaseBuilder_ == null) {
-            result.requestedBase_ = requestedBase_;
-          } else {
-            result.requestedBase_ = requestedBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (requestedClientBaseBuilder_ == null) {
+          result.requestedClientBase_ = requestedClientBase_;
+        } else {
+          result.requestedClientBase_ = requestedClientBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4294,21 +4913,21 @@ public final class ClientRequests {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientRequests.ClientProfileDataRequest) {
-          return mergeFrom((protobuf.ClientRequests.ClientProfileDataRequest)other);
+        if (other instanceof protobuf.ClientRequests.ClientProfileRequest) {
+          return mergeFrom((protobuf.ClientRequests.ClientProfileRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientRequests.ClientProfileDataRequest other) {
-        if (other == protobuf.ClientRequests.ClientProfileDataRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+      public Builder mergeFrom(protobuf.ClientRequests.ClientProfileRequest other) {
+        if (other == protobuf.ClientRequests.ClientProfileRequest.getDefaultInstance()) return this;
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedBase()) {
-          mergeRequestedBase(other.getRequestedBase());
+        if (other.hasRequestedClientBase()) {
+          mergeRequestedClientBase(other.getRequestedClientBase());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4317,18 +4936,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedBase()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        if (!getRequestedBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -4337,11 +4944,11 @@ public final class ClientRequests {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientRequests.ClientProfileDataRequest parsedMessage = null;
+        protobuf.ClientRequests.ClientProfileRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientRequests.ClientProfileDataRequest) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientRequests.ClientProfileRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4350,246 +4957,243 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private protobuf.ClientIdentities.ClientBase requestedBase_;
+      private protobuf.ClientIdentities.ClientBase requestedClientBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> requestedBaseBuilder_;
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> requestedClientBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-       * @return Whether the requestedBase field is set.
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return Whether the requestedClientBase field is set.
        */
-      public boolean hasRequestedBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedClientBase() {
+        return requestedClientBaseBuilder_ != null || requestedClientBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
-       * @return The requestedBase.
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return The requestedClientBase.
        */
-      public protobuf.ClientIdentities.ClientBase getRequestedBase() {
-        if (requestedBaseBuilder_ == null) {
-          return requestedBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedBase_;
+      public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
         } else {
-          return requestedBaseBuilder_.getMessage();
+          return requestedClientBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public Builder setRequestedBase(protobuf.ClientIdentities.ClientBase value) {
-        if (requestedBaseBuilder_ == null) {
+      public Builder setRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestedBase_ = value;
+          requestedClientBase_ = value;
           onChanged();
         } else {
-          requestedBaseBuilder_.setMessage(value);
+          requestedClientBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public Builder setRequestedBase(
+      public Builder setRequestedClientBase(
           protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (requestedBaseBuilder_ == null) {
-          requestedBase_ = builderForValue.build();
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestedBaseBuilder_.setMessage(builderForValue.build());
+          requestedClientBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public Builder mergeRequestedBase(protobuf.ClientIdentities.ClientBase value) {
-        if (requestedBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              requestedBase_ != null &&
-              requestedBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            requestedBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(requestedBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
+          if (requestedClientBase_ != null) {
+            requestedClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(requestedClientBase_).mergeFrom(value).buildPartial();
           } else {
-            requestedBase_ = value;
+            requestedClientBase_ = value;
           }
           onChanged();
         } else {
-          requestedBaseBuilder_.mergeFrom(value);
+          requestedClientBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public Builder clearRequestedBase() {
-        if (requestedBaseBuilder_ == null) {
-          requestedBase_ = null;
+      public Builder clearRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
           onChanged();
         } else {
-          requestedBaseBuilder_.clear();
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getRequestedBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientIdentities.ClientBase.Builder getRequestedClientBaseBuilder() {
+        
         onChanged();
-        return getRequestedBaseFieldBuilder().getBuilder();
+        return getRequestedClientBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedBaseOrBuilder() {
-        if (requestedBaseBuilder_ != null) {
-          return requestedBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+        if (requestedClientBaseBuilder_ != null) {
+          return requestedClientBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestedBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedBase_;
+          return requestedClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase requestedBase = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getRequestedBaseFieldBuilder() {
-        if (requestedBaseBuilder_ == null) {
-          requestedBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestedClientBaseFieldBuilder() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getRequestedBase(),
+                  getRequestedClientBase(),
                   getParentForChildren(),
                   isClean());
-          requestedBase_ = null;
+          requestedClientBase_ = null;
         }
-        return requestedBaseBuilder_;
+        return requestedClientBaseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4604,41 +5208,41 @@ public final class ClientRequests {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ClientProfileDataRequest)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ClientProfileRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ClientProfileDataRequest)
-    private static final protobuf.ClientRequests.ClientProfileDataRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ClientProfileRequest)
+    private static final protobuf.ClientRequests.ClientProfileRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientRequests.ClientProfileDataRequest();
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.ClientProfileRequest();
     }
 
-    public static protobuf.ClientRequests.ClientProfileDataRequest getDefaultInstance() {
+    public static protobuf.ClientRequests.ClientProfileRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientProfileDataRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ClientProfileDataRequest>() {
+    private static final com.google.protobuf.Parser<ClientProfileRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileRequest>() {
       @java.lang.Override
-      public ClientProfileDataRequest parsePartialFrom(
+      public ClientProfileRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientProfileDataRequest(input, extensionRegistry);
+        return new ClientProfileRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientProfileDataRequest> parser() {
+    public static com.google.protobuf.Parser<ClientProfileRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientProfileDataRequest> getParserForType() {
+    public com.google.protobuf.Parser<ClientProfileRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientRequests.ClientProfileDataRequest getDefaultInstanceForType() {
+    public protobuf.ClientRequests.ClientProfileRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4649,34 +5253,46 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-     * @return Whether the requestedMessage field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    boolean hasRequestedMessage();
+    boolean hasRequestedChannelBase();
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-     * @return The requestedMessage.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    protobuf.ClientMessages.ChannelClientMessage getRequestedMessage();
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageOrBuilder();
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
+
+    /**
+     * <code>int32 messageCount = 3;</code>
+     * @return The messageCount.
+     */
+    int getMessageCount();
+
+    /**
+     * <code>int32 startMessageId = 4;</code>
+     * @return The startMessageId.
+     */
+    int getStartMessageId();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelMessageRequest}
@@ -4713,7 +5329,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4726,28 +5341,38 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
             case 18: {
-              protobuf.ClientMessages.ChannelClientMessage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = requestedMessage_.toBuilder();
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
               }
-              requestedMessage_ = input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry);
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestedMessage_);
-                requestedMessage_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
+              break;
+            }
+            case 24: {
+
+              messageCount_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              startMessageId_ = input.readInt32();
               break;
             }
             default: {
@@ -4782,51 +5407,70 @@ public final class ClientRequests {
               protobuf.ClientRequests.ChannelMessageRequest.class, protobuf.ClientRequests.ChannelMessageRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDMESSAGE_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.ChannelClientMessage requestedMessage_;
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-     * @return Whether the requestedMessage field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    public boolean hasRequestedMessage() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-     * @return The requestedMessage.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    public protobuf.ClientMessages.ChannelClientMessage getRequestedMessage() {
-      return requestedMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessage_;
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageOrBuilder() {
-      return requestedMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessage_;
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
+    }
+
+    public static final int MESSAGECOUNT_FIELD_NUMBER = 3;
+    private int messageCount_;
+    /**
+     * <code>int32 messageCount = 3;</code>
+     * @return The messageCount.
+     */
+    public int getMessageCount() {
+      return messageCount_;
+    }
+
+    public static final int STARTMESSAGEID_FIELD_NUMBER = 4;
+    private int startMessageId_;
+    /**
+     * <code>int32 startMessageId = 4;</code>
+     * @return The startMessageId.
+     */
+    public int getStartMessageId() {
+      return startMessageId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4836,22 +5480,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestedMessage().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4859,11 +5487,17 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getRequestedMessage());
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
+      }
+      if (messageCount_ != 0) {
+        output.writeInt32(3, messageCount_);
+      }
+      if (startMessageId_ != 0) {
+        output.writeInt32(4, startMessageId_);
       }
       unknownFields.writeTo(output);
     }
@@ -4874,13 +5508,21 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (requestedChannelBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRequestedMessage());
+          .computeMessageSize(2, getRequestedChannelBase());
+      }
+      if (messageCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, messageCount_);
+      }
+      if (startMessageId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, startMessageId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4897,16 +5539,20 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ChannelMessageRequest other = (protobuf.ClientRequests.ChannelMessageRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedMessage() != other.hasRequestedMessage()) return false;
-      if (hasRequestedMessage()) {
-        if (!getRequestedMessage()
-            .equals(other.getRequestedMessage())) return false;
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
       }
+      if (getMessageCount()
+          != other.getMessageCount()) return false;
+      if (getStartMessageId()
+          != other.getStartMessageId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4918,14 +5564,18 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedMessage()) {
-        hash = (37 * hash) + REQUESTEDMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedMessage().hashCode();
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
       }
+      hash = (37 * hash) + MESSAGECOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getMessageCount();
+      hash = (37 * hash) + STARTMESSAGEID_FIELD_NUMBER;
+      hash = (53 * hash) + getStartMessageId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5054,25 +5704,27 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-          getRequestedMessageFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = null;
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
         } else {
-          requestedMessageBuilder_.clear();
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        messageCount_ = 0;
+
+        startMessageId_ = 0;
+
         return this;
       }
 
@@ -5099,25 +5751,18 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ChannelMessageRequest buildPartial() {
         protobuf.ClientRequests.ChannelMessageRequest result = new protobuf.ClientRequests.ChannelMessageRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (requestedMessageBuilder_ == null) {
-            result.requestedMessage_ = requestedMessage_;
-          } else {
-            result.requestedMessage_ = requestedMessageBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
+        result.messageCount_ = messageCount_;
+        result.startMessageId_ = startMessageId_;
         onBuilt();
         return result;
       }
@@ -5166,11 +5811,17 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ChannelMessageRequest other) {
         if (other == protobuf.ClientRequests.ChannelMessageRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedMessage()) {
-          mergeRequestedMessage(other.getRequestedMessage());
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
+        }
+        if (other.getMessageCount() != 0) {
+          setMessageCount(other.getMessageCount());
+        }
+        if (other.getStartMessageId() != 0) {
+          setStartMessageId(other.getStartMessageId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5179,18 +5830,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedMessage()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        if (!getRequestedMessage().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -5212,246 +5851,303 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private protobuf.ClientMessages.ChannelClientMessage requestedMessage_;
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> requestedMessageBuilder_;
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-       * @return Whether the requestedMessage field is set.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
        */
-      public boolean hasRequestedMessage() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
-       * @return The requestedMessage.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
        */
-      public protobuf.ClientMessages.ChannelClientMessage getRequestedMessage() {
-        if (requestedMessageBuilder_ == null) {
-          return requestedMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessage_;
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
         } else {
-          return requestedMessageBuilder_.getMessage();
+          return requestedChannelBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedMessage(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (requestedMessageBuilder_ == null) {
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestedMessage_ = value;
+          requestedChannelBase_ = value;
           onChanged();
         } else {
-          requestedMessageBuilder_.setMessage(value);
+          requestedChannelBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedMessage(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = builderForValue.build();
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestedMessageBuilder_.setMessage(builderForValue.build());
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder mergeRequestedMessage(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (requestedMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              requestedMessage_ != null &&
-              requestedMessage_ != protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance()) {
-            requestedMessage_ =
-              protobuf.ClientMessages.ChannelClientMessage.newBuilder(requestedMessage_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
           } else {
-            requestedMessage_ = value;
+            requestedChannelBase_ = value;
           }
           onChanged();
         } else {
-          requestedMessageBuilder_.mergeFrom(value);
+          requestedChannelBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder clearRequestedMessage() {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = null;
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
           onChanged();
         } else {
-          requestedMessageBuilder_.clear();
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getRequestedMessageBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
         onChanged();
-        return getRequestedMessageFieldBuilder().getBuilder();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageOrBuilder() {
-        if (requestedMessageBuilder_ != null) {
-          return requestedMessageBuilder_.getMessageOrBuilder();
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestedMessage_ == null ?
-              protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessage_;
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-          getRequestedMessageFieldBuilder() {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  getRequestedMessage(),
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
                   getParentForChildren(),
                   isClean());
-          requestedMessage_ = null;
+          requestedChannelBase_ = null;
         }
-        return requestedMessageBuilder_;
+        return requestedChannelBaseBuilder_;
+      }
+
+      private int messageCount_ ;
+      /**
+       * <code>int32 messageCount = 3;</code>
+       * @return The messageCount.
+       */
+      public int getMessageCount() {
+        return messageCount_;
+      }
+      /**
+       * <code>int32 messageCount = 3;</code>
+       * @param value The messageCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageCount(int value) {
+        
+        messageCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 messageCount = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessageCount() {
+        
+        messageCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int startMessageId_ ;
+      /**
+       * <code>int32 startMessageId = 4;</code>
+       * @return The startMessageId.
+       */
+      public int getStartMessageId() {
+        return startMessageId_;
+      }
+      /**
+       * <code>int32 startMessageId = 4;</code>
+       * @param value The startMessageId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartMessageId(int value) {
+        
+        startMessageId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 startMessageId = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartMessageId() {
+        
+        startMessageId_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5479,7 +6175,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelMessageRequest>
+    private static final com.google.protobuf.Parser<ChannelMessageRequest>
         PARSER = new com.google.protobuf.AbstractParser<ChannelMessageRequest>() {
       @java.lang.Override
       public ChannelMessageRequest parsePartialFrom(
@@ -5511,34 +6207,61 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-     * @return Whether the requestedMessageAnswer field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    boolean hasRequestedMessageAnswer();
+    boolean hasRequestedChannelBase();
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-     * @return The requestedMessageAnswer.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    protobuf.ClientMessages.ChannelClientMessage getRequestedMessageAnswer();
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageAnswerOrBuilder();
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     * @return Whether the requestedMessageBase field is set.
+     */
+    boolean hasRequestedMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     * @return The requestedMessageBase.
+     */
+    protobuf.ClientMessages.ClientMessageBase getRequestedMessageBase();
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     */
+    protobuf.ClientMessages.ClientMessageBaseOrBuilder getRequestedMessageBaseOrBuilder();
+
+    /**
+     * <code>string answerText = 4;</code>
+     * @return The answerText.
+     */
+    java.lang.String getAnswerText();
+    /**
+     * <code>string answerText = 4;</code>
+     * @return The bytes for answerText.
+     */
+    com.google.protobuf.ByteString
+        getAnswerTextBytes();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelMessageAnswerRequest}
@@ -5553,6 +6276,7 @@ public final class ClientRequests {
       super(builder);
     }
     private ChannelMessageAnswerRequest() {
+      answerText_ = "";
     }
 
     @java.lang.Override
@@ -5575,7 +6299,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5588,28 +6311,47 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
             case 18: {
-              protobuf.ClientMessages.ChannelClientMessage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = requestedMessageAnswer_.toBuilder();
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
               }
-              requestedMessageAnswer_ = input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry);
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestedMessageAnswer_);
-                requestedMessageAnswer_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
+              break;
+            }
+            case 26: {
+              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              if (requestedMessageBase_ != null) {
+                subBuilder = requestedMessageBase_.toBuilder();
+              }
+              requestedMessageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedMessageBase_);
+                requestedMessageBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              answerText_ = s;
               break;
             }
             default: {
@@ -5644,51 +6386,109 @@ public final class ClientRequests {
               protobuf.ClientRequests.ChannelMessageAnswerRequest.class, protobuf.ClientRequests.ChannelMessageAnswerRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDMESSAGEANSWER_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.ChannelClientMessage requestedMessageAnswer_;
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-     * @return Whether the requestedMessageAnswer field is set.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
      */
-    public boolean hasRequestedMessageAnswer() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-     * @return The requestedMessageAnswer.
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
      */
-    public protobuf.ClientMessages.ChannelClientMessage getRequestedMessageAnswer() {
-      return requestedMessageAnswer_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessageAnswer_;
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
      */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageAnswerOrBuilder() {
-      return requestedMessageAnswer_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessageAnswer_;
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
+    }
+
+    public static final int REQUESTEDMESSAGEBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientMessages.ClientMessageBase requestedMessageBase_;
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     * @return Whether the requestedMessageBase field is set.
+     */
+    public boolean hasRequestedMessageBase() {
+      return requestedMessageBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     * @return The requestedMessageBase.
+     */
+    public protobuf.ClientMessages.ClientMessageBase getRequestedMessageBase() {
+      return requestedMessageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : requestedMessageBase_;
+    }
+    /**
+     * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+     */
+    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getRequestedMessageBaseOrBuilder() {
+      return getRequestedMessageBase();
+    }
+
+    public static final int ANSWERTEXT_FIELD_NUMBER = 4;
+    private volatile java.lang.Object answerText_;
+    /**
+     * <code>string answerText = 4;</code>
+     * @return The answerText.
+     */
+    public java.lang.String getAnswerText() {
+      java.lang.Object ref = answerText_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        answerText_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string answerText = 4;</code>
+     * @return The bytes for answerText.
+     */
+    public com.google.protobuf.ByteString
+        getAnswerTextBytes() {
+      java.lang.Object ref = answerText_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        answerText_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5698,22 +6498,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedMessageAnswer()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestedMessageAnswer().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5721,11 +6505,17 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getRequestedMessageAnswer());
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
+      }
+      if (requestedMessageBase_ != null) {
+        output.writeMessage(3, getRequestedMessageBase());
+      }
+      if (!getAnswerTextBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, answerText_);
       }
       unknownFields.writeTo(output);
     }
@@ -5736,13 +6526,20 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (requestedChannelBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRequestedMessageAnswer());
+          .computeMessageSize(2, getRequestedChannelBase());
+      }
+      if (requestedMessageBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRequestedMessageBase());
+      }
+      if (!getAnswerTextBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, answerText_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5759,16 +6556,23 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ChannelMessageAnswerRequest other = (protobuf.ClientRequests.ChannelMessageAnswerRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedMessageAnswer() != other.hasRequestedMessageAnswer()) return false;
-      if (hasRequestedMessageAnswer()) {
-        if (!getRequestedMessageAnswer()
-            .equals(other.getRequestedMessageAnswer())) return false;
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
       }
+      if (hasRequestedMessageBase() != other.hasRequestedMessageBase()) return false;
+      if (hasRequestedMessageBase()) {
+        if (!getRequestedMessageBase()
+            .equals(other.getRequestedMessageBase())) return false;
+      }
+      if (!getAnswerText()
+          .equals(other.getAnswerText())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5780,14 +6584,20 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedMessageAnswer()) {
-        hash = (37 * hash) + REQUESTEDMESSAGEANSWER_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedMessageAnswer().hashCode();
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
       }
+      if (hasRequestedMessageBase()) {
+        hash = (37 * hash) + REQUESTEDMESSAGEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedMessageBase().hashCode();
+      }
+      hash = (37 * hash) + ANSWERTEXT_FIELD_NUMBER;
+      hash = (53 * hash) + getAnswerText().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5916,25 +6726,31 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-          getRequestedMessageAnswerFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (requestedMessageAnswerBuilder_ == null) {
-          requestedMessageAnswer_ = null;
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
         } else {
-          requestedMessageAnswerBuilder_.clear();
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (requestedMessageBaseBuilder_ == null) {
+          requestedMessageBase_ = null;
+        } else {
+          requestedMessageBase_ = null;
+          requestedMessageBaseBuilder_ = null;
+        }
+        answerText_ = "";
+
         return this;
       }
 
@@ -5961,25 +6777,22 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ChannelMessageAnswerRequest buildPartial() {
         protobuf.ClientRequests.ChannelMessageAnswerRequest result = new protobuf.ClientRequests.ChannelMessageAnswerRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (requestedMessageAnswerBuilder_ == null) {
-            result.requestedMessageAnswer_ = requestedMessageAnswer_;
-          } else {
-            result.requestedMessageAnswer_ = requestedMessageAnswerBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
+        if (requestedMessageBaseBuilder_ == null) {
+          result.requestedMessageBase_ = requestedMessageBase_;
+        } else {
+          result.requestedMessageBase_ = requestedMessageBaseBuilder_.build();
+        }
+        result.answerText_ = answerText_;
         onBuilt();
         return result;
       }
@@ -6028,11 +6841,18 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ChannelMessageAnswerRequest other) {
         if (other == protobuf.ClientRequests.ChannelMessageAnswerRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedMessageAnswer()) {
-          mergeRequestedMessageAnswer(other.getRequestedMessageAnswer());
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
+        }
+        if (other.hasRequestedMessageBase()) {
+          mergeRequestedMessageBase(other.getRequestedMessageBase());
+        }
+        if (!other.getAnswerText().isEmpty()) {
+          answerText_ = other.answerText_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6041,18 +6861,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedMessageAnswer()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        if (!getRequestedMessageAnswer().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -6074,246 +6882,438 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private protobuf.ClientMessages.ChannelClientMessage requestedMessageAnswer_;
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> requestedMessageAnswerBuilder_;
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-       * @return Whether the requestedMessageAnswer field is set.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
        */
-      public boolean hasRequestedMessageAnswer() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
-       * @return The requestedMessageAnswer.
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
        */
-      public protobuf.ClientMessages.ChannelClientMessage getRequestedMessageAnswer() {
-        if (requestedMessageAnswerBuilder_ == null) {
-          return requestedMessageAnswer_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessageAnswer_;
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
         } else {
-          return requestedMessageAnswerBuilder_.getMessage();
+          return requestedChannelBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedMessageAnswer(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (requestedMessageAnswerBuilder_ == null) {
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestedMessageAnswer_ = value;
+          requestedChannelBase_ = value;
           onChanged();
         } else {
-          requestedMessageAnswerBuilder_.setMessage(value);
+          requestedChannelBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder setRequestedMessageAnswer(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (requestedMessageAnswerBuilder_ == null) {
-          requestedMessageAnswer_ = builderForValue.build();
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestedMessageAnswerBuilder_.setMessage(builderForValue.build());
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder mergeRequestedMessageAnswer(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (requestedMessageAnswerBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              requestedMessageAnswer_ != null &&
-              requestedMessageAnswer_ != protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance()) {
-            requestedMessageAnswer_ =
-              protobuf.ClientMessages.ChannelClientMessage.newBuilder(requestedMessageAnswer_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
           } else {
-            requestedMessageAnswer_ = value;
+            requestedChannelBase_ = value;
           }
           onChanged();
         } else {
-          requestedMessageAnswerBuilder_.mergeFrom(value);
+          requestedChannelBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public Builder clearRequestedMessageAnswer() {
-        if (requestedMessageAnswerBuilder_ == null) {
-          requestedMessageAnswer_ = null;
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
           onChanged();
         } else {
-          requestedMessageAnswerBuilder_.clear();
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getRequestedMessageAnswerBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
         onChanged();
-        return getRequestedMessageAnswerFieldBuilder().getBuilder();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getRequestedMessageAnswerOrBuilder() {
-        if (requestedMessageAnswerBuilder_ != null) {
-          return requestedMessageAnswerBuilder_.getMessageOrBuilder();
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestedMessageAnswer_ == null ?
-              protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : requestedMessageAnswer_;
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage requestedMessageAnswer = 2;</code>
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-          getRequestedMessageAnswerFieldBuilder() {
-        if (requestedMessageAnswerBuilder_ == null) {
-          requestedMessageAnswerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  getRequestedMessageAnswer(),
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
                   getParentForChildren(),
                   isClean());
-          requestedMessageAnswer_ = null;
+          requestedChannelBase_ = null;
         }
-        return requestedMessageAnswerBuilder_;
+        return requestedChannelBaseBuilder_;
+      }
+
+      private protobuf.ClientMessages.ClientMessageBase requestedMessageBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> requestedMessageBaseBuilder_;
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       * @return Whether the requestedMessageBase field is set.
+       */
+      public boolean hasRequestedMessageBase() {
+        return requestedMessageBaseBuilder_ != null || requestedMessageBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       * @return The requestedMessageBase.
+       */
+      public protobuf.ClientMessages.ClientMessageBase getRequestedMessageBase() {
+        if (requestedMessageBaseBuilder_ == null) {
+          return requestedMessageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : requestedMessageBase_;
+        } else {
+          return requestedMessageBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public Builder setRequestedMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (requestedMessageBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedMessageBase_ = value;
+          onChanged();
+        } else {
+          requestedMessageBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public Builder setRequestedMessageBase(
+          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+        if (requestedMessageBaseBuilder_ == null) {
+          requestedMessageBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedMessageBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public Builder mergeRequestedMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+        if (requestedMessageBaseBuilder_ == null) {
+          if (requestedMessageBase_ != null) {
+            requestedMessageBase_ =
+              protobuf.ClientMessages.ClientMessageBase.newBuilder(requestedMessageBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedMessageBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedMessageBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public Builder clearRequestedMessageBase() {
+        if (requestedMessageBaseBuilder_ == null) {
+          requestedMessageBase_ = null;
+          onChanged();
+        } else {
+          requestedMessageBase_ = null;
+          requestedMessageBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBase.Builder getRequestedMessageBaseBuilder() {
+        
+        onChanged();
+        return getRequestedMessageBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getRequestedMessageBaseOrBuilder() {
+        if (requestedMessageBaseBuilder_ != null) {
+          return requestedMessageBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedMessageBase_ == null ?
+              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : requestedMessageBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          getRequestedMessageBaseFieldBuilder() {
+        if (requestedMessageBaseBuilder_ == null) {
+          requestedMessageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+                  getRequestedMessageBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedMessageBase_ = null;
+        }
+        return requestedMessageBaseBuilder_;
+      }
+
+      private java.lang.Object answerText_ = "";
+      /**
+       * <code>string answerText = 4;</code>
+       * @return The answerText.
+       */
+      public java.lang.String getAnswerText() {
+        java.lang.Object ref = answerText_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          answerText_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string answerText = 4;</code>
+       * @return The bytes for answerText.
+       */
+      public com.google.protobuf.ByteString
+          getAnswerTextBytes() {
+        java.lang.Object ref = answerText_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          answerText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string answerText = 4;</code>
+       * @param value The answerText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAnswerText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        answerText_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string answerText = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAnswerText() {
+        
+        answerText_ = getDefaultInstance().getAnswerText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string answerText = 4;</code>
+       * @param value The bytes for answerText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAnswerTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        answerText_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6341,7 +7341,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelMessageAnswerRequest>
+    private static final com.google.protobuf.Parser<ChannelMessageAnswerRequest>
         PARSER = new com.google.protobuf.AbstractParser<ChannelMessageAnswerRequest>() {
       @java.lang.Override
       public ChannelMessageAnswerRequest parsePartialFrom(
@@ -6373,34 +7373,46 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestorBase();
+    boolean hasRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-     * @return Whether the requestedMessage field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    boolean hasRequestedMessage();
+    boolean hasReceiverClientBase();
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-     * @return The requestedMessage.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    protobuf.ClientMessages.PrivateClientMessage getRequestedMessage();
+    protobuf.ClientIdentities.ClientBase getReceiverClientBase();
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    protobuf.ClientMessages.PrivateClientMessageOrBuilder getRequestedMessageOrBuilder();
+    protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder();
+
+    /**
+     * <code>string messageText = 3;</code>
+     * @return The messageText.
+     */
+    java.lang.String getMessageText();
+    /**
+     * <code>string messageText = 3;</code>
+     * @return The bytes for messageText.
+     */
+    com.google.protobuf.ByteString
+        getMessageTextBytes();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.PrivateMessageRequest}
@@ -6415,6 +7427,7 @@ public final class ClientRequests {
       super(builder);
     }
     private PrivateMessageRequest() {
+      messageText_ = "";
     }
 
     @java.lang.Override
@@ -6437,7 +7450,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6450,28 +7462,34 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
             case 18: {
-              protobuf.ClientMessages.PrivateClientMessage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = requestedMessage_.toBuilder();
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (receiverClientBase_ != null) {
+                subBuilder = receiverClientBase_.toBuilder();
               }
-              requestedMessage_ = input.readMessage(protobuf.ClientMessages.PrivateClientMessage.PARSER, extensionRegistry);
+              receiverClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(requestedMessage_);
-                requestedMessage_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(receiverClientBase_);
+                receiverClientBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              messageText_ = s;
               break;
             }
             default: {
@@ -6506,51 +7524,86 @@ public final class ClientRequests {
               protobuf.ClientRequests.PrivateMessageRequest.class, protobuf.ClientRequests.PrivateMessageRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDMESSAGE_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.PrivateClientMessage requestedMessage_;
+    public static final int RECEIVERCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase receiverClientBase_;
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-     * @return Whether the requestedMessage field is set.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return Whether the receiverClientBase field is set.
      */
-    public boolean hasRequestedMessage() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasReceiverClientBase() {
+      return receiverClientBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-     * @return The requestedMessage.
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+     * @return The receiverClientBase.
      */
-    public protobuf.ClientMessages.PrivateClientMessage getRequestedMessage() {
-      return requestedMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : requestedMessage_;
+    public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+      return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
     }
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+     * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
      */
-    public protobuf.ClientMessages.PrivateClientMessageOrBuilder getRequestedMessageOrBuilder() {
-      return requestedMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : requestedMessage_;
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+      return getReceiverClientBase();
+    }
+
+    public static final int MESSAGETEXT_FIELD_NUMBER = 3;
+    private volatile java.lang.Object messageText_;
+    /**
+     * <code>string messageText = 3;</code>
+     * @return The messageText.
+     */
+    public java.lang.String getMessageText() {
+      java.lang.Object ref = messageText_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        messageText_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string messageText = 3;</code>
+     * @return The bytes for messageText.
+     */
+    public com.google.protobuf.ByteString
+        getMessageTextBytes() {
+      java.lang.Object ref = messageText_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        messageText_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6560,22 +7613,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestedMessage().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6583,11 +7620,14 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getRequestedMessage());
+      if (receiverClientBase_ != null) {
+        output.writeMessage(2, getReceiverClientBase());
+      }
+      if (!getMessageTextBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, messageText_);
       }
       unknownFields.writeTo(output);
     }
@@ -6598,13 +7638,16 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (receiverClientBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRequestedMessage());
+          .computeMessageSize(2, getReceiverClientBase());
+      }
+      if (!getMessageTextBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, messageText_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6621,16 +7664,18 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.PrivateMessageRequest other = (protobuf.ClientRequests.PrivateMessageRequest) obj;
 
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedMessage() != other.hasRequestedMessage()) return false;
-      if (hasRequestedMessage()) {
-        if (!getRequestedMessage()
-            .equals(other.getRequestedMessage())) return false;
+      if (hasReceiverClientBase() != other.hasReceiverClientBase()) return false;
+      if (hasReceiverClientBase()) {
+        if (!getReceiverClientBase()
+            .equals(other.getReceiverClientBase())) return false;
       }
+      if (!getMessageText()
+          .equals(other.getMessageText())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6642,14 +7687,16 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedMessage()) {
-        hash = (37 * hash) + REQUESTEDMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedMessage().hashCode();
+      if (hasReceiverClientBase()) {
+        hash = (37 * hash) + RECEIVERCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverClientBase().hashCode();
       }
+      hash = (37 * hash) + MESSAGETEXT_FIELD_NUMBER;
+      hash = (53 * hash) + getMessageText().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6778,25 +7825,25 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-          getRequestedMessageFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = null;
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
         } else {
-          requestedMessageBuilder_.clear();
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        messageText_ = "";
+
         return this;
       }
 
@@ -6823,25 +7870,17 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.PrivateMessageRequest buildPartial() {
         protobuf.ClientRequests.PrivateMessageRequest result = new protobuf.ClientRequests.PrivateMessageRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (requestedMessageBuilder_ == null) {
-            result.requestedMessage_ = requestedMessage_;
-          } else {
-            result.requestedMessage_ = requestedMessageBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (receiverClientBaseBuilder_ == null) {
+          result.receiverClientBase_ = receiverClientBase_;
+        } else {
+          result.receiverClientBase_ = receiverClientBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
+        result.messageText_ = messageText_;
         onBuilt();
         return result;
       }
@@ -6890,11 +7929,15 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.PrivateMessageRequest other) {
         if (other == protobuf.ClientRequests.PrivateMessageRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedMessage()) {
-          mergeRequestedMessage(other.getRequestedMessage());
+        if (other.hasReceiverClientBase()) {
+          mergeReceiverClientBase(other.getReceiverClientBase());
+        }
+        if (!other.getMessageText().isEmpty()) {
+          messageText_ = other.messageText_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6903,18 +7946,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedMessage()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        if (!getRequestedMessage().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -6936,246 +7967,319 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         } else {
-          return requestorBaseBuilder_.getMessage();
+          return requestBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestorBase_ = value;
+          requestBase_ = value;
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(value);
+          requestBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder setRequestorBase(
+      public Builder setRequestBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
+          requestBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
           } else {
-            requestorBase_ = value;
+            requestBase_ = value;
           }
           onChanged();
         } else {
-          requestorBaseBuilder_.mergeFrom(value);
+          requestBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
         onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
+        return getRequestBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
+                  getRequestBase(),
                   getParentForChildren(),
                   isClean());
-          requestorBase_ = null;
+          requestBase_ = null;
         }
-        return requestorBaseBuilder_;
+        return requestBaseBuilder_;
       }
 
-      private protobuf.ClientMessages.PrivateClientMessage requestedMessage_;
+      private protobuf.ClientIdentities.ClientBase receiverClientBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder> requestedMessageBuilder_;
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> receiverClientBaseBuilder_;
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-       * @return Whether the requestedMessage field is set.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return Whether the receiverClientBase field is set.
        */
-      public boolean hasRequestedMessage() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasReceiverClientBase() {
+        return receiverClientBaseBuilder_ != null || receiverClientBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
-       * @return The requestedMessage.
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
+       * @return The receiverClientBase.
        */
-      public protobuf.ClientMessages.PrivateClientMessage getRequestedMessage() {
-        if (requestedMessageBuilder_ == null) {
-          return requestedMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : requestedMessage_;
+      public protobuf.ClientIdentities.ClientBase getReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          return receiverClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         } else {
-          return requestedMessageBuilder_.getMessage();
+          return receiverClientBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setRequestedMessage(protobuf.ClientMessages.PrivateClientMessage value) {
-        if (requestedMessageBuilder_ == null) {
+      public Builder setReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          requestedMessage_ = value;
+          receiverClientBase_ = value;
           onChanged();
         } else {
-          requestedMessageBuilder_.setMessage(value);
+          receiverClientBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder setRequestedMessage(
-          protobuf.ClientMessages.PrivateClientMessage.Builder builderForValue) {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = builderForValue.build();
+      public Builder setReceiverClientBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = builderForValue.build();
           onChanged();
         } else {
-          requestedMessageBuilder_.setMessage(builderForValue.build());
+          receiverClientBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder mergeRequestedMessage(protobuf.ClientMessages.PrivateClientMessage value) {
-        if (requestedMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              requestedMessage_ != null &&
-              requestedMessage_ != protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance()) {
-            requestedMessage_ =
-              protobuf.ClientMessages.PrivateClientMessage.newBuilder(requestedMessage_).mergeFrom(value).buildPartial();
+      public Builder mergeReceiverClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (receiverClientBaseBuilder_ == null) {
+          if (receiverClientBase_ != null) {
+            receiverClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(receiverClientBase_).mergeFrom(value).buildPartial();
           } else {
-            requestedMessage_ = value;
+            receiverClientBase_ = value;
           }
           onChanged();
         } else {
-          requestedMessageBuilder_.mergeFrom(value);
+          receiverClientBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public Builder clearRequestedMessage() {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessage_ = null;
+      public Builder clearReceiverClientBase() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBase_ = null;
           onChanged();
         } else {
-          requestedMessageBuilder_.clear();
+          receiverClientBase_ = null;
+          receiverClientBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientMessages.PrivateClientMessage.Builder getRequestedMessageBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientIdentities.ClientBase.Builder getReceiverClientBaseBuilder() {
+        
         onChanged();
-        return getRequestedMessageFieldBuilder().getBuilder();
+        return getReceiverClientBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
-      public protobuf.ClientMessages.PrivateClientMessageOrBuilder getRequestedMessageOrBuilder() {
-        if (requestedMessageBuilder_ != null) {
-          return requestedMessageBuilder_.getMessageOrBuilder();
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getReceiverClientBaseOrBuilder() {
+        if (receiverClientBaseBuilder_ != null) {
+          return receiverClientBaseBuilder_.getMessageOrBuilder();
         } else {
-          return requestedMessage_ == null ?
-              protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : requestedMessage_;
+          return receiverClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : receiverClientBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage requestedMessage = 2;</code>
+       * <code>.protobuf.clientidentities.ClientBase receiverClientBase = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder> 
-          getRequestedMessageFieldBuilder() {
-        if (requestedMessageBuilder_ == null) {
-          requestedMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder>(
-                  getRequestedMessage(),
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getReceiverClientBaseFieldBuilder() {
+        if (receiverClientBaseBuilder_ == null) {
+          receiverClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getReceiverClientBase(),
                   getParentForChildren(),
                   isClean());
-          requestedMessage_ = null;
+          receiverClientBase_ = null;
         }
-        return requestedMessageBuilder_;
+        return receiverClientBaseBuilder_;
+      }
+
+      private java.lang.Object messageText_ = "";
+      /**
+       * <code>string messageText = 3;</code>
+       * @return The messageText.
+       */
+      public java.lang.String getMessageText() {
+        java.lang.Object ref = messageText_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          messageText_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string messageText = 3;</code>
+       * @return The bytes for messageText.
+       */
+      public com.google.protobuf.ByteString
+          getMessageTextBytes() {
+        java.lang.Object ref = messageText_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          messageText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string messageText = 3;</code>
+       * @param value The messageText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        messageText_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string messageText = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessageText() {
+        
+        messageText_ = getDefaultInstance().getMessageText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string messageText = 3;</code>
+       * @param value The bytes for messageText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        messageText_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7203,7 +8307,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<PrivateMessageRequest>
+    private static final com.google.protobuf.Parser<PrivateMessageRequest>
         PARSER = new com.google.protobuf.AbstractParser<PrivateMessageRequest>() {
       @java.lang.Override
       public PrivateMessageRequest parsePartialFrom(
@@ -7230,43 +8334,4111 @@ public final class ClientRequests {
 
   }
 
+  public interface ChannelFileDownloadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ChannelFileDownloadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    boolean hasRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
+     */
+    boolean hasRequestedChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
+     */
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    boolean hasRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    protobuf.ClientRequests.FileDownloadBase getRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     */
+    protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.ChannelFileDownloadRequest}
+   */
+  public  static final class ChannelFileDownloadRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ChannelFileDownloadRequest)
+      ChannelFileDownloadRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelFileDownloadRequest.newBuilder() to construct.
+    private ChannelFileDownloadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelFileDownloadRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelFileDownloadRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelFileDownloadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
+              }
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              protobuf.ClientRequests.FileDownloadBase.Builder subBuilder = null;
+              if (requestedFileBase_ != null) {
+                subBuilder = requestedFileBase_.toBuilder();
+              }
+              requestedFileBase_ = input.readMessage(protobuf.ClientRequests.FileDownloadBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedFileBase_);
+                requestedFileBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.ChannelFileDownloadRequest.class, protobuf.ClientRequests.ChannelFileDownloadRequest.Builder.class);
+    }
+
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
+    }
+
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
+     */
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
+     */
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
+    }
+
+    public static final int REQUESTEDFILEBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientRequests.FileDownloadBase requestedFileBase_;
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    public boolean hasRequestedFileBase() {
+      return requestedFileBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    public protobuf.ClientRequests.FileDownloadBase getRequestedFileBase() {
+      return requestedFileBase_ == null ? protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     */
+    public protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+      return getRequestedFileBase();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
+      }
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
+      }
+      if (requestedFileBase_ != null) {
+        output.writeMessage(3, getRequestedFileBase());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (requestBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestBase());
+      }
+      if (requestedChannelBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedChannelBase());
+      }
+      if (requestedFileBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRequestedFileBase());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.ChannelFileDownloadRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.ChannelFileDownloadRequest other = (protobuf.ClientRequests.ChannelFileDownloadRequest) obj;
+
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
+      }
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
+      }
+      if (hasRequestedFileBase() != other.hasRequestedFileBase()) return false;
+      if (hasRequestedFileBase()) {
+        if (!getRequestedFileBase()
+            .equals(other.getRequestedFileBase())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
+      }
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
+      }
+      if (hasRequestedFileBase()) {
+        hash = (37 * hash) + REQUESTEDFILEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedFileBase().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.ChannelFileDownloadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.ChannelFileDownloadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ChannelFileDownloadRequest)
+        protobuf.ClientRequests.ChannelFileDownloadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.ChannelFileDownloadRequest.class, protobuf.ClientRequests.ChannelFileDownloadRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.ChannelFileDownloadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileDownloadRequest getDefaultInstanceForType() {
+        return protobuf.ClientRequests.ChannelFileDownloadRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileDownloadRequest build() {
+        protobuf.ClientRequests.ChannelFileDownloadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileDownloadRequest buildPartial() {
+        protobuf.ClientRequests.ChannelFileDownloadRequest result = new protobuf.ClientRequests.ChannelFileDownloadRequest(this);
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
+        }
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          result.requestedFileBase_ = requestedFileBase_;
+        } else {
+          result.requestedFileBase_ = requestedFileBaseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.ChannelFileDownloadRequest) {
+          return mergeFrom((protobuf.ClientRequests.ChannelFileDownloadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.ChannelFileDownloadRequest other) {
+        if (other == protobuf.ClientRequests.ChannelFileDownloadRequest.getDefaultInstance()) return this;
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
+        }
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
+        }
+        if (other.hasRequestedFileBase()) {
+          mergeRequestedFileBase(other.getRequestedFileBase());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.ChannelFileDownloadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.ChannelFileDownloadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
+       */
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
+       */
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestBase_ = value;
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
+        }
+        return requestBaseBuilder_;
+      }
+
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
+       */
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
+       */
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        } else {
+          return requestedChannelBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedChannelBase_ = value;
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedChannelBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+          onChanged();
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
+        onChanged();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedChannelBase_ = null;
+        }
+        return requestedChannelBaseBuilder_;
+      }
+
+      private protobuf.ClientRequests.FileDownloadBase requestedFileBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder> requestedFileBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       * @return Whether the requestedFileBase field is set.
+       */
+      public boolean hasRequestedFileBase() {
+        return requestedFileBaseBuilder_ != null || requestedFileBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       * @return The requestedFileBase.
+       */
+      public protobuf.ClientRequests.FileDownloadBase getRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          return requestedFileBase_ == null ? protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+        } else {
+          return requestedFileBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(protobuf.ClientRequests.FileDownloadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedFileBase_ = value;
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(
+          protobuf.ClientRequests.FileDownloadBase.Builder builderForValue) {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder mergeRequestedFileBase(protobuf.ClientRequests.FileDownloadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (requestedFileBase_ != null) {
+            requestedFileBase_ =
+              protobuf.ClientRequests.FileDownloadBase.newBuilder(requestedFileBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedFileBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder clearRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+          onChanged();
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileDownloadBase.Builder getRequestedFileBaseBuilder() {
+        
+        onChanged();
+        return getRequestedFileBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+        if (requestedFileBaseBuilder_ != null) {
+          return requestedFileBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedFileBase_ == null ?
+              protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder> 
+          getRequestedFileBaseFieldBuilder() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder>(
+                  getRequestedFileBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedFileBase_ = null;
+        }
+        return requestedFileBaseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ChannelFileDownloadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ChannelFileDownloadRequest)
+    private static final protobuf.ClientRequests.ChannelFileDownloadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.ChannelFileDownloadRequest();
+    }
+
+    public static protobuf.ClientRequests.ChannelFileDownloadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelFileDownloadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelFileDownloadRequest>() {
+      @java.lang.Override
+      public ChannelFileDownloadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelFileDownloadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelFileDownloadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelFileDownloadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.ChannelFileDownloadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChannelFileUploadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ChannelFileUploadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    boolean hasRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
+     */
+    boolean hasRequestedChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
+     */
+    protobuf.ClientChannels.ChannelBase getRequestedChannelBase();
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    boolean hasRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    protobuf.ClientRequests.FileUploadBase getRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     */
+    protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.ChannelFileUploadRequest}
+   */
+  public  static final class ChannelFileUploadRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ChannelFileUploadRequest)
+      ChannelFileUploadRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelFileUploadRequest.newBuilder() to construct.
+    private ChannelFileUploadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelFileUploadRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelFileUploadRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelFileUploadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientChannels.ChannelBase.Builder subBuilder = null;
+              if (requestedChannelBase_ != null) {
+                subBuilder = requestedChannelBase_.toBuilder();
+              }
+              requestedChannelBase_ = input.readMessage(protobuf.ClientChannels.ChannelBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedChannelBase_);
+                requestedChannelBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              protobuf.ClientRequests.FileUploadBase.Builder subBuilder = null;
+              if (requestedFileBase_ != null) {
+                subBuilder = requestedFileBase_.toBuilder();
+              }
+              requestedFileBase_ = input.readMessage(protobuf.ClientRequests.FileUploadBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedFileBase_);
+                requestedFileBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileUploadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.ChannelFileUploadRequest.class, protobuf.ClientRequests.ChannelFileUploadRequest.Builder.class);
+    }
+
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
+    }
+
+    public static final int REQUESTEDCHANNELBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return Whether the requestedChannelBase field is set.
+     */
+    public boolean hasRequestedChannelBase() {
+      return requestedChannelBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     * @return The requestedChannelBase.
+     */
+    public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+      return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+      return getRequestedChannelBase();
+    }
+
+    public static final int REQUESTEDFILEBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientRequests.FileUploadBase requestedFileBase_;
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    public boolean hasRequestedFileBase() {
+      return requestedFileBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    public protobuf.ClientRequests.FileUploadBase getRequestedFileBase() {
+      return requestedFileBase_ == null ? protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     */
+    public protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+      return getRequestedFileBase();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
+      }
+      if (requestedChannelBase_ != null) {
+        output.writeMessage(2, getRequestedChannelBase());
+      }
+      if (requestedFileBase_ != null) {
+        output.writeMessage(3, getRequestedFileBase());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (requestBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestBase());
+      }
+      if (requestedChannelBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedChannelBase());
+      }
+      if (requestedFileBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRequestedFileBase());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.ChannelFileUploadRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.ChannelFileUploadRequest other = (protobuf.ClientRequests.ChannelFileUploadRequest) obj;
+
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
+      }
+      if (hasRequestedChannelBase() != other.hasRequestedChannelBase()) return false;
+      if (hasRequestedChannelBase()) {
+        if (!getRequestedChannelBase()
+            .equals(other.getRequestedChannelBase())) return false;
+      }
+      if (hasRequestedFileBase() != other.hasRequestedFileBase()) return false;
+      if (hasRequestedFileBase()) {
+        if (!getRequestedFileBase()
+            .equals(other.getRequestedFileBase())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
+      }
+      if (hasRequestedChannelBase()) {
+        hash = (37 * hash) + REQUESTEDCHANNELBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedChannelBase().hashCode();
+      }
+      if (hasRequestedFileBase()) {
+        hash = (37 * hash) + REQUESTEDFILEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedFileBase().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.ChannelFileUploadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.ChannelFileUploadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.ChannelFileUploadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ChannelFileUploadRequest)
+        protobuf.ClientRequests.ChannelFileUploadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileUploadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.ChannelFileUploadRequest.class, protobuf.ClientRequests.ChannelFileUploadRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.ChannelFileUploadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileUploadRequest getDefaultInstanceForType() {
+        return protobuf.ClientRequests.ChannelFileUploadRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileUploadRequest build() {
+        protobuf.ClientRequests.ChannelFileUploadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.ChannelFileUploadRequest buildPartial() {
+        protobuf.ClientRequests.ChannelFileUploadRequest result = new protobuf.ClientRequests.ChannelFileUploadRequest(this);
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
+        }
+        if (requestedChannelBaseBuilder_ == null) {
+          result.requestedChannelBase_ = requestedChannelBase_;
+        } else {
+          result.requestedChannelBase_ = requestedChannelBaseBuilder_.build();
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          result.requestedFileBase_ = requestedFileBase_;
+        } else {
+          result.requestedFileBase_ = requestedFileBaseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.ChannelFileUploadRequest) {
+          return mergeFrom((protobuf.ClientRequests.ChannelFileUploadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.ChannelFileUploadRequest other) {
+        if (other == protobuf.ClientRequests.ChannelFileUploadRequest.getDefaultInstance()) return this;
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
+        }
+        if (other.hasRequestedChannelBase()) {
+          mergeRequestedChannelBase(other.getRequestedChannelBase());
+        }
+        if (other.hasRequestedFileBase()) {
+          mergeRequestedFileBase(other.getRequestedFileBase());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.ChannelFileUploadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.ChannelFileUploadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
+       */
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
+       */
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestBase_ = value;
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
+        }
+        return requestBaseBuilder_;
+      }
+
+      private protobuf.ClientChannels.ChannelBase requestedChannelBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> requestedChannelBaseBuilder_;
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return Whether the requestedChannelBase field is set.
+       */
+      public boolean hasRequestedChannelBase() {
+        return requestedChannelBaseBuilder_ != null || requestedChannelBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       * @return The requestedChannelBase.
+       */
+      public protobuf.ClientChannels.ChannelBase getRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          return requestedChannelBase_ == null ? protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        } else {
+          return requestedChannelBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder setRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedChannelBase_ = value;
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder setRequestedChannelBase(
+          protobuf.ClientChannels.ChannelBase.Builder builderForValue) {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder mergeRequestedChannelBase(protobuf.ClientChannels.ChannelBase value) {
+        if (requestedChannelBaseBuilder_ == null) {
+          if (requestedChannelBase_ != null) {
+            requestedChannelBase_ =
+              protobuf.ClientChannels.ChannelBase.newBuilder(requestedChannelBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedChannelBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedChannelBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public Builder clearRequestedChannelBase() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBase_ = null;
+          onChanged();
+        } else {
+          requestedChannelBase_ = null;
+          requestedChannelBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBase.Builder getRequestedChannelBaseBuilder() {
+        
+        onChanged();
+        return getRequestedChannelBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      public protobuf.ClientChannels.ChannelBaseOrBuilder getRequestedChannelBaseOrBuilder() {
+        if (requestedChannelBaseBuilder_ != null) {
+          return requestedChannelBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedChannelBase_ == null ?
+              protobuf.ClientChannels.ChannelBase.getDefaultInstance() : requestedChannelBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelBase requestedChannelBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder> 
+          getRequestedChannelBaseFieldBuilder() {
+        if (requestedChannelBaseBuilder_ == null) {
+          requestedChannelBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelBase, protobuf.ClientChannels.ChannelBase.Builder, protobuf.ClientChannels.ChannelBaseOrBuilder>(
+                  getRequestedChannelBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedChannelBase_ = null;
+        }
+        return requestedChannelBaseBuilder_;
+      }
+
+      private protobuf.ClientRequests.FileUploadBase requestedFileBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder> requestedFileBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       * @return Whether the requestedFileBase field is set.
+       */
+      public boolean hasRequestedFileBase() {
+        return requestedFileBaseBuilder_ != null || requestedFileBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       * @return The requestedFileBase.
+       */
+      public protobuf.ClientRequests.FileUploadBase getRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          return requestedFileBase_ == null ? protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+        } else {
+          return requestedFileBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(protobuf.ClientRequests.FileUploadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedFileBase_ = value;
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(
+          protobuf.ClientRequests.FileUploadBase.Builder builderForValue) {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder mergeRequestedFileBase(protobuf.ClientRequests.FileUploadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (requestedFileBase_ != null) {
+            requestedFileBase_ =
+              protobuf.ClientRequests.FileUploadBase.newBuilder(requestedFileBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedFileBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder clearRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+          onChanged();
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileUploadBase.Builder getRequestedFileBaseBuilder() {
+        
+        onChanged();
+        return getRequestedFileBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+        if (requestedFileBaseBuilder_ != null) {
+          return requestedFileBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedFileBase_ == null ?
+              protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder> 
+          getRequestedFileBaseFieldBuilder() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder>(
+                  getRequestedFileBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedFileBase_ = null;
+        }
+        return requestedFileBaseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ChannelFileUploadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ChannelFileUploadRequest)
+    private static final protobuf.ClientRequests.ChannelFileUploadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.ChannelFileUploadRequest();
+    }
+
+    public static protobuf.ClientRequests.ChannelFileUploadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelFileUploadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelFileUploadRequest>() {
+      @java.lang.Override
+      public ChannelFileUploadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelFileUploadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelFileUploadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelFileUploadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.ChannelFileUploadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PrivateFileDownloadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.PrivateFileDownloadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    boolean hasRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
+     */
+    boolean hasRequestedClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
+     */
+    protobuf.ClientIdentities.ClientBase getRequestedClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    boolean hasRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    protobuf.ClientRequests.FileDownloadBase getRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     */
+    protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.PrivateFileDownloadRequest}
+   */
+  public  static final class PrivateFileDownloadRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.PrivateFileDownloadRequest)
+      PrivateFileDownloadRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PrivateFileDownloadRequest.newBuilder() to construct.
+    private PrivateFileDownloadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PrivateFileDownloadRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PrivateFileDownloadRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PrivateFileDownloadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (requestedClientBase_ != null) {
+                subBuilder = requestedClientBase_.toBuilder();
+              }
+              requestedClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedClientBase_);
+                requestedClientBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              protobuf.ClientRequests.FileDownloadBase.Builder subBuilder = null;
+              if (requestedFileBase_ != null) {
+                subBuilder = requestedFileBase_.toBuilder();
+              }
+              requestedFileBase_ = input.readMessage(protobuf.ClientRequests.FileDownloadBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedFileBase_);
+                requestedFileBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.PrivateFileDownloadRequest.class, protobuf.ClientRequests.PrivateFileDownloadRequest.Builder.class);
+    }
+
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
+    }
+
+    public static final int REQUESTEDCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase requestedClientBase_;
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
+     */
+    public boolean hasRequestedClientBase() {
+      return requestedClientBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
+     */
+    public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+      return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+      return getRequestedClientBase();
+    }
+
+    public static final int REQUESTEDFILEBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientRequests.FileDownloadBase requestedFileBase_;
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    public boolean hasRequestedFileBase() {
+      return requestedFileBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    public protobuf.ClientRequests.FileDownloadBase getRequestedFileBase() {
+      return requestedFileBase_ == null ? protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+     */
+    public protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+      return getRequestedFileBase();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
+      }
+      if (requestedClientBase_ != null) {
+        output.writeMessage(2, getRequestedClientBase());
+      }
+      if (requestedFileBase_ != null) {
+        output.writeMessage(3, getRequestedFileBase());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (requestBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestBase());
+      }
+      if (requestedClientBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedClientBase());
+      }
+      if (requestedFileBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRequestedFileBase());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.PrivateFileDownloadRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.PrivateFileDownloadRequest other = (protobuf.ClientRequests.PrivateFileDownloadRequest) obj;
+
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
+      }
+      if (hasRequestedClientBase() != other.hasRequestedClientBase()) return false;
+      if (hasRequestedClientBase()) {
+        if (!getRequestedClientBase()
+            .equals(other.getRequestedClientBase())) return false;
+      }
+      if (hasRequestedFileBase() != other.hasRequestedFileBase()) return false;
+      if (hasRequestedFileBase()) {
+        if (!getRequestedFileBase()
+            .equals(other.getRequestedFileBase())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
+      }
+      if (hasRequestedClientBase()) {
+        hash = (37 * hash) + REQUESTEDCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedClientBase().hashCode();
+      }
+      if (hasRequestedFileBase()) {
+        hash = (37 * hash) + REQUESTEDFILEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedFileBase().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.PrivateFileDownloadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.PrivateFileDownloadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.PrivateFileDownloadRequest)
+        protobuf.ClientRequests.PrivateFileDownloadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.PrivateFileDownloadRequest.class, protobuf.ClientRequests.PrivateFileDownloadRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.PrivateFileDownloadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
+        } else {
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileDownloadRequest getDefaultInstanceForType() {
+        return protobuf.ClientRequests.PrivateFileDownloadRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileDownloadRequest build() {
+        protobuf.ClientRequests.PrivateFileDownloadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileDownloadRequest buildPartial() {
+        protobuf.ClientRequests.PrivateFileDownloadRequest result = new protobuf.ClientRequests.PrivateFileDownloadRequest(this);
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
+        }
+        if (requestedClientBaseBuilder_ == null) {
+          result.requestedClientBase_ = requestedClientBase_;
+        } else {
+          result.requestedClientBase_ = requestedClientBaseBuilder_.build();
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          result.requestedFileBase_ = requestedFileBase_;
+        } else {
+          result.requestedFileBase_ = requestedFileBaseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.PrivateFileDownloadRequest) {
+          return mergeFrom((protobuf.ClientRequests.PrivateFileDownloadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.PrivateFileDownloadRequest other) {
+        if (other == protobuf.ClientRequests.PrivateFileDownloadRequest.getDefaultInstance()) return this;
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
+        }
+        if (other.hasRequestedClientBase()) {
+          mergeRequestedClientBase(other.getRequestedClientBase());
+        }
+        if (other.hasRequestedFileBase()) {
+          mergeRequestedFileBase(other.getRequestedFileBase());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.PrivateFileDownloadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.PrivateFileDownloadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
+       */
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
+       */
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestBase_ = value;
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
+        }
+        return requestBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientBase requestedClientBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> requestedClientBaseBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return Whether the requestedClientBase field is set.
+       */
+      public boolean hasRequestedClientBase() {
+        return requestedClientBaseBuilder_ != null || requestedClientBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return The requestedClientBase.
+       */
+      public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+        } else {
+          return requestedClientBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder setRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedClientBase_ = value;
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder setRequestedClientBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder mergeRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
+          if (requestedClientBase_ != null) {
+            requestedClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(requestedClientBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedClientBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder clearRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
+          onChanged();
+        } else {
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBase.Builder getRequestedClientBaseBuilder() {
+        
+        onChanged();
+        return getRequestedClientBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+        if (requestedClientBaseBuilder_ != null) {
+          return requestedClientBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getRequestedClientBaseFieldBuilder() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getRequestedClientBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedClientBase_ = null;
+        }
+        return requestedClientBaseBuilder_;
+      }
+
+      private protobuf.ClientRequests.FileDownloadBase requestedFileBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder> requestedFileBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       * @return Whether the requestedFileBase field is set.
+       */
+      public boolean hasRequestedFileBase() {
+        return requestedFileBaseBuilder_ != null || requestedFileBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       * @return The requestedFileBase.
+       */
+      public protobuf.ClientRequests.FileDownloadBase getRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          return requestedFileBase_ == null ? protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+        } else {
+          return requestedFileBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(protobuf.ClientRequests.FileDownloadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedFileBase_ = value;
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(
+          protobuf.ClientRequests.FileDownloadBase.Builder builderForValue) {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder mergeRequestedFileBase(protobuf.ClientRequests.FileDownloadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (requestedFileBase_ != null) {
+            requestedFileBase_ =
+              protobuf.ClientRequests.FileDownloadBase.newBuilder(requestedFileBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedFileBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public Builder clearRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+          onChanged();
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileDownloadBase.Builder getRequestedFileBaseBuilder() {
+        
+        onChanged();
+        return getRequestedFileBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileDownloadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+        if (requestedFileBaseBuilder_ != null) {
+          return requestedFileBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedFileBase_ == null ?
+              protobuf.ClientRequests.FileDownloadBase.getDefaultInstance() : requestedFileBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileDownloadBase requestedFileBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder> 
+          getRequestedFileBaseFieldBuilder() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.FileDownloadBase, protobuf.ClientRequests.FileDownloadBase.Builder, protobuf.ClientRequests.FileDownloadBaseOrBuilder>(
+                  getRequestedFileBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedFileBase_ = null;
+        }
+        return requestedFileBaseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.PrivateFileDownloadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.PrivateFileDownloadRequest)
+    private static final protobuf.ClientRequests.PrivateFileDownloadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.PrivateFileDownloadRequest();
+    }
+
+    public static protobuf.ClientRequests.PrivateFileDownloadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PrivateFileDownloadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateFileDownloadRequest>() {
+      @java.lang.Override
+      public PrivateFileDownloadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PrivateFileDownloadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PrivateFileDownloadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PrivateFileDownloadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.PrivateFileDownloadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PrivateFileUploadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.PrivateFileUploadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    boolean hasRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
+     */
+    boolean hasRequestedClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
+     */
+    protobuf.ClientIdentities.ClientBase getRequestedClientBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    boolean hasRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    protobuf.ClientRequests.FileUploadBase getRequestedFileBase();
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     */
+    protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientrequests.PrivateFileUploadRequest}
+   */
+  public  static final class PrivateFileUploadRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.PrivateFileUploadRequest)
+      PrivateFileUploadRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PrivateFileUploadRequest.newBuilder() to construct.
+    private PrivateFileUploadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PrivateFileUploadRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PrivateFileUploadRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PrivateFileUploadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (requestedClientBase_ != null) {
+                subBuilder = requestedClientBase_.toBuilder();
+              }
+              requestedClientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedClientBase_);
+                requestedClientBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              protobuf.ClientRequests.FileUploadBase.Builder subBuilder = null;
+              if (requestedFileBase_ != null) {
+                subBuilder = requestedFileBase_.toBuilder();
+              }
+              requestedFileBase_ = input.readMessage(protobuf.ClientRequests.FileUploadBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedFileBase_);
+                requestedFileBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileUploadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientRequests.PrivateFileUploadRequest.class, protobuf.ClientRequests.PrivateFileUploadRequest.Builder.class);
+    }
+
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
+     */
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
+     */
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     */
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
+    }
+
+    public static final int REQUESTEDCLIENTBASE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientBase requestedClientBase_;
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return Whether the requestedClientBase field is set.
+     */
+    public boolean hasRequestedClientBase() {
+      return requestedClientBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     * @return The requestedClientBase.
+     */
+    public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+      return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+      return getRequestedClientBase();
+    }
+
+    public static final int REQUESTEDFILEBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientRequests.FileUploadBase requestedFileBase_;
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return Whether the requestedFileBase field is set.
+     */
+    public boolean hasRequestedFileBase() {
+      return requestedFileBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     * @return The requestedFileBase.
+     */
+    public protobuf.ClientRequests.FileUploadBase getRequestedFileBase() {
+      return requestedFileBase_ == null ? protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+    }
+    /**
+     * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+     */
+    public protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+      return getRequestedFileBase();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
+      }
+      if (requestedClientBase_ != null) {
+        output.writeMessage(2, getRequestedClientBase());
+      }
+      if (requestedFileBase_ != null) {
+        output.writeMessage(3, getRequestedFileBase());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (requestBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestBase());
+      }
+      if (requestedClientBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedClientBase());
+      }
+      if (requestedFileBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRequestedFileBase());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientRequests.PrivateFileUploadRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientRequests.PrivateFileUploadRequest other = (protobuf.ClientRequests.PrivateFileUploadRequest) obj;
+
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
+      }
+      if (hasRequestedClientBase() != other.hasRequestedClientBase()) return false;
+      if (hasRequestedClientBase()) {
+        if (!getRequestedClientBase()
+            .equals(other.getRequestedClientBase())) return false;
+      }
+      if (hasRequestedFileBase() != other.hasRequestedFileBase()) return false;
+      if (hasRequestedFileBase()) {
+        if (!getRequestedFileBase()
+            .equals(other.getRequestedFileBase())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
+      }
+      if (hasRequestedClientBase()) {
+        hash = (37 * hash) + REQUESTEDCLIENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedClientBase().hashCode();
+      }
+      if (hasRequestedFileBase()) {
+        hash = (37 * hash) + REQUESTEDFILEBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedFileBase().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientRequests.PrivateFileUploadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientRequests.PrivateFileUploadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientrequests.PrivateFileUploadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.PrivateFileUploadRequest)
+        protobuf.ClientRequests.PrivateFileUploadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileUploadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientRequests.PrivateFileUploadRequest.class, protobuf.ClientRequests.PrivateFileUploadRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ClientRequests.PrivateFileUploadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
+        } else {
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileUploadRequest getDefaultInstanceForType() {
+        return protobuf.ClientRequests.PrivateFileUploadRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileUploadRequest build() {
+        protobuf.ClientRequests.PrivateFileUploadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientRequests.PrivateFileUploadRequest buildPartial() {
+        protobuf.ClientRequests.PrivateFileUploadRequest result = new protobuf.ClientRequests.PrivateFileUploadRequest(this);
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
+        }
+        if (requestedClientBaseBuilder_ == null) {
+          result.requestedClientBase_ = requestedClientBase_;
+        } else {
+          result.requestedClientBase_ = requestedClientBaseBuilder_.build();
+        }
+        if (requestedFileBaseBuilder_ == null) {
+          result.requestedFileBase_ = requestedFileBase_;
+        } else {
+          result.requestedFileBase_ = requestedFileBaseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientRequests.PrivateFileUploadRequest) {
+          return mergeFrom((protobuf.ClientRequests.PrivateFileUploadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientRequests.PrivateFileUploadRequest other) {
+        if (other == protobuf.ClientRequests.PrivateFileUploadRequest.getDefaultInstance()) return this;
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
+        }
+        if (other.hasRequestedClientBase()) {
+          mergeRequestedClientBase(other.getRequestedClientBase());
+        }
+        if (other.hasRequestedFileBase()) {
+          mergeRequestedFileBase(other.getRequestedFileBase());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientRequests.PrivateFileUploadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientRequests.PrivateFileUploadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
+       */
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
+       */
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestBase_ = value;
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
+        }
+        return requestBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientBase requestedClientBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> requestedClientBaseBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return Whether the requestedClientBase field is set.
+       */
+      public boolean hasRequestedClientBase() {
+        return requestedClientBaseBuilder_ != null || requestedClientBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       * @return The requestedClientBase.
+       */
+      public protobuf.ClientIdentities.ClientBase getRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          return requestedClientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+        } else {
+          return requestedClientBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder setRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedClientBase_ = value;
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder setRequestedClientBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder mergeRequestedClientBase(protobuf.ClientIdentities.ClientBase value) {
+        if (requestedClientBaseBuilder_ == null) {
+          if (requestedClientBase_ != null) {
+            requestedClientBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(requestedClientBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedClientBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedClientBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public Builder clearRequestedClientBase() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBase_ = null;
+          onChanged();
+        } else {
+          requestedClientBase_ = null;
+          requestedClientBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBase.Builder getRequestedClientBaseBuilder() {
+        
+        onChanged();
+        return getRequestedClientBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getRequestedClientBaseOrBuilder() {
+        if (requestedClientBaseBuilder_ != null) {
+          return requestedClientBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedClientBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : requestedClientBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase requestedClientBase = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getRequestedClientBaseFieldBuilder() {
+        if (requestedClientBaseBuilder_ == null) {
+          requestedClientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getRequestedClientBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedClientBase_ = null;
+        }
+        return requestedClientBaseBuilder_;
+      }
+
+      private protobuf.ClientRequests.FileUploadBase requestedFileBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder> requestedFileBaseBuilder_;
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       * @return Whether the requestedFileBase field is set.
+       */
+      public boolean hasRequestedFileBase() {
+        return requestedFileBaseBuilder_ != null || requestedFileBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       * @return The requestedFileBase.
+       */
+      public protobuf.ClientRequests.FileUploadBase getRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          return requestedFileBase_ == null ? protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+        } else {
+          return requestedFileBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(protobuf.ClientRequests.FileUploadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedFileBase_ = value;
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder setRequestedFileBase(
+          protobuf.ClientRequests.FileUploadBase.Builder builderForValue) {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder mergeRequestedFileBase(protobuf.ClientRequests.FileUploadBase value) {
+        if (requestedFileBaseBuilder_ == null) {
+          if (requestedFileBase_ != null) {
+            requestedFileBase_ =
+              protobuf.ClientRequests.FileUploadBase.newBuilder(requestedFileBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestedFileBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestedFileBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public Builder clearRequestedFileBase() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBase_ = null;
+          onChanged();
+        } else {
+          requestedFileBase_ = null;
+          requestedFileBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileUploadBase.Builder getRequestedFileBaseBuilder() {
+        
+        onChanged();
+        return getRequestedFileBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      public protobuf.ClientRequests.FileUploadBaseOrBuilder getRequestedFileBaseOrBuilder() {
+        if (requestedFileBaseBuilder_ != null) {
+          return requestedFileBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedFileBase_ == null ?
+              protobuf.ClientRequests.FileUploadBase.getDefaultInstance() : requestedFileBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.FileUploadBase requestedFileBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder> 
+          getRequestedFileBaseFieldBuilder() {
+        if (requestedFileBaseBuilder_ == null) {
+          requestedFileBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.FileUploadBase, protobuf.ClientRequests.FileUploadBase.Builder, protobuf.ClientRequests.FileUploadBaseOrBuilder>(
+                  getRequestedFileBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestedFileBase_ = null;
+        }
+        return requestedFileBaseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.PrivateFileUploadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.PrivateFileUploadRequest)
+    private static final protobuf.ClientRequests.PrivateFileUploadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientRequests.PrivateFileUploadRequest();
+    }
+
+    public static protobuf.ClientRequests.PrivateFileUploadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PrivateFileUploadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateFileUploadRequest>() {
+      @java.lang.Override
+      public PrivateFileUploadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PrivateFileUploadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PrivateFileUploadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PrivateFileUploadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientRequests.PrivateFileUploadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ClientLoginRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientLoginRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestedUsername();
+    boolean hasRequestBase();
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    java.lang.String getRequestedUsername();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getRequestedUsernameBytes();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return Whether the requestedDevice field is set.
      */
-    boolean hasRequestedPassword();
+    boolean hasRequestedDevice();
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return The requestedDevice.
      */
-    java.lang.String getRequestedPassword();
+    protobuf.ClientIdentities.ClientDevice getRequestedDevice();
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      */
-    com.google.protobuf.ByteString
-        getRequestedPasswordBytes();
+    protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ClientLoginRequest}
@@ -7281,8 +12453,6 @@ public final class ClientRequests {
       super(builder);
     }
     private ClientLoginRequest() {
-      requestedUsername_ = "";
-      requestedPassword_ = "";
     }
 
     @java.lang.Override
@@ -7305,7 +12475,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7317,15 +12486,29 @@ public final class ClientRequests {
               done = true;
               break;
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              requestedUsername_ = bs;
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestedPassword_ = bs;
+              protobuf.ClientIdentities.ClientDevice.Builder subBuilder = null;
+              if (requestedDevice_ != null) {
+                subBuilder = requestedDevice_.toBuilder();
+              }
+              requestedDevice_ = input.readMessage(protobuf.ClientIdentities.ClientDevice.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedDevice_);
+                requestedDevice_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -7360,95 +12543,50 @@ public final class ClientRequests {
               protobuf.ClientRequests.ClientLoginRequest.class, protobuf.ClientRequests.ClientLoginRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTEDUSERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object requestedUsername_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestedUsername() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public java.lang.String getRequestedUsername() {
-      java.lang.Object ref = requestedUsername_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedUsername_ = s;
-        }
-        return s;
-      }
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getRequestedUsernameBytes() {
-      java.lang.Object ref = requestedUsername_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedUsername_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDPASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestedPassword_;
+    public static final int REQUESTEDDEVICE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientDevice requestedDevice_;
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return Whether the requestedDevice field is set.
      */
-    public boolean hasRequestedPassword() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasRequestedDevice() {
+      return requestedDevice_ != null;
     }
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return The requestedDevice.
      */
-    public java.lang.String getRequestedPassword() {
-      java.lang.Object ref = requestedPassword_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedPassword_ = s;
-        }
-        return s;
-      }
+    public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
+      return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
     }
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getRequestedPasswordBytes() {
-      java.lang.Object ref = requestedPassword_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedPassword_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
+      return getRequestedDevice();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7458,14 +12596,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestedUsername()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedPassword()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7473,11 +12603,11 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestedUsername_);
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestedPassword_);
+      if (requestedDevice_ != null) {
+        output.writeMessage(2, getRequestedDevice());
       }
       unknownFields.writeTo(output);
     }
@@ -7488,11 +12618,13 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestedUsername_);
+      if (requestBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestedPassword_);
+      if (requestedDevice_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedDevice());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7509,15 +12641,15 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ClientLoginRequest other = (protobuf.ClientRequests.ClientLoginRequest) obj;
 
-      if (hasRequestedUsername() != other.hasRequestedUsername()) return false;
-      if (hasRequestedUsername()) {
-        if (!getRequestedUsername()
-            .equals(other.getRequestedUsername())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
-      if (hasRequestedPassword() != other.hasRequestedPassword()) return false;
-      if (hasRequestedPassword()) {
-        if (!getRequestedPassword()
-            .equals(other.getRequestedPassword())) return false;
+      if (hasRequestedDevice() != other.hasRequestedDevice()) return false;
+      if (hasRequestedDevice()) {
+        if (!getRequestedDevice()
+            .equals(other.getRequestedDevice())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7530,13 +12662,13 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestedUsername()) {
-        hash = (37 * hash) + REQUESTEDUSERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedUsername().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
-      if (hasRequestedPassword()) {
-        hash = (37 * hash) + REQUESTEDPASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedPassword().hashCode();
+      if (hasRequestedDevice()) {
+        hash = (37 * hash) + REQUESTEDDEVICE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedDevice().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -7671,10 +12803,18 @@ public final class ClientRequests {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        requestedUsername_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedPassword_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = null;
+        } else {
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
+        }
         return this;
       }
 
@@ -7701,17 +12841,16 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ClientLoginRequest buildPartial() {
         protobuf.ClientRequests.ClientLoginRequest result = new protobuf.ClientRequests.ClientLoginRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        result.requestedUsername_ = requestedUsername_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
+        if (requestedDeviceBuilder_ == null) {
+          result.requestedDevice_ = requestedDevice_;
+        } else {
+          result.requestedDevice_ = requestedDeviceBuilder_.build();
         }
-        result.requestedPassword_ = requestedPassword_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -7760,15 +12899,11 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ClientLoginRequest other) {
         if (other == protobuf.ClientRequests.ClientLoginRequest.getDefaultInstance()) return this;
-        if (other.hasRequestedUsername()) {
-          bitField0_ |= 0x00000001;
-          requestedUsername_ = other.requestedUsername_;
-          onChanged();
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
-        if (other.hasRequestedPassword()) {
-          bitField0_ |= 0x00000002;
-          requestedPassword_ = other.requestedPassword_;
-          onChanged();
+        if (other.hasRequestedDevice()) {
+          mergeRequestedDevice(other.getRequestedDevice());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7777,12 +12912,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestedUsername()) {
-          return false;
-        }
-        if (!hasRequestedPassword()) {
-          return false;
-        }
         return true;
       }
 
@@ -7804,174 +12933,243 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object requestedUsername_ = "";
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return Whether the requestedUsername field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestedUsername() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The requestedUsername.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public java.lang.String getRequestedUsername() {
-        java.lang.Object ref = requestedUsername_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedUsername_ = s;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
-          return s;
+          requestBase_ = value;
+          onChanged();
         } else {
-          return (java.lang.String) ref;
+          requestBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
+          }
+          onChanged();
+        } else {
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The bytes for requestedUsername.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getRequestedUsernameBytes() {
-        java.lang.Object ref = requestedUsername_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedUsername_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
         }
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The requestedUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedUsername() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedUsername_ = getDefaultInstance().getRequestedUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The bytes for requestedUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
-        onChanged();
-        return this;
+        return requestBaseBuilder_;
       }
 
-      private java.lang.Object requestedPassword_ = "";
+      private protobuf.ClientIdentities.ClientDevice requestedDevice_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> requestedDeviceBuilder_;
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return Whether the requestedPassword field is set.
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       * @return Whether the requestedDevice field is set.
        */
-      public boolean hasRequestedPassword() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRequestedDevice() {
+        return requestedDeviceBuilder_ != null || requestedDevice_ != null;
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The requestedPassword.
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       * @return The requestedDevice.
        */
-      public java.lang.String getRequestedPassword() {
-        java.lang.Object ref = requestedPassword_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedPassword_ = s;
+      public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
+        if (requestedDeviceBuilder_ == null) {
+          return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
+        } else {
+          return requestedDeviceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder setRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (requestedDeviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
-          return s;
+          requestedDevice_ = value;
+          onChanged();
         } else {
-          return (java.lang.String) ref;
+          requestedDeviceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder setRequestedDevice(
+          protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedDeviceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder mergeRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (requestedDeviceBuilder_ == null) {
+          if (requestedDevice_ != null) {
+            requestedDevice_ =
+              protobuf.ClientIdentities.ClientDevice.newBuilder(requestedDevice_).mergeFrom(value).buildPartial();
+          } else {
+            requestedDevice_ = value;
+          }
+          onChanged();
+        } else {
+          requestedDeviceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder clearRequestedDevice() {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = null;
+          onChanged();
+        } else {
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder getRequestedDeviceBuilder() {
+        
+        onChanged();
+        return getRequestedDeviceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
+        if (requestedDeviceBuilder_ != null) {
+          return requestedDeviceBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedDevice_ == null ?
+              protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
         }
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The bytes for requestedPassword.
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getRequestedPasswordBytes() {
-        java.lang.Object ref = requestedPassword_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedPassword_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+          getRequestedDeviceFieldBuilder() {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDeviceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder>(
+                  getRequestedDevice(),
+                  getParentForChildren(),
+                  isClean());
+          requestedDevice_ = null;
         }
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The requestedPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedPassword_ = getDefaultInstance().getRequestedPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The bytes for requestedPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
-        onChanged();
-        return this;
+        return requestedDeviceBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7999,7 +13197,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientLoginRequest>
+    private static final com.google.protobuf.Parser<ClientLoginRequest>
         PARSER = new com.google.protobuf.AbstractParser<ClientLoginRequest>() {
       @java.lang.Override
       public ClientLoginRequest parsePartialFrom(
@@ -8031,51 +13229,32 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    boolean hasRequestedUsername();
+    boolean hasRequestBase();
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    java.lang.String getRequestedUsername();
+    protobuf.ClientRequests.ClientRequestBase getRequestBase();
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getRequestedUsernameBytes();
+    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder();
 
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
-     */
-    boolean hasRequestedPassword();
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
-     */
-    java.lang.String getRequestedPassword();
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
-     */
-    com.google.protobuf.ByteString
-        getRequestedPasswordBytes();
-
-    /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      * @return Whether the requestedDevice field is set.
      */
     boolean hasRequestedDevice();
     /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      * @return The requestedDevice.
      */
     protobuf.ClientIdentities.ClientDevice getRequestedDevice();
     /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      */
     protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder();
   }
@@ -8092,8 +13271,6 @@ public final class ClientRequests {
       super(builder);
     }
     private ClientLogoutRequest() {
-      requestedUsername_ = "";
-      requestedPassword_ = "";
     }
 
     @java.lang.Override
@@ -8116,7 +13293,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8128,28 +13304,29 @@ public final class ClientRequests {
               done = true;
               break;
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              requestedUsername_ = bs;
+              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
+              if (requestBase_ != null) {
+                subBuilder = requestBase_.toBuilder();
+              }
+              requestBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestBase_);
+                requestBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestedPassword_ = bs;
-              break;
-            }
-            case 26: {
               protobuf.ClientIdentities.ClientDevice.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) != 0)) {
+              if (requestedDevice_ != null) {
                 subBuilder = requestedDevice_.toBuilder();
               }
-              requestedDevice_ = input.readMessage(protobuf.ClientIdentities.ClientDevice.PARSER, extensionRegistry);
+              requestedDevice_ = input.readMessage(protobuf.ClientIdentities.ClientDevice.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(requestedDevice_);
                 requestedDevice_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+
               break;
             }
             default: {
@@ -8184,118 +13361,50 @@ public final class ClientRequests {
               protobuf.ClientRequests.ClientLogoutRequest.class, protobuf.ClientRequests.ClientLogoutRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTEDUSERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object requestedUsername_;
+    public static final int REQUESTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientRequests.ClientRequestBase requestBase_;
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return Whether the requestBase field is set.
      */
-    public boolean hasRequestedUsername() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasRequestBase() {
+      return requestBase_ != null;
     }
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+     * @return The requestBase.
      */
-    public java.lang.String getRequestedUsername() {
-      java.lang.Object ref = requestedUsername_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedUsername_ = s;
-        }
-        return s;
-      }
+    public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+      return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
     }
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getRequestedUsernameBytes() {
-      java.lang.Object ref = requestedUsername_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedUsername_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+      return getRequestBase();
     }
 
-    public static final int REQUESTEDPASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestedPassword_;
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
-     */
-    public boolean hasRequestedPassword() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
-     */
-    public java.lang.String getRequestedPassword() {
-      java.lang.Object ref = requestedPassword_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedPassword_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
-     */
-    public com.google.protobuf.ByteString
-        getRequestedPasswordBytes() {
-      java.lang.Object ref = requestedPassword_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedPassword_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int REQUESTEDDEVICE_FIELD_NUMBER = 3;
+    public static final int REQUESTEDDEVICE_FIELD_NUMBER = 2;
     private protobuf.ClientIdentities.ClientDevice requestedDevice_;
     /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      * @return Whether the requestedDevice field is set.
      */
     public boolean hasRequestedDevice() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return requestedDevice_ != null;
     }
     /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      * @return The requestedDevice.
      */
     public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
       return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
     }
     /**
-     * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
      */
     public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
-      return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
+      return getRequestedDevice();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8305,14 +13414,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestedUsername()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedPassword()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -8320,14 +13421,11 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestedUsername_);
+      if (requestBase_ != null) {
+        output.writeMessage(1, getRequestBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestedPassword_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeMessage(3, getRequestedDevice());
+      if (requestedDevice_ != null) {
+        output.writeMessage(2, getRequestedDevice());
       }
       unknownFields.writeTo(output);
     }
@@ -8338,15 +13436,13 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestedUsername_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestedPassword_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (requestBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getRequestedDevice());
+          .computeMessageSize(1, getRequestBase());
+      }
+      if (requestedDevice_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedDevice());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8363,15 +13459,10 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ClientLogoutRequest other = (protobuf.ClientRequests.ClientLogoutRequest) obj;
 
-      if (hasRequestedUsername() != other.hasRequestedUsername()) return false;
-      if (hasRequestedUsername()) {
-        if (!getRequestedUsername()
-            .equals(other.getRequestedUsername())) return false;
-      }
-      if (hasRequestedPassword() != other.hasRequestedPassword()) return false;
-      if (hasRequestedPassword()) {
-        if (!getRequestedPassword()
-            .equals(other.getRequestedPassword())) return false;
+      if (hasRequestBase() != other.hasRequestBase()) return false;
+      if (hasRequestBase()) {
+        if (!getRequestBase()
+            .equals(other.getRequestBase())) return false;
       }
       if (hasRequestedDevice() != other.hasRequestedDevice()) return false;
       if (hasRequestedDevice()) {
@@ -8389,13 +13480,9 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestedUsername()) {
-        hash = (37 * hash) + REQUESTEDUSERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedUsername().hashCode();
-      }
-      if (hasRequestedPassword()) {
-        hash = (37 * hash) + REQUESTEDPASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedPassword().hashCode();
+      if (hasRequestBase()) {
+        hash = (37 * hash) + REQUESTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestBase().hashCode();
       }
       if (hasRequestedDevice()) {
         hash = (37 * hash) + REQUESTEDDEVICE_FIELD_NUMBER;
@@ -8529,22 +13616,23 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestedDeviceFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        requestedUsername_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedPassword_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
         if (requestedDeviceBuilder_ == null) {
           requestedDevice_ = null;
         } else {
-          requestedDeviceBuilder_.clear();
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -8571,25 +13659,16 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ClientLogoutRequest buildPartial() {
         protobuf.ClientRequests.ClientLogoutRequest result = new protobuf.ClientRequests.ClientLogoutRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
+        if (requestBaseBuilder_ == null) {
+          result.requestBase_ = requestBase_;
+        } else {
+          result.requestBase_ = requestBaseBuilder_.build();
         }
-        result.requestedUsername_ = requestedUsername_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
+        if (requestedDeviceBuilder_ == null) {
+          result.requestedDevice_ = requestedDevice_;
+        } else {
+          result.requestedDevice_ = requestedDeviceBuilder_.build();
         }
-        result.requestedPassword_ = requestedPassword_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          if (requestedDeviceBuilder_ == null) {
-            result.requestedDevice_ = requestedDevice_;
-          } else {
-            result.requestedDevice_ = requestedDeviceBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000004;
-        }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8638,15 +13717,8 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ClientLogoutRequest other) {
         if (other == protobuf.ClientRequests.ClientLogoutRequest.getDefaultInstance()) return this;
-        if (other.hasRequestedUsername()) {
-          bitField0_ |= 0x00000001;
-          requestedUsername_ = other.requestedUsername_;
-          onChanged();
-        }
-        if (other.hasRequestedPassword()) {
-          bitField0_ |= 0x00000002;
-          requestedPassword_ = other.requestedPassword_;
-          onChanged();
+        if (other.hasRequestBase()) {
+          mergeRequestBase(other.getRequestBase());
         }
         if (other.hasRequestedDevice()) {
           mergeRequestedDevice(other.getRequestedDevice());
@@ -8658,12 +13730,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestedUsername()) {
-          return false;
-        }
-        if (!hasRequestedPassword()) {
-          return false;
-        }
         return true;
       }
 
@@ -8685,188 +13751,138 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object requestedUsername_ = "";
+      private protobuf.ClientRequests.ClientRequestBase requestBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestBaseBuilder_;
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return Whether the requestedUsername field is set.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return Whether the requestBase field is set.
        */
-      public boolean hasRequestedUsername() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasRequestBase() {
+        return requestBaseBuilder_ != null || requestBase_ != null;
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The requestedUsername.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       * @return The requestBase.
        */
-      public java.lang.String getRequestedUsername() {
-        java.lang.Object ref = requestedUsername_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedUsername_ = s;
+      public protobuf.ClientRequests.ClientRequestBase getRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          return requestBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
+        } else {
+          return requestBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder setRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
-          return s;
+          requestBase_ = value;
+          onChanged();
         } else {
-          return (java.lang.String) ref;
+          requestBaseBuilder_.setMessage(value);
         }
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The bytes for requestedUsername.
-       */
-      public com.google.protobuf.ByteString
-          getRequestedUsernameBytes() {
-        java.lang.Object ref = requestedUsername_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedUsername_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The requestedUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedUsername() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedUsername_ = getDefaultInstance().getRequestedUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The bytes for requestedUsername to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
-        onChanged();
-        return this;
-      }
 
-      private java.lang.Object requestedPassword_ = "";
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return Whether the requestedPassword field is set.
-       */
-      public boolean hasRequestedPassword() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return this;
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The requestedPassword.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public java.lang.String getRequestedPassword() {
-        java.lang.Object ref = requestedPassword_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedPassword_ = s;
+      public Builder setRequestBase(
+          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder mergeRequestBase(protobuf.ClientRequests.ClientRequestBase value) {
+        if (requestBaseBuilder_ == null) {
+          if (requestBase_ != null) {
+            requestBase_ =
+              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestBase_).mergeFrom(value).buildPartial();
+          } else {
+            requestBase_ = value;
           }
-          return s;
+          onChanged();
         } else {
-          return (java.lang.String) ref;
+          requestBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public Builder clearRequestBase() {
+        if (requestBaseBuilder_ == null) {
+          requestBase_ = null;
+          onChanged();
+        } else {
+          requestBase_ = null;
+          requestBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestBaseBuilder() {
+        
+        onChanged();
+        return getRequestBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
+       */
+      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestBaseOrBuilder() {
+        if (requestBaseBuilder_ != null) {
+          return requestBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return requestBase_ == null ?
+              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestBase_;
         }
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The bytes for requestedPassword.
+       * <code>.protobuf.clientrequests.ClientRequestBase requestBase = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getRequestedPasswordBytes() {
-        java.lang.Object ref = requestedPassword_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedPassword_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
+          getRequestBaseFieldBuilder() {
+        if (requestBaseBuilder_ == null) {
+          requestBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
+                  getRequestBase(),
+                  getParentForChildren(),
+                  isClean());
+          requestBase_ = null;
         }
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The requestedPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedPassword_ = getDefaultInstance().getRequestedPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The bytes for requestedPassword to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
-        onChanged();
-        return this;
+        return requestBaseBuilder_;
       }
 
       private protobuf.ClientIdentities.ClientDevice requestedDevice_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> requestedDeviceBuilder_;
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        * @return Whether the requestedDevice field is set.
        */
       public boolean hasRequestedDevice() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return requestedDeviceBuilder_ != null || requestedDevice_ != null;
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        * @return The requestedDevice.
        */
       public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
@@ -8877,7 +13893,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public Builder setRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
         if (requestedDeviceBuilder_ == null) {
@@ -8889,11 +13905,11 @@ public final class ClientRequests {
         } else {
           requestedDeviceBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public Builder setRequestedDevice(
           protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
@@ -8903,17 +13919,15 @@ public final class ClientRequests {
         } else {
           requestedDeviceBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public Builder mergeRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
         if (requestedDeviceBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0) &&
-              requestedDevice_ != null &&
-              requestedDevice_ != protobuf.ClientIdentities.ClientDevice.getDefaultInstance()) {
+          if (requestedDevice_ != null) {
             requestedDevice_ =
               protobuf.ClientIdentities.ClientDevice.newBuilder(requestedDevice_).mergeFrom(value).buildPartial();
           } else {
@@ -8923,32 +13937,33 @@ public final class ClientRequests {
         } else {
           requestedDeviceBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+
         return this;
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public Builder clearRequestedDevice() {
         if (requestedDeviceBuilder_ == null) {
           requestedDevice_ = null;
           onChanged();
         } else {
-          requestedDeviceBuilder_.clear();
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         return this;
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public protobuf.ClientIdentities.ClientDevice.Builder getRequestedDeviceBuilder() {
-        bitField0_ |= 0x00000004;
+        
         onChanged();
         return getRequestedDeviceFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
         if (requestedDeviceBuilder_ != null) {
@@ -8959,7 +13974,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>optional .protobuf.clientidentities.ClientDevice requestedDevice = 3;</code>
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> 
@@ -9000,7 +14015,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientLogoutRequest>
+    private static final com.google.protobuf.Parser<ClientLogoutRequest>
         PARSER = new com.google.protobuf.AbstractParser<ClientLogoutRequest>() {
       @java.lang.Override
       public ClientLogoutRequest parsePartialFrom(
@@ -9032,89 +14047,79 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>string username = 1;</code>
+     * @return The username.
      */
-    boolean hasRequestedUsername();
+    java.lang.String getUsername();
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
-     */
-    java.lang.String getRequestedUsername();
-    /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>string username = 1;</code>
+     * @return The bytes for username.
      */
     com.google.protobuf.ByteString
-        getRequestedUsernameBytes();
+        getUsernameBytes();
 
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
+     * <code>string password = 2;</code>
+     * @return The password.
      */
-    boolean hasRequestedPassword();
+    java.lang.String getPassword();
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
-     */
-    java.lang.String getRequestedPassword();
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
      */
     com.google.protobuf.ByteString
-        getRequestedPasswordBytes();
+        getPasswordBytes();
 
     /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return Whether the requestedPasswordRepeat field is set.
+     * <code>string passwordRepeat = 3;</code>
+     * @return The passwordRepeat.
      */
-    boolean hasRequestedPasswordRepeat();
+    java.lang.String getPasswordRepeat();
     /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return The requestedPasswordRepeat.
-     */
-    java.lang.String getRequestedPasswordRepeat();
-    /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return The bytes for requestedPasswordRepeat.
+     * <code>string passwordRepeat = 3;</code>
+     * @return The bytes for passwordRepeat.
      */
     com.google.protobuf.ByteString
-        getRequestedPasswordRepeatBytes();
+        getPasswordRepeatBytes();
 
     /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return Whether the requestedEmail field is set.
+     * <code>string email = 4;</code>
+     * @return The email.
      */
-    boolean hasRequestedEmail();
+    java.lang.String getEmail();
     /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return The requestedEmail.
-     */
-    java.lang.String getRequestedEmail();
-    /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return The bytes for requestedEmail.
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
     com.google.protobuf.ByteString
-        getRequestedEmailBytes();
+        getEmailBytes();
 
     /**
-     * <code>optional string invitationKey = 5;</code>
-     * @return Whether the invitationKey field is set.
-     */
-    boolean hasInvitationKey();
-    /**
-     * <code>optional string invitationKey = 5;</code>
+     * <code>string invitationKey = 5;</code>
      * @return The invitationKey.
      */
     java.lang.String getInvitationKey();
     /**
-     * <code>optional string invitationKey = 5;</code>
+     * <code>string invitationKey = 5;</code>
      * @return The bytes for invitationKey.
      */
     com.google.protobuf.ByteString
         getInvitationKeyBytes();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     * @return Whether the device field is set.
+     */
+    boolean hasDevice();
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     * @return The device.
+     */
+    protobuf.ClientIdentities.ClientDevice getDevice();
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     */
+    protobuf.ClientIdentities.ClientDeviceOrBuilder getDeviceOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ClientRegistrationRequest}
@@ -9129,10 +14134,10 @@ public final class ClientRequests {
       super(builder);
     }
     private ClientRegistrationRequest() {
-      requestedUsername_ = "";
-      requestedPassword_ = "";
-      requestedPasswordRepeat_ = "";
-      requestedEmail_ = "";
+      username_ = "";
+      password_ = "";
+      passwordRepeat_ = "";
+      email_ = "";
       invitationKey_ = "";
     }
 
@@ -9156,7 +14161,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -9168,33 +14172,46 @@ public final class ClientRequests {
               done = true;
               break;
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              requestedUsername_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              username_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestedPassword_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              password_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              requestedPasswordRepeat_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              passwordRepeat_ = s;
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              requestedEmail_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              email_ = s;
               break;
             }
             case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000010;
-              invitationKey_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              invitationKey_ = s;
+              break;
+            }
+            case 50: {
+              protobuf.ClientIdentities.ClientDevice.Builder subBuilder = null;
+              if (device_ != null) {
+                subBuilder = device_.toBuilder();
+              }
+              device_ = input.readMessage(protobuf.ClientIdentities.ClientDevice.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(device_);
+                device_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -9229,181 +14246,144 @@ public final class ClientRequests {
               protobuf.ClientRequests.ClientRegistrationRequest.class, protobuf.ClientRequests.ClientRegistrationRequest.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int REQUESTEDUSERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object requestedUsername_;
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object username_;
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return Whether the requestedUsername field is set.
+     * <code>string username = 1;</code>
+     * @return The username.
      */
-    public boolean hasRequestedUsername() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The requestedUsername.
-     */
-    public java.lang.String getRequestedUsername() {
-      java.lang.Object ref = requestedUsername_;
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedUsername_ = s;
-        }
+        username_ = s;
         return s;
       }
     }
     /**
-     * <code>required string requestedUsername = 1;</code>
-     * @return The bytes for requestedUsername.
+     * <code>string username = 1;</code>
+     * @return The bytes for username.
      */
     public com.google.protobuf.ByteString
-        getRequestedUsernameBytes() {
-      java.lang.Object ref = requestedUsername_;
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestedUsername_ = b;
+        username_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int REQUESTEDPASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestedPassword_;
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object password_;
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return Whether the requestedPassword field is set.
+     * <code>string password = 2;</code>
+     * @return The password.
      */
-    public boolean hasRequestedPassword() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The requestedPassword.
-     */
-    public java.lang.String getRequestedPassword() {
-      java.lang.Object ref = requestedPassword_;
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedPassword_ = s;
-        }
+        password_ = s;
         return s;
       }
     }
     /**
-     * <code>required string requestedPassword = 2;</code>
-     * @return The bytes for requestedPassword.
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
      */
     public com.google.protobuf.ByteString
-        getRequestedPasswordBytes() {
-      java.lang.Object ref = requestedPassword_;
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestedPassword_ = b;
+        password_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int REQUESTEDPASSWORDREPEAT_FIELD_NUMBER = 3;
-    private volatile java.lang.Object requestedPasswordRepeat_;
+    public static final int PASSWORDREPEAT_FIELD_NUMBER = 3;
+    private volatile java.lang.Object passwordRepeat_;
     /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return Whether the requestedPasswordRepeat field is set.
+     * <code>string passwordRepeat = 3;</code>
+     * @return The passwordRepeat.
      */
-    public boolean hasRequestedPasswordRepeat() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return The requestedPasswordRepeat.
-     */
-    public java.lang.String getRequestedPasswordRepeat() {
-      java.lang.Object ref = requestedPasswordRepeat_;
+    public java.lang.String getPasswordRepeat() {
+      java.lang.Object ref = passwordRepeat_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedPasswordRepeat_ = s;
-        }
+        passwordRepeat_ = s;
         return s;
       }
     }
     /**
-     * <code>required string requestedPasswordRepeat = 3;</code>
-     * @return The bytes for requestedPasswordRepeat.
+     * <code>string passwordRepeat = 3;</code>
+     * @return The bytes for passwordRepeat.
      */
     public com.google.protobuf.ByteString
-        getRequestedPasswordRepeatBytes() {
-      java.lang.Object ref = requestedPasswordRepeat_;
+        getPasswordRepeatBytes() {
+      java.lang.Object ref = passwordRepeat_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestedPasswordRepeat_ = b;
+        passwordRepeat_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int REQUESTEDEMAIL_FIELD_NUMBER = 4;
-    private volatile java.lang.Object requestedEmail_;
+    public static final int EMAIL_FIELD_NUMBER = 4;
+    private volatile java.lang.Object email_;
     /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return Whether the requestedEmail field is set.
+     * <code>string email = 4;</code>
+     * @return The email.
      */
-    public boolean hasRequestedEmail() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return The requestedEmail.
-     */
-    public java.lang.String getRequestedEmail() {
-      java.lang.Object ref = requestedEmail_;
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedEmail_ = s;
-        }
+        email_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string requestedEmail = 4;</code>
-     * @return The bytes for requestedEmail.
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
     public com.google.protobuf.ByteString
-        getRequestedEmailBytes() {
-      java.lang.Object ref = requestedEmail_;
+        getEmailBytes() {
+      java.lang.Object ref = email_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestedEmail_ = b;
+        email_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -9413,14 +14393,7 @@ public final class ClientRequests {
     public static final int INVITATIONKEY_FIELD_NUMBER = 5;
     private volatile java.lang.Object invitationKey_;
     /**
-     * <code>optional string invitationKey = 5;</code>
-     * @return Whether the invitationKey field is set.
-     */
-    public boolean hasInvitationKey() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional string invitationKey = 5;</code>
+     * <code>string invitationKey = 5;</code>
      * @return The invitationKey.
      */
     public java.lang.String getInvitationKey() {
@@ -9431,14 +14404,12 @@ public final class ClientRequests {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          invitationKey_ = s;
-        }
+        invitationKey_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string invitationKey = 5;</code>
+     * <code>string invitationKey = 5;</code>
      * @return The bytes for invitationKey.
      */
     public com.google.protobuf.ByteString
@@ -9455,6 +14426,29 @@ public final class ClientRequests {
       }
     }
 
+    public static final int DEVICE_FIELD_NUMBER = 6;
+    private protobuf.ClientIdentities.ClientDevice device_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     * @return Whether the device field is set.
+     */
+    public boolean hasDevice() {
+      return device_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     * @return The device.
+     */
+    public protobuf.ClientIdentities.ClientDevice getDevice() {
+      return device_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : device_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+     */
+    public protobuf.ClientIdentities.ClientDeviceOrBuilder getDeviceOrBuilder() {
+      return getDevice();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9462,18 +14456,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestedUsername()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedPassword()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedPasswordRepeat()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9481,20 +14463,23 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestedUsername_);
+      if (!getUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestedPassword_);
+      if (!getPasswordBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, requestedPasswordRepeat_);
+      if (!getPasswordRepeatBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, passwordRepeat_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, requestedEmail_);
+      if (!getEmailBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, email_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (!getInvitationKeyBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, invitationKey_);
+      }
+      if (device_ != null) {
+        output.writeMessage(6, getDevice());
       }
       unknownFields.writeTo(output);
     }
@@ -9505,20 +14490,24 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestedUsername_);
+      if (!getUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestedPassword_);
+      if (!getPasswordBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, requestedPasswordRepeat_);
+      if (!getPasswordRepeatBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, passwordRepeat_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, requestedEmail_);
+      if (!getEmailBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, email_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (!getInvitationKeyBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, invitationKey_);
+      }
+      if (device_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getDevice());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9535,30 +14524,20 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.ClientRegistrationRequest other = (protobuf.ClientRequests.ClientRegistrationRequest) obj;
 
-      if (hasRequestedUsername() != other.hasRequestedUsername()) return false;
-      if (hasRequestedUsername()) {
-        if (!getRequestedUsername()
-            .equals(other.getRequestedUsername())) return false;
-      }
-      if (hasRequestedPassword() != other.hasRequestedPassword()) return false;
-      if (hasRequestedPassword()) {
-        if (!getRequestedPassword()
-            .equals(other.getRequestedPassword())) return false;
-      }
-      if (hasRequestedPasswordRepeat() != other.hasRequestedPasswordRepeat()) return false;
-      if (hasRequestedPasswordRepeat()) {
-        if (!getRequestedPasswordRepeat()
-            .equals(other.getRequestedPasswordRepeat())) return false;
-      }
-      if (hasRequestedEmail() != other.hasRequestedEmail()) return false;
-      if (hasRequestedEmail()) {
-        if (!getRequestedEmail()
-            .equals(other.getRequestedEmail())) return false;
-      }
-      if (hasInvitationKey() != other.hasInvitationKey()) return false;
-      if (hasInvitationKey()) {
-        if (!getInvitationKey()
-            .equals(other.getInvitationKey())) return false;
+      if (!getUsername()
+          .equals(other.getUsername())) return false;
+      if (!getPassword()
+          .equals(other.getPassword())) return false;
+      if (!getPasswordRepeat()
+          .equals(other.getPasswordRepeat())) return false;
+      if (!getEmail()
+          .equals(other.getEmail())) return false;
+      if (!getInvitationKey()
+          .equals(other.getInvitationKey())) return false;
+      if (hasDevice() != other.hasDevice()) return false;
+      if (hasDevice()) {
+        if (!getDevice()
+            .equals(other.getDevice())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9571,25 +14550,19 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestedUsername()) {
-        hash = (37 * hash) + REQUESTEDUSERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedUsername().hashCode();
-      }
-      if (hasRequestedPassword()) {
-        hash = (37 * hash) + REQUESTEDPASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedPassword().hashCode();
-      }
-      if (hasRequestedPasswordRepeat()) {
-        hash = (37 * hash) + REQUESTEDPASSWORDREPEAT_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedPasswordRepeat().hashCode();
-      }
-      if (hasRequestedEmail()) {
-        hash = (37 * hash) + REQUESTEDEMAIL_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedEmail().hashCode();
-      }
-      if (hasInvitationKey()) {
-        hash = (37 * hash) + INVITATIONKEY_FIELD_NUMBER;
-        hash = (53 * hash) + getInvitationKey().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUsername().hashCode();
+      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getPassword().hashCode();
+      hash = (37 * hash) + PASSWORDREPEAT_FIELD_NUMBER;
+      hash = (53 * hash) + getPasswordRepeat().hashCode();
+      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + INVITATIONKEY_FIELD_NUMBER;
+      hash = (53 * hash) + getInvitationKey().hashCode();
+      if (hasDevice()) {
+        hash = (37 * hash) + DEVICE_FIELD_NUMBER;
+        hash = (53 * hash) + getDevice().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -9724,16 +14697,22 @@ public final class ClientRequests {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        requestedUsername_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedPassword_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedPasswordRepeat_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestedEmail_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+        username_ = "";
+
+        password_ = "";
+
+        passwordRepeat_ = "";
+
+        email_ = "";
+
         invitationKey_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
+
+        if (deviceBuilder_ == null) {
+          device_ = null;
+        } else {
+          device_ = null;
+          deviceBuilder_ = null;
+        }
         return this;
       }
 
@@ -9760,29 +14739,16 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ClientRegistrationRequest buildPartial() {
         protobuf.ClientRequests.ClientRegistrationRequest result = new protobuf.ClientRequests.ClientRegistrationRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.requestedUsername_ = requestedUsername_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.requestedPassword_ = requestedPassword_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.requestedPasswordRepeat_ = requestedPasswordRepeat_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.requestedEmail_ = requestedEmail_;
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          to_bitField0_ |= 0x00000010;
-        }
+        result.username_ = username_;
+        result.password_ = password_;
+        result.passwordRepeat_ = passwordRepeat_;
+        result.email_ = email_;
         result.invitationKey_ = invitationKey_;
-        result.bitField0_ = to_bitField0_;
+        if (deviceBuilder_ == null) {
+          result.device_ = device_;
+        } else {
+          result.device_ = deviceBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -9831,30 +14797,28 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.ClientRegistrationRequest other) {
         if (other == protobuf.ClientRequests.ClientRegistrationRequest.getDefaultInstance()) return this;
-        if (other.hasRequestedUsername()) {
-          bitField0_ |= 0x00000001;
-          requestedUsername_ = other.requestedUsername_;
+        if (!other.getUsername().isEmpty()) {
+          username_ = other.username_;
           onChanged();
         }
-        if (other.hasRequestedPassword()) {
-          bitField0_ |= 0x00000002;
-          requestedPassword_ = other.requestedPassword_;
+        if (!other.getPassword().isEmpty()) {
+          password_ = other.password_;
           onChanged();
         }
-        if (other.hasRequestedPasswordRepeat()) {
-          bitField0_ |= 0x00000004;
-          requestedPasswordRepeat_ = other.requestedPasswordRepeat_;
+        if (!other.getPasswordRepeat().isEmpty()) {
+          passwordRepeat_ = other.passwordRepeat_;
           onChanged();
         }
-        if (other.hasRequestedEmail()) {
-          bitField0_ |= 0x00000008;
-          requestedEmail_ = other.requestedEmail_;
+        if (!other.getEmail().isEmpty()) {
+          email_ = other.email_;
           onChanged();
         }
-        if (other.hasInvitationKey()) {
-          bitField0_ |= 0x00000010;
+        if (!other.getInvitationKey().isEmpty()) {
           invitationKey_ = other.invitationKey_;
           onChanged();
+        }
+        if (other.hasDevice()) {
+          mergeDevice(other.getDevice());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9863,15 +14827,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestedUsername()) {
-          return false;
-        }
-        if (!hasRequestedPassword()) {
-          return false;
-        }
-        if (!hasRequestedPasswordRepeat()) {
-          return false;
-        }
         return true;
       }
 
@@ -9893,354 +14848,314 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object requestedUsername_ = "";
+      private java.lang.Object username_ = "";
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return Whether the requestedUsername field is set.
+       * <code>string username = 1;</code>
+       * @return The username.
        */
-      public boolean hasRequestedUsername() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The requestedUsername.
-       */
-      public java.lang.String getRequestedUsername() {
-        java.lang.Object ref = requestedUsername_;
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedUsername_ = s;
-          }
+          username_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @return The bytes for requestedUsername.
+       * <code>string username = 1;</code>
+       * @return The bytes for username.
        */
       public com.google.protobuf.ByteString
-          getRequestedUsernameBytes() {
-        java.lang.Object ref = requestedUsername_;
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestedUsername_ = b;
+          username_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The requestedUsername to set.
+       * <code>string username = 1;</code>
+       * @param value The username to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedUsername(
+      public Builder setUsername(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
+  
+        username_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
+       * <code>string username = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestedUsername() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedUsername_ = getDefaultInstance().getRequestedUsername();
+      public Builder clearUsername() {
+        
+        username_ = getDefaultInstance().getUsername();
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedUsername = 1;</code>
-       * @param value The bytes for requestedUsername to set.
+       * <code>string username = 1;</code>
+       * @param value The bytes for username to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedUsernameBytes(
+      public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        requestedUsername_ = value;
+  checkByteStringIsUtf8(value);
+        
+        username_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object requestedPassword_ = "";
+      private java.lang.Object password_ = "";
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return Whether the requestedPassword field is set.
+       * <code>string password = 2;</code>
+       * @return The password.
        */
-      public boolean hasRequestedPassword() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The requestedPassword.
-       */
-      public java.lang.String getRequestedPassword() {
-        java.lang.Object ref = requestedPassword_;
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedPassword_ = s;
-          }
+          password_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @return The bytes for requestedPassword.
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
        */
       public com.google.protobuf.ByteString
-          getRequestedPasswordBytes() {
-        java.lang.Object ref = requestedPassword_;
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestedPassword_ = b;
+          password_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The requestedPassword to set.
+       * <code>string password = 2;</code>
+       * @param value The password to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedPassword(
+      public Builder setPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
+  
+        password_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
+       * <code>string password = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestedPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedPassword_ = getDefaultInstance().getRequestedPassword();
+      public Builder clearPassword() {
+        
+        password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedPassword = 2;</code>
-       * @param value The bytes for requestedPassword to set.
+       * <code>string password = 2;</code>
+       * @param value The bytes for password to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedPasswordBytes(
+      public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        requestedPassword_ = value;
+  checkByteStringIsUtf8(value);
+        
+        password_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object requestedPasswordRepeat_ = "";
+      private java.lang.Object passwordRepeat_ = "";
       /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
-       * @return Whether the requestedPasswordRepeat field is set.
+       * <code>string passwordRepeat = 3;</code>
+       * @return The passwordRepeat.
        */
-      public boolean hasRequestedPasswordRepeat() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
-       * @return The requestedPasswordRepeat.
-       */
-      public java.lang.String getRequestedPasswordRepeat() {
-        java.lang.Object ref = requestedPasswordRepeat_;
+      public java.lang.String getPasswordRepeat() {
+        java.lang.Object ref = passwordRepeat_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedPasswordRepeat_ = s;
-          }
+          passwordRepeat_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
-       * @return The bytes for requestedPasswordRepeat.
+       * <code>string passwordRepeat = 3;</code>
+       * @return The bytes for passwordRepeat.
        */
       public com.google.protobuf.ByteString
-          getRequestedPasswordRepeatBytes() {
-        java.lang.Object ref = requestedPasswordRepeat_;
+          getPasswordRepeatBytes() {
+        java.lang.Object ref = passwordRepeat_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestedPasswordRepeat_ = b;
+          passwordRepeat_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
-       * @param value The requestedPasswordRepeat to set.
+       * <code>string passwordRepeat = 3;</code>
+       * @param value The passwordRepeat to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedPasswordRepeat(
+      public Builder setPasswordRepeat(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        requestedPasswordRepeat_ = value;
+  
+        passwordRepeat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
+       * <code>string passwordRepeat = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestedPasswordRepeat() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        requestedPasswordRepeat_ = getDefaultInstance().getRequestedPasswordRepeat();
+      public Builder clearPasswordRepeat() {
+        
+        passwordRepeat_ = getDefaultInstance().getPasswordRepeat();
         onChanged();
         return this;
       }
       /**
-       * <code>required string requestedPasswordRepeat = 3;</code>
-       * @param value The bytes for requestedPasswordRepeat to set.
+       * <code>string passwordRepeat = 3;</code>
+       * @param value The bytes for passwordRepeat to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedPasswordRepeatBytes(
+      public Builder setPasswordRepeatBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        requestedPasswordRepeat_ = value;
+  checkByteStringIsUtf8(value);
+        
+        passwordRepeat_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object requestedEmail_ = "";
+      private java.lang.Object email_ = "";
       /**
-       * <code>optional string requestedEmail = 4;</code>
-       * @return Whether the requestedEmail field is set.
+       * <code>string email = 4;</code>
+       * @return The email.
        */
-      public boolean hasRequestedEmail() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional string requestedEmail = 4;</code>
-       * @return The requestedEmail.
-       */
-      public java.lang.String getRequestedEmail() {
-        java.lang.Object ref = requestedEmail_;
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedEmail_ = s;
-          }
+          email_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string requestedEmail = 4;</code>
-       * @return The bytes for requestedEmail.
+       * <code>string email = 4;</code>
+       * @return The bytes for email.
        */
       public com.google.protobuf.ByteString
-          getRequestedEmailBytes() {
-        java.lang.Object ref = requestedEmail_;
+          getEmailBytes() {
+        java.lang.Object ref = email_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestedEmail_ = b;
+          email_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string requestedEmail = 4;</code>
-       * @param value The requestedEmail to set.
+       * <code>string email = 4;</code>
+       * @param value The email to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedEmail(
+      public Builder setEmail(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
-        requestedEmail_ = value;
+  
+        email_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string requestedEmail = 4;</code>
+       * <code>string email = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestedEmail() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        requestedEmail_ = getDefaultInstance().getRequestedEmail();
+      public Builder clearEmail() {
+        
+        email_ = getDefaultInstance().getEmail();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string requestedEmail = 4;</code>
-       * @param value The bytes for requestedEmail to set.
+       * <code>string email = 4;</code>
+       * @param value The bytes for email to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestedEmailBytes(
+      public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
-        requestedEmail_ = value;
+  checkByteStringIsUtf8(value);
+        
+        email_ = value;
         onChanged();
         return this;
       }
 
       private java.lang.Object invitationKey_ = "";
       /**
-       * <code>optional string invitationKey = 5;</code>
-       * @return Whether the invitationKey field is set.
-       */
-      public boolean hasInvitationKey() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <code>optional string invitationKey = 5;</code>
+       * <code>string invitationKey = 5;</code>
        * @return The invitationKey.
        */
       public java.lang.String getInvitationKey() {
@@ -10249,16 +15164,14 @@ public final class ClientRequests {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            invitationKey_ = s;
-          }
+          invitationKey_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string invitationKey = 5;</code>
+       * <code>string invitationKey = 5;</code>
        * @return The bytes for invitationKey.
        */
       public com.google.protobuf.ByteString
@@ -10275,7 +15188,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>optional string invitationKey = 5;</code>
+       * <code>string invitationKey = 5;</code>
        * @param value The invitationKey to set.
        * @return This builder for chaining.
        */
@@ -10284,23 +15197,23 @@ public final class ClientRequests {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  
         invitationKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string invitationKey = 5;</code>
+       * <code>string invitationKey = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearInvitationKey() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        
         invitationKey_ = getDefaultInstance().getInvitationKey();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string invitationKey = 5;</code>
+       * <code>string invitationKey = 5;</code>
        * @param value The bytes for invitationKey to set.
        * @return This builder for chaining.
        */
@@ -10309,10 +15222,130 @@ public final class ClientRequests {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  checkByteStringIsUtf8(value);
+        
         invitationKey_ = value;
         onChanged();
         return this;
+      }
+
+      private protobuf.ClientIdentities.ClientDevice device_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> deviceBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       * @return Whether the device field is set.
+       */
+      public boolean hasDevice() {
+        return deviceBuilder_ != null || device_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       * @return The device.
+       */
+      public protobuf.ClientIdentities.ClientDevice getDevice() {
+        if (deviceBuilder_ == null) {
+          return device_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : device_;
+        } else {
+          return deviceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public Builder setDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (deviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          device_ = value;
+          onChanged();
+        } else {
+          deviceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public Builder setDevice(
+          protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (deviceBuilder_ == null) {
+          device_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public Builder mergeDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (deviceBuilder_ == null) {
+          if (device_ != null) {
+            device_ =
+              protobuf.ClientIdentities.ClientDevice.newBuilder(device_).mergeFrom(value).buildPartial();
+          } else {
+            device_ = value;
+          }
+          onChanged();
+        } else {
+          deviceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public Builder clearDevice() {
+        if (deviceBuilder_ == null) {
+          device_ = null;
+          onChanged();
+        } else {
+          device_ = null;
+          deviceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder getDeviceBuilder() {
+        
+        onChanged();
+        return getDeviceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOrBuilder getDeviceOrBuilder() {
+        if (deviceBuilder_ != null) {
+          return deviceBuilder_.getMessageOrBuilder();
+        } else {
+          return device_ == null ?
+              protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : device_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice device = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+          getDeviceFieldBuilder() {
+        if (deviceBuilder_ == null) {
+          deviceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder>(
+                  getDevice(),
+                  getParentForChildren(),
+                  isClean());
+          device_ = null;
+        }
+        return deviceBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -10340,7 +15373,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientRegistrationRequest>
+    private static final com.google.protobuf.Parser<ClientRegistrationRequest>
         PARSER = new com.google.protobuf.AbstractParser<ClientRegistrationRequest>() {
       @java.lang.Override
       public ClientRegistrationRequest parsePartialFrom(
@@ -10367,1682 +15400,39 @@ public final class ClientRequests {
 
   }
 
-  public interface ClientFileDownloadRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientFileDownloadRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    boolean hasRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
-
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return Whether the requestedDownloadFileURI field is set.
-     */
-    boolean hasRequestedDownloadFileURI();
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return The requestedDownloadFileURI.
-     */
-    java.lang.String getRequestedDownloadFileURI();
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return The bytes for requestedDownloadFileURI.
-     */
-    com.google.protobuf.ByteString
-        getRequestedDownloadFileURIBytes();
-  }
-  /**
-   * Protobuf type {@code protobuf.clientrequests.ClientFileDownloadRequest}
-   */
-  public  static final class ClientFileDownloadRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ClientFileDownloadRequest)
-      ClientFileDownloadRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ClientFileDownloadRequest.newBuilder() to construct.
-    private ClientFileDownloadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ClientFileDownloadRequest() {
-      requestedDownloadFileURI_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ClientFileDownloadRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ClientFileDownloadRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
-              }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestedDownloadFileURI_ = bs;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileDownloadRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientRequests.ClientFileDownloadRequest.class, protobuf.ClientRequests.ClientFileDownloadRequest.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-
-    public static final int REQUESTEDDOWNLOADFILEURI_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestedDownloadFileURI_;
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return Whether the requestedDownloadFileURI field is set.
-     */
-    public boolean hasRequestedDownloadFileURI() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return The requestedDownloadFileURI.
-     */
-    public java.lang.String getRequestedDownloadFileURI() {
-      java.lang.Object ref = requestedDownloadFileURI_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedDownloadFileURI_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string requestedDownloadFileURI = 2;</code>
-     * @return The bytes for requestedDownloadFileURI.
-     */
-    public com.google.protobuf.ByteString
-        getRequestedDownloadFileURIBytes() {
-      java.lang.Object ref = requestedDownloadFileURI_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedDownloadFileURI_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedDownloadFileURI()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestedDownloadFileURI_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestedDownloadFileURI_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientRequests.ClientFileDownloadRequest)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientRequests.ClientFileDownloadRequest other = (protobuf.ClientRequests.ClientFileDownloadRequest) obj;
-
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
-      }
-      if (hasRequestedDownloadFileURI() != other.hasRequestedDownloadFileURI()) return false;
-      if (hasRequestedDownloadFileURI()) {
-        if (!getRequestedDownloadFileURI()
-            .equals(other.getRequestedDownloadFileURI())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
-      }
-      if (hasRequestedDownloadFileURI()) {
-        hash = (37 * hash) + REQUESTEDDOWNLOADFILEURI_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedDownloadFileURI().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileDownloadRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientRequests.ClientFileDownloadRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientrequests.ClientFileDownloadRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ClientFileDownloadRequest)
-        protobuf.ClientRequests.ClientFileDownloadRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileDownloadRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientRequests.ClientFileDownloadRequest.class, protobuf.ClientRequests.ClientFileDownloadRequest.Builder.class);
-      }
-
-      // Construct using protobuf.ClientRequests.ClientFileDownloadRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedDownloadFileURI_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileDownloadRequest getDefaultInstanceForType() {
-        return protobuf.ClientRequests.ClientFileDownloadRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileDownloadRequest build() {
-        protobuf.ClientRequests.ClientFileDownloadRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileDownloadRequest buildPartial() {
-        protobuf.ClientRequests.ClientFileDownloadRequest result = new protobuf.ClientRequests.ClientFileDownloadRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.requestedDownloadFileURI_ = requestedDownloadFileURI_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientRequests.ClientFileDownloadRequest) {
-          return mergeFrom((protobuf.ClientRequests.ClientFileDownloadRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientRequests.ClientFileDownloadRequest other) {
-        if (other == protobuf.ClientRequests.ClientFileDownloadRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
-        }
-        if (other.hasRequestedDownloadFileURI()) {
-          bitField0_ |= 0x00000002;
-          requestedDownloadFileURI_ = other.requestedDownloadFileURI_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedDownloadFileURI()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientRequests.ClientFileDownloadRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientRequests.ClientFileDownloadRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
-       */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
-       */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        } else {
-          return requestorBaseBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          requestorBase_ = value;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(
-          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
-          } else {
-            requestorBase_ = value;
-          }
-          onChanged();
-        } else {
-          requestorBaseBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
-        } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
-                  getParentForChildren(),
-                  isClean());
-          requestorBase_ = null;
-        }
-        return requestorBaseBuilder_;
-      }
-
-      private java.lang.Object requestedDownloadFileURI_ = "";
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @return Whether the requestedDownloadFileURI field is set.
-       */
-      public boolean hasRequestedDownloadFileURI() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @return The requestedDownloadFileURI.
-       */
-      public java.lang.String getRequestedDownloadFileURI() {
-        java.lang.Object ref = requestedDownloadFileURI_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedDownloadFileURI_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @return The bytes for requestedDownloadFileURI.
-       */
-      public com.google.protobuf.ByteString
-          getRequestedDownloadFileURIBytes() {
-        java.lang.Object ref = requestedDownloadFileURI_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedDownloadFileURI_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @param value The requestedDownloadFileURI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedDownloadFileURI(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedDownloadFileURI_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedDownloadFileURI() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedDownloadFileURI_ = getDefaultInstance().getRequestedDownloadFileURI();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedDownloadFileURI = 2;</code>
-       * @param value The bytes for requestedDownloadFileURI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedDownloadFileURIBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedDownloadFileURI_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ClientFileDownloadRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ClientFileDownloadRequest)
-    private static final protobuf.ClientRequests.ClientFileDownloadRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientRequests.ClientFileDownloadRequest();
-    }
-
-    public static protobuf.ClientRequests.ClientFileDownloadRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientFileDownloadRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ClientFileDownloadRequest>() {
-      @java.lang.Override
-      public ClientFileDownloadRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientFileDownloadRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ClientFileDownloadRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ClientFileDownloadRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientRequests.ClientFileDownloadRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ClientFileUploadRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientFileUploadRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    boolean hasRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    protobuf.ClientRequests.ClientRequestBase getRequestorBase();
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
-
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return Whether the requestedUploadFileURI field is set.
-     */
-    boolean hasRequestedUploadFileURI();
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return The requestedUploadFileURI.
-     */
-    java.lang.String getRequestedUploadFileURI();
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return The bytes for requestedUploadFileURI.
-     */
-    com.google.protobuf.ByteString
-        getRequestedUploadFileURIBytes();
-  }
-  /**
-   * Protobuf type {@code protobuf.clientrequests.ClientFileUploadRequest}
-   */
-  public  static final class ClientFileUploadRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientrequests.ClientFileUploadRequest)
-      ClientFileUploadRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ClientFileUploadRequest.newBuilder() to construct.
-    private ClientFileUploadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ClientFileUploadRequest() {
-      requestedUploadFileURI_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ClientFileUploadRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ClientFileUploadRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = requestorBase_.toBuilder();
-              }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(requestorBase_);
-                requestorBase_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              requestedUploadFileURI_ = bs;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileUploadRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientRequests.ClientFileUploadRequest.class, protobuf.ClientRequests.ClientFileUploadRequest.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int REQUESTORBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return Whether the requestorBase field is set.
-     */
-    public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     * @return The requestorBase.
-     */
-    public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-    /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-     */
-    public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-    }
-
-    public static final int REQUESTEDUPLOADFILEURI_FIELD_NUMBER = 2;
-    private volatile java.lang.Object requestedUploadFileURI_;
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return Whether the requestedUploadFileURI field is set.
-     */
-    public boolean hasRequestedUploadFileURI() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return The requestedUploadFileURI.
-     */
-    public java.lang.String getRequestedUploadFileURI() {
-      java.lang.Object ref = requestedUploadFileURI_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          requestedUploadFileURI_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string requestedUploadFileURI = 2;</code>
-     * @return The bytes for requestedUploadFileURI.
-     */
-    public com.google.protobuf.ByteString
-        getRequestedUploadFileURIBytes() {
-      java.lang.Object ref = requestedUploadFileURI_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requestedUploadFileURI_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRequestedUploadFileURI()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestedUploadFileURI_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestorBase());
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requestedUploadFileURI_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientRequests.ClientFileUploadRequest)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientRequests.ClientFileUploadRequest other = (protobuf.ClientRequests.ClientFileUploadRequest) obj;
-
-      if (hasRequestorBase() != other.hasRequestorBase()) return false;
-      if (hasRequestorBase()) {
-        if (!getRequestorBase()
-            .equals(other.getRequestorBase())) return false;
-      }
-      if (hasRequestedUploadFileURI() != other.hasRequestedUploadFileURI()) return false;
-      if (hasRequestedUploadFileURI()) {
-        if (!getRequestedUploadFileURI()
-            .equals(other.getRequestedUploadFileURI())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestorBase()) {
-        hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestorBase().hashCode();
-      }
-      if (hasRequestedUploadFileURI()) {
-        hash = (37 * hash) + REQUESTEDUPLOADFILEURI_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestedUploadFileURI().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientRequests.ClientFileUploadRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientRequests.ClientFileUploadRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientrequests.ClientFileUploadRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientrequests.ClientFileUploadRequest)
-        protobuf.ClientRequests.ClientFileUploadRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileUploadRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientRequests.ClientFileUploadRequest.class, protobuf.ClientRequests.ClientFileUploadRequest.Builder.class);
-      }
-
-      // Construct using protobuf.ClientRequests.ClientFileUploadRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestedUploadFileURI_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientRequests.internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileUploadRequest getDefaultInstanceForType() {
-        return protobuf.ClientRequests.ClientFileUploadRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileUploadRequest build() {
-        protobuf.ClientRequests.ClientFileUploadRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientRequests.ClientFileUploadRequest buildPartial() {
-        protobuf.ClientRequests.ClientFileUploadRequest result = new protobuf.ClientRequests.ClientFileUploadRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.requestedUploadFileURI_ = requestedUploadFileURI_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientRequests.ClientFileUploadRequest) {
-          return mergeFrom((protobuf.ClientRequests.ClientFileUploadRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientRequests.ClientFileUploadRequest other) {
-        if (other == protobuf.ClientRequests.ClientFileUploadRequest.getDefaultInstance()) return this;
-        if (other.hasRequestorBase()) {
-          mergeRequestorBase(other.getRequestorBase());
-        }
-        if (other.hasRequestedUploadFileURI()) {
-          bitField0_ |= 0x00000002;
-          requestedUploadFileURI_ = other.requestedUploadFileURI_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!hasRequestedUploadFileURI()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientRequests.ClientFileUploadRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientRequests.ClientFileUploadRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private protobuf.ClientRequests.ClientRequestBase requestorBase_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return Whether the requestorBase field is set.
-       */
-      public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       * @return The requestorBase.
-       */
-      public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        } else {
-          return requestorBaseBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          requestorBase_ = value;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder setRequestorBase(
-          protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = builderForValue.build();
-          onChanged();
-        } else {
-          requestorBaseBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
-        if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
-            requestorBase_ =
-              protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
-          } else {
-            requestorBase_ = value;
-          }
-          onChanged();
-        } else {
-          requestorBaseBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public Builder clearRequestorBase() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBase_ = null;
-          onChanged();
-        } else {
-          requestorBaseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getRequestorBaseFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-        if (requestorBaseBuilder_ != null) {
-          return requestorBaseBuilder_.getMessageOrBuilder();
-        } else {
-          return requestorBase_ == null ?
-              protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
-        }
-      }
-      /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
-          getRequestorBaseFieldBuilder() {
-        if (requestorBaseBuilder_ == null) {
-          requestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder>(
-                  getRequestorBase(),
-                  getParentForChildren(),
-                  isClean());
-          requestorBase_ = null;
-        }
-        return requestorBaseBuilder_;
-      }
-
-      private java.lang.Object requestedUploadFileURI_ = "";
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @return Whether the requestedUploadFileURI field is set.
-       */
-      public boolean hasRequestedUploadFileURI() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @return The requestedUploadFileURI.
-       */
-      public java.lang.String getRequestedUploadFileURI() {
-        java.lang.Object ref = requestedUploadFileURI_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            requestedUploadFileURI_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @return The bytes for requestedUploadFileURI.
-       */
-      public com.google.protobuf.ByteString
-          getRequestedUploadFileURIBytes() {
-        java.lang.Object ref = requestedUploadFileURI_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          requestedUploadFileURI_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @param value The requestedUploadFileURI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUploadFileURI(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedUploadFileURI_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRequestedUploadFileURI() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestedUploadFileURI_ = getDefaultInstance().getRequestedUploadFileURI();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string requestedUploadFileURI = 2;</code>
-       * @param value The bytes for requestedUploadFileURI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRequestedUploadFileURIBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        requestedUploadFileURI_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientrequests.ClientFileUploadRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientrequests.ClientFileUploadRequest)
-    private static final protobuf.ClientRequests.ClientFileUploadRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientRequests.ClientFileUploadRequest();
-    }
-
-    public static protobuf.ClientRequests.ClientFileUploadRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientFileUploadRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ClientFileUploadRequest>() {
-      @java.lang.Override
-      public ClientFileUploadRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientFileUploadRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ClientFileUploadRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ClientFileUploadRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientRequests.ClientFileUploadRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface ClientPingMeasurementRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientrequests.ClientPingMeasurementRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      * @return Whether the requestorBase field is set.
      */
     boolean hasRequestorBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      * @return The requestorBase.
      */
     protobuf.ClientRequests.ClientRequestBase getRequestorBase();
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      */
     protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return Whether the requestedDevice field is set.
+     */
+    boolean hasRequestedDevice();
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return The requestedDevice.
+     */
+    protobuf.ClientIdentities.ClientDevice getRequestedDevice();
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ClientPingMeasurementRequest}
@@ -12079,7 +15469,6 @@ public final class ClientRequests {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -12092,15 +15481,28 @@ public final class ClientRequests {
               break;
             case 10: {
               protobuf.ClientRequests.ClientRequestBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
+              if (requestorBase_ != null) {
                 subBuilder = requestorBase_.toBuilder();
               }
-              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.PARSER, extensionRegistry);
+              requestorBase_ = input.readMessage(protobuf.ClientRequests.ClientRequestBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(requestorBase_);
                 requestorBase_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
+              break;
+            }
+            case 18: {
+              protobuf.ClientIdentities.ClientDevice.Builder subBuilder = null;
+              if (requestedDevice_ != null) {
+                subBuilder = requestedDevice_.toBuilder();
+              }
+              requestedDevice_ = input.readMessage(protobuf.ClientIdentities.ClientDevice.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestedDevice_);
+                requestedDevice_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -12135,28 +15537,50 @@ public final class ClientRequests {
               protobuf.ClientRequests.ClientPingMeasurementRequest.class, protobuf.ClientRequests.ClientPingMeasurementRequest.Builder.class);
     }
 
-    private int bitField0_;
     public static final int REQUESTORBASE_FIELD_NUMBER = 1;
     private protobuf.ClientRequests.ClientRequestBase requestorBase_;
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      * @return Whether the requestorBase field is set.
      */
     public boolean hasRequestorBase() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return requestorBase_ != null;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      * @return The requestorBase.
      */
     public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
       return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
     }
     /**
-     * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+     * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
      */
     public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
-      return requestorBase_ == null ? protobuf.ClientRequests.ClientRequestBase.getDefaultInstance() : requestorBase_;
+      return getRequestorBase();
+    }
+
+    public static final int REQUESTEDDEVICE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientDevice requestedDevice_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return Whether the requestedDevice field is set.
+     */
+    public boolean hasRequestedDevice() {
+      return requestedDevice_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     * @return The requestedDevice.
+     */
+    public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
+      return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
+      return getRequestedDevice();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -12166,14 +15590,6 @@ public final class ClientRequests {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRequestorBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getRequestorBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -12181,8 +15597,11 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestorBase_ != null) {
         output.writeMessage(1, getRequestorBase());
+      }
+      if (requestedDevice_ != null) {
+        output.writeMessage(2, getRequestedDevice());
       }
       unknownFields.writeTo(output);
     }
@@ -12193,9 +15612,13 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (requestorBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getRequestorBase());
+      }
+      if (requestedDevice_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRequestedDevice());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12217,6 +15640,11 @@ public final class ClientRequests {
         if (!getRequestorBase()
             .equals(other.getRequestorBase())) return false;
       }
+      if (hasRequestedDevice() != other.hasRequestedDevice()) return false;
+      if (hasRequestedDevice()) {
+        if (!getRequestedDevice()
+            .equals(other.getRequestedDevice())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -12231,6 +15659,10 @@ public final class ClientRequests {
       if (hasRequestorBase()) {
         hash = (37 * hash) + REQUESTORBASE_FIELD_NUMBER;
         hash = (53 * hash) + getRequestorBase().hashCode();
+      }
+      if (hasRequestedDevice()) {
+        hash = (37 * hash) + REQUESTEDDEVICE_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestedDevice().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -12360,7 +15792,6 @@ public final class ClientRequests {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRequestorBaseFieldBuilder();
         }
       }
       @java.lang.Override
@@ -12369,9 +15800,15 @@ public final class ClientRequests {
         if (requestorBaseBuilder_ == null) {
           requestorBase_ = null;
         } else {
-          requestorBaseBuilder_.clear();
+          requestorBase_ = null;
+          requestorBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = null;
+        } else {
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
+        }
         return this;
       }
 
@@ -12398,17 +15835,16 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.ClientPingMeasurementRequest buildPartial() {
         protobuf.ClientRequests.ClientPingMeasurementRequest result = new protobuf.ClientRequests.ClientPingMeasurementRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (requestorBaseBuilder_ == null) {
-            result.requestorBase_ = requestorBase_;
-          } else {
-            result.requestorBase_ = requestorBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (requestorBaseBuilder_ == null) {
+          result.requestorBase_ = requestorBase_;
+        } else {
+          result.requestorBase_ = requestorBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
+        if (requestedDeviceBuilder_ == null) {
+          result.requestedDevice_ = requestedDevice_;
+        } else {
+          result.requestedDevice_ = requestedDeviceBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -12460,6 +15896,9 @@ public final class ClientRequests {
         if (other.hasRequestorBase()) {
           mergeRequestorBase(other.getRequestorBase());
         }
+        if (other.hasRequestedDevice()) {
+          mergeRequestedDevice(other.getRequestedDevice());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -12467,12 +15906,6 @@ public final class ClientRequests {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasRequestorBase()) {
-          return false;
-        }
-        if (!getRequestorBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -12494,20 +15927,19 @@ public final class ClientRequests {
         }
         return this;
       }
-      private int bitField0_;
 
       private protobuf.ClientRequests.ClientRequestBase requestorBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> requestorBaseBuilder_;
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        * @return Whether the requestorBase field is set.
        */
       public boolean hasRequestorBase() {
-        return ((bitField0_ & 0x00000001) != 0);
+        return requestorBaseBuilder_ != null || requestorBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        * @return The requestorBase.
        */
       public protobuf.ClientRequests.ClientRequestBase getRequestorBase() {
@@ -12518,7 +15950,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public Builder setRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
         if (requestorBaseBuilder_ == null) {
@@ -12530,11 +15962,11 @@ public final class ClientRequests {
         } else {
           requestorBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public Builder setRequestorBase(
           protobuf.ClientRequests.ClientRequestBase.Builder builderForValue) {
@@ -12544,17 +15976,15 @@ public final class ClientRequests {
         } else {
           requestorBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public Builder mergeRequestorBase(protobuf.ClientRequests.ClientRequestBase value) {
         if (requestorBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              requestorBase_ != null &&
-              requestorBase_ != protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) {
+          if (requestorBase_ != null) {
             requestorBase_ =
               protobuf.ClientRequests.ClientRequestBase.newBuilder(requestorBase_).mergeFrom(value).buildPartial();
           } else {
@@ -12564,32 +15994,33 @@ public final class ClientRequests {
         } else {
           requestorBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public Builder clearRequestorBase() {
         if (requestorBaseBuilder_ == null) {
           requestorBase_ = null;
           onChanged();
         } else {
-          requestorBaseBuilder_.clear();
+          requestorBase_ = null;
+          requestorBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public protobuf.ClientRequests.ClientRequestBase.Builder getRequestorBaseBuilder() {
-        bitField0_ |= 0x00000001;
+        
         onChanged();
         return getRequestorBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       public protobuf.ClientRequests.ClientRequestBaseOrBuilder getRequestorBaseOrBuilder() {
         if (requestorBaseBuilder_ != null) {
@@ -12600,7 +16031,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>required .protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
+       * <code>.protobuf.clientrequests.ClientRequestBase requestorBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.ClientRequestBase, protobuf.ClientRequests.ClientRequestBase.Builder, protobuf.ClientRequests.ClientRequestBaseOrBuilder> 
@@ -12614,6 +16045,125 @@ public final class ClientRequests {
           requestorBase_ = null;
         }
         return requestorBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientDevice requestedDevice_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> requestedDeviceBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       * @return Whether the requestedDevice field is set.
+       */
+      public boolean hasRequestedDevice() {
+        return requestedDeviceBuilder_ != null || requestedDevice_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       * @return The requestedDevice.
+       */
+      public protobuf.ClientIdentities.ClientDevice getRequestedDevice() {
+        if (requestedDeviceBuilder_ == null) {
+          return requestedDevice_ == null ? protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
+        } else {
+          return requestedDeviceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder setRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (requestedDeviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestedDevice_ = value;
+          onChanged();
+        } else {
+          requestedDeviceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder setRequestedDevice(
+          protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestedDeviceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder mergeRequestedDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (requestedDeviceBuilder_ == null) {
+          if (requestedDevice_ != null) {
+            requestedDevice_ =
+              protobuf.ClientIdentities.ClientDevice.newBuilder(requestedDevice_).mergeFrom(value).buildPartial();
+          } else {
+            requestedDevice_ = value;
+          }
+          onChanged();
+        } else {
+          requestedDeviceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public Builder clearRequestedDevice() {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDevice_ = null;
+          onChanged();
+        } else {
+          requestedDevice_ = null;
+          requestedDeviceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder getRequestedDeviceBuilder() {
+        
+        onChanged();
+        return getRequestedDeviceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOrBuilder getRequestedDeviceOrBuilder() {
+        if (requestedDeviceBuilder_ != null) {
+          return requestedDeviceBuilder_.getMessageOrBuilder();
+        } else {
+          return requestedDevice_ == null ?
+              protobuf.ClientIdentities.ClientDevice.getDefaultInstance() : requestedDevice_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDevice requestedDevice = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+          getRequestedDeviceFieldBuilder() {
+        if (requestedDeviceBuilder_ == null) {
+          requestedDeviceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder>(
+                  getRequestedDevice(),
+                  getParentForChildren(),
+                  isClean());
+          requestedDevice_ = null;
+        }
+        return requestedDeviceBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -12641,7 +16191,7 @@ public final class ClientRequests {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientPingMeasurementRequest>
+    private static final com.google.protobuf.Parser<ClientPingMeasurementRequest>
         PARSER = new com.google.protobuf.AbstractParser<ClientPingMeasurementRequest>() {
       @java.lang.Override
       public ClientPingMeasurementRequest parsePartialFrom(
@@ -12674,6 +16224,16 @@ public final class ClientRequests {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientrequests_ClientRequestBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_FileDownloadBase_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_FileDownloadBase_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_FileUploadBase_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_FileUploadBase_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientrequests_ChannelJoinRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -12684,15 +16244,10 @@ public final class ClientRequests {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientrequests_ChannelLeaveRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor;
+    internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientrequests_ChannelMessageDataRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientrequests_ClientProfileDataRequest_fieldAccessorTable;
+      internal_static_protobuf_clientrequests_ClientProfileRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientrequests_ChannelMessageRequest_descriptor;
   private static final 
@@ -12709,6 +16264,26 @@ public final class ClientRequests {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientrequests_PrivateMessageRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_ChannelFileUploadRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientrequests_PrivateFileUploadRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientrequests_ClientLoginRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -12723,16 +16298,6 @@ public final class ClientRequests {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientrequests_ClientRegistrationRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientrequests_ClientFileDownloadRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientrequests_ClientFileUploadRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientrequests_ClientPingMeasurementRequest_descriptor;
   private static final 
@@ -12749,64 +16314,93 @@ public final class ClientRequests {
     java.lang.String[] descriptorData = {
       "\n\035protobuf/ClientRequests.proto\022\027protobu" +
       "f.clientrequests\032\037protobuf/ClientIdentit" +
-      "ies.proto\032\035protobuf/ClientMessages.proto" +
-      "\"\227\001\n\021ClientRequestBase\022\031\n\021requestorUsern" +
-      "ame\030\001 \002(\t\022\031\n\021requestorPassword\030\002 \002(\t\022\027\n\013" +
-      "requestorId\030\003 \001(\005:\002-1\022\025\n\trequestId\030\004 \001(\005" +
-      ":\002-1\022\034\n\020requestTimestamp\030\005 \001(\003:\002-1\"\221\001\n\022C" +
-      "hannelJoinRequest\022A\n\rrequestorBase\030\001 \002(\013" +
+      "ies.proto\032\035protobuf/ClientChannels.proto" +
+      "\032\035protobuf/ClientMessages.proto\"\234\001\n\021Clie" +
+      "ntRequestBase\022\021\n\trequestId\030\001 \001(\005\022\031\n\021requ" +
+      "estorClientId\030\002 \001(\005\022\037\n\027requestorClientUs" +
+      "ername\030\003 \001(\t\022\037\n\027requestorClientPassword\030" +
+      "\004 \001(\t\022\027\n\017timestampMillis\030\005 \001(\003\"s\n\020FileDo" +
+      "wnloadBase\022\026\n\016downloadFileId\030\001 \001(\005\022\030\n\020do" +
+      "wnloadFileName\030\002 \001(\t\022\030\n\020downloadFilePath" +
+      "\030\003 \001(\t\022\023\n\013downloadKey\030\004 \001(\t\"X\n\016FileUploa" +
+      "dBase\022\026\n\016uploadFileName\030\001 \001(\t\022\026\n\016uploadF" +
+      "ilePath\030\002 \001(\t\022\026\n\016uploadFileSize\030\003 \001(\003\"\273\001" +
+      "\n\022ChannelJoinRequest\022?\n\013requestBase\030\001 \001(" +
+      "\0132*.protobuf.clientrequests.ClientReques" +
+      "tBase\022B\n\024requestedChannelBase\030\002 \001(\0132$.pr" +
+      "otobuf.clientchannels.ChannelBase\022 \n\030req" +
+      "uestedChannelPassword\030\003 \001(\t\"\232\001\n\023ChannelL" +
+      "eaveRequest\022?\n\013requestBase\030\001 \001(\0132*.proto" +
+      "buf.clientrequests.ClientRequestBase\022B\n\024" +
+      "requestedChannelBase\030\002 \001(\0132$.protobuf.cl" +
+      "ientchannels.ChannelBase\"\233\001\n\024ClientProfi" +
+      "leRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
+      "f.clientrequests.ClientRequestBase\022B\n\023re" +
+      "questedClientBase\030\002 \001(\0132%.protobuf.clien" +
+      "tidentities.ClientBase\"\312\001\n\025ChannelMessag" +
+      "eRequest\022?\n\013requestBase\030\001 \001(\0132*.protobuf" +
+      ".clientrequests.ClientRequestBase\022B\n\024req" +
+      "uestedChannelBase\030\002 \001(\0132$.protobuf.clien" +
+      "tchannels.ChannelBase\022\024\n\014messageCount\030\003 " +
+      "\001(\005\022\026\n\016startMessageId\030\004 \001(\005\"\200\002\n\033ChannelM" +
+      "essageAnswerRequest\022?\n\013requestBase\030\001 \001(\013" +
       "2*.protobuf.clientrequests.ClientRequest" +
-      "Base\022\032\n\022requestedChannelId\030\002 \002(\005\022\034\n\024requ" +
-      "estedChannelName\030\003 \001(\t\"\222\001\n\023ChannelLeaveR" +
-      "equest\022A\n\rrequestorBase\030\001 \002(\0132*.protobuf" +
-      ".clientrequests.ClientRequestBase\022\032\n\022req" +
-      "uestedChannelId\030\002 \002(\005\022\034\n\024requestedChanne" +
-      "lName\030\003 \001(\t\"\231\001\n\031ChannelMessageDataReques" +
-      "t\022A\n\rrequestorBase\030\001 \002(\0132*.protobuf.clie" +
-      "ntrequests.ClientRequestBase\022\037\n\023lastLoad" +
-      "edMessageId\030\002 \001(\005:\002-1\022\030\n\014messageCount\030\003 " +
-      "\001(\005:\00210\"\233\001\n\030ClientProfileDataRequest\022A\n\r" +
-      "requestorBase\030\001 \002(\0132*.protobuf.clientreq" +
-      "uests.ClientRequestBase\022<\n\rrequestedBase" +
-      "\030\002 \002(\0132%.protobuf.clientidentities.Clien" +
-      "tBase\"\243\001\n\025ChannelMessageRequest\022A\n\rreque" +
-      "storBase\030\001 \002(\0132*.protobuf.clientrequests" +
-      ".ClientRequestBase\022G\n\020requestedMessage\030\002" +
-      " \002(\0132-.protobuf.clientmessages.ChannelCl" +
-      "ientMessage\"\257\001\n\033ChannelMessageAnswerRequ" +
-      "est\022A\n\rrequestorBase\030\001 \002(\0132*.protobuf.cl" +
-      "ientrequests.ClientRequestBase\022M\n\026reques" +
-      "tedMessageAnswer\030\002 \002(\0132-.protobuf.client" +
-      "messages.ChannelClientMessage\"\243\001\n\025Privat" +
-      "eMessageRequest\022A\n\rrequestorBase\030\001 \002(\0132*" +
-      ".protobuf.clientrequests.ClientRequestBa" +
-      "se\022G\n\020requestedMessage\030\002 \002(\0132-.protobuf." +
-      "clientmessages.PrivateClientMessage\"J\n\022C" +
-      "lientLoginRequest\022\031\n\021requestedUsername\030\001" +
-      " \002(\t\022\031\n\021requestedPassword\030\002 \002(\t\"\215\001\n\023Clie" +
-      "ntLogoutRequest\022\031\n\021requestedUsername\030\001 \002" +
-      "(\t\022\031\n\021requestedPassword\030\002 \002(\t\022@\n\017request" +
-      "edDevice\030\003 \001(\0132\'.protobuf.clientidentiti" +
-      "es.ClientDevice\"\241\001\n\031ClientRegistrationRe" +
-      "quest\022\031\n\021requestedUsername\030\001 \002(\t\022\031\n\021requ" +
-      "estedPassword\030\002 \002(\t\022\037\n\027requestedPassword" +
-      "Repeat\030\003 \002(\t\022\026\n\016requestedEmail\030\004 \001(\t\022\025\n\r" +
-      "invitationKey\030\005 \001(\t\"\200\001\n\031ClientFileDownlo" +
-      "adRequest\022A\n\rrequestorBase\030\001 \002(\0132*.proto" +
-      "buf.clientrequests.ClientRequestBase\022 \n\030" +
-      "requestedDownloadFileURI\030\002 \002(\t\"|\n\027Client" +
-      "FileUploadRequest\022A\n\rrequestorBase\030\001 \002(\013" +
-      "2*.protobuf.clientrequests.ClientRequest" +
-      "Base\022\036\n\026requestedUploadFileURI\030\002 \002(\t\"a\n\034" +
-      "ClientPingMeasurementRequest\022A\n\rrequesto" +
-      "rBase\030\001 \002(\0132*.protobuf.clientrequests.Cl" +
-      "ientRequestBaseB\032\n\010protobufB\016ClientReque" +
-      "sts"
+      "Base\022B\n\024requestedChannelBase\030\002 \001(\0132$.pro" +
+      "tobuf.clientchannels.ChannelBase\022H\n\024requ" +
+      "estedMessageBase\030\003 \001(\0132*.protobuf.client" +
+      "messages.ClientMessageBase\022\022\n\nanswerText" +
+      "\030\004 \001(\t\"\260\001\n\025PrivateMessageRequest\022?\n\013requ" +
+      "estBase\030\001 \001(\0132*.protobuf.clientrequests." +
+      "ClientRequestBase\022A\n\022receiverClientBase\030" +
+      "\002 \001(\0132%.protobuf.clientidentities.Client" +
+      "Base\022\023\n\013messageText\030\003 \001(\t\"\347\001\n\032ChannelFil" +
+      "eDownloadRequest\022?\n\013requestBase\030\001 \001(\0132*." +
+      "protobuf.clientrequests.ClientRequestBas" +
+      "e\022B\n\024requestedChannelBase\030\002 \001(\0132$.protob" +
+      "uf.clientchannels.ChannelBase\022D\n\021request" +
+      "edFileBase\030\003 \001(\0132).protobuf.clientreques" +
+      "ts.FileDownloadBase\"\343\001\n\030ChannelFileUploa" +
+      "dRequest\022?\n\013requestBase\030\001 \001(\0132*.protobuf" +
+      ".clientrequests.ClientRequestBase\022B\n\024req" +
+      "uestedChannelBase\030\002 \001(\0132$.protobuf.clien" +
+      "tchannels.ChannelBase\022B\n\021requestedFileBa" +
+      "se\030\003 \001(\0132\'.protobuf.clientrequests.FileU" +
+      "ploadBase\"\347\001\n\032PrivateFileDownloadRequest" +
+      "\022?\n\013requestBase\030\001 \001(\0132*.protobuf.clientr" +
+      "equests.ClientRequestBase\022B\n\023requestedCl" +
+      "ientBase\030\002 \001(\0132%.protobuf.clientidentiti" +
+      "es.ClientBase\022D\n\021requestedFileBase\030\003 \001(\013" +
+      "2).protobuf.clientrequests.FileDownloadB" +
+      "ase\"\343\001\n\030PrivateFileUploadRequest\022?\n\013requ" +
+      "estBase\030\001 \001(\0132*.protobuf.clientrequests." +
+      "ClientRequestBase\022B\n\023requestedClientBase" +
+      "\030\002 \001(\0132%.protobuf.clientidentities.Clien" +
+      "tBase\022B\n\021requestedFileBase\030\003 \001(\0132\'.proto" +
+      "buf.clientrequests.FileUploadBase\"\227\001\n\022Cl" +
+      "ientLoginRequest\022?\n\013requestBase\030\001 \001(\0132*." +
+      "protobuf.clientrequests.ClientRequestBas" +
+      "e\022@\n\017requestedDevice\030\002 \001(\0132\'.protobuf.cl" +
+      "ientidentities.ClientDevice\"\230\001\n\023ClientLo" +
+      "goutRequest\022?\n\013requestBase\030\001 \001(\0132*.proto" +
+      "buf.clientrequests.ClientRequestBase\022@\n\017" +
+      "requestedDevice\030\002 \001(\0132\'.protobuf.clienti" +
+      "dentities.ClientDevice\"\266\001\n\031ClientRegistr" +
+      "ationRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010passwo" +
+      "rd\030\002 \001(\t\022\026\n\016passwordRepeat\030\003 \001(\t\022\r\n\005emai" +
+      "l\030\004 \001(\t\022\025\n\rinvitationKey\030\005 \001(\t\0227\n\006device" +
+      "\030\006 \001(\0132\'.protobuf.clientidentities.Clien" +
+      "tDevice\"\243\001\n\034ClientPingMeasurementRequest" +
+      "\022A\n\rrequestorBase\030\001 \001(\0132*.protobuf.clien" +
+      "trequests.ClientRequestBase\022@\n\017requested" +
+      "Device\030\002 \001(\0132\'.protobuf.clientidentities" +
+      ".ClientDeviceB\032\n\010protobufB\016ClientRequest" +
+      "sb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           protobuf.ClientIdentities.getDescriptor(),
+          protobuf.ClientChannels.getDescriptor(),
           protobuf.ClientMessages.getDescriptor(),
         });
     internal_static_protobuf_clientrequests_ClientRequestBase_descriptor =
@@ -12814,86 +16408,105 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_ClientRequestBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientRequestBase_descriptor,
-        new java.lang.String[] { "RequestorUsername", "RequestorPassword", "RequestorId", "RequestId", "RequestTimestamp", });
-    internal_static_protobuf_clientrequests_ChannelJoinRequest_descriptor =
+        new java.lang.String[] { "RequestId", "RequestorClientId", "RequestorClientUsername", "RequestorClientPassword", "TimestampMillis", });
+    internal_static_protobuf_clientrequests_FileDownloadBase_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_protobuf_clientrequests_FileDownloadBase_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_FileDownloadBase_descriptor,
+        new java.lang.String[] { "DownloadFileId", "DownloadFileName", "DownloadFilePath", "DownloadKey", });
+    internal_static_protobuf_clientrequests_FileUploadBase_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_protobuf_clientrequests_FileUploadBase_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_FileUploadBase_descriptor,
+        new java.lang.String[] { "UploadFileName", "UploadFilePath", "UploadFileSize", });
+    internal_static_protobuf_clientrequests_ChannelJoinRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_protobuf_clientrequests_ChannelJoinRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelJoinRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedChannelId", "RequestedChannelName", });
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", "RequestedChannelPassword", });
     internal_static_protobuf_clientrequests_ChannelLeaveRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_protobuf_clientrequests_ChannelLeaveRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelLeaveRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedChannelId", "RequestedChannelName", });
-    internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_protobuf_clientrequests_ChannelMessageDataRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientrequests_ChannelMessageDataRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "LastLoadedMessageId", "MessageCount", });
-    internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_protobuf_clientrequests_ClientProfileDataRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientrequests_ClientProfileDataRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedBase", });
-    internal_static_protobuf_clientrequests_ChannelMessageRequest_descriptor =
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", });
+    internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
+    internal_static_protobuf_clientrequests_ClientProfileRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_ClientProfileRequest_descriptor,
+        new java.lang.String[] { "RequestBase", "RequestedClientBase", });
+    internal_static_protobuf_clientrequests_ChannelMessageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_protobuf_clientrequests_ChannelMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelMessageRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedMessage", });
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", "MessageCount", "StartMessageId", });
     internal_static_protobuf_clientrequests_ChannelMessageAnswerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_protobuf_clientrequests_ChannelMessageAnswerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelMessageAnswerRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedMessageAnswer", });
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", "RequestedMessageBase", "AnswerText", });
     internal_static_protobuf_clientrequests_PrivateMessageRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_protobuf_clientrequests_PrivateMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_PrivateMessageRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedMessage", });
+        new java.lang.String[] { "RequestBase", "ReceiverClientBase", "MessageText", });
+    internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_ChannelFileDownloadRequest_descriptor,
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", "RequestedFileBase", });
+    internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_protobuf_clientrequests_ChannelFileUploadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_ChannelFileUploadRequest_descriptor,
+        new java.lang.String[] { "RequestBase", "RequestedChannelBase", "RequestedFileBase", });
+    internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_PrivateFileDownloadRequest_descriptor,
+        new java.lang.String[] { "RequestBase", "RequestedClientBase", "RequestedFileBase", });
+    internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_protobuf_clientrequests_PrivateFileUploadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientrequests_PrivateFileUploadRequest_descriptor,
+        new java.lang.String[] { "RequestBase", "RequestedClientBase", "RequestedFileBase", });
     internal_static_protobuf_clientrequests_ClientLoginRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_protobuf_clientrequests_ClientLoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientLoginRequest_descriptor,
-        new java.lang.String[] { "RequestedUsername", "RequestedPassword", });
+        new java.lang.String[] { "RequestBase", "RequestedDevice", });
     internal_static_protobuf_clientrequests_ClientLogoutRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_protobuf_clientrequests_ClientLogoutRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientLogoutRequest_descriptor,
-        new java.lang.String[] { "RequestedUsername", "RequestedPassword", "RequestedDevice", });
+        new java.lang.String[] { "RequestBase", "RequestedDevice", });
     internal_static_protobuf_clientrequests_ClientRegistrationRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_protobuf_clientrequests_ClientRegistrationRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientRegistrationRequest_descriptor,
-        new java.lang.String[] { "RequestedUsername", "RequestedPassword", "RequestedPasswordRepeat", "RequestedEmail", "InvitationKey", });
-    internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_protobuf_clientrequests_ClientFileDownloadRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientrequests_ClientFileDownloadRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedDownloadFileURI", });
-    internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_protobuf_clientrequests_ClientFileUploadRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientrequests_ClientFileUploadRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", "RequestedUploadFileURI", });
+        new java.lang.String[] { "Username", "Password", "PasswordRepeat", "Email", "InvitationKey", "Device", });
     internal_static_protobuf_clientrequests_ClientPingMeasurementRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_protobuf_clientrequests_ClientPingMeasurementRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientPingMeasurementRequest_descriptor,
-        new java.lang.String[] { "RequestorBase", });
+        new java.lang.String[] { "RequestorBase", "RequestedDevice", });
     protobuf.ClientIdentities.getDescriptor();
+    protobuf.ClientChannels.getDescriptor();
     protobuf.ClientMessages.getDescriptor();
   }
 

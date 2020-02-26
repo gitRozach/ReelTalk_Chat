@@ -14,41 +14,57 @@ public final class ClientEvents {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ClientRequestAcceptedEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientRequestAcceptedEvent)
+  public interface ClientEventBaseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientEventBase)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    boolean hasEventId();
-    /**
-     * <code>required int32 eventId = 1;</code>
+     * <code>int32 eventId = 1;</code>
      * @return The eventId.
      */
     int getEventId();
+
+    /**
+     * <code>int64 eventTimestamp = 2;</code>
+     * @return The eventTimestamp.
+     */
+    long getEventTimestamp();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     * @return Whether the eventRequestorBase field is set.
+     */
+    boolean hasEventRequestorBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     * @return The eventRequestorBase.
+     */
+    protobuf.ClientIdentities.ClientBase getEventRequestorBase();
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     */
+    protobuf.ClientIdentities.ClientBaseOrBuilder getEventRequestorBaseOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientRequestAcceptedEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientEventBase}
    */
-  public  static final class ClientRequestAcceptedEvent extends
+  public  static final class ClientEventBase extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientRequestAcceptedEvent)
-      ClientRequestAcceptedEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientEventBase)
+      ClientEventBaseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientRequestAcceptedEvent.newBuilder() to construct.
-    private ClientRequestAcceptedEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientEventBase.newBuilder() to construct.
+    private ClientEventBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientRequestAcceptedEvent() {
+    private ClientEventBase() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientRequestAcceptedEvent();
+      return new ClientEventBase();
     }
 
     @java.lang.Override
@@ -56,7 +72,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientRequestAcceptedEvent(
+    private ClientEventBase(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -64,7 +80,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -76,8 +91,26 @@ public final class ClientEvents {
               done = true;
               break;
             case 8: {
-              bitField0_ |= 0x00000001;
+
               eventId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              eventTimestamp_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
+              if (eventRequestorBase_ != null) {
+                subBuilder = eventRequestorBase_.toBuilder();
+              }
+              eventRequestorBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventRequestorBase_);
+                eventRequestorBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -101,33 +134,58 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientEventBase_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientEventBase_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientRequestAcceptedEvent.class, protobuf.ClientEvents.ClientRequestAcceptedEvent.Builder.class);
+              protobuf.ClientEvents.ClientEventBase.class, protobuf.ClientEvents.ClientEventBase.Builder.class);
     }
 
-    private int bitField0_;
     public static final int EVENTID_FIELD_NUMBER = 1;
     private int eventId_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int32 eventId = 1;</code>
+     * <code>int32 eventId = 1;</code>
      * @return The eventId.
      */
     public int getEventId() {
       return eventId_;
+    }
+
+    public static final int EVENTTIMESTAMP_FIELD_NUMBER = 2;
+    private long eventTimestamp_;
+    /**
+     * <code>int64 eventTimestamp = 2;</code>
+     * @return The eventTimestamp.
+     */
+    public long getEventTimestamp() {
+      return eventTimestamp_;
+    }
+
+    public static final int EVENTREQUESTORBASE_FIELD_NUMBER = 3;
+    private protobuf.ClientIdentities.ClientBase eventRequestorBase_;
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     * @return Whether the eventRequestorBase field is set.
+     */
+    public boolean hasEventRequestorBase() {
+      return eventRequestorBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     * @return The eventRequestorBase.
+     */
+    public protobuf.ClientIdentities.ClientBase getEventRequestorBase() {
+      return eventRequestorBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : eventRequestorBase_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+     */
+    public protobuf.ClientIdentities.ClientBaseOrBuilder getEventRequestorBaseOrBuilder() {
+      return getEventRequestorBase();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -137,10 +195,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -148,8 +202,14 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventId_ != 0) {
         output.writeInt32(1, eventId_);
+      }
+      if (eventTimestamp_ != 0L) {
+        output.writeInt64(2, eventTimestamp_);
+      }
+      if (eventRequestorBase_ != null) {
+        output.writeMessage(3, getEventRequestorBase());
       }
       unknownFields.writeTo(output);
     }
@@ -160,9 +220,17 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, eventId_);
+      }
+      if (eventTimestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, eventTimestamp_);
+      }
+      if (eventRequestorBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getEventRequestorBase());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -174,15 +242,19 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientRequestAcceptedEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientEventBase)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientRequestAcceptedEvent other = (protobuf.ClientEvents.ClientRequestAcceptedEvent) obj;
+      protobuf.ClientEvents.ClientEventBase other = (protobuf.ClientEvents.ClientEventBase) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (getEventId()
+          != other.getEventId()) return false;
+      if (getEventTimestamp()
+          != other.getEventTimestamp()) return false;
+      if (hasEventRequestorBase() != other.hasEventRequestorBase()) return false;
+      if (hasEventRequestorBase()) {
+        if (!getEventRequestorBase()
+            .equals(other.getEventRequestorBase())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -195,78 +267,83 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      hash = (37 * hash) + EVENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getEventId();
+      hash = (37 * hash) + EVENTTIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEventTimestamp());
+      if (hasEventRequestorBase()) {
+        hash = (37 * hash) + EVENTREQUESTORBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventRequestorBase().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientEventBase parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientEventBase parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -279,7 +356,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientRequestAcceptedEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientEventBase prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -295,26 +372,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientRequestAcceptedEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientEventBase}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientRequestAcceptedEvent)
-        protobuf.ClientEvents.ClientRequestAcceptedEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientEventBase)
+        protobuf.ClientEvents.ClientEventBaseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientEventBase_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientEventBase_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientRequestAcceptedEvent.class, protobuf.ClientEvents.ClientRequestAcceptedEvent.Builder.class);
+                protobuf.ClientEvents.ClientEventBase.class, protobuf.ClientEvents.ClientEventBase.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientRequestAcceptedEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientEventBase.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -333,24 +410,32 @@ public final class ClientEvents {
       public Builder clear() {
         super.clear();
         eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+
+        eventTimestamp_ = 0L;
+
+        if (eventRequestorBaseBuilder_ == null) {
+          eventRequestorBase_ = null;
+        } else {
+          eventRequestorBase_ = null;
+          eventRequestorBaseBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientEventBase_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestAcceptedEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientRequestAcceptedEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientEventBase getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientEventBase.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestAcceptedEvent build() {
-        protobuf.ClientEvents.ClientRequestAcceptedEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientEventBase build() {
+        protobuf.ClientEvents.ClientEventBase result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -358,15 +443,15 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestAcceptedEvent buildPartial() {
-        protobuf.ClientEvents.ClientRequestAcceptedEvent result = new protobuf.ClientEvents.ClientRequestAcceptedEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+      public protobuf.ClientEvents.ClientEventBase buildPartial() {
+        protobuf.ClientEvents.ClientEventBase result = new protobuf.ClientEvents.ClientEventBase(this);
+        result.eventId_ = eventId_;
+        result.eventTimestamp_ = eventTimestamp_;
+        if (eventRequestorBaseBuilder_ == null) {
+          result.eventRequestorBase_ = eventRequestorBase_;
+        } else {
+          result.eventRequestorBase_ = eventRequestorBaseBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -405,18 +490,24 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientRequestAcceptedEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientRequestAcceptedEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientEventBase) {
+          return mergeFrom((protobuf.ClientEvents.ClientEventBase)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientRequestAcceptedEvent other) {
-        if (other == protobuf.ClientEvents.ClientRequestAcceptedEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
+      public Builder mergeFrom(protobuf.ClientEvents.ClientEventBase other) {
+        if (other == protobuf.ClientEvents.ClientEventBase.getDefaultInstance()) return this;
+        if (other.getEventId() != 0) {
           setEventId(other.getEventId());
+        }
+        if (other.getEventTimestamp() != 0L) {
+          setEventTimestamp(other.getEventTimestamp());
+        }
+        if (other.hasEventRequestorBase()) {
+          mergeEventRequestorBase(other.getEventRequestorBase());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -425,9 +516,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
         return true;
       }
 
@@ -436,11 +524,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientRequestAcceptedEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientEventBase parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientRequestAcceptedEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientEventBase) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -449,43 +537,184 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
       private int eventId_ ;
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
+       * <code>int32 eventId = 1;</code>
        * @return The eventId.
        */
       public int getEventId() {
         return eventId_;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
+       * <code>int32 eventId = 1;</code>
        * @param value The eventId to set.
        * @return This builder for chaining.
        */
       public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
+        
         eventId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
+       * <code>int32 eventId = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         eventId_ = 0;
         onChanged();
         return this;
+      }
+
+      private long eventTimestamp_ ;
+      /**
+       * <code>int64 eventTimestamp = 2;</code>
+       * @return The eventTimestamp.
+       */
+      public long getEventTimestamp() {
+        return eventTimestamp_;
+      }
+      /**
+       * <code>int64 eventTimestamp = 2;</code>
+       * @param value The eventTimestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEventTimestamp(long value) {
+        
+        eventTimestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 eventTimestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEventTimestamp() {
+        
+        eventTimestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientIdentities.ClientBase eventRequestorBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> eventRequestorBaseBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       * @return Whether the eventRequestorBase field is set.
+       */
+      public boolean hasEventRequestorBase() {
+        return eventRequestorBaseBuilder_ != null || eventRequestorBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       * @return The eventRequestorBase.
+       */
+      public protobuf.ClientIdentities.ClientBase getEventRequestorBase() {
+        if (eventRequestorBaseBuilder_ == null) {
+          return eventRequestorBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : eventRequestorBase_;
+        } else {
+          return eventRequestorBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public Builder setEventRequestorBase(protobuf.ClientIdentities.ClientBase value) {
+        if (eventRequestorBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventRequestorBase_ = value;
+          onChanged();
+        } else {
+          eventRequestorBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public Builder setEventRequestorBase(
+          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
+        if (eventRequestorBaseBuilder_ == null) {
+          eventRequestorBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventRequestorBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public Builder mergeEventRequestorBase(protobuf.ClientIdentities.ClientBase value) {
+        if (eventRequestorBaseBuilder_ == null) {
+          if (eventRequestorBase_ != null) {
+            eventRequestorBase_ =
+              protobuf.ClientIdentities.ClientBase.newBuilder(eventRequestorBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventRequestorBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventRequestorBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public Builder clearEventRequestorBase() {
+        if (eventRequestorBaseBuilder_ == null) {
+          eventRequestorBase_ = null;
+          onChanged();
+        } else {
+          eventRequestorBase_ = null;
+          eventRequestorBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientBase.Builder getEventRequestorBaseBuilder() {
+        
+        onChanged();
+        return getEventRequestorBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientBaseOrBuilder getEventRequestorBaseOrBuilder() {
+        if (eventRequestorBaseBuilder_ != null) {
+          return eventRequestorBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventRequestorBase_ == null ?
+              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : eventRequestorBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientBase eventRequestorBase = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
+          getEventRequestorBaseFieldBuilder() {
+        if (eventRequestorBaseBuilder_ == null) {
+          eventRequestorBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
+                  getEventRequestorBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventRequestorBase_ = null;
+        }
+        return eventRequestorBaseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -500,99 +729,104 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientRequestAcceptedEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientEventBase)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientRequestAcceptedEvent)
-    private static final protobuf.ClientEvents.ClientRequestAcceptedEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientEventBase)
+    private static final protobuf.ClientEvents.ClientEventBase DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientRequestAcceptedEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientEventBase();
     }
 
-    public static protobuf.ClientEvents.ClientRequestAcceptedEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientEventBase getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientRequestAcceptedEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientRequestAcceptedEvent>() {
+    private static final com.google.protobuf.Parser<ClientEventBase>
+        PARSER = new com.google.protobuf.AbstractParser<ClientEventBase>() {
       @java.lang.Override
-      public ClientRequestAcceptedEvent parsePartialFrom(
+      public ClientEventBase parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientRequestAcceptedEvent(input, extensionRegistry);
+        return new ClientEventBase(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientRequestAcceptedEvent> parser() {
+    public static com.google.protobuf.Parser<ClientEventBase> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientRequestAcceptedEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientEventBase> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientRequestAcceptedEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientEventBase getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientRequestDeniedEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientRequestDeniedEvent)
+  public interface ClientRequestAnswerEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientRequestAnswerEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>optional string message = 2;</code>
-     * @return Whether the message field is set.
+     * <code>bool eventAccepted = 2;</code>
+     * @return The eventAccepted.
      */
-    boolean hasMessage();
+    boolean getEventAccepted();
+
     /**
-     * <code>optional string message = 2;</code>
-     * @return The message.
+     * <code>string eventMessage = 3;</code>
+     * @return The eventMessage.
      */
-    java.lang.String getMessage();
+    java.lang.String getEventMessage();
     /**
-     * <code>optional string message = 2;</code>
-     * @return The bytes for message.
+     * <code>string eventMessage = 3;</code>
+     * @return The bytes for eventMessage.
      */
     com.google.protobuf.ByteString
-        getMessageBytes();
+        getEventMessageBytes();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientRequestDeniedEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientRequestAnswerEvent}
    */
-  public  static final class ClientRequestDeniedEvent extends
+  public  static final class ClientRequestAnswerEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientRequestDeniedEvent)
-      ClientRequestDeniedEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientRequestAnswerEvent)
+      ClientRequestAnswerEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientRequestDeniedEvent.newBuilder() to construct.
-    private ClientRequestDeniedEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientRequestAnswerEvent.newBuilder() to construct.
+    private ClientRequestAnswerEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientRequestDeniedEvent() {
-      message_ = "";
+    private ClientRequestAnswerEvent() {
+      eventMessage_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientRequestDeniedEvent();
+      return new ClientRequestAnswerEvent();
     }
 
     @java.lang.Override
@@ -600,7 +834,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientRequestDeniedEvent(
+    private ClientRequestAnswerEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -608,7 +842,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -619,15 +852,28 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              message_ = bs;
+            case 16: {
+
+              eventAccepted_ = input.readBool();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventMessage_ = s;
               break;
             }
             default: {
@@ -651,74 +897,80 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestDeniedEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAnswerEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientRequestDeniedEvent.class, protobuf.ClientEvents.ClientRequestDeniedEvent.Builder.class);
+              protobuf.ClientEvents.ClientRequestAnswerEvent.class, protobuf.ClientEvents.ClientRequestAnswerEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object message_;
+    public static final int EVENTACCEPTED_FIELD_NUMBER = 2;
+    private boolean eventAccepted_;
     /**
-     * <code>optional string message = 2;</code>
-     * @return Whether the message field is set.
+     * <code>bool eventAccepted = 2;</code>
+     * @return The eventAccepted.
      */
-    public boolean hasMessage() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean getEventAccepted() {
+      return eventAccepted_;
     }
+
+    public static final int EVENTMESSAGE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object eventMessage_;
     /**
-     * <code>optional string message = 2;</code>
-     * @return The message.
+     * <code>string eventMessage = 3;</code>
+     * @return The eventMessage.
      */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
+    public java.lang.String getEventMessage() {
+      java.lang.Object ref = eventMessage_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          message_ = s;
-        }
+        eventMessage_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string message = 2;</code>
-     * @return The bytes for message.
+     * <code>string eventMessage = 3;</code>
+     * @return The bytes for eventMessage.
      */
     public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
+        getEventMessageBytes() {
+      java.lang.Object ref = eventMessage_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        message_ = b;
+        eventMessage_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -732,10 +984,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -743,11 +991,14 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+      if (eventAccepted_ != false) {
+        output.writeBool(2, eventAccepted_);
+      }
+      if (!getEventMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, eventMessage_);
       }
       unknownFields.writeTo(output);
     }
@@ -758,12 +1009,16 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+      if (eventAccepted_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, eventAccepted_);
+      }
+      if (!getEventMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, eventMessage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -775,21 +1030,20 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientRequestDeniedEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientRequestAnswerEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientRequestDeniedEvent other = (protobuf.ClientEvents.ClientRequestDeniedEvent) obj;
+      protobuf.ClientEvents.ClientRequestAnswerEvent other = (protobuf.ClientEvents.ClientRequestAnswerEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasMessage() != other.hasMessage()) return false;
-      if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
-      }
+      if (getEventAccepted()
+          != other.getEventAccepted()) return false;
+      if (!getEventMessage()
+          .equals(other.getEventMessage())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -801,82 +1055,83 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasMessage()) {
-        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getMessage().hashCode();
-      }
+      hash = (37 * hash) + EVENTACCEPTED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getEventAccepted());
+      hash = (37 * hash) + EVENTMESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getEventMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -889,7 +1144,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientRequestDeniedEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientRequestAnswerEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -905,26 +1160,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientRequestDeniedEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientRequestAnswerEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientRequestDeniedEvent)
-        protobuf.ClientEvents.ClientRequestDeniedEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientRequestAnswerEvent)
+        protobuf.ClientEvents.ClientRequestAnswerEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestDeniedEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAnswerEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientRequestDeniedEvent.class, protobuf.ClientEvents.ClientRequestDeniedEvent.Builder.class);
+                protobuf.ClientEvents.ClientRequestAnswerEvent.class, protobuf.ClientEvents.ClientRequestAnswerEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientRequestDeniedEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientRequestAnswerEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -942,27 +1197,33 @@ public final class ClientEvents {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        message_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        eventAccepted_ = false;
+
+        eventMessage_ = "";
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestDeniedEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientRequestDeniedEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientRequestAnswerEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientRequestAnswerEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestDeniedEvent build() {
-        protobuf.ClientEvents.ClientRequestDeniedEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientRequestAnswerEvent build() {
+        protobuf.ClientEvents.ClientRequestAnswerEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -970,19 +1231,15 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRequestDeniedEvent buildPartial() {
-        protobuf.ClientEvents.ClientRequestDeniedEvent result = new protobuf.ClientEvents.ClientRequestDeniedEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+      public protobuf.ClientEvents.ClientRequestAnswerEvent buildPartial() {
+        protobuf.ClientEvents.ClientRequestAnswerEvent result = new protobuf.ClientEvents.ClientRequestAnswerEvent(this);
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.message_ = message_;
-        result.bitField0_ = to_bitField0_;
+        result.eventAccepted_ = eventAccepted_;
+        result.eventMessage_ = eventMessage_;
         onBuilt();
         return result;
       }
@@ -1021,22 +1278,24 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientRequestDeniedEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientRequestDeniedEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientRequestAnswerEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientRequestAnswerEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientRequestDeniedEvent other) {
-        if (other == protobuf.ClientEvents.ClientRequestDeniedEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+      public Builder mergeFrom(protobuf.ClientEvents.ClientRequestAnswerEvent other) {
+        if (other == protobuf.ClientEvents.ClientRequestAnswerEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasMessage()) {
-          bitField0_ |= 0x00000002;
-          message_ = other.message_;
+        if (other.getEventAccepted() != false) {
+          setEventAccepted(other.getEventAccepted());
+        }
+        if (!other.getEventMessage().isEmpty()) {
+          eventMessage_ = other.eventMessage_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1046,9 +1305,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
         return true;
       }
 
@@ -1057,11 +1313,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientRequestDeniedEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientRequestAnswerEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientRequestDeniedEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientRequestAnswerEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1070,125 +1326,228 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public int getEventId() {
-        return eventId_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private boolean eventAccepted_ ;
+      /**
+       * <code>bool eventAccepted = 2;</code>
+       * @return The eventAccepted.
+       */
+      public boolean getEventAccepted() {
+        return eventAccepted_;
+      }
+      /**
+       * <code>bool eventAccepted = 2;</code>
+       * @param value The eventAccepted to set.
        * @return This builder for chaining.
        */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
+      public Builder setEventAccepted(boolean value) {
+        
+        eventAccepted_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
+       * <code>bool eventAccepted = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
+      public Builder clearEventAccepted() {
+        
+        eventAccepted_ = false;
         onChanged();
         return this;
       }
 
-      private java.lang.Object message_ = "";
+      private java.lang.Object eventMessage_ = "";
       /**
-       * <code>optional string message = 2;</code>
-       * @return Whether the message field is set.
+       * <code>string eventMessage = 3;</code>
+       * @return The eventMessage.
        */
-      public boolean hasMessage() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string message = 2;</code>
-       * @return The message.
-       */
-      public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
+      public java.lang.String getEventMessage() {
+        java.lang.Object ref = eventMessage_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            message_ = s;
-          }
+          eventMessage_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string message = 2;</code>
-       * @return The bytes for message.
+       * <code>string eventMessage = 3;</code>
+       * @return The bytes for eventMessage.
        */
       public com.google.protobuf.ByteString
-          getMessageBytes() {
-        java.lang.Object ref = message_;
+          getEventMessageBytes() {
+        java.lang.Object ref = eventMessage_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          message_ = b;
+          eventMessage_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string message = 2;</code>
-       * @param value The message to set.
+       * <code>string eventMessage = 3;</code>
+       * @param value The eventMessage to set.
        * @return This builder for chaining.
        */
-      public Builder setMessage(
+      public Builder setEventMessage(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        message_ = value;
+  
+        eventMessage_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string eventMessage = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMessage() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        message_ = getDefaultInstance().getMessage();
+      public Builder clearEventMessage() {
+        
+        eventMessage_ = getDefaultInstance().getEventMessage();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
-       * @param value The bytes for message to set.
+       * <code>string eventMessage = 3;</code>
+       * @param value The bytes for eventMessage to set.
        * @return This builder for chaining.
        */
-      public Builder setMessageBytes(
+      public Builder setEventMessageBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        message_ = value;
+  checkByteStringIsUtf8(value);
+        
+        eventMessage_ = value;
         onChanged();
         return this;
       }
@@ -1205,41 +1564,41 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientRequestDeniedEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientRequestAnswerEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientRequestDeniedEvent)
-    private static final protobuf.ClientEvents.ClientRequestDeniedEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientRequestAnswerEvent)
+    private static final protobuf.ClientEvents.ClientRequestAnswerEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientRequestDeniedEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientRequestAnswerEvent();
     }
 
-    public static protobuf.ClientEvents.ClientRequestDeniedEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientRequestAnswerEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientRequestDeniedEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientRequestDeniedEvent>() {
+    private static final com.google.protobuf.Parser<ClientRequestAnswerEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientRequestAnswerEvent>() {
       @java.lang.Override
-      public ClientRequestDeniedEvent parsePartialFrom(
+      public ClientRequestAnswerEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientRequestDeniedEvent(input, extensionRegistry);
+        return new ClientRequestAnswerEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientRequestDeniedEvent> parser() {
+    public static com.google.protobuf.Parser<ClientRequestAnswerEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientRequestDeniedEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientRequestAnswerEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientRequestDeniedEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientRequestAnswerEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1250,28 +1609,32 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      * @return Whether the clientProfile field is set.
      */
     boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      * @return The clientProfile.
      */
     protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
     protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
@@ -1310,7 +1673,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1321,22 +1683,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
               protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
+              if (clientProfile_ != null) {
                 subBuilder = clientProfile_.toBuilder();
               }
-              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(clientProfile_);
                 clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -1371,45 +1741,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientProfileDataEvent.class, protobuf.ClientEvents.ClientProfileDataEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
     public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
     private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      * @return Whether the clientProfile field is set.
      */
     public boolean hasClientProfile() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      * @return The clientProfile.
      */
     public protobuf.ClientIdentities.ClientProfile getClientProfile() {
       return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
     public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
-      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1419,18 +1794,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientProfile()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientProfile().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1438,10 +1801,10 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
@@ -1453,11 +1816,11 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getClientProfile());
       }
@@ -1476,10 +1839,10 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientProfileDataEvent other = (protobuf.ClientEvents.ClientProfileDataEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
       if (hasClientProfile() != other.hasClientProfile()) return false;
       if (hasClientProfile()) {
@@ -1497,9 +1860,9 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
       if (hasClientProfile()) {
         hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
@@ -1633,20 +1996,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientProfileFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
         if (clientProfileBuilder_ == null) {
           clientProfile_ = null;
         } else {
-          clientProfileBuilder_.clear();
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1673,21 +2039,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientProfileDataEvent buildPartial() {
         protobuf.ClientEvents.ClientProfileDataEvent result = new protobuf.ClientEvents.ClientProfileDataEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientProfileBuilder_ == null) {
-            result.clientProfile_ = clientProfile_;
-          } else {
-            result.clientProfile_ = clientProfileBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1736,8 +2097,8 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientProfileDataEvent other) {
         if (other == protobuf.ClientEvents.ClientProfileDataEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
         if (other.hasClientProfile()) {
           mergeClientProfile(other.getClientProfile());
@@ -1749,15 +2110,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientProfile()) {
-          return false;
-        }
-        if (!getClientProfile().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -1779,57 +2131,138 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public int getEventId() {
-        return eventId_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
       }
 
       private protobuf.ClientIdentities.ClientProfile clientProfile_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        * @return Whether the clientProfile field is set.
        */
       public boolean hasClientProfile() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return clientProfileBuilder_ != null || clientProfile_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        * @return The clientProfile.
        */
       public protobuf.ClientIdentities.ClientProfile getClientProfile() {
@@ -1840,7 +2273,7 @@ public final class ClientEvents {
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
         if (clientProfileBuilder_ == null) {
@@ -1852,11 +2285,11 @@ public final class ClientEvents {
         } else {
           clientProfileBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public Builder setClientProfile(
           protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
@@ -1866,17 +2299,15 @@ public final class ClientEvents {
         } else {
           clientProfileBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
         if (clientProfileBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientProfile_ != null &&
-              clientProfile_ != protobuf.ClientIdentities.ClientProfile.getDefaultInstance()) {
+          if (clientProfile_ != null) {
             clientProfile_ =
               protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
           } else {
@@ -1886,32 +2317,33 @@ public final class ClientEvents {
         } else {
           clientProfileBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public Builder clearClientProfile() {
         if (clientProfileBuilder_ == null) {
           clientProfile_ = null;
           onChanged();
         } else {
-          clientProfileBuilder_.clear();
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
-        bitField0_ |= 0x00000002;
+        
         onChanged();
         return getClientProfileFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
         if (clientProfileBuilder_ != null) {
@@ -1922,7 +2354,7 @@ public final class ClientEvents {
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
@@ -1963,7 +2395,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientProfileDataEvent>
+    private static final com.google.protobuf.Parser<ClientProfileDataEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientProfileDataEvent>() {
       @java.lang.Override
       public ClientProfileDataEvent parsePartialFrom(
@@ -1990,2747 +2422,48 @@ public final class ClientEvents {
 
   }
 
-  public interface TextChannelDataEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.TextChannelDataEvent)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    boolean hasEventId();
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    int getEventId();
-
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<protobuf.ClientMessages.ChannelClientMessage> 
-        getChannelMessageList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index);
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    int getChannelMessageCount();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code protobuf.clientevents.TextChannelDataEvent}
-   */
-  public  static final class TextChannelDataEvent extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.TextChannelDataEvent)
-      TextChannelDataEventOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use TextChannelDataEvent.newBuilder() to construct.
-    private TextChannelDataEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private TextChannelDataEvent() {
-      channelMessage_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new TextChannelDataEvent();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private TextChannelDataEvent(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              channelMessage_.add(
-                  input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_TextChannelDataEvent_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.TextChannelDataEvent.class, protobuf.ClientEvents.TextChannelDataEvent.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    public int getEventId() {
-      return eventId_;
-    }
-
-    public static final int CHANNELMESSAGE_FIELD_NUMBER = 2;
-    private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_;
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public int getChannelMessageCount() {
-      return channelMessage_.size();
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-      return channelMessage_.get(index);
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index) {
-      return channelMessage_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getChannelMessageCount(); i++) {
-        if (!getChannelMessage(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        output.writeMessage(2, channelMessage_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, channelMessage_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientEvents.TextChannelDataEvent)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientEvents.TextChannelDataEvent other = (protobuf.ClientEvents.TextChannelDataEvent) obj;
-
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
-      }
-      if (!getChannelMessageList()
-          .equals(other.getChannelMessageList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
-      }
-      if (getChannelMessageCount() > 0) {
-        hash = (37 * hash) + CHANNELMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelMessageList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.TextChannelDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientEvents.TextChannelDataEvent prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientevents.TextChannelDataEvent}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.TextChannelDataEvent)
-        protobuf.ClientEvents.TextChannelDataEventOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_TextChannelDataEvent_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.TextChannelDataEvent.class, protobuf.ClientEvents.TextChannelDataEvent.Builder.class);
-      }
-
-      // Construct using protobuf.ClientEvents.TextChannelDataEvent.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getChannelMessageFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.TextChannelDataEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.TextChannelDataEvent.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.TextChannelDataEvent build() {
-        protobuf.ClientEvents.TextChannelDataEvent result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.TextChannelDataEvent buildPartial() {
-        protobuf.ClientEvents.TextChannelDataEvent result = new protobuf.ClientEvents.TextChannelDataEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (channelMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.channelMessage_ = channelMessage_;
-        } else {
-          result.channelMessage_ = channelMessageBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.TextChannelDataEvent) {
-          return mergeFrom((protobuf.ClientEvents.TextChannelDataEvent)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientEvents.TextChannelDataEvent other) {
-        if (other == protobuf.ClientEvents.TextChannelDataEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
-        }
-        if (channelMessageBuilder_ == null) {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessage_.isEmpty()) {
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureChannelMessageIsMutable();
-              channelMessage_.addAll(other.channelMessage_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessageBuilder_.isEmpty()) {
-              channelMessageBuilder_.dispose();
-              channelMessageBuilder_ = null;
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              channelMessageBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getChannelMessageFieldBuilder() : null;
-            } else {
-              channelMessageBuilder_.addAllMessages(other.channelMessage_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        for (int i = 0; i < getChannelMessageCount(); i++) {
-          if (!getChannelMessage(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientEvents.TextChannelDataEvent parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.TextChannelDataEvent) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_ =
-        java.util.Collections.emptyList();
-      private void ensureChannelMessageIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>(channelMessage_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> channelMessageBuilder_;
-
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-        if (channelMessageBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        } else {
-          return channelMessageBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public int getChannelMessageCount() {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.size();
-        } else {
-          return channelMessageBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);
-        } else {
-          return channelMessageBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addAllChannelMessage(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelClientMessage> values) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, channelMessage_);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder clearChannelMessage() {
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder removeChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.remove(index);
-          onChanged();
-        } else {
-          channelMessageBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-          int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);  } else {
-          return channelMessageBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-           getChannelMessageOrBuilderList() {
-        if (channelMessageBuilder_ != null) {
-          return channelMessageBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder() {
-        return getChannelMessageFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage.Builder> 
-           getChannelMessageBuilderList() {
-        return getChannelMessageFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-          getChannelMessageFieldBuilder() {
-        if (channelMessageBuilder_ == null) {
-          channelMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  channelMessage_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          channelMessage_ = null;
-        }
-        return channelMessageBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.TextChannelDataEvent)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.TextChannelDataEvent)
-    private static final protobuf.ClientEvents.TextChannelDataEvent DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.TextChannelDataEvent();
-    }
-
-    public static protobuf.ClientEvents.TextChannelDataEvent getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<TextChannelDataEvent>
-        PARSER = new com.google.protobuf.AbstractParser<TextChannelDataEvent>() {
-      @java.lang.Override
-      public TextChannelDataEvent parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TextChannelDataEvent(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<TextChannelDataEvent> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TextChannelDataEvent> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientEvents.TextChannelDataEvent getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface VoiceChannelDataEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.VoiceChannelDataEvent)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    boolean hasEventId();
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    int getEventId();
-
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<protobuf.ClientMessages.ChannelClientMessage> 
-        getChannelMessageList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index);
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    int getChannelMessageCount();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code protobuf.clientevents.VoiceChannelDataEvent}
-   */
-  public  static final class VoiceChannelDataEvent extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.VoiceChannelDataEvent)
-      VoiceChannelDataEventOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use VoiceChannelDataEvent.newBuilder() to construct.
-    private VoiceChannelDataEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private VoiceChannelDataEvent() {
-      channelMessage_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new VoiceChannelDataEvent();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private VoiceChannelDataEvent(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              channelMessage_.add(
-                  input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_VoiceChannelDataEvent_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.VoiceChannelDataEvent.class, protobuf.ClientEvents.VoiceChannelDataEvent.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    public int getEventId() {
-      return eventId_;
-    }
-
-    public static final int CHANNELMESSAGE_FIELD_NUMBER = 2;
-    private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_;
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public int getChannelMessageCount() {
-      return channelMessage_.size();
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-      return channelMessage_.get(index);
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index) {
-      return channelMessage_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getChannelMessageCount(); i++) {
-        if (!getChannelMessage(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        output.writeMessage(2, channelMessage_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, channelMessage_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientEvents.VoiceChannelDataEvent)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientEvents.VoiceChannelDataEvent other = (protobuf.ClientEvents.VoiceChannelDataEvent) obj;
-
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
-      }
-      if (!getChannelMessageList()
-          .equals(other.getChannelMessageList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
-      }
-      if (getChannelMessageCount() > 0) {
-        hash = (37 * hash) + CHANNELMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelMessageList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.VoiceChannelDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientEvents.VoiceChannelDataEvent prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientevents.VoiceChannelDataEvent}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.VoiceChannelDataEvent)
-        protobuf.ClientEvents.VoiceChannelDataEventOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_VoiceChannelDataEvent_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.VoiceChannelDataEvent.class, protobuf.ClientEvents.VoiceChannelDataEvent.Builder.class);
-      }
-
-      // Construct using protobuf.ClientEvents.VoiceChannelDataEvent.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getChannelMessageFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.VoiceChannelDataEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.VoiceChannelDataEvent.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.VoiceChannelDataEvent build() {
-        protobuf.ClientEvents.VoiceChannelDataEvent result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.VoiceChannelDataEvent buildPartial() {
-        protobuf.ClientEvents.VoiceChannelDataEvent result = new protobuf.ClientEvents.VoiceChannelDataEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (channelMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.channelMessage_ = channelMessage_;
-        } else {
-          result.channelMessage_ = channelMessageBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.VoiceChannelDataEvent) {
-          return mergeFrom((protobuf.ClientEvents.VoiceChannelDataEvent)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientEvents.VoiceChannelDataEvent other) {
-        if (other == protobuf.ClientEvents.VoiceChannelDataEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
-        }
-        if (channelMessageBuilder_ == null) {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessage_.isEmpty()) {
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureChannelMessageIsMutable();
-              channelMessage_.addAll(other.channelMessage_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessageBuilder_.isEmpty()) {
-              channelMessageBuilder_.dispose();
-              channelMessageBuilder_ = null;
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              channelMessageBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getChannelMessageFieldBuilder() : null;
-            } else {
-              channelMessageBuilder_.addAllMessages(other.channelMessage_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        for (int i = 0; i < getChannelMessageCount(); i++) {
-          if (!getChannelMessage(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientEvents.VoiceChannelDataEvent parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.VoiceChannelDataEvent) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_ =
-        java.util.Collections.emptyList();
-      private void ensureChannelMessageIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>(channelMessage_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> channelMessageBuilder_;
-
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-        if (channelMessageBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        } else {
-          return channelMessageBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public int getChannelMessageCount() {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.size();
-        } else {
-          return channelMessageBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);
-        } else {
-          return channelMessageBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addAllChannelMessage(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelClientMessage> values) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, channelMessage_);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder clearChannelMessage() {
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder removeChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.remove(index);
-          onChanged();
-        } else {
-          channelMessageBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-          int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);  } else {
-          return channelMessageBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-           getChannelMessageOrBuilderList() {
-        if (channelMessageBuilder_ != null) {
-          return channelMessageBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder() {
-        return getChannelMessageFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage.Builder> 
-           getChannelMessageBuilderList() {
-        return getChannelMessageFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-          getChannelMessageFieldBuilder() {
-        if (channelMessageBuilder_ == null) {
-          channelMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  channelMessage_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          channelMessage_ = null;
-        }
-        return channelMessageBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.VoiceChannelDataEvent)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.VoiceChannelDataEvent)
-    private static final protobuf.ClientEvents.VoiceChannelDataEvent DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.VoiceChannelDataEvent();
-    }
-
-    public static protobuf.ClientEvents.VoiceChannelDataEvent getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<VoiceChannelDataEvent>
-        PARSER = new com.google.protobuf.AbstractParser<VoiceChannelDataEvent>() {
-      @java.lang.Override
-      public VoiceChannelDataEvent parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VoiceChannelDataEvent(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<VoiceChannelDataEvent> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<VoiceChannelDataEvent> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientEvents.VoiceChannelDataEvent getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ChannelMessageDataEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageDataEvent)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    boolean hasEventId();
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    int getEventId();
-
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<protobuf.ClientMessages.ChannelClientMessage> 
-        getChannelMessageList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index);
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    int getChannelMessageCount();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList();
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code protobuf.clientevents.ChannelMessageDataEvent}
-   */
-  public  static final class ChannelMessageDataEvent extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessageDataEvent)
-      ChannelMessageDataEventOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ChannelMessageDataEvent.newBuilder() to construct.
-    private ChannelMessageDataEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ChannelMessageDataEvent() {
-      channelMessage_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ChannelMessageDataEvent();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ChannelMessageDataEvent(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              channelMessage_.add(
-                  input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageDataEvent_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ChannelMessageDataEvent.class, protobuf.ClientEvents.ChannelMessageDataEvent.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
-     */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
-     */
-    public int getEventId() {
-      return eventId_;
-    }
-
-    public static final int CHANNELMESSAGE_FIELD_NUMBER = 2;
-    private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_;
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-        getChannelMessageOrBuilderList() {
-      return channelMessage_;
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public int getChannelMessageCount() {
-      return channelMessage_.size();
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-      return channelMessage_.get(index);
-    }
-    /**
-     * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-        int index) {
-      return channelMessage_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getChannelMessageCount(); i++) {
-        if (!getChannelMessage(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        output.writeMessage(2, channelMessage_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
-      }
-      for (int i = 0; i < channelMessage_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, channelMessage_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientEvents.ChannelMessageDataEvent)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientEvents.ChannelMessageDataEvent other = (protobuf.ClientEvents.ChannelMessageDataEvent) obj;
-
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
-      }
-      if (!getChannelMessageList()
-          .equals(other.getChannelMessageList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
-      }
-      if (getChannelMessageCount() > 0) {
-        hash = (37 * hash) + CHANNELMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelMessageList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientEvents.ChannelMessageDataEvent parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessageDataEvent prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientevents.ChannelMessageDataEvent}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessageDataEvent)
-        protobuf.ClientEvents.ChannelMessageDataEventOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageDataEvent_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ChannelMessageDataEvent.class, protobuf.ClientEvents.ChannelMessageDataEvent.Builder.class);
-      }
-
-      // Construct using protobuf.ClientEvents.ChannelMessageDataEvent.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getChannelMessageFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageDataEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ChannelMessageDataEvent.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageDataEvent build() {
-        protobuf.ClientEvents.ChannelMessageDataEvent result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageDataEvent buildPartial() {
-        protobuf.ClientEvents.ChannelMessageDataEvent result = new protobuf.ClientEvents.ChannelMessageDataEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (channelMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.channelMessage_ = channelMessage_;
-        } else {
-          result.channelMessage_ = channelMessageBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ChannelMessageDataEvent) {
-          return mergeFrom((protobuf.ClientEvents.ChannelMessageDataEvent)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageDataEvent other) {
-        if (other == protobuf.ClientEvents.ChannelMessageDataEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
-        }
-        if (channelMessageBuilder_ == null) {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessage_.isEmpty()) {
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureChannelMessageIsMutable();
-              channelMessage_.addAll(other.channelMessage_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.channelMessage_.isEmpty()) {
-            if (channelMessageBuilder_.isEmpty()) {
-              channelMessageBuilder_.dispose();
-              channelMessageBuilder_ = null;
-              channelMessage_ = other.channelMessage_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              channelMessageBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getChannelMessageFieldBuilder() : null;
-            } else {
-              channelMessageBuilder_.addAllMessages(other.channelMessage_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        for (int i = 0; i < getChannelMessageCount(); i++) {
-          if (!getChannelMessage(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientEvents.ChannelMessageDataEvent parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ChannelMessageDataEvent) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<protobuf.ClientMessages.ChannelClientMessage> channelMessage_ =
-        java.util.Collections.emptyList();
-      private void ensureChannelMessageIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelClientMessage>(channelMessage_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> channelMessageBuilder_;
-
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage> getChannelMessageList() {
-        if (channelMessageBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        } else {
-          return channelMessageBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public int getChannelMessageCount() {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.size();
-        } else {
-          return channelMessageBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage getChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);
-        } else {
-          return channelMessageBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder setChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage value) {
-        if (channelMessageBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, value);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addChannelMessage(
-          int index, protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          channelMessageBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder addAllChannelMessage(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelClientMessage> values) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, channelMessage_);
-          onChanged();
-        } else {
-          channelMessageBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder clearChannelMessage() {
-        if (channelMessageBuilder_ == null) {
-          channelMessage_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          channelMessageBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public Builder removeChannelMessage(int index) {
-        if (channelMessageBuilder_ == null) {
-          ensureChannelMessageIsMutable();
-          channelMessage_.remove(index);
-          onChanged();
-        } else {
-          channelMessageBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder(
-          int index) {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_.get(index);  } else {
-          return channelMessageBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<? extends protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-           getChannelMessageOrBuilderList() {
-        if (channelMessageBuilder_ != null) {
-          return channelMessageBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(channelMessage_);
-        }
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder() {
-        return getChannelMessageFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder addChannelMessageBuilder(
-          int index) {
-        return getChannelMessageFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       */
-      public java.util.List<protobuf.ClientMessages.ChannelClientMessage.Builder> 
-           getChannelMessageBuilderList() {
-        return getChannelMessageFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
-          getChannelMessageFieldBuilder() {
-        if (channelMessageBuilder_ == null) {
-          channelMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  channelMessage_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          channelMessage_ = null;
-        }
-        return channelMessageBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessageDataEvent)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessageDataEvent)
-    private static final protobuf.ClientEvents.ChannelMessageDataEvent DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessageDataEvent();
-    }
-
-    public static protobuf.ClientEvents.ChannelMessageDataEvent getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelMessageDataEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageDataEvent>() {
-      @java.lang.Override
-      public ChannelMessageDataEvent parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelMessageDataEvent(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ChannelMessageDataEvent> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ChannelMessageDataEvent> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientEvents.ChannelMessageDataEvent getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface ChannelMessageEventOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     * @return Whether the channelMessage field is set.
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    boolean hasChannelMessage();
+    java.util.List<protobuf.ClientMessages.ChannelMessage> 
+        getChannelMessageList();
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     * @return The channelMessage.
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    protobuf.ClientMessages.ChannelClientMessage getChannelMessage();
+    protobuf.ClientMessages.ChannelMessage getChannelMessage(int index);
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder();
+    int getChannelMessageCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+        getChannelMessageOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageOrBuilder getChannelMessageOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ChannelMessageEvent}
@@ -4745,6 +2478,7 @@ public final class ClientEvents {
       super(builder);
     }
     private ChannelMessageEvent() {
+      channelMessage_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -4778,22 +2512,26 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientMessages.ChannelClientMessage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = channelMessage_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessage>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              channelMessage_ = input.readMessage(protobuf.ClientMessages.ChannelClientMessage.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(channelMessage_);
-                channelMessage_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
+              channelMessage_.add(
+                  input.readMessage(protobuf.ClientMessages.ChannelMessage.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -4811,6 +2549,9 @@ public final class ClientEvents {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -4828,45 +2569,62 @@ public final class ClientEvents {
               protobuf.ClientEvents.ChannelMessageEvent.class, protobuf.ClientEvents.ChannelMessageEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
     public static final int CHANNELMESSAGE_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.ChannelClientMessage channelMessage_;
+    private java.util.List<protobuf.ClientMessages.ChannelMessage> channelMessage_;
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     * @return Whether the channelMessage field is set.
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    public boolean hasChannelMessage() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public java.util.List<protobuf.ClientMessages.ChannelMessage> getChannelMessageList() {
+      return channelMessage_;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-     * @return The channelMessage.
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    public protobuf.ClientMessages.ChannelClientMessage getChannelMessage() {
-      return channelMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : channelMessage_;
+    public java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+        getChannelMessageOrBuilderList() {
+      return channelMessage_;
     }
     /**
-     * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
      */
-    public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder() {
-      return channelMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : channelMessage_;
+    public int getChannelMessageCount() {
+      return channelMessage_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessage getChannelMessage(int index) {
+      return channelMessage_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageOrBuilder getChannelMessageOrBuilder(
+        int index) {
+      return channelMessage_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4876,18 +2634,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasChannelMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getChannelMessage().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4895,11 +2641,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getChannelMessage());
+      for (int i = 0; i < channelMessage_.size(); i++) {
+        output.writeMessage(2, channelMessage_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4910,13 +2656,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      for (int i = 0; i < channelMessage_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getChannelMessage());
+          .computeMessageSize(2, channelMessage_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4933,16 +2679,13 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ChannelMessageEvent other = (protobuf.ClientEvents.ChannelMessageEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasChannelMessage() != other.hasChannelMessage()) return false;
-      if (hasChannelMessage()) {
-        if (!getChannelMessage()
-            .equals(other.getChannelMessage())) return false;
-      }
+      if (!getChannelMessageList()
+          .equals(other.getChannelMessageList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4954,13 +2697,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasChannelMessage()) {
+      if (getChannelMessageCount() > 0) {
         hash = (37 * hash) + CHANNELMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelMessage().hashCode();
+        hash = (53 * hash) + getChannelMessageList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5096,14 +2839,18 @@ public final class ClientEvents {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
         if (channelMessageBuilder_ == null) {
-          channelMessage_ = null;
+          channelMessage_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           channelMessageBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -5131,20 +2878,20 @@ public final class ClientEvents {
       public protobuf.ClientEvents.ChannelMessageEvent buildPartial() {
         protobuf.ClientEvents.ChannelMessageEvent result = new protobuf.ClientEvents.ChannelMessageEvent(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (channelMessageBuilder_ == null) {
-            result.channelMessage_ = channelMessage_;
-          } else {
-            result.channelMessage_ = channelMessageBuilder_.build();
+        if (channelMessageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            channelMessage_ = java.util.Collections.unmodifiableList(channelMessage_);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
-          to_bitField0_ |= 0x00000002;
+          result.channelMessage_ = channelMessage_;
+        } else {
+          result.channelMessage_ = channelMessageBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5193,11 +2940,34 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageEvent other) {
         if (other == protobuf.ClientEvents.ChannelMessageEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasChannelMessage()) {
-          mergeChannelMessage(other.getChannelMessage());
+        if (channelMessageBuilder_ == null) {
+          if (!other.channelMessage_.isEmpty()) {
+            if (channelMessage_.isEmpty()) {
+              channelMessage_ = other.channelMessage_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureChannelMessageIsMutable();
+              channelMessage_.addAll(other.channelMessage_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.channelMessage_.isEmpty()) {
+            if (channelMessageBuilder_.isEmpty()) {
+              channelMessageBuilder_.dispose();
+              channelMessageBuilder_ = null;
+              channelMessage_ = other.channelMessage_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              channelMessageBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getChannelMessageFieldBuilder() : null;
+            } else {
+              channelMessageBuilder_.addAllMessages(other.channelMessage_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5206,15 +2976,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasChannelMessage()) {
-          return false;
-        }
-        if (!getChannelMessage().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -5238,156 +2999,358 @@ public final class ClientEvents {
       }
       private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientMessages.ChannelClientMessage channelMessage_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> channelMessageBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       * @return Whether the channelMessage field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasChannelMessage() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
-       * @return The channelMessage.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientMessages.ChannelClientMessage getChannelMessage() {
-        if (channelMessageBuilder_ == null) {
-          return channelMessage_ == null ? protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : channelMessage_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return channelMessageBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setChannelMessage(protobuf.ClientMessages.ChannelClientMessage value) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ChannelMessage> channelMessage_ =
+        java.util.Collections.emptyList();
+      private void ensureChannelMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          channelMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessage>(channelMessage_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder> channelMessageBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessage> getChannelMessageList() {
+        if (channelMessageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(channelMessage_);
+        } else {
+          return channelMessageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public int getChannelMessageCount() {
+        if (channelMessageBuilder_ == null) {
+          return channelMessage_.size();
+        } else {
+          return channelMessageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage getChannelMessage(int index) {
+        if (channelMessageBuilder_ == null) {
+          return channelMessage_.get(index);
+        } else {
+          return channelMessageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public Builder setChannelMessage(
+          int index, protobuf.ClientMessages.ChannelMessage value) {
         if (channelMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          channelMessage_ = value;
+          ensureChannelMessageIsMutable();
+          channelMessage_.set(index, value);
           onChanged();
         } else {
-          channelMessageBuilder_.setMessage(value);
+          channelMessageBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
       public Builder setChannelMessage(
-          protobuf.ClientMessages.ChannelClientMessage.Builder builderForValue) {
+          int index, protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
         if (channelMessageBuilder_ == null) {
-          channelMessage_ = builderForValue.build();
+          ensureChannelMessageIsMutable();
+          channelMessage_.set(index, builderForValue.build());
           onChanged();
         } else {
-          channelMessageBuilder_.setMessage(builderForValue.build());
+          channelMessageBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
-      public Builder mergeChannelMessage(protobuf.ClientMessages.ChannelClientMessage value) {
+      public Builder addChannelMessage(protobuf.ClientMessages.ChannelMessage value) {
         if (channelMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              channelMessage_ != null &&
-              channelMessage_ != protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance()) {
-            channelMessage_ =
-              protobuf.ClientMessages.ChannelClientMessage.newBuilder(channelMessage_).mergeFrom(value).buildPartial();
-          } else {
-            channelMessage_ = value;
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureChannelMessageIsMutable();
+          channelMessage_.add(value);
           onChanged();
         } else {
-          channelMessageBuilder_.mergeFrom(value);
+          channelMessageBuilder_.addMessage(value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public Builder addChannelMessage(
+          int index, protobuf.ClientMessages.ChannelMessage value) {
+        if (channelMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChannelMessageIsMutable();
+          channelMessage_.add(index, value);
+          onChanged();
+        } else {
+          channelMessageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public Builder addChannelMessage(
+          protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
+        if (channelMessageBuilder_ == null) {
+          ensureChannelMessageIsMutable();
+          channelMessage_.add(builderForValue.build());
+          onChanged();
+        } else {
+          channelMessageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public Builder addChannelMessage(
+          int index, protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
+        if (channelMessageBuilder_ == null) {
+          ensureChannelMessageIsMutable();
+          channelMessage_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          channelMessageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public Builder addAllChannelMessage(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelMessage> values) {
+        if (channelMessageBuilder_ == null) {
+          ensureChannelMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, channelMessage_);
+          onChanged();
+        } else {
+          channelMessageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
       public Builder clearChannelMessage() {
         if (channelMessageBuilder_ == null) {
-          channelMessage_ = null;
+          channelMessage_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           channelMessageBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessage.Builder getChannelMessageBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getChannelMessageFieldBuilder().getBuilder();
+      public Builder removeChannelMessage(int index) {
+        if (channelMessageBuilder_ == null) {
+          ensureChannelMessageIsMutable();
+          channelMessage_.remove(index);
+          onChanged();
+        } else {
+          channelMessageBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
-      public protobuf.ClientMessages.ChannelClientMessageOrBuilder getChannelMessageOrBuilder() {
-        if (channelMessageBuilder_ != null) {
-          return channelMessageBuilder_.getMessageOrBuilder();
-        } else {
-          return channelMessage_ == null ?
-              protobuf.ClientMessages.ChannelClientMessage.getDefaultInstance() : channelMessage_;
+      public protobuf.ClientMessages.ChannelMessage.Builder getChannelMessageBuilder(
+          int index) {
+        return getChannelMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageOrBuilder getChannelMessageOrBuilder(
+          int index) {
+        if (channelMessageBuilder_ == null) {
+          return channelMessage_.get(index);  } else {
+          return channelMessageBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.ChannelClientMessage channelMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+           getChannelMessageOrBuilderList() {
+        if (channelMessageBuilder_ != null) {
+          return channelMessageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(channelMessage_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage.Builder addChannelMessageBuilder() {
+        return getChannelMessageFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage.Builder addChannelMessageBuilder(
+          int index) {
+        return getChannelMessageFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage channelMessage = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessage.Builder> 
+           getChannelMessageBuilderList() {
+        return getChannelMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder> 
           getChannelMessageFieldBuilder() {
         if (channelMessageBuilder_ == null) {
-          channelMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ChannelClientMessage, protobuf.ClientMessages.ChannelClientMessage.Builder, protobuf.ClientMessages.ChannelClientMessageOrBuilder>(
-                  getChannelMessage(),
+          channelMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder>(
+                  channelMessage_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           channelMessage_ = null;
@@ -5420,7 +3383,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ChannelMessageEvent>
+    private static final com.google.protobuf.Parser<ChannelMessageEvent>
         PARSER = new com.google.protobuf.AbstractParser<ChannelMessageEvent>() {
       @java.lang.Override
       public ChannelMessageEvent parsePartialFrom(
@@ -5452,30 +3415,43 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-     * @return Whether the privateMessage field is set.
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    boolean hasPrivateMessage();
+    java.util.List<protobuf.ClientMessages.PrivateMessage> 
+        getPrivateMessageList();
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-     * @return The privateMessage.
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    protobuf.ClientMessages.PrivateClientMessage getPrivateMessage();
+    protobuf.ClientMessages.PrivateMessage getPrivateMessage(int index);
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    protobuf.ClientMessages.PrivateClientMessageOrBuilder getPrivateMessageOrBuilder();
+    int getPrivateMessageCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+        getPrivateMessageOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+     */
+    protobuf.ClientMessages.PrivateMessageOrBuilder getPrivateMessageOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientevents.PrivateMessageEvent}
@@ -5490,6 +3466,7 @@ public final class ClientEvents {
       super(builder);
     }
     private PrivateMessageEvent() {
+      privateMessage_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -5523,22 +3500,26 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientMessages.PrivateClientMessage.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = privateMessage_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                privateMessage_ = new java.util.ArrayList<protobuf.ClientMessages.PrivateMessage>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              privateMessage_ = input.readMessage(protobuf.ClientMessages.PrivateClientMessage.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(privateMessage_);
-                privateMessage_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
+              privateMessage_.add(
+                  input.readMessage(protobuf.ClientMessages.PrivateMessage.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -5556,6 +3537,9 @@ public final class ClientEvents {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          privateMessage_ = java.util.Collections.unmodifiableList(privateMessage_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -5573,45 +3557,62 @@ public final class ClientEvents {
               protobuf.ClientEvents.PrivateMessageEvent.class, protobuf.ClientEvents.PrivateMessageEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
     public static final int PRIVATEMESSAGE_FIELD_NUMBER = 2;
-    private protobuf.ClientMessages.PrivateClientMessage privateMessage_;
+    private java.util.List<protobuf.ClientMessages.PrivateMessage> privateMessage_;
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-     * @return Whether the privateMessage field is set.
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    public boolean hasPrivateMessage() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public java.util.List<protobuf.ClientMessages.PrivateMessage> getPrivateMessageList() {
+      return privateMessage_;
     }
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-     * @return The privateMessage.
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    public protobuf.ClientMessages.PrivateClientMessage getPrivateMessage() {
-      return privateMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : privateMessage_;
+    public java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+        getPrivateMessageOrBuilderList() {
+      return privateMessage_;
     }
     /**
-     * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
      */
-    public protobuf.ClientMessages.PrivateClientMessageOrBuilder getPrivateMessageOrBuilder() {
-      return privateMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : privateMessage_;
+    public int getPrivateMessageCount() {
+      return privateMessage_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+     */
+    public protobuf.ClientMessages.PrivateMessage getPrivateMessage(int index) {
+      return privateMessage_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+     */
+    public protobuf.ClientMessages.PrivateMessageOrBuilder getPrivateMessageOrBuilder(
+        int index) {
+      return privateMessage_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5621,18 +3622,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPrivateMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getPrivateMessage().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5640,11 +3629,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getPrivateMessage());
+      for (int i = 0; i < privateMessage_.size(); i++) {
+        output.writeMessage(2, privateMessage_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -5655,13 +3644,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      for (int i = 0; i < privateMessage_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getPrivateMessage());
+          .computeMessageSize(2, privateMessage_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5678,16 +3667,13 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.PrivateMessageEvent other = (protobuf.ClientEvents.PrivateMessageEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasPrivateMessage() != other.hasPrivateMessage()) return false;
-      if (hasPrivateMessage()) {
-        if (!getPrivateMessage()
-            .equals(other.getPrivateMessage())) return false;
-      }
+      if (!getPrivateMessageList()
+          .equals(other.getPrivateMessageList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5699,13 +3685,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasPrivateMessage()) {
+      if (getPrivateMessageCount() > 0) {
         hash = (37 * hash) + PRIVATEMESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getPrivateMessage().hashCode();
+        hash = (53 * hash) + getPrivateMessageList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5841,14 +3827,18 @@ public final class ClientEvents {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
         if (privateMessageBuilder_ == null) {
-          privateMessage_ = null;
+          privateMessage_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           privateMessageBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -5876,20 +3866,20 @@ public final class ClientEvents {
       public protobuf.ClientEvents.PrivateMessageEvent buildPartial() {
         protobuf.ClientEvents.PrivateMessageEvent result = new protobuf.ClientEvents.PrivateMessageEvent(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (privateMessageBuilder_ == null) {
-            result.privateMessage_ = privateMessage_;
-          } else {
-            result.privateMessage_ = privateMessageBuilder_.build();
+        if (privateMessageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            privateMessage_ = java.util.Collections.unmodifiableList(privateMessage_);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
-          to_bitField0_ |= 0x00000002;
+          result.privateMessage_ = privateMessage_;
+        } else {
+          result.privateMessage_ = privateMessageBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5938,11 +3928,34 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.PrivateMessageEvent other) {
         if (other == protobuf.ClientEvents.PrivateMessageEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasPrivateMessage()) {
-          mergePrivateMessage(other.getPrivateMessage());
+        if (privateMessageBuilder_ == null) {
+          if (!other.privateMessage_.isEmpty()) {
+            if (privateMessage_.isEmpty()) {
+              privateMessage_ = other.privateMessage_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensurePrivateMessageIsMutable();
+              privateMessage_.addAll(other.privateMessage_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.privateMessage_.isEmpty()) {
+            if (privateMessageBuilder_.isEmpty()) {
+              privateMessageBuilder_.dispose();
+              privateMessageBuilder_ = null;
+              privateMessage_ = other.privateMessage_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              privateMessageBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPrivateMessageFieldBuilder() : null;
+            } else {
+              privateMessageBuilder_.addAllMessages(other.privateMessage_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5951,15 +3964,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasPrivateMessage()) {
-          return false;
-        }
-        if (!getPrivateMessage().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -5983,156 +3987,358 @@ public final class ClientEvents {
       }
       private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientMessages.PrivateClientMessage privateMessage_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder> privateMessageBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-       * @return Whether the privateMessage field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasPrivateMessage() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
-       * @return The privateMessage.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientMessages.PrivateClientMessage getPrivateMessage() {
-        if (privateMessageBuilder_ == null) {
-          return privateMessage_ == null ? protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : privateMessage_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return privateMessageBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setPrivateMessage(protobuf.ClientMessages.PrivateClientMessage value) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.PrivateMessage> privateMessage_ =
+        java.util.Collections.emptyList();
+      private void ensurePrivateMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          privateMessage_ = new java.util.ArrayList<protobuf.ClientMessages.PrivateMessage>(privateMessage_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder> privateMessageBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.PrivateMessage> getPrivateMessageList() {
+        if (privateMessageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(privateMessage_);
+        } else {
+          return privateMessageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public int getPrivateMessageCount() {
+        if (privateMessageBuilder_ == null) {
+          return privateMessage_.size();
+        } else {
+          return privateMessageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage getPrivateMessage(int index) {
+        if (privateMessageBuilder_ == null) {
+          return privateMessage_.get(index);
+        } else {
+          return privateMessageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public Builder setPrivateMessage(
+          int index, protobuf.ClientMessages.PrivateMessage value) {
         if (privateMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          privateMessage_ = value;
+          ensurePrivateMessageIsMutable();
+          privateMessage_.set(index, value);
           onChanged();
         } else {
-          privateMessageBuilder_.setMessage(value);
+          privateMessageBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
       public Builder setPrivateMessage(
-          protobuf.ClientMessages.PrivateClientMessage.Builder builderForValue) {
+          int index, protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
         if (privateMessageBuilder_ == null) {
-          privateMessage_ = builderForValue.build();
+          ensurePrivateMessageIsMutable();
+          privateMessage_.set(index, builderForValue.build());
           onChanged();
         } else {
-          privateMessageBuilder_.setMessage(builderForValue.build());
+          privateMessageBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
-      public Builder mergePrivateMessage(protobuf.ClientMessages.PrivateClientMessage value) {
+      public Builder addPrivateMessage(protobuf.ClientMessages.PrivateMessage value) {
         if (privateMessageBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              privateMessage_ != null &&
-              privateMessage_ != protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance()) {
-            privateMessage_ =
-              protobuf.ClientMessages.PrivateClientMessage.newBuilder(privateMessage_).mergeFrom(value).buildPartial();
-          } else {
-            privateMessage_ = value;
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensurePrivateMessageIsMutable();
+          privateMessage_.add(value);
           onChanged();
         } else {
-          privateMessageBuilder_.mergeFrom(value);
+          privateMessageBuilder_.addMessage(value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public Builder addPrivateMessage(
+          int index, protobuf.ClientMessages.PrivateMessage value) {
+        if (privateMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePrivateMessageIsMutable();
+          privateMessage_.add(index, value);
+          onChanged();
+        } else {
+          privateMessageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public Builder addPrivateMessage(
+          protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
+        if (privateMessageBuilder_ == null) {
+          ensurePrivateMessageIsMutable();
+          privateMessage_.add(builderForValue.build());
+          onChanged();
+        } else {
+          privateMessageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public Builder addPrivateMessage(
+          int index, protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
+        if (privateMessageBuilder_ == null) {
+          ensurePrivateMessageIsMutable();
+          privateMessage_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          privateMessageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public Builder addAllPrivateMessage(
+          java.lang.Iterable<? extends protobuf.ClientMessages.PrivateMessage> values) {
+        if (privateMessageBuilder_ == null) {
+          ensurePrivateMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, privateMessage_);
+          onChanged();
+        } else {
+          privateMessageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
       public Builder clearPrivateMessage() {
         if (privateMessageBuilder_ == null) {
-          privateMessage_ = null;
+          privateMessage_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           privateMessageBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
-      public protobuf.ClientMessages.PrivateClientMessage.Builder getPrivateMessageBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getPrivateMessageFieldBuilder().getBuilder();
+      public Builder removePrivateMessage(int index) {
+        if (privateMessageBuilder_ == null) {
+          ensurePrivateMessageIsMutable();
+          privateMessage_.remove(index);
+          onChanged();
+        } else {
+          privateMessageBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
-      public protobuf.ClientMessages.PrivateClientMessageOrBuilder getPrivateMessageOrBuilder() {
-        if (privateMessageBuilder_ != null) {
-          return privateMessageBuilder_.getMessageOrBuilder();
-        } else {
-          return privateMessage_ == null ?
-              protobuf.ClientMessages.PrivateClientMessage.getDefaultInstance() : privateMessage_;
+      public protobuf.ClientMessages.PrivateMessage.Builder getPrivateMessageBuilder(
+          int index) {
+        return getPrivateMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessageOrBuilder getPrivateMessageOrBuilder(
+          int index) {
+        if (privateMessageBuilder_ == null) {
+          return privateMessage_.get(index);  } else {
+          return privateMessageBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>required .protobuf.clientmessages.PrivateClientMessage privateMessage = 2;</code>
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+           getPrivateMessageOrBuilderList() {
+        if (privateMessageBuilder_ != null) {
+          return privateMessageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(privateMessage_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage.Builder addPrivateMessageBuilder() {
+        return getPrivateMessageFieldBuilder().addBuilder(
+            protobuf.ClientMessages.PrivateMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage.Builder addPrivateMessageBuilder(
+          int index) {
+        return getPrivateMessageFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.PrivateMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage privateMessage = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.PrivateMessage.Builder> 
+           getPrivateMessageBuilderList() {
+        return getPrivateMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder> 
           getPrivateMessageFieldBuilder() {
         if (privateMessageBuilder_ == null) {
-          privateMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.PrivateClientMessage, protobuf.ClientMessages.PrivateClientMessage.Builder, protobuf.ClientMessages.PrivateClientMessageOrBuilder>(
-                  getPrivateMessage(),
+          privateMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder>(
+                  privateMessage_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           privateMessage_ = null;
@@ -6165,7 +4371,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<PrivateMessageEvent>
+    private static final com.google.protobuf.Parser<PrivateMessageEvent>
         PARSER = new com.google.protobuf.AbstractParser<PrivateMessageEvent>() {
       @java.lang.Override
       public PrivateMessageEvent parsePartialFrom(
@@ -6197,30 +4403,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientJoinedChannelEvent}
@@ -6257,7 +4467,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6268,22 +4477,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -6318,45 +4535,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientJoinedChannelEvent.class, protobuf.ClientEvents.ClientJoinedChannelEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6366,18 +4588,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6385,11 +4595,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -6400,13 +4610,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6423,15 +4633,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientJoinedChannelEvent other = (protobuf.ClientEvents.ClientJoinedChannelEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -6444,13 +4654,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6580,20 +4790,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -6620,21 +4833,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientJoinedChannelEvent buildPartial() {
         protobuf.ClientEvents.ClientJoinedChannelEvent result = new protobuf.ClientEvents.ClientJoinedChannelEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6683,11 +4891,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientJoinedChannelEvent other) {
         if (other == protobuf.ClientEvents.ClientJoinedChannelEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6696,15 +4904,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -6726,163 +4925,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6910,7 +5189,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientJoinedChannelEvent>
+    private static final com.google.protobuf.Parser<ClientJoinedChannelEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientJoinedChannelEvent>() {
       @java.lang.Override
       public ClientJoinedChannelEvent parsePartialFrom(
@@ -6942,30 +5221,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientLeftChannelEvent}
@@ -7002,7 +5285,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7013,22 +5295,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -7063,45 +5353,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientLeftChannelEvent.class, protobuf.ClientEvents.ClientLeftChannelEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7111,18 +5406,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7130,11 +5413,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -7145,13 +5428,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7168,15 +5451,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientLeftChannelEvent other = (protobuf.ClientEvents.ClientLeftChannelEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7189,13 +5472,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -7325,20 +5608,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -7365,21 +5651,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientLeftChannelEvent buildPartial() {
         protobuf.ClientEvents.ClientLeftChannelEvent result = new protobuf.ClientEvents.ClientLeftChannelEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -7428,11 +5709,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientLeftChannelEvent other) {
         if (other == protobuf.ClientEvents.ClientLeftChannelEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7441,15 +5722,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -7471,163 +5743,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7655,7 +6007,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientLeftChannelEvent>
+    private static final com.google.protobuf.Parser<ClientLeftChannelEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientLeftChannelEvent>() {
       @java.lang.Override
       public ClientLeftChannelEvent parsePartialFrom(
@@ -7687,30 +6039,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientLoggedInEvent}
@@ -7747,7 +6103,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7758,22 +6113,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -7808,45 +6171,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientLoggedInEvent.class, protobuf.ClientEvents.ClientLoggedInEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7856,18 +6224,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7875,11 +6231,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -7890,13 +6246,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7913,15 +6269,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientLoggedInEvent other = (protobuf.ClientEvents.ClientLoggedInEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7934,13 +6290,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -8070,20 +6426,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -8110,21 +6469,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientLoggedInEvent buildPartial() {
         protobuf.ClientEvents.ClientLoggedInEvent result = new protobuf.ClientEvents.ClientLoggedInEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8173,11 +6527,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientLoggedInEvent other) {
         if (other == protobuf.ClientEvents.ClientLoggedInEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8186,15 +6540,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -8216,163 +6561,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -8400,7 +6825,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientLoggedInEvent>
+    private static final com.google.protobuf.Parser<ClientLoggedInEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientLoggedInEvent>() {
       @java.lang.Override
       public ClientLoggedInEvent parsePartialFrom(
@@ -8432,30 +6857,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientLoggedOutEvent}
@@ -8492,7 +6921,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8503,22 +6931,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -8553,45 +6989,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientLoggedOutEvent.class, protobuf.ClientEvents.ClientLoggedOutEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8601,18 +7042,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -8620,11 +7049,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -8635,13 +7064,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8658,15 +7087,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientLoggedOutEvent other = (protobuf.ClientEvents.ClientLoggedOutEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -8679,13 +7108,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -8815,20 +7244,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -8855,21 +7287,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientLoggedOutEvent buildPartial() {
         protobuf.ClientEvents.ClientLoggedOutEvent result = new protobuf.ClientEvents.ClientLoggedOutEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8918,11 +7345,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientLoggedOutEvent other) {
         if (other == protobuf.ClientEvents.ClientLoggedOutEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8931,15 +7358,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -8961,163 +7379,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9145,7 +7643,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientLoggedOutEvent>
+    private static final com.google.protobuf.Parser<ClientLoggedOutEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientLoggedOutEvent>() {
       @java.lang.Override
       public ClientLoggedOutEvent parsePartialFrom(
@@ -9177,30 +7675,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientRegisteredEvent}
@@ -9237,7 +7739,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -9248,22 +7749,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -9298,45 +7807,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientRegisteredEvent.class, protobuf.ClientEvents.ClientRegisteredEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9346,18 +7860,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9365,11 +7867,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -9380,13 +7882,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9403,15 +7905,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientRegisteredEvent other = (protobuf.ClientEvents.ClientRegisteredEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9424,13 +7926,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -9560,20 +8062,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -9600,21 +8105,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientRegisteredEvent buildPartial() {
         protobuf.ClientEvents.ClientRegisteredEvent result = new protobuf.ClientEvents.ClientRegisteredEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -9663,11 +8163,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientRegisteredEvent other) {
         if (other == protobuf.ClientEvents.ClientRegisteredEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9676,15 +8176,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -9706,163 +8197,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9890,7 +8461,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientRegisteredEvent>
+    private static final com.google.protobuf.Parser<ClientRegisteredEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientRegisteredEvent>() {
       @java.lang.Override
       public ClientRegisteredEvent parsePartialFrom(
@@ -9922,30 +8493,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientDownloadedFileEvent}
@@ -9982,7 +8557,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -9993,22 +8567,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -10043,45 +8625,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientDownloadedFileEvent.class, protobuf.ClientEvents.ClientDownloadedFileEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10091,18 +8678,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -10110,11 +8685,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -10125,13 +8700,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10148,15 +8723,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientDownloadedFileEvent other = (protobuf.ClientEvents.ClientDownloadedFileEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -10169,13 +8744,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -10305,20 +8880,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -10345,21 +8923,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientDownloadedFileEvent buildPartial() {
         protobuf.ClientEvents.ClientDownloadedFileEvent result = new protobuf.ClientEvents.ClientDownloadedFileEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -10408,11 +8981,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientDownloadedFileEvent other) {
         if (other == protobuf.ClientEvents.ClientDownloadedFileEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10421,15 +8994,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -10451,163 +9015,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -10635,7 +9279,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientDownloadedFileEvent>
+    private static final com.google.protobuf.Parser<ClientDownloadedFileEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientDownloadedFileEvent>() {
       @java.lang.Override
       public ClientDownloadedFileEvent parsePartialFrom(
@@ -10667,30 +9311,34 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    boolean hasClientBase();
+    boolean hasClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    protobuf.ClientIdentities.ClientBase getClientBase();
+    protobuf.ClientIdentities.ClientProfile getClientProfile();
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
+    protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.ClientUploadedFileEvent}
@@ -10727,7 +9375,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -10738,22 +9385,30 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              protobuf.ClientIdentities.ClientBase.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
-                subBuilder = clientBase_.toBuilder();
+              protobuf.ClientIdentities.ClientProfile.Builder subBuilder = null;
+              if (clientProfile_ != null) {
+                subBuilder = clientProfile_.toBuilder();
               }
-              clientBase_ = input.readMessage(protobuf.ClientIdentities.ClientBase.PARSER, extensionRegistry);
+              clientProfile_ = input.readMessage(protobuf.ClientIdentities.ClientProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(clientBase_);
-                clientBase_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(clientProfile_);
+                clientProfile_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+
               break;
             }
             default: {
@@ -10788,45 +9443,50 @@ public final class ClientEvents {
               protobuf.ClientEvents.ClientUploadedFileEvent.class, protobuf.ClientEvents.ClientUploadedFileEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int CLIENTBASE_FIELD_NUMBER = 2;
-    private protobuf.ClientIdentities.ClientBase clientBase_;
+    public static final int CLIENTPROFILE_FIELD_NUMBER = 2;
+    private protobuf.ClientIdentities.ClientProfile clientProfile_;
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return Whether the clientBase field is set.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return Whether the clientProfile field is set.
      */
-    public boolean hasClientBase() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasClientProfile() {
+      return clientProfile_ != null;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-     * @return The clientBase.
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+     * @return The clientProfile.
      */
-    public protobuf.ClientIdentities.ClientBase getClientBase() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+      return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
     }
     /**
-     * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+     * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
      */
-    public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-      return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+    public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+      return getClientProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10836,18 +9496,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasClientBase()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getClientBase().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -10855,11 +9503,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getClientBase());
+      if (clientProfile_ != null) {
+        output.writeMessage(2, getClientProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -10870,13 +9518,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (clientProfile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getClientBase());
+          .computeMessageSize(2, getClientProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10893,15 +9541,15 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.ClientUploadedFileEvent other = (protobuf.ClientEvents.ClientUploadedFileEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasClientBase() != other.hasClientBase()) return false;
-      if (hasClientBase()) {
-        if (!getClientBase()
-            .equals(other.getClientBase())) return false;
+      if (hasClientProfile() != other.hasClientProfile()) return false;
+      if (hasClientProfile()) {
+        if (!getClientProfile()
+            .equals(other.getClientProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -10914,13 +9562,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasClientBase()) {
-        hash = (37 * hash) + CLIENTBASE_FIELD_NUMBER;
-        hash = (53 * hash) + getClientBase().hashCode();
+      if (hasClientProfile()) {
+        hash = (37 * hash) + CLIENTPROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getClientProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -11050,20 +9698,23 @@ public final class ClientEvents {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getClientBaseFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
         return this;
       }
 
@@ -11090,21 +9741,16 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.ClientUploadedFileEvent buildPartial() {
         protobuf.ClientEvents.ClientUploadedFileEvent result = new protobuf.ClientEvents.ClientUploadedFileEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          if (clientBaseBuilder_ == null) {
-            result.clientBase_ = clientBase_;
-          } else {
-            result.clientBase_ = clientBaseBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000002;
+        if (clientProfileBuilder_ == null) {
+          result.clientProfile_ = clientProfile_;
+        } else {
+          result.clientProfile_ = clientProfileBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -11153,11 +9799,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.ClientUploadedFileEvent other) {
         if (other == protobuf.ClientEvents.ClientUploadedFileEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasClientBase()) {
-          mergeClientBase(other.getClientBase());
+        if (other.hasClientProfile()) {
+          mergeClientProfile(other.getClientProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11166,15 +9812,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasClientBase()) {
-          return false;
-        }
-        if (!getClientBase().isInitialized()) {
-          return false;
-        }
         return true;
       }
 
@@ -11196,163 +9833,243 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
-       */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
-       */
-      public int getEventId() {
-        return eventId_;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private protobuf.ClientIdentities.ClientBase clientBase_;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> clientBaseBuilder_;
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return Whether the clientBase field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasClientBase() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
-       * @return The clientBase.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public protobuf.ClientIdentities.ClientBase getClientBase() {
-        if (clientBaseBuilder_ == null) {
-          return clientBase_ == null ? protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         } else {
-          return clientBaseBuilder_.getMessage();
+          return eventBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          clientBase_ = value;
+          eventBase_ = value;
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(value);
+          eventBaseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setClientBase(
-          protobuf.ClientIdentities.ClientBase.Builder builderForValue) {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = builderForValue.build();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
           onChanged();
         } else {
-          clientBaseBuilder_.setMessage(builderForValue.build());
+          eventBaseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder mergeClientBase(protobuf.ClientIdentities.ClientBase value) {
-        if (clientBaseBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-              clientBase_ != null &&
-              clientBase_ != protobuf.ClientIdentities.ClientBase.getDefaultInstance()) {
-            clientBase_ =
-              protobuf.ClientIdentities.ClientBase.newBuilder(clientBase_).mergeFrom(value).buildPartial();
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
           } else {
-            clientBase_ = value;
+            eventBase_ = value;
           }
           onChanged();
         } else {
-          clientBaseBuilder_.mergeFrom(value);
+          eventBaseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearClientBase() {
-        if (clientBaseBuilder_ == null) {
-          clientBase_ = null;
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
           onChanged();
         } else {
-          clientBaseBuilder_.clear();
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         return this;
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBase.Builder getClientBaseBuilder() {
-        bitField0_ |= 0x00000002;
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
         onChanged();
-        return getClientBaseFieldBuilder().getBuilder();
+        return getEventBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder() {
-        if (clientBaseBuilder_ != null) {
-          return clientBaseBuilder_.getMessageOrBuilder();
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
         } else {
-          return clientBase_ == null ?
-              protobuf.ClientIdentities.ClientBase.getDefaultInstance() : clientBase_;
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
         }
       }
       /**
-       * <code>required .protobuf.clientidentities.ClientBase clientBase = 2;</code>
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder> 
-          getClientBaseFieldBuilder() {
-        if (clientBaseBuilder_ == null) {
-          clientBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientBase, protobuf.ClientIdentities.ClientBase.Builder, protobuf.ClientIdentities.ClientBaseOrBuilder>(
-                  getClientBase(),
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
                   getParentForChildren(),
                   isClean());
-          clientBase_ = null;
+          eventBase_ = null;
         }
-        return clientBaseBuilder_;
+        return eventBaseBuilder_;
+      }
+
+      private protobuf.ClientIdentities.ClientProfile clientProfile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> clientProfileBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return Whether the clientProfile field is set.
+       */
+      public boolean hasClientProfile() {
+        return clientProfileBuilder_ != null || clientProfile_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       * @return The clientProfile.
+       */
+      public protobuf.ClientIdentities.ClientProfile getClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          return clientProfile_ == null ? protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        } else {
+          return clientProfileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          clientProfile_ = value;
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder setClientProfile(
+          protobuf.ClientIdentities.ClientProfile.Builder builderForValue) {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = builderForValue.build();
+          onChanged();
+        } else {
+          clientProfileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder mergeClientProfile(protobuf.ClientIdentities.ClientProfile value) {
+        if (clientProfileBuilder_ == null) {
+          if (clientProfile_ != null) {
+            clientProfile_ =
+              protobuf.ClientIdentities.ClientProfile.newBuilder(clientProfile_).mergeFrom(value).buildPartial();
+          } else {
+            clientProfile_ = value;
+          }
+          onChanged();
+        } else {
+          clientProfileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public Builder clearClientProfile() {
+        if (clientProfileBuilder_ == null) {
+          clientProfile_ = null;
+          onChanged();
+        } else {
+          clientProfile_ = null;
+          clientProfileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfile.Builder getClientProfileBuilder() {
+        
+        onChanged();
+        return getClientProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientProfileOrBuilder getClientProfileOrBuilder() {
+        if (clientProfileBuilder_ != null) {
+          return clientProfileBuilder_.getMessageOrBuilder();
+        } else {
+          return clientProfile_ == null ?
+              protobuf.ClientIdentities.ClientProfile.getDefaultInstance() : clientProfile_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientProfile clientProfile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder> 
+          getClientProfileFieldBuilder() {
+        if (clientProfileBuilder_ == null) {
+          clientProfileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientProfile, protobuf.ClientIdentities.ClientProfile.Builder, protobuf.ClientIdentities.ClientProfileOrBuilder>(
+                  getClientProfile(),
+                  getParentForChildren(),
+                  isClean());
+          clientProfile_ = null;
+        }
+        return clientProfileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -11380,7 +10097,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientUploadedFileEvent>
+    private static final com.google.protobuf.Parser<ClientUploadedFileEvent>
         PARSER = new com.google.protobuf.AbstractParser<ClientUploadedFileEvent>() {
       @java.lang.Override
       public ClientUploadedFileEvent parsePartialFrom(
@@ -11412,26 +10129,25 @@ public final class ClientEvents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    boolean hasEventId();
+    boolean hasEventBase();
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    int getEventId();
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
 
     /**
-     * <code>required int64 measurementMillis = 2;</code>
-     * @return Whether the measurementMillis field is set.
+     * <code>int64 measuredMillis = 2;</code>
+     * @return The measuredMillis.
      */
-    boolean hasMeasurementMillis();
-    /**
-     * <code>required int64 measurementMillis = 2;</code>
-     * @return The measurementMillis.
-     */
-    long getMeasurementMillis();
+    long getMeasuredMillis();
   }
   /**
    * Protobuf type {@code protobuf.clientevents.PingMeasuredEvent}
@@ -11468,7 +10184,6 @@ public final class ClientEvents {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -11479,14 +10194,22 @@ public final class ClientEvents {
             case 0:
               done = true;
               break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              eventId_ = input.readInt32();
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              measurementMillis_ = input.readInt64();
+
+              measuredMillis_ = input.readInt64();
               break;
             }
             default: {
@@ -11521,39 +10244,37 @@ public final class ClientEvents {
               protobuf.ClientEvents.PingMeasuredEvent.class, protobuf.ClientEvents.PingMeasuredEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventId_;
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return Whether the eventId field is set.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
      */
-    public boolean hasEventId() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public boolean hasEventBase() {
+      return eventBase_ != null;
     }
     /**
-     * <code>required int32 eventId = 1;</code>
-     * @return The eventId.
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
      */
-    public int getEventId() {
-      return eventId_;
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
     }
 
-    public static final int MEASUREMENTMILLIS_FIELD_NUMBER = 2;
-    private long measurementMillis_;
+    public static final int MEASUREDMILLIS_FIELD_NUMBER = 2;
+    private long measuredMillis_;
     /**
-     * <code>required int64 measurementMillis = 2;</code>
-     * @return Whether the measurementMillis field is set.
+     * <code>int64 measuredMillis = 2;</code>
+     * @return The measuredMillis.
      */
-    public boolean hasMeasurementMillis() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required int64 measurementMillis = 2;</code>
-     * @return The measurementMillis.
-     */
-    public long getMeasurementMillis() {
-      return measurementMillis_;
+    public long getMeasuredMillis() {
+      return measuredMillis_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -11563,14 +10284,6 @@ public final class ClientEvents {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasEventId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMeasurementMillis()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11578,11 +10291,11 @@ public final class ClientEvents {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, eventId_);
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt64(2, measurementMillis_);
+      if (measuredMillis_ != 0L) {
+        output.writeInt64(2, measuredMillis_);
       }
       unknownFields.writeTo(output);
     }
@@ -11593,13 +10306,13 @@ public final class ClientEvents {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (eventBase_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventId_);
+          .computeMessageSize(1, getEventBase());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (measuredMillis_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, measurementMillis_);
+          .computeInt64Size(2, measuredMillis_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11616,16 +10329,13 @@ public final class ClientEvents {
       }
       protobuf.ClientEvents.PingMeasuredEvent other = (protobuf.ClientEvents.PingMeasuredEvent) obj;
 
-      if (hasEventId() != other.hasEventId()) return false;
-      if (hasEventId()) {
-        if (getEventId()
-            != other.getEventId()) return false;
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
       }
-      if (hasMeasurementMillis() != other.hasMeasurementMillis()) return false;
-      if (hasMeasurementMillis()) {
-        if (getMeasurementMillis()
-            != other.getMeasurementMillis()) return false;
-      }
+      if (getMeasuredMillis()
+          != other.getMeasuredMillis()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -11637,15 +10347,13 @@ public final class ClientEvents {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEventId()) {
-        hash = (37 * hash) + EVENTID_FIELD_NUMBER;
-        hash = (53 * hash) + getEventId();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
       }
-      if (hasMeasurementMillis()) {
-        hash = (37 * hash) + MEASUREMENTMILLIS_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getMeasurementMillis());
-      }
+      hash = (37 * hash) + MEASUREDMILLIS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMeasuredMillis());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11779,10 +10487,14 @@ public final class ClientEvents {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        eventId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        measurementMillis_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        measuredMillis_ = 0L;
+
         return this;
       }
 
@@ -11809,17 +10521,12 @@ public final class ClientEvents {
       @java.lang.Override
       public protobuf.ClientEvents.PingMeasuredEvent buildPartial() {
         protobuf.ClientEvents.PingMeasuredEvent result = new protobuf.ClientEvents.PingMeasuredEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.eventId_ = eventId_;
-          to_bitField0_ |= 0x00000001;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.measurementMillis_ = measurementMillis_;
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ = to_bitField0_;
+        result.measuredMillis_ = measuredMillis_;
         onBuilt();
         return result;
       }
@@ -11868,11 +10575,11 @@ public final class ClientEvents {
 
       public Builder mergeFrom(protobuf.ClientEvents.PingMeasuredEvent other) {
         if (other == protobuf.ClientEvents.PingMeasuredEvent.getDefaultInstance()) return this;
-        if (other.hasEventId()) {
-          setEventId(other.getEventId());
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
         }
-        if (other.hasMeasurementMillis()) {
-          setMeasurementMillis(other.getMeasurementMillis());
+        if (other.getMeasuredMillis() != 0L) {
+          setMeasuredMillis(other.getMeasuredMillis());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11881,12 +10588,6 @@ public final class ClientEvents {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasEventId()) {
-          return false;
-        }
-        if (!hasMeasurementMillis()) {
-          return false;
-        }
         return true;
       }
 
@@ -11908,78 +10609,152 @@ public final class ClientEvents {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int eventId_ ;
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return Whether the eventId field is set.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
        */
-      public boolean hasEventId() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return The eventId.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
        */
-      public int getEventId() {
-        return eventId_;
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @param value The eventId to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder setEventId(int value) {
-        bitField0_ |= 0x00000001;
-        eventId_ = value;
-        onChanged();
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>required int32 eventId = 1;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
        */
-      public Builder clearEventId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventId_ = 0;
-        onChanged();
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
       }
 
-      private long measurementMillis_ ;
+      private long measuredMillis_ ;
       /**
-       * <code>required int64 measurementMillis = 2;</code>
-       * @return Whether the measurementMillis field is set.
+       * <code>int64 measuredMillis = 2;</code>
+       * @return The measuredMillis.
        */
-      public boolean hasMeasurementMillis() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public long getMeasuredMillis() {
+        return measuredMillis_;
       }
       /**
-       * <code>required int64 measurementMillis = 2;</code>
-       * @return The measurementMillis.
-       */
-      public long getMeasurementMillis() {
-        return measurementMillis_;
-      }
-      /**
-       * <code>required int64 measurementMillis = 2;</code>
-       * @param value The measurementMillis to set.
+       * <code>int64 measuredMillis = 2;</code>
+       * @param value The measuredMillis to set.
        * @return This builder for chaining.
        */
-      public Builder setMeasurementMillis(long value) {
-        bitField0_ |= 0x00000002;
-        measurementMillis_ = value;
+      public Builder setMeasuredMillis(long value) {
+        
+        measuredMillis_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 measurementMillis = 2;</code>
+       * <code>int64 measuredMillis = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMeasurementMillis() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        measurementMillis_ = 0L;
+      public Builder clearMeasuredMillis() {
+        
+        measuredMillis_ = 0L;
         onChanged();
         return this;
       }
@@ -12009,7 +10784,7 @@ public final class ClientEvents {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<PingMeasuredEvent>
+    private static final com.google.protobuf.Parser<PingMeasuredEvent>
         PARSER = new com.google.protobuf.AbstractParser<PingMeasuredEvent>() {
       @java.lang.Override
       public PingMeasuredEvent parsePartialFrom(
@@ -12037,35 +10812,20 @@ public final class ClientEvents {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientEventBase_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientEventBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientRequestDeniedEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientRequestAnswerEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientevents_ClientProfileDataEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientevents_ClientProfileDataEvent_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_TextChannelDataEvent_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_VoiceChannelDataEvent_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ChannelMessageDataEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor;
   private static final 
@@ -12127,47 +10887,55 @@ public final class ClientEvents {
     java.lang.String[] descriptorData = {
       "\n\033protobuf/ClientEvents.proto\022\025protobuf." +
       "clientevents\032\037protobuf/ClientIdentities." +
-      "proto\032\035protobuf/ClientMessages.proto\"-\n\032" +
-      "ClientRequestAcceptedEvent\022\017\n\007eventId\030\001 " +
-      "\002(\005\"<\n\030ClientRequestDeniedEvent\022\017\n\007event" +
-      "Id\030\001 \002(\005\022\017\n\007message\030\002 \001(\t\"j\n\026ClientProfi" +
-      "leDataEvent\022\017\n\007eventId\030\001 \002(\005\022?\n\rclientPr" +
-      "ofile\030\002 \002(\0132(.protobuf.clientidentities." +
-      "ClientProfile\"n\n\024TextChannelDataEvent\022\017\n" +
-      "\007eventId\030\001 \002(\005\022E\n\016channelMessage\030\002 \003(\0132-" +
-      ".protobuf.clientmessages.ChannelClientMe" +
-      "ssage\"o\n\025VoiceChannelDataEvent\022\017\n\007eventI" +
-      "d\030\001 \002(\005\022E\n\016channelMessage\030\002 \003(\0132-.protob" +
-      "uf.clientmessages.ChannelClientMessage\"q" +
-      "\n\027ChannelMessageDataEvent\022\017\n\007eventId\030\001 \002" +
-      "(\005\022E\n\016channelMessage\030\002 \003(\0132-.protobuf.cl" +
-      "ientmessages.ChannelClientMessage\"m\n\023Cha" +
-      "nnelMessageEvent\022\017\n\007eventId\030\001 \002(\005\022E\n\016cha" +
-      "nnelMessage\030\002 \002(\0132-.protobuf.clientmessa" +
-      "ges.ChannelClientMessage\"m\n\023PrivateMessa" +
-      "geEvent\022\017\n\007eventId\030\001 \002(\005\022E\n\016privateMessa" +
-      "ge\030\002 \002(\0132-.protobuf.clientmessages.Priva" +
-      "teClientMessage\"f\n\030ClientJoinedChannelEv" +
-      "ent\022\017\n\007eventId\030\001 \002(\005\0229\n\nclientBase\030\002 \002(\013" +
-      "2%.protobuf.clientidentities.ClientBase\"" +
-      "d\n\026ClientLeftChannelEvent\022\017\n\007eventId\030\001 \002" +
-      "(\005\0229\n\nclientBase\030\002 \002(\0132%.protobuf.client" +
-      "identities.ClientBase\"a\n\023ClientLoggedInE" +
-      "vent\022\017\n\007eventId\030\001 \002(\005\0229\n\nclientBase\030\002 \002(" +
-      "\0132%.protobuf.clientidentities.ClientBase" +
-      "\"b\n\024ClientLoggedOutEvent\022\017\n\007eventId\030\001 \002(" +
-      "\005\0229\n\nclientBase\030\002 \002(\0132%.protobuf.clienti" +
-      "dentities.ClientBase\"c\n\025ClientRegistered" +
-      "Event\022\017\n\007eventId\030\001 \002(\005\0229\n\nclientBase\030\002 \002" +
-      "(\0132%.protobuf.clientidentities.ClientBas" +
-      "e\"g\n\031ClientDownloadedFileEvent\022\017\n\007eventI" +
-      "d\030\001 \002(\005\0229\n\nclientBase\030\002 \002(\0132%.protobuf.c" +
-      "lientidentities.ClientBase\"e\n\027ClientUplo" +
-      "adedFileEvent\022\017\n\007eventId\030\001 \002(\005\0229\n\nclient" +
-      "Base\030\002 \002(\0132%.protobuf.clientidentities.C" +
-      "lientBase\"?\n\021PingMeasuredEvent\022\017\n\007eventI" +
-      "d\030\001 \002(\005\022\031\n\021measurementMillis\030\002 \002(\003B\030\n\010pr" +
-      "otobufB\014ClientEvents"
+      "proto\032\035protobuf/ClientMessages.proto\"}\n\017" +
+      "ClientEventBase\022\017\n\007eventId\030\001 \001(\005\022\026\n\016even" +
+      "tTimestamp\030\002 \001(\003\022A\n\022eventRequestorBase\030\003" +
+      " \001(\0132%.protobuf.clientidentities.ClientB" +
+      "ase\"\202\001\n\030ClientRequestAnswerEvent\0229\n\teven" +
+      "tBase\030\001 \001(\0132&.protobuf.clientevents.Clie" +
+      "ntEventBase\022\025\n\reventAccepted\030\002 \001(\010\022\024\n\014ev" +
+      "entMessage\030\003 \001(\t\"\224\001\n\026ClientProfileDataEv" +
+      "ent\0229\n\teventBase\030\001 \001(\0132&.protobuf.client" +
+      "events.ClientEventBase\022?\n\rclientProfile\030" +
+      "\002 \001(\0132(.protobuf.clientidentities.Client" +
+      "Profile\"\221\001\n\023ChannelMessageEvent\0229\n\tevent" +
+      "Base\030\001 \001(\0132&.protobuf.clientevents.Clien" +
+      "tEventBase\022?\n\016channelMessage\030\002 \003(\0132\'.pro" +
+      "tobuf.clientmessages.ChannelMessage\"\221\001\n\023" +
+      "PrivateMessageEvent\0229\n\teventBase\030\001 \001(\0132&" +
+      ".protobuf.clientevents.ClientEventBase\022?" +
+      "\n\016privateMessage\030\002 \003(\0132\'.protobuf.client" +
+      "messages.PrivateMessage\"\226\001\n\030ClientJoined" +
+      "ChannelEvent\0229\n\teventBase\030\001 \001(\0132&.protob" +
+      "uf.clientevents.ClientEventBase\022?\n\rclien" +
+      "tProfile\030\002 \001(\0132(.protobuf.clientidentiti" +
+      "es.ClientProfile\"\224\001\n\026ClientLeftChannelEv" +
+      "ent\0229\n\teventBase\030\001 \001(\0132&.protobuf.client" +
+      "events.ClientEventBase\022?\n\rclientProfile\030" +
+      "\002 \001(\0132(.protobuf.clientidentities.Client" +
+      "Profile\"\221\001\n\023ClientLoggedInEvent\0229\n\tevent" +
+      "Base\030\001 \001(\0132&.protobuf.clientevents.Clien" +
+      "tEventBase\022?\n\rclientProfile\030\002 \001(\0132(.prot" +
+      "obuf.clientidentities.ClientProfile\"\222\001\n\024" +
+      "ClientLoggedOutEvent\0229\n\teventBase\030\001 \001(\0132" +
+      "&.protobuf.clientevents.ClientEventBase\022" +
+      "?\n\rclientProfile\030\002 \001(\0132(.protobuf.client" +
+      "identities.ClientProfile\"\223\001\n\025ClientRegis" +
+      "teredEvent\0229\n\teventBase\030\001 \001(\0132&.protobuf" +
+      ".clientevents.ClientEventBase\022?\n\rclientP" +
+      "rofile\030\002 \001(\0132(.protobuf.clientidentities" +
+      ".ClientProfile\"\227\001\n\031ClientDownloadedFileE" +
+      "vent\0229\n\teventBase\030\001 \001(\0132&.protobuf.clien" +
+      "tevents.ClientEventBase\022?\n\rclientProfile" +
+      "\030\002 \001(\0132(.protobuf.clientidentities.Clien" +
+      "tProfile\"\225\001\n\027ClientUploadedFileEvent\0229\n\t" +
+      "eventBase\030\001 \001(\0132&.protobuf.clientevents." +
+      "ClientEventBase\022?\n\rclientProfile\030\002 \001(\0132(" +
+      ".protobuf.clientidentities.ClientProfile" +
+      "\"f\n\021PingMeasuredEvent\0229\n\teventBase\030\001 \001(\013" +
+      "2&.protobuf.clientevents.ClientEventBase" +
+      "\022\026\n\016measuredMillis\030\002 \001(\003B\030\n\010protobufB\014Cl" +
+      "ientEventsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12175,102 +10943,84 @@ public final class ClientEvents {
           protobuf.ClientIdentities.getDescriptor(),
           protobuf.ClientMessages.getDescriptor(),
         });
-    internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor =
+    internal_static_protobuf_clientevents_ClientEventBase_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientEventBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientRequestAcceptedEvent_descriptor,
-        new java.lang.String[] { "EventId", });
-    internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor =
+        internal_static_protobuf_clientevents_ClientEventBase_descriptor,
+        new java.lang.String[] { "EventId", "EventTimestamp", "EventRequestorBase", });
+    internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_protobuf_clientevents_ClientRequestDeniedEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientRequestAnswerEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientRequestDeniedEvent_descriptor,
-        new java.lang.String[] { "EventId", "Message", });
+        internal_static_protobuf_clientevents_ClientRequestAnswerEvent_descriptor,
+        new java.lang.String[] { "EventBase", "EventAccepted", "EventMessage", });
     internal_static_protobuf_clientevents_ClientProfileDataEvent_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_protobuf_clientevents_ClientProfileDataEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientProfileDataEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientProfile", });
-    internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_protobuf_clientevents_TextChannelDataEvent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_TextChannelDataEvent_descriptor,
-        new java.lang.String[] { "EventId", "ChannelMessage", });
-    internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_protobuf_clientevents_VoiceChannelDataEvent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_VoiceChannelDataEvent_descriptor,
-        new java.lang.String[] { "EventId", "ChannelMessage", });
-    internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_protobuf_clientevents_ChannelMessageDataEvent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ChannelMessageDataEvent_descriptor,
-        new java.lang.String[] { "EventId", "ChannelMessage", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_protobuf_clientevents_ChannelMessageEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor,
-        new java.lang.String[] { "EventId", "ChannelMessage", });
+        new java.lang.String[] { "EventBase", "ChannelMessage", });
     internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_protobuf_clientevents_PrivateMessageEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor,
-        new java.lang.String[] { "EventId", "PrivateMessage", });
+        new java.lang.String[] { "EventBase", "PrivateMessage", });
     internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_protobuf_clientevents_ClientJoinedChannelEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_protobuf_clientevents_ClientLeftChannelEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_protobuf_clientevents_ClientLoggedInEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_protobuf_clientevents_ClientLoggedOutEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_protobuf_clientevents_ClientRegisteredEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientDownloadedFileEvent_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_protobuf_clientevents_ClientDownloadedFileEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientDownloadedFileEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_ClientUploadedFileEvent_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_protobuf_clientevents_ClientUploadedFileEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientUploadedFileEvent_descriptor,
-        new java.lang.String[] { "EventId", "ClientBase", });
+        new java.lang.String[] { "EventBase", "ClientProfile", });
     internal_static_protobuf_clientevents_PingMeasuredEvent_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_protobuf_clientevents_PingMeasuredEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_PingMeasuredEvent_descriptor,
-        new java.lang.String[] { "EventId", "MeasurementMillis", });
+        new java.lang.String[] { "EventBase", "MeasuredMillis", });
     protobuf.ClientIdentities.getDescriptor();
     protobuf.ClientMessages.getDescriptor();
   }

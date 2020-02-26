@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 package protobuf.clientevents;
 
 option java_package = "protobuf";
@@ -7,82 +7,69 @@ option java_outer_classname = "ClientEvents";
 import "protobuf/ClientIdentities.proto";
 import "protobuf/ClientMessages.proto";
 
-message ClientRequestAcceptedEvent {
-	required int32 eventId = 1;
+message ClientEventBase {
+	int32 eventId = 1;
+	int64 eventTimestamp = 2;
+	protobuf.clientidentities.ClientBase eventRequestorBase = 3;
 }
 
-message ClientRequestDeniedEvent {
-	required int32 eventId = 1;
-	optional string message = 2;
-	 
+message ClientRequestAnswerEvent {
+	ClientEventBase eventBase = 1;
+	bool eventAccepted = 2;
+	string eventMessage = 3;
 }
 
 message ClientProfileDataEvent	{
-	required int32 eventId = 1;	
-	required protobuf.clientidentities.ClientProfile clientProfile = 2;
-}
-
-message TextChannelDataEvent {
-	required int32 eventId = 1;
-	repeated protobuf.clientmessages.ChannelClientMessage channelMessage = 2;
-}
-
-message VoiceChannelDataEvent {
-	required int32 eventId = 1;
-	repeated protobuf.clientmessages.ChannelClientMessage channelMessage = 2;
-}
-
-message ChannelMessageDataEvent {
-	required int32 eventId = 1;
-	repeated protobuf.clientmessages.ChannelClientMessage channelMessage = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ChannelMessageEvent {
-	required int32 eventId = 1;
-	required protobuf.clientmessages.ChannelClientMessage channelMessage = 2;
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ChannelMessage channelMessage = 2;
 }
 
 message PrivateMessageEvent {
-	required int32 eventId = 1;
-	required protobuf.clientmessages.PrivateClientMessage privateMessage = 2;
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.PrivateMessage privateMessage = 2;
 }
 
 message ClientJoinedChannelEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientLeftChannelEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientLoggedInEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientLoggedOutEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientRegisteredEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientDownloadedFileEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message ClientUploadedFileEvent {
-	required int32 eventId = 1;
-	required protobuf.clientidentities.ClientBase clientBase = 2;
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile clientProfile = 2;
 }
 
 message PingMeasuredEvent {
-	required int32 eventId = 1;
-	required int64 measurementMillis = 2;
+	ClientEventBase eventBase = 1;
+	int64 measuredMillis = 2;
 }

@@ -15,45 +15,61 @@ message ClientPictures {
 	string backgroundImageURI = 3;
 }
 
+message ClientGroups {
+	int32 adminGroup = 1;
+	repeated int32 clientGroup = 2;
+}
+
+message ClientBadges {
+	repeated int32 badgeId = 1;
+}
+
+message ClientFriends {
+	repeated int32 friendId = 1;
+	repeated int32 buddyId = 2;
+}
+
+message ClientDeviceBase {
+	int32 deviceId = 1;
+	string deviceName = 2;
+}
+
+message ClientDeviceAddress {
+	string deviceIpV4 = 1;
+	string deviceIpV6 = 2;
+}
+
+enum ClientDeviceOs {
+	WINDOWS = 0;
+	LINUX = 1;
+	IOS = 2;
+	ANDROID = 3;
+}
+
+enum ClientDeviceType {
+	DESKTOP = 0;
+	BROWSER = 1;
+	MOBILE = 2;
+}
+
 message ClientDevice {
-	ClientDeviceAddress deviceAddress = 1;
-	ClientDeviceOs deviceOs = 2;
-	ClientDeviceType deviceType = 3;	
-	
-	message ClientDeviceAddress {
-		string deviceIpV4 = 1;
-		string deviceIpV6 = 2;
-	}
-	enum ClientDeviceOs {
-		WINDOWS = 0;
-		LINUX = 1;
-		IOS = 2;
-		ANDROID = 3;
-	}
-	enum ClientDeviceType {
-		DESKTOP = 0;
-		BROWSER = 1;
-		MOBILE = 2;
-	}
+	ClientDeviceBase deviceBase = 1;
+	ClientDeviceAddress deviceAddress = 2;
+	ClientDeviceOs deviceOs = 3;
+	ClientDeviceType deviceType = 4;	
 }
 
 message ClientProfile {
-	int32 id = 1;
-	string username = 2;
-	int32 serverGroup = 3;
-	int32 adminGroup = 4;
-	repeated int32 friend = 6;
-	bool banned = 7;
-	bool deleted = 8;
+	ClientBase base = 1;
+	ClientPictures pictures = 2;
+	ClientGroups groups = 3;
+	ClientBadges badges = 4;
+	ClientFriends friends = 5;
+	bool banned = 6;
+	bool deleted = 7;
 }
 
 message ClientAccount {
-	ClientBase base = 1;
+	ClientProfile profile = 1;
 	string password = 2;
-	ClientPictures pictures = 3;
-	int32 serverGroup = 4;
-	int32 adminGroup = 5;
-	repeated int32 friend = 6;
-	bool banned = 7;
-	bool deleted = 8;
 }
