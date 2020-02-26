@@ -15,45 +15,69 @@ public final class ClientIdentities {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code protobuf.clientidentities.ClientDeviceOs}
+   * Protobuf enum {@code protobuf.clientidentities.ClientStatus}
    */
-  public enum ClientDeviceOs
+  public enum ClientStatus
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>WINDOWS = 0;</code>
+     * <code>UNKNOWN = 0;</code>
      */
-    WINDOWS(0),
+    UNKNOWN(0),
     /**
-     * <code>LINUX = 1;</code>
+     * <code>OFFLINE = 1;</code>
      */
-    LINUX(1),
+    OFFLINE(1),
     /**
-     * <code>IOS = 2;</code>
+     * <code>ONLINE = 2;</code>
      */
-    IOS(2),
+    ONLINE(2),
     /**
-     * <code>ANDROID = 3;</code>
+     * <code>AFK = 3;</code>
      */
-    ANDROID(3),
+    AFK(3),
+    /**
+     * <code>BUSY = 4;</code>
+     */
+    BUSY(4),
+    /**
+     * <code>BANNED = 5;</code>
+     */
+    BANNED(5),
+    /**
+     * <code>DELETED = 6;</code>
+     */
+    DELETED(6),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>WINDOWS = 0;</code>
+     * <code>UNKNOWN = 0;</code>
      */
-    public static final int WINDOWS_VALUE = 0;
+    public static final int UNKNOWN_VALUE = 0;
     /**
-     * <code>LINUX = 1;</code>
+     * <code>OFFLINE = 1;</code>
      */
-    public static final int LINUX_VALUE = 1;
+    public static final int OFFLINE_VALUE = 1;
     /**
-     * <code>IOS = 2;</code>
+     * <code>ONLINE = 2;</code>
      */
-    public static final int IOS_VALUE = 2;
+    public static final int ONLINE_VALUE = 2;
     /**
-     * <code>ANDROID = 3;</code>
+     * <code>AFK = 3;</code>
      */
-    public static final int ANDROID_VALUE = 3;
+    public static final int AFK_VALUE = 3;
+    /**
+     * <code>BUSY = 4;</code>
+     */
+    public static final int BUSY_VALUE = 4;
+    /**
+     * <code>BANNED = 5;</code>
+     */
+    public static final int BANNED_VALUE = 5;
+    /**
+     * <code>DELETED = 6;</code>
+     */
+    public static final int DELETED_VALUE = 6;
 
 
     public final int getNumber() {
@@ -70,7 +94,7 @@ public final class ClientIdentities {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static ClientDeviceOs valueOf(int value) {
+    public static ClientStatus valueOf(int value) {
       return forNumber(value);
     }
 
@@ -78,25 +102,28 @@ public final class ClientIdentities {
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static ClientDeviceOs forNumber(int value) {
+    public static ClientStatus forNumber(int value) {
       switch (value) {
-        case 0: return WINDOWS;
-        case 1: return LINUX;
-        case 2: return IOS;
-        case 3: return ANDROID;
+        case 0: return UNKNOWN;
+        case 1: return OFFLINE;
+        case 2: return ONLINE;
+        case 3: return AFK;
+        case 4: return BUSY;
+        case 5: return BANNED;
+        case 6: return DELETED;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ClientDeviceOs>
+    public static com.google.protobuf.Internal.EnumLiteMap<ClientStatus>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        ClientDeviceOs> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ClientDeviceOs>() {
-            public ClientDeviceOs findValueByNumber(int number) {
-              return ClientDeviceOs.forNumber(number);
+        ClientStatus> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClientStatus>() {
+            public ClientStatus findValueByNumber(int number) {
+              return ClientStatus.forNumber(number);
             }
           };
 
@@ -113,9 +140,9 @@ public final class ClientIdentities {
       return protobuf.ClientIdentities.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final ClientDeviceOs[] VALUES = values();
+    private static final ClientStatus[] VALUES = values();
 
-    public static ClientDeviceOs valueOf(
+    public static ClientStatus valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -129,11 +156,11 @@ public final class ClientIdentities {
 
     private final int value;
 
-    private ClientDeviceOs(int value) {
+    private ClientStatus(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:protobuf.clientidentities.ClientDeviceOs)
+    // @@protoc_insertion_point(enum_scope:protobuf.clientidentities.ClientStatus)
   }
 
   /**
@@ -3847,6 +3874,832 @@ public final class ClientIdentities {
 
   }
 
+  public interface ClientDateOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientDate)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 year = 1;</code>
+     * @return The year.
+     */
+    int getYear();
+
+    /**
+     * <code>int32 month = 2;</code>
+     * @return The month.
+     */
+    int getMonth();
+
+    /**
+     * <code>int32 day = 3;</code>
+     * @return The day.
+     */
+    int getDay();
+
+    /**
+     * <code>int32 hour = 4;</code>
+     * @return The hour.
+     */
+    int getHour();
+
+    /**
+     * <code>int32 minutes = 5;</code>
+     * @return The minutes.
+     */
+    int getMinutes();
+
+    /**
+     * <code>int32 seconds = 6;</code>
+     * @return The seconds.
+     */
+    int getSeconds();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.ClientDate}
+   */
+  public  static final class ClientDate extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientDate)
+      ClientDateOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientDate.newBuilder() to construct.
+    private ClientDate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientDate() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientDate();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientDate(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              year_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              month_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              day_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              hour_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              minutes_ = input.readInt32();
+              break;
+            }
+            case 48: {
+
+              seconds_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDate_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDate_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.ClientDate.class, protobuf.ClientIdentities.ClientDate.Builder.class);
+    }
+
+    public static final int YEAR_FIELD_NUMBER = 1;
+    private int year_;
+    /**
+     * <code>int32 year = 1;</code>
+     * @return The year.
+     */
+    public int getYear() {
+      return year_;
+    }
+
+    public static final int MONTH_FIELD_NUMBER = 2;
+    private int month_;
+    /**
+     * <code>int32 month = 2;</code>
+     * @return The month.
+     */
+    public int getMonth() {
+      return month_;
+    }
+
+    public static final int DAY_FIELD_NUMBER = 3;
+    private int day_;
+    /**
+     * <code>int32 day = 3;</code>
+     * @return The day.
+     */
+    public int getDay() {
+      return day_;
+    }
+
+    public static final int HOUR_FIELD_NUMBER = 4;
+    private int hour_;
+    /**
+     * <code>int32 hour = 4;</code>
+     * @return The hour.
+     */
+    public int getHour() {
+      return hour_;
+    }
+
+    public static final int MINUTES_FIELD_NUMBER = 5;
+    private int minutes_;
+    /**
+     * <code>int32 minutes = 5;</code>
+     * @return The minutes.
+     */
+    public int getMinutes() {
+      return minutes_;
+    }
+
+    public static final int SECONDS_FIELD_NUMBER = 6;
+    private int seconds_;
+    /**
+     * <code>int32 seconds = 6;</code>
+     * @return The seconds.
+     */
+    public int getSeconds() {
+      return seconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (year_ != 0) {
+        output.writeInt32(1, year_);
+      }
+      if (month_ != 0) {
+        output.writeInt32(2, month_);
+      }
+      if (day_ != 0) {
+        output.writeInt32(3, day_);
+      }
+      if (hour_ != 0) {
+        output.writeInt32(4, hour_);
+      }
+      if (minutes_ != 0) {
+        output.writeInt32(5, minutes_);
+      }
+      if (seconds_ != 0) {
+        output.writeInt32(6, seconds_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (year_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, year_);
+      }
+      if (month_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, month_);
+      }
+      if (day_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, day_);
+      }
+      if (hour_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, hour_);
+      }
+      if (minutes_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, minutes_);
+      }
+      if (seconds_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, seconds_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.ClientDate)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.ClientDate other = (protobuf.ClientIdentities.ClientDate) obj;
+
+      if (getYear()
+          != other.getYear()) return false;
+      if (getMonth()
+          != other.getMonth()) return false;
+      if (getDay()
+          != other.getDay()) return false;
+      if (getHour()
+          != other.getHour()) return false;
+      if (getMinutes()
+          != other.getMinutes()) return false;
+      if (getSeconds()
+          != other.getSeconds()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + YEAR_FIELD_NUMBER;
+      hash = (53 * hash) + getYear();
+      hash = (37 * hash) + MONTH_FIELD_NUMBER;
+      hash = (53 * hash) + getMonth();
+      hash = (37 * hash) + DAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDay();
+      hash = (37 * hash) + HOUR_FIELD_NUMBER;
+      hash = (53 * hash) + getHour();
+      hash = (37 * hash) + MINUTES_FIELD_NUMBER;
+      hash = (53 * hash) + getMinutes();
+      hash = (37 * hash) + SECONDS_FIELD_NUMBER;
+      hash = (53 * hash) + getSeconds();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDate parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientDate prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.ClientDate}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientDate)
+        protobuf.ClientIdentities.ClientDateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDate_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDate_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.ClientDate.class, protobuf.ClientIdentities.ClientDate.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.ClientDate.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        year_ = 0;
+
+        month_ = 0;
+
+        day_ = 0;
+
+        hour_ = 0;
+
+        minutes_ = 0;
+
+        seconds_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDate_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDate getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientDate.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDate build() {
+        protobuf.ClientIdentities.ClientDate result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDate buildPartial() {
+        protobuf.ClientIdentities.ClientDate result = new protobuf.ClientIdentities.ClientDate(this);
+        result.year_ = year_;
+        result.month_ = month_;
+        result.day_ = day_;
+        result.hour_ = hour_;
+        result.minutes_ = minutes_;
+        result.seconds_ = seconds_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.ClientDate) {
+          return mergeFrom((protobuf.ClientIdentities.ClientDate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientDate other) {
+        if (other == protobuf.ClientIdentities.ClientDate.getDefaultInstance()) return this;
+        if (other.getYear() != 0) {
+          setYear(other.getYear());
+        }
+        if (other.getMonth() != 0) {
+          setMonth(other.getMonth());
+        }
+        if (other.getDay() != 0) {
+          setDay(other.getDay());
+        }
+        if (other.getHour() != 0) {
+          setHour(other.getHour());
+        }
+        if (other.getMinutes() != 0) {
+          setMinutes(other.getMinutes());
+        }
+        if (other.getSeconds() != 0) {
+          setSeconds(other.getSeconds());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.ClientDate parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.ClientDate) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int year_ ;
+      /**
+       * <code>int32 year = 1;</code>
+       * @return The year.
+       */
+      public int getYear() {
+        return year_;
+      }
+      /**
+       * <code>int32 year = 1;</code>
+       * @param value The year to set.
+       * @return This builder for chaining.
+       */
+      public Builder setYear(int value) {
+        
+        year_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 year = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearYear() {
+        
+        year_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int month_ ;
+      /**
+       * <code>int32 month = 2;</code>
+       * @return The month.
+       */
+      public int getMonth() {
+        return month_;
+      }
+      /**
+       * <code>int32 month = 2;</code>
+       * @param value The month to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMonth(int value) {
+        
+        month_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 month = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMonth() {
+        
+        month_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int day_ ;
+      /**
+       * <code>int32 day = 3;</code>
+       * @return The day.
+       */
+      public int getDay() {
+        return day_;
+      }
+      /**
+       * <code>int32 day = 3;</code>
+       * @param value The day to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDay(int value) {
+        
+        day_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 day = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDay() {
+        
+        day_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int hour_ ;
+      /**
+       * <code>int32 hour = 4;</code>
+       * @return The hour.
+       */
+      public int getHour() {
+        return hour_;
+      }
+      /**
+       * <code>int32 hour = 4;</code>
+       * @param value The hour to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHour(int value) {
+        
+        hour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 hour = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHour() {
+        
+        hour_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int minutes_ ;
+      /**
+       * <code>int32 minutes = 5;</code>
+       * @return The minutes.
+       */
+      public int getMinutes() {
+        return minutes_;
+      }
+      /**
+       * <code>int32 minutes = 5;</code>
+       * @param value The minutes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinutes(int value) {
+        
+        minutes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 minutes = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinutes() {
+        
+        minutes_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int seconds_ ;
+      /**
+       * <code>int32 seconds = 6;</code>
+       * @return The seconds.
+       */
+      public int getSeconds() {
+        return seconds_;
+      }
+      /**
+       * <code>int32 seconds = 6;</code>
+       * @param value The seconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeconds(int value) {
+        
+        seconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 seconds = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSeconds() {
+        
+        seconds_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientDate)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientDate)
+    private static final protobuf.ClientIdentities.ClientDate DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientDate();
+    }
+
+    public static protobuf.ClientIdentities.ClientDate getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientDate>
+        PARSER = new com.google.protobuf.AbstractParser<ClientDate>() {
+      @java.lang.Override
+      public ClientDate parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientDate(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientDate> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientDate> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.ClientDate getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ClientDeviceBaseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientDeviceBase)
       com.google.protobuf.MessageOrBuilder {
@@ -4486,28 +5339,54 @@ public final class ClientIdentities {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string deviceIpV4 = 1;</code>
-     * @return The deviceIpV4.
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @return A list containing the deviceIpV4.
      */
-    java.lang.String getDeviceIpV4();
+    java.util.List<java.lang.String>
+        getDeviceIpV4List();
     /**
-     * <code>string deviceIpV4 = 1;</code>
-     * @return The bytes for deviceIpV4.
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @return The count of deviceIpV4.
+     */
+    int getDeviceIpV4Count();
+    /**
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @param index The index of the element to return.
+     * @return The deviceIpV4 at the given index.
+     */
+    java.lang.String getDeviceIpV4(int index);
+    /**
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deviceIpV4 at the given index.
      */
     com.google.protobuf.ByteString
-        getDeviceIpV4Bytes();
+        getDeviceIpV4Bytes(int index);
 
     /**
-     * <code>string deviceIpV6 = 2;</code>
-     * @return The deviceIpV6.
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @return A list containing the deviceIpV6.
      */
-    java.lang.String getDeviceIpV6();
+    java.util.List<java.lang.String>
+        getDeviceIpV6List();
     /**
-     * <code>string deviceIpV6 = 2;</code>
-     * @return The bytes for deviceIpV6.
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @return The count of deviceIpV6.
+     */
+    int getDeviceIpV6Count();
+    /**
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @param index The index of the element to return.
+     * @return The deviceIpV6 at the given index.
+     */
+    java.lang.String getDeviceIpV6(int index);
+    /**
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deviceIpV6 at the given index.
      */
     com.google.protobuf.ByteString
-        getDeviceIpV6Bytes();
+        getDeviceIpV6Bytes(int index);
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientDeviceAddress}
@@ -4522,8 +5401,8 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientDeviceAddress() {
-      deviceIpV4_ = "";
-      deviceIpV6_ = "";
+      deviceIpV4_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      deviceIpV6_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -4546,6 +5425,7 @@ public final class ClientIdentities {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4558,14 +5438,20 @@ public final class ClientIdentities {
               break;
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              deviceIpV4_ = s;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                deviceIpV4_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              deviceIpV4_.add(s);
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              deviceIpV6_ = s;
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                deviceIpV6_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              deviceIpV6_.add(s);
               break;
             }
             default: {
@@ -4583,6 +5469,12 @@ public final class ClientIdentities {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          deviceIpV4_ = deviceIpV4_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          deviceIpV6_ = deviceIpV6_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -4601,75 +5493,73 @@ public final class ClientIdentities {
     }
 
     public static final int DEVICEIPV4_FIELD_NUMBER = 1;
-    private volatile java.lang.Object deviceIpV4_;
+    private com.google.protobuf.LazyStringList deviceIpV4_;
     /**
-     * <code>string deviceIpV4 = 1;</code>
-     * @return The deviceIpV4.
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @return A list containing the deviceIpV4.
      */
-    public java.lang.String getDeviceIpV4() {
-      java.lang.Object ref = deviceIpV4_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        deviceIpV4_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getDeviceIpV4List() {
+      return deviceIpV4_;
     }
     /**
-     * <code>string deviceIpV4 = 1;</code>
-     * @return The bytes for deviceIpV4.
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @return The count of deviceIpV4.
+     */
+    public int getDeviceIpV4Count() {
+      return deviceIpV4_.size();
+    }
+    /**
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @param index The index of the element to return.
+     * @return The deviceIpV4 at the given index.
+     */
+    public java.lang.String getDeviceIpV4(int index) {
+      return deviceIpV4_.get(index);
+    }
+    /**
+     * <code>repeated string deviceIpV4 = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deviceIpV4 at the given index.
      */
     public com.google.protobuf.ByteString
-        getDeviceIpV4Bytes() {
-      java.lang.Object ref = deviceIpV4_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        deviceIpV4_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getDeviceIpV4Bytes(int index) {
+      return deviceIpV4_.getByteString(index);
     }
 
     public static final int DEVICEIPV6_FIELD_NUMBER = 2;
-    private volatile java.lang.Object deviceIpV6_;
+    private com.google.protobuf.LazyStringList deviceIpV6_;
     /**
-     * <code>string deviceIpV6 = 2;</code>
-     * @return The deviceIpV6.
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @return A list containing the deviceIpV6.
      */
-    public java.lang.String getDeviceIpV6() {
-      java.lang.Object ref = deviceIpV6_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        deviceIpV6_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getDeviceIpV6List() {
+      return deviceIpV6_;
     }
     /**
-     * <code>string deviceIpV6 = 2;</code>
-     * @return The bytes for deviceIpV6.
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @return The count of deviceIpV6.
+     */
+    public int getDeviceIpV6Count() {
+      return deviceIpV6_.size();
+    }
+    /**
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @param index The index of the element to return.
+     * @return The deviceIpV6 at the given index.
+     */
+    public java.lang.String getDeviceIpV6(int index) {
+      return deviceIpV6_.get(index);
+    }
+    /**
+     * <code>repeated string deviceIpV6 = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deviceIpV6 at the given index.
      */
     public com.google.protobuf.ByteString
-        getDeviceIpV6Bytes() {
-      java.lang.Object ref = deviceIpV6_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        deviceIpV6_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getDeviceIpV6Bytes(int index) {
+      return deviceIpV6_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4686,11 +5576,11 @@ public final class ClientIdentities {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getDeviceIpV4Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, deviceIpV4_);
+      for (int i = 0; i < deviceIpV4_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, deviceIpV4_.getRaw(i));
       }
-      if (!getDeviceIpV6Bytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceIpV6_);
+      for (int i = 0; i < deviceIpV6_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceIpV6_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4701,11 +5591,21 @@ public final class ClientIdentities {
       if (size != -1) return size;
 
       size = 0;
-      if (!getDeviceIpV4Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, deviceIpV4_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < deviceIpV4_.size(); i++) {
+          dataSize += computeStringSizeNoTag(deviceIpV4_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getDeviceIpV4List().size();
       }
-      if (!getDeviceIpV6Bytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceIpV6_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < deviceIpV6_.size(); i++) {
+          dataSize += computeStringSizeNoTag(deviceIpV6_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getDeviceIpV6List().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4722,10 +5622,10 @@ public final class ClientIdentities {
       }
       protobuf.ClientIdentities.ClientDeviceAddress other = (protobuf.ClientIdentities.ClientDeviceAddress) obj;
 
-      if (!getDeviceIpV4()
-          .equals(other.getDeviceIpV4())) return false;
-      if (!getDeviceIpV6()
-          .equals(other.getDeviceIpV6())) return false;
+      if (!getDeviceIpV4List()
+          .equals(other.getDeviceIpV4List())) return false;
+      if (!getDeviceIpV6List()
+          .equals(other.getDeviceIpV6List())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4737,10 +5637,14 @@ public final class ClientIdentities {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DEVICEIPV4_FIELD_NUMBER;
-      hash = (53 * hash) + getDeviceIpV4().hashCode();
-      hash = (37 * hash) + DEVICEIPV6_FIELD_NUMBER;
-      hash = (53 * hash) + getDeviceIpV6().hashCode();
+      if (getDeviceIpV4Count() > 0) {
+        hash = (37 * hash) + DEVICEIPV4_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceIpV4List().hashCode();
+      }
+      if (getDeviceIpV6Count() > 0) {
+        hash = (37 * hash) + DEVICEIPV6_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceIpV6List().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4874,10 +5778,10 @@ public final class ClientIdentities {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        deviceIpV4_ = "";
-
-        deviceIpV6_ = "";
-
+        deviceIpV4_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        deviceIpV6_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -4904,7 +5808,16 @@ public final class ClientIdentities {
       @java.lang.Override
       public protobuf.ClientIdentities.ClientDeviceAddress buildPartial() {
         protobuf.ClientIdentities.ClientDeviceAddress result = new protobuf.ClientIdentities.ClientDeviceAddress(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          deviceIpV4_ = deviceIpV4_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
         result.deviceIpV4_ = deviceIpV4_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          deviceIpV6_ = deviceIpV6_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
         result.deviceIpV6_ = deviceIpV6_;
         onBuilt();
         return result;
@@ -4954,12 +5867,24 @@ public final class ClientIdentities {
 
       public Builder mergeFrom(protobuf.ClientIdentities.ClientDeviceAddress other) {
         if (other == protobuf.ClientIdentities.ClientDeviceAddress.getDefaultInstance()) return this;
-        if (!other.getDeviceIpV4().isEmpty()) {
-          deviceIpV4_ = other.deviceIpV4_;
+        if (!other.deviceIpV4_.isEmpty()) {
+          if (deviceIpV4_.isEmpty()) {
+            deviceIpV4_ = other.deviceIpV4_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureDeviceIpV4IsMutable();
+            deviceIpV4_.addAll(other.deviceIpV4_);
+          }
           onChanged();
         }
-        if (!other.getDeviceIpV6().isEmpty()) {
-          deviceIpV6_ = other.deviceIpV6_;
+        if (!other.deviceIpV6_.isEmpty()) {
+          if (deviceIpV6_.isEmpty()) {
+            deviceIpV6_ = other.deviceIpV6_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureDeviceIpV6IsMutable();
+            deviceIpV6_.addAll(other.deviceIpV6_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4990,155 +5915,224 @@ public final class ClientIdentities {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object deviceIpV4_ = "";
-      /**
-       * <code>string deviceIpV4 = 1;</code>
-       * @return The deviceIpV4.
-       */
-      public java.lang.String getDeviceIpV4() {
-        java.lang.Object ref = deviceIpV4_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          deviceIpV4_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList deviceIpV4_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureDeviceIpV4IsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          deviceIpV4_ = new com.google.protobuf.LazyStringArrayList(deviceIpV4_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>string deviceIpV4 = 1;</code>
-       * @return The bytes for deviceIpV4.
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @return A list containing the deviceIpV4.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDeviceIpV4List() {
+        return deviceIpV4_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @return The count of deviceIpV4.
+       */
+      public int getDeviceIpV4Count() {
+        return deviceIpV4_.size();
+      }
+      /**
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param index The index of the element to return.
+       * @return The deviceIpV4 at the given index.
+       */
+      public java.lang.String getDeviceIpV4(int index) {
+        return deviceIpV4_.get(index);
+      }
+      /**
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the deviceIpV4 at the given index.
        */
       public com.google.protobuf.ByteString
-          getDeviceIpV4Bytes() {
-        java.lang.Object ref = deviceIpV4_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          deviceIpV4_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getDeviceIpV4Bytes(int index) {
+        return deviceIpV4_.getByteString(index);
       }
       /**
-       * <code>string deviceIpV4 = 1;</code>
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param index The index to set the value at.
        * @param value The deviceIpV4 to set.
        * @return This builder for chaining.
        */
       public Builder setDeviceIpV4(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDeviceIpV4IsMutable();
+        deviceIpV4_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param value The deviceIpV4 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDeviceIpV4(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        deviceIpV4_ = value;
+  ensureDeviceIpV4IsMutable();
+        deviceIpV4_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string deviceIpV4 = 1;</code>
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param values The deviceIpV4 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDeviceIpV4(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureDeviceIpV4IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, deviceIpV4_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deviceIpV4 = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDeviceIpV4() {
-        
-        deviceIpV4_ = getDefaultInstance().getDeviceIpV4();
+        deviceIpV4_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string deviceIpV4 = 1;</code>
-       * @param value The bytes for deviceIpV4 to set.
+       * <code>repeated string deviceIpV4 = 1;</code>
+       * @param value The bytes of the deviceIpV4 to add.
        * @return This builder for chaining.
        */
-      public Builder setDeviceIpV4Bytes(
+      public Builder addDeviceIpV4Bytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        deviceIpV4_ = value;
+        ensureDeviceIpV4IsMutable();
+        deviceIpV4_.add(value);
         onChanged();
         return this;
       }
 
-      private java.lang.Object deviceIpV6_ = "";
-      /**
-       * <code>string deviceIpV6 = 2;</code>
-       * @return The deviceIpV6.
-       */
-      public java.lang.String getDeviceIpV6() {
-        java.lang.Object ref = deviceIpV6_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          deviceIpV6_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList deviceIpV6_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureDeviceIpV6IsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          deviceIpV6_ = new com.google.protobuf.LazyStringArrayList(deviceIpV6_);
+          bitField0_ |= 0x00000002;
+         }
       }
       /**
-       * <code>string deviceIpV6 = 2;</code>
-       * @return The bytes for deviceIpV6.
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @return A list containing the deviceIpV6.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDeviceIpV6List() {
+        return deviceIpV6_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @return The count of deviceIpV6.
+       */
+      public int getDeviceIpV6Count() {
+        return deviceIpV6_.size();
+      }
+      /**
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param index The index of the element to return.
+       * @return The deviceIpV6 at the given index.
+       */
+      public java.lang.String getDeviceIpV6(int index) {
+        return deviceIpV6_.get(index);
+      }
+      /**
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the deviceIpV6 at the given index.
        */
       public com.google.protobuf.ByteString
-          getDeviceIpV6Bytes() {
-        java.lang.Object ref = deviceIpV6_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          deviceIpV6_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getDeviceIpV6Bytes(int index) {
+        return deviceIpV6_.getByteString(index);
       }
       /**
-       * <code>string deviceIpV6 = 2;</code>
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param index The index to set the value at.
        * @param value The deviceIpV6 to set.
        * @return This builder for chaining.
        */
       public Builder setDeviceIpV6(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDeviceIpV6IsMutable();
+        deviceIpV6_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param value The deviceIpV6 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDeviceIpV6(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        deviceIpV6_ = value;
+  ensureDeviceIpV6IsMutable();
+        deviceIpV6_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string deviceIpV6 = 2;</code>
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param values The deviceIpV6 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDeviceIpV6(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureDeviceIpV6IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, deviceIpV6_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deviceIpV6 = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearDeviceIpV6() {
-        
-        deviceIpV6_ = getDefaultInstance().getDeviceIpV6();
+        deviceIpV6_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>string deviceIpV6 = 2;</code>
-       * @param value The bytes for deviceIpV6 to set.
+       * <code>repeated string deviceIpV6 = 2;</code>
+       * @param value The bytes of the deviceIpV6 to add.
        * @return This builder for chaining.
        */
-      public Builder setDeviceIpV6Bytes(
+      public Builder addDeviceIpV6Bytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        deviceIpV6_ = value;
+        ensureDeviceIpV6IsMutable();
+        deviceIpV6_.add(value);
         onChanged();
         return this;
       }
@@ -5195,6 +6189,947 @@ public final class ClientIdentities {
 
   }
 
+  public interface ClientDeviceOsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientDeviceOs)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string deviceOsName = 1;</code>
+     * @return The deviceOsName.
+     */
+    java.lang.String getDeviceOsName();
+    /**
+     * <code>string deviceOsName = 1;</code>
+     * @return The bytes for deviceOsName.
+     */
+    com.google.protobuf.ByteString
+        getDeviceOsNameBytes();
+
+    /**
+     * <code>string deviceOsVersion = 2;</code>
+     * @return The deviceOsVersion.
+     */
+    java.lang.String getDeviceOsVersion();
+    /**
+     * <code>string deviceOsVersion = 2;</code>
+     * @return The bytes for deviceOsVersion.
+     */
+    com.google.protobuf.ByteString
+        getDeviceOsVersionBytes();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+     * @return The enum numeric value on the wire for deviceOsType.
+     */
+    int getDeviceOsTypeValue();
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+     * @return The deviceOsType.
+     */
+    protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType getDeviceOsType();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.ClientDeviceOs}
+   */
+  public  static final class ClientDeviceOs extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientDeviceOs)
+      ClientDeviceOsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientDeviceOs.newBuilder() to construct.
+    private ClientDeviceOs(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientDeviceOs() {
+      deviceOsName_ = "";
+      deviceOsVersion_ = "";
+      deviceOsType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientDeviceOs();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientDeviceOs(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deviceOsName_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deviceOsVersion_ = s;
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              deviceOsType_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDeviceOs_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.ClientDeviceOs.class, protobuf.ClientIdentities.ClientDeviceOs.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType}
+     */
+    public enum ClientDeviceOsType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>WINDOWS = 0;</code>
+       */
+      WINDOWS(0),
+      /**
+       * <code>LINUX = 1;</code>
+       */
+      LINUX(1),
+      /**
+       * <code>IOS = 2;</code>
+       */
+      IOS(2),
+      /**
+       * <code>ANDROID = 3;</code>
+       */
+      ANDROID(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>WINDOWS = 0;</code>
+       */
+      public static final int WINDOWS_VALUE = 0;
+      /**
+       * <code>LINUX = 1;</code>
+       */
+      public static final int LINUX_VALUE = 1;
+      /**
+       * <code>IOS = 2;</code>
+       */
+      public static final int IOS_VALUE = 2;
+      /**
+       * <code>ANDROID = 3;</code>
+       */
+      public static final int ANDROID_VALUE = 3;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ClientDeviceOsType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static ClientDeviceOsType forNumber(int value) {
+        switch (value) {
+          case 0: return WINDOWS;
+          case 1: return LINUX;
+          case 2: return IOS;
+          case 3: return ANDROID;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<ClientDeviceOsType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          ClientDeviceOsType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<ClientDeviceOsType>() {
+              public ClientDeviceOsType findValueByNumber(int number) {
+                return ClientDeviceOsType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.ClientDeviceOs.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final ClientDeviceOsType[] VALUES = values();
+
+      public static ClientDeviceOsType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private ClientDeviceOsType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType)
+    }
+
+    public static final int DEVICEOSNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object deviceOsName_;
+    /**
+     * <code>string deviceOsName = 1;</code>
+     * @return The deviceOsName.
+     */
+    public java.lang.String getDeviceOsName() {
+      java.lang.Object ref = deviceOsName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceOsName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string deviceOsName = 1;</code>
+     * @return The bytes for deviceOsName.
+     */
+    public com.google.protobuf.ByteString
+        getDeviceOsNameBytes() {
+      java.lang.Object ref = deviceOsName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceOsName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEVICEOSVERSION_FIELD_NUMBER = 2;
+    private volatile java.lang.Object deviceOsVersion_;
+    /**
+     * <code>string deviceOsVersion = 2;</code>
+     * @return The deviceOsVersion.
+     */
+    public java.lang.String getDeviceOsVersion() {
+      java.lang.Object ref = deviceOsVersion_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceOsVersion_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string deviceOsVersion = 2;</code>
+     * @return The bytes for deviceOsVersion.
+     */
+    public com.google.protobuf.ByteString
+        getDeviceOsVersionBytes() {
+      java.lang.Object ref = deviceOsVersion_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceOsVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEVICEOSTYPE_FIELD_NUMBER = 3;
+    private int deviceOsType_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+     * @return The enum numeric value on the wire for deviceOsType.
+     */
+    public int getDeviceOsTypeValue() {
+      return deviceOsType_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+     * @return The deviceOsType.
+     */
+    public protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType getDeviceOsType() {
+      @SuppressWarnings("deprecation")
+      protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType result = protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.valueOf(deviceOsType_);
+      return result == null ? protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getDeviceOsNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, deviceOsName_);
+      }
+      if (!getDeviceOsVersionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceOsVersion_);
+      }
+      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.WINDOWS.getNumber()) {
+        output.writeEnum(3, deviceOsType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getDeviceOsNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, deviceOsName_);
+      }
+      if (!getDeviceOsVersionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceOsVersion_);
+      }
+      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.WINDOWS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, deviceOsType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.ClientDeviceOs)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.ClientDeviceOs other = (protobuf.ClientIdentities.ClientDeviceOs) obj;
+
+      if (!getDeviceOsName()
+          .equals(other.getDeviceOsName())) return false;
+      if (!getDeviceOsVersion()
+          .equals(other.getDeviceOsVersion())) return false;
+      if (deviceOsType_ != other.deviceOsType_) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DEVICEOSNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDeviceOsName().hashCode();
+      hash = (37 * hash) + DEVICEOSVERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getDeviceOsVersion().hashCode();
+      hash = (37 * hash) + DEVICEOSTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + deviceOsType_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientDeviceOs parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientDeviceOs prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.ClientDeviceOs}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientDeviceOs)
+        protobuf.ClientIdentities.ClientDeviceOsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDeviceOs_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.ClientDeviceOs.class, protobuf.ClientIdentities.ClientDeviceOs.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.ClientDeviceOs.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        deviceOsName_ = "";
+
+        deviceOsVersion_ = "";
+
+        deviceOsType_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDeviceOs getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientDeviceOs.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDeviceOs build() {
+        protobuf.ClientIdentities.ClientDeviceOs result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientDeviceOs buildPartial() {
+        protobuf.ClientIdentities.ClientDeviceOs result = new protobuf.ClientIdentities.ClientDeviceOs(this);
+        result.deviceOsName_ = deviceOsName_;
+        result.deviceOsVersion_ = deviceOsVersion_;
+        result.deviceOsType_ = deviceOsType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.ClientDeviceOs) {
+          return mergeFrom((protobuf.ClientIdentities.ClientDeviceOs)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientDeviceOs other) {
+        if (other == protobuf.ClientIdentities.ClientDeviceOs.getDefaultInstance()) return this;
+        if (!other.getDeviceOsName().isEmpty()) {
+          deviceOsName_ = other.deviceOsName_;
+          onChanged();
+        }
+        if (!other.getDeviceOsVersion().isEmpty()) {
+          deviceOsVersion_ = other.deviceOsVersion_;
+          onChanged();
+        }
+        if (other.deviceOsType_ != 0) {
+          setDeviceOsTypeValue(other.getDeviceOsTypeValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.ClientDeviceOs parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.ClientDeviceOs) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object deviceOsName_ = "";
+      /**
+       * <code>string deviceOsName = 1;</code>
+       * @return The deviceOsName.
+       */
+      public java.lang.String getDeviceOsName() {
+        java.lang.Object ref = deviceOsName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deviceOsName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string deviceOsName = 1;</code>
+       * @return The bytes for deviceOsName.
+       */
+      public com.google.protobuf.ByteString
+          getDeviceOsNameBytes() {
+        java.lang.Object ref = deviceOsName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deviceOsName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string deviceOsName = 1;</code>
+       * @param value The deviceOsName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deviceOsName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string deviceOsName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceOsName() {
+        
+        deviceOsName_ = getDefaultInstance().getDeviceOsName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string deviceOsName = 1;</code>
+       * @param value The bytes for deviceOsName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deviceOsName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object deviceOsVersion_ = "";
+      /**
+       * <code>string deviceOsVersion = 2;</code>
+       * @return The deviceOsVersion.
+       */
+      public java.lang.String getDeviceOsVersion() {
+        java.lang.Object ref = deviceOsVersion_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deviceOsVersion_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string deviceOsVersion = 2;</code>
+       * @return The bytes for deviceOsVersion.
+       */
+      public com.google.protobuf.ByteString
+          getDeviceOsVersionBytes() {
+        java.lang.Object ref = deviceOsVersion_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deviceOsVersion_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string deviceOsVersion = 2;</code>
+       * @param value The deviceOsVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsVersion(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deviceOsVersion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string deviceOsVersion = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceOsVersion() {
+        
+        deviceOsVersion_ = getDefaultInstance().getDeviceOsVersion();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string deviceOsVersion = 2;</code>
+       * @param value The bytes for deviceOsVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsVersionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deviceOsVersion_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int deviceOsType_ = 0;
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+       * @return The enum numeric value on the wire for deviceOsType.
+       */
+      public int getDeviceOsTypeValue() {
+        return deviceOsType_;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+       * @param value The enum numeric value on the wire for deviceOsType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsTypeValue(int value) {
+        deviceOsType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+       * @return The deviceOsType.
+       */
+      public protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType getDeviceOsType() {
+        @SuppressWarnings("deprecation")
+        protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType result = protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.valueOf(deviceOsType_);
+        return result == null ? protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+       * @param value The deviceOsType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceOsType(protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        deviceOsType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs.ClientDeviceOsType deviceOsType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceOsType() {
+        
+        deviceOsType_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientDeviceOs)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientDeviceOs)
+    private static final protobuf.ClientIdentities.ClientDeviceOs DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientDeviceOs();
+    }
+
+    public static protobuf.ClientIdentities.ClientDeviceOs getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientDeviceOs>
+        PARSER = new com.google.protobuf.AbstractParser<ClientDeviceOs>() {
+      @java.lang.Override
+      public ClientDeviceOs parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientDeviceOs(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientDeviceOs> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientDeviceOs> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.ClientDeviceOs getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ClientDeviceOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientDevice)
       com.google.protobuf.MessageOrBuilder {
@@ -5231,14 +7166,18 @@ public final class ClientIdentities {
 
     /**
      * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-     * @return The enum numeric value on the wire for deviceOs.
+     * @return Whether the deviceOs field is set.
      */
-    int getDeviceOsValue();
+    boolean hasDeviceOs();
     /**
      * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
      * @return The deviceOs.
      */
     protobuf.ClientIdentities.ClientDeviceOs getDeviceOs();
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+     */
+    protobuf.ClientIdentities.ClientDeviceOsOrBuilder getDeviceOsOrBuilder();
 
     /**
      * <code>.protobuf.clientidentities.ClientDeviceType deviceType = 4;</code>
@@ -5264,7 +7203,6 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientDevice() {
-      deviceOs_ = 0;
       deviceType_ = 0;
     }
 
@@ -5324,10 +7262,17 @@ public final class ClientIdentities {
 
               break;
             }
-            case 24: {
-              int rawValue = input.readEnum();
+            case 26: {
+              protobuf.ClientIdentities.ClientDeviceOs.Builder subBuilder = null;
+              if (deviceOs_ != null) {
+                subBuilder = deviceOs_.toBuilder();
+              }
+              deviceOs_ = input.readMessage(protobuf.ClientIdentities.ClientDeviceOs.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deviceOs_);
+                deviceOs_ = subBuilder.buildPartial();
+              }
 
-              deviceOs_ = rawValue;
               break;
             }
             case 32: {
@@ -5415,22 +7360,26 @@ public final class ClientIdentities {
     }
 
     public static final int DEVICEOS_FIELD_NUMBER = 3;
-    private int deviceOs_;
+    private protobuf.ClientIdentities.ClientDeviceOs deviceOs_;
     /**
      * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-     * @return The enum numeric value on the wire for deviceOs.
+     * @return Whether the deviceOs field is set.
      */
-    public int getDeviceOsValue() {
-      return deviceOs_;
+    public boolean hasDeviceOs() {
+      return deviceOs_ != null;
     }
     /**
      * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
      * @return The deviceOs.
      */
     public protobuf.ClientIdentities.ClientDeviceOs getDeviceOs() {
-      @SuppressWarnings("deprecation")
-      protobuf.ClientIdentities.ClientDeviceOs result = protobuf.ClientIdentities.ClientDeviceOs.valueOf(deviceOs_);
-      return result == null ? protobuf.ClientIdentities.ClientDeviceOs.UNRECOGNIZED : result;
+      return deviceOs_ == null ? protobuf.ClientIdentities.ClientDeviceOs.getDefaultInstance() : deviceOs_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+     */
+    public protobuf.ClientIdentities.ClientDeviceOsOrBuilder getDeviceOsOrBuilder() {
+      return getDeviceOs();
     }
 
     public static final int DEVICETYPE_FIELD_NUMBER = 4;
@@ -5472,8 +7421,8 @@ public final class ClientIdentities {
       if (deviceAddress_ != null) {
         output.writeMessage(2, getDeviceAddress());
       }
-      if (deviceOs_ != protobuf.ClientIdentities.ClientDeviceOs.WINDOWS.getNumber()) {
-        output.writeEnum(3, deviceOs_);
+      if (deviceOs_ != null) {
+        output.writeMessage(3, getDeviceOs());
       }
       if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.DESKTOP.getNumber()) {
         output.writeEnum(4, deviceType_);
@@ -5495,9 +7444,9 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getDeviceAddress());
       }
-      if (deviceOs_ != protobuf.ClientIdentities.ClientDeviceOs.WINDOWS.getNumber()) {
+      if (deviceOs_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, deviceOs_);
+          .computeMessageSize(3, getDeviceOs());
       }
       if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.DESKTOP.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -5528,7 +7477,11 @@ public final class ClientIdentities {
         if (!getDeviceAddress()
             .equals(other.getDeviceAddress())) return false;
       }
-      if (deviceOs_ != other.deviceOs_) return false;
+      if (hasDeviceOs() != other.hasDeviceOs()) return false;
+      if (hasDeviceOs()) {
+        if (!getDeviceOs()
+            .equals(other.getDeviceOs())) return false;
+      }
       if (deviceType_ != other.deviceType_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -5549,8 +7502,10 @@ public final class ClientIdentities {
         hash = (37 * hash) + DEVICEADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getDeviceAddress().hashCode();
       }
-      hash = (37 * hash) + DEVICEOS_FIELD_NUMBER;
-      hash = (53 * hash) + deviceOs_;
+      if (hasDeviceOs()) {
+        hash = (37 * hash) + DEVICEOS_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceOs().hashCode();
+      }
       hash = (37 * hash) + DEVICETYPE_FIELD_NUMBER;
       hash = (53 * hash) + deviceType_;
       hash = (29 * hash) + unknownFields.hashCode();
@@ -5698,8 +7653,12 @@ public final class ClientIdentities {
           deviceAddress_ = null;
           deviceAddressBuilder_ = null;
         }
-        deviceOs_ = 0;
-
+        if (deviceOsBuilder_ == null) {
+          deviceOs_ = null;
+        } else {
+          deviceOs_ = null;
+          deviceOsBuilder_ = null;
+        }
         deviceType_ = 0;
 
         return this;
@@ -5738,7 +7697,11 @@ public final class ClientIdentities {
         } else {
           result.deviceAddress_ = deviceAddressBuilder_.build();
         }
-        result.deviceOs_ = deviceOs_;
+        if (deviceOsBuilder_ == null) {
+          result.deviceOs_ = deviceOs_;
+        } else {
+          result.deviceOs_ = deviceOsBuilder_.build();
+        }
         result.deviceType_ = deviceType_;
         onBuilt();
         return result;
@@ -5794,8 +7757,8 @@ public final class ClientIdentities {
         if (other.hasDeviceAddress()) {
           mergeDeviceAddress(other.getDeviceAddress());
         }
-        if (other.deviceOs_ != 0) {
-          setDeviceOsValue(other.getDeviceOsValue());
+        if (other.hasDeviceOs()) {
+          mergeDeviceOs(other.getDeviceOs());
         }
         if (other.deviceType_ != 0) {
           setDeviceTypeValue(other.getDeviceTypeValue());
@@ -6067,56 +8030,123 @@ public final class ClientIdentities {
         return deviceAddressBuilder_;
       }
 
-      private int deviceOs_ = 0;
+      private protobuf.ClientIdentities.ClientDeviceOs deviceOs_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDeviceOs, protobuf.ClientIdentities.ClientDeviceOs.Builder, protobuf.ClientIdentities.ClientDeviceOsOrBuilder> deviceOsBuilder_;
       /**
        * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-       * @return The enum numeric value on the wire for deviceOs.
+       * @return Whether the deviceOs field is set.
        */
-      public int getDeviceOsValue() {
-        return deviceOs_;
-      }
-      /**
-       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-       * @param value The enum numeric value on the wire for deviceOs to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDeviceOsValue(int value) {
-        deviceOs_ = value;
-        onChanged();
-        return this;
+      public boolean hasDeviceOs() {
+        return deviceOsBuilder_ != null || deviceOs_ != null;
       }
       /**
        * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
        * @return The deviceOs.
        */
       public protobuf.ClientIdentities.ClientDeviceOs getDeviceOs() {
-        @SuppressWarnings("deprecation")
-        protobuf.ClientIdentities.ClientDeviceOs result = protobuf.ClientIdentities.ClientDeviceOs.valueOf(deviceOs_);
-        return result == null ? protobuf.ClientIdentities.ClientDeviceOs.UNRECOGNIZED : result;
+        if (deviceOsBuilder_ == null) {
+          return deviceOs_ == null ? protobuf.ClientIdentities.ClientDeviceOs.getDefaultInstance() : deviceOs_;
+        } else {
+          return deviceOsBuilder_.getMessage();
+        }
       }
       /**
        * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-       * @param value The deviceOs to set.
-       * @return This builder for chaining.
        */
       public Builder setDeviceOs(protobuf.ClientIdentities.ClientDeviceOs value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (deviceOsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deviceOs_ = value;
+          onChanged();
+        } else {
+          deviceOsBuilder_.setMessage(value);
         }
-        
-        deviceOs_ = value.getNumber();
-        onChanged();
+
         return this;
       }
       /**
        * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
-       * @return This builder for chaining.
+       */
+      public Builder setDeviceOs(
+          protobuf.ClientIdentities.ClientDeviceOs.Builder builderForValue) {
+        if (deviceOsBuilder_ == null) {
+          deviceOs_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceOsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+       */
+      public Builder mergeDeviceOs(protobuf.ClientIdentities.ClientDeviceOs value) {
+        if (deviceOsBuilder_ == null) {
+          if (deviceOs_ != null) {
+            deviceOs_ =
+              protobuf.ClientIdentities.ClientDeviceOs.newBuilder(deviceOs_).mergeFrom(value).buildPartial();
+          } else {
+            deviceOs_ = value;
+          }
+          onChanged();
+        } else {
+          deviceOsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
        */
       public Builder clearDeviceOs() {
-        
-        deviceOs_ = 0;
-        onChanged();
+        if (deviceOsBuilder_ == null) {
+          deviceOs_ = null;
+          onChanged();
+        } else {
+          deviceOs_ = null;
+          deviceOsBuilder_ = null;
+        }
+
         return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOs.Builder getDeviceOsBuilder() {
+        
+        onChanged();
+        return getDeviceOsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOsOrBuilder getDeviceOsOrBuilder() {
+        if (deviceOsBuilder_ != null) {
+          return deviceOsBuilder_.getMessageOrBuilder();
+        } else {
+          return deviceOs_ == null ?
+              protobuf.ClientIdentities.ClientDeviceOs.getDefaultInstance() : deviceOs_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDeviceOs deviceOs = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDeviceOs, protobuf.ClientIdentities.ClientDeviceOs.Builder, protobuf.ClientIdentities.ClientDeviceOsOrBuilder> 
+          getDeviceOsFieldBuilder() {
+        if (deviceOsBuilder_ == null) {
+          deviceOsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDeviceOs, protobuf.ClientIdentities.ClientDeviceOs.Builder, protobuf.ClientIdentities.ClientDeviceOsOrBuilder>(
+                  getDeviceOs(),
+                  getParentForChildren(),
+                  isClean());
+          deviceOs_ = null;
+        }
+        return deviceOsBuilder_;
       }
 
       private int deviceType_ = 0;
@@ -6243,76 +8273,105 @@ public final class ClientIdentities {
     protobuf.ClientIdentities.ClientBaseOrBuilder getBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    int getStatusValue();
+    /**
+     * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+     * @return The status.
+     */
+    protobuf.ClientIdentities.ClientStatus getStatus();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      * @return Whether the pictures field is set.
      */
     boolean hasPictures();
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      * @return The pictures.
      */
     protobuf.ClientIdentities.ClientPictures getPictures();
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      */
     protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      * @return Whether the groups field is set.
      */
     boolean hasGroups();
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      * @return The groups.
      */
     protobuf.ClientIdentities.ClientGroups getGroups();
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      */
     protobuf.ClientIdentities.ClientGroupsOrBuilder getGroupsOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      * @return Whether the badges field is set.
      */
     boolean hasBadges();
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      * @return The badges.
      */
     protobuf.ClientIdentities.ClientBadges getBadges();
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      */
     protobuf.ClientIdentities.ClientBadgesOrBuilder getBadgesOrBuilder();
 
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      * @return Whether the friends field is set.
      */
     boolean hasFriends();
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      * @return The friends.
      */
     protobuf.ClientIdentities.ClientFriends getFriends();
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      */
     protobuf.ClientIdentities.ClientFriendsOrBuilder getFriendsOrBuilder();
 
     /**
-     * <code>bool banned = 6;</code>
-     * @return The banned.
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     * @return Whether the dateOfRegistration field is set.
      */
-    boolean getBanned();
+    boolean hasDateOfRegistration();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     * @return The dateOfRegistration.
+     */
+    protobuf.ClientIdentities.ClientDate getDateOfRegistration();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateOfRegistrationOrBuilder();
 
     /**
-     * <code>bool deleted = 7;</code>
-     * @return The deleted.
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     * @return Whether the dateLastOnline field is set.
      */
-    boolean getDeleted();
+    boolean hasDateLastOnline();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     * @return The dateLastOnline.
+     */
+    protobuf.ClientIdentities.ClientDate getDateLastOnline();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateLastOnlineOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientProfile}
@@ -6327,6 +8386,7 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientProfile() {
+      status_ = 0;
     }
 
     @java.lang.Override
@@ -6372,7 +8432,13 @@ public final class ClientIdentities {
 
               break;
             }
-            case 18: {
+            case 16: {
+              int rawValue = input.readEnum();
+
+              status_ = rawValue;
+              break;
+            }
+            case 26: {
               protobuf.ClientIdentities.ClientPictures.Builder subBuilder = null;
               if (pictures_ != null) {
                 subBuilder = pictures_.toBuilder();
@@ -6385,7 +8451,7 @@ public final class ClientIdentities {
 
               break;
             }
-            case 26: {
+            case 34: {
               protobuf.ClientIdentities.ClientGroups.Builder subBuilder = null;
               if (groups_ != null) {
                 subBuilder = groups_.toBuilder();
@@ -6398,7 +8464,7 @@ public final class ClientIdentities {
 
               break;
             }
-            case 34: {
+            case 42: {
               protobuf.ClientIdentities.ClientBadges.Builder subBuilder = null;
               if (badges_ != null) {
                 subBuilder = badges_.toBuilder();
@@ -6411,7 +8477,7 @@ public final class ClientIdentities {
 
               break;
             }
-            case 42: {
+            case 50: {
               protobuf.ClientIdentities.ClientFriends.Builder subBuilder = null;
               if (friends_ != null) {
                 subBuilder = friends_.toBuilder();
@@ -6424,14 +8490,30 @@ public final class ClientIdentities {
 
               break;
             }
-            case 48: {
+            case 58: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateOfRegistration_ != null) {
+                subBuilder = dateOfRegistration_.toBuilder();
+              }
+              dateOfRegistration_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateOfRegistration_);
+                dateOfRegistration_ = subBuilder.buildPartial();
+              }
 
-              banned_ = input.readBool();
               break;
             }
-            case 56: {
+            case 66: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateLastOnline_ != null) {
+                subBuilder = dateLastOnline_.toBuilder();
+              }
+              dateLastOnline_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateLastOnline_);
+                dateLastOnline_ = subBuilder.buildPartial();
+              }
 
-              deleted_ = input.readBool();
               break;
             }
             default: {
@@ -6489,116 +8571,161 @@ public final class ClientIdentities {
       return getBase();
     }
 
-    public static final int PICTURES_FIELD_NUMBER = 2;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private int status_;
+    /**
+     * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+     * @return The status.
+     */
+    public protobuf.ClientIdentities.ClientStatus getStatus() {
+      @SuppressWarnings("deprecation")
+      protobuf.ClientIdentities.ClientStatus result = protobuf.ClientIdentities.ClientStatus.valueOf(status_);
+      return result == null ? protobuf.ClientIdentities.ClientStatus.UNRECOGNIZED : result;
+    }
+
+    public static final int PICTURES_FIELD_NUMBER = 3;
     private protobuf.ClientIdentities.ClientPictures pictures_;
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      * @return Whether the pictures field is set.
      */
     public boolean hasPictures() {
       return pictures_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      * @return The pictures.
      */
     public protobuf.ClientIdentities.ClientPictures getPictures() {
       return pictures_ == null ? protobuf.ClientIdentities.ClientPictures.getDefaultInstance() : pictures_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
      */
     public protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder() {
       return getPictures();
     }
 
-    public static final int GROUPS_FIELD_NUMBER = 3;
+    public static final int GROUPS_FIELD_NUMBER = 4;
     private protobuf.ClientIdentities.ClientGroups groups_;
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      * @return Whether the groups field is set.
      */
     public boolean hasGroups() {
       return groups_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      * @return The groups.
      */
     public protobuf.ClientIdentities.ClientGroups getGroups() {
       return groups_ == null ? protobuf.ClientIdentities.ClientGroups.getDefaultInstance() : groups_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+     * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
      */
     public protobuf.ClientIdentities.ClientGroupsOrBuilder getGroupsOrBuilder() {
       return getGroups();
     }
 
-    public static final int BADGES_FIELD_NUMBER = 4;
+    public static final int BADGES_FIELD_NUMBER = 5;
     private protobuf.ClientIdentities.ClientBadges badges_;
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      * @return Whether the badges field is set.
      */
     public boolean hasBadges() {
       return badges_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      * @return The badges.
      */
     public protobuf.ClientIdentities.ClientBadges getBadges() {
       return badges_ == null ? protobuf.ClientIdentities.ClientBadges.getDefaultInstance() : badges_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+     * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
      */
     public protobuf.ClientIdentities.ClientBadgesOrBuilder getBadgesOrBuilder() {
       return getBadges();
     }
 
-    public static final int FRIENDS_FIELD_NUMBER = 5;
+    public static final int FRIENDS_FIELD_NUMBER = 6;
     private protobuf.ClientIdentities.ClientFriends friends_;
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      * @return Whether the friends field is set.
      */
     public boolean hasFriends() {
       return friends_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      * @return The friends.
      */
     public protobuf.ClientIdentities.ClientFriends getFriends() {
       return friends_ == null ? protobuf.ClientIdentities.ClientFriends.getDefaultInstance() : friends_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+     * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
      */
     public protobuf.ClientIdentities.ClientFriendsOrBuilder getFriendsOrBuilder() {
       return getFriends();
     }
 
-    public static final int BANNED_FIELD_NUMBER = 6;
-    private boolean banned_;
+    public static final int DATEOFREGISTRATION_FIELD_NUMBER = 7;
+    private protobuf.ClientIdentities.ClientDate dateOfRegistration_;
     /**
-     * <code>bool banned = 6;</code>
-     * @return The banned.
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     * @return Whether the dateOfRegistration field is set.
      */
-    public boolean getBanned() {
-      return banned_;
+    public boolean hasDateOfRegistration() {
+      return dateOfRegistration_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     * @return The dateOfRegistration.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateOfRegistration() {
+      return dateOfRegistration_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfRegistration_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateOfRegistrationOrBuilder() {
+      return getDateOfRegistration();
     }
 
-    public static final int DELETED_FIELD_NUMBER = 7;
-    private boolean deleted_;
+    public static final int DATELASTONLINE_FIELD_NUMBER = 8;
+    private protobuf.ClientIdentities.ClientDate dateLastOnline_;
     /**
-     * <code>bool deleted = 7;</code>
-     * @return The deleted.
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     * @return Whether the dateLastOnline field is set.
      */
-    public boolean getDeleted() {
-      return deleted_;
+    public boolean hasDateLastOnline() {
+      return dateLastOnline_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     * @return The dateLastOnline.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateLastOnline() {
+      return dateLastOnline_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateLastOnline_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateLastOnlineOrBuilder() {
+      return getDateLastOnline();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6618,23 +8745,26 @@ public final class ClientIdentities {
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
+      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN.getNumber()) {
+        output.writeEnum(2, status_);
+      }
       if (pictures_ != null) {
-        output.writeMessage(2, getPictures());
+        output.writeMessage(3, getPictures());
       }
       if (groups_ != null) {
-        output.writeMessage(3, getGroups());
+        output.writeMessage(4, getGroups());
       }
       if (badges_ != null) {
-        output.writeMessage(4, getBadges());
+        output.writeMessage(5, getBadges());
       }
       if (friends_ != null) {
-        output.writeMessage(5, getFriends());
+        output.writeMessage(6, getFriends());
       }
-      if (banned_ != false) {
-        output.writeBool(6, banned_);
+      if (dateOfRegistration_ != null) {
+        output.writeMessage(7, getDateOfRegistration());
       }
-      if (deleted_ != false) {
-        output.writeBool(7, deleted_);
+      if (dateLastOnline_ != null) {
+        output.writeMessage(8, getDateLastOnline());
       }
       unknownFields.writeTo(output);
     }
@@ -6649,29 +8779,33 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
+      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, status_);
+      }
       if (pictures_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getPictures());
+          .computeMessageSize(3, getPictures());
       }
       if (groups_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getGroups());
+          .computeMessageSize(4, getGroups());
       }
       if (badges_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getBadges());
+          .computeMessageSize(5, getBadges());
       }
       if (friends_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getFriends());
+          .computeMessageSize(6, getFriends());
       }
-      if (banned_ != false) {
+      if (dateOfRegistration_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(6, banned_);
+          .computeMessageSize(7, getDateOfRegistration());
       }
-      if (deleted_ != false) {
+      if (dateLastOnline_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, deleted_);
+          .computeMessageSize(8, getDateLastOnline());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6693,6 +8827,7 @@ public final class ClientIdentities {
         if (!getBase()
             .equals(other.getBase())) return false;
       }
+      if (status_ != other.status_) return false;
       if (hasPictures() != other.hasPictures()) return false;
       if (hasPictures()) {
         if (!getPictures()
@@ -6713,10 +8848,16 @@ public final class ClientIdentities {
         if (!getFriends()
             .equals(other.getFriends())) return false;
       }
-      if (getBanned()
-          != other.getBanned()) return false;
-      if (getDeleted()
-          != other.getDeleted()) return false;
+      if (hasDateOfRegistration() != other.hasDateOfRegistration()) return false;
+      if (hasDateOfRegistration()) {
+        if (!getDateOfRegistration()
+            .equals(other.getDateOfRegistration())) return false;
+      }
+      if (hasDateLastOnline() != other.hasDateLastOnline()) return false;
+      if (hasDateLastOnline()) {
+        if (!getDateLastOnline()
+            .equals(other.getDateLastOnline())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6732,6 +8873,8 @@ public final class ClientIdentities {
         hash = (37 * hash) + BASE_FIELD_NUMBER;
         hash = (53 * hash) + getBase().hashCode();
       }
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + status_;
       if (hasPictures()) {
         hash = (37 * hash) + PICTURES_FIELD_NUMBER;
         hash = (53 * hash) + getPictures().hashCode();
@@ -6748,12 +8891,14 @@ public final class ClientIdentities {
         hash = (37 * hash) + FRIENDS_FIELD_NUMBER;
         hash = (53 * hash) + getFriends().hashCode();
       }
-      hash = (37 * hash) + BANNED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getBanned());
-      hash = (37 * hash) + DELETED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getDeleted());
+      if (hasDateOfRegistration()) {
+        hash = (37 * hash) + DATEOFREGISTRATION_FIELD_NUMBER;
+        hash = (53 * hash) + getDateOfRegistration().hashCode();
+      }
+      if (hasDateLastOnline()) {
+        hash = (37 * hash) + DATELASTONLINE_FIELD_NUMBER;
+        hash = (53 * hash) + getDateLastOnline().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6893,6 +9038,8 @@ public final class ClientIdentities {
           base_ = null;
           baseBuilder_ = null;
         }
+        status_ = 0;
+
         if (picturesBuilder_ == null) {
           pictures_ = null;
         } else {
@@ -6917,10 +9064,18 @@ public final class ClientIdentities {
           friends_ = null;
           friendsBuilder_ = null;
         }
-        banned_ = false;
-
-        deleted_ = false;
-
+        if (dateOfRegistrationBuilder_ == null) {
+          dateOfRegistration_ = null;
+        } else {
+          dateOfRegistration_ = null;
+          dateOfRegistrationBuilder_ = null;
+        }
+        if (dateLastOnlineBuilder_ == null) {
+          dateLastOnline_ = null;
+        } else {
+          dateLastOnline_ = null;
+          dateLastOnlineBuilder_ = null;
+        }
         return this;
       }
 
@@ -6952,6 +9107,7 @@ public final class ClientIdentities {
         } else {
           result.base_ = baseBuilder_.build();
         }
+        result.status_ = status_;
         if (picturesBuilder_ == null) {
           result.pictures_ = pictures_;
         } else {
@@ -6972,8 +9128,16 @@ public final class ClientIdentities {
         } else {
           result.friends_ = friendsBuilder_.build();
         }
-        result.banned_ = banned_;
-        result.deleted_ = deleted_;
+        if (dateOfRegistrationBuilder_ == null) {
+          result.dateOfRegistration_ = dateOfRegistration_;
+        } else {
+          result.dateOfRegistration_ = dateOfRegistrationBuilder_.build();
+        }
+        if (dateLastOnlineBuilder_ == null) {
+          result.dateLastOnline_ = dateLastOnline_;
+        } else {
+          result.dateLastOnline_ = dateLastOnlineBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -7025,6 +9189,9 @@ public final class ClientIdentities {
         if (other.hasBase()) {
           mergeBase(other.getBase());
         }
+        if (other.status_ != 0) {
+          setStatusValue(other.getStatusValue());
+        }
         if (other.hasPictures()) {
           mergePictures(other.getPictures());
         }
@@ -7037,11 +9204,11 @@ public final class ClientIdentities {
         if (other.hasFriends()) {
           mergeFriends(other.getFriends());
         }
-        if (other.getBanned() != false) {
-          setBanned(other.getBanned());
+        if (other.hasDateOfRegistration()) {
+          mergeDateOfRegistration(other.getDateOfRegistration());
         }
-        if (other.getDeleted() != false) {
-          setDeleted(other.getDeleted());
+        if (other.hasDateLastOnline()) {
+          mergeDateLastOnline(other.getDateLastOnline());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7191,18 +9358,70 @@ public final class ClientIdentities {
         return baseBuilder_;
       }
 
+      private int status_ = 0;
+      /**
+       * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+       * @return The enum numeric value on the wire for status.
+       */
+      public int getStatusValue() {
+        return status_;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+       * @param value The enum numeric value on the wire for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusValue(int value) {
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+       * @return The status.
+       */
+      public protobuf.ClientIdentities.ClientStatus getStatus() {
+        @SuppressWarnings("deprecation")
+        protobuf.ClientIdentities.ClientStatus result = protobuf.ClientIdentities.ClientStatus.valueOf(status_);
+        return result == null ? protobuf.ClientIdentities.ClientStatus.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(protobuf.ClientIdentities.ClientStatus value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        status_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientStatus status = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
       private protobuf.ClientIdentities.ClientPictures pictures_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientPictures, protobuf.ClientIdentities.ClientPictures.Builder, protobuf.ClientIdentities.ClientPicturesOrBuilder> picturesBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        * @return Whether the pictures field is set.
        */
       public boolean hasPictures() {
         return picturesBuilder_ != null || pictures_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        * @return The pictures.
        */
       public protobuf.ClientIdentities.ClientPictures getPictures() {
@@ -7213,7 +9432,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public Builder setPictures(protobuf.ClientIdentities.ClientPictures value) {
         if (picturesBuilder_ == null) {
@@ -7229,7 +9448,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public Builder setPictures(
           protobuf.ClientIdentities.ClientPictures.Builder builderForValue) {
@@ -7243,7 +9462,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public Builder mergePictures(protobuf.ClientIdentities.ClientPictures value) {
         if (picturesBuilder_ == null) {
@@ -7261,7 +9480,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public Builder clearPictures() {
         if (picturesBuilder_ == null) {
@@ -7275,7 +9494,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public protobuf.ClientIdentities.ClientPictures.Builder getPicturesBuilder() {
         
@@ -7283,7 +9502,7 @@ public final class ClientIdentities {
         return getPicturesFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       public protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder() {
         if (picturesBuilder_ != null) {
@@ -7294,7 +9513,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 2;</code>
+       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientPictures, protobuf.ClientIdentities.ClientPictures.Builder, protobuf.ClientIdentities.ClientPicturesOrBuilder> 
@@ -7314,14 +9533,14 @@ public final class ClientIdentities {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientGroups, protobuf.ClientIdentities.ClientGroups.Builder, protobuf.ClientIdentities.ClientGroupsOrBuilder> groupsBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        * @return Whether the groups field is set.
        */
       public boolean hasGroups() {
         return groupsBuilder_ != null || groups_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        * @return The groups.
        */
       public protobuf.ClientIdentities.ClientGroups getGroups() {
@@ -7332,7 +9551,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public Builder setGroups(protobuf.ClientIdentities.ClientGroups value) {
         if (groupsBuilder_ == null) {
@@ -7348,7 +9567,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public Builder setGroups(
           protobuf.ClientIdentities.ClientGroups.Builder builderForValue) {
@@ -7362,7 +9581,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public Builder mergeGroups(protobuf.ClientIdentities.ClientGroups value) {
         if (groupsBuilder_ == null) {
@@ -7380,7 +9599,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public Builder clearGroups() {
         if (groupsBuilder_ == null) {
@@ -7394,7 +9613,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public protobuf.ClientIdentities.ClientGroups.Builder getGroupsBuilder() {
         
@@ -7402,7 +9621,7 @@ public final class ClientIdentities {
         return getGroupsFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       public protobuf.ClientIdentities.ClientGroupsOrBuilder getGroupsOrBuilder() {
         if (groupsBuilder_ != null) {
@@ -7413,7 +9632,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientGroups groups = 3;</code>
+       * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientGroups, protobuf.ClientIdentities.ClientGroups.Builder, protobuf.ClientIdentities.ClientGroupsOrBuilder> 
@@ -7433,14 +9652,14 @@ public final class ClientIdentities {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientBadges, protobuf.ClientIdentities.ClientBadges.Builder, protobuf.ClientIdentities.ClientBadgesOrBuilder> badgesBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        * @return Whether the badges field is set.
        */
       public boolean hasBadges() {
         return badgesBuilder_ != null || badges_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        * @return The badges.
        */
       public protobuf.ClientIdentities.ClientBadges getBadges() {
@@ -7451,7 +9670,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public Builder setBadges(protobuf.ClientIdentities.ClientBadges value) {
         if (badgesBuilder_ == null) {
@@ -7467,7 +9686,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public Builder setBadges(
           protobuf.ClientIdentities.ClientBadges.Builder builderForValue) {
@@ -7481,7 +9700,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public Builder mergeBadges(protobuf.ClientIdentities.ClientBadges value) {
         if (badgesBuilder_ == null) {
@@ -7499,7 +9718,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public Builder clearBadges() {
         if (badgesBuilder_ == null) {
@@ -7513,7 +9732,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public protobuf.ClientIdentities.ClientBadges.Builder getBadgesBuilder() {
         
@@ -7521,7 +9740,7 @@ public final class ClientIdentities {
         return getBadgesFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       public protobuf.ClientIdentities.ClientBadgesOrBuilder getBadgesOrBuilder() {
         if (badgesBuilder_ != null) {
@@ -7532,7 +9751,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientBadges badges = 4;</code>
+       * <code>.protobuf.clientidentities.ClientBadges badges = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientBadges, protobuf.ClientIdentities.ClientBadges.Builder, protobuf.ClientIdentities.ClientBadgesOrBuilder> 
@@ -7552,14 +9771,14 @@ public final class ClientIdentities {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientFriends, protobuf.ClientIdentities.ClientFriends.Builder, protobuf.ClientIdentities.ClientFriendsOrBuilder> friendsBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        * @return Whether the friends field is set.
        */
       public boolean hasFriends() {
         return friendsBuilder_ != null || friends_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        * @return The friends.
        */
       public protobuf.ClientIdentities.ClientFriends getFriends() {
@@ -7570,7 +9789,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public Builder setFriends(protobuf.ClientIdentities.ClientFriends value) {
         if (friendsBuilder_ == null) {
@@ -7586,7 +9805,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public Builder setFriends(
           protobuf.ClientIdentities.ClientFriends.Builder builderForValue) {
@@ -7600,7 +9819,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public Builder mergeFriends(protobuf.ClientIdentities.ClientFriends value) {
         if (friendsBuilder_ == null) {
@@ -7618,7 +9837,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public Builder clearFriends() {
         if (friendsBuilder_ == null) {
@@ -7632,7 +9851,7 @@ public final class ClientIdentities {
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public protobuf.ClientIdentities.ClientFriends.Builder getFriendsBuilder() {
         
@@ -7640,7 +9859,7 @@ public final class ClientIdentities {
         return getFriendsFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       public protobuf.ClientIdentities.ClientFriendsOrBuilder getFriendsOrBuilder() {
         if (friendsBuilder_ != null) {
@@ -7651,7 +9870,7 @@ public final class ClientIdentities {
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientFriends friends = 5;</code>
+       * <code>.protobuf.clientidentities.ClientFriends friends = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientIdentities.ClientFriends, protobuf.ClientIdentities.ClientFriends.Builder, protobuf.ClientIdentities.ClientFriendsOrBuilder> 
@@ -7667,64 +9886,242 @@ public final class ClientIdentities {
         return friendsBuilder_;
       }
 
-      private boolean banned_ ;
+      private protobuf.ClientIdentities.ClientDate dateOfRegistration_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateOfRegistrationBuilder_;
       /**
-       * <code>bool banned = 6;</code>
-       * @return The banned.
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       * @return Whether the dateOfRegistration field is set.
        */
-      public boolean getBanned() {
-        return banned_;
+      public boolean hasDateOfRegistration() {
+        return dateOfRegistrationBuilder_ != null || dateOfRegistration_ != null;
       }
       /**
-       * <code>bool banned = 6;</code>
-       * @param value The banned to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       * @return The dateOfRegistration.
        */
-      public Builder setBanned(boolean value) {
-        
-        banned_ = value;
-        onChanged();
+      public protobuf.ClientIdentities.ClientDate getDateOfRegistration() {
+        if (dateOfRegistrationBuilder_ == null) {
+          return dateOfRegistration_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfRegistration_;
+        } else {
+          return dateOfRegistrationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      public Builder setDateOfRegistration(protobuf.ClientIdentities.ClientDate value) {
+        if (dateOfRegistrationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateOfRegistration_ = value;
+          onChanged();
+        } else {
+          dateOfRegistrationBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>bool banned = 6;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
        */
-      public Builder clearBanned() {
-        
-        banned_ = false;
-        onChanged();
+      public Builder setDateOfRegistration(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateOfRegistrationBuilder_ == null) {
+          dateOfRegistration_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateOfRegistrationBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      public Builder mergeDateOfRegistration(protobuf.ClientIdentities.ClientDate value) {
+        if (dateOfRegistrationBuilder_ == null) {
+          if (dateOfRegistration_ != null) {
+            dateOfRegistration_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateOfRegistration_).mergeFrom(value).buildPartial();
+          } else {
+            dateOfRegistration_ = value;
+          }
+          onChanged();
+        } else {
+          dateOfRegistrationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      public Builder clearDateOfRegistration() {
+        if (dateOfRegistrationBuilder_ == null) {
+          dateOfRegistration_ = null;
+          onChanged();
+        } else {
+          dateOfRegistration_ = null;
+          dateOfRegistrationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateOfRegistrationBuilder() {
+        
+        onChanged();
+        return getDateOfRegistrationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateOfRegistrationOrBuilder() {
+        if (dateOfRegistrationBuilder_ != null) {
+          return dateOfRegistrationBuilder_.getMessageOrBuilder();
+        } else {
+          return dateOfRegistration_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfRegistration_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfRegistration = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateOfRegistrationFieldBuilder() {
+        if (dateOfRegistrationBuilder_ == null) {
+          dateOfRegistrationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateOfRegistration(),
+                  getParentForChildren(),
+                  isClean());
+          dateOfRegistration_ = null;
+        }
+        return dateOfRegistrationBuilder_;
       }
 
-      private boolean deleted_ ;
+      private protobuf.ClientIdentities.ClientDate dateLastOnline_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateLastOnlineBuilder_;
       /**
-       * <code>bool deleted = 7;</code>
-       * @return The deleted.
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       * @return Whether the dateLastOnline field is set.
        */
-      public boolean getDeleted() {
-        return deleted_;
+      public boolean hasDateLastOnline() {
+        return dateLastOnlineBuilder_ != null || dateLastOnline_ != null;
       }
       /**
-       * <code>bool deleted = 7;</code>
-       * @param value The deleted to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       * @return The dateLastOnline.
        */
-      public Builder setDeleted(boolean value) {
-        
-        deleted_ = value;
-        onChanged();
+      public protobuf.ClientIdentities.ClientDate getDateLastOnline() {
+        if (dateLastOnlineBuilder_ == null) {
+          return dateLastOnline_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateLastOnline_;
+        } else {
+          return dateLastOnlineBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      public Builder setDateLastOnline(protobuf.ClientIdentities.ClientDate value) {
+        if (dateLastOnlineBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateLastOnline_ = value;
+          onChanged();
+        } else {
+          dateLastOnlineBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>bool deleted = 7;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
        */
-      public Builder clearDeleted() {
-        
-        deleted_ = false;
-        onChanged();
+      public Builder setDateLastOnline(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateLastOnlineBuilder_ == null) {
+          dateLastOnline_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateLastOnlineBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      public Builder mergeDateLastOnline(protobuf.ClientIdentities.ClientDate value) {
+        if (dateLastOnlineBuilder_ == null) {
+          if (dateLastOnline_ != null) {
+            dateLastOnline_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateLastOnline_).mergeFrom(value).buildPartial();
+          } else {
+            dateLastOnline_ = value;
+          }
+          onChanged();
+        } else {
+          dateLastOnlineBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      public Builder clearDateLastOnline() {
+        if (dateLastOnlineBuilder_ == null) {
+          dateLastOnline_ = null;
+          onChanged();
+        } else {
+          dateLastOnline_ = null;
+          dateLastOnlineBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateLastOnlineBuilder() {
+        
+        onChanged();
+        return getDateLastOnlineFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateLastOnlineOrBuilder() {
+        if (dateLastOnlineBuilder_ != null) {
+          return dateLastOnlineBuilder_.getMessageOrBuilder();
+        } else {
+          return dateLastOnline_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateLastOnline_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateLastOnline = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateLastOnlineFieldBuilder() {
+        if (dateLastOnlineBuilder_ == null) {
+          dateLastOnlineBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateLastOnline(),
+                  getParentForChildren(),
+                  isClean());
+          dateLastOnline_ = null;
+        }
+        return dateLastOnlineBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7809,6 +10206,30 @@ public final class ClientIdentities {
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
+
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    java.util.List<protobuf.ClientIdentities.ClientDevice> 
+        getRegisteredDeviceList();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    protobuf.ClientIdentities.ClientDevice getRegisteredDevice(int index);
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    int getRegisteredDeviceCount();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    java.util.List<? extends protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+        getRegisteredDeviceOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    protobuf.ClientIdentities.ClientDeviceOrBuilder getRegisteredDeviceOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientAccount}
@@ -7824,6 +10245,7 @@ public final class ClientIdentities {
     }
     private ClientAccount() {
       password_ = "";
+      registeredDevice_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -7846,6 +10268,7 @@ public final class ClientIdentities {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7875,6 +10298,15 @@ public final class ClientIdentities {
               password_ = s;
               break;
             }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                registeredDevice_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientDevice>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              registeredDevice_.add(
+                  input.readMessage(protobuf.ClientIdentities.ClientDevice.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -7890,6 +10322,9 @@ public final class ClientIdentities {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          registeredDevice_ = java.util.Collections.unmodifiableList(registeredDevice_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -7966,6 +10401,41 @@ public final class ClientIdentities {
       }
     }
 
+    public static final int REGISTEREDDEVICE_FIELD_NUMBER = 3;
+    private java.util.List<protobuf.ClientIdentities.ClientDevice> registeredDevice_;
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    public java.util.List<protobuf.ClientIdentities.ClientDevice> getRegisteredDeviceList() {
+      return registeredDevice_;
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    public java.util.List<? extends protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+        getRegisteredDeviceOrBuilderList() {
+      return registeredDevice_;
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    public int getRegisteredDeviceCount() {
+      return registeredDevice_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    public protobuf.ClientIdentities.ClientDevice getRegisteredDevice(int index) {
+      return registeredDevice_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+     */
+    public protobuf.ClientIdentities.ClientDeviceOrBuilder getRegisteredDeviceOrBuilder(
+        int index) {
+      return registeredDevice_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7986,6 +10456,9 @@ public final class ClientIdentities {
       if (!getPasswordBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
       }
+      for (int i = 0; i < registeredDevice_.size(); i++) {
+        output.writeMessage(3, registeredDevice_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -8001,6 +10474,10 @@ public final class ClientIdentities {
       }
       if (!getPasswordBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      for (int i = 0; i < registeredDevice_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, registeredDevice_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8024,6 +10501,8 @@ public final class ClientIdentities {
       }
       if (!getPassword()
           .equals(other.getPassword())) return false;
+      if (!getRegisteredDeviceList()
+          .equals(other.getRegisteredDeviceList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8041,6 +10520,10 @@ public final class ClientIdentities {
       }
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
       hash = (53 * hash) + getPassword().hashCode();
+      if (getRegisteredDeviceCount() > 0) {
+        hash = (37 * hash) + REGISTEREDDEVICE_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisteredDeviceList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8169,6 +10652,7 @@ public final class ClientIdentities {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getRegisteredDeviceFieldBuilder();
         }
       }
       @java.lang.Override
@@ -8182,6 +10666,12 @@ public final class ClientIdentities {
         }
         password_ = "";
 
+        if (registeredDeviceBuilder_ == null) {
+          registeredDevice_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          registeredDeviceBuilder_.clear();
+        }
         return this;
       }
 
@@ -8208,12 +10698,22 @@ public final class ClientIdentities {
       @java.lang.Override
       public protobuf.ClientIdentities.ClientAccount buildPartial() {
         protobuf.ClientIdentities.ClientAccount result = new protobuf.ClientIdentities.ClientAccount(this);
+        int from_bitField0_ = bitField0_;
         if (profileBuilder_ == null) {
           result.profile_ = profile_;
         } else {
           result.profile_ = profileBuilder_.build();
         }
         result.password_ = password_;
+        if (registeredDeviceBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            registeredDevice_ = java.util.Collections.unmodifiableList(registeredDevice_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.registeredDevice_ = registeredDevice_;
+        } else {
+          result.registeredDevice_ = registeredDeviceBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -8269,6 +10769,32 @@ public final class ClientIdentities {
           password_ = other.password_;
           onChanged();
         }
+        if (registeredDeviceBuilder_ == null) {
+          if (!other.registeredDevice_.isEmpty()) {
+            if (registeredDevice_.isEmpty()) {
+              registeredDevice_ = other.registeredDevice_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureRegisteredDeviceIsMutable();
+              registeredDevice_.addAll(other.registeredDevice_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.registeredDevice_.isEmpty()) {
+            if (registeredDeviceBuilder_.isEmpty()) {
+              registeredDeviceBuilder_.dispose();
+              registeredDeviceBuilder_ = null;
+              registeredDevice_ = other.registeredDevice_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              registeredDeviceBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRegisteredDeviceFieldBuilder() : null;
+            } else {
+              registeredDeviceBuilder_.addAllMessages(other.registeredDevice_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -8297,6 +10823,7 @@ public final class ClientIdentities {
         }
         return this;
       }
+      private int bitField0_;
 
       private protobuf.ClientIdentities.ClientProfile profile_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -8492,6 +11019,246 @@ public final class ClientIdentities {
         onChanged();
         return this;
       }
+
+      private java.util.List<protobuf.ClientIdentities.ClientDevice> registeredDevice_ =
+        java.util.Collections.emptyList();
+      private void ensureRegisteredDeviceIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          registeredDevice_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientDevice>(registeredDevice_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> registeredDeviceBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientDevice> getRegisteredDeviceList() {
+        if (registeredDeviceBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(registeredDevice_);
+        } else {
+          return registeredDeviceBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public int getRegisteredDeviceCount() {
+        if (registeredDeviceBuilder_ == null) {
+          return registeredDevice_.size();
+        } else {
+          return registeredDeviceBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice getRegisteredDevice(int index) {
+        if (registeredDeviceBuilder_ == null) {
+          return registeredDevice_.get(index);
+        } else {
+          return registeredDeviceBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder setRegisteredDevice(
+          int index, protobuf.ClientIdentities.ClientDevice value) {
+        if (registeredDeviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.set(index, value);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder setRegisteredDevice(
+          int index, protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (registeredDeviceBuilder_ == null) {
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder addRegisteredDevice(protobuf.ClientIdentities.ClientDevice value) {
+        if (registeredDeviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.add(value);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder addRegisteredDevice(
+          int index, protobuf.ClientIdentities.ClientDevice value) {
+        if (registeredDeviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.add(index, value);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder addRegisteredDevice(
+          protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (registeredDeviceBuilder_ == null) {
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.add(builderForValue.build());
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder addRegisteredDevice(
+          int index, protobuf.ClientIdentities.ClientDevice.Builder builderForValue) {
+        if (registeredDeviceBuilder_ == null) {
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder addAllRegisteredDevice(
+          java.lang.Iterable<? extends protobuf.ClientIdentities.ClientDevice> values) {
+        if (registeredDeviceBuilder_ == null) {
+          ensureRegisteredDeviceIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, registeredDevice_);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder clearRegisteredDevice() {
+        if (registeredDeviceBuilder_ == null) {
+          registeredDevice_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public Builder removeRegisteredDevice(int index) {
+        if (registeredDeviceBuilder_ == null) {
+          ensureRegisteredDeviceIsMutable();
+          registeredDevice_.remove(index);
+          onChanged();
+        } else {
+          registeredDeviceBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder getRegisteredDeviceBuilder(
+          int index) {
+        return getRegisteredDeviceFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDeviceOrBuilder getRegisteredDeviceOrBuilder(
+          int index) {
+        if (registeredDeviceBuilder_ == null) {
+          return registeredDevice_.get(index);  } else {
+          return registeredDeviceBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public java.util.List<? extends protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+           getRegisteredDeviceOrBuilderList() {
+        if (registeredDeviceBuilder_ != null) {
+          return registeredDeviceBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(registeredDevice_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder addRegisteredDeviceBuilder() {
+        return getRegisteredDeviceFieldBuilder().addBuilder(
+            protobuf.ClientIdentities.ClientDevice.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDevice.Builder addRegisteredDeviceBuilder(
+          int index) {
+        return getRegisteredDeviceFieldBuilder().addBuilder(
+            index, protobuf.ClientIdentities.ClientDevice.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientDevice registeredDevice = 3;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientDevice.Builder> 
+           getRegisteredDeviceBuilderList() {
+        return getRegisteredDeviceFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder> 
+          getRegisteredDeviceFieldBuilder() {
+        if (registeredDeviceBuilder_ == null) {
+          registeredDeviceBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDevice, protobuf.ClientIdentities.ClientDevice.Builder, protobuf.ClientIdentities.ClientDeviceOrBuilder>(
+                  registeredDevice_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          registeredDevice_ = null;
+        }
+        return registeredDeviceBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8571,6 +11338,11 @@ public final class ClientIdentities {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientidentities_ClientFriends_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_ClientDate_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_ClientDate_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -8580,6 +11352,11 @@ public final class ClientIdentities {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientidentities_ClientDeviceAddress_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_ClientDeviceOs_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientidentities_ClientDevice_descriptor;
   private static final 
@@ -8612,32 +11389,46 @@ public final class ClientIdentities {
       "\n\014ClientGroups\022\022\n\nadminGroup\030\001 \001(\005\022\023\n\013cl" +
       "ientGroup\030\002 \003(\005\"\037\n\014ClientBadges\022\017\n\007badge" +
       "Id\030\001 \003(\005\"2\n\rClientFriends\022\020\n\010friendId\030\001 " +
-      "\003(\005\022\017\n\007buddyId\030\002 \003(\005\"8\n\020ClientDeviceBase" +
-      "\022\020\n\010deviceId\030\001 \001(\005\022\022\n\ndeviceName\030\002 \001(\t\"=" +
-      "\n\023ClientDeviceAddress\022\022\n\ndeviceIpV4\030\001 \001(" +
-      "\t\022\022\n\ndeviceIpV6\030\002 \001(\t\"\224\002\n\014ClientDevice\022?" +
-      "\n\ndeviceBase\030\001 \001(\0132+.protobuf.clientiden" +
-      "tities.ClientDeviceBase\022E\n\rdeviceAddress" +
-      "\030\002 \001(\0132..protobuf.clientidentities.Clien" +
-      "tDeviceAddress\022;\n\010deviceOs\030\003 \001(\0162).proto" +
-      "buf.clientidentities.ClientDeviceOs\022?\n\nd" +
-      "eviceType\030\004 \001(\0162+.protobuf.clientidentit" +
-      "ies.ClientDeviceType\"\317\002\n\rClientProfile\0223" +
-      "\n\004base\030\001 \001(\0132%.protobuf.clientidentities" +
-      ".ClientBase\022;\n\010pictures\030\002 \001(\0132).protobuf" +
-      ".clientidentities.ClientPictures\0227\n\006grou" +
-      "ps\030\003 \001(\0132\'.protobuf.clientidentities.Cli" +
-      "entGroups\0227\n\006badges\030\004 \001(\0132\'.protobuf.cli" +
-      "entidentities.ClientBadges\0229\n\007friends\030\005 " +
-      "\001(\0132(.protobuf.clientidentities.ClientFr" +
-      "iends\022\016\n\006banned\030\006 \001(\010\022\017\n\007deleted\030\007 \001(\010\"\\" +
-      "\n\rClientAccount\0229\n\007profile\030\001 \001(\0132(.proto" +
-      "buf.clientidentities.ClientProfile\022\020\n\010pa" +
-      "ssword\030\002 \001(\t*>\n\016ClientDeviceOs\022\013\n\007WINDOW" +
-      "S\020\000\022\t\n\005LINUX\020\001\022\007\n\003IOS\020\002\022\013\n\007ANDROID\020\003*8\n\020" +
-      "ClientDeviceType\022\013\n\007DESKTOP\020\000\022\013\n\007BROWSER" +
-      "\020\001\022\n\n\006MOBILE\020\002B\034\n\010protobufB\020ClientIdenti" +
-      "tiesb\006proto3"
+      "\003(\005\022\017\n\007buddyId\030\002 \003(\005\"f\n\nClientDate\022\014\n\004ye" +
+      "ar\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\013\n\003day\030\003 \001(\005\022\014\n\004" +
+      "hour\030\004 \001(\005\022\017\n\007minutes\030\005 \001(\005\022\017\n\007seconds\030\006" +
+      " \001(\005\"8\n\020ClientDeviceBase\022\020\n\010deviceId\030\001 \001" +
+      "(\005\022\022\n\ndeviceName\030\002 \001(\t\"=\n\023ClientDeviceAd" +
+      "dress\022\022\n\ndeviceIpV4\030\001 \003(\t\022\022\n\ndeviceIpV6\030" +
+      "\002 \003(\t\"\327\001\n\016ClientDeviceOs\022\024\n\014deviceOsName" +
+      "\030\001 \001(\t\022\027\n\017deviceOsVersion\030\002 \001(\t\022R\n\014devic" +
+      "eOsType\030\003 \001(\0162<.protobuf.clientidentitie" +
+      "s.ClientDeviceOs.ClientDeviceOsType\"B\n\022C" +
+      "lientDeviceOsType\022\013\n\007WINDOWS\020\000\022\t\n\005LINUX\020" +
+      "\001\022\007\n\003IOS\020\002\022\013\n\007ANDROID\020\003\"\224\002\n\014ClientDevice" +
+      "\022?\n\ndeviceBase\030\001 \001(\0132+.protobuf.clientid" +
+      "entities.ClientDeviceBase\022E\n\rdeviceAddre" +
+      "ss\030\002 \001(\0132..protobuf.clientidentities.Cli" +
+      "entDeviceAddress\022;\n\010deviceOs\030\003 \001(\0132).pro" +
+      "tobuf.clientidentities.ClientDeviceOs\022?\n" +
+      "\ndeviceType\030\004 \001(\0162+.protobuf.clientident" +
+      "ities.ClientDeviceType\"\351\003\n\rClientProfile" +
+      "\0223\n\004base\030\001 \001(\0132%.protobuf.clientidentiti" +
+      "es.ClientBase\0227\n\006status\030\002 \001(\0162\'.protobuf" +
+      ".clientidentities.ClientStatus\022;\n\010pictur" +
+      "es\030\003 \001(\0132).protobuf.clientidentities.Cli" +
+      "entPictures\0227\n\006groups\030\004 \001(\0132\'.protobuf.c" +
+      "lientidentities.ClientGroups\0227\n\006badges\030\005" +
+      " \001(\0132\'.protobuf.clientidentities.ClientB" +
+      "adges\0229\n\007friends\030\006 \001(\0132(.protobuf.client" +
+      "identities.ClientFriends\022A\n\022dateOfRegist" +
+      "ration\030\007 \001(\0132%.protobuf.clientidentities" +
+      ".ClientDate\022=\n\016dateLastOnline\030\010 \001(\0132%.pr" +
+      "otobuf.clientidentities.ClientDate\"\237\001\n\rC" +
+      "lientAccount\0229\n\007profile\030\001 \001(\0132(.protobuf" +
+      ".clientidentities.ClientProfile\022\020\n\010passw" +
+      "ord\030\002 \001(\t\022A\n\020registeredDevice\030\003 \003(\0132\'.pr" +
+      "otobuf.clientidentities.ClientDevice*`\n\014" +
+      "ClientStatus\022\013\n\007UNKNOWN\020\000\022\013\n\007OFFLINE\020\001\022\n" +
+      "\n\006ONLINE\020\002\022\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020" +
+      "\005\022\013\n\007DELETED\020\006*8\n\020ClientDeviceType\022\013\n\007DE" +
+      "SKTOP\020\000\022\013\n\007BROWSER\020\001\022\n\n\006MOBILE\020\002B\034\n\010prot" +
+      "obufB\020ClientIdentitiesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8673,36 +11464,48 @@ public final class ClientIdentities {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientFriends_descriptor,
         new java.lang.String[] { "FriendId", "BuddyId", });
-    internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor =
+    internal_static_protobuf_clientidentities_ClientDate_descriptor =
       getDescriptor().getMessageTypes().get(5);
+    internal_static_protobuf_clientidentities_ClientDate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_ClientDate_descriptor,
+        new java.lang.String[] { "Year", "Month", "Day", "Hour", "Minutes", "Seconds", });
+    internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_protobuf_clientidentities_ClientDeviceBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor,
         new java.lang.String[] { "DeviceId", "DeviceName", });
     internal_static_protobuf_clientidentities_ClientDeviceAddress_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_protobuf_clientidentities_ClientDeviceAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDeviceAddress_descriptor,
         new java.lang.String[] { "DeviceIpV4", "DeviceIpV6", });
+    internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_protobuf_clientidentities_ClientDeviceOs_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor,
+        new java.lang.String[] { "DeviceOsName", "DeviceOsVersion", "DeviceOsType", });
     internal_static_protobuf_clientidentities_ClientDevice_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_protobuf_clientidentities_ClientDevice_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDevice_descriptor,
         new java.lang.String[] { "DeviceBase", "DeviceAddress", "DeviceOs", "DeviceType", });
     internal_static_protobuf_clientidentities_ClientProfile_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_protobuf_clientidentities_ClientProfile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientProfile_descriptor,
-        new java.lang.String[] { "Base", "Pictures", "Groups", "Badges", "Friends", "Banned", "Deleted", });
+        new java.lang.String[] { "Base", "Status", "Pictures", "Groups", "Badges", "Friends", "DateOfRegistration", "DateLastOnline", });
     internal_static_protobuf_clientidentities_ClientAccount_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_protobuf_clientidentities_ClientAccount_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientAccount_descriptor,
-        new java.lang.String[] { "Profile", "Password", });
+        new java.lang.String[] { "Profile", "Password", "RegisteredDevice", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

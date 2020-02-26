@@ -13,10 +13,9 @@ message ClientEventBase {
 	protobuf.clientidentities.ClientBase eventRequestorBase = 3;
 }
 
-message ClientRequestAnswerEvent {
+message ClientRequestRejectedEvent {
 	ClientEventBase eventBase = 1;
-	bool eventAccepted = 2;
-	string eventMessage = 3;
+	string rejectionMessage = 2;
 }
 
 message ClientProfileDataEvent	{

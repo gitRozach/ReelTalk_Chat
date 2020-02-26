@@ -3,9 +3,9 @@ package network.ssl.server.manager.protobufDatabase;
 import java.io.File;
 import java.io.IOException;
 
-import protobuf.ClientMessages.PrivateClientMessage;
+import protobuf.ClientMessages.PrivateMessage;
 
-public class PrivateMessageManager extends ProtobufFileDatabase<PrivateClientMessage>{
+public class PrivateMessageManager extends ProtobufFileDatabase<PrivateMessage>{
 	public PrivateMessageManager(String databaseFilePath) throws IOException {
 		this(new File(databaseFilePath));
 	}
@@ -15,7 +15,7 @@ public class PrivateMessageManager extends ProtobufFileDatabase<PrivateClientMes
 	}
 
 	@Override
-	public PrivateClientMessage readItem() {
+	public PrivateMessage readItem() {
 		return null;
 	}
 }

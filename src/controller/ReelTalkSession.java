@@ -29,6 +29,7 @@ import network.ssl.server.SecuredMessageServer;
 import protobuf.ClientEvents.ChannelMessageEvent;
 import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientMessages.ChannelClientMessage;
+import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ClientMessageBase;
 import protobuf.ClientRequests.ChannelMessageRequest;
 import protobuf.ClientRequests.ClientLoginRequest;
@@ -169,11 +170,10 @@ public class ReelTalkSession extends Application {
 			return;
 		if(event instanceof ChannelMessageEvent) {
 			ChannelMessageEvent channelMessage = (ChannelMessageEvent) event;
-			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getChannelMessage()
+			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getChannelMessage(0)
 																						.getMessageBase()
-																						.getSenderBase()
-																						.getUsername(), 
-																		channelMessage	.getChannelMessage()
+																						.getSenderUsername(), 
+																		channelMessage	.getChannelMessage(0)
 																						.getMessageBase()
 																						.getMessageText()));
 		}
@@ -185,23 +185,21 @@ public class ReelTalkSession extends Application {
 	
 	private void onInputFieldEnterPressed() {
 		ClientRequestBase base = ClientRequestBase	.newBuilder()
-													.setRequestorId(0)
-													.setRequestorUsername("TestoRozach")
-													.setRequestorPassword("rozachPass")
+													.setRequestorClientId(0)
+													.setRequestorClientUsername("TestoRozach")
+													.setRequestorClientPassword("rozachPass")
 													.build();
-		ClientMessageBase messageBase = ClientMessageBase.newBuilder()	.setSenderBase(ClientBase	.newBuilder()
-																									.setId(0)
-																									.setUsername("Rozach")
-																									.build())
+		ClientMessageBase messageBase = ClientMessageBase.newBuilder()	.setSenderId(0)
+																		.setSenderUsername("Rozach")
 																		.setMessageId(0)
 																		.setMessageText(chatView.getMessageInputField().getText())
 																		.build();
-		ChannelClientMessage message = ChannelClientMessage	.newBuilder()
-															.setMessageBase(messageBase)
-															.build();
+		ChannelMessage message = ChannelMessage	.newBuilder()
+												.setMessageBase(messageBase)
+												.build();
 		ChannelMessageRequest request = ChannelMessageRequest	.newBuilder()
-																.setRequestorBase(base)
-																.setRequestedMessage(message)
+																.setRequestBase(base)
+																.set(message)
 																.build();
 		chatClient.sendMessage(new ProtobufMessage(request));
 		chatView.getMessageInputField().getTextField().clear();

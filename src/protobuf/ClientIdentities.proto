@@ -9,6 +9,16 @@ message ClientBase {
 	string username = 2;
 }
 
+enum ClientStatus {
+	UNKNOWN = 0;
+	OFFLINE = 1;
+	ONLINE = 2;
+	AFK = 3;
+	BUSY = 4;
+	BANNED = 5;
+	DELETED = 6;
+}
+
 message ClientPictures {
 	string profileImageURI = 1;
 	string titleImageURI = 2;
@@ -29,21 +39,36 @@ message ClientFriends {
 	repeated int32 buddyId = 2;
 }
 
+message ClientDate {
+	int32 year = 1;
+	int32 month = 2;
+	int32 day = 3;
+	int32 hour = 4;
+	int32 minutes = 5;
+	int32 seconds = 6;
+}
+
 message ClientDeviceBase {
 	int32 deviceId = 1;
 	string deviceName = 2;
 }
 
 message ClientDeviceAddress {
-	string deviceIpV4 = 1;
-	string deviceIpV6 = 2;
+	repeated string deviceIpV4 = 1;
+	repeated string deviceIpV6 = 2;
 }
 
-enum ClientDeviceOs {
-	WINDOWS = 0;
-	LINUX = 1;
-	IOS = 2;
-	ANDROID = 3;
+message ClientDeviceOs {
+	string deviceOsName = 1;
+	string deviceOsVersion = 2;
+	ClientDeviceOsType deviceOsType = 3;
+	
+	enum ClientDeviceOsType {
+		WINDOWS = 0;
+		LINUX = 1;
+		IOS = 2;
+		ANDROID = 3;
+	}
 }
 
 enum ClientDeviceType {
@@ -61,15 +86,17 @@ message ClientDevice {
 
 message ClientProfile {
 	ClientBase base = 1;
-	ClientPictures pictures = 2;
-	ClientGroups groups = 3;
-	ClientBadges badges = 4;
-	ClientFriends friends = 5;
-	bool banned = 6;
-	bool deleted = 7;
+	ClientStatus status = 2;
+	ClientPictures pictures = 3;
+	ClientGroups groups = 4;
+	ClientBadges badges = 5;
+	ClientFriends friends = 6;
+	ClientDate dateOfRegistration = 7;
+	ClientDate dateLastOnline = 8;
 }
 
 message ClientAccount {
 	ClientProfile profile = 1;
 	string password = 2;
+	repeated ClientDevice registeredDevice = 3;
 }

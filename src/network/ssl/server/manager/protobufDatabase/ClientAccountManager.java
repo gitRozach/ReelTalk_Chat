@@ -28,7 +28,7 @@ public class ClientAccountManager extends ProtobufFileDatabase<ClientAccount> {
 	
 	public ClientAccount getByUsernameAndPassword(String username, String password) {
 		for(ClientAccount currentAccount : getItems()) {
-			if(currentAccount.getBase().getUsername().equals(username) && currentAccount.getPassword().equals(password))
+			if(currentAccount.getProfile().getBase().getUsername().equals(username) && currentAccount.getPassword().equals(password))
 				return currentAccount;
 		}
 		return null;

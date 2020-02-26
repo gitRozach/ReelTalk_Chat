@@ -8,6 +8,7 @@ import protobuf.ClientIdentities.ClientDevice;
 import protobuf.ClientIdentities.ClientDeviceAddress;
 import protobuf.ClientIdentities.ClientDeviceBase;
 import protobuf.ClientIdentities.ClientDeviceOs;
+import protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType;
 import protobuf.ClientIdentities.ClientDeviceType;
 import protobuf.ClientMessages.ClientMessageBase;
 import protobuf.ClientRequests.ChannelFileDownloadRequest;
@@ -27,6 +28,7 @@ import protobuf.ClientRequests.FileUploadBase;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageRequest;
+import utils.system.SystemUtils;
 
 public class ClientRequest {
 	
@@ -160,14 +162,19 @@ public class ClientRequest {
 																		.setRequestorClientPassword(password)
 																		.build();
 		ClientDeviceBase deviceBase = ClientDeviceBase.newBuilder().setDeviceId(0).setDeviceName("").build();
-		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().setDeviceIpV4("").build();
-		ClientDeviceOs deviceOs = ClientDeviceOs.WINDOWS;
-		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
-		ClientDevice requestorDevice = ClientDevice.newBuilder().setDeviceBase(deviceBase)
-																.setDeviceAddress(deviceAddress)
-																.setDeviceOs(deviceOs)
-																.setDeviceType(deviceType)
+		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().addDeviceIpV4(SystemUtils.getLocalInetAddress().getHostAddress())
+																			.build();
+		System.out.println(SystemUtils.getLocalInetAddress().getHostAddress());
+		ClientDeviceOs deviceOs = ClientDeviceOs.newBuilder()	.setDeviceOsName(SystemUtils.getOsName())
+																.setDeviceOsType(ClientDeviceOsType.WINDOWS)
+																.setDeviceOsVersion(SystemUtils.getOsVersion())
 																.build();
+		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
+		ClientDevice requestorDevice = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
+														.setDeviceAddress(deviceAddress)
+														.setDeviceOs(deviceOs)
+														.setDeviceType(deviceType)
+														.build();
 		return ClientLoginRequest.newBuilder().setRequestBase(requestorBase).setRequestedDevice(requestorDevice).build();
 	}
 	
@@ -175,18 +182,23 @@ public class ClientRequest {
 														String username,
 														String password) {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(requestId)
-							.setRequestorClientUsername(username)
-							.setRequestorClientPassword(password)
-							.build();
+																		.setRequestorClientUsername(username)
+																		.setRequestorClientPassword(password)
+																		.build();
 		ClientDeviceBase deviceBase = ClientDeviceBase.newBuilder().setDeviceId(0).setDeviceName("").build();
-		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().setDeviceIpV4("").build();
-		ClientDeviceOs deviceOs = ClientDeviceOs.WINDOWS;
+		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().addDeviceIpV4(SystemUtils.getLocalInetAddress().getHostAddress())
+																			.build();
+		System.out.println(SystemUtils.getLocalInetAddress().getHostAddress());
+		ClientDeviceOs deviceOs = ClientDeviceOs.newBuilder()	.setDeviceOsName(SystemUtils.getOsName())
+																.setDeviceOsType(ClientDeviceOsType.WINDOWS)
+																.setDeviceOsVersion(SystemUtils.getOsVersion())
+																.build();
 		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
-		ClientDevice requestorDevice = ClientDevice.newBuilder().setDeviceBase(deviceBase)
-					.setDeviceAddress(deviceAddress)
-					.setDeviceOs(deviceOs)
-					.setDeviceType(deviceType)
-					.build();
+		ClientDevice requestorDevice = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
+														.setDeviceAddress(deviceAddress)
+														.setDeviceOs(deviceOs)
+														.setDeviceType(deviceType)
+														.build();
 		return ClientLogoutRequest.newBuilder().setRequestBase(requestorBase).setRequestedDevice(requestorDevice).build();
 }
 	
@@ -196,14 +208,19 @@ public class ClientRequest {
 																	String passwordRepeat,
 																	String email) {
 		ClientDeviceBase deviceBase = ClientDeviceBase.newBuilder().setDeviceId(0).setDeviceName("").build();
-		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().setDeviceIpV4("").build();
-		ClientDeviceOs deviceOs = ClientDeviceOs.WINDOWS;
+		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().addDeviceIpV4(SystemUtils.getLocalInetAddress().getHostAddress())
+																			.build();
+		System.out.println(SystemUtils.getLocalInetAddress().getHostAddress());
+		ClientDeviceOs deviceOs = ClientDeviceOs.newBuilder()	.setDeviceOsName(SystemUtils.getOsName())
+																.setDeviceOsType(ClientDeviceOsType.WINDOWS)
+																.setDeviceOsVersion(SystemUtils.getOsVersion())
+																.build();
 		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
-		ClientDevice device = ClientDevice.newBuilder().setDeviceBase(deviceBase)
-					.setDeviceAddress(deviceAddress)
-					.setDeviceOs(deviceOs)
-					.setDeviceType(deviceType)
-					.build();
+		ClientDevice device = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
+														.setDeviceAddress(deviceAddress)
+														.setDeviceOs(deviceOs)
+														.setDeviceType(deviceType)
+														.build();
 		return ClientRegistrationRequest.newBuilder()	.setUsername(username)
 														.setPassword(password)
 														.setPasswordRepeat(passwordRepeat)
@@ -221,10 +238,10 @@ public class ClientRequest {
 																		long requestedFileSize
 																		) {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(requestId)
-				.setRequestId(requestId)
-				.setRequestorClientUsername(requestorUsername)
-				.setRequestorClientPassword(requestorPassword)
-				.build();
+																		.setRequestId(requestId)
+																		.setRequestorClientUsername(requestorUsername)
+																		.setRequestorClientPassword(requestorPassword)
+																		.build();
 		ChannelBase channelBase = ChannelBase.newBuilder()	.setChannelId(requestedChannelId)
 															.setChannelName("")
 															.build();
@@ -245,10 +262,10 @@ public class ClientRequest {
 																			int requestedFileId,
 																			String requestedFileName) {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(requestId)
-				.setRequestId(requestId)
-				.setRequestorClientUsername(requestorUsername)
-				.setRequestorClientPassword(requestorPassword)
-				.build();
+																		.setRequestId(requestId)
+																		.setRequestorClientUsername(requestorUsername)
+																		.setRequestorClientPassword(requestorPassword)
+																		.build();
 		ChannelBase channelBase = ChannelBase.newBuilder()	.setChannelId(requestedChannelId)
 															.setChannelName("")
 															.build();
@@ -316,6 +333,29 @@ public class ClientRequest {
 	}
 	
 	public static ClientPingMeasurementRequest newPingmeasurementRequest() {
-		return null;
+		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(0)
+																		.setRequestorClientId(0)
+																		.setRequestorClientUsername("")
+																		.setRequestorClientPassword("")
+																		.build();
+		ClientDeviceBase deviceBase = ClientDeviceBase.newBuilder()	.setDeviceId(0)
+																	.setDeviceName(SystemUtils.getUserName())
+																	.build();
+		ClientDeviceAddress deviceAddress = ClientDeviceAddress.newBuilder().addDeviceIpV4(SystemUtils.getLocalInetAddress().getHostAddress())
+																			.build();
+		System.out.println(SystemUtils.getLocalInetAddress().getHostAddress());
+		ClientDeviceOs deviceOs = ClientDeviceOs.newBuilder()	.setDeviceOsName(SystemUtils.getOsName())
+																.setDeviceOsType(ClientDeviceOsType.WINDOWS)
+																.setDeviceOsVersion(SystemUtils.getOsVersion())
+																.build();
+		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
+		ClientDevice device = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
+														.setDeviceAddress(deviceAddress)
+														.setDeviceOs(deviceOs)
+														.setDeviceType(deviceType)
+														.build();
+		return ClientPingMeasurementRequest.newBuilder().setRequestorBase(requestorBase)
+														.setRequestedDevice(device)
+														.build();
 	}
 }

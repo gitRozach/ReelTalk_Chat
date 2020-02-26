@@ -13,23 +13,23 @@ import network.ssl.communication.ProtobufMessage;
 import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
 import network.ssl.server.manager.protobufDatabase.ClientChannelManager;
 import network.ssl.server.manager.protobufDatabase.ClientMessageManager;
-import protobuf.ClientEvents.ChannelMessageDataEvent;
 import protobuf.ClientEvents.ChannelMessageEvent;
 import protobuf.ClientEvents.ClientProfileDataEvent;
-import protobuf.ClientEvents.ClientRequestDeniedEvent;
+import protobuf.ClientEvents.ClientRequestRejectedEvent;
 import protobuf.ClientIdentities.ClientAccount;
-import protobuf.ClientMessages.ChannelClientMessage;
+import protobuf.ClientMessages.ChannelMessage;
+import protobuf.ClientRequests.ChannelFileDownloadRequest;
+import protobuf.ClientRequests.ChannelFileUploadRequest;
 import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
-import protobuf.ClientRequests.ChannelMessageDataRequest;
 import protobuf.ClientRequests.ChannelMessageRequest;
-import protobuf.ClientRequests.ClientFileDownloadRequest;
-import protobuf.ClientRequests.ClientFileUploadRequest;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.ClientLogoutRequest;
 import protobuf.ClientRequests.ClientPingMeasurementRequest;
-import protobuf.ClientRequests.ClientProfileDataRequest;
+import protobuf.ClientRequests.ClientProfileRequest;
 import protobuf.ClientRequests.ClientRegistrationRequest;
+import protobuf.ClientRequests.PrivateFileDownloadRequest;
+import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageRequest;
 
 public class SecuredMessageServer extends SecuredServer {
@@ -120,17 +120,11 @@ public class SecuredMessageServer extends SecuredServer {
 	private void handleRequest(SelectionKey clientKey, GeneratedMessageV3 request) {
 		if(request != null) {
 			switch(request.getClass().getSimpleName()) {
-			case "ChannelDataRequest":
-				handleChannelDataRequest(clientKey, (ChannelMessageDataRequest)request);
-				break;
-			case "ChannelJoinRequest":
-				handleChannelJoinRequest(clientKey, (ChannelJoinRequest)request);
-				break;
-			case "ChannelLeaveRequest":
-				handleChannelLeaveRequest(clientKey, (ChannelLeaveRequest)request);
-				break;
 			case "ChannelMessageRequest":
 				handleChannelMessageRequest(clientKey, (ChannelMessageRequest)request);
+				break;
+			case "PrivateMessageRequest":
+				handlePrivateMessageRequest(clientKey, (PrivateMessageRequest)request);
 				break;
 			case "ClientLoginRequest":
 				handleClientLoginRequest(clientKey, (ClientLoginRequest)request);
@@ -141,52 +135,52 @@ public class SecuredMessageServer extends SecuredServer {
 			case "ClientRegistrationRequest":
 				handleClientRegistrationRequest(clientKey, (ClientRegistrationRequest)request);
 				break;
-			case "FileDownloadRequest":
-				handleFileDownloadRequest(clientKey, (ClientFileDownloadRequest)request);
+			case "ChannelFileDownloadRequest":
+				handleChannelFileDownloadRequest(clientKey, (ChannelFileDownloadRequest)request);
 				break;
-			case "FileUploadRequest":
-				handleFileUploadRequest(clientKey, (ClientFileUploadRequest)request);
+			case "ChannelFileUploadRequest":
+				handleChannelFileUploadRequest(clientKey, (ChannelFileUploadRequest)request);
 				break;
-			case "PingRequest":
-				handlePingRequest(clientKey, (ClientPingMeasurementRequest)request);
+			case "PrivateFileDownloadRequest":
+				handlePrivateFileDownloadRequest(clientKey, (PrivateFileDownloadRequest)request);
 				break;
-			case "PrivateMessageRequest":
-				handlePrivateMessageRequest(clientKey, (PrivateMessageRequest)request);
+			case "PrivateFileUploadRequest":
+				handlePrivateFileUploadRequest(clientKey, (PrivateFileUploadRequest)request);
 				break;
-			case "ProfileDataRequest":
-				handleProfileDataRequest(clientKey, (ClientProfileDataRequest)request);
+			case "ClientPingMeasurementRequest":
+				handleClientPingMeasurementRequest(clientKey, (ClientPingMeasurementRequest)request);
+				break;
+			case "ClientProfileRequest":
+				handleClientProfileRequest(clientKey, (ClientProfileRequest)request);
+				break;
+			case "ClientChannelRequest":
+				break;
+			case "ChannelJoinRequest":
+				handleChannelJoinRequest(clientKey, (ChannelJoinRequest)request);
+				break;
+			case "ChannelLeaveRequest":
+				handleChannelLeaveRequest(clientKey, (ChannelLeaveRequest)request);
 				break;
 			}
 		}
 	}
 	
-	private void handleChannelDataRequest(SelectionKey clientKey, ChannelMessageDataRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
-			ChannelMessageDataEvent channelEvent = null;
-			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), channelEvent));
-		}
-		else {
-			ClientRequestDeniedEvent rejMessage = null;
-			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
-		}
-	}
-	
 	private void handleChannelJoinRequest(SelectionKey clientKey, ChannelJoinRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
 	
 	private void handleChannelLeaveRequest(SelectionKey clientKey, ChannelLeaveRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
@@ -196,17 +190,17 @@ public class SecuredMessageServer extends SecuredServer {
 			if(key.channel() instanceof SocketChannel) {
 				ChannelMessageEvent eventMessage = null;
 				sendMessage(new ProtobufMessage(key, eventMessage));
-				messageManager.addChannelMessage(eventMessage.getChannelMessage());
+				messageManager.addChannelMessage(eventMessage.getChannelMessage(0));
 			}
 		}
 	}
 	
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
-		ClientAccount clientData = login(request.getRequestedUsername(), request.getRequestedPassword());
+		ClientAccount clientData = login(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword());
 		if(clientData != null) {
 			ClientProfileDataEvent dataMessage = null;
 			sendMessage(clientKey, new ProtobufMessage(clientKey, dataMessage));
-			for(ChannelClientMessage message : messageManager.getChannelMessages()) {
+			for(ChannelMessage message : messageManager.getChannelMessages()) {
 				sendMessage(new ProtobufMessage(clientKey, message));
 				try {
 					Thread.sleep(50L);
@@ -217,17 +211,17 @@ public class SecuredMessageServer extends SecuredServer {
 			}
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage(clientKey, rejMessage));
 		}
 	}
 	
 	private void handleClientLogoutRequest(SelectionKey clientKey, ClientLogoutRequest request) {
-		if(checkLogin(request.getRequestedUsername(), request.getRequestedPassword())) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
@@ -236,52 +230,72 @@ public class SecuredMessageServer extends SecuredServer {
 		
 	}
 	
-	private void handleFileDownloadRequest(SelectionKey clientKey, ClientFileDownloadRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+	private void handleChannelFileDownloadRequest(SelectionKey clientKey, ChannelFileDownloadRequest request) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
 	
-	private void handleFileUploadRequest(SelectionKey clientKey, ClientFileUploadRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+	private void handleChannelFileUploadRequest(SelectionKey clientKey, ChannelFileUploadRequest request) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
 	
-	private void handlePingRequest(SelectionKey clientKey, ClientPingMeasurementRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+	private void handlePrivateFileDownloadRequest(SelectionKey clientKey, PrivateFileDownloadRequest request) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
+			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+		}
+	}
+	
+	private void handlePrivateFileUploadRequest(SelectionKey clientKey, PrivateFileUploadRequest request) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+			
+		}
+		else {
+			ClientRequestRejectedEvent rejMessage = null;
+			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+		}
+	}
+	
+	private void handleClientPingMeasurementRequest(SelectionKey clientKey, ClientPingMeasurementRequest request) {
+		if(checkLogin(request.getRequestorBase().getRequestorClientUsername(), request.getRequestorBase().getRequestorClientPassword())) {
+			
+		}
+		else {
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
 	
 	private void handlePrivateMessageRequest(SelectionKey clientKey, PrivateMessageRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}
 	
-	private void handleProfileDataRequest(SelectionKey clientKey, ClientProfileDataRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorUsername(), request.getRequestorBase().getRequestorPassword())) {
+	private void handleClientProfileRequest(SelectionKey clientKey, ClientProfileRequest request) {
+		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
 			
 		}
 		else {
-			ClientRequestDeniedEvent rejMessage = null;
+			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
 		}
 	}

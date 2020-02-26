@@ -3,9 +3,9 @@ package network.ssl.server.manager.protobufDatabase;
 import java.io.File;
 import java.io.IOException;
 
-import protobuf.ClientMessages.ChannelClientMessage;
+import protobuf.ClientMessages.ChannelMessage;
 
-public class ChannelMessageManager extends ProtobufFileDatabase<ChannelClientMessage>{	
+public class ChannelMessageManager extends ProtobufFileDatabase<ChannelMessage>{	
 	public ChannelMessageManager(String databaseFilePath) throws IOException {
 		this(new File(databaseFilePath));
 	}
@@ -15,7 +15,7 @@ public class ChannelMessageManager extends ProtobufFileDatabase<ChannelClientMes
 	}
 
 	@Override
-	public ChannelClientMessage readItem() {
+	public ChannelMessage readItem() {
 		return null;
 	}
 }

@@ -3,8 +3,8 @@ package network.ssl.server.manager.protobufDatabase;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import protobuf.ClientMessages.ChannelClientMessage;
-import protobuf.ClientMessages.PrivateClientMessage;
+import protobuf.ClientMessages.ChannelMessage;
+import protobuf.ClientMessages.PrivateMessage;
 import protobuf.ClientMessages.ProfileComment;
 
 public class ClientMessageManager {
@@ -32,50 +32,50 @@ public class ClientMessageManager {
 		System.out.println(channelMessageManager.getEncoding().toString());
 	}
 	
-	public void addPrivateMessage(PrivateClientMessage message) {
+	public void addPrivateMessage(PrivateMessage message) {
 		privateMessageManager.addItem(message);
 	}
 	
-	public PrivateClientMessage getPrivateMessage(int index) {
+	public PrivateMessage getPrivateMessage(int index) {
 		return privateMessageManager.getItem(index);
 	}
 	
-	public PrivateClientMessage[] getPrivateMessages() {
+	public PrivateMessage[] getPrivateMessages() {
 		if(privateMessageManager.isEmpty())
-			return new PrivateClientMessage[]{};
+			return new PrivateMessage[]{};
 		return getPrivateMessages(0, privateMessageManager.size());
 	}
 	
-	public PrivateClientMessage[] getPrivateMessages(int startIndexInclusive, int endIndexInclusive) {
-		ArrayList<PrivateClientMessage> resultList = new ArrayList<>();
+	public PrivateMessage[] getPrivateMessages(int startIndexInclusive, int endIndexInclusive) {
+		ArrayList<PrivateMessage> resultList = new ArrayList<>();
 		if(startIndexInclusive <= endIndexInclusive) {
 			for(int i = startIndexInclusive; i <= endIndexInclusive; ++i) 
 				resultList.add(privateMessageManager.getItem(i));
 		}
-		return resultList.toArray(new PrivateClientMessage[resultList.size()]);
+		return resultList.toArray(new PrivateMessage[resultList.size()]);
 	}
 	
-	public void addChannelMessage(ChannelClientMessage message) {
+	public void addChannelMessage(ChannelMessage message) {
 		channelMessageManager.addItem(message);
 	}
 	
-	public ChannelClientMessage getChannelMessage(int index) {
+	public ChannelMessage getChannelMessage(int index) {
 		return channelMessageManager.getItem(index);
 	}
 	
-	public ChannelClientMessage[] getChannelMessages() {
+	public ChannelMessage[] getChannelMessages() {
 		if(channelMessageManager.isEmpty())
-			return new ChannelClientMessage[]{};
+			return new ChannelMessage[]{};
 		return getChannelMessages(0, channelMessageManager.size());
 	}
 	
-	public ChannelClientMessage[] getChannelMessages(int startIndexInclusive, int endIndexInclusive) {
-		ArrayList<ChannelClientMessage> resultList = new ArrayList<>();
+	public ChannelMessage[] getChannelMessages(int startIndexInclusive, int endIndexInclusive) {
+		ArrayList<ChannelMessage> resultList = new ArrayList<>();
 		if(startIndexInclusive <= endIndexInclusive) {
 			for(int i = startIndexInclusive; i <= endIndexInclusive; ++i) 
 				resultList.add(channelMessageManager.getItem(i));
 		}
-		return resultList.toArray(new ChannelClientMessage[resultList.size()]);
+		return resultList.toArray(new ChannelMessage[resultList.size()]);
 	}
 	
 	public void addProfileComment(ProfileComment message) {
