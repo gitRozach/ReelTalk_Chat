@@ -8,11 +8,11 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.messageManager.items.PrivateMessage;
-import network.ssl.server.manager.protobufDatabase.MessageManager;
+import network.ssl.server.manager.protobufDatabase.PrivateMessageManager;
+import protobuf.ClientMessages.PrivateMessage;
 
-class MessageManagerTest {
-	protected MessageManager<PrivateMessage> messageDatabase;
+class PrivateMessageManagerTest {
+	protected PrivateMessageManager messageDatabase;
 	
 	@After
 	public void afterEach() throws IOException {
@@ -22,7 +22,7 @@ class MessageManagerTest {
 	
 	@Test
 	public void addItem_addsMessagesAndWritesToFileWithPropertyValuePattern() throws IOException {
-		messageDatabase = new MessageManager<PrivateMessage>(PrivateMessage.class, "test/testresources/messageManager/messagesToWrite.txt");
+		messageDatabase = new PrivateMessageManager("test/testresources/messageManager/messagesToWrite.txt");
 		messageDatabase.clear();
 		assertEquals(messageDatabase.initialize(), 0); //Init 0 items because database should be empty
 		
@@ -51,7 +51,7 @@ class MessageManagerTest {
 	
 	@Test
 	public void getItem_getsExpectedItems() throws IOException {
-		messageDatabase = new MessageManager<PrivateMessage>(PrivateMessage.class, "test/testresources/messageManager/messagesToRead.txt");
+		messageDatabase = new PrivateMessageManager("test/testresources/messageManager/messagesToRead.txt");
 		assertEquals(messageDatabase.initialize(), 10); //Init 10 items
 		
 		PrivateMessage m1 = new PrivateMessage();

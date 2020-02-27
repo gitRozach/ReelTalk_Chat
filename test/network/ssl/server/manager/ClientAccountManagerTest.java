@@ -1,4 +1,4 @@
-package network.ssl.server.protobufFileDatabase;
+package network.ssl.server.manager;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

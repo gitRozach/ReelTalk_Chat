@@ -40,16 +40,26 @@ message ChannelLeaveRequest {
 	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
 }
 
-message ClientProfileRequest {
+message ClientProfilePostRequest {
+	ClientRequestBase requestBase = 1;
+}
+
+message ClientProfileGetRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientidentities.ClientBase requestedClientBase = 2;
 }
 
-message ChannelMessageRequest {
+message ChannelMessagePostRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	string requestedMessageText = 3;
+}
+
+message ChannelMessageGetRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
 	int32 messageCount = 3;
-	int32 startMessageId = 4;
+	int32 startCountWithMessageId = 4;
 }
 
 message ChannelMessageAnswerRequest {
@@ -59,7 +69,7 @@ message ChannelMessageAnswerRequest {
 	string answerText = 4;
 }
 
-message PrivateMessageRequest {
+message PrivateMessagePostRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientidentities.ClientBase receiverClientBase = 2;
 	string messageText = 3;

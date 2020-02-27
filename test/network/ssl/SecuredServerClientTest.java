@@ -34,7 +34,7 @@ class SecuredServerClientTest {
 			c1.connect();
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> c1.isConnected());
 			
-			testHost.sendBytes(testHost.getLocalSocketChannel(c1.getChannel()), message.getBytes(StandardCharsets.UTF_8));
+			testHost.sendMessage(testHost.getLocalSocketChannel(c1.getChannel()), message.getBytes(StandardCharsets.UTF_8));
 				
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> c1.hasReceivableBytes());
 			assertTrue(message.equals(new String(c1.pollReceptionBytes().getMessageBytes(), StandardCharsets.UTF_8)));

@@ -18,6 +18,7 @@ message ClientMessageBase {
 message ChannelMessage {
 	ClientMessageBase messageBase = 1;
 	protobuf.clientchannels.ChannelBase receiverChannelBase = 2;
+	repeated ClientMessageBase answerMessage = 3;
 }
 
 message ChannelMessageAnswer {
