@@ -10,7 +10,7 @@ import "protobuf/ClientMessages.proto";
 message ClientEventBase {
 	int32 eventId = 1;
 	int64 eventTimestamp = 2;
-	protobuf.clientidentities.ClientBase eventRequestorBase = 3;
+	protobuf.clientidentities.ClientBase requestorClientBase = 3;
 }
 
 message ClientRequestRejectedEvent {
@@ -18,57 +18,67 @@ message ClientRequestRejectedEvent {
 	string rejectionMessage = 2;
 }
 
-message ClientProfileDataEvent	{
+message ClientProfileEvent	{
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
 message ChannelMessageEvent {
 	ClientEventBase eventBase = 1;
-	repeated protobuf.clientmessages.ChannelMessage channelMessage = 2;
+	repeated protobuf.clientmessages.ChannelMessage message = 2;
 }
 
 message PrivateMessageEvent {
 	ClientEventBase eventBase = 1;
-	repeated protobuf.clientmessages.PrivateMessage privateMessage = 2;
+	repeated protobuf.clientmessages.PrivateMessage message = 2;
 }
 
 message ClientJoinedChannelEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
 message ClientLeftChannelEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
 message ClientLoggedInEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
 message ClientLoggedOutEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
 message ClientRegisteredEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientDownloadedFileEvent {
+message ClientDownloadedChannelFileEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientUploadedFileEvent {
+message ClientUploadedChannelFileEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile clientProfile = 2;
+	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message PingMeasuredEvent {
+message ClientDownloadedPrivateFileEvent {
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile profile = 2;
+}
+
+message ClientUploadedPrivateFileEvent {
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientProfile profile = 2;
+}
+
+message ClientPingMeasurmentEvent {
 	ClientEventBase eventBase = 1;
 	int64 measuredMillis = 2;
 }

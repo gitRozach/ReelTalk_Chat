@@ -15,30 +15,41 @@ message ClientMessageBase {
 	int64 timestampMillis = 5;
 }
 
+message ClientFileMessageBase {
+	int32 messageId = 1;
+	bool isDownloadMessage = 2;
+	string fileName = 3;
+	string filePath = 4;
+	repeated protobuf.clientidentities.ClientBase loadedByClient = 5;
+}
+
 message ChannelMessage {
 	ClientMessageBase messageBase = 1;
-	protobuf.clientchannels.ChannelBase receiverChannelBase = 2;
-	repeated ClientMessageBase answerMessage = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	repeated ClientFileMessageBase attachedFileMessage = 3;
+	repeated ChannelMessageAnswer messageAnswer = 4;
 }
 
 message ChannelMessageAnswer {
 	ClientMessageBase messageBase = 1;
-	protobuf.clientchannels.ChannelBase receiverChannelBase = 2;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
 	int32 messageToAnswerId = 3;
 }
 
 message PrivateMessage {
 	ClientMessageBase messageBase = 1;
-	protobuf.clientidentities.ClientBase receiverClientBase = 2;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	repeated ClientFileMessageBase attachedFileMessage = 3;
 }
 
 message ProfileComment {
 	ClientMessageBase messageBase = 1;
-	protobuf.clientidentities.ClientBase receiverClientBase = 2;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	repeated ProfileCommentAnswer commentAnswer = 3;
 }
 
 message ProfileCommentAnswer {
 	ClientMessageBase messageBase = 1;
-	protobuf.clientidentities.ClientBase receiverClientBase = 2;
+	protobuf.clientidentities.ClientBase clientBase = 2;
 	int32 commentToAnswerId = 3;
 }

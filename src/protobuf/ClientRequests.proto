@@ -10,103 +10,119 @@ import "protobuf/ClientMessages.proto";
 
 message ClientRequestBase {
 	int32 requestId = 1;
-	int32 requestorClientId = 2;
-	string requestorClientUsername = 3;
-	string requestorClientPassword = 4;
+	int32 clientId = 2;
+	string username = 3;
+	string password = 4;
 	int64 timestampMillis = 5;
 }
 
+message FileDownloadVerification {
+	string downloadKey = 1;
+	string password = 2;
+}
+
 message FileDownloadBase {
-	int32 downloadFileId = 1;
-	string downloadFileName = 2;
-	string downloadFilePath = 3;
-	string downloadKey = 4;
+	int32 fileId = 1;
+	string fileName = 2;
+	string filePath = 3;
+	FileDownloadVerification downloadVerification = 4;
 }
 
 message FileUploadBase {
-	string uploadFileName = 1;
-	string uploadFilePath = 2;
-	int64 uploadFileSize = 3;
+	string fileName = 1;
+	string filePath = 2;
+	int64 fileSize = 3;
 }
 
 message ChannelJoinRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
-	string requestedChannelPassword = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	protobuf.clientchannels.ChannelMemberVerification memberVerfication = 3;
 }
 
 message ChannelLeaveRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
 }
 
-message ClientProfilePostRequest {
+message ClientProfileRequest {
 	ClientRequestBase requestBase = 1;
-}
-
-message ClientProfileGetRequest {
-	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientBase requestedClientBase = 2;
+	protobuf.clientidentities.ClientBase clientBase = 2;
 }
 
 message ChannelMessagePostRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
-	string requestedMessageText = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	string messageText = 3;
 }
 
 message ChannelMessageGetRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
 	int32 messageCount = 3;
 	int32 startCountWithMessageId = 4;
 }
 
 message ChannelMessageAnswerRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
-	protobuf.clientmessages.ClientMessageBase requestedMessageBase = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	protobuf.clientmessages.ClientMessageBase messageBase = 3;
 	string answerText = 4;
+}
+
+message PrivateMessageGetRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	int32 messageCount = 3;
+	int32 startCountWithMessageId = 4;
 }
 
 message PrivateMessagePostRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientBase receiverClientBase = 2;
+	protobuf.clientidentities.ClientBase clientBase = 2;
 	string messageText = 3;
+}
+
+message ClientChannelGetRequest {
+
+}
+
+message ClientChannelPostRequest {
+
 }
 
 message ChannelFileDownloadRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
-	FileDownloadBase requestedFileBase = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	FileDownloadBase fileBase = 3;
 }
 
 message ChannelFileUploadRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientchannels.ChannelBase requestedChannelBase = 2;
-	FileUploadBase requestedFileBase = 3;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	FileUploadBase fileBase = 3;
 }
 
 message PrivateFileDownloadRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientBase requestedClientBase = 2;
-	FileDownloadBase requestedFileBase = 3;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	FileDownloadBase fileBase = 3;
 }
 
 message PrivateFileUploadRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientBase requestedClientBase = 2;
-	FileUploadBase requestedFileBase = 3;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	FileUploadBase fileBase = 3;
 }
 
 message ClientLoginRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientDevice requestedDevice = 2;
+	protobuf.clientidentities.ClientDevice device = 2;
 }
 
 message ClientLogoutRequest {
 	ClientRequestBase requestBase = 1;
-	protobuf.clientidentities.ClientDevice requestedDevice = 2;
+	protobuf.clientidentities.ClientDevice device = 2;
 }
 
 message ClientRegistrationRequest {
@@ -119,7 +135,7 @@ message ClientRegistrationRequest {
 }
 
 message ClientPingMeasurementRequest {
-	ClientRequestBase requestorBase = 1;
-	protobuf.clientidentities.ClientDevice requestedDevice = 2;
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientDevice device = 2;
 }
 

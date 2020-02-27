@@ -910,8 +910,8 @@ public final class ClientIdentities {
 
   }
 
-  public interface ClientPicturesOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientPictures)
+  public interface ClientImagesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientImages)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -951,18 +951,18 @@ public final class ClientIdentities {
         getBackgroundImageURIBytes();
   }
   /**
-   * Protobuf type {@code protobuf.clientidentities.ClientPictures}
+   * Protobuf type {@code protobuf.clientidentities.ClientImages}
    */
-  public  static final class ClientPictures extends
+  public  static final class ClientImages extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientPictures)
-      ClientPicturesOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientImages)
+      ClientImagesOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientPictures.newBuilder() to construct.
-    private ClientPictures(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientImages.newBuilder() to construct.
+    private ClientImages(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientPictures() {
+    private ClientImages() {
       profileImageURI_ = "";
       titleImageURI_ = "";
       backgroundImageURI_ = "";
@@ -972,7 +972,7 @@ public final class ClientIdentities {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientPictures();
+      return new ClientImages();
     }
 
     @java.lang.Override
@@ -980,7 +980,7 @@ public final class ClientIdentities {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientPictures(
+    private ClientImages(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1037,15 +1037,15 @@ public final class ClientIdentities {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientPictures_descriptor;
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientImages_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientPictures_fieldAccessorTable
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientImages_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientIdentities.ClientPictures.class, protobuf.ClientIdentities.ClientPictures.Builder.class);
+              protobuf.ClientIdentities.ClientImages.class, protobuf.ClientIdentities.ClientImages.Builder.class);
     }
 
     public static final int PROFILEIMAGEURI_FIELD_NUMBER = 1;
@@ -1207,10 +1207,10 @@ public final class ClientIdentities {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientIdentities.ClientPictures)) {
+      if (!(obj instanceof protobuf.ClientIdentities.ClientImages)) {
         return super.equals(obj);
       }
-      protobuf.ClientIdentities.ClientPictures other = (protobuf.ClientIdentities.ClientPictures) obj;
+      protobuf.ClientIdentities.ClientImages other = (protobuf.ClientIdentities.ClientImages) obj;
 
       if (!getProfileImageURI()
           .equals(other.getProfileImageURI())) return false;
@@ -1240,69 +1240,69 @@ public final class ClientIdentities {
       return hash;
     }
 
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(byte[] data)
+    public static protobuf.ClientIdentities.ClientImages parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(java.io.InputStream input)
+    public static protobuf.ClientIdentities.ClientImages parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientIdentities.ClientImages parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseDelimitedFrom(
+    public static protobuf.ClientIdentities.ClientImages parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientIdentities.ClientPictures parseFrom(
+    public static protobuf.ClientIdentities.ClientImages parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1315,7 +1315,7 @@ public final class ClientIdentities {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientIdentities.ClientPictures prototype) {
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientImages prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1331,26 +1331,26 @@ public final class ClientIdentities {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientidentities.ClientPictures}
+     * Protobuf type {@code protobuf.clientidentities.ClientImages}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientPictures)
-        protobuf.ClientIdentities.ClientPicturesOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientImages)
+        protobuf.ClientIdentities.ClientImagesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientPictures_descriptor;
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientImages_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientPictures_fieldAccessorTable
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientImages_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientIdentities.ClientPictures.class, protobuf.ClientIdentities.ClientPictures.Builder.class);
+                protobuf.ClientIdentities.ClientImages.class, protobuf.ClientIdentities.ClientImages.Builder.class);
       }
 
-      // Construct using protobuf.ClientIdentities.ClientPictures.newBuilder()
+      // Construct using protobuf.ClientIdentities.ClientImages.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1380,17 +1380,17 @@ public final class ClientIdentities {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientPictures_descriptor;
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientImages_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientIdentities.ClientPictures getDefaultInstanceForType() {
-        return protobuf.ClientIdentities.ClientPictures.getDefaultInstance();
+      public protobuf.ClientIdentities.ClientImages getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientImages.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientIdentities.ClientPictures build() {
-        protobuf.ClientIdentities.ClientPictures result = buildPartial();
+      public protobuf.ClientIdentities.ClientImages build() {
+        protobuf.ClientIdentities.ClientImages result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1398,8 +1398,8 @@ public final class ClientIdentities {
       }
 
       @java.lang.Override
-      public protobuf.ClientIdentities.ClientPictures buildPartial() {
-        protobuf.ClientIdentities.ClientPictures result = new protobuf.ClientIdentities.ClientPictures(this);
+      public protobuf.ClientIdentities.ClientImages buildPartial() {
+        protobuf.ClientIdentities.ClientImages result = new protobuf.ClientIdentities.ClientImages(this);
         result.profileImageURI_ = profileImageURI_;
         result.titleImageURI_ = titleImageURI_;
         result.backgroundImageURI_ = backgroundImageURI_;
@@ -1441,16 +1441,16 @@ public final class ClientIdentities {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientIdentities.ClientPictures) {
-          return mergeFrom((protobuf.ClientIdentities.ClientPictures)other);
+        if (other instanceof protobuf.ClientIdentities.ClientImages) {
+          return mergeFrom((protobuf.ClientIdentities.ClientImages)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientIdentities.ClientPictures other) {
-        if (other == protobuf.ClientIdentities.ClientPictures.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientImages other) {
+        if (other == protobuf.ClientIdentities.ClientImages.getDefaultInstance()) return this;
         if (!other.getProfileImageURI().isEmpty()) {
           profileImageURI_ = other.profileImageURI_;
           onChanged();
@@ -1478,11 +1478,11 @@ public final class ClientIdentities {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientIdentities.ClientPictures parsedMessage = null;
+        protobuf.ClientIdentities.ClientImages parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientIdentities.ClientPictures) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientIdentities.ClientImages) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1732,41 +1732,1845 @@ public final class ClientIdentities {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientPictures)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientImages)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientPictures)
-    private static final protobuf.ClientIdentities.ClientPictures DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientImages)
+    private static final protobuf.ClientIdentities.ClientImages DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientPictures();
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientImages();
     }
 
-    public static protobuf.ClientIdentities.ClientPictures getDefaultInstance() {
+    public static protobuf.ClientIdentities.ClientImages getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientPictures>
-        PARSER = new com.google.protobuf.AbstractParser<ClientPictures>() {
+    private static final com.google.protobuf.Parser<ClientImages>
+        PARSER = new com.google.protobuf.AbstractParser<ClientImages>() {
       @java.lang.Override
-      public ClientPictures parsePartialFrom(
+      public ClientImages parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientPictures(input, extensionRegistry);
+        return new ClientImages(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientPictures> parser() {
+    public static com.google.protobuf.Parser<ClientImages> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientPictures> getParserForType() {
+    public com.google.protobuf.Parser<ClientImages> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientIdentities.ClientPictures getDefaultInstanceForType() {
+    public protobuf.ClientIdentities.ClientImages getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AdminGroupOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.AdminGroup)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 groupId = 1;</code>
+     * @return The groupId.
+     */
+    int getGroupId();
+
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The groupName.
+     */
+    java.lang.String getGroupName();
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The bytes for groupName.
+     */
+    com.google.protobuf.ByteString
+        getGroupNameBytes();
+
+    /**
+     * <code>int32 permissionLevel = 3;</code>
+     * @return The permissionLevel.
+     */
+    int getPermissionLevel();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return Whether the dateMemberSince field is set.
+     */
+    boolean hasDateMemberSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return The dateMemberSince.
+     */
+    protobuf.ClientIdentities.ClientDate getDateMemberSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.AdminGroup}
+   */
+  public  static final class AdminGroup extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.AdminGroup)
+      AdminGroupOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AdminGroup.newBuilder() to construct.
+    private AdminGroup(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AdminGroup() {
+      groupName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AdminGroup();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AdminGroup(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              groupId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              groupName_ = s;
+              break;
+            }
+            case 24: {
+
+              permissionLevel_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateMemberSince_ != null) {
+                subBuilder = dateMemberSince_.toBuilder();
+              }
+              dateMemberSince_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateMemberSince_);
+                dateMemberSince_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_AdminGroup_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_AdminGroup_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.AdminGroup.class, protobuf.ClientIdentities.AdminGroup.Builder.class);
+    }
+
+    public static final int GROUPID_FIELD_NUMBER = 1;
+    private int groupId_;
+    /**
+     * <code>int32 groupId = 1;</code>
+     * @return The groupId.
+     */
+    public int getGroupId() {
+      return groupId_;
+    }
+
+    public static final int GROUPNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object groupName_;
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The groupName.
+     */
+    public java.lang.String getGroupName() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        groupName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The bytes for groupName.
+     */
+    public com.google.protobuf.ByteString
+        getGroupNameBytes() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PERMISSIONLEVEL_FIELD_NUMBER = 3;
+    private int permissionLevel_;
+    /**
+     * <code>int32 permissionLevel = 3;</code>
+     * @return The permissionLevel.
+     */
+    public int getPermissionLevel() {
+      return permissionLevel_;
+    }
+
+    public static final int DATEMEMBERSINCE_FIELD_NUMBER = 4;
+    private protobuf.ClientIdentities.ClientDate dateMemberSince_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return Whether the dateMemberSince field is set.
+     */
+    public boolean hasDateMemberSince() {
+      return dateMemberSince_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return The dateMemberSince.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateMemberSince() {
+      return dateMemberSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder() {
+      return getDateMemberSince();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (groupId_ != 0) {
+        output.writeInt32(1, groupId_);
+      }
+      if (!getGroupNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, groupName_);
+      }
+      if (permissionLevel_ != 0) {
+        output.writeInt32(3, permissionLevel_);
+      }
+      if (dateMemberSince_ != null) {
+        output.writeMessage(4, getDateMemberSince());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (groupId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, groupId_);
+      }
+      if (!getGroupNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, groupName_);
+      }
+      if (permissionLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, permissionLevel_);
+      }
+      if (dateMemberSince_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getDateMemberSince());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.AdminGroup)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.AdminGroup other = (protobuf.ClientIdentities.AdminGroup) obj;
+
+      if (getGroupId()
+          != other.getGroupId()) return false;
+      if (!getGroupName()
+          .equals(other.getGroupName())) return false;
+      if (getPermissionLevel()
+          != other.getPermissionLevel()) return false;
+      if (hasDateMemberSince() != other.hasDateMemberSince()) return false;
+      if (hasDateMemberSince()) {
+        if (!getDateMemberSince()
+            .equals(other.getDateMemberSince())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + GROUPID_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupId();
+      hash = (37 * hash) + GROUPNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupName().hashCode();
+      hash = (37 * hash) + PERMISSIONLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getPermissionLevel();
+      if (hasDateMemberSince()) {
+        hash = (37 * hash) + DATEMEMBERSINCE_FIELD_NUMBER;
+        hash = (53 * hash) + getDateMemberSince().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.AdminGroup parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.AdminGroup prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.AdminGroup}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.AdminGroup)
+        protobuf.ClientIdentities.AdminGroupOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_AdminGroup_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_AdminGroup_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.AdminGroup.class, protobuf.ClientIdentities.AdminGroup.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.AdminGroup.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        groupId_ = 0;
+
+        groupName_ = "";
+
+        permissionLevel_ = 0;
+
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = null;
+        } else {
+          dateMemberSince_ = null;
+          dateMemberSinceBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_AdminGroup_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.AdminGroup getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.AdminGroup.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.AdminGroup build() {
+        protobuf.ClientIdentities.AdminGroup result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.AdminGroup buildPartial() {
+        protobuf.ClientIdentities.AdminGroup result = new protobuf.ClientIdentities.AdminGroup(this);
+        result.groupId_ = groupId_;
+        result.groupName_ = groupName_;
+        result.permissionLevel_ = permissionLevel_;
+        if (dateMemberSinceBuilder_ == null) {
+          result.dateMemberSince_ = dateMemberSince_;
+        } else {
+          result.dateMemberSince_ = dateMemberSinceBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.AdminGroup) {
+          return mergeFrom((protobuf.ClientIdentities.AdminGroup)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.AdminGroup other) {
+        if (other == protobuf.ClientIdentities.AdminGroup.getDefaultInstance()) return this;
+        if (other.getGroupId() != 0) {
+          setGroupId(other.getGroupId());
+        }
+        if (!other.getGroupName().isEmpty()) {
+          groupName_ = other.groupName_;
+          onChanged();
+        }
+        if (other.getPermissionLevel() != 0) {
+          setPermissionLevel(other.getPermissionLevel());
+        }
+        if (other.hasDateMemberSince()) {
+          mergeDateMemberSince(other.getDateMemberSince());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.AdminGroup parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.AdminGroup) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int groupId_ ;
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @return The groupId.
+       */
+      public int getGroupId() {
+        return groupId_;
+      }
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @param value The groupId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupId(int value) {
+        
+        groupId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupId() {
+        
+        groupId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object groupName_ = "";
+      /**
+       * <code>string groupName = 2;</code>
+       * @return The groupName.
+       */
+      public java.lang.String getGroupName() {
+        java.lang.Object ref = groupName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          groupName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @return The bytes for groupName.
+       */
+      public com.google.protobuf.ByteString
+          getGroupNameBytes() {
+        java.lang.Object ref = groupName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          groupName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @param value The groupName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupName() {
+        
+        groupName_ = getDefaultInstance().getGroupName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @param value The bytes for groupName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int permissionLevel_ ;
+      /**
+       * <code>int32 permissionLevel = 3;</code>
+       * @return The permissionLevel.
+       */
+      public int getPermissionLevel() {
+        return permissionLevel_;
+      }
+      /**
+       * <code>int32 permissionLevel = 3;</code>
+       * @param value The permissionLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPermissionLevel(int value) {
+        
+        permissionLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 permissionLevel = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPermissionLevel() {
+        
+        permissionLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientIdentities.ClientDate dateMemberSince_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateMemberSinceBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       * @return Whether the dateMemberSince field is set.
+       */
+      public boolean hasDateMemberSince() {
+        return dateMemberSinceBuilder_ != null || dateMemberSince_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       * @return The dateMemberSince.
+       */
+      public protobuf.ClientIdentities.ClientDate getDateMemberSince() {
+        if (dateMemberSinceBuilder_ == null) {
+          return dateMemberSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+        } else {
+          return dateMemberSinceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder setDateMemberSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateMemberSinceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateMemberSince_ = value;
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder setDateMemberSince(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder mergeDateMemberSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateMemberSinceBuilder_ == null) {
+          if (dateMemberSince_ != null) {
+            dateMemberSince_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateMemberSince_).mergeFrom(value).buildPartial();
+          } else {
+            dateMemberSince_ = value;
+          }
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder clearDateMemberSince() {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = null;
+          onChanged();
+        } else {
+          dateMemberSince_ = null;
+          dateMemberSinceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateMemberSinceBuilder() {
+        
+        onChanged();
+        return getDateMemberSinceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder() {
+        if (dateMemberSinceBuilder_ != null) {
+          return dateMemberSinceBuilder_.getMessageOrBuilder();
+        } else {
+          return dateMemberSince_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateMemberSinceFieldBuilder() {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSinceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateMemberSince(),
+                  getParentForChildren(),
+                  isClean());
+          dateMemberSince_ = null;
+        }
+        return dateMemberSinceBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.AdminGroup)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.AdminGroup)
+    private static final protobuf.ClientIdentities.AdminGroup DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.AdminGroup();
+    }
+
+    public static protobuf.ClientIdentities.AdminGroup getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AdminGroup>
+        PARSER = new com.google.protobuf.AbstractParser<AdminGroup>() {
+      @java.lang.Override
+      public AdminGroup parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AdminGroup(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AdminGroup> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AdminGroup> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.AdminGroup getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientGroupOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientGroup)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 groupId = 1;</code>
+     * @return The groupId.
+     */
+    int getGroupId();
+
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The groupName.
+     */
+    java.lang.String getGroupName();
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The bytes for groupName.
+     */
+    com.google.protobuf.ByteString
+        getGroupNameBytes();
+
+    /**
+     * <code>int32 groupLevel = 3;</code>
+     * @return The groupLevel.
+     */
+    int getGroupLevel();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return Whether the dateMemberSince field is set.
+     */
+    boolean hasDateMemberSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return The dateMemberSince.
+     */
+    protobuf.ClientIdentities.ClientDate getDateMemberSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.ClientGroup}
+   */
+  public  static final class ClientGroup extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientGroup)
+      ClientGroupOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientGroup.newBuilder() to construct.
+    private ClientGroup(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientGroup() {
+      groupName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientGroup();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientGroup(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              groupId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              groupName_ = s;
+              break;
+            }
+            case 24: {
+
+              groupLevel_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateMemberSince_ != null) {
+                subBuilder = dateMemberSince_.toBuilder();
+              }
+              dateMemberSince_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateMemberSince_);
+                dateMemberSince_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientGroup_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientGroup_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.ClientGroup.class, protobuf.ClientIdentities.ClientGroup.Builder.class);
+    }
+
+    public static final int GROUPID_FIELD_NUMBER = 1;
+    private int groupId_;
+    /**
+     * <code>int32 groupId = 1;</code>
+     * @return The groupId.
+     */
+    public int getGroupId() {
+      return groupId_;
+    }
+
+    public static final int GROUPNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object groupName_;
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The groupName.
+     */
+    public java.lang.String getGroupName() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        groupName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string groupName = 2;</code>
+     * @return The bytes for groupName.
+     */
+    public com.google.protobuf.ByteString
+        getGroupNameBytes() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GROUPLEVEL_FIELD_NUMBER = 3;
+    private int groupLevel_;
+    /**
+     * <code>int32 groupLevel = 3;</code>
+     * @return The groupLevel.
+     */
+    public int getGroupLevel() {
+      return groupLevel_;
+    }
+
+    public static final int DATEMEMBERSINCE_FIELD_NUMBER = 4;
+    private protobuf.ClientIdentities.ClientDate dateMemberSince_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return Whether the dateMemberSince field is set.
+     */
+    public boolean hasDateMemberSince() {
+      return dateMemberSince_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     * @return The dateMemberSince.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateMemberSince() {
+      return dateMemberSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder() {
+      return getDateMemberSince();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (groupId_ != 0) {
+        output.writeInt32(1, groupId_);
+      }
+      if (!getGroupNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, groupName_);
+      }
+      if (groupLevel_ != 0) {
+        output.writeInt32(3, groupLevel_);
+      }
+      if (dateMemberSince_ != null) {
+        output.writeMessage(4, getDateMemberSince());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (groupId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, groupId_);
+      }
+      if (!getGroupNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, groupName_);
+      }
+      if (groupLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, groupLevel_);
+      }
+      if (dateMemberSince_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getDateMemberSince());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.ClientGroup)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.ClientGroup other = (protobuf.ClientIdentities.ClientGroup) obj;
+
+      if (getGroupId()
+          != other.getGroupId()) return false;
+      if (!getGroupName()
+          .equals(other.getGroupName())) return false;
+      if (getGroupLevel()
+          != other.getGroupLevel()) return false;
+      if (hasDateMemberSince() != other.hasDateMemberSince()) return false;
+      if (hasDateMemberSince()) {
+        if (!getDateMemberSince()
+            .equals(other.getDateMemberSince())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + GROUPID_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupId();
+      hash = (37 * hash) + GROUPNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupName().hashCode();
+      hash = (37 * hash) + GROUPLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupLevel();
+      if (hasDateMemberSince()) {
+        hash = (37 * hash) + DATEMEMBERSINCE_FIELD_NUMBER;
+        hash = (53 * hash) + getDateMemberSince().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientGroup parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientGroup prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.ClientGroup}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientGroup)
+        protobuf.ClientIdentities.ClientGroupOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientGroup_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientGroup_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.ClientGroup.class, protobuf.ClientIdentities.ClientGroup.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.ClientGroup.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        groupId_ = 0;
+
+        groupName_ = "";
+
+        groupLevel_ = 0;
+
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = null;
+        } else {
+          dateMemberSince_ = null;
+          dateMemberSinceBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientGroup_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientGroup getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientGroup.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientGroup build() {
+        protobuf.ClientIdentities.ClientGroup result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientGroup buildPartial() {
+        protobuf.ClientIdentities.ClientGroup result = new protobuf.ClientIdentities.ClientGroup(this);
+        result.groupId_ = groupId_;
+        result.groupName_ = groupName_;
+        result.groupLevel_ = groupLevel_;
+        if (dateMemberSinceBuilder_ == null) {
+          result.dateMemberSince_ = dateMemberSince_;
+        } else {
+          result.dateMemberSince_ = dateMemberSinceBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.ClientGroup) {
+          return mergeFrom((protobuf.ClientIdentities.ClientGroup)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientGroup other) {
+        if (other == protobuf.ClientIdentities.ClientGroup.getDefaultInstance()) return this;
+        if (other.getGroupId() != 0) {
+          setGroupId(other.getGroupId());
+        }
+        if (!other.getGroupName().isEmpty()) {
+          groupName_ = other.groupName_;
+          onChanged();
+        }
+        if (other.getGroupLevel() != 0) {
+          setGroupLevel(other.getGroupLevel());
+        }
+        if (other.hasDateMemberSince()) {
+          mergeDateMemberSince(other.getDateMemberSince());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.ClientGroup parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.ClientGroup) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int groupId_ ;
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @return The groupId.
+       */
+      public int getGroupId() {
+        return groupId_;
+      }
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @param value The groupId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupId(int value) {
+        
+        groupId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 groupId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupId() {
+        
+        groupId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object groupName_ = "";
+      /**
+       * <code>string groupName = 2;</code>
+       * @return The groupName.
+       */
+      public java.lang.String getGroupName() {
+        java.lang.Object ref = groupName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          groupName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @return The bytes for groupName.
+       */
+      public com.google.protobuf.ByteString
+          getGroupNameBytes() {
+        java.lang.Object ref = groupName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          groupName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @param value The groupName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupName() {
+        
+        groupName_ = getDefaultInstance().getGroupName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string groupName = 2;</code>
+       * @param value The bytes for groupName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int groupLevel_ ;
+      /**
+       * <code>int32 groupLevel = 3;</code>
+       * @return The groupLevel.
+       */
+      public int getGroupLevel() {
+        return groupLevel_;
+      }
+      /**
+       * <code>int32 groupLevel = 3;</code>
+       * @param value The groupLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupLevel(int value) {
+        
+        groupLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 groupLevel = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupLevel() {
+        
+        groupLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientIdentities.ClientDate dateMemberSince_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateMemberSinceBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       * @return Whether the dateMemberSince field is set.
+       */
+      public boolean hasDateMemberSince() {
+        return dateMemberSinceBuilder_ != null || dateMemberSince_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       * @return The dateMemberSince.
+       */
+      public protobuf.ClientIdentities.ClientDate getDateMemberSince() {
+        if (dateMemberSinceBuilder_ == null) {
+          return dateMemberSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+        } else {
+          return dateMemberSinceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder setDateMemberSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateMemberSinceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateMemberSince_ = value;
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder setDateMemberSince(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder mergeDateMemberSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateMemberSinceBuilder_ == null) {
+          if (dateMemberSince_ != null) {
+            dateMemberSince_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateMemberSince_).mergeFrom(value).buildPartial();
+          } else {
+            dateMemberSince_ = value;
+          }
+          onChanged();
+        } else {
+          dateMemberSinceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public Builder clearDateMemberSince() {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSince_ = null;
+          onChanged();
+        } else {
+          dateMemberSince_ = null;
+          dateMemberSinceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateMemberSinceBuilder() {
+        
+        onChanged();
+        return getDateMemberSinceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateMemberSinceOrBuilder() {
+        if (dateMemberSinceBuilder_ != null) {
+          return dateMemberSinceBuilder_.getMessageOrBuilder();
+        } else {
+          return dateMemberSince_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateMemberSince_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateMemberSince = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateMemberSinceFieldBuilder() {
+        if (dateMemberSinceBuilder_ == null) {
+          dateMemberSinceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateMemberSince(),
+                  getParentForChildren(),
+                  isClean());
+          dateMemberSince_ = null;
+        }
+        return dateMemberSinceBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientGroup)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientGroup)
+    private static final protobuf.ClientIdentities.ClientGroup DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientGroup();
+    }
+
+    public static protobuf.ClientIdentities.ClientGroup getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientGroup>
+        PARSER = new com.google.protobuf.AbstractParser<ClientGroup>() {
+      @java.lang.Override
+      public ClientGroup parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientGroup(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientGroup> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientGroup> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.ClientGroup getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1777,27 +3581,43 @@ public final class ClientIdentities {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 adminGroup = 1;</code>
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+     * @return Whether the adminGroup field is set.
+     */
+    boolean hasAdminGroup();
+    /**
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
      * @return The adminGroup.
      */
-    int getAdminGroup();
+    protobuf.ClientIdentities.AdminGroup getAdminGroup();
+    /**
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+     */
+    protobuf.ClientIdentities.AdminGroupOrBuilder getAdminGroupOrBuilder();
 
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @return A list containing the clientGroup.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
-    java.util.List<java.lang.Integer> getClientGroupList();
+    java.util.List<protobuf.ClientIdentities.ClientGroup> 
+        getClientGroupList();
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @return The count of clientGroup.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientGroup getClientGroup(int index);
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
     int getClientGroupCount();
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @param index The index of the element to return.
-     * @return The clientGroup at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
-    int getClientGroup(int index);
+    java.util.List<? extends protobuf.ClientIdentities.ClientGroupOrBuilder> 
+        getClientGroupOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientGroupOrBuilder getClientGroupOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientGroups}
@@ -1812,7 +3632,7 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientGroups() {
-      clientGroup_ = emptyIntList();
+      clientGroup_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1846,30 +3666,26 @@ public final class ClientIdentities {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              adminGroup_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                clientGroup_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
+            case 10: {
+              protobuf.ClientIdentities.AdminGroup.Builder subBuilder = null;
+              if (adminGroup_ != null) {
+                subBuilder = adminGroup_.toBuilder();
               }
-              clientGroup_.addInt(input.readInt32());
+              adminGroup_ = input.readMessage(protobuf.ClientIdentities.AdminGroup.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(adminGroup_);
+                adminGroup_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                clientGroup_ = newIntList();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                clientGroup_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientGroup>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              while (input.getBytesUntilLimit() > 0) {
-                clientGroup_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
+              clientGroup_.add(
+                  input.readMessage(protobuf.ClientIdentities.ClientGroup.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -1888,7 +3704,7 @@ public final class ClientIdentities {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          clientGroup_.makeImmutable(); // C
+          clientGroup_ = java.util.Collections.unmodifiableList(clientGroup_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1908,41 +3724,62 @@ public final class ClientIdentities {
     }
 
     public static final int ADMINGROUP_FIELD_NUMBER = 1;
-    private int adminGroup_;
+    private protobuf.ClientIdentities.AdminGroup adminGroup_;
     /**
-     * <code>int32 adminGroup = 1;</code>
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+     * @return Whether the adminGroup field is set.
+     */
+    public boolean hasAdminGroup() {
+      return adminGroup_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
      * @return The adminGroup.
      */
-    public int getAdminGroup() {
-      return adminGroup_;
+    public protobuf.ClientIdentities.AdminGroup getAdminGroup() {
+      return adminGroup_ == null ? protobuf.ClientIdentities.AdminGroup.getDefaultInstance() : adminGroup_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+     */
+    public protobuf.ClientIdentities.AdminGroupOrBuilder getAdminGroupOrBuilder() {
+      return getAdminGroup();
     }
 
     public static final int CLIENTGROUP_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.IntList clientGroup_;
+    private java.util.List<protobuf.ClientIdentities.ClientGroup> clientGroup_;
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @return A list containing the clientGroup.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getClientGroupList() {
+    public java.util.List<protobuf.ClientIdentities.ClientGroup> getClientGroupList() {
       return clientGroup_;
     }
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @return The count of clientGroup.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientIdentities.ClientGroupOrBuilder> 
+        getClientGroupOrBuilderList() {
+      return clientGroup_;
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
     public int getClientGroupCount() {
       return clientGroup_.size();
     }
     /**
-     * <code>repeated int32 clientGroup = 2;</code>
-     * @param index The index of the element to return.
-     * @return The clientGroup at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
      */
-    public int getClientGroup(int index) {
-      return clientGroup_.getInt(index);
+    public protobuf.ClientIdentities.ClientGroup getClientGroup(int index) {
+      return clientGroup_.get(index);
     }
-    private int clientGroupMemoizedSerializedSize = -1;
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientGroupOrBuilder getClientGroupOrBuilder(
+        int index) {
+      return clientGroup_.get(index);
+    }
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -1958,16 +3795,11 @@ public final class ClientIdentities {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (adminGroup_ != 0) {
-        output.writeInt32(1, adminGroup_);
-      }
-      if (getClientGroupList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(clientGroupMemoizedSerializedSize);
+      if (adminGroup_ != null) {
+        output.writeMessage(1, getAdminGroup());
       }
       for (int i = 0; i < clientGroup_.size(); i++) {
-        output.writeInt32NoTag(clientGroup_.getInt(i));
+        output.writeMessage(2, clientGroup_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -1978,23 +3810,13 @@ public final class ClientIdentities {
       if (size != -1) return size;
 
       size = 0;
-      if (adminGroup_ != 0) {
+      if (adminGroup_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, adminGroup_);
+          .computeMessageSize(1, getAdminGroup());
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < clientGroup_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(clientGroup_.getInt(i));
-        }
-        size += dataSize;
-        if (!getClientGroupList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        clientGroupMemoizedSerializedSize = dataSize;
+      for (int i = 0; i < clientGroup_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, clientGroup_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2011,8 +3833,11 @@ public final class ClientIdentities {
       }
       protobuf.ClientIdentities.ClientGroups other = (protobuf.ClientIdentities.ClientGroups) obj;
 
-      if (getAdminGroup()
-          != other.getAdminGroup()) return false;
+      if (hasAdminGroup() != other.hasAdminGroup()) return false;
+      if (hasAdminGroup()) {
+        if (!getAdminGroup()
+            .equals(other.getAdminGroup())) return false;
+      }
       if (!getClientGroupList()
           .equals(other.getClientGroupList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -2026,8 +3851,10 @@ public final class ClientIdentities {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ADMINGROUP_FIELD_NUMBER;
-      hash = (53 * hash) + getAdminGroup();
+      if (hasAdminGroup()) {
+        hash = (37 * hash) + ADMINGROUP_FIELD_NUMBER;
+        hash = (53 * hash) + getAdminGroup().hashCode();
+      }
       if (getClientGroupCount() > 0) {
         hash = (37 * hash) + CLIENTGROUP_FIELD_NUMBER;
         hash = (53 * hash) + getClientGroupList().hashCode();
@@ -2160,15 +3987,24 @@ public final class ClientIdentities {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getClientGroupFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        adminGroup_ = 0;
-
-        clientGroup_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (adminGroupBuilder_ == null) {
+          adminGroup_ = null;
+        } else {
+          adminGroup_ = null;
+          adminGroupBuilder_ = null;
+        }
+        if (clientGroupBuilder_ == null) {
+          clientGroup_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          clientGroupBuilder_.clear();
+        }
         return this;
       }
 
@@ -2196,12 +4032,20 @@ public final class ClientIdentities {
       public protobuf.ClientIdentities.ClientGroups buildPartial() {
         protobuf.ClientIdentities.ClientGroups result = new protobuf.ClientIdentities.ClientGroups(this);
         int from_bitField0_ = bitField0_;
-        result.adminGroup_ = adminGroup_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          clientGroup_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (adminGroupBuilder_ == null) {
+          result.adminGroup_ = adminGroup_;
+        } else {
+          result.adminGroup_ = adminGroupBuilder_.build();
         }
-        result.clientGroup_ = clientGroup_;
+        if (clientGroupBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            clientGroup_ = java.util.Collections.unmodifiableList(clientGroup_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.clientGroup_ = clientGroup_;
+        } else {
+          result.clientGroup_ = clientGroupBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2250,18 +4094,34 @@ public final class ClientIdentities {
 
       public Builder mergeFrom(protobuf.ClientIdentities.ClientGroups other) {
         if (other == protobuf.ClientIdentities.ClientGroups.getDefaultInstance()) return this;
-        if (other.getAdminGroup() != 0) {
-          setAdminGroup(other.getAdminGroup());
+        if (other.hasAdminGroup()) {
+          mergeAdminGroup(other.getAdminGroup());
         }
-        if (!other.clientGroup_.isEmpty()) {
-          if (clientGroup_.isEmpty()) {
-            clientGroup_ = other.clientGroup_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureClientGroupIsMutable();
-            clientGroup_.addAll(other.clientGroup_);
+        if (clientGroupBuilder_ == null) {
+          if (!other.clientGroup_.isEmpty()) {
+            if (clientGroup_.isEmpty()) {
+              clientGroup_ = other.clientGroup_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureClientGroupIsMutable();
+              clientGroup_.addAll(other.clientGroup_);
+            }
+            onChanged();
           }
-          onChanged();
+        } else {
+          if (!other.clientGroup_.isEmpty()) {
+            if (clientGroupBuilder_.isEmpty()) {
+              clientGroupBuilder_.dispose();
+              clientGroupBuilder_ = null;
+              clientGroup_ = other.clientGroup_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              clientGroupBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getClientGroupFieldBuilder() : null;
+            } else {
+              clientGroupBuilder_.addAllMessages(other.clientGroup_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2293,113 +4153,363 @@ public final class ClientIdentities {
       }
       private int bitField0_;
 
-      private int adminGroup_ ;
+      private protobuf.ClientIdentities.AdminGroup adminGroup_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.AdminGroup, protobuf.ClientIdentities.AdminGroup.Builder, protobuf.ClientIdentities.AdminGroupOrBuilder> adminGroupBuilder_;
       /**
-       * <code>int32 adminGroup = 1;</code>
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       * @return Whether the adminGroup field is set.
+       */
+      public boolean hasAdminGroup() {
+        return adminGroupBuilder_ != null || adminGroup_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
        * @return The adminGroup.
        */
-      public int getAdminGroup() {
-        return adminGroup_;
+      public protobuf.ClientIdentities.AdminGroup getAdminGroup() {
+        if (adminGroupBuilder_ == null) {
+          return adminGroup_ == null ? protobuf.ClientIdentities.AdminGroup.getDefaultInstance() : adminGroup_;
+        } else {
+          return adminGroupBuilder_.getMessage();
+        }
       }
       /**
-       * <code>int32 adminGroup = 1;</code>
-       * @param value The adminGroup to set.
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
        */
-      public Builder setAdminGroup(int value) {
-        
-        adminGroup_ = value;
-        onChanged();
+      public Builder setAdminGroup(protobuf.ClientIdentities.AdminGroup value) {
+        if (adminGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          adminGroup_ = value;
+          onChanged();
+        } else {
+          adminGroupBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>int32 adminGroup = 1;</code>
-       * @return This builder for chaining.
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       */
+      public Builder setAdminGroup(
+          protobuf.ClientIdentities.AdminGroup.Builder builderForValue) {
+        if (adminGroupBuilder_ == null) {
+          adminGroup_ = builderForValue.build();
+          onChanged();
+        } else {
+          adminGroupBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       */
+      public Builder mergeAdminGroup(protobuf.ClientIdentities.AdminGroup value) {
+        if (adminGroupBuilder_ == null) {
+          if (adminGroup_ != null) {
+            adminGroup_ =
+              protobuf.ClientIdentities.AdminGroup.newBuilder(adminGroup_).mergeFrom(value).buildPartial();
+          } else {
+            adminGroup_ = value;
+          }
+          onChanged();
+        } else {
+          adminGroupBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
        */
       public Builder clearAdminGroup() {
-        
-        adminGroup_ = 0;
-        onChanged();
+        if (adminGroupBuilder_ == null) {
+          adminGroup_ = null;
+          onChanged();
+        } else {
+          adminGroup_ = null;
+          adminGroupBuilder_ = null;
+        }
+
         return this;
       }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       */
+      public protobuf.ClientIdentities.AdminGroup.Builder getAdminGroupBuilder() {
+        
+        onChanged();
+        return getAdminGroupFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       */
+      public protobuf.ClientIdentities.AdminGroupOrBuilder getAdminGroupOrBuilder() {
+        if (adminGroupBuilder_ != null) {
+          return adminGroupBuilder_.getMessageOrBuilder();
+        } else {
+          return adminGroup_ == null ?
+              protobuf.ClientIdentities.AdminGroup.getDefaultInstance() : adminGroup_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.AdminGroup adminGroup = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.AdminGroup, protobuf.ClientIdentities.AdminGroup.Builder, protobuf.ClientIdentities.AdminGroupOrBuilder> 
+          getAdminGroupFieldBuilder() {
+        if (adminGroupBuilder_ == null) {
+          adminGroupBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.AdminGroup, protobuf.ClientIdentities.AdminGroup.Builder, protobuf.ClientIdentities.AdminGroupOrBuilder>(
+                  getAdminGroup(),
+                  getParentForChildren(),
+                  isClean());
+          adminGroup_ = null;
+        }
+        return adminGroupBuilder_;
+      }
 
-      private com.google.protobuf.Internal.IntList clientGroup_ = emptyIntList();
+      private java.util.List<protobuf.ClientIdentities.ClientGroup> clientGroup_ =
+        java.util.Collections.emptyList();
       private void ensureClientGroupIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          clientGroup_ = mutableCopy(clientGroup_);
+          clientGroup_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientGroup>(clientGroup_);
           bitField0_ |= 0x00000001;
          }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientGroup, protobuf.ClientIdentities.ClientGroup.Builder, protobuf.ClientIdentities.ClientGroupOrBuilder> clientGroupBuilder_;
+
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @return A list containing the clientGroup.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
-      public java.util.List<java.lang.Integer>
-          getClientGroupList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(clientGroup_) : clientGroup_;
+      public java.util.List<protobuf.ClientIdentities.ClientGroup> getClientGroupList() {
+        if (clientGroupBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(clientGroup_);
+        } else {
+          return clientGroupBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @return The count of clientGroup.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
       public int getClientGroupCount() {
-        return clientGroup_.size();
+        if (clientGroupBuilder_ == null) {
+          return clientGroup_.size();
+        } else {
+          return clientGroupBuilder_.getCount();
+        }
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @param index The index of the element to return.
-       * @return The clientGroup at the given index.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
-      public int getClientGroup(int index) {
-        return clientGroup_.getInt(index);
+      public protobuf.ClientIdentities.ClientGroup getClientGroup(int index) {
+        if (clientGroupBuilder_ == null) {
+          return clientGroup_.get(index);
+        } else {
+          return clientGroupBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The clientGroup to set.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
       public Builder setClientGroup(
-          int index, int value) {
-        ensureClientGroupIsMutable();
-        clientGroup_.setInt(index, value);
-        onChanged();
+          int index, protobuf.ClientIdentities.ClientGroup value) {
+        if (clientGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClientGroupIsMutable();
+          clientGroup_.set(index, value);
+          onChanged();
+        } else {
+          clientGroupBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @param value The clientGroup to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
-      public Builder addClientGroup(int value) {
-        ensureClientGroupIsMutable();
-        clientGroup_.addInt(value);
-        onChanged();
+      public Builder setClientGroup(
+          int index, protobuf.ClientIdentities.ClientGroup.Builder builderForValue) {
+        if (clientGroupBuilder_ == null) {
+          ensureClientGroupIsMutable();
+          clientGroup_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          clientGroupBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @param values The clientGroup to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public Builder addClientGroup(protobuf.ClientIdentities.ClientGroup value) {
+        if (clientGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClientGroupIsMutable();
+          clientGroup_.add(value);
+          onChanged();
+        } else {
+          clientGroupBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public Builder addClientGroup(
+          int index, protobuf.ClientIdentities.ClientGroup value) {
+        if (clientGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClientGroupIsMutable();
+          clientGroup_.add(index, value);
+          onChanged();
+        } else {
+          clientGroupBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public Builder addClientGroup(
+          protobuf.ClientIdentities.ClientGroup.Builder builderForValue) {
+        if (clientGroupBuilder_ == null) {
+          ensureClientGroupIsMutable();
+          clientGroup_.add(builderForValue.build());
+          onChanged();
+        } else {
+          clientGroupBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public Builder addClientGroup(
+          int index, protobuf.ClientIdentities.ClientGroup.Builder builderForValue) {
+        if (clientGroupBuilder_ == null) {
+          ensureClientGroupIsMutable();
+          clientGroup_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          clientGroupBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
       public Builder addAllClientGroup(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureClientGroupIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, clientGroup_);
-        onChanged();
+          java.lang.Iterable<? extends protobuf.ClientIdentities.ClientGroup> values) {
+        if (clientGroupBuilder_ == null) {
+          ensureClientGroupIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, clientGroup_);
+          onChanged();
+        } else {
+          clientGroupBuilder_.addAllMessages(values);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 clientGroup = 2;</code>
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
        */
       public Builder clearClientGroup() {
-        clientGroup_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+        if (clientGroupBuilder_ == null) {
+          clientGroup_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          clientGroupBuilder_.clear();
+        }
         return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public Builder removeClientGroup(int index) {
+        if (clientGroupBuilder_ == null) {
+          ensureClientGroupIsMutable();
+          clientGroup_.remove(index);
+          onChanged();
+        } else {
+          clientGroupBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientGroup.Builder getClientGroupBuilder(
+          int index) {
+        return getClientGroupFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientGroupOrBuilder getClientGroupOrBuilder(
+          int index) {
+        if (clientGroupBuilder_ == null) {
+          return clientGroup_.get(index);  } else {
+          return clientGroupBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientIdentities.ClientGroupOrBuilder> 
+           getClientGroupOrBuilderList() {
+        if (clientGroupBuilder_ != null) {
+          return clientGroupBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(clientGroup_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientGroup.Builder addClientGroupBuilder() {
+        return getClientGroupFieldBuilder().addBuilder(
+            protobuf.ClientIdentities.ClientGroup.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientGroup.Builder addClientGroupBuilder(
+          int index) {
+        return getClientGroupFieldBuilder().addBuilder(
+            index, protobuf.ClientIdentities.ClientGroup.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientGroup clientGroup = 2;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientGroup.Builder> 
+           getClientGroupBuilderList() {
+        return getClientGroupFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientGroup, protobuf.ClientIdentities.ClientGroup.Builder, protobuf.ClientIdentities.ClientGroupOrBuilder> 
+          getClientGroupFieldBuilder() {
+        if (clientGroupBuilder_ == null) {
+          clientGroupBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientIdentities.ClientGroup, protobuf.ClientIdentities.ClientGroup.Builder, protobuf.ClientIdentities.ClientGroupOrBuilder>(
+                  clientGroup_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          clientGroup_ = null;
+        }
+        return clientGroupBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2454,26 +4564,1015 @@ public final class ClientIdentities {
 
   }
 
+  public interface ClientBadgeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientBadge)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 badgeId = 1;</code>
+     * @return The badgeId.
+     */
+    int getBadgeId();
+
+    /**
+     * <code>string badgeName = 2;</code>
+     * @return The badgeName.
+     */
+    java.lang.String getBadgeName();
+    /**
+     * <code>string badgeName = 2;</code>
+     * @return The bytes for badgeName.
+     */
+    com.google.protobuf.ByteString
+        getBadgeNameBytes();
+
+    /**
+     * <code>string badgeDescription = 3;</code>
+     * @return The badgeDescription.
+     */
+    java.lang.String getBadgeDescription();
+    /**
+     * <code>string badgeDescription = 3;</code>
+     * @return The bytes for badgeDescription.
+     */
+    com.google.protobuf.ByteString
+        getBadgeDescriptionBytes();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     * @return Whether the dateOfReception field is set.
+     */
+    boolean hasDateOfReception();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     * @return The dateOfReception.
+     */
+    protobuf.ClientIdentities.ClientDate getDateOfReception();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateOfReceptionOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.ClientBadge}
+   */
+  public  static final class ClientBadge extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientBadge)
+      ClientBadgeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientBadge.newBuilder() to construct.
+    private ClientBadge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientBadge() {
+      badgeName_ = "";
+      badgeDescription_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientBadge();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientBadge(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              badgeId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              badgeName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              badgeDescription_ = s;
+              break;
+            }
+            case 34: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateOfReception_ != null) {
+                subBuilder = dateOfReception_.toBuilder();
+              }
+              dateOfReception_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateOfReception_);
+                dateOfReception_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientBadge_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientBadge_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.ClientBadge.class, protobuf.ClientIdentities.ClientBadge.Builder.class);
+    }
+
+    public static final int BADGEID_FIELD_NUMBER = 1;
+    private int badgeId_;
+    /**
+     * <code>int32 badgeId = 1;</code>
+     * @return The badgeId.
+     */
+    public int getBadgeId() {
+      return badgeId_;
+    }
+
+    public static final int BADGENAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object badgeName_;
+    /**
+     * <code>string badgeName = 2;</code>
+     * @return The badgeName.
+     */
+    public java.lang.String getBadgeName() {
+      java.lang.Object ref = badgeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        badgeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string badgeName = 2;</code>
+     * @return The bytes for badgeName.
+     */
+    public com.google.protobuf.ByteString
+        getBadgeNameBytes() {
+      java.lang.Object ref = badgeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        badgeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BADGEDESCRIPTION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object badgeDescription_;
+    /**
+     * <code>string badgeDescription = 3;</code>
+     * @return The badgeDescription.
+     */
+    public java.lang.String getBadgeDescription() {
+      java.lang.Object ref = badgeDescription_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        badgeDescription_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string badgeDescription = 3;</code>
+     * @return The bytes for badgeDescription.
+     */
+    public com.google.protobuf.ByteString
+        getBadgeDescriptionBytes() {
+      java.lang.Object ref = badgeDescription_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        badgeDescription_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DATEOFRECEPTION_FIELD_NUMBER = 4;
+    private protobuf.ClientIdentities.ClientDate dateOfReception_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     * @return Whether the dateOfReception field is set.
+     */
+    public boolean hasDateOfReception() {
+      return dateOfReception_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     * @return The dateOfReception.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateOfReception() {
+      return dateOfReception_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfReception_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateOfReceptionOrBuilder() {
+      return getDateOfReception();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (badgeId_ != 0) {
+        output.writeInt32(1, badgeId_);
+      }
+      if (!getBadgeNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, badgeName_);
+      }
+      if (!getBadgeDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, badgeDescription_);
+      }
+      if (dateOfReception_ != null) {
+        output.writeMessage(4, getDateOfReception());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (badgeId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, badgeId_);
+      }
+      if (!getBadgeNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, badgeName_);
+      }
+      if (!getBadgeDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, badgeDescription_);
+      }
+      if (dateOfReception_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getDateOfReception());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.ClientBadge)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.ClientBadge other = (protobuf.ClientIdentities.ClientBadge) obj;
+
+      if (getBadgeId()
+          != other.getBadgeId()) return false;
+      if (!getBadgeName()
+          .equals(other.getBadgeName())) return false;
+      if (!getBadgeDescription()
+          .equals(other.getBadgeDescription())) return false;
+      if (hasDateOfReception() != other.hasDateOfReception()) return false;
+      if (hasDateOfReception()) {
+        if (!getDateOfReception()
+            .equals(other.getDateOfReception())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BADGEID_FIELD_NUMBER;
+      hash = (53 * hash) + getBadgeId();
+      hash = (37 * hash) + BADGENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBadgeName().hashCode();
+      hash = (37 * hash) + BADGEDESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getBadgeDescription().hashCode();
+      if (hasDateOfReception()) {
+        hash = (37 * hash) + DATEOFRECEPTION_FIELD_NUMBER;
+        hash = (53 * hash) + getDateOfReception().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientBadge parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientBadge prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.ClientBadge}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientBadge)
+        protobuf.ClientIdentities.ClientBadgeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientBadge_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientBadge_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.ClientBadge.class, protobuf.ClientIdentities.ClientBadge.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.ClientBadge.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        badgeId_ = 0;
+
+        badgeName_ = "";
+
+        badgeDescription_ = "";
+
+        if (dateOfReceptionBuilder_ == null) {
+          dateOfReception_ = null;
+        } else {
+          dateOfReception_ = null;
+          dateOfReceptionBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientBadge_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientBadge getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientBadge.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientBadge build() {
+        protobuf.ClientIdentities.ClientBadge result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientBadge buildPartial() {
+        protobuf.ClientIdentities.ClientBadge result = new protobuf.ClientIdentities.ClientBadge(this);
+        result.badgeId_ = badgeId_;
+        result.badgeName_ = badgeName_;
+        result.badgeDescription_ = badgeDescription_;
+        if (dateOfReceptionBuilder_ == null) {
+          result.dateOfReception_ = dateOfReception_;
+        } else {
+          result.dateOfReception_ = dateOfReceptionBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.ClientBadge) {
+          return mergeFrom((protobuf.ClientIdentities.ClientBadge)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientBadge other) {
+        if (other == protobuf.ClientIdentities.ClientBadge.getDefaultInstance()) return this;
+        if (other.getBadgeId() != 0) {
+          setBadgeId(other.getBadgeId());
+        }
+        if (!other.getBadgeName().isEmpty()) {
+          badgeName_ = other.badgeName_;
+          onChanged();
+        }
+        if (!other.getBadgeDescription().isEmpty()) {
+          badgeDescription_ = other.badgeDescription_;
+          onChanged();
+        }
+        if (other.hasDateOfReception()) {
+          mergeDateOfReception(other.getDateOfReception());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.ClientBadge parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.ClientBadge) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int badgeId_ ;
+      /**
+       * <code>int32 badgeId = 1;</code>
+       * @return The badgeId.
+       */
+      public int getBadgeId() {
+        return badgeId_;
+      }
+      /**
+       * <code>int32 badgeId = 1;</code>
+       * @param value The badgeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBadgeId(int value) {
+        
+        badgeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 badgeId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBadgeId() {
+        
+        badgeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object badgeName_ = "";
+      /**
+       * <code>string badgeName = 2;</code>
+       * @return The badgeName.
+       */
+      public java.lang.String getBadgeName() {
+        java.lang.Object ref = badgeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          badgeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string badgeName = 2;</code>
+       * @return The bytes for badgeName.
+       */
+      public com.google.protobuf.ByteString
+          getBadgeNameBytes() {
+        java.lang.Object ref = badgeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          badgeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string badgeName = 2;</code>
+       * @param value The badgeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBadgeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        badgeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string badgeName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBadgeName() {
+        
+        badgeName_ = getDefaultInstance().getBadgeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string badgeName = 2;</code>
+       * @param value The bytes for badgeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBadgeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        badgeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object badgeDescription_ = "";
+      /**
+       * <code>string badgeDescription = 3;</code>
+       * @return The badgeDescription.
+       */
+      public java.lang.String getBadgeDescription() {
+        java.lang.Object ref = badgeDescription_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          badgeDescription_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string badgeDescription = 3;</code>
+       * @return The bytes for badgeDescription.
+       */
+      public com.google.protobuf.ByteString
+          getBadgeDescriptionBytes() {
+        java.lang.Object ref = badgeDescription_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          badgeDescription_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string badgeDescription = 3;</code>
+       * @param value The badgeDescription to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBadgeDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        badgeDescription_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string badgeDescription = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBadgeDescription() {
+        
+        badgeDescription_ = getDefaultInstance().getBadgeDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string badgeDescription = 3;</code>
+       * @param value The bytes for badgeDescription to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBadgeDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        badgeDescription_ = value;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientIdentities.ClientDate dateOfReception_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateOfReceptionBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       * @return Whether the dateOfReception field is set.
+       */
+      public boolean hasDateOfReception() {
+        return dateOfReceptionBuilder_ != null || dateOfReception_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       * @return The dateOfReception.
+       */
+      public protobuf.ClientIdentities.ClientDate getDateOfReception() {
+        if (dateOfReceptionBuilder_ == null) {
+          return dateOfReception_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfReception_;
+        } else {
+          return dateOfReceptionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public Builder setDateOfReception(protobuf.ClientIdentities.ClientDate value) {
+        if (dateOfReceptionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateOfReception_ = value;
+          onChanged();
+        } else {
+          dateOfReceptionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public Builder setDateOfReception(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateOfReceptionBuilder_ == null) {
+          dateOfReception_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateOfReceptionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public Builder mergeDateOfReception(protobuf.ClientIdentities.ClientDate value) {
+        if (dateOfReceptionBuilder_ == null) {
+          if (dateOfReception_ != null) {
+            dateOfReception_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateOfReception_).mergeFrom(value).buildPartial();
+          } else {
+            dateOfReception_ = value;
+          }
+          onChanged();
+        } else {
+          dateOfReceptionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public Builder clearDateOfReception() {
+        if (dateOfReceptionBuilder_ == null) {
+          dateOfReception_ = null;
+          onChanged();
+        } else {
+          dateOfReception_ = null;
+          dateOfReceptionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateOfReceptionBuilder() {
+        
+        onChanged();
+        return getDateOfReceptionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateOfReceptionOrBuilder() {
+        if (dateOfReceptionBuilder_ != null) {
+          return dateOfReceptionBuilder_.getMessageOrBuilder();
+        } else {
+          return dateOfReception_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateOfReception_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateOfReception = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateOfReceptionFieldBuilder() {
+        if (dateOfReceptionBuilder_ == null) {
+          dateOfReceptionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateOfReception(),
+                  getParentForChildren(),
+                  isClean());
+          dateOfReception_ = null;
+        }
+        return dateOfReceptionBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientBadge)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientBadge)
+    private static final protobuf.ClientIdentities.ClientBadge DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientBadge();
+    }
+
+    public static protobuf.ClientIdentities.ClientBadge getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientBadge>
+        PARSER = new com.google.protobuf.AbstractParser<ClientBadge>() {
+      @java.lang.Override
+      public ClientBadge parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientBadge(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientBadge> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientBadge> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.ClientBadge getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ClientBadgesOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientBadges)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @return A list containing the badgeId.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    java.util.List<java.lang.Integer> getBadgeIdList();
+    java.util.List<protobuf.ClientIdentities.ClientBadge> 
+        getBadgeList();
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @return The count of badgeId.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    int getBadgeIdCount();
+    protobuf.ClientIdentities.ClientBadge getBadge(int index);
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @param index The index of the element to return.
-     * @return The badgeId at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    int getBadgeId(int index);
+    int getBadgeCount();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientIdentities.ClientBadgeOrBuilder> 
+        getBadgeOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+     */
+    protobuf.ClientIdentities.ClientBadgeOrBuilder getBadgeOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientBadges}
@@ -2488,7 +5587,7 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientBadges() {
-      badgeId_ = emptyIntList();
+      badge_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2522,25 +5621,13 @@ public final class ClientIdentities {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 18: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                badgeId_ = newIntList();
+                badge_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientBadge>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              badgeId_.addInt(input.readInt32());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                badgeId_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                badgeId_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
+              badge_.add(
+                  input.readMessage(protobuf.ClientIdentities.ClientBadge.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -2559,7 +5646,7 @@ public final class ClientIdentities {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          badgeId_.makeImmutable(); // C
+          badge_ = java.util.Collections.unmodifiableList(badge_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2578,32 +5665,40 @@ public final class ClientIdentities {
               protobuf.ClientIdentities.ClientBadges.class, protobuf.ClientIdentities.ClientBadges.Builder.class);
     }
 
-    public static final int BADGEID_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.IntList badgeId_;
+    public static final int BADGE_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientIdentities.ClientBadge> badge_;
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @return A list containing the badgeId.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getBadgeIdList() {
-      return badgeId_;
+    public java.util.List<protobuf.ClientIdentities.ClientBadge> getBadgeList() {
+      return badge_;
     }
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @return The count of badgeId.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    public int getBadgeIdCount() {
-      return badgeId_.size();
+    public java.util.List<? extends protobuf.ClientIdentities.ClientBadgeOrBuilder> 
+        getBadgeOrBuilderList() {
+      return badge_;
     }
     /**
-     * <code>repeated int32 badgeId = 1;</code>
-     * @param index The index of the element to return.
-     * @return The badgeId at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
      */
-    public int getBadgeId(int index) {
-      return badgeId_.getInt(index);
+    public int getBadgeCount() {
+      return badge_.size();
     }
-    private int badgeIdMemoizedSerializedSize = -1;
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientBadge getBadge(int index) {
+      return badge_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+     */
+    public protobuf.ClientIdentities.ClientBadgeOrBuilder getBadgeOrBuilder(
+        int index) {
+      return badge_.get(index);
+    }
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -2619,13 +5714,8 @@ public final class ClientIdentities {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (getBadgeIdList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(badgeIdMemoizedSerializedSize);
-      }
-      for (int i = 0; i < badgeId_.size(); i++) {
-        output.writeInt32NoTag(badgeId_.getInt(i));
+      for (int i = 0; i < badge_.size(); i++) {
+        output.writeMessage(2, badge_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -2636,19 +5726,9 @@ public final class ClientIdentities {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < badgeId_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(badgeId_.getInt(i));
-        }
-        size += dataSize;
-        if (!getBadgeIdList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        badgeIdMemoizedSerializedSize = dataSize;
+      for (int i = 0; i < badge_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, badge_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2665,8 +5745,8 @@ public final class ClientIdentities {
       }
       protobuf.ClientIdentities.ClientBadges other = (protobuf.ClientIdentities.ClientBadges) obj;
 
-      if (!getBadgeIdList()
-          .equals(other.getBadgeIdList())) return false;
+      if (!getBadgeList()
+          .equals(other.getBadgeList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2678,9 +5758,9 @@ public final class ClientIdentities {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getBadgeIdCount() > 0) {
-        hash = (37 * hash) + BADGEID_FIELD_NUMBER;
-        hash = (53 * hash) + getBadgeIdList().hashCode();
+      if (getBadgeCount() > 0) {
+        hash = (37 * hash) + BADGE_FIELD_NUMBER;
+        hash = (53 * hash) + getBadgeList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2810,13 +5890,18 @@ public final class ClientIdentities {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getBadgeFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        badgeId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (badgeBuilder_ == null) {
+          badge_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          badgeBuilder_.clear();
+        }
         return this;
       }
 
@@ -2844,11 +5929,15 @@ public final class ClientIdentities {
       public protobuf.ClientIdentities.ClientBadges buildPartial() {
         protobuf.ClientIdentities.ClientBadges result = new protobuf.ClientIdentities.ClientBadges(this);
         int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          badgeId_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (badgeBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            badge_ = java.util.Collections.unmodifiableList(badge_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.badge_ = badge_;
+        } else {
+          result.badge_ = badgeBuilder_.build();
         }
-        result.badgeId_ = badgeId_;
         onBuilt();
         return result;
       }
@@ -2897,15 +5986,31 @@ public final class ClientIdentities {
 
       public Builder mergeFrom(protobuf.ClientIdentities.ClientBadges other) {
         if (other == protobuf.ClientIdentities.ClientBadges.getDefaultInstance()) return this;
-        if (!other.badgeId_.isEmpty()) {
-          if (badgeId_.isEmpty()) {
-            badgeId_ = other.badgeId_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureBadgeIdIsMutable();
-            badgeId_.addAll(other.badgeId_);
+        if (badgeBuilder_ == null) {
+          if (!other.badge_.isEmpty()) {
+            if (badge_.isEmpty()) {
+              badge_ = other.badge_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureBadgeIsMutable();
+              badge_.addAll(other.badge_);
+            }
+            onChanged();
           }
-          onChanged();
+        } else {
+          if (!other.badge_.isEmpty()) {
+            if (badgeBuilder_.isEmpty()) {
+              badgeBuilder_.dispose();
+              badgeBuilder_ = null;
+              badge_ = other.badge_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              badgeBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getBadgeFieldBuilder() : null;
+            } else {
+              badgeBuilder_.addAllMessages(other.badge_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2937,83 +6042,244 @@ public final class ClientIdentities {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.IntList badgeId_ = emptyIntList();
-      private void ensureBadgeIdIsMutable() {
+      private java.util.List<protobuf.ClientIdentities.ClientBadge> badge_ =
+        java.util.Collections.emptyList();
+      private void ensureBadgeIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          badgeId_ = mutableCopy(badgeId_);
+          badge_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientBadge>(badge_);
           bitField0_ |= 0x00000001;
          }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBadge, protobuf.ClientIdentities.ClientBadge.Builder, protobuf.ClientIdentities.ClientBadgeOrBuilder> badgeBuilder_;
+
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @return A list containing the badgeId.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public java.util.List<java.lang.Integer>
-          getBadgeIdList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(badgeId_) : badgeId_;
+      public java.util.List<protobuf.ClientIdentities.ClientBadge> getBadgeList() {
+        if (badgeBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(badge_);
+        } else {
+          return badgeBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @return The count of badgeId.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public int getBadgeIdCount() {
-        return badgeId_.size();
+      public int getBadgeCount() {
+        if (badgeBuilder_ == null) {
+          return badge_.size();
+        } else {
+          return badgeBuilder_.getCount();
+        }
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @param index The index of the element to return.
-       * @return The badgeId at the given index.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public int getBadgeId(int index) {
-        return badgeId_.getInt(index);
+      public protobuf.ClientIdentities.ClientBadge getBadge(int index) {
+        if (badgeBuilder_ == null) {
+          return badge_.get(index);
+        } else {
+          return badgeBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The badgeId to set.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public Builder setBadgeId(
-          int index, int value) {
-        ensureBadgeIdIsMutable();
-        badgeId_.setInt(index, value);
-        onChanged();
+      public Builder setBadge(
+          int index, protobuf.ClientIdentities.ClientBadge value) {
+        if (badgeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBadgeIsMutable();
+          badge_.set(index, value);
+          onChanged();
+        } else {
+          badgeBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @param value The badgeId to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public Builder addBadgeId(int value) {
-        ensureBadgeIdIsMutable();
-        badgeId_.addInt(value);
-        onChanged();
+      public Builder setBadge(
+          int index, protobuf.ClientIdentities.ClientBadge.Builder builderForValue) {
+        if (badgeBuilder_ == null) {
+          ensureBadgeIsMutable();
+          badge_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          badgeBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @param values The badgeId to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public Builder addAllBadgeId(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureBadgeIdIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, badgeId_);
-        onChanged();
+      public Builder addBadge(protobuf.ClientIdentities.ClientBadge value) {
+        if (badgeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBadgeIsMutable();
+          badge_.add(value);
+          onChanged();
+        } else {
+          badgeBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 badgeId = 1;</code>
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
        */
-      public Builder clearBadgeId() {
-        badgeId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+      public Builder addBadge(
+          int index, protobuf.ClientIdentities.ClientBadge value) {
+        if (badgeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBadgeIsMutable();
+          badge_.add(index, value);
+          onChanged();
+        } else {
+          badgeBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public Builder addBadge(
+          protobuf.ClientIdentities.ClientBadge.Builder builderForValue) {
+        if (badgeBuilder_ == null) {
+          ensureBadgeIsMutable();
+          badge_.add(builderForValue.build());
+          onChanged();
+        } else {
+          badgeBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public Builder addBadge(
+          int index, protobuf.ClientIdentities.ClientBadge.Builder builderForValue) {
+        if (badgeBuilder_ == null) {
+          ensureBadgeIsMutable();
+          badge_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          badgeBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public Builder addAllBadge(
+          java.lang.Iterable<? extends protobuf.ClientIdentities.ClientBadge> values) {
+        if (badgeBuilder_ == null) {
+          ensureBadgeIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, badge_);
+          onChanged();
+        } else {
+          badgeBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public Builder clearBadge() {
+        if (badgeBuilder_ == null) {
+          badge_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          badgeBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public Builder removeBadge(int index) {
+        if (badgeBuilder_ == null) {
+          ensureBadgeIsMutable();
+          badge_.remove(index);
+          onChanged();
+        } else {
+          badgeBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBadge.Builder getBadgeBuilder(
+          int index) {
+        return getBadgeFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBadgeOrBuilder getBadgeOrBuilder(
+          int index) {
+        if (badgeBuilder_ == null) {
+          return badge_.get(index);  } else {
+          return badgeBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientIdentities.ClientBadgeOrBuilder> 
+           getBadgeOrBuilderList() {
+        if (badgeBuilder_ != null) {
+          return badgeBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(badge_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBadge.Builder addBadgeBuilder() {
+        return getBadgeFieldBuilder().addBuilder(
+            protobuf.ClientIdentities.ClientBadge.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientBadge.Builder addBadgeBuilder(
+          int index) {
+        return getBadgeFieldBuilder().addBuilder(
+            index, protobuf.ClientIdentities.ClientBadge.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientBadge badge = 2;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientBadge.Builder> 
+           getBadgeBuilderList() {
+        return getBadgeFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientBadge, protobuf.ClientIdentities.ClientBadge.Builder, protobuf.ClientIdentities.ClientBadgeOrBuilder> 
+          getBadgeFieldBuilder() {
+        if (badgeBuilder_ == null) {
+          badgeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientIdentities.ClientBadge, protobuf.ClientIdentities.ClientBadge.Builder, protobuf.ClientIdentities.ClientBadgeOrBuilder>(
+                  badge_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          badge_ = null;
+        }
+        return badgeBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3068,43 +6334,788 @@ public final class ClientIdentities {
 
   }
 
+  public interface ClientFriendOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientFriend)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 clientId = 1;</code>
+     * @return The clientId.
+     */
+    int getClientId();
+
+    /**
+     * <code>bool markedAsBuddy = 2;</code>
+     * @return The markedAsBuddy.
+     */
+    boolean getMarkedAsBuddy();
+
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     * @return Whether the dateFriendsSince field is set.
+     */
+    boolean hasDateFriendsSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     * @return The dateFriendsSince.
+     */
+    protobuf.ClientIdentities.ClientDate getDateFriendsSince();
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     */
+    protobuf.ClientIdentities.ClientDateOrBuilder getDateFriendsSinceOrBuilder();
+  }
+  /**
+   * Protobuf type {@code protobuf.clientidentities.ClientFriend}
+   */
+  public  static final class ClientFriend extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientidentities.ClientFriend)
+      ClientFriendOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientFriend.newBuilder() to construct.
+    private ClientFriend(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientFriend() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientFriend();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientFriend(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              clientId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              markedAsBuddy_ = input.readBool();
+              break;
+            }
+            case 26: {
+              protobuf.ClientIdentities.ClientDate.Builder subBuilder = null;
+              if (dateFriendsSince_ != null) {
+                subBuilder = dateFriendsSince_.toBuilder();
+              }
+              dateFriendsSince_ = input.readMessage(protobuf.ClientIdentities.ClientDate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateFriendsSince_);
+                dateFriendsSince_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientFriend_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientFriend_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientIdentities.ClientFriend.class, protobuf.ClientIdentities.ClientFriend.Builder.class);
+    }
+
+    public static final int CLIENTID_FIELD_NUMBER = 1;
+    private int clientId_;
+    /**
+     * <code>int32 clientId = 1;</code>
+     * @return The clientId.
+     */
+    public int getClientId() {
+      return clientId_;
+    }
+
+    public static final int MARKEDASBUDDY_FIELD_NUMBER = 2;
+    private boolean markedAsBuddy_;
+    /**
+     * <code>bool markedAsBuddy = 2;</code>
+     * @return The markedAsBuddy.
+     */
+    public boolean getMarkedAsBuddy() {
+      return markedAsBuddy_;
+    }
+
+    public static final int DATEFRIENDSSINCE_FIELD_NUMBER = 3;
+    private protobuf.ClientIdentities.ClientDate dateFriendsSince_;
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     * @return Whether the dateFriendsSince field is set.
+     */
+    public boolean hasDateFriendsSince() {
+      return dateFriendsSince_ != null;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     * @return The dateFriendsSince.
+     */
+    public protobuf.ClientIdentities.ClientDate getDateFriendsSince() {
+      return dateFriendsSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateFriendsSince_;
+    }
+    /**
+     * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+     */
+    public protobuf.ClientIdentities.ClientDateOrBuilder getDateFriendsSinceOrBuilder() {
+      return getDateFriendsSince();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (clientId_ != 0) {
+        output.writeInt32(1, clientId_);
+      }
+      if (markedAsBuddy_ != false) {
+        output.writeBool(2, markedAsBuddy_);
+      }
+      if (dateFriendsSince_ != null) {
+        output.writeMessage(3, getDateFriendsSince());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (clientId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, clientId_);
+      }
+      if (markedAsBuddy_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, markedAsBuddy_);
+      }
+      if (dateFriendsSince_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getDateFriendsSince());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientIdentities.ClientFriend)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientIdentities.ClientFriend other = (protobuf.ClientIdentities.ClientFriend) obj;
+
+      if (getClientId()
+          != other.getClientId()) return false;
+      if (getMarkedAsBuddy()
+          != other.getMarkedAsBuddy()) return false;
+      if (hasDateFriendsSince() != other.hasDateFriendsSince()) return false;
+      if (hasDateFriendsSince()) {
+        if (!getDateFriendsSince()
+            .equals(other.getDateFriendsSince())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CLIENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getClientId();
+      hash = (37 * hash) + MARKEDASBUDDY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getMarkedAsBuddy());
+      if (hasDateFriendsSince()) {
+        hash = (37 * hash) + DATEFRIENDSSINCE_FIELD_NUMBER;
+        hash = (53 * hash) + getDateFriendsSince().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientIdentities.ClientFriend parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientIdentities.ClientFriend prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientidentities.ClientFriend}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientidentities.ClientFriend)
+        protobuf.ClientIdentities.ClientFriendOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientFriend_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientFriend_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientIdentities.ClientFriend.class, protobuf.ClientIdentities.ClientFriend.Builder.class);
+      }
+
+      // Construct using protobuf.ClientIdentities.ClientFriend.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        clientId_ = 0;
+
+        markedAsBuddy_ = false;
+
+        if (dateFriendsSinceBuilder_ == null) {
+          dateFriendsSince_ = null;
+        } else {
+          dateFriendsSince_ = null;
+          dateFriendsSinceBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientIdentities.internal_static_protobuf_clientidentities_ClientFriend_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientFriend getDefaultInstanceForType() {
+        return protobuf.ClientIdentities.ClientFriend.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientFriend build() {
+        protobuf.ClientIdentities.ClientFriend result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientIdentities.ClientFriend buildPartial() {
+        protobuf.ClientIdentities.ClientFriend result = new protobuf.ClientIdentities.ClientFriend(this);
+        result.clientId_ = clientId_;
+        result.markedAsBuddy_ = markedAsBuddy_;
+        if (dateFriendsSinceBuilder_ == null) {
+          result.dateFriendsSince_ = dateFriendsSince_;
+        } else {
+          result.dateFriendsSince_ = dateFriendsSinceBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientIdentities.ClientFriend) {
+          return mergeFrom((protobuf.ClientIdentities.ClientFriend)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientIdentities.ClientFriend other) {
+        if (other == protobuf.ClientIdentities.ClientFriend.getDefaultInstance()) return this;
+        if (other.getClientId() != 0) {
+          setClientId(other.getClientId());
+        }
+        if (other.getMarkedAsBuddy() != false) {
+          setMarkedAsBuddy(other.getMarkedAsBuddy());
+        }
+        if (other.hasDateFriendsSince()) {
+          mergeDateFriendsSince(other.getDateFriendsSince());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientIdentities.ClientFriend parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientIdentities.ClientFriend) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int clientId_ ;
+      /**
+       * <code>int32 clientId = 1;</code>
+       * @return The clientId.
+       */
+      public int getClientId() {
+        return clientId_;
+      }
+      /**
+       * <code>int32 clientId = 1;</code>
+       * @param value The clientId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClientId(int value) {
+        
+        clientId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 clientId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClientId() {
+        
+        clientId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean markedAsBuddy_ ;
+      /**
+       * <code>bool markedAsBuddy = 2;</code>
+       * @return The markedAsBuddy.
+       */
+      public boolean getMarkedAsBuddy() {
+        return markedAsBuddy_;
+      }
+      /**
+       * <code>bool markedAsBuddy = 2;</code>
+       * @param value The markedAsBuddy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMarkedAsBuddy(boolean value) {
+        
+        markedAsBuddy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool markedAsBuddy = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMarkedAsBuddy() {
+        
+        markedAsBuddy_ = false;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientIdentities.ClientDate dateFriendsSince_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> dateFriendsSinceBuilder_;
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       * @return Whether the dateFriendsSince field is set.
+       */
+      public boolean hasDateFriendsSince() {
+        return dateFriendsSinceBuilder_ != null || dateFriendsSince_ != null;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       * @return The dateFriendsSince.
+       */
+      public protobuf.ClientIdentities.ClientDate getDateFriendsSince() {
+        if (dateFriendsSinceBuilder_ == null) {
+          return dateFriendsSince_ == null ? protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateFriendsSince_;
+        } else {
+          return dateFriendsSinceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public Builder setDateFriendsSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateFriendsSinceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateFriendsSince_ = value;
+          onChanged();
+        } else {
+          dateFriendsSinceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public Builder setDateFriendsSince(
+          protobuf.ClientIdentities.ClientDate.Builder builderForValue) {
+        if (dateFriendsSinceBuilder_ == null) {
+          dateFriendsSince_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateFriendsSinceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public Builder mergeDateFriendsSince(protobuf.ClientIdentities.ClientDate value) {
+        if (dateFriendsSinceBuilder_ == null) {
+          if (dateFriendsSince_ != null) {
+            dateFriendsSince_ =
+              protobuf.ClientIdentities.ClientDate.newBuilder(dateFriendsSince_).mergeFrom(value).buildPartial();
+          } else {
+            dateFriendsSince_ = value;
+          }
+          onChanged();
+        } else {
+          dateFriendsSinceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public Builder clearDateFriendsSince() {
+        if (dateFriendsSinceBuilder_ == null) {
+          dateFriendsSince_ = null;
+          onChanged();
+        } else {
+          dateFriendsSince_ = null;
+          dateFriendsSinceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDate.Builder getDateFriendsSinceBuilder() {
+        
+        onChanged();
+        return getDateFriendsSinceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      public protobuf.ClientIdentities.ClientDateOrBuilder getDateFriendsSinceOrBuilder() {
+        if (dateFriendsSinceBuilder_ != null) {
+          return dateFriendsSinceBuilder_.getMessageOrBuilder();
+        } else {
+          return dateFriendsSince_ == null ?
+              protobuf.ClientIdentities.ClientDate.getDefaultInstance() : dateFriendsSince_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientidentities.ClientDate dateFriendsSince = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder> 
+          getDateFriendsSinceFieldBuilder() {
+        if (dateFriendsSinceBuilder_ == null) {
+          dateFriendsSinceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientDate, protobuf.ClientIdentities.ClientDate.Builder, protobuf.ClientIdentities.ClientDateOrBuilder>(
+                  getDateFriendsSince(),
+                  getParentForChildren(),
+                  isClean());
+          dateFriendsSince_ = null;
+        }
+        return dateFriendsSinceBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientidentities.ClientFriend)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientidentities.ClientFriend)
+    private static final protobuf.ClientIdentities.ClientFriend DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientIdentities.ClientFriend();
+    }
+
+    public static protobuf.ClientIdentities.ClientFriend getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientFriend>
+        PARSER = new com.google.protobuf.AbstractParser<ClientFriend>() {
+      @java.lang.Override
+      public ClientFriend parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientFriend(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientFriend> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientFriend> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientIdentities.ClientFriend getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ClientFriendsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientidentities.ClientFriends)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @return A list containing the friendId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    java.util.List<java.lang.Integer> getFriendIdList();
+    java.util.List<protobuf.ClientIdentities.ClientFriend> 
+        getFriendList();
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @return The count of friendId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    int getFriendIdCount();
+    protobuf.ClientIdentities.ClientFriend getFriend(int index);
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @param index The index of the element to return.
-     * @return The friendId at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    int getFriendId(int index);
-
+    int getFriendCount();
     /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @return A list containing the buddyId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    java.util.List<java.lang.Integer> getBuddyIdList();
+    java.util.List<? extends protobuf.ClientIdentities.ClientFriendOrBuilder> 
+        getFriendOrBuilderList();
     /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @return The count of buddyId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    int getBuddyIdCount();
-    /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @param index The index of the element to return.
-     * @return The buddyId at the given index.
-     */
-    int getBuddyId(int index);
+    protobuf.ClientIdentities.ClientFriendOrBuilder getFriendOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protobuf.clientidentities.ClientFriends}
@@ -3119,8 +7130,7 @@ public final class ClientIdentities {
       super(builder);
     }
     private ClientFriends() {
-      friendId_ = emptyIntList();
-      buddyId_ = emptyIntList();
+      friend_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -3154,46 +7164,13 @@ public final class ClientIdentities {
             case 0:
               done = true;
               break;
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                friendId_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              friendId_.addInt(input.readInt32());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                friendId_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                friendId_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                buddyId_ = newIntList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              buddyId_.addInt(input.readInt32());
-              break;
-            }
             case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                buddyId_ = newIntList();
-                mutable_bitField0_ |= 0x00000002;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                friend_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientFriend>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              while (input.getBytesUntilLimit() > 0) {
-                buddyId_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
+              friend_.add(
+                  input.readMessage(protobuf.ClientIdentities.ClientFriend.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -3212,10 +7189,7 @@ public final class ClientIdentities {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          friendId_.makeImmutable(); // C
-        }
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          buddyId_.makeImmutable(); // C
+          friend_ = java.util.Collections.unmodifiableList(friend_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3234,59 +7208,40 @@ public final class ClientIdentities {
               protobuf.ClientIdentities.ClientFriends.class, protobuf.ClientIdentities.ClientFriends.Builder.class);
     }
 
-    public static final int FRIENDID_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.IntList friendId_;
+    public static final int FRIEND_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientIdentities.ClientFriend> friend_;
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @return A list containing the friendId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getFriendIdList() {
-      return friendId_;
+    public java.util.List<protobuf.ClientIdentities.ClientFriend> getFriendList() {
+      return friend_;
     }
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @return The count of friendId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    public int getFriendIdCount() {
-      return friendId_.size();
+    public java.util.List<? extends protobuf.ClientIdentities.ClientFriendOrBuilder> 
+        getFriendOrBuilderList() {
+      return friend_;
     }
     /**
-     * <code>repeated int32 friendId = 1;</code>
-     * @param index The index of the element to return.
-     * @return The friendId at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    public int getFriendId(int index) {
-      return friendId_.getInt(index);
-    }
-    private int friendIdMemoizedSerializedSize = -1;
-
-    public static final int BUDDYID_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.IntList buddyId_;
-    /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @return A list containing the buddyId.
-     */
-    public java.util.List<java.lang.Integer>
-        getBuddyIdList() {
-      return buddyId_;
+    public int getFriendCount() {
+      return friend_.size();
     }
     /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @return The count of buddyId.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    public int getBuddyIdCount() {
-      return buddyId_.size();
+    public protobuf.ClientIdentities.ClientFriend getFriend(int index) {
+      return friend_.get(index);
     }
     /**
-     * <code>repeated int32 buddyId = 2;</code>
-     * @param index The index of the element to return.
-     * @return The buddyId at the given index.
+     * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
      */
-    public int getBuddyId(int index) {
-      return buddyId_.getInt(index);
+    public protobuf.ClientIdentities.ClientFriendOrBuilder getFriendOrBuilder(
+        int index) {
+      return friend_.get(index);
     }
-    private int buddyIdMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -3302,20 +7257,8 @@ public final class ClientIdentities {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (getFriendIdList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(friendIdMemoizedSerializedSize);
-      }
-      for (int i = 0; i < friendId_.size(); i++) {
-        output.writeInt32NoTag(friendId_.getInt(i));
-      }
-      if (getBuddyIdList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(buddyIdMemoizedSerializedSize);
-      }
-      for (int i = 0; i < buddyId_.size(); i++) {
-        output.writeInt32NoTag(buddyId_.getInt(i));
+      for (int i = 0; i < friend_.size(); i++) {
+        output.writeMessage(2, friend_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -3326,33 +7269,9 @@ public final class ClientIdentities {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < friendId_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(friendId_.getInt(i));
-        }
-        size += dataSize;
-        if (!getFriendIdList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        friendIdMemoizedSerializedSize = dataSize;
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < buddyId_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(buddyId_.getInt(i));
-        }
-        size += dataSize;
-        if (!getBuddyIdList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        buddyIdMemoizedSerializedSize = dataSize;
+      for (int i = 0; i < friend_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, friend_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3369,10 +7288,8 @@ public final class ClientIdentities {
       }
       protobuf.ClientIdentities.ClientFriends other = (protobuf.ClientIdentities.ClientFriends) obj;
 
-      if (!getFriendIdList()
-          .equals(other.getFriendIdList())) return false;
-      if (!getBuddyIdList()
-          .equals(other.getBuddyIdList())) return false;
+      if (!getFriendList()
+          .equals(other.getFriendList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3384,13 +7301,9 @@ public final class ClientIdentities {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getFriendIdCount() > 0) {
-        hash = (37 * hash) + FRIENDID_FIELD_NUMBER;
-        hash = (53 * hash) + getFriendIdList().hashCode();
-      }
-      if (getBuddyIdCount() > 0) {
-        hash = (37 * hash) + BUDDYID_FIELD_NUMBER;
-        hash = (53 * hash) + getBuddyIdList().hashCode();
+      if (getFriendCount() > 0) {
+        hash = (37 * hash) + FRIEND_FIELD_NUMBER;
+        hash = (53 * hash) + getFriendList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3520,15 +7433,18 @@ public final class ClientIdentities {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getFriendFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        friendId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        buddyId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (friendBuilder_ == null) {
+          friend_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          friendBuilder_.clear();
+        }
         return this;
       }
 
@@ -3556,16 +7472,15 @@ public final class ClientIdentities {
       public protobuf.ClientIdentities.ClientFriends buildPartial() {
         protobuf.ClientIdentities.ClientFriends result = new protobuf.ClientIdentities.ClientFriends(this);
         int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          friendId_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (friendBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            friend_ = java.util.Collections.unmodifiableList(friend_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.friend_ = friend_;
+        } else {
+          result.friend_ = friendBuilder_.build();
         }
-        result.friendId_ = friendId_;
-        if (((bitField0_ & 0x00000002) != 0)) {
-          buddyId_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.buddyId_ = buddyId_;
         onBuilt();
         return result;
       }
@@ -3614,25 +7529,31 @@ public final class ClientIdentities {
 
       public Builder mergeFrom(protobuf.ClientIdentities.ClientFriends other) {
         if (other == protobuf.ClientIdentities.ClientFriends.getDefaultInstance()) return this;
-        if (!other.friendId_.isEmpty()) {
-          if (friendId_.isEmpty()) {
-            friendId_ = other.friendId_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureFriendIdIsMutable();
-            friendId_.addAll(other.friendId_);
+        if (friendBuilder_ == null) {
+          if (!other.friend_.isEmpty()) {
+            if (friend_.isEmpty()) {
+              friend_ = other.friend_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureFriendIsMutable();
+              friend_.addAll(other.friend_);
+            }
+            onChanged();
           }
-          onChanged();
-        }
-        if (!other.buddyId_.isEmpty()) {
-          if (buddyId_.isEmpty()) {
-            buddyId_ = other.buddyId_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureBuddyIdIsMutable();
-            buddyId_.addAll(other.buddyId_);
+        } else {
+          if (!other.friend_.isEmpty()) {
+            if (friendBuilder_.isEmpty()) {
+              friendBuilder_.dispose();
+              friendBuilder_ = null;
+              friend_ = other.friend_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              friendBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getFriendFieldBuilder() : null;
+            } else {
+              friendBuilder_.addAllMessages(other.friend_);
+            }
           }
-          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3664,162 +7585,244 @@ public final class ClientIdentities {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.IntList friendId_ = emptyIntList();
-      private void ensureFriendIdIsMutable() {
+      private java.util.List<protobuf.ClientIdentities.ClientFriend> friend_ =
+        java.util.Collections.emptyList();
+      private void ensureFriendIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          friendId_ = mutableCopy(friendId_);
+          friend_ = new java.util.ArrayList<protobuf.ClientIdentities.ClientFriend>(friend_);
           bitField0_ |= 0x00000001;
          }
       }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @return A list containing the friendId.
-       */
-      public java.util.List<java.lang.Integer>
-          getFriendIdList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(friendId_) : friendId_;
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @return The count of friendId.
-       */
-      public int getFriendIdCount() {
-        return friendId_.size();
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @param index The index of the element to return.
-       * @return The friendId at the given index.
-       */
-      public int getFriendId(int index) {
-        return friendId_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The friendId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFriendId(
-          int index, int value) {
-        ensureFriendIdIsMutable();
-        friendId_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @param value The friendId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addFriendId(int value) {
-        ensureFriendIdIsMutable();
-        friendId_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @param values The friendId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllFriendId(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureFriendIdIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, friendId_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 friendId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFriendId() {
-        friendId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.Internal.IntList buddyId_ = emptyIntList();
-      private void ensureBuddyIdIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          buddyId_ = mutableCopy(buddyId_);
-          bitField0_ |= 0x00000002;
-         }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientFriend, protobuf.ClientIdentities.ClientFriend.Builder, protobuf.ClientIdentities.ClientFriendOrBuilder> friendBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientFriend> getFriendList() {
+        if (friendBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(friend_);
+        } else {
+          return friendBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @return A list containing the buddyId.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public java.util.List<java.lang.Integer>
-          getBuddyIdList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(buddyId_) : buddyId_;
+      public int getFriendCount() {
+        if (friendBuilder_ == null) {
+          return friend_.size();
+        } else {
+          return friendBuilder_.getCount();
+        }
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @return The count of buddyId.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public int getBuddyIdCount() {
-        return buddyId_.size();
+      public protobuf.ClientIdentities.ClientFriend getFriend(int index) {
+        if (friendBuilder_ == null) {
+          return friend_.get(index);
+        } else {
+          return friendBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @param index The index of the element to return.
-       * @return The buddyId at the given index.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public int getBuddyId(int index) {
-        return buddyId_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The buddyId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBuddyId(
-          int index, int value) {
-        ensureBuddyIdIsMutable();
-        buddyId_.setInt(index, value);
-        onChanged();
+      public Builder setFriend(
+          int index, protobuf.ClientIdentities.ClientFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.set(index, value);
+          onChanged();
+        } else {
+          friendBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @param value The buddyId to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public Builder addBuddyId(int value) {
-        ensureBuddyIdIsMutable();
-        buddyId_.addInt(value);
-        onChanged();
+      public Builder setFriend(
+          int index, protobuf.ClientIdentities.ClientFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @param values The buddyId to add.
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public Builder addAllBuddyId(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureBuddyIdIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, buddyId_);
-        onChanged();
+      public Builder addFriend(protobuf.ClientIdentities.ClientFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.add(value);
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 buddyId = 2;</code>
-       * @return This builder for chaining.
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
        */
-      public Builder clearBuddyId() {
-        buddyId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
+      public Builder addFriend(
+          int index, protobuf.ClientIdentities.ClientFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.add(index, value);
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public Builder addFriend(
+          protobuf.ClientIdentities.ClientFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.add(builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public Builder addFriend(
+          int index, protobuf.ClientIdentities.ClientFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public Builder addAllFriend(
+          java.lang.Iterable<? extends protobuf.ClientIdentities.ClientFriend> values) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, friend_);
+          onChanged();
+        } else {
+          friendBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public Builder clearFriend() {
+        if (friendBuilder_ == null) {
+          friend_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          friendBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public Builder removeFriend(int index) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.remove(index);
+          onChanged();
+        } else {
+          friendBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientFriend.Builder getFriendBuilder(
+          int index) {
+        return getFriendFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientFriendOrBuilder getFriendOrBuilder(
+          int index) {
+        if (friendBuilder_ == null) {
+          return friend_.get(index);  } else {
+          return friendBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientIdentities.ClientFriendOrBuilder> 
+           getFriendOrBuilderList() {
+        if (friendBuilder_ != null) {
+          return friendBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(friend_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientFriend.Builder addFriendBuilder() {
+        return getFriendFieldBuilder().addBuilder(
+            protobuf.ClientIdentities.ClientFriend.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public protobuf.ClientIdentities.ClientFriend.Builder addFriendBuilder(
+          int index) {
+        return getFriendFieldBuilder().addBuilder(
+            index, protobuf.ClientIdentities.ClientFriend.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientidentities.ClientFriend friend = 2;</code>
+       */
+      public java.util.List<protobuf.ClientIdentities.ClientFriend.Builder> 
+           getFriendBuilderList() {
+        return getFriendFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientIdentities.ClientFriend, protobuf.ClientIdentities.ClientFriend.Builder, protobuf.ClientIdentities.ClientFriendOrBuilder> 
+          getFriendFieldBuilder() {
+        if (friendBuilder_ == null) {
+          friendBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientIdentities.ClientFriend, protobuf.ClientIdentities.ClientFriend.Builder, protobuf.ClientIdentities.ClientFriendOrBuilder>(
+                  friend_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          friend_ = null;
+        }
+        return friendBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -8284,19 +12287,19 @@ public final class ClientIdentities {
     protobuf.ClientIdentities.ClientStatus getStatus();
 
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-     * @return Whether the pictures field is set.
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+     * @return Whether the images field is set.
      */
-    boolean hasPictures();
+    boolean hasImages();
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-     * @return The pictures.
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+     * @return The images.
      */
-    protobuf.ClientIdentities.ClientPictures getPictures();
+    protobuf.ClientIdentities.ClientImages getImages();
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
      */
-    protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder();
+    protobuf.ClientIdentities.ClientImagesOrBuilder getImagesOrBuilder();
 
     /**
      * <code>.protobuf.clientidentities.ClientGroups groups = 4;</code>
@@ -8439,14 +12442,14 @@ public final class ClientIdentities {
               break;
             }
             case 26: {
-              protobuf.ClientIdentities.ClientPictures.Builder subBuilder = null;
-              if (pictures_ != null) {
-                subBuilder = pictures_.toBuilder();
+              protobuf.ClientIdentities.ClientImages.Builder subBuilder = null;
+              if (images_ != null) {
+                subBuilder = images_.toBuilder();
               }
-              pictures_ = input.readMessage(protobuf.ClientIdentities.ClientPictures.parser(), extensionRegistry);
+              images_ = input.readMessage(protobuf.ClientIdentities.ClientImages.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(pictures_);
-                pictures_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(images_);
+                images_ = subBuilder.buildPartial();
               }
 
               break;
@@ -8590,27 +12593,27 @@ public final class ClientIdentities {
       return result == null ? protobuf.ClientIdentities.ClientStatus.UNRECOGNIZED : result;
     }
 
-    public static final int PICTURES_FIELD_NUMBER = 3;
-    private protobuf.ClientIdentities.ClientPictures pictures_;
+    public static final int IMAGES_FIELD_NUMBER = 3;
+    private protobuf.ClientIdentities.ClientImages images_;
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-     * @return Whether the pictures field is set.
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+     * @return Whether the images field is set.
      */
-    public boolean hasPictures() {
-      return pictures_ != null;
+    public boolean hasImages() {
+      return images_ != null;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-     * @return The pictures.
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+     * @return The images.
      */
-    public protobuf.ClientIdentities.ClientPictures getPictures() {
-      return pictures_ == null ? protobuf.ClientIdentities.ClientPictures.getDefaultInstance() : pictures_;
+    public protobuf.ClientIdentities.ClientImages getImages() {
+      return images_ == null ? protobuf.ClientIdentities.ClientImages.getDefaultInstance() : images_;
     }
     /**
-     * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+     * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
      */
-    public protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder() {
-      return getPictures();
+    public protobuf.ClientIdentities.ClientImagesOrBuilder getImagesOrBuilder() {
+      return getImages();
     }
 
     public static final int GROUPS_FIELD_NUMBER = 4;
@@ -8748,8 +12751,8 @@ public final class ClientIdentities {
       if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN.getNumber()) {
         output.writeEnum(2, status_);
       }
-      if (pictures_ != null) {
-        output.writeMessage(3, getPictures());
+      if (images_ != null) {
+        output.writeMessage(3, getImages());
       }
       if (groups_ != null) {
         output.writeMessage(4, getGroups());
@@ -8783,9 +12786,9 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, status_);
       }
-      if (pictures_ != null) {
+      if (images_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getPictures());
+          .computeMessageSize(3, getImages());
       }
       if (groups_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -8828,10 +12831,10 @@ public final class ClientIdentities {
             .equals(other.getBase())) return false;
       }
       if (status_ != other.status_) return false;
-      if (hasPictures() != other.hasPictures()) return false;
-      if (hasPictures()) {
-        if (!getPictures()
-            .equals(other.getPictures())) return false;
+      if (hasImages() != other.hasImages()) return false;
+      if (hasImages()) {
+        if (!getImages()
+            .equals(other.getImages())) return false;
       }
       if (hasGroups() != other.hasGroups()) return false;
       if (hasGroups()) {
@@ -8875,9 +12878,9 @@ public final class ClientIdentities {
       }
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
-      if (hasPictures()) {
-        hash = (37 * hash) + PICTURES_FIELD_NUMBER;
-        hash = (53 * hash) + getPictures().hashCode();
+      if (hasImages()) {
+        hash = (37 * hash) + IMAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getImages().hashCode();
       }
       if (hasGroups()) {
         hash = (37 * hash) + GROUPS_FIELD_NUMBER;
@@ -9040,11 +13043,11 @@ public final class ClientIdentities {
         }
         status_ = 0;
 
-        if (picturesBuilder_ == null) {
-          pictures_ = null;
+        if (imagesBuilder_ == null) {
+          images_ = null;
         } else {
-          pictures_ = null;
-          picturesBuilder_ = null;
+          images_ = null;
+          imagesBuilder_ = null;
         }
         if (groupsBuilder_ == null) {
           groups_ = null;
@@ -9108,10 +13111,10 @@ public final class ClientIdentities {
           result.base_ = baseBuilder_.build();
         }
         result.status_ = status_;
-        if (picturesBuilder_ == null) {
-          result.pictures_ = pictures_;
+        if (imagesBuilder_ == null) {
+          result.images_ = images_;
         } else {
-          result.pictures_ = picturesBuilder_.build();
+          result.images_ = imagesBuilder_.build();
         }
         if (groupsBuilder_ == null) {
           result.groups_ = groups_;
@@ -9192,8 +13195,8 @@ public final class ClientIdentities {
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
         }
-        if (other.hasPictures()) {
-          mergePictures(other.getPictures());
+        if (other.hasImages()) {
+          mergeImages(other.getImages());
         }
         if (other.hasGroups()) {
           mergeGroups(other.getGroups());
@@ -9410,123 +13413,123 @@ public final class ClientIdentities {
         return this;
       }
 
-      private protobuf.ClientIdentities.ClientPictures pictures_;
+      private protobuf.ClientIdentities.ClientImages images_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientPictures, protobuf.ClientIdentities.ClientPictures.Builder, protobuf.ClientIdentities.ClientPicturesOrBuilder> picturesBuilder_;
+          protobuf.ClientIdentities.ClientImages, protobuf.ClientIdentities.ClientImages.Builder, protobuf.ClientIdentities.ClientImagesOrBuilder> imagesBuilder_;
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-       * @return Whether the pictures field is set.
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+       * @return Whether the images field is set.
        */
-      public boolean hasPictures() {
-        return picturesBuilder_ != null || pictures_ != null;
+      public boolean hasImages() {
+        return imagesBuilder_ != null || images_ != null;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
-       * @return The pictures.
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
+       * @return The images.
        */
-      public protobuf.ClientIdentities.ClientPictures getPictures() {
-        if (picturesBuilder_ == null) {
-          return pictures_ == null ? protobuf.ClientIdentities.ClientPictures.getDefaultInstance() : pictures_;
+      public protobuf.ClientIdentities.ClientImages getImages() {
+        if (imagesBuilder_ == null) {
+          return images_ == null ? protobuf.ClientIdentities.ClientImages.getDefaultInstance() : images_;
         } else {
-          return picturesBuilder_.getMessage();
+          return imagesBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public Builder setPictures(protobuf.ClientIdentities.ClientPictures value) {
-        if (picturesBuilder_ == null) {
+      public Builder setImages(protobuf.ClientIdentities.ClientImages value) {
+        if (imagesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          pictures_ = value;
+          images_ = value;
           onChanged();
         } else {
-          picturesBuilder_.setMessage(value);
+          imagesBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public Builder setPictures(
-          protobuf.ClientIdentities.ClientPictures.Builder builderForValue) {
-        if (picturesBuilder_ == null) {
-          pictures_ = builderForValue.build();
+      public Builder setImages(
+          protobuf.ClientIdentities.ClientImages.Builder builderForValue) {
+        if (imagesBuilder_ == null) {
+          images_ = builderForValue.build();
           onChanged();
         } else {
-          picturesBuilder_.setMessage(builderForValue.build());
+          imagesBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public Builder mergePictures(protobuf.ClientIdentities.ClientPictures value) {
-        if (picturesBuilder_ == null) {
-          if (pictures_ != null) {
-            pictures_ =
-              protobuf.ClientIdentities.ClientPictures.newBuilder(pictures_).mergeFrom(value).buildPartial();
+      public Builder mergeImages(protobuf.ClientIdentities.ClientImages value) {
+        if (imagesBuilder_ == null) {
+          if (images_ != null) {
+            images_ =
+              protobuf.ClientIdentities.ClientImages.newBuilder(images_).mergeFrom(value).buildPartial();
           } else {
-            pictures_ = value;
+            images_ = value;
           }
           onChanged();
         } else {
-          picturesBuilder_.mergeFrom(value);
+          imagesBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public Builder clearPictures() {
-        if (picturesBuilder_ == null) {
-          pictures_ = null;
+      public Builder clearImages() {
+        if (imagesBuilder_ == null) {
+          images_ = null;
           onChanged();
         } else {
-          pictures_ = null;
-          picturesBuilder_ = null;
+          images_ = null;
+          imagesBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public protobuf.ClientIdentities.ClientPictures.Builder getPicturesBuilder() {
+      public protobuf.ClientIdentities.ClientImages.Builder getImagesBuilder() {
         
         onChanged();
-        return getPicturesFieldBuilder().getBuilder();
+        return getImagesFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
-      public protobuf.ClientIdentities.ClientPicturesOrBuilder getPicturesOrBuilder() {
-        if (picturesBuilder_ != null) {
-          return picturesBuilder_.getMessageOrBuilder();
+      public protobuf.ClientIdentities.ClientImagesOrBuilder getImagesOrBuilder() {
+        if (imagesBuilder_ != null) {
+          return imagesBuilder_.getMessageOrBuilder();
         } else {
-          return pictures_ == null ?
-              protobuf.ClientIdentities.ClientPictures.getDefaultInstance() : pictures_;
+          return images_ == null ?
+              protobuf.ClientIdentities.ClientImages.getDefaultInstance() : images_;
         }
       }
       /**
-       * <code>.protobuf.clientidentities.ClientPictures pictures = 3;</code>
+       * <code>.protobuf.clientidentities.ClientImages images = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientIdentities.ClientPictures, protobuf.ClientIdentities.ClientPictures.Builder, protobuf.ClientIdentities.ClientPicturesOrBuilder> 
-          getPicturesFieldBuilder() {
-        if (picturesBuilder_ == null) {
-          picturesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientIdentities.ClientPictures, protobuf.ClientIdentities.ClientPictures.Builder, protobuf.ClientIdentities.ClientPicturesOrBuilder>(
-                  getPictures(),
+          protobuf.ClientIdentities.ClientImages, protobuf.ClientIdentities.ClientImages.Builder, protobuf.ClientIdentities.ClientImagesOrBuilder> 
+          getImagesFieldBuilder() {
+        if (imagesBuilder_ == null) {
+          imagesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientIdentities.ClientImages, protobuf.ClientIdentities.ClientImages.Builder, protobuf.ClientIdentities.ClientImagesOrBuilder>(
+                  getImages(),
                   getParentForChildren(),
                   isClean());
-          pictures_ = null;
+          images_ = null;
         }
-        return picturesBuilder_;
+        return imagesBuilder_;
       }
 
       private protobuf.ClientIdentities.ClientGroups groups_;
@@ -11318,20 +15321,40 @@ public final class ClientIdentities {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientidentities_ClientBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientidentities_ClientPictures_descriptor;
+    internal_static_protobuf_clientidentities_ClientImages_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientidentities_ClientPictures_fieldAccessorTable;
+      internal_static_protobuf_clientidentities_ClientImages_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_AdminGroup_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_AdminGroup_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_ClientGroup_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_ClientGroup_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientidentities_ClientGroups_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientidentities_ClientGroups_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_ClientBadge_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_ClientBadge_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientidentities_ClientBadges_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientidentities_ClientBadges_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientidentities_ClientFriend_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientidentities_ClientFriend_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientidentities_ClientFriends_descriptor;
   private static final 
@@ -11383,52 +15406,69 @@ public final class ClientIdentities {
     java.lang.String[] descriptorData = {
       "\n\037protobuf/ClientIdentities.proto\022\031proto" +
       "buf.clientidentities\"*\n\nClientBase\022\n\n\002id" +
-      "\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\"\\\n\016ClientPictur" +
-      "es\022\027\n\017profileImageURI\030\001 \001(\t\022\025\n\rtitleImag" +
-      "eURI\030\002 \001(\t\022\032\n\022backgroundImageURI\030\003 \001(\t\"7" +
-      "\n\014ClientGroups\022\022\n\nadminGroup\030\001 \001(\005\022\023\n\013cl" +
-      "ientGroup\030\002 \003(\005\"\037\n\014ClientBadges\022\017\n\007badge" +
-      "Id\030\001 \003(\005\"2\n\rClientFriends\022\020\n\010friendId\030\001 " +
-      "\003(\005\022\017\n\007buddyId\030\002 \003(\005\"f\n\nClientDate\022\014\n\004ye" +
-      "ar\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\013\n\003day\030\003 \001(\005\022\014\n\004" +
-      "hour\030\004 \001(\005\022\017\n\007minutes\030\005 \001(\005\022\017\n\007seconds\030\006" +
-      " \001(\005\"8\n\020ClientDeviceBase\022\020\n\010deviceId\030\001 \001" +
-      "(\005\022\022\n\ndeviceName\030\002 \001(\t\"=\n\023ClientDeviceAd" +
-      "dress\022\022\n\ndeviceIpV4\030\001 \003(\t\022\022\n\ndeviceIpV6\030" +
-      "\002 \003(\t\"\327\001\n\016ClientDeviceOs\022\024\n\014deviceOsName" +
-      "\030\001 \001(\t\022\027\n\017deviceOsVersion\030\002 \001(\t\022R\n\014devic" +
-      "eOsType\030\003 \001(\0162<.protobuf.clientidentitie" +
-      "s.ClientDeviceOs.ClientDeviceOsType\"B\n\022C" +
-      "lientDeviceOsType\022\013\n\007WINDOWS\020\000\022\t\n\005LINUX\020" +
-      "\001\022\007\n\003IOS\020\002\022\013\n\007ANDROID\020\003\"\224\002\n\014ClientDevice" +
-      "\022?\n\ndeviceBase\030\001 \001(\0132+.protobuf.clientid" +
-      "entities.ClientDeviceBase\022E\n\rdeviceAddre" +
-      "ss\030\002 \001(\0132..protobuf.clientidentities.Cli" +
-      "entDeviceAddress\022;\n\010deviceOs\030\003 \001(\0132).pro" +
-      "tobuf.clientidentities.ClientDeviceOs\022?\n" +
-      "\ndeviceType\030\004 \001(\0162+.protobuf.clientident" +
-      "ities.ClientDeviceType\"\351\003\n\rClientProfile" +
-      "\0223\n\004base\030\001 \001(\0132%.protobuf.clientidentiti" +
-      "es.ClientBase\0227\n\006status\030\002 \001(\0162\'.protobuf" +
-      ".clientidentities.ClientStatus\022;\n\010pictur" +
-      "es\030\003 \001(\0132).protobuf.clientidentities.Cli" +
-      "entPictures\0227\n\006groups\030\004 \001(\0132\'.protobuf.c" +
-      "lientidentities.ClientGroups\0227\n\006badges\030\005" +
-      " \001(\0132\'.protobuf.clientidentities.ClientB" +
-      "adges\0229\n\007friends\030\006 \001(\0132(.protobuf.client" +
-      "identities.ClientFriends\022A\n\022dateOfRegist" +
-      "ration\030\007 \001(\0132%.protobuf.clientidentities" +
-      ".ClientDate\022=\n\016dateLastOnline\030\010 \001(\0132%.pr" +
-      "otobuf.clientidentities.ClientDate\"\237\001\n\rC" +
-      "lientAccount\0229\n\007profile\030\001 \001(\0132(.protobuf" +
-      ".clientidentities.ClientProfile\022\020\n\010passw" +
-      "ord\030\002 \001(\t\022A\n\020registeredDevice\030\003 \003(\0132\'.pr" +
-      "otobuf.clientidentities.ClientDevice*`\n\014" +
-      "ClientStatus\022\013\n\007UNKNOWN\020\000\022\013\n\007OFFLINE\020\001\022\n" +
-      "\n\006ONLINE\020\002\022\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020" +
-      "\005\022\013\n\007DELETED\020\006*8\n\020ClientDeviceType\022\013\n\007DE" +
-      "SKTOP\020\000\022\013\n\007BROWSER\020\001\022\n\n\006MOBILE\020\002B\034\n\010prot" +
-      "obufB\020ClientIdentitiesb\006proto3"
+      "\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\"Z\n\014ClientImages" +
+      "\022\027\n\017profileImageURI\030\001 \001(\t\022\025\n\rtitleImageU" +
+      "RI\030\002 \001(\t\022\032\n\022backgroundImageURI\030\003 \001(\t\"\211\001\n" +
+      "\nAdminGroup\022\017\n\007groupId\030\001 \001(\005\022\021\n\tgroupNam" +
+      "e\030\002 \001(\t\022\027\n\017permissionLevel\030\003 \001(\005\022>\n\017date" +
+      "MemberSince\030\004 \001(\0132%.protobuf.clientident" +
+      "ities.ClientDate\"\205\001\n\013ClientGroup\022\017\n\007grou" +
+      "pId\030\001 \001(\005\022\021\n\tgroupName\030\002 \001(\t\022\022\n\ngroupLev" +
+      "el\030\003 \001(\005\022>\n\017dateMemberSince\030\004 \001(\0132%.prot" +
+      "obuf.clientidentities.ClientDate\"\206\001\n\014Cli" +
+      "entGroups\0229\n\nadminGroup\030\001 \001(\0132%.protobuf" +
+      ".clientidentities.AdminGroup\022;\n\013clientGr" +
+      "oup\030\002 \003(\0132&.protobuf.clientidentities.Cl" +
+      "ientGroup\"\213\001\n\013ClientBadge\022\017\n\007badgeId\030\001 \001" +
+      "(\005\022\021\n\tbadgeName\030\002 \001(\t\022\030\n\020badgeDescriptio" +
+      "n\030\003 \001(\t\022>\n\017dateOfReception\030\004 \001(\0132%.proto" +
+      "buf.clientidentities.ClientDate\"E\n\014Clien" +
+      "tBadges\0225\n\005badge\030\002 \003(\0132&.protobuf.client" +
+      "identities.ClientBadge\"x\n\014ClientFriend\022\020" +
+      "\n\010clientId\030\001 \001(\005\022\025\n\rmarkedAsBuddy\030\002 \001(\010\022" +
+      "?\n\020dateFriendsSince\030\003 \001(\0132%.protobuf.cli" +
+      "entidentities.ClientDate\"H\n\rClientFriend" +
+      "s\0227\n\006friend\030\002 \003(\0132\'.protobuf.clientident" +
+      "ities.ClientFriend\"f\n\nClientDate\022\014\n\004year" +
+      "\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\013\n\003day\030\003 \001(\005\022\014\n\004ho" +
+      "ur\030\004 \001(\005\022\017\n\007minutes\030\005 \001(\005\022\017\n\007seconds\030\006 \001" +
+      "(\005\"8\n\020ClientDeviceBase\022\020\n\010deviceId\030\001 \001(\005" +
+      "\022\022\n\ndeviceName\030\002 \001(\t\"=\n\023ClientDeviceAddr" +
+      "ess\022\022\n\ndeviceIpV4\030\001 \003(\t\022\022\n\ndeviceIpV6\030\002 " +
+      "\003(\t\"\327\001\n\016ClientDeviceOs\022\024\n\014deviceOsName\030\001" +
+      " \001(\t\022\027\n\017deviceOsVersion\030\002 \001(\t\022R\n\014deviceO" +
+      "sType\030\003 \001(\0162<.protobuf.clientidentities." +
+      "ClientDeviceOs.ClientDeviceOsType\"B\n\022Cli" +
+      "entDeviceOsType\022\013\n\007WINDOWS\020\000\022\t\n\005LINUX\020\001\022" +
+      "\007\n\003IOS\020\002\022\013\n\007ANDROID\020\003\"\224\002\n\014ClientDevice\022?" +
+      "\n\ndeviceBase\030\001 \001(\0132+.protobuf.clientiden" +
+      "tities.ClientDeviceBase\022E\n\rdeviceAddress" +
+      "\030\002 \001(\0132..protobuf.clientidentities.Clien" +
+      "tDeviceAddress\022;\n\010deviceOs\030\003 \001(\0132).proto" +
+      "buf.clientidentities.ClientDeviceOs\022?\n\nd" +
+      "eviceType\030\004 \001(\0162+.protobuf.clientidentit" +
+      "ies.ClientDeviceType\"\345\003\n\rClientProfile\0223" +
+      "\n\004base\030\001 \001(\0132%.protobuf.clientidentities" +
+      ".ClientBase\0227\n\006status\030\002 \001(\0162\'.protobuf.c" +
+      "lientidentities.ClientStatus\0227\n\006images\030\003" +
+      " \001(\0132\'.protobuf.clientidentities.ClientI" +
+      "mages\0227\n\006groups\030\004 \001(\0132\'.protobuf.clienti" +
+      "dentities.ClientGroups\0227\n\006badges\030\005 \001(\0132\'" +
+      ".protobuf.clientidentities.ClientBadges\022" +
+      "9\n\007friends\030\006 \001(\0132(.protobuf.clientidenti" +
+      "ties.ClientFriends\022A\n\022dateOfRegistration" +
+      "\030\007 \001(\0132%.protobuf.clientidentities.Clien" +
+      "tDate\022=\n\016dateLastOnline\030\010 \001(\0132%.protobuf" +
+      ".clientidentities.ClientDate\"\237\001\n\rClientA" +
+      "ccount\0229\n\007profile\030\001 \001(\0132(.protobuf.clien" +
+      "tidentities.ClientProfile\022\020\n\010password\030\002 " +
+      "\001(\t\022A\n\020registeredDevice\030\003 \003(\0132\'.protobuf" +
+      ".clientidentities.ClientDevice*`\n\014Client" +
+      "Status\022\013\n\007UNKNOWN\020\000\022\013\n\007OFFLINE\020\001\022\n\n\006ONLI" +
+      "NE\020\002\022\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020\005\022\013\n\007D" +
+      "ELETED\020\006*8\n\020ClientDeviceType\022\013\n\007DESKTOP\020" +
+      "\000\022\013\n\007BROWSER\020\001\022\n\n\006MOBILE\020\002B\034\n\010protobufB\020" +
+      "ClientIdentitiesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11440,68 +15480,92 @@ public final class ClientIdentities {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientBase_descriptor,
         new java.lang.String[] { "Id", "Username", });
-    internal_static_protobuf_clientidentities_ClientPictures_descriptor =
+    internal_static_protobuf_clientidentities_ClientImages_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_protobuf_clientidentities_ClientPictures_fieldAccessorTable = new
+    internal_static_protobuf_clientidentities_ClientImages_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientidentities_ClientPictures_descriptor,
+        internal_static_protobuf_clientidentities_ClientImages_descriptor,
         new java.lang.String[] { "ProfileImageURI", "TitleImageURI", "BackgroundImageURI", });
-    internal_static_protobuf_clientidentities_ClientGroups_descriptor =
+    internal_static_protobuf_clientidentities_AdminGroup_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_protobuf_clientidentities_AdminGroup_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_AdminGroup_descriptor,
+        new java.lang.String[] { "GroupId", "GroupName", "PermissionLevel", "DateMemberSince", });
+    internal_static_protobuf_clientidentities_ClientGroup_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_protobuf_clientidentities_ClientGroup_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_ClientGroup_descriptor,
+        new java.lang.String[] { "GroupId", "GroupName", "GroupLevel", "DateMemberSince", });
+    internal_static_protobuf_clientidentities_ClientGroups_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_protobuf_clientidentities_ClientGroups_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientGroups_descriptor,
         new java.lang.String[] { "AdminGroup", "ClientGroup", });
+    internal_static_protobuf_clientidentities_ClientBadge_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_protobuf_clientidentities_ClientBadge_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_ClientBadge_descriptor,
+        new java.lang.String[] { "BadgeId", "BadgeName", "BadgeDescription", "DateOfReception", });
     internal_static_protobuf_clientidentities_ClientBadges_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_protobuf_clientidentities_ClientBadges_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientBadges_descriptor,
-        new java.lang.String[] { "BadgeId", });
+        new java.lang.String[] { "Badge", });
+    internal_static_protobuf_clientidentities_ClientFriend_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_protobuf_clientidentities_ClientFriend_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientidentities_ClientFriend_descriptor,
+        new java.lang.String[] { "ClientId", "MarkedAsBuddy", "DateFriendsSince", });
     internal_static_protobuf_clientidentities_ClientFriends_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_protobuf_clientidentities_ClientFriends_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientFriends_descriptor,
-        new java.lang.String[] { "FriendId", "BuddyId", });
+        new java.lang.String[] { "Friend", });
     internal_static_protobuf_clientidentities_ClientDate_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_protobuf_clientidentities_ClientDate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDate_descriptor,
         new java.lang.String[] { "Year", "Month", "Day", "Hour", "Minutes", "Seconds", });
     internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_protobuf_clientidentities_ClientDeviceBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDeviceBase_descriptor,
         new java.lang.String[] { "DeviceId", "DeviceName", });
     internal_static_protobuf_clientidentities_ClientDeviceAddress_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_protobuf_clientidentities_ClientDeviceAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDeviceAddress_descriptor,
         new java.lang.String[] { "DeviceIpV4", "DeviceIpV6", });
     internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_protobuf_clientidentities_ClientDeviceOs_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDeviceOs_descriptor,
         new java.lang.String[] { "DeviceOsName", "DeviceOsVersion", "DeviceOsType", });
     internal_static_protobuf_clientidentities_ClientDevice_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_protobuf_clientidentities_ClientDevice_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientDevice_descriptor,
         new java.lang.String[] { "DeviceBase", "DeviceAddress", "DeviceOs", "DeviceType", });
     internal_static_protobuf_clientidentities_ClientProfile_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_protobuf_clientidentities_ClientProfile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientProfile_descriptor,
-        new java.lang.String[] { "Base", "Status", "Pictures", "Groups", "Badges", "Friends", "DateOfRegistration", "DateLastOnline", });
+        new java.lang.String[] { "Base", "Status", "Images", "Groups", "Badges", "Friends", "DateOfRegistration", "DateLastOnline", });
     internal_static_protobuf_clientidentities_ClientAccount_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_protobuf_clientidentities_ClientAccount_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientidentities_ClientAccount_descriptor,

@@ -19,24 +19,50 @@ enum ClientStatus {
 	DELETED = 6;
 }
 
-message ClientPictures {
+message ClientImages {
 	string profileImageURI = 1;
 	string titleImageURI = 2;
 	string backgroundImageURI = 3;
 }
 
+message AdminGroup {
+	int32 groupId = 1;
+	string groupName = 2;
+	int32 permissionLevel = 3;
+	ClientDate dateMemberSince = 4;
+}
+
+message ClientGroup {
+	int32 groupId = 1;
+	string groupName = 2;
+	int32 groupLevel = 3;
+	ClientDate dateMemberSince = 4;
+}
+
 message ClientGroups {
-	int32 adminGroup = 1;
-	repeated int32 clientGroup = 2;
+	AdminGroup adminGroup = 1;
+	repeated ClientGroup clientGroup = 2;
+}
+
+message ClientBadge {
+	int32 badgeId = 1;
+	string badgeName = 2;
+	string badgeDescription = 3;
+	ClientDate dateOfReception = 4;
 }
 
 message ClientBadges {
-	repeated int32 badgeId = 1;
+	repeated ClientBadge badge = 2;
+}
+
+message ClientFriend {
+	int32 clientId = 1;
+	bool markedAsBuddy = 2;
+	ClientDate dateFriendsSince = 3;
 }
 
 message ClientFriends {
-	repeated int32 friendId = 1;
-	repeated int32 buddyId = 2;
+	repeated ClientFriend friend = 2;
 }
 
 message ClientDate {
@@ -87,7 +113,7 @@ message ClientDevice {
 message ClientProfile {
 	ClientBase base = 1;
 	ClientStatus status = 2;
-	ClientPictures pictures = 3;
+	ClientImages images = 3;
 	ClientGroups groups = 4;
 	ClientBadges badges = 5;
 	ClientFriends friends = 6;

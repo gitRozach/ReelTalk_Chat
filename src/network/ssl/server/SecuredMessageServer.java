@@ -22,6 +22,8 @@ import protobuf.ClientRequests.ChannelFileDownloadRequest;
 import protobuf.ClientRequests.ChannelFileUploadRequest;
 import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
+import protobuf.ClientRequests.ChannelMessageGetRequest;
+import protobuf.ClientRequests.ChannelMessagePostRequest;
 import protobuf.ClientRequests.ChannelMessageRequest;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.ClientLogoutRequest;
@@ -30,6 +32,8 @@ import protobuf.ClientRequests.ClientProfileRequest;
 import protobuf.ClientRequests.ClientRegistrationRequest;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
+import protobuf.ClientRequests.PrivateMessageGetRequest;
+import protobuf.ClientRequests.PrivateMessagePostRequest;
 import protobuf.ClientRequests.PrivateMessageRequest;
 
 public class SecuredMessageServer extends SecuredServer {
@@ -120,11 +124,17 @@ public class SecuredMessageServer extends SecuredServer {
 	private void handleRequest(SelectionKey clientKey, GeneratedMessageV3 request) {
 		if(request != null) {
 			switch(request.getClass().getSimpleName()) {
-			case "ChannelMessageRequest":
-				handleChannelMessageRequest(clientKey, (ChannelMessageRequest)request);
+			case "ChannelMessageGetRequest":
+				handleChannelMessageGetRequest(clientKey, (ChannelMessageGetRequest)request);
 				break;
-			case "PrivateMessageRequest":
-				handlePrivateMessageRequest(clientKey, (PrivateMessageRequest)request);
+			case "ChannelMessagePostRequest":
+				handleChannelMessagePostRequest(clientKey, (ChannelMessagePostRequest)request);
+				break;
+			case "PrivateMessageGetRequest":
+				handlePrivateMessageGetRequest(clientKey, (PrivateMessageGetRequest)request);
+				break;
+			case "PrivateMessagePostRequest":
+				handlePrivateMessagePostRequest(clientKey, (PrivateMessagePostRequest)request);
 				break;
 			case "ClientLoginRequest":
 				handleClientLoginRequest(clientKey, (ClientLoginRequest)request);

@@ -11,7 +11,7 @@ message ChannelBase {
 
 message ChannelMembers {
 	int32 maxMembers = 1;
-	repeated int32 memeberId = 2;
+	repeated int32 memberId = 2;
 }
 
 enum ChannelRestrictionType {
@@ -19,6 +19,11 @@ enum ChannelRestrictionType {
 	PASSWORD_REQUIRED = 1;
 	WHITELIST_ONLY = 2;
 	INVITE_ONLY = 3;
+}
+
+message ChannelMemberVerification {
+	string invitationKey = 1;
+	string channelPassword = 2;
 }
 
 message TextChannel {
