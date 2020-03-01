@@ -10,10 +10,9 @@ import "protobuf/ClientMessages.proto";
 
 message ClientRequestBase {
 	int32 requestId = 1;
-	int32 clientId = 2;
-	string username = 3;
-	string password = 4;
-	int64 timestampMillis = 5;
+	string username = 2;
+	string password = 3;
+	int64 timestampMillis = 4;
 }
 
 message FileDownloadVerification {
@@ -22,10 +21,9 @@ message FileDownloadVerification {
 }
 
 message FileDownloadBase {
-	int32 fileId = 1;
-	string fileName = 2;
-	string filePath = 3;
-	FileDownloadVerification downloadVerification = 4;
+	string fileName = 1;
+	string downloadPath = 2;
+	FileDownloadVerification downloadVerification = 3;
 }
 
 message FileUploadBase {
@@ -67,7 +65,8 @@ message ChannelMessageAnswerGetRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientchannels.ChannelBase channelBase = 2;
 	protobuf.clientmessages.ClientMessageBase messageBase = 3;
-	string answerText = 4;
+	int32 answerCount = 4;
+	int32 startCountWithAnswerId = 5;
 }
 
 message ChannelMessageAnswerPostRequest {
@@ -115,8 +114,7 @@ message ClientProfileCommentAnswerPostRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientidentities.ClientBase clientBase = 2;
 	protobuf.clientmessages.ClientMessageBase messageBase = 3;
-	int32 answerCount = 4;
-	int32 startCountWithAnswerId = 5;
+	string answerText = 4;
 }
 
 message ClientChannelGetRequest {

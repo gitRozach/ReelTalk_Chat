@@ -25,37 +25,31 @@ public final class ClientRequests {
     int getRequestId();
 
     /**
-     * <code>int32 clientId = 2;</code>
-     * @return The clientId.
-     */
-    int getClientId();
-
-    /**
-     * <code>string username = 3;</code>
+     * <code>string username = 2;</code>
      * @return The username.
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 3;</code>
+     * <code>string username = 2;</code>
      * @return The bytes for username.
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>string password = 4;</code>
+     * <code>string password = 3;</code>
      * @return The password.
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 4;</code>
+     * <code>string password = 3;</code>
      * @return The bytes for password.
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>int64 timestampMillis = 5;</code>
+     * <code>int64 timestampMillis = 4;</code>
      * @return The timestampMillis.
      */
     long getTimestampMillis();
@@ -112,24 +106,19 @@ public final class ClientRequests {
               requestId_ = input.readInt32();
               break;
             }
-            case 16: {
-
-              clientId_ = input.readInt32();
-              break;
-            }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               username_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               password_ = s;
               break;
             }
-            case 40: {
+            case 32: {
 
               timestampMillis_ = input.readInt64();
               break;
@@ -176,20 +165,10 @@ public final class ClientRequests {
       return requestId_;
     }
 
-    public static final int CLIENTID_FIELD_NUMBER = 2;
-    private int clientId_;
-    /**
-     * <code>int32 clientId = 2;</code>
-     * @return The clientId.
-     */
-    public int getClientId() {
-      return clientId_;
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 3;
+    public static final int USERNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 3;</code>
+     * <code>string username = 2;</code>
      * @return The username.
      */
     public java.lang.String getUsername() {
@@ -205,7 +184,7 @@ public final class ClientRequests {
       }
     }
     /**
-     * <code>string username = 3;</code>
+     * <code>string username = 2;</code>
      * @return The bytes for username.
      */
     public com.google.protobuf.ByteString
@@ -222,10 +201,10 @@ public final class ClientRequests {
       }
     }
 
-    public static final int PASSWORD_FIELD_NUMBER = 4;
+    public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 4;</code>
+     * <code>string password = 3;</code>
      * @return The password.
      */
     public java.lang.String getPassword() {
@@ -241,7 +220,7 @@ public final class ClientRequests {
       }
     }
     /**
-     * <code>string password = 4;</code>
+     * <code>string password = 3;</code>
      * @return The bytes for password.
      */
     public com.google.protobuf.ByteString
@@ -258,10 +237,10 @@ public final class ClientRequests {
       }
     }
 
-    public static final int TIMESTAMPMILLIS_FIELD_NUMBER = 5;
+    public static final int TIMESTAMPMILLIS_FIELD_NUMBER = 4;
     private long timestampMillis_;
     /**
-     * <code>int64 timestampMillis = 5;</code>
+     * <code>int64 timestampMillis = 4;</code>
      * @return The timestampMillis.
      */
     public long getTimestampMillis() {
@@ -285,17 +264,14 @@ public final class ClientRequests {
       if (requestId_ != 0) {
         output.writeInt32(1, requestId_);
       }
-      if (clientId_ != 0) {
-        output.writeInt32(2, clientId_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, username_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, password_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
       }
       if (timestampMillis_ != 0L) {
-        output.writeInt64(5, timestampMillis_);
+        output.writeInt64(4, timestampMillis_);
       }
       unknownFields.writeTo(output);
     }
@@ -310,19 +286,15 @@ public final class ClientRequests {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, requestId_);
       }
-      if (clientId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, clientId_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, username_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, password_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
       }
       if (timestampMillis_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, timestampMillis_);
+          .computeInt64Size(4, timestampMillis_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -341,8 +313,6 @@ public final class ClientRequests {
 
       if (getRequestId()
           != other.getRequestId()) return false;
-      if (getClientId()
-          != other.getClientId()) return false;
       if (!getUsername()
           .equals(other.getUsername())) return false;
       if (!getPassword()
@@ -362,8 +332,6 @@ public final class ClientRequests {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + REQUESTID_FIELD_NUMBER;
       hash = (53 * hash) + getRequestId();
-      hash = (37 * hash) + CLIENTID_FIELD_NUMBER;
-      hash = (53 * hash) + getClientId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -506,8 +474,6 @@ public final class ClientRequests {
         super.clear();
         requestId_ = 0;
 
-        clientId_ = 0;
-
         username_ = "";
 
         password_ = "";
@@ -541,7 +507,6 @@ public final class ClientRequests {
       public protobuf.ClientRequests.ClientRequestBase buildPartial() {
         protobuf.ClientRequests.ClientRequestBase result = new protobuf.ClientRequests.ClientRequestBase(this);
         result.requestId_ = requestId_;
-        result.clientId_ = clientId_;
         result.username_ = username_;
         result.password_ = password_;
         result.timestampMillis_ = timestampMillis_;
@@ -595,9 +560,6 @@ public final class ClientRequests {
         if (other == protobuf.ClientRequests.ClientRequestBase.getDefaultInstance()) return this;
         if (other.getRequestId() != 0) {
           setRequestId(other.getRequestId());
-        }
-        if (other.getClientId() != 0) {
-          setClientId(other.getClientId());
         }
         if (!other.getUsername().isEmpty()) {
           username_ = other.username_;
@@ -669,39 +631,9 @@ public final class ClientRequests {
         return this;
       }
 
-      private int clientId_ ;
-      /**
-       * <code>int32 clientId = 2;</code>
-       * @return The clientId.
-       */
-      public int getClientId() {
-        return clientId_;
-      }
-      /**
-       * <code>int32 clientId = 2;</code>
-       * @param value The clientId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setClientId(int value) {
-        
-        clientId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 clientId = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearClientId() {
-        
-        clientId_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 3;</code>
+       * <code>string username = 2;</code>
        * @return The username.
        */
       public java.lang.String getUsername() {
@@ -717,7 +649,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string username = 3;</code>
+       * <code>string username = 2;</code>
        * @return The bytes for username.
        */
       public com.google.protobuf.ByteString
@@ -734,7 +666,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string username = 3;</code>
+       * <code>string username = 2;</code>
        * @param value The username to set.
        * @return This builder for chaining.
        */
@@ -749,7 +681,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string username = 3;</code>
+       * <code>string username = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsername() {
@@ -759,7 +691,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string username = 3;</code>
+       * <code>string username = 2;</code>
        * @param value The bytes for username to set.
        * @return This builder for chaining.
        */
@@ -777,7 +709,7 @@ public final class ClientRequests {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 4;</code>
+       * <code>string password = 3;</code>
        * @return The password.
        */
       public java.lang.String getPassword() {
@@ -793,7 +725,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string password = 4;</code>
+       * <code>string password = 3;</code>
        * @return The bytes for password.
        */
       public com.google.protobuf.ByteString
@@ -810,7 +742,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string password = 4;</code>
+       * <code>string password = 3;</code>
        * @param value The password to set.
        * @return This builder for chaining.
        */
@@ -825,7 +757,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string password = 4;</code>
+       * <code>string password = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearPassword() {
@@ -835,7 +767,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string password = 4;</code>
+       * <code>string password = 3;</code>
        * @param value The bytes for password to set.
        * @return This builder for chaining.
        */
@@ -853,14 +785,14 @@ public final class ClientRequests {
 
       private long timestampMillis_ ;
       /**
-       * <code>int64 timestampMillis = 5;</code>
+       * <code>int64 timestampMillis = 4;</code>
        * @return The timestampMillis.
        */
       public long getTimestampMillis() {
         return timestampMillis_;
       }
       /**
-       * <code>int64 timestampMillis = 5;</code>
+       * <code>int64 timestampMillis = 4;</code>
        * @param value The timestampMillis to set.
        * @return This builder for chaining.
        */
@@ -871,7 +803,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>int64 timestampMillis = 5;</code>
+       * <code>int64 timestampMillis = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearTimestampMillis() {
@@ -1652,47 +1584,41 @@ public final class ClientRequests {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 fileId = 1;</code>
-     * @return The fileId.
-     */
-    int getFileId();
-
-    /**
-     * <code>string fileName = 2;</code>
+     * <code>string fileName = 1;</code>
      * @return The fileName.
      */
     java.lang.String getFileName();
     /**
-     * <code>string fileName = 2;</code>
+     * <code>string fileName = 1;</code>
      * @return The bytes for fileName.
      */
     com.google.protobuf.ByteString
         getFileNameBytes();
 
     /**
-     * <code>string filePath = 3;</code>
-     * @return The filePath.
+     * <code>string downloadPath = 2;</code>
+     * @return The downloadPath.
      */
-    java.lang.String getFilePath();
+    java.lang.String getDownloadPath();
     /**
-     * <code>string filePath = 3;</code>
-     * @return The bytes for filePath.
+     * <code>string downloadPath = 2;</code>
+     * @return The bytes for downloadPath.
      */
     com.google.protobuf.ByteString
-        getFilePathBytes();
+        getDownloadPathBytes();
 
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      * @return Whether the downloadVerification field is set.
      */
     boolean hasDownloadVerification();
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      * @return The downloadVerification.
      */
     protobuf.ClientRequests.FileDownloadVerification getDownloadVerification();
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      */
     protobuf.ClientRequests.FileDownloadVerificationOrBuilder getDownloadVerificationOrBuilder();
   }
@@ -1710,7 +1636,7 @@ public final class ClientRequests {
     }
     private FileDownloadBase() {
       fileName_ = "";
-      filePath_ = "";
+      downloadPath_ = "";
     }
 
     @java.lang.Override
@@ -1743,24 +1669,19 @@ public final class ClientRequests {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              fileId_ = input.readInt32();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               fileName_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              filePath_ = s;
+              downloadPath_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               protobuf.ClientRequests.FileDownloadVerification.Builder subBuilder = null;
               if (downloadVerification_ != null) {
                 subBuilder = downloadVerification_.toBuilder();
@@ -1805,20 +1726,10 @@ public final class ClientRequests {
               protobuf.ClientRequests.FileDownloadBase.class, protobuf.ClientRequests.FileDownloadBase.Builder.class);
     }
 
-    public static final int FILEID_FIELD_NUMBER = 1;
-    private int fileId_;
-    /**
-     * <code>int32 fileId = 1;</code>
-     * @return The fileId.
-     */
-    public int getFileId() {
-      return fileId_;
-    }
-
-    public static final int FILENAME_FIELD_NUMBER = 2;
+    public static final int FILENAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object fileName_;
     /**
-     * <code>string fileName = 2;</code>
+     * <code>string fileName = 1;</code>
      * @return The fileName.
      */
     public java.lang.String getFileName() {
@@ -1834,7 +1745,7 @@ public final class ClientRequests {
       }
     }
     /**
-     * <code>string fileName = 2;</code>
+     * <code>string fileName = 1;</code>
      * @return The bytes for fileName.
      */
     public com.google.protobuf.ByteString
@@ -1851,60 +1762,60 @@ public final class ClientRequests {
       }
     }
 
-    public static final int FILEPATH_FIELD_NUMBER = 3;
-    private volatile java.lang.Object filePath_;
+    public static final int DOWNLOADPATH_FIELD_NUMBER = 2;
+    private volatile java.lang.Object downloadPath_;
     /**
-     * <code>string filePath = 3;</code>
-     * @return The filePath.
+     * <code>string downloadPath = 2;</code>
+     * @return The downloadPath.
      */
-    public java.lang.String getFilePath() {
-      java.lang.Object ref = filePath_;
+    public java.lang.String getDownloadPath() {
+      java.lang.Object ref = downloadPath_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        filePath_ = s;
+        downloadPath_ = s;
         return s;
       }
     }
     /**
-     * <code>string filePath = 3;</code>
-     * @return The bytes for filePath.
+     * <code>string downloadPath = 2;</code>
+     * @return The bytes for downloadPath.
      */
     public com.google.protobuf.ByteString
-        getFilePathBytes() {
-      java.lang.Object ref = filePath_;
+        getDownloadPathBytes() {
+      java.lang.Object ref = downloadPath_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        filePath_ = b;
+        downloadPath_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int DOWNLOADVERIFICATION_FIELD_NUMBER = 4;
+    public static final int DOWNLOADVERIFICATION_FIELD_NUMBER = 3;
     private protobuf.ClientRequests.FileDownloadVerification downloadVerification_;
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      * @return Whether the downloadVerification field is set.
      */
     public boolean hasDownloadVerification() {
       return downloadVerification_ != null;
     }
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      * @return The downloadVerification.
      */
     public protobuf.ClientRequests.FileDownloadVerification getDownloadVerification() {
       return downloadVerification_ == null ? protobuf.ClientRequests.FileDownloadVerification.getDefaultInstance() : downloadVerification_;
     }
     /**
-     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+     * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
      */
     public protobuf.ClientRequests.FileDownloadVerificationOrBuilder getDownloadVerificationOrBuilder() {
       return getDownloadVerification();
@@ -1924,17 +1835,14 @@ public final class ClientRequests {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (fileId_ != 0) {
-        output.writeInt32(1, fileId_);
-      }
       if (!getFileNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, fileName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fileName_);
       }
-      if (!getFilePathBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, filePath_);
+      if (!getDownloadPathBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, downloadPath_);
       }
       if (downloadVerification_ != null) {
-        output.writeMessage(4, getDownloadVerification());
+        output.writeMessage(3, getDownloadVerification());
       }
       unknownFields.writeTo(output);
     }
@@ -1945,19 +1853,15 @@ public final class ClientRequests {
       if (size != -1) return size;
 
       size = 0;
-      if (fileId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, fileId_);
-      }
       if (!getFileNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, fileName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fileName_);
       }
-      if (!getFilePathBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, filePath_);
+      if (!getDownloadPathBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, downloadPath_);
       }
       if (downloadVerification_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getDownloadVerification());
+          .computeMessageSize(3, getDownloadVerification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1974,12 +1878,10 @@ public final class ClientRequests {
       }
       protobuf.ClientRequests.FileDownloadBase other = (protobuf.ClientRequests.FileDownloadBase) obj;
 
-      if (getFileId()
-          != other.getFileId()) return false;
       if (!getFileName()
           .equals(other.getFileName())) return false;
-      if (!getFilePath()
-          .equals(other.getFilePath())) return false;
+      if (!getDownloadPath()
+          .equals(other.getDownloadPath())) return false;
       if (hasDownloadVerification() != other.hasDownloadVerification()) return false;
       if (hasDownloadVerification()) {
         if (!getDownloadVerification()
@@ -1996,12 +1898,10 @@ public final class ClientRequests {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + FILEID_FIELD_NUMBER;
-      hash = (53 * hash) + getFileId();
       hash = (37 * hash) + FILENAME_FIELD_NUMBER;
       hash = (53 * hash) + getFileName().hashCode();
-      hash = (37 * hash) + FILEPATH_FIELD_NUMBER;
-      hash = (53 * hash) + getFilePath().hashCode();
+      hash = (37 * hash) + DOWNLOADPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadPath().hashCode();
       if (hasDownloadVerification()) {
         hash = (37 * hash) + DOWNLOADVERIFICATION_FIELD_NUMBER;
         hash = (53 * hash) + getDownloadVerification().hashCode();
@@ -2139,11 +2039,9 @@ public final class ClientRequests {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        fileId_ = 0;
-
         fileName_ = "";
 
-        filePath_ = "";
+        downloadPath_ = "";
 
         if (downloadVerificationBuilder_ == null) {
           downloadVerification_ = null;
@@ -2177,9 +2075,8 @@ public final class ClientRequests {
       @java.lang.Override
       public protobuf.ClientRequests.FileDownloadBase buildPartial() {
         protobuf.ClientRequests.FileDownloadBase result = new protobuf.ClientRequests.FileDownloadBase(this);
-        result.fileId_ = fileId_;
         result.fileName_ = fileName_;
-        result.filePath_ = filePath_;
+        result.downloadPath_ = downloadPath_;
         if (downloadVerificationBuilder_ == null) {
           result.downloadVerification_ = downloadVerification_;
         } else {
@@ -2233,15 +2130,12 @@ public final class ClientRequests {
 
       public Builder mergeFrom(protobuf.ClientRequests.FileDownloadBase other) {
         if (other == protobuf.ClientRequests.FileDownloadBase.getDefaultInstance()) return this;
-        if (other.getFileId() != 0) {
-          setFileId(other.getFileId());
-        }
         if (!other.getFileName().isEmpty()) {
           fileName_ = other.fileName_;
           onChanged();
         }
-        if (!other.getFilePath().isEmpty()) {
-          filePath_ = other.filePath_;
+        if (!other.getDownloadPath().isEmpty()) {
+          downloadPath_ = other.downloadPath_;
           onChanged();
         }
         if (other.hasDownloadVerification()) {
@@ -2276,39 +2170,9 @@ public final class ClientRequests {
         return this;
       }
 
-      private int fileId_ ;
-      /**
-       * <code>int32 fileId = 1;</code>
-       * @return The fileId.
-       */
-      public int getFileId() {
-        return fileId_;
-      }
-      /**
-       * <code>int32 fileId = 1;</code>
-       * @param value The fileId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFileId(int value) {
-        
-        fileId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 fileId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFileId() {
-        
-        fileId_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object fileName_ = "";
       /**
-       * <code>string fileName = 2;</code>
+       * <code>string fileName = 1;</code>
        * @return The fileName.
        */
       public java.lang.String getFileName() {
@@ -2324,7 +2188,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string fileName = 2;</code>
+       * <code>string fileName = 1;</code>
        * @return The bytes for fileName.
        */
       public com.google.protobuf.ByteString
@@ -2341,7 +2205,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>string fileName = 2;</code>
+       * <code>string fileName = 1;</code>
        * @param value The fileName to set.
        * @return This builder for chaining.
        */
@@ -2356,7 +2220,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string fileName = 2;</code>
+       * <code>string fileName = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearFileName() {
@@ -2366,7 +2230,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>string fileName = 2;</code>
+       * <code>string fileName = 1;</code>
        * @param value The bytes for fileName to set.
        * @return This builder for chaining.
        */
@@ -2382,78 +2246,78 @@ public final class ClientRequests {
         return this;
       }
 
-      private java.lang.Object filePath_ = "";
+      private java.lang.Object downloadPath_ = "";
       /**
-       * <code>string filePath = 3;</code>
-       * @return The filePath.
+       * <code>string downloadPath = 2;</code>
+       * @return The downloadPath.
        */
-      public java.lang.String getFilePath() {
-        java.lang.Object ref = filePath_;
+      public java.lang.String getDownloadPath() {
+        java.lang.Object ref = downloadPath_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          filePath_ = s;
+          downloadPath_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string filePath = 3;</code>
-       * @return The bytes for filePath.
+       * <code>string downloadPath = 2;</code>
+       * @return The bytes for downloadPath.
        */
       public com.google.protobuf.ByteString
-          getFilePathBytes() {
-        java.lang.Object ref = filePath_;
+          getDownloadPathBytes() {
+        java.lang.Object ref = downloadPath_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          filePath_ = b;
+          downloadPath_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string filePath = 3;</code>
-       * @param value The filePath to set.
+       * <code>string downloadPath = 2;</code>
+       * @param value The downloadPath to set.
        * @return This builder for chaining.
        */
-      public Builder setFilePath(
+      public Builder setDownloadPath(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        filePath_ = value;
+        downloadPath_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string filePath = 3;</code>
+       * <code>string downloadPath = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFilePath() {
+      public Builder clearDownloadPath() {
         
-        filePath_ = getDefaultInstance().getFilePath();
+        downloadPath_ = getDefaultInstance().getDownloadPath();
         onChanged();
         return this;
       }
       /**
-       * <code>string filePath = 3;</code>
-       * @param value The bytes for filePath to set.
+       * <code>string downloadPath = 2;</code>
+       * @param value The bytes for downloadPath to set.
        * @return This builder for chaining.
        */
-      public Builder setFilePathBytes(
+      public Builder setDownloadPathBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        filePath_ = value;
+        downloadPath_ = value;
         onChanged();
         return this;
       }
@@ -2462,14 +2326,14 @@ public final class ClientRequests {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.FileDownloadVerification, protobuf.ClientRequests.FileDownloadVerification.Builder, protobuf.ClientRequests.FileDownloadVerificationOrBuilder> downloadVerificationBuilder_;
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        * @return Whether the downloadVerification field is set.
        */
       public boolean hasDownloadVerification() {
         return downloadVerificationBuilder_ != null || downloadVerification_ != null;
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        * @return The downloadVerification.
        */
       public protobuf.ClientRequests.FileDownloadVerification getDownloadVerification() {
@@ -2480,7 +2344,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public Builder setDownloadVerification(protobuf.ClientRequests.FileDownloadVerification value) {
         if (downloadVerificationBuilder_ == null) {
@@ -2496,7 +2360,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public Builder setDownloadVerification(
           protobuf.ClientRequests.FileDownloadVerification.Builder builderForValue) {
@@ -2510,7 +2374,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public Builder mergeDownloadVerification(protobuf.ClientRequests.FileDownloadVerification value) {
         if (downloadVerificationBuilder_ == null) {
@@ -2528,7 +2392,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public Builder clearDownloadVerification() {
         if (downloadVerificationBuilder_ == null) {
@@ -2542,7 +2406,7 @@ public final class ClientRequests {
         return this;
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public protobuf.ClientRequests.FileDownloadVerification.Builder getDownloadVerificationBuilder() {
         
@@ -2550,7 +2414,7 @@ public final class ClientRequests {
         return getDownloadVerificationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       public protobuf.ClientRequests.FileDownloadVerificationOrBuilder getDownloadVerificationOrBuilder() {
         if (downloadVerificationBuilder_ != null) {
@@ -2561,7 +2425,7 @@ public final class ClientRequests {
         }
       }
       /**
-       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 4;</code>
+       * <code>.protobuf.clientrequests.FileDownloadVerification downloadVerification = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientRequests.FileDownloadVerification, protobuf.ClientRequests.FileDownloadVerification.Builder, protobuf.ClientRequests.FileDownloadVerificationOrBuilder> 
@@ -8036,16 +7900,16 @@ public final class ClientRequests {
     protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
-     * <code>string answerText = 4;</code>
-     * @return The answerText.
+     * <code>int32 answerCount = 4;</code>
+     * @return The answerCount.
      */
-    java.lang.String getAnswerText();
+    int getAnswerCount();
+
     /**
-     * <code>string answerText = 4;</code>
-     * @return The bytes for answerText.
+     * <code>int32 startCountWithAnswerId = 5;</code>
+     * @return The startCountWithAnswerId.
      */
-    com.google.protobuf.ByteString
-        getAnswerTextBytes();
+    int getStartCountWithAnswerId();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelMessageAnswerGetRequest}
@@ -8060,7 +7924,6 @@ public final class ClientRequests {
       super(builder);
     }
     private ChannelMessageAnswerGetRequest() {
-      answerText_ = "";
     }
 
     @java.lang.Override
@@ -8132,10 +7995,14 @@ public final class ClientRequests {
 
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 32: {
 
-              answerText_ = s;
+              answerCount_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              startCountWithAnswerId_ = input.readInt32();
               break;
             }
             default: {
@@ -8239,40 +8106,24 @@ public final class ClientRequests {
       return getMessageBase();
     }
 
-    public static final int ANSWERTEXT_FIELD_NUMBER = 4;
-    private volatile java.lang.Object answerText_;
+    public static final int ANSWERCOUNT_FIELD_NUMBER = 4;
+    private int answerCount_;
     /**
-     * <code>string answerText = 4;</code>
-     * @return The answerText.
+     * <code>int32 answerCount = 4;</code>
+     * @return The answerCount.
      */
-    public java.lang.String getAnswerText() {
-      java.lang.Object ref = answerText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        answerText_ = s;
-        return s;
-      }
+    public int getAnswerCount() {
+      return answerCount_;
     }
+
+    public static final int STARTCOUNTWITHANSWERID_FIELD_NUMBER = 5;
+    private int startCountWithAnswerId_;
     /**
-     * <code>string answerText = 4;</code>
-     * @return The bytes for answerText.
+     * <code>int32 startCountWithAnswerId = 5;</code>
+     * @return The startCountWithAnswerId.
      */
-    public com.google.protobuf.ByteString
-        getAnswerTextBytes() {
-      java.lang.Object ref = answerText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        answerText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getStartCountWithAnswerId() {
+      return startCountWithAnswerId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8298,8 +8149,11 @@ public final class ClientRequests {
       if (messageBase_ != null) {
         output.writeMessage(3, getMessageBase());
       }
-      if (!getAnswerTextBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, answerText_);
+      if (answerCount_ != 0) {
+        output.writeInt32(4, answerCount_);
+      }
+      if (startCountWithAnswerId_ != 0) {
+        output.writeInt32(5, startCountWithAnswerId_);
       }
       unknownFields.writeTo(output);
     }
@@ -8322,8 +8176,13 @@ public final class ClientRequests {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getMessageBase());
       }
-      if (!getAnswerTextBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, answerText_);
+      if (answerCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, answerCount_);
+      }
+      if (startCountWithAnswerId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, startCountWithAnswerId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8355,8 +8214,10 @@ public final class ClientRequests {
         if (!getMessageBase()
             .equals(other.getMessageBase())) return false;
       }
-      if (!getAnswerText()
-          .equals(other.getAnswerText())) return false;
+      if (getAnswerCount()
+          != other.getAnswerCount()) return false;
+      if (getStartCountWithAnswerId()
+          != other.getStartCountWithAnswerId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8380,8 +8241,10 @@ public final class ClientRequests {
         hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageBase().hashCode();
       }
-      hash = (37 * hash) + ANSWERTEXT_FIELD_NUMBER;
-      hash = (53 * hash) + getAnswerText().hashCode();
+      hash = (37 * hash) + ANSWERCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getAnswerCount();
+      hash = (37 * hash) + STARTCOUNTWITHANSWERID_FIELD_NUMBER;
+      hash = (53 * hash) + getStartCountWithAnswerId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8533,7 +8396,9 @@ public final class ClientRequests {
           messageBase_ = null;
           messageBaseBuilder_ = null;
         }
-        answerText_ = "";
+        answerCount_ = 0;
+
+        startCountWithAnswerId_ = 0;
 
         return this;
       }
@@ -8576,7 +8441,8 @@ public final class ClientRequests {
         } else {
           result.messageBase_ = messageBaseBuilder_.build();
         }
-        result.answerText_ = answerText_;
+        result.answerCount_ = answerCount_;
+        result.startCountWithAnswerId_ = startCountWithAnswerId_;
         onBuilt();
         return result;
       }
@@ -8634,9 +8500,11 @@ public final class ClientRequests {
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
-        if (!other.getAnswerText().isEmpty()) {
-          answerText_ = other.answerText_;
-          onChanged();
+        if (other.getAnswerCount() != 0) {
+          setAnswerCount(other.getAnswerCount());
+        }
+        if (other.getStartCountWithAnswerId() != 0) {
+          setStartCountWithAnswerId(other.getStartCountWithAnswerId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9024,78 +8892,62 @@ public final class ClientRequests {
         return messageBaseBuilder_;
       }
 
-      private java.lang.Object answerText_ = "";
+      private int answerCount_ ;
       /**
-       * <code>string answerText = 4;</code>
-       * @return The answerText.
+       * <code>int32 answerCount = 4;</code>
+       * @return The answerCount.
        */
-      public java.lang.String getAnswerText() {
-        java.lang.Object ref = answerText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          answerText_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getAnswerCount() {
+        return answerCount_;
       }
       /**
-       * <code>string answerText = 4;</code>
-       * @return The bytes for answerText.
-       */
-      public com.google.protobuf.ByteString
-          getAnswerTextBytes() {
-        java.lang.Object ref = answerText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          answerText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string answerText = 4;</code>
-       * @param value The answerText to set.
+       * <code>int32 answerCount = 4;</code>
+       * @param value The answerCount to set.
        * @return This builder for chaining.
        */
-      public Builder setAnswerText(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        answerText_ = value;
+      public Builder setAnswerCount(int value) {
+        
+        answerCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string answerText = 4;</code>
+       * <code>int32 answerCount = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAnswerText() {
+      public Builder clearAnswerCount() {
         
-        answerText_ = getDefaultInstance().getAnswerText();
+        answerCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int startCountWithAnswerId_ ;
+      /**
+       * <code>int32 startCountWithAnswerId = 5;</code>
+       * @return The startCountWithAnswerId.
+       */
+      public int getStartCountWithAnswerId() {
+        return startCountWithAnswerId_;
+      }
+      /**
+       * <code>int32 startCountWithAnswerId = 5;</code>
+       * @param value The startCountWithAnswerId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartCountWithAnswerId(int value) {
+        
+        startCountWithAnswerId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string answerText = 4;</code>
-       * @param value The bytes for answerText to set.
+       * <code>int32 startCountWithAnswerId = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder setAnswerTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearStartCountWithAnswerId() {
         
-        answerText_ = value;
+        startCountWithAnswerId_ = 0;
         onChanged();
         return this;
       }
@@ -15362,16 +15214,16 @@ public final class ClientRequests {
     protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
-     * <code>int32 answerCount = 4;</code>
-     * @return The answerCount.
+     * <code>string answerText = 4;</code>
+     * @return The answerText.
      */
-    int getAnswerCount();
-
+    java.lang.String getAnswerText();
     /**
-     * <code>int32 startCountWithAnswerId = 5;</code>
-     * @return The startCountWithAnswerId.
+     * <code>string answerText = 4;</code>
+     * @return The bytes for answerText.
      */
-    int getStartCountWithAnswerId();
+    com.google.protobuf.ByteString
+        getAnswerTextBytes();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ClientProfileCommentAnswerPostRequest}
@@ -15386,6 +15238,7 @@ public final class ClientRequests {
       super(builder);
     }
     private ClientProfileCommentAnswerPostRequest() {
+      answerText_ = "";
     }
 
     @java.lang.Override
@@ -15457,14 +15310,10 @@ public final class ClientRequests {
 
               break;
             }
-            case 32: {
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              answerCount_ = input.readInt32();
-              break;
-            }
-            case 40: {
-
-              startCountWithAnswerId_ = input.readInt32();
+              answerText_ = s;
               break;
             }
             default: {
@@ -15568,24 +15417,40 @@ public final class ClientRequests {
       return getMessageBase();
     }
 
-    public static final int ANSWERCOUNT_FIELD_NUMBER = 4;
-    private int answerCount_;
+    public static final int ANSWERTEXT_FIELD_NUMBER = 4;
+    private volatile java.lang.Object answerText_;
     /**
-     * <code>int32 answerCount = 4;</code>
-     * @return The answerCount.
+     * <code>string answerText = 4;</code>
+     * @return The answerText.
      */
-    public int getAnswerCount() {
-      return answerCount_;
+    public java.lang.String getAnswerText() {
+      java.lang.Object ref = answerText_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        answerText_ = s;
+        return s;
+      }
     }
-
-    public static final int STARTCOUNTWITHANSWERID_FIELD_NUMBER = 5;
-    private int startCountWithAnswerId_;
     /**
-     * <code>int32 startCountWithAnswerId = 5;</code>
-     * @return The startCountWithAnswerId.
+     * <code>string answerText = 4;</code>
+     * @return The bytes for answerText.
      */
-    public int getStartCountWithAnswerId() {
-      return startCountWithAnswerId_;
+    public com.google.protobuf.ByteString
+        getAnswerTextBytes() {
+      java.lang.Object ref = answerText_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        answerText_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -15611,11 +15476,8 @@ public final class ClientRequests {
       if (messageBase_ != null) {
         output.writeMessage(3, getMessageBase());
       }
-      if (answerCount_ != 0) {
-        output.writeInt32(4, answerCount_);
-      }
-      if (startCountWithAnswerId_ != 0) {
-        output.writeInt32(5, startCountWithAnswerId_);
+      if (!getAnswerTextBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, answerText_);
       }
       unknownFields.writeTo(output);
     }
@@ -15638,13 +15500,8 @@ public final class ClientRequests {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getMessageBase());
       }
-      if (answerCount_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, answerCount_);
-      }
-      if (startCountWithAnswerId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, startCountWithAnswerId_);
+      if (!getAnswerTextBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, answerText_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -15676,10 +15533,8 @@ public final class ClientRequests {
         if (!getMessageBase()
             .equals(other.getMessageBase())) return false;
       }
-      if (getAnswerCount()
-          != other.getAnswerCount()) return false;
-      if (getStartCountWithAnswerId()
-          != other.getStartCountWithAnswerId()) return false;
+      if (!getAnswerText()
+          .equals(other.getAnswerText())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -15703,10 +15558,8 @@ public final class ClientRequests {
         hash = (37 * hash) + MESSAGEBASE_FIELD_NUMBER;
         hash = (53 * hash) + getMessageBase().hashCode();
       }
-      hash = (37 * hash) + ANSWERCOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getAnswerCount();
-      hash = (37 * hash) + STARTCOUNTWITHANSWERID_FIELD_NUMBER;
-      hash = (53 * hash) + getStartCountWithAnswerId();
+      hash = (37 * hash) + ANSWERTEXT_FIELD_NUMBER;
+      hash = (53 * hash) + getAnswerText().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -15858,9 +15711,7 @@ public final class ClientRequests {
           messageBase_ = null;
           messageBaseBuilder_ = null;
         }
-        answerCount_ = 0;
-
-        startCountWithAnswerId_ = 0;
+        answerText_ = "";
 
         return this;
       }
@@ -15903,8 +15754,7 @@ public final class ClientRequests {
         } else {
           result.messageBase_ = messageBaseBuilder_.build();
         }
-        result.answerCount_ = answerCount_;
-        result.startCountWithAnswerId_ = startCountWithAnswerId_;
+        result.answerText_ = answerText_;
         onBuilt();
         return result;
       }
@@ -15962,11 +15812,9 @@ public final class ClientRequests {
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
-        if (other.getAnswerCount() != 0) {
-          setAnswerCount(other.getAnswerCount());
-        }
-        if (other.getStartCountWithAnswerId() != 0) {
-          setStartCountWithAnswerId(other.getStartCountWithAnswerId());
+        if (!other.getAnswerText().isEmpty()) {
+          answerText_ = other.answerText_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -16354,62 +16202,78 @@ public final class ClientRequests {
         return messageBaseBuilder_;
       }
 
-      private int answerCount_ ;
+      private java.lang.Object answerText_ = "";
       /**
-       * <code>int32 answerCount = 4;</code>
-       * @return The answerCount.
+       * <code>string answerText = 4;</code>
+       * @return The answerText.
        */
-      public int getAnswerCount() {
-        return answerCount_;
+      public java.lang.String getAnswerText() {
+        java.lang.Object ref = answerText_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          answerText_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 answerCount = 4;</code>
-       * @param value The answerCount to set.
+       * <code>string answerText = 4;</code>
+       * @return The bytes for answerText.
+       */
+      public com.google.protobuf.ByteString
+          getAnswerTextBytes() {
+        java.lang.Object ref = answerText_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          answerText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string answerText = 4;</code>
+       * @param value The answerText to set.
        * @return This builder for chaining.
        */
-      public Builder setAnswerCount(int value) {
-        
-        answerCount_ = value;
+      public Builder setAnswerText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        answerText_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 answerCount = 4;</code>
+       * <code>string answerText = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAnswerCount() {
+      public Builder clearAnswerText() {
         
-        answerCount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int startCountWithAnswerId_ ;
-      /**
-       * <code>int32 startCountWithAnswerId = 5;</code>
-       * @return The startCountWithAnswerId.
-       */
-      public int getStartCountWithAnswerId() {
-        return startCountWithAnswerId_;
-      }
-      /**
-       * <code>int32 startCountWithAnswerId = 5;</code>
-       * @param value The startCountWithAnswerId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStartCountWithAnswerId(int value) {
-        
-        startCountWithAnswerId_ = value;
+        answerText_ = getDefaultInstance().getAnswerText();
         onChanged();
         return this;
       }
       /**
-       * <code>int32 startCountWithAnswerId = 5;</code>
+       * <code>string answerText = 4;</code>
+       * @param value The bytes for answerText to set.
        * @return This builder for chaining.
        */
-      public Builder clearStartCountWithAnswerId() {
+      public Builder setAnswerTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
         
-        startCountWithAnswerId_ = 0;
+        answerText_ = value;
         onChanged();
         return this;
       }
@@ -25733,129 +25597,128 @@ public final class ClientRequests {
       "\n\035protobuf/ClientRequests.proto\022\027protobu" +
       "f.clientrequests\032\037protobuf/ClientIdentit" +
       "ies.proto\032\035protobuf/ClientChannels.proto" +
-      "\032\035protobuf/ClientMessages.proto\"u\n\021Clien" +
-      "tRequestBase\022\021\n\trequestId\030\001 \001(\005\022\020\n\010clien" +
-      "tId\030\002 \001(\005\022\020\n\010username\030\003 \001(\t\022\020\n\010password\030" +
-      "\004 \001(\t\022\027\n\017timestampMillis\030\005 \001(\003\"A\n\030FileDo" +
-      "wnloadVerification\022\023\n\013downloadKey\030\001 \001(\t\022" +
-      "\020\n\010password\030\002 \001(\t\"\227\001\n\020FileDownloadBase\022\016" +
-      "\n\006fileId\030\001 \001(\005\022\020\n\010fileName\030\002 \001(\t\022\020\n\010file" +
-      "Path\030\003 \001(\t\022O\n\024downloadVerification\030\004 \001(\013" +
-      "21.protobuf.clientrequests.FileDownloadV" +
-      "erification\"F\n\016FileUploadBase\022\020\n\010fileNam" +
-      "e\030\001 \001(\t\022\020\n\010filePath\030\002 \001(\t\022\020\n\010fileSize\030\003 " +
-      "\001(\003\"\337\001\n\022ChannelJoinRequest\022?\n\013requestBas" +
-      "e\030\001 \001(\0132*.protobuf.clientrequests.Client" +
-      "RequestBase\0229\n\013channelBase\030\002 \001(\0132$.proto" +
-      "buf.clientchannels.ChannelBase\022M\n\021member" +
-      "Verfication\030\003 \001(\01322.protobuf.clientchann" +
-      "els.ChannelMemberVerification\"\221\001\n\023Channe" +
-      "lLeaveRequest\022?\n\013requestBase\030\001 \001(\0132*.pro" +
-      "tobuf.clientrequests.ClientRequestBase\0229" +
-      "\n\013channelBase\030\002 \001(\0132$.protobuf.clientcha" +
-      "nnels.ChannelBase\"\225\001\n\027ClientProfileGetRe" +
-      "quest\022?\n\013requestBase\030\001 \001(\0132*.protobuf.cl" +
-      "ientrequests.ClientRequestBase\0229\n\nclient" +
-      "Base\030\002 \001(\0132%.protobuf.clientidentities.C" +
-      "lientBase\"\254\001\n\031ChannelMessagePostRequest\022" +
-      "?\n\013requestBase\030\001 \001(\0132*.protobuf.clientre" +
-      "quests.ClientRequestBase\0229\n\013channelBase\030" +
-      "\002 \001(\0132$.protobuf.clientchannels.ChannelB" +
-      "ase\022\023\n\013messageText\030\003 \001(\t\"\315\001\n\030ChannelMess" +
-      "ageGetRequest\022?\n\013requestBase\030\001 \001(\0132*.pro" +
-      "tobuf.clientrequests.ClientRequestBase\0229" +
-      "\n\013channelBase\030\002 \001(\0132$.protobuf.clientcha" +
-      "nnels.ChannelBase\022\024\n\014messageCount\030\003 \001(\005\022" +
-      "\037\n\027startCountWithMessageId\030\004 \001(\005\"\361\001\n\036Cha" +
-      "nnelMessageAnswerGetRequest\022?\n\013requestBa" +
-      "se\030\001 \001(\0132*.protobuf.clientrequests.Clien" +
-      "tRequestBase\0229\n\013channelBase\030\002 \001(\0132$.prot" +
-      "obuf.clientchannels.ChannelBase\022?\n\013messa" +
-      "geBase\030\003 \001(\0132*.protobuf.clientmessages.C" +
-      "lientMessageBase\022\022\n\nanswerText\030\004 \001(\t\"\362\001\n" +
-      "\037ChannelMessageAnswerPostRequest\022?\n\013requ" +
-      "estBase\030\001 \001(\0132*.protobuf.clientrequests." +
-      "ClientRequestBase\0229\n\013channelBase\030\002 \001(\0132$" +
-      ".protobuf.clientchannels.ChannelBase\022?\n\013" +
-      "messageBase\030\003 \001(\0132*.protobuf.clientmessa" +
-      "ges.ClientMessageBase\022\022\n\nanswerText\030\004 \001(" +
-      "\t\"\315\001\n\030PrivateMessageGetRequest\022?\n\013reques" +
-      "tBase\030\001 \001(\0132*.protobuf.clientrequests.Cl" +
-      "ientRequestBase\0229\n\nclientBase\030\002 \001(\0132%.pr" +
-      "otobuf.clientidentities.ClientBase\022\024\n\014me" +
-      "ssageCount\030\003 \001(\005\022\037\n\027startCountWithMessag" +
-      "eId\030\004 \001(\005\"\254\001\n\031PrivateMessagePostRequest\022" +
-      "?\n\013requestBase\030\001 \001(\0132*.protobuf.clientre" +
-      "quests.ClientRequestBase\0229\n\nclientBase\030\002" +
-      " \001(\0132%.protobuf.clientidentities.ClientB" +
-      "ase\022\023\n\013messageText\030\003 \001(\t\"\323\001\n\036ClientProfi" +
-      "leCommentGetRequest\022?\n\013requestBase\030\001 \001(\013" +
-      "2*.protobuf.clientrequests.ClientRequest" +
-      "Base\0229\n\nclientBase\030\002 \001(\0132%.protobuf.clie" +
-      "ntidentities.ClientBase\022\024\n\014commentCount\030" +
-      "\003 \001(\005\022\037\n\027startCountWithCommentId\030\004 \001(\005\"\262" +
-      "\001\n\037ClientProfileCommentPostRequest\022?\n\013re" +
-      "questBase\030\001 \001(\0132*.protobuf.clientrequest" +
-      "s.ClientRequestBase\0229\n\nclientBase\030\002 \001(\0132" +
-      "%.protobuf.clientidentities.ClientBase\022\023" +
-      "\n\013commentText\030\003 \001(\t\"\230\002\n$ClientProfileCom" +
-      "mentAnswerGetRequest\022?\n\013requestBase\030\001 \001(" +
-      "\0132*.protobuf.clientrequests.ClientReques" +
-      "tBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf.cli" +
-      "entidentities.ClientBase\022?\n\013messageBase\030" +
-      "\003 \001(\0132*.protobuf.clientmessages.ClientMe" +
-      "ssageBase\022\023\n\013answerCount\030\004 \001(\005\022\036\n\026startC" +
-      "ountWithAnswerId\030\005 \001(\005\"\231\002\n%ClientProfile" +
-      "CommentAnswerPostRequest\022?\n\013requestBase\030" +
-      "\001 \001(\0132*.protobuf.clientrequests.ClientRe" +
-      "questBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf" +
-      ".clientidentities.ClientBase\022?\n\013messageB" +
-      "ase\030\003 \001(\0132*.protobuf.clientmessages.Clie" +
-      "ntMessageBase\022\023\n\013answerCount\030\004 \001(\005\022\036\n\026st" +
-      "artCountWithAnswerId\030\005 \001(\005\"\225\001\n\027ClientCha" +
-      "nnelGetRequest\022?\n\013requestBase\030\001 \001(\0132*.pr" +
-      "otobuf.clientrequests.ClientRequestBase\022" +
-      "9\n\013channelBase\030\002 \001(\0132$.protobuf.clientch" +
-      "annels.ChannelBase\"\032\n\030ClientChannelPostR" +
-      "equest\"\325\001\n\032ChannelFileDownloadRequest\022?\n" +
+      "\032\035protobuf/ClientMessages.proto\"c\n\021Clien" +
+      "tRequestBase\022\021\n\trequestId\030\001 \001(\005\022\020\n\010usern" +
+      "ame\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\027\n\017timestamp" +
+      "Millis\030\004 \001(\003\"A\n\030FileDownloadVerification" +
+      "\022\023\n\013downloadKey\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"" +
+      "\213\001\n\020FileDownloadBase\022\020\n\010fileName\030\001 \001(\t\022\024" +
+      "\n\014downloadPath\030\002 \001(\t\022O\n\024downloadVerifica" +
+      "tion\030\003 \001(\01321.protobuf.clientrequests.Fil" +
+      "eDownloadVerification\"F\n\016FileUploadBase\022" +
+      "\020\n\010fileName\030\001 \001(\t\022\020\n\010filePath\030\002 \001(\t\022\020\n\010f" +
+      "ileSize\030\003 \001(\003\"\337\001\n\022ChannelJoinRequest\022?\n\013" +
+      "requestBase\030\001 \001(\0132*.protobuf.clientreque" +
+      "sts.ClientRequestBase\0229\n\013channelBase\030\002 \001" +
+      "(\0132$.protobuf.clientchannels.ChannelBase" +
+      "\022M\n\021memberVerfication\030\003 \001(\01322.protobuf.c" +
+      "lientchannels.ChannelMemberVerification\"" +
+      "\221\001\n\023ChannelLeaveRequest\022?\n\013requestBase\030\001" +
+      " \001(\0132*.protobuf.clientrequests.ClientReq" +
+      "uestBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf" +
+      ".clientchannels.ChannelBase\"\225\001\n\027ClientPr" +
+      "ofileGetRequest\022?\n\013requestBase\030\001 \001(\0132*.p" +
+      "rotobuf.clientrequests.ClientRequestBase" +
+      "\0229\n\nclientBase\030\002 \001(\0132%.protobuf.clientid" +
+      "entities.ClientBase\"\254\001\n\031ChannelMessagePo" +
+      "stRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
+      "f.clientrequests.ClientRequestBase\0229\n\013ch" +
+      "annelBase\030\002 \001(\0132$.protobuf.clientchannel" +
+      "s.ChannelBase\022\023\n\013messageText\030\003 \001(\t\"\315\001\n\030C" +
+      "hannelMessageGetRequest\022?\n\013requestBase\030\001" +
+      " \001(\0132*.protobuf.clientrequests.ClientReq" +
+      "uestBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf" +
+      ".clientchannels.ChannelBase\022\024\n\014messageCo" +
+      "unt\030\003 \001(\005\022\037\n\027startCountWithMessageId\030\004 \001" +
+      "(\005\"\222\002\n\036ChannelMessageAnswerGetRequest\022?\n" +
       "\013requestBase\030\001 \001(\0132*.protobuf.clientrequ" +
       "ests.ClientRequestBase\0229\n\013channelBase\030\002 " +
       "\001(\0132$.protobuf.clientchannels.ChannelBas" +
-      "e\022;\n\010fileBase\030\003 \001(\0132).protobuf.clientreq" +
-      "uests.FileDownloadBase\"\321\001\n\030ChannelFileUp" +
-      "loadRequest\022?\n\013requestBase\030\001 \001(\0132*.proto" +
-      "buf.clientrequests.ClientRequestBase\0229\n\013" +
-      "channelBase\030\002 \001(\0132$.protobuf.clientchann" +
-      "els.ChannelBase\0229\n\010fileBase\030\003 \001(\0132\'.prot" +
-      "obuf.clientrequests.FileUploadBase\"\325\001\n\032P" +
-      "rivateFileDownloadRequest\022?\n\013requestBase" +
-      "\030\001 \001(\0132*.protobuf.clientrequests.ClientR" +
-      "equestBase\0229\n\nclientBase\030\002 \001(\0132%.protobu" +
-      "f.clientidentities.ClientBase\022;\n\010fileBas" +
-      "e\030\003 \001(\0132).protobuf.clientrequests.FileDo" +
-      "wnloadBase\"\321\001\n\030PrivateFileUploadRequest\022" +
-      "?\n\013requestBase\030\001 \001(\0132*.protobuf.clientre" +
-      "quests.ClientRequestBase\0229\n\nclientBase\030\002" +
-      " \001(\0132%.protobuf.clientidentities.ClientB" +
-      "ase\0229\n\010fileBase\030\003 \001(\0132\'.protobuf.clientr" +
-      "equests.FileUploadBase\"\216\001\n\022ClientLoginRe" +
-      "quest\022?\n\013requestBase\030\001 \001(\0132*.protobuf.cl" +
-      "ientrequests.ClientRequestBase\0227\n\006device" +
-      "\030\002 \001(\0132\'.protobuf.clientidentities.Clien" +
-      "tDevice\"\217\001\n\023ClientLogoutRequest\022?\n\013reque" +
-      "stBase\030\001 \001(\0132*.protobuf.clientrequests.C" +
-      "lientRequestBase\0227\n\006device\030\002 \001(\0132\'.proto" +
-      "buf.clientidentities.ClientDevice\"\266\001\n\031Cl" +
-      "ientRegistrationRequest\022\020\n\010username\030\001 \001(" +
-      "\t\022\020\n\010password\030\002 \001(\t\022\026\n\016passwordRepeat\030\003 " +
-      "\001(\t\022\r\n\005email\030\004 \001(\t\022\025\n\rinvitationKey\030\005 \001(" +
-      "\t\0227\n\006device\030\006 \001(\0132\'.protobuf.clientident" +
-      "ities.ClientDevice\"\222\001\n\026PingMeasurementRe" +
-      "quest\022?\n\013requestBase\030\001 \001(\0132*.protobuf.cl" +
-      "ientrequests.ClientRequestBase\0227\n\006device" +
-      "\030\002 \001(\0132\'.protobuf.clientidentities.Clien" +
-      "tDeviceB\032\n\010protobufB\016ClientRequestsb\006pro" +
-      "to3"
+      "e\022?\n\013messageBase\030\003 \001(\0132*.protobuf.client" +
+      "messages.ClientMessageBase\022\023\n\013answerCoun" +
+      "t\030\004 \001(\005\022\036\n\026startCountWithAnswerId\030\005 \001(\005\"" +
+      "\362\001\n\037ChannelMessageAnswerPostRequest\022?\n\013r" +
+      "equestBase\030\001 \001(\0132*.protobuf.clientreques" +
+      "ts.ClientRequestBase\0229\n\013channelBase\030\002 \001(" +
+      "\0132$.protobuf.clientchannels.ChannelBase\022" +
+      "?\n\013messageBase\030\003 \001(\0132*.protobuf.clientme" +
+      "ssages.ClientMessageBase\022\022\n\nanswerText\030\004" +
+      " \001(\t\"\315\001\n\030PrivateMessageGetRequest\022?\n\013req" +
+      "uestBase\030\001 \001(\0132*.protobuf.clientrequests" +
+      ".ClientRequestBase\0229\n\nclientBase\030\002 \001(\0132%" +
+      ".protobuf.clientidentities.ClientBase\022\024\n" +
+      "\014messageCount\030\003 \001(\005\022\037\n\027startCountWithMes" +
+      "sageId\030\004 \001(\005\"\254\001\n\031PrivateMessagePostReque" +
+      "st\022?\n\013requestBase\030\001 \001(\0132*.protobuf.clien" +
+      "trequests.ClientRequestBase\0229\n\nclientBas" +
+      "e\030\002 \001(\0132%.protobuf.clientidentities.Clie" +
+      "ntBase\022\023\n\013messageText\030\003 \001(\t\"\323\001\n\036ClientPr" +
+      "ofileCommentGetRequest\022?\n\013requestBase\030\001 " +
+      "\001(\0132*.protobuf.clientrequests.ClientRequ" +
+      "estBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf.c" +
+      "lientidentities.ClientBase\022\024\n\014commentCou" +
+      "nt\030\003 \001(\005\022\037\n\027startCountWithCommentId\030\004 \001(" +
+      "\005\"\262\001\n\037ClientProfileCommentPostRequest\022?\n" +
+      "\013requestBase\030\001 \001(\0132*.protobuf.clientrequ" +
+      "ests.ClientRequestBase\0229\n\nclientBase\030\002 \001" +
+      "(\0132%.protobuf.clientidentities.ClientBas" +
+      "e\022\023\n\013commentText\030\003 \001(\t\"\230\002\n$ClientProfile" +
+      "CommentAnswerGetRequest\022?\n\013requestBase\030\001" +
+      " \001(\0132*.protobuf.clientrequests.ClientReq" +
+      "uestBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf." +
+      "clientidentities.ClientBase\022?\n\013messageBa" +
+      "se\030\003 \001(\0132*.protobuf.clientmessages.Clien" +
+      "tMessageBase\022\023\n\013answerCount\030\004 \001(\005\022\036\n\026sta" +
+      "rtCountWithAnswerId\030\005 \001(\005\"\370\001\n%ClientProf" +
+      "ileCommentAnswerPostRequest\022?\n\013requestBa" +
+      "se\030\001 \001(\0132*.protobuf.clientrequests.Clien" +
+      "tRequestBase\0229\n\nclientBase\030\002 \001(\0132%.proto" +
+      "buf.clientidentities.ClientBase\022?\n\013messa" +
+      "geBase\030\003 \001(\0132*.protobuf.clientmessages.C" +
+      "lientMessageBase\022\022\n\nanswerText\030\004 \001(\t\"\225\001\n" +
+      "\027ClientChannelGetRequest\022?\n\013requestBase\030" +
+      "\001 \001(\0132*.protobuf.clientrequests.ClientRe" +
+      "questBase\0229\n\013channelBase\030\002 \001(\0132$.protobu" +
+      "f.clientchannels.ChannelBase\"\032\n\030ClientCh" +
+      "annelPostRequest\"\325\001\n\032ChannelFileDownload" +
+      "Request\022?\n\013requestBase\030\001 \001(\0132*.protobuf." +
+      "clientrequests.ClientRequestBase\0229\n\013chan" +
+      "nelBase\030\002 \001(\0132$.protobuf.clientchannels." +
+      "ChannelBase\022;\n\010fileBase\030\003 \001(\0132).protobuf" +
+      ".clientrequests.FileDownloadBase\"\321\001\n\030Cha" +
+      "nnelFileUploadRequest\022?\n\013requestBase\030\001 \001" +
+      "(\0132*.protobuf.clientrequests.ClientReque" +
+      "stBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf.c" +
+      "lientchannels.ChannelBase\0229\n\010fileBase\030\003 " +
+      "\001(\0132\'.protobuf.clientrequests.FileUpload" +
+      "Base\"\325\001\n\032PrivateFileDownloadRequest\022?\n\013r" +
+      "equestBase\030\001 \001(\0132*.protobuf.clientreques" +
+      "ts.ClientRequestBase\0229\n\nclientBase\030\002 \001(\013" +
+      "2%.protobuf.clientidentities.ClientBase\022" +
+      ";\n\010fileBase\030\003 \001(\0132).protobuf.clientreque" +
+      "sts.FileDownloadBase\"\321\001\n\030PrivateFileUplo" +
+      "adRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
+      "f.clientrequests.ClientRequestBase\0229\n\ncl" +
+      "ientBase\030\002 \001(\0132%.protobuf.clientidentiti" +
+      "es.ClientBase\0229\n\010fileBase\030\003 \001(\0132\'.protob" +
+      "uf.clientrequests.FileUploadBase\"\216\001\n\022Cli" +
+      "entLoginRequest\022?\n\013requestBase\030\001 \001(\0132*.p" +
+      "rotobuf.clientrequests.ClientRequestBase" +
+      "\0227\n\006device\030\002 \001(\0132\'.protobuf.clientidenti" +
+      "ties.ClientDevice\"\217\001\n\023ClientLogoutReques" +
+      "t\022?\n\013requestBase\030\001 \001(\0132*.protobuf.client" +
+      "requests.ClientRequestBase\0227\n\006device\030\002 \001" +
+      "(\0132\'.protobuf.clientidentities.ClientDev" +
+      "ice\"\266\001\n\031ClientRegistrationRequest\022\020\n\010use" +
+      "rname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\026\n\016passwor" +
+      "dRepeat\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\025\n\rinvitati" +
+      "onKey\030\005 \001(\t\0227\n\006device\030\006 \001(\0132\'.protobuf.c" +
+      "lientidentities.ClientDevice\"\222\001\n\026PingMea" +
+      "surementRequest\022?\n\013requestBase\030\001 \001(\0132*.p" +
+      "rotobuf.clientrequests.ClientRequestBase" +
+      "\0227\n\006device\030\002 \001(\0132\'.protobuf.clientidenti" +
+      "ties.ClientDeviceB\032\n\010protobufB\016ClientReq" +
+      "uestsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25869,7 +25732,7 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_ClientRequestBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientRequestBase_descriptor,
-        new java.lang.String[] { "RequestId", "ClientId", "Username", "Password", "TimestampMillis", });
+        new java.lang.String[] { "RequestId", "Username", "Password", "TimestampMillis", });
     internal_static_protobuf_clientrequests_FileDownloadVerification_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protobuf_clientrequests_FileDownloadVerification_fieldAccessorTable = new
@@ -25881,7 +25744,7 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_FileDownloadBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_FileDownloadBase_descriptor,
-        new java.lang.String[] { "FileId", "FileName", "FilePath", "DownloadVerification", });
+        new java.lang.String[] { "FileName", "DownloadPath", "DownloadVerification", });
     internal_static_protobuf_clientrequests_FileUploadBase_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_protobuf_clientrequests_FileUploadBase_fieldAccessorTable = new
@@ -25923,7 +25786,7 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_ChannelMessageAnswerGetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelMessageAnswerGetRequest_descriptor,
-        new java.lang.String[] { "RequestBase", "ChannelBase", "MessageBase", "AnswerText", });
+        new java.lang.String[] { "RequestBase", "ChannelBase", "MessageBase", "AnswerCount", "StartCountWithAnswerId", });
     internal_static_protobuf_clientrequests_ChannelMessageAnswerPostRequest_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_protobuf_clientrequests_ChannelMessageAnswerPostRequest_fieldAccessorTable = new
@@ -25965,7 +25828,7 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_ClientProfileCommentAnswerPostRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ClientProfileCommentAnswerPostRequest_descriptor,
-        new java.lang.String[] { "RequestBase", "ClientBase", "MessageBase", "AnswerCount", "StartCountWithAnswerId", });
+        new java.lang.String[] { "RequestBase", "ClientBase", "MessageBase", "AnswerText", });
     internal_static_protobuf_clientrequests_ClientChannelGetRequest_descriptor =
       getDescriptor().getMessageTypes().get(17);
     internal_static_protobuf_clientrequests_ClientChannelGetRequest_fieldAccessorTable = new

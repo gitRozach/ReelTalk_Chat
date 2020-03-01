@@ -1,8 +1,9 @@
 package utils.system;
 
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 public class SystemUtils {
 	public static final String JRE_HOME_DIRECTORY_PROPERTY_NAME = "java.home";
@@ -99,13 +100,21 @@ public class SystemUtils {
 		return getPropertyValue(OS_ARCHITECTURE_PROPERTY_NAME);
 	}
 	
-	public static InetAddress getLocalInetAddress() {
-		try(Socket s = new Socket()) {
-			s.connect(new InetSocketAddress("google.com", 80));
-			return s.getLocalAddress();
-		}
-		catch(Exception e) {
-			return null;
-		}
+	public static String getPublicIPv4() {
+		BufferedReader in = null;
+        try {
+        	URL whatismyip = new URL("http://checkip.amazonaws.com");
+        	in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+            return in.readLine();
+        }
+        catch(IOException io) {
+        	return null;
+        }
+        finally {
+			try {
+				in.close();
+			} 
+			catch (IOException e) {}
+        }
 	}
 }
