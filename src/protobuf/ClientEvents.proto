@@ -18,67 +18,107 @@ message ClientRequestRejectedEvent {
 	string rejectionMessage = 2;
 }
 
-message ClientProfileEvent	{
+message ClientProfileGetEvent	{
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ChannelMessageEvent {
+message ChannelMessagePostEvent {
 	ClientEventBase eventBase = 1;
 	repeated protobuf.clientmessages.ChannelMessage message = 2;
 }
 
-message PrivateMessageEvent {
+message ChannelMessageGetEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ChannelMessage message = 2;
+}
+
+message ChannelMessageAnswerGetEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;
+}
+
+message ChannelMessageAnswerPostEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;
+}
+
+message PrivateMessagePostEvent {
 	ClientEventBase eventBase = 1;
 	repeated protobuf.clientmessages.PrivateMessage message = 2;
 }
 
-message ClientJoinedChannelEvent {
+message PrivateMessageGetEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.PrivateMessage message = 2;
+}
+
+message ClientProfileCommentPostEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ClientProfileComment profileComment = 2;
+}
+
+message ClientProfileCommentGetEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ClientProfileComment profileComment = 2;
+}
+
+message ClientProfileCommentAnswerPostEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;
+}
+
+message ClientProfileCommentAnswerGetEvent {
+	ClientEventBase eventBase = 1;
+	repeated protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;
+}
+
+message ClientChannelJoinEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientLeftChannelEvent {
+message ClientChannelLeaveEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientLoggedInEvent {
+message ClientLoginEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientLoggedOutEvent {
+message ClientLogoutEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientRegisteredEvent {
+message ClientRegistrationEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientDownloadedChannelFileEvent {
+message ChannelFileDownloadEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientUploadedChannelFileEvent {
+message ChannelFileUploadEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientDownloadedPrivateFileEvent {
+message PrivateFileDownloadEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientUploadedPrivateFileEvent {
+message PrivateFileUploadEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
 }
 
-message ClientPingMeasurmentEvent {
+message PingMeasurementEvent {
 	ClientEventBase eventBase = 1;
 	int64 measuredMillis = 2;
 }

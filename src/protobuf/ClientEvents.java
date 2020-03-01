@@ -1535,8 +1535,8 @@ public final class ClientEvents {
 
   }
 
-  public interface ClientProfileEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileEvent)
+  public interface ClientProfileGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileGetEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1570,25 +1570,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientProfileEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientProfileGetEvent}
    */
-  public  static final class ClientProfileEvent extends
+  public  static final class ClientProfileGetEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileEvent)
-      ClientProfileEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileGetEvent)
+      ClientProfileGetEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientProfileEvent.newBuilder() to construct.
-    private ClientProfileEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientProfileGetEvent.newBuilder() to construct.
+    private ClientProfileGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientProfileEvent() {
+    private ClientProfileGetEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientProfileEvent();
+      return new ClientProfileGetEvent();
     }
 
     @java.lang.Override
@@ -1596,7 +1596,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientProfileEvent(
+    private ClientProfileGetEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1661,15 +1661,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileGetEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientProfileEvent.class, protobuf.ClientEvents.ClientProfileEvent.Builder.class);
+              protobuf.ClientEvents.ClientProfileGetEvent.class, protobuf.ClientEvents.ClientProfileGetEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -1765,10 +1765,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientProfileEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientProfileGetEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientProfileEvent other = (protobuf.ClientEvents.ClientProfileEvent) obj;
+      protobuf.ClientEvents.ClientProfileGetEvent other = (protobuf.ClientEvents.ClientProfileGetEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -1804,69 +1804,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientProfileEvent parseFrom(
+    public static protobuf.ClientEvents.ClientProfileGetEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1879,7 +1879,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileGetEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1895,26 +1895,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientProfileEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientProfileGetEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileEvent)
-        protobuf.ClientEvents.ClientProfileEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileGetEvent)
+        protobuf.ClientEvents.ClientProfileGetEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileGetEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientProfileEvent.class, protobuf.ClientEvents.ClientProfileEvent.Builder.class);
+                protobuf.ClientEvents.ClientProfileGetEvent.class, protobuf.ClientEvents.ClientProfileGetEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientProfileEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientProfileGetEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1950,17 +1950,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientProfileEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientProfileEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientProfileGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientProfileGetEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientProfileEvent build() {
-        protobuf.ClientEvents.ClientProfileEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientProfileGetEvent build() {
+        protobuf.ClientEvents.ClientProfileGetEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1968,8 +1968,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientProfileEvent buildPartial() {
-        protobuf.ClientEvents.ClientProfileEvent result = new protobuf.ClientEvents.ClientProfileEvent(this);
+      public protobuf.ClientEvents.ClientProfileGetEvent buildPartial() {
+        protobuf.ClientEvents.ClientProfileGetEvent result = new protobuf.ClientEvents.ClientProfileGetEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -2018,16 +2018,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientProfileEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientProfileEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientProfileGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientProfileGetEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileEvent other) {
-        if (other == protobuf.ClientEvents.ClientProfileEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileGetEvent other) {
+        if (other == protobuf.ClientEvents.ClientProfileGetEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -2049,11 +2049,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientProfileEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientProfileGetEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientProfileEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientProfileGetEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2313,48 +2313,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileGetEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileEvent)
-    private static final protobuf.ClientEvents.ClientProfileEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileGetEvent)
+    private static final protobuf.ClientEvents.ClientProfileGetEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileGetEvent();
     }
 
-    public static protobuf.ClientEvents.ClientProfileEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientProfileGetEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientProfileEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientProfileEvent>() {
+    private static final com.google.protobuf.Parser<ClientProfileGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileGetEvent>() {
       @java.lang.Override
-      public ClientProfileEvent parsePartialFrom(
+      public ClientProfileGetEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientProfileEvent(input, extensionRegistry);
+        return new ClientProfileGetEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientProfileEvent> parser() {
+    public static com.google.protobuf.Parser<ClientProfileGetEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientProfileEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientProfileGetEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientProfileEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientProfileGetEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ChannelMessageEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageEvent)
+  public interface ChannelMessagePostEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessagePostEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2397,18 +2397,18 @@ public final class ClientEvents {
         int index);
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ChannelMessageEvent}
+   * Protobuf type {@code protobuf.clientevents.ChannelMessagePostEvent}
    */
-  public  static final class ChannelMessageEvent extends
+  public  static final class ChannelMessagePostEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessageEvent)
-      ChannelMessageEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessagePostEvent)
+      ChannelMessagePostEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ChannelMessageEvent.newBuilder() to construct.
-    private ChannelMessageEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ChannelMessagePostEvent.newBuilder() to construct.
+    private ChannelMessagePostEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ChannelMessageEvent() {
+    private ChannelMessagePostEvent() {
       message_ = java.util.Collections.emptyList();
     }
 
@@ -2416,7 +2416,7 @@ public final class ClientEvents {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ChannelMessageEvent();
+      return new ChannelMessagePostEvent();
     }
 
     @java.lang.Override
@@ -2424,7 +2424,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ChannelMessageEvent(
+    private ChannelMessagePostEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2489,15 +2489,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessagePostEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ChannelMessageEvent.class, protobuf.ClientEvents.ChannelMessageEvent.Builder.class);
+              protobuf.ClientEvents.ChannelMessagePostEvent.class, protobuf.ClientEvents.ChannelMessagePostEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -2605,10 +2605,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ChannelMessageEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ChannelMessagePostEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ChannelMessageEvent other = (protobuf.ClientEvents.ChannelMessageEvent) obj;
+      protobuf.ClientEvents.ChannelMessagePostEvent other = (protobuf.ClientEvents.ChannelMessagePostEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -2641,69 +2641,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ChannelMessageEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelMessagePostEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2716,7 +2716,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessageEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessagePostEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2732,26 +2732,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ChannelMessageEvent}
+     * Protobuf type {@code protobuf.clientevents.ChannelMessagePostEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessageEvent)
-        protobuf.ClientEvents.ChannelMessageEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessagePostEvent)
+        protobuf.ClientEvents.ChannelMessagePostEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessagePostEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ChannelMessageEvent.class, protobuf.ClientEvents.ChannelMessageEvent.Builder.class);
+                protobuf.ClientEvents.ChannelMessagePostEvent.class, protobuf.ClientEvents.ChannelMessagePostEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ChannelMessageEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ChannelMessagePostEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2788,17 +2788,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ChannelMessageEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ChannelMessagePostEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelMessagePostEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageEvent build() {
-        protobuf.ClientEvents.ChannelMessageEvent result = buildPartial();
+      public protobuf.ClientEvents.ChannelMessagePostEvent build() {
+        protobuf.ClientEvents.ChannelMessagePostEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2806,8 +2806,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ChannelMessageEvent buildPartial() {
-        protobuf.ClientEvents.ChannelMessageEvent result = new protobuf.ClientEvents.ChannelMessageEvent(this);
+      public protobuf.ClientEvents.ChannelMessagePostEvent buildPartial() {
+        protobuf.ClientEvents.ChannelMessagePostEvent result = new protobuf.ClientEvents.ChannelMessagePostEvent(this);
         int from_bitField0_ = bitField0_;
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
@@ -2861,16 +2861,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ChannelMessageEvent) {
-          return mergeFrom((protobuf.ClientEvents.ChannelMessageEvent)other);
+        if (other instanceof protobuf.ClientEvents.ChannelMessagePostEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelMessagePostEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageEvent other) {
-        if (other == protobuf.ClientEvents.ChannelMessageEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessagePostEvent other) {
+        if (other == protobuf.ClientEvents.ChannelMessagePostEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -2915,11 +2915,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ChannelMessageEvent parsedMessage = null;
+        protobuf.ClientEvents.ChannelMessagePostEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ChannelMessageEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ChannelMessagePostEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3301,48 +3301,3012 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessageEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessagePostEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessageEvent)
-    private static final protobuf.ClientEvents.ChannelMessageEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessagePostEvent)
+    private static final protobuf.ClientEvents.ChannelMessagePostEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessageEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessagePostEvent();
     }
 
-    public static protobuf.ClientEvents.ChannelMessageEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ChannelMessagePostEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ChannelMessageEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageEvent>() {
+    private static final com.google.protobuf.Parser<ChannelMessagePostEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessagePostEvent>() {
       @java.lang.Override
-      public ChannelMessageEvent parsePartialFrom(
+      public ChannelMessagePostEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelMessageEvent(input, extensionRegistry);
+        return new ChannelMessagePostEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ChannelMessageEvent> parser() {
+    public static com.google.protobuf.Parser<ChannelMessagePostEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ChannelMessageEvent> getParserForType() {
+    public com.google.protobuf.Parser<ChannelMessagePostEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ChannelMessageEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ChannelMessagePostEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface PrivateMessageEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PrivateMessageEvent)
+  public interface ChannelMessageGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageGetEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ChannelMessage> 
+        getMessageList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    protobuf.ClientMessages.ChannelMessage getMessage(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    int getMessageCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+        getMessageOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageOrBuilder getMessageOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ChannelMessageGetEvent}
+   */
+  public  static final class ChannelMessageGetEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessageGetEvent)
+      ChannelMessageGetEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelMessageGetEvent.newBuilder() to construct.
+    private ChannelMessageGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelMessageGetEvent() {
+      message_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelMessageGetEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelMessageGetEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                message_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessage>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              message_.add(
+                  input.readMessage(protobuf.ClientMessages.ChannelMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          message_ = java.util.Collections.unmodifiableList(message_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageGetEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ChannelMessageGetEvent.class, protobuf.ClientEvents.ChannelMessageGetEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ChannelMessage> message_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ChannelMessage> getMessageList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+        getMessageOrBuilderList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    public int getMessageCount() {
+      return message_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessage getMessage(int index) {
+      return message_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageOrBuilder getMessageOrBuilder(
+        int index) {
+      return message_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        output.writeMessage(2, message_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, message_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ChannelMessageGetEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ChannelMessageGetEvent other = (protobuf.ClientEvents.ChannelMessageGetEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getMessageList()
+          .equals(other.getMessageList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getMessageCount() > 0) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessageGetEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ChannelMessageGetEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessageGetEvent)
+        protobuf.ClientEvents.ChannelMessageGetEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageGetEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ChannelMessageGetEvent.class, protobuf.ClientEvents.ChannelMessageGetEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ChannelMessageGetEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelMessageGetEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageGetEvent build() {
+        protobuf.ClientEvents.ChannelMessageGetEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageGetEvent buildPartial() {
+        protobuf.ClientEvents.ChannelMessageGetEvent result = new protobuf.ClientEvents.ChannelMessageGetEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            message_ = java.util.Collections.unmodifiableList(message_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.message_ = message_;
+        } else {
+          result.message_ = messageBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ChannelMessageGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelMessageGetEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageGetEvent other) {
+        if (other == protobuf.ClientEvents.ChannelMessageGetEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (messageBuilder_ == null) {
+          if (!other.message_.isEmpty()) {
+            if (message_.isEmpty()) {
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageIsMutable();
+              message_.addAll(other.message_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.message_.isEmpty()) {
+            if (messageBuilder_.isEmpty()) {
+              messageBuilder_.dispose();
+              messageBuilder_ = null;
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMessageFieldBuilder() : null;
+            } else {
+              messageBuilder_.addAllMessages(other.message_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ChannelMessageGetEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ChannelMessageGetEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ChannelMessage> message_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          message_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessage>(message_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder> messageBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessage> getMessageList() {
+        if (messageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(message_);
+        } else {
+          return messageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public int getMessageCount() {
+        if (messageBuilder_ == null) {
+          return message_.size();
+        } else {
+          return messageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage getMessage(int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);
+        } else {
+          return messageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ClientMessages.ChannelMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.set(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder addMessage(protobuf.ClientMessages.ChannelMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ClientMessages.ChannelMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ClientMessages.ChannelMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder addAllMessage(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelMessage> values) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, message_);
+          onChanged();
+        } else {
+          messageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder clearMessage() {
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public Builder removeMessage(int index) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.remove(index);
+          onChanged();
+        } else {
+          messageBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage.Builder getMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageOrBuilder getMessageOrBuilder(
+          int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);  } else {
+          return messageBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ChannelMessageOrBuilder> 
+           getMessageOrBuilderList() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(message_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage.Builder addMessageBuilder() {
+        return getMessageFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessage.Builder addMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessage message = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessage.Builder> 
+           getMessageBuilderList() {
+        return getMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder> 
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ChannelMessage, protobuf.ClientMessages.ChannelMessage.Builder, protobuf.ClientMessages.ChannelMessageOrBuilder>(
+                  message_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        return messageBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessageGetEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessageGetEvent)
+    private static final protobuf.ClientEvents.ChannelMessageGetEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessageGetEvent();
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageGetEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelMessageGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageGetEvent>() {
+      @java.lang.Override
+      public ChannelMessageGetEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelMessageGetEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelMessageGetEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelMessageGetEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ChannelMessageGetEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChannelMessageAnswerGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageAnswerGetEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> 
+        getMessageAnswerList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    int getMessageAnswerCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+        getMessageAnswerOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ChannelMessageAnswerGetEvent}
+   */
+  public  static final class ChannelMessageAnswerGetEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessageAnswerGetEvent)
+      ChannelMessageAnswerGetEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelMessageAnswerGetEvent.newBuilder() to construct.
+    private ChannelMessageAnswerGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelMessageAnswerGetEvent() {
+      messageAnswer_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelMessageAnswerGetEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelMessageAnswerGetEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                messageAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessageAnswer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              messageAnswer_.add(
+                  input.readMessage(protobuf.ClientMessages.ChannelMessageAnswer.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          messageAnswer_ = java.util.Collections.unmodifiableList(messageAnswer_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ChannelMessageAnswerGetEvent.class, protobuf.ClientEvents.ChannelMessageAnswerGetEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int MESSAGEANSWER_FIELD_NUMBER = 3;
+    private java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> messageAnswer_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> getMessageAnswerList() {
+      return messageAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+        getMessageAnswerOrBuilderList() {
+      return messageAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    public int getMessageAnswerCount() {
+      return messageAnswer_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index) {
+      return messageAnswer_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+        int index) {
+      return messageAnswer_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < messageAnswer_.size(); i++) {
+        output.writeMessage(3, messageAnswer_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < messageAnswer_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, messageAnswer_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ChannelMessageAnswerGetEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ChannelMessageAnswerGetEvent other = (protobuf.ClientEvents.ChannelMessageAnswerGetEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getMessageAnswerList()
+          .equals(other.getMessageAnswerList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getMessageAnswerCount() > 0) {
+        hash = (37 * hash) + MESSAGEANSWER_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageAnswerList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessageAnswerGetEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ChannelMessageAnswerGetEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessageAnswerGetEvent)
+        protobuf.ClientEvents.ChannelMessageAnswerGetEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ChannelMessageAnswerGetEvent.class, protobuf.ClientEvents.ChannelMessageAnswerGetEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ChannelMessageAnswerGetEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageAnswerFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (messageAnswerBuilder_ == null) {
+          messageAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageAnswerBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelMessageAnswerGetEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerGetEvent build() {
+        protobuf.ClientEvents.ChannelMessageAnswerGetEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerGetEvent buildPartial() {
+        protobuf.ClientEvents.ChannelMessageAnswerGetEvent result = new protobuf.ClientEvents.ChannelMessageAnswerGetEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (messageAnswerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            messageAnswer_ = java.util.Collections.unmodifiableList(messageAnswer_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.messageAnswer_ = messageAnswer_;
+        } else {
+          result.messageAnswer_ = messageAnswerBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ChannelMessageAnswerGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelMessageAnswerGetEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageAnswerGetEvent other) {
+        if (other == protobuf.ClientEvents.ChannelMessageAnswerGetEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (messageAnswerBuilder_ == null) {
+          if (!other.messageAnswer_.isEmpty()) {
+            if (messageAnswer_.isEmpty()) {
+              messageAnswer_ = other.messageAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageAnswerIsMutable();
+              messageAnswer_.addAll(other.messageAnswer_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.messageAnswer_.isEmpty()) {
+            if (messageAnswerBuilder_.isEmpty()) {
+              messageAnswerBuilder_.dispose();
+              messageAnswerBuilder_ = null;
+              messageAnswer_ = other.messageAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageAnswerBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMessageAnswerFieldBuilder() : null;
+            } else {
+              messageAnswerBuilder_.addAllMessages(other.messageAnswer_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ChannelMessageAnswerGetEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ChannelMessageAnswerGetEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> messageAnswer_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageAnswerIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          messageAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessageAnswer>(messageAnswer_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> messageAnswerBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> getMessageAnswerList() {
+        if (messageAnswerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(messageAnswer_);
+        } else {
+          return messageAnswerBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public int getMessageAnswerCount() {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.size();
+        } else {
+          return messageAnswerBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index) {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.get(index);
+        } else {
+          return messageAnswerBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder setMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.set(index, value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder setMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder addMessageAnswer(protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder addMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(index, value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder addMessageAnswer(
+          protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder addMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder addAllMessageAnswer(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelMessageAnswer> values) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, messageAnswer_);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder clearMessageAnswer() {
+        if (messageAnswerBuilder_ == null) {
+          messageAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public Builder removeMessageAnswer(int index) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.remove(index);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder getMessageAnswerBuilder(
+          int index) {
+        return getMessageAnswerFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+          int index) {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.get(index);  } else {
+          return messageAnswerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+           getMessageAnswerOrBuilderList() {
+        if (messageAnswerBuilder_ != null) {
+          return messageAnswerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(messageAnswer_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder addMessageAnswerBuilder() {
+        return getMessageAnswerFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder addMessageAnswerBuilder(
+          int index) {
+        return getMessageAnswerFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 3;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer.Builder> 
+           getMessageAnswerBuilderList() {
+        return getMessageAnswerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+          getMessageAnswerFieldBuilder() {
+        if (messageAnswerBuilder_ == null) {
+          messageAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder>(
+                  messageAnswer_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          messageAnswer_ = null;
+        }
+        return messageAnswerBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessageAnswerGetEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessageAnswerGetEvent)
+    private static final protobuf.ClientEvents.ChannelMessageAnswerGetEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessageAnswerGetEvent();
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageAnswerGetEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelMessageAnswerGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageAnswerGetEvent>() {
+      @java.lang.Override
+      public ChannelMessageAnswerGetEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelMessageAnswerGetEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelMessageAnswerGetEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelMessageAnswerGetEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ChannelMessageAnswerGetEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChannelMessageAnswerPostEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelMessageAnswerPostEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> 
+        getMessageAnswerList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    int getMessageAnswerCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+        getMessageAnswerOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ChannelMessageAnswerPostEvent}
+   */
+  public  static final class ChannelMessageAnswerPostEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelMessageAnswerPostEvent)
+      ChannelMessageAnswerPostEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChannelMessageAnswerPostEvent.newBuilder() to construct.
+    private ChannelMessageAnswerPostEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChannelMessageAnswerPostEvent() {
+      messageAnswer_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelMessageAnswerPostEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChannelMessageAnswerPostEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                messageAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessageAnswer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              messageAnswer_.add(
+                  input.readMessage(protobuf.ClientMessages.ChannelMessageAnswer.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          messageAnswer_ = java.util.Collections.unmodifiableList(messageAnswer_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ChannelMessageAnswerPostEvent.class, protobuf.ClientEvents.ChannelMessageAnswerPostEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int MESSAGEANSWER_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> messageAnswer_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> getMessageAnswerList() {
+      return messageAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+        getMessageAnswerOrBuilderList() {
+      return messageAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    public int getMessageAnswerCount() {
+      return messageAnswer_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index) {
+      return messageAnswer_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+        int index) {
+      return messageAnswer_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < messageAnswer_.size(); i++) {
+        output.writeMessage(2, messageAnswer_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < messageAnswer_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, messageAnswer_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ChannelMessageAnswerPostEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ChannelMessageAnswerPostEvent other = (protobuf.ClientEvents.ChannelMessageAnswerPostEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getMessageAnswerList()
+          .equals(other.getMessageAnswerList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getMessageAnswerCount() > 0) {
+        hash = (37 * hash) + MESSAGEANSWER_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageAnswerList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelMessageAnswerPostEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ChannelMessageAnswerPostEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelMessageAnswerPostEvent)
+        protobuf.ClientEvents.ChannelMessageAnswerPostEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ChannelMessageAnswerPostEvent.class, protobuf.ClientEvents.ChannelMessageAnswerPostEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ChannelMessageAnswerPostEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageAnswerFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (messageAnswerBuilder_ == null) {
+          messageAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageAnswerBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerPostEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelMessageAnswerPostEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerPostEvent build() {
+        protobuf.ClientEvents.ChannelMessageAnswerPostEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ChannelMessageAnswerPostEvent buildPartial() {
+        protobuf.ClientEvents.ChannelMessageAnswerPostEvent result = new protobuf.ClientEvents.ChannelMessageAnswerPostEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (messageAnswerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            messageAnswer_ = java.util.Collections.unmodifiableList(messageAnswer_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.messageAnswer_ = messageAnswer_;
+        } else {
+          result.messageAnswer_ = messageAnswerBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ChannelMessageAnswerPostEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelMessageAnswerPostEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelMessageAnswerPostEvent other) {
+        if (other == protobuf.ClientEvents.ChannelMessageAnswerPostEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (messageAnswerBuilder_ == null) {
+          if (!other.messageAnswer_.isEmpty()) {
+            if (messageAnswer_.isEmpty()) {
+              messageAnswer_ = other.messageAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageAnswerIsMutable();
+              messageAnswer_.addAll(other.messageAnswer_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.messageAnswer_.isEmpty()) {
+            if (messageAnswerBuilder_.isEmpty()) {
+              messageAnswerBuilder_.dispose();
+              messageAnswerBuilder_ = null;
+              messageAnswer_ = other.messageAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageAnswerBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMessageAnswerFieldBuilder() : null;
+            } else {
+              messageAnswerBuilder_.addAllMessages(other.messageAnswer_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ChannelMessageAnswerPostEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ChannelMessageAnswerPostEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> messageAnswer_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageAnswerIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          messageAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ChannelMessageAnswer>(messageAnswer_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> messageAnswerBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer> getMessageAnswerList() {
+        if (messageAnswerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(messageAnswer_);
+        } else {
+          return messageAnswerBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public int getMessageAnswerCount() {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.size();
+        } else {
+          return messageAnswerBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer getMessageAnswer(int index) {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.get(index);
+        } else {
+          return messageAnswerBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder setMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.set(index, value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder setMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder addMessageAnswer(protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder addMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer value) {
+        if (messageAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(index, value);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder addMessageAnswer(
+          protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder addMessageAnswer(
+          int index, protobuf.ClientMessages.ChannelMessageAnswer.Builder builderForValue) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder addAllMessageAnswer(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ChannelMessageAnswer> values) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, messageAnswer_);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder clearMessageAnswer() {
+        if (messageAnswerBuilder_ == null) {
+          messageAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public Builder removeMessageAnswer(int index) {
+        if (messageAnswerBuilder_ == null) {
+          ensureMessageAnswerIsMutable();
+          messageAnswer_.remove(index);
+          onChanged();
+        } else {
+          messageAnswerBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder getMessageAnswerBuilder(
+          int index) {
+        return getMessageAnswerFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswerOrBuilder getMessageAnswerOrBuilder(
+          int index) {
+        if (messageAnswerBuilder_ == null) {
+          return messageAnswer_.get(index);  } else {
+          return messageAnswerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+           getMessageAnswerOrBuilderList() {
+        if (messageAnswerBuilder_ != null) {
+          return messageAnswerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(messageAnswer_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder addMessageAnswerBuilder() {
+        return getMessageAnswerFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ChannelMessageAnswer.Builder addMessageAnswerBuilder(
+          int index) {
+        return getMessageAnswerFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ChannelMessageAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ChannelMessageAnswer messageAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ChannelMessageAnswer.Builder> 
+           getMessageAnswerBuilderList() {
+        return getMessageAnswerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder> 
+          getMessageAnswerFieldBuilder() {
+        if (messageAnswerBuilder_ == null) {
+          messageAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ChannelMessageAnswer, protobuf.ClientMessages.ChannelMessageAnswer.Builder, protobuf.ClientMessages.ChannelMessageAnswerOrBuilder>(
+                  messageAnswer_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          messageAnswer_ = null;
+        }
+        return messageAnswerBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelMessageAnswerPostEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelMessageAnswerPostEvent)
+    private static final protobuf.ClientEvents.ChannelMessageAnswerPostEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelMessageAnswerPostEvent();
+    }
+
+    public static protobuf.ClientEvents.ChannelMessageAnswerPostEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChannelMessageAnswerPostEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelMessageAnswerPostEvent>() {
+      @java.lang.Override
+      public ChannelMessageAnswerPostEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChannelMessageAnswerPostEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChannelMessageAnswerPostEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChannelMessageAnswerPostEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ChannelMessageAnswerPostEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PrivateMessagePostEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PrivateMessagePostEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3385,18 +6349,18 @@ public final class ClientEvents {
         int index);
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.PrivateMessageEvent}
+   * Protobuf type {@code protobuf.clientevents.PrivateMessagePostEvent}
    */
-  public  static final class PrivateMessageEvent extends
+  public  static final class PrivateMessagePostEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PrivateMessageEvent)
-      PrivateMessageEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PrivateMessagePostEvent)
+      PrivateMessagePostEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use PrivateMessageEvent.newBuilder() to construct.
-    private PrivateMessageEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PrivateMessagePostEvent.newBuilder() to construct.
+    private PrivateMessagePostEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private PrivateMessageEvent() {
+    private PrivateMessagePostEvent() {
       message_ = java.util.Collections.emptyList();
     }
 
@@ -3404,7 +6368,7 @@ public final class ClientEvents {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new PrivateMessageEvent();
+      return new PrivateMessagePostEvent();
     }
 
     @java.lang.Override
@@ -3412,7 +6376,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private PrivateMessageEvent(
+    private PrivateMessagePostEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3477,15 +6441,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessagePostEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.PrivateMessageEvent.class, protobuf.ClientEvents.PrivateMessageEvent.Builder.class);
+              protobuf.ClientEvents.PrivateMessagePostEvent.class, protobuf.ClientEvents.PrivateMessagePostEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -3593,10 +6557,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.PrivateMessageEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.PrivateMessagePostEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.PrivateMessageEvent other = (protobuf.ClientEvents.PrivateMessageEvent) obj;
+      protobuf.ClientEvents.PrivateMessagePostEvent other = (protobuf.ClientEvents.PrivateMessagePostEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -3629,69 +6593,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.PrivateMessageEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateMessagePostEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3704,7 +6668,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.PrivateMessageEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.PrivateMessagePostEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3720,26 +6684,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.PrivateMessageEvent}
+     * Protobuf type {@code protobuf.clientevents.PrivateMessagePostEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PrivateMessageEvent)
-        protobuf.ClientEvents.PrivateMessageEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PrivateMessagePostEvent)
+        protobuf.ClientEvents.PrivateMessagePostEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessagePostEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.PrivateMessageEvent.class, protobuf.ClientEvents.PrivateMessageEvent.Builder.class);
+                protobuf.ClientEvents.PrivateMessagePostEvent.class, protobuf.ClientEvents.PrivateMessagePostEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.PrivateMessageEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.PrivateMessagePostEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3776,17 +6740,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.PrivateMessageEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.PrivateMessageEvent.getDefaultInstance();
+      public protobuf.ClientEvents.PrivateMessagePostEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.PrivateMessagePostEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.PrivateMessageEvent build() {
-        protobuf.ClientEvents.PrivateMessageEvent result = buildPartial();
+      public protobuf.ClientEvents.PrivateMessagePostEvent build() {
+        protobuf.ClientEvents.PrivateMessagePostEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3794,8 +6758,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.PrivateMessageEvent buildPartial() {
-        protobuf.ClientEvents.PrivateMessageEvent result = new protobuf.ClientEvents.PrivateMessageEvent(this);
+      public protobuf.ClientEvents.PrivateMessagePostEvent buildPartial() {
+        protobuf.ClientEvents.PrivateMessagePostEvent result = new protobuf.ClientEvents.PrivateMessagePostEvent(this);
         int from_bitField0_ = bitField0_;
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
@@ -3849,16 +6813,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.PrivateMessageEvent) {
-          return mergeFrom((protobuf.ClientEvents.PrivateMessageEvent)other);
+        if (other instanceof protobuf.ClientEvents.PrivateMessagePostEvent) {
+          return mergeFrom((protobuf.ClientEvents.PrivateMessagePostEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.PrivateMessageEvent other) {
-        if (other == protobuf.ClientEvents.PrivateMessageEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.PrivateMessagePostEvent other) {
+        if (other == protobuf.ClientEvents.PrivateMessagePostEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -3903,11 +6867,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.PrivateMessageEvent parsedMessage = null;
+        protobuf.ClientEvents.PrivateMessagePostEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.PrivateMessageEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.PrivateMessagePostEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4289,48 +7253,4988 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PrivateMessageEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PrivateMessagePostEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PrivateMessageEvent)
-    private static final protobuf.ClientEvents.PrivateMessageEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PrivateMessagePostEvent)
+    private static final protobuf.ClientEvents.PrivateMessagePostEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.PrivateMessageEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.PrivateMessagePostEvent();
     }
 
-    public static protobuf.ClientEvents.PrivateMessageEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.PrivateMessagePostEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PrivateMessageEvent>
-        PARSER = new com.google.protobuf.AbstractParser<PrivateMessageEvent>() {
+    private static final com.google.protobuf.Parser<PrivateMessagePostEvent>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateMessagePostEvent>() {
       @java.lang.Override
-      public PrivateMessageEvent parsePartialFrom(
+      public PrivateMessagePostEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PrivateMessageEvent(input, extensionRegistry);
+        return new PrivateMessagePostEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PrivateMessageEvent> parser() {
+    public static com.google.protobuf.Parser<PrivateMessagePostEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PrivateMessageEvent> getParserForType() {
+    public com.google.protobuf.Parser<PrivateMessagePostEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.PrivateMessageEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.PrivateMessagePostEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientJoinedChannelEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientJoinedChannelEvent)
+  public interface PrivateMessageGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PrivateMessageGetEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.PrivateMessage> 
+        getMessageList();
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    protobuf.ClientMessages.PrivateMessage getMessage(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    int getMessageCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+        getMessageOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    protobuf.ClientMessages.PrivateMessageOrBuilder getMessageOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.PrivateMessageGetEvent}
+   */
+  public  static final class PrivateMessageGetEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PrivateMessageGetEvent)
+      PrivateMessageGetEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PrivateMessageGetEvent.newBuilder() to construct.
+    private PrivateMessageGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PrivateMessageGetEvent() {
+      message_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PrivateMessageGetEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PrivateMessageGetEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                message_ = new java.util.ArrayList<protobuf.ClientMessages.PrivateMessage>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              message_.add(
+                  input.readMessage(protobuf.ClientMessages.PrivateMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          message_ = java.util.Collections.unmodifiableList(message_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageGetEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.PrivateMessageGetEvent.class, protobuf.ClientEvents.PrivateMessageGetEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.PrivateMessage> message_;
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.PrivateMessage> getMessageList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+        getMessageOrBuilderList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    public int getMessageCount() {
+      return message_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    public protobuf.ClientMessages.PrivateMessage getMessage(int index) {
+      return message_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+     */
+    public protobuf.ClientMessages.PrivateMessageOrBuilder getMessageOrBuilder(
+        int index) {
+      return message_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        output.writeMessage(2, message_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, message_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.PrivateMessageGetEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.PrivateMessageGetEvent other = (protobuf.ClientEvents.PrivateMessageGetEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getMessageList()
+          .equals(other.getMessageList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getMessageCount() > 0) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.PrivateMessageGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.PrivateMessageGetEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.PrivateMessageGetEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PrivateMessageGetEvent)
+        protobuf.ClientEvents.PrivateMessageGetEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageGetEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.PrivateMessageGetEvent.class, protobuf.ClientEvents.PrivateMessageGetEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.PrivateMessageGetEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.PrivateMessageGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.PrivateMessageGetEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.PrivateMessageGetEvent build() {
+        protobuf.ClientEvents.PrivateMessageGetEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.PrivateMessageGetEvent buildPartial() {
+        protobuf.ClientEvents.PrivateMessageGetEvent result = new protobuf.ClientEvents.PrivateMessageGetEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            message_ = java.util.Collections.unmodifiableList(message_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.message_ = message_;
+        } else {
+          result.message_ = messageBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.PrivateMessageGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.PrivateMessageGetEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.PrivateMessageGetEvent other) {
+        if (other == protobuf.ClientEvents.PrivateMessageGetEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (messageBuilder_ == null) {
+          if (!other.message_.isEmpty()) {
+            if (message_.isEmpty()) {
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageIsMutable();
+              message_.addAll(other.message_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.message_.isEmpty()) {
+            if (messageBuilder_.isEmpty()) {
+              messageBuilder_.dispose();
+              messageBuilder_ = null;
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMessageFieldBuilder() : null;
+            } else {
+              messageBuilder_.addAllMessages(other.message_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.PrivateMessageGetEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.PrivateMessageGetEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.PrivateMessage> message_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          message_ = new java.util.ArrayList<protobuf.ClientMessages.PrivateMessage>(message_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder> messageBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.PrivateMessage> getMessageList() {
+        if (messageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(message_);
+        } else {
+          return messageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public int getMessageCount() {
+        if (messageBuilder_ == null) {
+          return message_.size();
+        } else {
+          return messageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage getMessage(int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);
+        } else {
+          return messageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ClientMessages.PrivateMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.set(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder addMessage(protobuf.ClientMessages.PrivateMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ClientMessages.PrivateMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ClientMessages.PrivateMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder addAllMessage(
+          java.lang.Iterable<? extends protobuf.ClientMessages.PrivateMessage> values) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, message_);
+          onChanged();
+        } else {
+          messageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder clearMessage() {
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public Builder removeMessage(int index) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.remove(index);
+          onChanged();
+        } else {
+          messageBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage.Builder getMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessageOrBuilder getMessageOrBuilder(
+          int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);  } else {
+          return messageBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.PrivateMessageOrBuilder> 
+           getMessageOrBuilderList() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(message_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage.Builder addMessageBuilder() {
+        return getMessageFieldBuilder().addBuilder(
+            protobuf.ClientMessages.PrivateMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public protobuf.ClientMessages.PrivateMessage.Builder addMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.PrivateMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.PrivateMessage message = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.PrivateMessage.Builder> 
+           getMessageBuilderList() {
+        return getMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder> 
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.PrivateMessage, protobuf.ClientMessages.PrivateMessage.Builder, protobuf.ClientMessages.PrivateMessageOrBuilder>(
+                  message_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        return messageBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PrivateMessageGetEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PrivateMessageGetEvent)
+    private static final protobuf.ClientEvents.PrivateMessageGetEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.PrivateMessageGetEvent();
+    }
+
+    public static protobuf.ClientEvents.PrivateMessageGetEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PrivateMessageGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateMessageGetEvent>() {
+      @java.lang.Override
+      public PrivateMessageGetEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PrivateMessageGetEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PrivateMessageGetEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PrivateMessageGetEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.PrivateMessageGetEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientProfileCommentPostEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileCommentPostEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ClientProfileComment> 
+        getProfileCommentList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileComment getProfileComment(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    int getProfileCommentCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+        getProfileCommentOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ClientProfileCommentPostEvent}
+   */
+  public  static final class ClientProfileCommentPostEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileCommentPostEvent)
+      ClientProfileCommentPostEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientProfileCommentPostEvent.newBuilder() to construct.
+    private ClientProfileCommentPostEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientProfileCommentPostEvent() {
+      profileComment_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientProfileCommentPostEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientProfileCommentPostEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                profileComment_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileComment>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              profileComment_.add(
+                  input.readMessage(protobuf.ClientMessages.ClientProfileComment.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          profileComment_ = java.util.Collections.unmodifiableList(profileComment_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ClientProfileCommentPostEvent.class, protobuf.ClientEvents.ClientProfileCommentPostEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int PROFILECOMMENT_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ClientProfileComment> profileComment_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ClientProfileComment> getProfileCommentList() {
+      return profileComment_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+        getProfileCommentOrBuilderList() {
+      return profileComment_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public int getProfileCommentCount() {
+      return profileComment_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileComment getProfileComment(int index) {
+      return profileComment_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+        int index) {
+      return profileComment_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < profileComment_.size(); i++) {
+        output.writeMessage(2, profileComment_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < profileComment_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, profileComment_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ClientProfileCommentPostEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ClientProfileCommentPostEvent other = (protobuf.ClientEvents.ClientProfileCommentPostEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getProfileCommentList()
+          .equals(other.getProfileCommentList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getProfileCommentCount() > 0) {
+        hash = (37 * hash) + PROFILECOMMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getProfileCommentList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileCommentPostEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ClientProfileCommentPostEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileCommentPostEvent)
+        protobuf.ClientEvents.ClientProfileCommentPostEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ClientProfileCommentPostEvent.class, protobuf.ClientEvents.ClientProfileCommentPostEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ClientProfileCommentPostEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getProfileCommentFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (profileCommentBuilder_ == null) {
+          profileComment_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          profileCommentBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentPostEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientProfileCommentPostEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentPostEvent build() {
+        protobuf.ClientEvents.ClientProfileCommentPostEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentPostEvent buildPartial() {
+        protobuf.ClientEvents.ClientProfileCommentPostEvent result = new protobuf.ClientEvents.ClientProfileCommentPostEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (profileCommentBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            profileComment_ = java.util.Collections.unmodifiableList(profileComment_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.profileComment_ = profileComment_;
+        } else {
+          result.profileComment_ = profileCommentBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ClientProfileCommentPostEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientProfileCommentPostEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileCommentPostEvent other) {
+        if (other == protobuf.ClientEvents.ClientProfileCommentPostEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (profileCommentBuilder_ == null) {
+          if (!other.profileComment_.isEmpty()) {
+            if (profileComment_.isEmpty()) {
+              profileComment_ = other.profileComment_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProfileCommentIsMutable();
+              profileComment_.addAll(other.profileComment_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.profileComment_.isEmpty()) {
+            if (profileCommentBuilder_.isEmpty()) {
+              profileCommentBuilder_.dispose();
+              profileCommentBuilder_ = null;
+              profileComment_ = other.profileComment_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              profileCommentBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getProfileCommentFieldBuilder() : null;
+            } else {
+              profileCommentBuilder_.addAllMessages(other.profileComment_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ClientProfileCommentPostEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ClientProfileCommentPostEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ClientProfileComment> profileComment_ =
+        java.util.Collections.emptyList();
+      private void ensureProfileCommentIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          profileComment_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileComment>(profileComment_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder> profileCommentBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileComment> getProfileCommentList() {
+        if (profileCommentBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(profileComment_);
+        } else {
+          return profileCommentBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public int getProfileCommentCount() {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.size();
+        } else {
+          return profileCommentBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment getProfileComment(int index) {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.get(index);
+        } else {
+          return profileCommentBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder setProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.set(index, value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder setProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.add(value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.add(index, value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.add(builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addAllProfileComment(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileComment> values) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, profileComment_);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder clearProfileComment() {
+        if (profileCommentBuilder_ == null) {
+          profileComment_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          profileCommentBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder removeProfileComment(int index) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.remove(index);
+          onChanged();
+        } else {
+          profileCommentBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder getProfileCommentBuilder(
+          int index) {
+        return getProfileCommentFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+          int index) {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.get(index);  } else {
+          return profileCommentBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+           getProfileCommentOrBuilderList() {
+        if (profileCommentBuilder_ != null) {
+          return profileCommentBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(profileComment_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder addProfileCommentBuilder() {
+        return getProfileCommentFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ClientProfileComment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder addProfileCommentBuilder(
+          int index) {
+        return getProfileCommentFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ClientProfileComment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileComment.Builder> 
+           getProfileCommentBuilderList() {
+        return getProfileCommentFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+          getProfileCommentFieldBuilder() {
+        if (profileCommentBuilder_ == null) {
+          profileCommentBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder>(
+                  profileComment_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          profileComment_ = null;
+        }
+        return profileCommentBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileCommentPostEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileCommentPostEvent)
+    private static final protobuf.ClientEvents.ClientProfileCommentPostEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileCommentPostEvent();
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentPostEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientProfileCommentPostEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentPostEvent>() {
+      @java.lang.Override
+      public ClientProfileCommentPostEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientProfileCommentPostEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientProfileCommentPostEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientProfileCommentPostEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ClientProfileCommentPostEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientProfileCommentGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileCommentGetEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ClientProfileComment> 
+        getProfileCommentList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileComment getProfileComment(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    int getProfileCommentCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+        getProfileCommentOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ClientProfileCommentGetEvent}
+   */
+  public  static final class ClientProfileCommentGetEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileCommentGetEvent)
+      ClientProfileCommentGetEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientProfileCommentGetEvent.newBuilder() to construct.
+    private ClientProfileCommentGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientProfileCommentGetEvent() {
+      profileComment_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientProfileCommentGetEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientProfileCommentGetEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                profileComment_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileComment>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              profileComment_.add(
+                  input.readMessage(protobuf.ClientMessages.ClientProfileComment.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          profileComment_ = java.util.Collections.unmodifiableList(profileComment_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ClientProfileCommentGetEvent.class, protobuf.ClientEvents.ClientProfileCommentGetEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int PROFILECOMMENT_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ClientProfileComment> profileComment_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ClientProfileComment> getProfileCommentList() {
+      return profileComment_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+        getProfileCommentOrBuilderList() {
+      return profileComment_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public int getProfileCommentCount() {
+      return profileComment_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileComment getProfileComment(int index) {
+      return profileComment_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+        int index) {
+      return profileComment_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < profileComment_.size(); i++) {
+        output.writeMessage(2, profileComment_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < profileComment_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, profileComment_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ClientProfileCommentGetEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ClientProfileCommentGetEvent other = (protobuf.ClientEvents.ClientProfileCommentGetEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getProfileCommentList()
+          .equals(other.getProfileCommentList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getProfileCommentCount() > 0) {
+        hash = (37 * hash) + PROFILECOMMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getProfileCommentList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileCommentGetEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ClientProfileCommentGetEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileCommentGetEvent)
+        protobuf.ClientEvents.ClientProfileCommentGetEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ClientProfileCommentGetEvent.class, protobuf.ClientEvents.ClientProfileCommentGetEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ClientProfileCommentGetEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getProfileCommentFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (profileCommentBuilder_ == null) {
+          profileComment_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          profileCommentBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientProfileCommentGetEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentGetEvent build() {
+        protobuf.ClientEvents.ClientProfileCommentGetEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentGetEvent buildPartial() {
+        protobuf.ClientEvents.ClientProfileCommentGetEvent result = new protobuf.ClientEvents.ClientProfileCommentGetEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (profileCommentBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            profileComment_ = java.util.Collections.unmodifiableList(profileComment_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.profileComment_ = profileComment_;
+        } else {
+          result.profileComment_ = profileCommentBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ClientProfileCommentGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientProfileCommentGetEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileCommentGetEvent other) {
+        if (other == protobuf.ClientEvents.ClientProfileCommentGetEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (profileCommentBuilder_ == null) {
+          if (!other.profileComment_.isEmpty()) {
+            if (profileComment_.isEmpty()) {
+              profileComment_ = other.profileComment_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProfileCommentIsMutable();
+              profileComment_.addAll(other.profileComment_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.profileComment_.isEmpty()) {
+            if (profileCommentBuilder_.isEmpty()) {
+              profileCommentBuilder_.dispose();
+              profileCommentBuilder_ = null;
+              profileComment_ = other.profileComment_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              profileCommentBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getProfileCommentFieldBuilder() : null;
+            } else {
+              profileCommentBuilder_.addAllMessages(other.profileComment_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ClientProfileCommentGetEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ClientProfileCommentGetEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ClientProfileComment> profileComment_ =
+        java.util.Collections.emptyList();
+      private void ensureProfileCommentIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          profileComment_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileComment>(profileComment_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder> profileCommentBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileComment> getProfileCommentList() {
+        if (profileCommentBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(profileComment_);
+        } else {
+          return profileCommentBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public int getProfileCommentCount() {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.size();
+        } else {
+          return profileCommentBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment getProfileComment(int index) {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.get(index);
+        } else {
+          return profileCommentBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder setProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.set(index, value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder setProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.add(value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment value) {
+        if (profileCommentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentIsMutable();
+          profileComment_.add(index, value);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.add(builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addProfileComment(
+          int index, protobuf.ClientMessages.ClientProfileComment.Builder builderForValue) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder addAllProfileComment(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileComment> values) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, profileComment_);
+          onChanged();
+        } else {
+          profileCommentBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder clearProfileComment() {
+        if (profileCommentBuilder_ == null) {
+          profileComment_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          profileCommentBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public Builder removeProfileComment(int index) {
+        if (profileCommentBuilder_ == null) {
+          ensureProfileCommentIsMutable();
+          profileComment_.remove(index);
+          onChanged();
+        } else {
+          profileCommentBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder getProfileCommentBuilder(
+          int index) {
+        return getProfileCommentFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentOrBuilder getProfileCommentOrBuilder(
+          int index) {
+        if (profileCommentBuilder_ == null) {
+          return profileComment_.get(index);  } else {
+          return profileCommentBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+           getProfileCommentOrBuilderList() {
+        if (profileCommentBuilder_ != null) {
+          return profileCommentBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(profileComment_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder addProfileCommentBuilder() {
+        return getProfileCommentFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ClientProfileComment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileComment.Builder addProfileCommentBuilder(
+          int index) {
+        return getProfileCommentFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ClientProfileComment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileComment profileComment = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileComment.Builder> 
+           getProfileCommentBuilderList() {
+        return getProfileCommentFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder> 
+          getProfileCommentFieldBuilder() {
+        if (profileCommentBuilder_ == null) {
+          profileCommentBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ClientProfileComment, protobuf.ClientMessages.ClientProfileComment.Builder, protobuf.ClientMessages.ClientProfileCommentOrBuilder>(
+                  profileComment_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          profileComment_ = null;
+        }
+        return profileCommentBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileCommentGetEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileCommentGetEvent)
+    private static final protobuf.ClientEvents.ClientProfileCommentGetEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileCommentGetEvent();
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentGetEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientProfileCommentGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentGetEvent>() {
+      @java.lang.Override
+      public ClientProfileCommentGetEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientProfileCommentGetEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientProfileCommentGetEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientProfileCommentGetEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ClientProfileCommentGetEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientProfileCommentAnswerPostEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileCommentAnswerPostEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> 
+        getProfileCommentAnswerList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    int getProfileCommentAnswerCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+        getProfileCommentAnswerOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ClientProfileCommentAnswerPostEvent}
+   */
+  public  static final class ClientProfileCommentAnswerPostEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileCommentAnswerPostEvent)
+      ClientProfileCommentAnswerPostEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientProfileCommentAnswerPostEvent.newBuilder() to construct.
+    private ClientProfileCommentAnswerPostEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientProfileCommentAnswerPostEvent() {
+      profileCommentAnswer_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientProfileCommentAnswerPostEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientProfileCommentAnswerPostEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                profileCommentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              profileCommentAnswer_.add(
+                  input.readMessage(protobuf.ClientMessages.ClientProfileCommentAnswer.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          profileCommentAnswer_ = java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.class, protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int PROFILECOMMENTANSWER_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> profileCommentAnswer_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getProfileCommentAnswerList() {
+      return profileCommentAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+        getProfileCommentAnswerOrBuilderList() {
+      return profileCommentAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public int getProfileCommentAnswerCount() {
+      return profileCommentAnswer_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index) {
+      return profileCommentAnswer_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+        int index) {
+      return profileCommentAnswer_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < profileCommentAnswer_.size(); i++) {
+        output.writeMessage(2, profileCommentAnswer_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < profileCommentAnswer_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, profileCommentAnswer_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent other = (protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getProfileCommentAnswerList()
+          .equals(other.getProfileCommentAnswerList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getProfileCommentAnswerCount() > 0) {
+        hash = (37 * hash) + PROFILECOMMENTANSWER_FIELD_NUMBER;
+        hash = (53 * hash) + getProfileCommentAnswerList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ClientProfileCommentAnswerPostEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileCommentAnswerPostEvent)
+        protobuf.ClientEvents.ClientProfileCommentAnswerPostEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.class, protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getProfileCommentAnswerFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          profileCommentAnswerBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent build() {
+        protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent buildPartial() {
+        protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent result = new protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            profileCommentAnswer_ = java.util.Collections.unmodifiableList(profileCommentAnswer_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.profileCommentAnswer_ = profileCommentAnswer_;
+        } else {
+          result.profileCommentAnswer_ = profileCommentAnswerBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent other) {
+        if (other == protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          if (!other.profileCommentAnswer_.isEmpty()) {
+            if (profileCommentAnswer_.isEmpty()) {
+              profileCommentAnswer_ = other.profileCommentAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProfileCommentAnswerIsMutable();
+              profileCommentAnswer_.addAll(other.profileCommentAnswer_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.profileCommentAnswer_.isEmpty()) {
+            if (profileCommentAnswerBuilder_.isEmpty()) {
+              profileCommentAnswerBuilder_.dispose();
+              profileCommentAnswerBuilder_ = null;
+              profileCommentAnswer_ = other.profileCommentAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              profileCommentAnswerBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getProfileCommentAnswerFieldBuilder() : null;
+            } else {
+              profileCommentAnswerBuilder_.addAllMessages(other.profileCommentAnswer_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> profileCommentAnswer_ =
+        java.util.Collections.emptyList();
+      private void ensureProfileCommentAnswerIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          profileCommentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>(profileCommentAnswer_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> profileCommentAnswerBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getProfileCommentAnswerList() {
+        if (profileCommentAnswerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        } else {
+          return profileCommentAnswerBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public int getProfileCommentAnswerCount() {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.size();
+        } else {
+          return profileCommentAnswerBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.get(index);
+        } else {
+          return profileCommentAnswerBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder setProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.set(index, value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder setProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(index, value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addAllProfileCommentAnswer(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileCommentAnswer> values) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, profileCommentAnswer_);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder clearProfileCommentAnswer() {
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder removeProfileCommentAnswer(int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.remove(index);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder getProfileCommentAnswerBuilder(
+          int index) {
+        return getProfileCommentAnswerFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+          int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.get(index);  } else {
+          return profileCommentAnswerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+           getProfileCommentAnswerOrBuilderList() {
+        if (profileCommentAnswerBuilder_ != null) {
+          return profileCommentAnswerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addProfileCommentAnswerBuilder() {
+        return getProfileCommentAnswerFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addProfileCommentAnswerBuilder(
+          int index) {
+        return getProfileCommentAnswerFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer.Builder> 
+           getProfileCommentAnswerBuilderList() {
+        return getProfileCommentAnswerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+          getProfileCommentAnswerFieldBuilder() {
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder>(
+                  profileCommentAnswer_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          profileCommentAnswer_ = null;
+        }
+        return profileCommentAnswerBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileCommentAnswerPostEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileCommentAnswerPostEvent)
+    private static final protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent();
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientProfileCommentAnswerPostEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentAnswerPostEvent>() {
+      @java.lang.Override
+      public ClientProfileCommentAnswerPostEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientProfileCommentAnswerPostEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientProfileCommentAnswerPostEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientProfileCommentAnswerPostEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ClientProfileCommentAnswerPostEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientProfileCommentAnswerGetEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientProfileCommentAnswerGetEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    boolean hasEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    protobuf.ClientEvents.ClientEventBase getEventBase();
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder();
+
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> 
+        getProfileCommentAnswerList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index);
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    int getProfileCommentAnswerCount();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+        getProfileCommentAnswerOrBuilderList();
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.clientevents.ClientProfileCommentAnswerGetEvent}
+   */
+  public  static final class ClientProfileCommentAnswerGetEvent extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientProfileCommentAnswerGetEvent)
+      ClientProfileCommentAnswerGetEventOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientProfileCommentAnswerGetEvent.newBuilder() to construct.
+    private ClientProfileCommentAnswerGetEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientProfileCommentAnswerGetEvent() {
+      profileCommentAnswer_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientProfileCommentAnswerGetEvent();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientProfileCommentAnswerGetEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              protobuf.ClientEvents.ClientEventBase.Builder subBuilder = null;
+              if (eventBase_ != null) {
+                subBuilder = eventBase_.toBuilder();
+              }
+              eventBase_ = input.readMessage(protobuf.ClientEvents.ClientEventBase.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBase_);
+                eventBase_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                profileCommentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              profileCommentAnswer_.add(
+                  input.readMessage(protobuf.ClientMessages.ClientProfileCommentAnswer.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          profileCommentAnswer_ = java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.class, protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.Builder.class);
+    }
+
+    public static final int EVENTBASE_FIELD_NUMBER = 1;
+    private protobuf.ClientEvents.ClientEventBase eventBase_;
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return Whether the eventBase field is set.
+     */
+    public boolean hasEventBase() {
+      return eventBase_ != null;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     * @return The eventBase.
+     */
+    public protobuf.ClientEvents.ClientEventBase getEventBase() {
+      return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+    }
+    /**
+     * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+     */
+    public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+      return getEventBase();
+    }
+
+    public static final int PROFILECOMMENTANSWER_FIELD_NUMBER = 2;
+    private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> profileCommentAnswer_;
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getProfileCommentAnswerList() {
+      return profileCommentAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+        getProfileCommentAnswerOrBuilderList() {
+      return profileCommentAnswer_;
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public int getProfileCommentAnswerCount() {
+      return profileCommentAnswer_.size();
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index) {
+      return profileCommentAnswer_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+     */
+    public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+        int index) {
+      return profileCommentAnswer_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (eventBase_ != null) {
+        output.writeMessage(1, getEventBase());
+      }
+      for (int i = 0; i < profileCommentAnswer_.size(); i++) {
+        output.writeMessage(2, profileCommentAnswer_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (eventBase_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEventBase());
+      }
+      for (int i = 0; i < profileCommentAnswer_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, profileCommentAnswer_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent)) {
+        return super.equals(obj);
+      }
+      protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent other = (protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent) obj;
+
+      if (hasEventBase() != other.hasEventBase()) return false;
+      if (hasEventBase()) {
+        if (!getEventBase()
+            .equals(other.getEventBase())) return false;
+      }
+      if (!getProfileCommentAnswerList()
+          .equals(other.getProfileCommentAnswerList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEventBase()) {
+        hash = (37 * hash) + EVENTBASE_FIELD_NUMBER;
+        hash = (53 * hash) + getEventBase().hashCode();
+      }
+      if (getProfileCommentAnswerCount() > 0) {
+        hash = (37 * hash) + PROFILECOMMENTANSWER_FIELD_NUMBER;
+        hash = (53 * hash) + getProfileCommentAnswerList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.clientevents.ClientProfileCommentAnswerGetEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientProfileCommentAnswerGetEvent)
+        protobuf.ClientEvents.ClientProfileCommentAnswerGetEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.class, protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.Builder.class);
+      }
+
+      // Construct using protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getProfileCommentAnswerFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          profileCommentAnswerBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent build() {
+        protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent buildPartial() {
+        protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent result = new protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (eventBaseBuilder_ == null) {
+          result.eventBase_ = eventBase_;
+        } else {
+          result.eventBase_ = eventBaseBuilder_.build();
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            profileCommentAnswer_ = java.util.Collections.unmodifiableList(profileCommentAnswer_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.profileCommentAnswer_ = profileCommentAnswer_;
+        } else {
+          result.profileCommentAnswer_ = profileCommentAnswerBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent other) {
+        if (other == protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent.getDefaultInstance()) return this;
+        if (other.hasEventBase()) {
+          mergeEventBase(other.getEventBase());
+        }
+        if (profileCommentAnswerBuilder_ == null) {
+          if (!other.profileCommentAnswer_.isEmpty()) {
+            if (profileCommentAnswer_.isEmpty()) {
+              profileCommentAnswer_ = other.profileCommentAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProfileCommentAnswerIsMutable();
+              profileCommentAnswer_.addAll(other.profileCommentAnswer_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.profileCommentAnswer_.isEmpty()) {
+            if (profileCommentAnswerBuilder_.isEmpty()) {
+              profileCommentAnswerBuilder_.dispose();
+              profileCommentAnswerBuilder_ = null;
+              profileCommentAnswer_ = other.profileCommentAnswer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              profileCommentAnswerBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getProfileCommentAnswerFieldBuilder() : null;
+            } else {
+              profileCommentAnswerBuilder_.addAllMessages(other.profileCommentAnswer_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private protobuf.ClientEvents.ClientEventBase eventBase_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> eventBaseBuilder_;
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return Whether the eventBase field is set.
+       */
+      public boolean hasEventBase() {
+        return eventBaseBuilder_ != null || eventBase_ != null;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       * @return The eventBase.
+       */
+      public protobuf.ClientEvents.ClientEventBase getEventBase() {
+        if (eventBaseBuilder_ == null) {
+          return eventBase_ == null ? protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        } else {
+          return eventBaseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBase_ = value;
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder setEventBase(
+          protobuf.ClientEvents.ClientEventBase.Builder builderForValue) {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBaseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder mergeEventBase(protobuf.ClientEvents.ClientEventBase value) {
+        if (eventBaseBuilder_ == null) {
+          if (eventBase_ != null) {
+            eventBase_ =
+              protobuf.ClientEvents.ClientEventBase.newBuilder(eventBase_).mergeFrom(value).buildPartial();
+          } else {
+            eventBase_ = value;
+          }
+          onChanged();
+        } else {
+          eventBaseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public Builder clearEventBase() {
+        if (eventBaseBuilder_ == null) {
+          eventBase_ = null;
+          onChanged();
+        } else {
+          eventBase_ = null;
+          eventBaseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBase.Builder getEventBaseBuilder() {
+        
+        onChanged();
+        return getEventBaseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      public protobuf.ClientEvents.ClientEventBaseOrBuilder getEventBaseOrBuilder() {
+        if (eventBaseBuilder_ != null) {
+          return eventBaseBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBase_ == null ?
+              protobuf.ClientEvents.ClientEventBase.getDefaultInstance() : eventBase_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientevents.ClientEventBase eventBase = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder> 
+          getEventBaseFieldBuilder() {
+        if (eventBaseBuilder_ == null) {
+          eventBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientEvents.ClientEventBase, protobuf.ClientEvents.ClientEventBase.Builder, protobuf.ClientEvents.ClientEventBaseOrBuilder>(
+                  getEventBase(),
+                  getParentForChildren(),
+                  isClean());
+          eventBase_ = null;
+        }
+        return eventBaseBuilder_;
+      }
+
+      private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> profileCommentAnswer_ =
+        java.util.Collections.emptyList();
+      private void ensureProfileCommentAnswerIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          profileCommentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>(profileCommentAnswer_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> profileCommentAnswerBuilder_;
+
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getProfileCommentAnswerList() {
+        if (profileCommentAnswerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        } else {
+          return profileCommentAnswerBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public int getProfileCommentAnswerCount() {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.size();
+        } else {
+          return profileCommentAnswerBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer getProfileCommentAnswer(int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.get(index);
+        } else {
+          return profileCommentAnswerBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder setProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.set(index, value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder setProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+        if (profileCommentAnswerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(index, value);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addProfileCommentAnswer(
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder addAllProfileCommentAnswer(
+          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileCommentAnswer> values) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, profileCommentAnswer_);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder clearProfileCommentAnswer() {
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public Builder removeProfileCommentAnswer(int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          ensureProfileCommentAnswerIsMutable();
+          profileCommentAnswer_.remove(index);
+          onChanged();
+        } else {
+          profileCommentAnswerBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder getProfileCommentAnswerBuilder(
+          int index) {
+        return getProfileCommentAnswerFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getProfileCommentAnswerOrBuilder(
+          int index) {
+        if (profileCommentAnswerBuilder_ == null) {
+          return profileCommentAnswer_.get(index);  } else {
+          return profileCommentAnswerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+           getProfileCommentAnswerOrBuilderList() {
+        if (profileCommentAnswerBuilder_ != null) {
+          return profileCommentAnswerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(profileCommentAnswer_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addProfileCommentAnswerBuilder() {
+        return getProfileCommentAnswerFieldBuilder().addBuilder(
+            protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addProfileCommentAnswerBuilder(
+          int index) {
+        return getProfileCommentAnswerFieldBuilder().addBuilder(
+            index, protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer profileCommentAnswer = 2;</code>
+       */
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer.Builder> 
+           getProfileCommentAnswerBuilderList() {
+        return getProfileCommentAnswerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+          getProfileCommentAnswerFieldBuilder() {
+        if (profileCommentAnswerBuilder_ == null) {
+          profileCommentAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder>(
+                  profileCommentAnswer_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          profileCommentAnswer_ = null;
+        }
+        return profileCommentAnswerBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientProfileCommentAnswerGetEvent)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientProfileCommentAnswerGetEvent)
+    private static final protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent();
+    }
+
+    public static protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientProfileCommentAnswerGetEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentAnswerGetEvent>() {
+      @java.lang.Override
+      public ClientProfileCommentAnswerGetEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientProfileCommentAnswerGetEvent(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientProfileCommentAnswerGetEvent> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientProfileCommentAnswerGetEvent> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ClientEvents.ClientProfileCommentAnswerGetEvent getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientChannelJoinEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientChannelJoinEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4364,25 +12268,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientJoinedChannelEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientChannelJoinEvent}
    */
-  public  static final class ClientJoinedChannelEvent extends
+  public  static final class ClientChannelJoinEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientJoinedChannelEvent)
-      ClientJoinedChannelEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientChannelJoinEvent)
+      ClientChannelJoinEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientJoinedChannelEvent.newBuilder() to construct.
-    private ClientJoinedChannelEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientChannelJoinEvent.newBuilder() to construct.
+    private ClientChannelJoinEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientJoinedChannelEvent() {
+    private ClientChannelJoinEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientJoinedChannelEvent();
+      return new ClientChannelJoinEvent();
     }
 
     @java.lang.Override
@@ -4390,7 +12294,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientJoinedChannelEvent(
+    private ClientChannelJoinEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4455,15 +12359,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientJoinedChannelEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelJoinEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientJoinedChannelEvent.class, protobuf.ClientEvents.ClientJoinedChannelEvent.Builder.class);
+              protobuf.ClientEvents.ClientChannelJoinEvent.class, protobuf.ClientEvents.ClientChannelJoinEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -4559,10 +12463,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientJoinedChannelEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientChannelJoinEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientJoinedChannelEvent other = (protobuf.ClientEvents.ClientJoinedChannelEvent) obj;
+      protobuf.ClientEvents.ClientChannelJoinEvent other = (protobuf.ClientEvents.ClientChannelJoinEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -4598,69 +12502,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelJoinEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4673,7 +12577,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientJoinedChannelEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientChannelJoinEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4689,26 +12593,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientJoinedChannelEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientChannelJoinEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientJoinedChannelEvent)
-        protobuf.ClientEvents.ClientJoinedChannelEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientChannelJoinEvent)
+        protobuf.ClientEvents.ClientChannelJoinEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientJoinedChannelEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelJoinEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientJoinedChannelEvent.class, protobuf.ClientEvents.ClientJoinedChannelEvent.Builder.class);
+                protobuf.ClientEvents.ClientChannelJoinEvent.class, protobuf.ClientEvents.ClientChannelJoinEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientJoinedChannelEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientChannelJoinEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4744,17 +12648,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientJoinedChannelEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientJoinedChannelEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientChannelJoinEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientChannelJoinEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientJoinedChannelEvent build() {
-        protobuf.ClientEvents.ClientJoinedChannelEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientChannelJoinEvent build() {
+        protobuf.ClientEvents.ClientChannelJoinEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4762,8 +12666,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientJoinedChannelEvent buildPartial() {
-        protobuf.ClientEvents.ClientJoinedChannelEvent result = new protobuf.ClientEvents.ClientJoinedChannelEvent(this);
+      public protobuf.ClientEvents.ClientChannelJoinEvent buildPartial() {
+        protobuf.ClientEvents.ClientChannelJoinEvent result = new protobuf.ClientEvents.ClientChannelJoinEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -4812,16 +12716,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientJoinedChannelEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientJoinedChannelEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientChannelJoinEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientChannelJoinEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientJoinedChannelEvent other) {
-        if (other == protobuf.ClientEvents.ClientJoinedChannelEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientChannelJoinEvent other) {
+        if (other == protobuf.ClientEvents.ClientChannelJoinEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -4843,11 +12747,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientJoinedChannelEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientChannelJoinEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientJoinedChannelEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientChannelJoinEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5107,48 +13011,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientJoinedChannelEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientChannelJoinEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientJoinedChannelEvent)
-    private static final protobuf.ClientEvents.ClientJoinedChannelEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientChannelJoinEvent)
+    private static final protobuf.ClientEvents.ClientChannelJoinEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientJoinedChannelEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientChannelJoinEvent();
     }
 
-    public static protobuf.ClientEvents.ClientJoinedChannelEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientChannelJoinEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientJoinedChannelEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientJoinedChannelEvent>() {
+    private static final com.google.protobuf.Parser<ClientChannelJoinEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientChannelJoinEvent>() {
       @java.lang.Override
-      public ClientJoinedChannelEvent parsePartialFrom(
+      public ClientChannelJoinEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientJoinedChannelEvent(input, extensionRegistry);
+        return new ClientChannelJoinEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientJoinedChannelEvent> parser() {
+    public static com.google.protobuf.Parser<ClientChannelJoinEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientJoinedChannelEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientChannelJoinEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientJoinedChannelEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientChannelJoinEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientLeftChannelEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientLeftChannelEvent)
+  public interface ClientChannelLeaveEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientChannelLeaveEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5182,25 +13086,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientLeftChannelEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientChannelLeaveEvent}
    */
-  public  static final class ClientLeftChannelEvent extends
+  public  static final class ClientChannelLeaveEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientLeftChannelEvent)
-      ClientLeftChannelEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientChannelLeaveEvent)
+      ClientChannelLeaveEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientLeftChannelEvent.newBuilder() to construct.
-    private ClientLeftChannelEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientChannelLeaveEvent.newBuilder() to construct.
+    private ClientChannelLeaveEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientLeftChannelEvent() {
+    private ClientChannelLeaveEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientLeftChannelEvent();
+      return new ClientChannelLeaveEvent();
     }
 
     @java.lang.Override
@@ -5208,7 +13112,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientLeftChannelEvent(
+    private ClientChannelLeaveEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5273,15 +13177,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLeftChannelEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelLeaveEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientLeftChannelEvent.class, protobuf.ClientEvents.ClientLeftChannelEvent.Builder.class);
+              protobuf.ClientEvents.ClientChannelLeaveEvent.class, protobuf.ClientEvents.ClientChannelLeaveEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -5377,10 +13281,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientLeftChannelEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientChannelLeaveEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientLeftChannelEvent other = (protobuf.ClientEvents.ClientLeftChannelEvent) obj;
+      protobuf.ClientEvents.ClientChannelLeaveEvent other = (protobuf.ClientEvents.ClientChannelLeaveEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -5416,69 +13320,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLeftChannelEvent parseFrom(
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5491,7 +13395,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientLeftChannelEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientChannelLeaveEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5507,26 +13411,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientLeftChannelEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientChannelLeaveEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientLeftChannelEvent)
-        protobuf.ClientEvents.ClientLeftChannelEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientChannelLeaveEvent)
+        protobuf.ClientEvents.ClientChannelLeaveEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLeftChannelEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelLeaveEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientLeftChannelEvent.class, protobuf.ClientEvents.ClientLeftChannelEvent.Builder.class);
+                protobuf.ClientEvents.ClientChannelLeaveEvent.class, protobuf.ClientEvents.ClientChannelLeaveEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientLeftChannelEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientChannelLeaveEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5562,17 +13466,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLeftChannelEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientLeftChannelEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientChannelLeaveEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientChannelLeaveEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLeftChannelEvent build() {
-        protobuf.ClientEvents.ClientLeftChannelEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientChannelLeaveEvent build() {
+        protobuf.ClientEvents.ClientChannelLeaveEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5580,8 +13484,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLeftChannelEvent buildPartial() {
-        protobuf.ClientEvents.ClientLeftChannelEvent result = new protobuf.ClientEvents.ClientLeftChannelEvent(this);
+      public protobuf.ClientEvents.ClientChannelLeaveEvent buildPartial() {
+        protobuf.ClientEvents.ClientChannelLeaveEvent result = new protobuf.ClientEvents.ClientChannelLeaveEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -5630,16 +13534,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientLeftChannelEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientLeftChannelEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientChannelLeaveEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientChannelLeaveEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientLeftChannelEvent other) {
-        if (other == protobuf.ClientEvents.ClientLeftChannelEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientChannelLeaveEvent other) {
+        if (other == protobuf.ClientEvents.ClientChannelLeaveEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -5661,11 +13565,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientLeftChannelEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientChannelLeaveEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientLeftChannelEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientChannelLeaveEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5925,48 +13829,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientLeftChannelEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientChannelLeaveEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientLeftChannelEvent)
-    private static final protobuf.ClientEvents.ClientLeftChannelEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientChannelLeaveEvent)
+    private static final protobuf.ClientEvents.ClientChannelLeaveEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientLeftChannelEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientChannelLeaveEvent();
     }
 
-    public static protobuf.ClientEvents.ClientLeftChannelEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientChannelLeaveEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientLeftChannelEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientLeftChannelEvent>() {
+    private static final com.google.protobuf.Parser<ClientChannelLeaveEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientChannelLeaveEvent>() {
       @java.lang.Override
-      public ClientLeftChannelEvent parsePartialFrom(
+      public ClientChannelLeaveEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientLeftChannelEvent(input, extensionRegistry);
+        return new ClientChannelLeaveEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientLeftChannelEvent> parser() {
+    public static com.google.protobuf.Parser<ClientChannelLeaveEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientLeftChannelEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientChannelLeaveEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientLeftChannelEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientChannelLeaveEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientLoggedInEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientLoggedInEvent)
+  public interface ClientLoginEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientLoginEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6000,25 +13904,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientLoggedInEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientLoginEvent}
    */
-  public  static final class ClientLoggedInEvent extends
+  public  static final class ClientLoginEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientLoggedInEvent)
-      ClientLoggedInEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientLoginEvent)
+      ClientLoginEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientLoggedInEvent.newBuilder() to construct.
-    private ClientLoggedInEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientLoginEvent.newBuilder() to construct.
+    private ClientLoginEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientLoggedInEvent() {
+    private ClientLoginEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientLoggedInEvent();
+      return new ClientLoginEvent();
     }
 
     @java.lang.Override
@@ -6026,7 +13930,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientLoggedInEvent(
+    private ClientLoginEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6091,15 +13995,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoginEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedInEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoginEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientLoggedInEvent.class, protobuf.ClientEvents.ClientLoggedInEvent.Builder.class);
+              protobuf.ClientEvents.ClientLoginEvent.class, protobuf.ClientEvents.ClientLoginEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -6195,10 +14099,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientLoggedInEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientLoginEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientLoggedInEvent other = (protobuf.ClientEvents.ClientLoggedInEvent) obj;
+      protobuf.ClientEvents.ClientLoginEvent other = (protobuf.ClientEvents.ClientLoginEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -6234,69 +14138,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientLoginEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedInEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLoginEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6309,7 +14213,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientLoggedInEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientLoginEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6325,26 +14229,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientLoggedInEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientLoginEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientLoggedInEvent)
-        protobuf.ClientEvents.ClientLoggedInEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientLoginEvent)
+        protobuf.ClientEvents.ClientLoginEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoginEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedInEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoginEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientLoggedInEvent.class, protobuf.ClientEvents.ClientLoggedInEvent.Builder.class);
+                protobuf.ClientEvents.ClientLoginEvent.class, protobuf.ClientEvents.ClientLoginEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientLoggedInEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientLoginEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6380,17 +14284,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoginEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedInEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientLoggedInEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientLoginEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientLoginEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedInEvent build() {
-        protobuf.ClientEvents.ClientLoggedInEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientLoginEvent build() {
+        protobuf.ClientEvents.ClientLoginEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6398,8 +14302,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedInEvent buildPartial() {
-        protobuf.ClientEvents.ClientLoggedInEvent result = new protobuf.ClientEvents.ClientLoggedInEvent(this);
+      public protobuf.ClientEvents.ClientLoginEvent buildPartial() {
+        protobuf.ClientEvents.ClientLoginEvent result = new protobuf.ClientEvents.ClientLoginEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -6448,16 +14352,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientLoggedInEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientLoggedInEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientLoginEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientLoginEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientLoggedInEvent other) {
-        if (other == protobuf.ClientEvents.ClientLoggedInEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientLoginEvent other) {
+        if (other == protobuf.ClientEvents.ClientLoginEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -6479,11 +14383,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientLoggedInEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientLoginEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientLoggedInEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientLoginEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6743,48 +14647,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientLoggedInEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientLoginEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientLoggedInEvent)
-    private static final protobuf.ClientEvents.ClientLoggedInEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientLoginEvent)
+    private static final protobuf.ClientEvents.ClientLoginEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientLoggedInEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientLoginEvent();
     }
 
-    public static protobuf.ClientEvents.ClientLoggedInEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientLoginEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientLoggedInEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientLoggedInEvent>() {
+    private static final com.google.protobuf.Parser<ClientLoginEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientLoginEvent>() {
       @java.lang.Override
-      public ClientLoggedInEvent parsePartialFrom(
+      public ClientLoginEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientLoggedInEvent(input, extensionRegistry);
+        return new ClientLoginEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientLoggedInEvent> parser() {
+    public static com.google.protobuf.Parser<ClientLoginEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientLoggedInEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientLoginEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientLoggedInEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientLoginEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientLoggedOutEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientLoggedOutEvent)
+  public interface ClientLogoutEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientLogoutEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6818,25 +14722,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientLoggedOutEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientLogoutEvent}
    */
-  public  static final class ClientLoggedOutEvent extends
+  public  static final class ClientLogoutEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientLoggedOutEvent)
-      ClientLoggedOutEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientLogoutEvent)
+      ClientLogoutEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientLoggedOutEvent.newBuilder() to construct.
-    private ClientLoggedOutEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientLogoutEvent.newBuilder() to construct.
+    private ClientLogoutEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientLoggedOutEvent() {
+    private ClientLogoutEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientLoggedOutEvent();
+      return new ClientLogoutEvent();
     }
 
     @java.lang.Override
@@ -6844,7 +14748,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientLoggedOutEvent(
+    private ClientLogoutEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6909,15 +14813,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedOutEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLogoutEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientLoggedOutEvent.class, protobuf.ClientEvents.ClientLoggedOutEvent.Builder.class);
+              protobuf.ClientEvents.ClientLogoutEvent.class, protobuf.ClientEvents.ClientLogoutEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -7013,10 +14917,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientLoggedOutEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientLogoutEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientLoggedOutEvent other = (protobuf.ClientEvents.ClientLoggedOutEvent) obj;
+      protobuf.ClientEvents.ClientLogoutEvent other = (protobuf.ClientEvents.ClientLogoutEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -7052,69 +14956,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientLogoutEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientLoggedOutEvent parseFrom(
+    public static protobuf.ClientEvents.ClientLogoutEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7127,7 +15031,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientLoggedOutEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientLogoutEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7143,26 +15047,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientLoggedOutEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientLogoutEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientLoggedOutEvent)
-        protobuf.ClientEvents.ClientLoggedOutEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientLogoutEvent)
+        protobuf.ClientEvents.ClientLogoutEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedOutEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLogoutEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientLoggedOutEvent.class, protobuf.ClientEvents.ClientLoggedOutEvent.Builder.class);
+                protobuf.ClientEvents.ClientLogoutEvent.class, protobuf.ClientEvents.ClientLogoutEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientLoggedOutEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientLogoutEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7198,17 +15102,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedOutEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientLoggedOutEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientLogoutEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientLogoutEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedOutEvent build() {
-        protobuf.ClientEvents.ClientLoggedOutEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientLogoutEvent build() {
+        protobuf.ClientEvents.ClientLogoutEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7216,8 +15120,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientLoggedOutEvent buildPartial() {
-        protobuf.ClientEvents.ClientLoggedOutEvent result = new protobuf.ClientEvents.ClientLoggedOutEvent(this);
+      public protobuf.ClientEvents.ClientLogoutEvent buildPartial() {
+        protobuf.ClientEvents.ClientLogoutEvent result = new protobuf.ClientEvents.ClientLogoutEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -7266,16 +15170,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientLoggedOutEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientLoggedOutEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientLogoutEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientLogoutEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientLoggedOutEvent other) {
-        if (other == protobuf.ClientEvents.ClientLoggedOutEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientLogoutEvent other) {
+        if (other == protobuf.ClientEvents.ClientLogoutEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -7297,11 +15201,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientLoggedOutEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientLogoutEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientLoggedOutEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientLogoutEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7561,48 +15465,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientLoggedOutEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientLogoutEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientLoggedOutEvent)
-    private static final protobuf.ClientEvents.ClientLoggedOutEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientLogoutEvent)
+    private static final protobuf.ClientEvents.ClientLogoutEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientLoggedOutEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientLogoutEvent();
     }
 
-    public static protobuf.ClientEvents.ClientLoggedOutEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientLogoutEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientLoggedOutEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientLoggedOutEvent>() {
+    private static final com.google.protobuf.Parser<ClientLogoutEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientLogoutEvent>() {
       @java.lang.Override
-      public ClientLoggedOutEvent parsePartialFrom(
+      public ClientLogoutEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientLoggedOutEvent(input, extensionRegistry);
+        return new ClientLogoutEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientLoggedOutEvent> parser() {
+    public static com.google.protobuf.Parser<ClientLogoutEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientLoggedOutEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientLogoutEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientLoggedOutEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientLogoutEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientRegisteredEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientRegisteredEvent)
+  public interface ClientRegistrationEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientRegistrationEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7636,25 +15540,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientRegisteredEvent}
+   * Protobuf type {@code protobuf.clientevents.ClientRegistrationEvent}
    */
-  public  static final class ClientRegisteredEvent extends
+  public  static final class ClientRegistrationEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientRegisteredEvent)
-      ClientRegisteredEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientRegistrationEvent)
+      ClientRegistrationEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientRegisteredEvent.newBuilder() to construct.
-    private ClientRegisteredEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientRegistrationEvent.newBuilder() to construct.
+    private ClientRegistrationEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientRegisteredEvent() {
+    private ClientRegistrationEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientRegisteredEvent();
+      return new ClientRegistrationEvent();
     }
 
     @java.lang.Override
@@ -7662,7 +15566,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientRegisteredEvent(
+    private ClientRegistrationEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7727,15 +15631,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegisteredEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegistrationEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientRegisteredEvent.class, protobuf.ClientEvents.ClientRegisteredEvent.Builder.class);
+              protobuf.ClientEvents.ClientRegistrationEvent.class, protobuf.ClientEvents.ClientRegistrationEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -7831,10 +15735,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientRegisteredEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ClientRegistrationEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientRegisteredEvent other = (protobuf.ClientEvents.ClientRegisteredEvent) obj;
+      protobuf.ClientEvents.ClientRegistrationEvent other = (protobuf.ClientEvents.ClientRegistrationEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -7870,69 +15774,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientRegisteredEvent parseFrom(
+    public static protobuf.ClientEvents.ClientRegistrationEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7945,7 +15849,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientRegisteredEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ClientRegistrationEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7961,26 +15865,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientRegisteredEvent}
+     * Protobuf type {@code protobuf.clientevents.ClientRegistrationEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientRegisteredEvent)
-        protobuf.ClientEvents.ClientRegisteredEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientRegistrationEvent)
+        protobuf.ClientEvents.ClientRegistrationEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegisteredEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegistrationEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientRegisteredEvent.class, protobuf.ClientEvents.ClientRegisteredEvent.Builder.class);
+                protobuf.ClientEvents.ClientRegistrationEvent.class, protobuf.ClientEvents.ClientRegistrationEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientRegisteredEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ClientRegistrationEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8016,17 +15920,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRegisteredEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientRegisteredEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ClientRegistrationEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ClientRegistrationEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRegisteredEvent build() {
-        protobuf.ClientEvents.ClientRegisteredEvent result = buildPartial();
+      public protobuf.ClientEvents.ClientRegistrationEvent build() {
+        protobuf.ClientEvents.ClientRegistrationEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8034,8 +15938,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientRegisteredEvent buildPartial() {
-        protobuf.ClientEvents.ClientRegisteredEvent result = new protobuf.ClientEvents.ClientRegisteredEvent(this);
+      public protobuf.ClientEvents.ClientRegistrationEvent buildPartial() {
+        protobuf.ClientEvents.ClientRegistrationEvent result = new protobuf.ClientEvents.ClientRegistrationEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -8084,16 +15988,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientRegisteredEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientRegisteredEvent)other);
+        if (other instanceof protobuf.ClientEvents.ClientRegistrationEvent) {
+          return mergeFrom((protobuf.ClientEvents.ClientRegistrationEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientRegisteredEvent other) {
-        if (other == protobuf.ClientEvents.ClientRegisteredEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ClientRegistrationEvent other) {
+        if (other == protobuf.ClientEvents.ClientRegistrationEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -8115,11 +16019,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientRegisteredEvent parsedMessage = null;
+        protobuf.ClientEvents.ClientRegistrationEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientRegisteredEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ClientRegistrationEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8379,48 +16283,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientRegisteredEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientRegistrationEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientRegisteredEvent)
-    private static final protobuf.ClientEvents.ClientRegisteredEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientRegistrationEvent)
+    private static final protobuf.ClientEvents.ClientRegistrationEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientRegisteredEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientRegistrationEvent();
     }
 
-    public static protobuf.ClientEvents.ClientRegisteredEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ClientRegistrationEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientRegisteredEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientRegisteredEvent>() {
+    private static final com.google.protobuf.Parser<ClientRegistrationEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ClientRegistrationEvent>() {
       @java.lang.Override
-      public ClientRegisteredEvent parsePartialFrom(
+      public ClientRegistrationEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientRegisteredEvent(input, extensionRegistry);
+        return new ClientRegistrationEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientRegisteredEvent> parser() {
+    public static com.google.protobuf.Parser<ClientRegistrationEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientRegisteredEvent> getParserForType() {
+    public com.google.protobuf.Parser<ClientRegistrationEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientRegisteredEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ClientRegistrationEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientDownloadedChannelFileEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientDownloadedChannelFileEvent)
+  public interface ChannelFileDownloadEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelFileDownloadEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -8454,25 +16358,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientDownloadedChannelFileEvent}
+   * Protobuf type {@code protobuf.clientevents.ChannelFileDownloadEvent}
    */
-  public  static final class ClientDownloadedChannelFileEvent extends
+  public  static final class ChannelFileDownloadEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientDownloadedChannelFileEvent)
-      ClientDownloadedChannelFileEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelFileDownloadEvent)
+      ChannelFileDownloadEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientDownloadedChannelFileEvent.newBuilder() to construct.
-    private ClientDownloadedChannelFileEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ChannelFileDownloadEvent.newBuilder() to construct.
+    private ChannelFileDownloadEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientDownloadedChannelFileEvent() {
+    private ChannelFileDownloadEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientDownloadedChannelFileEvent();
+      return new ChannelFileDownloadEvent();
     }
 
     @java.lang.Override
@@ -8480,7 +16384,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientDownloadedChannelFileEvent(
+    private ChannelFileDownloadEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8545,15 +16449,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileDownloadEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientDownloadedChannelFileEvent.class, protobuf.ClientEvents.ClientDownloadedChannelFileEvent.Builder.class);
+              protobuf.ClientEvents.ChannelFileDownloadEvent.class, protobuf.ClientEvents.ChannelFileDownloadEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -8649,10 +16553,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientDownloadedChannelFileEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ChannelFileDownloadEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientDownloadedChannelFileEvent other = (protobuf.ClientEvents.ClientDownloadedChannelFileEvent) obj;
+      protobuf.ClientEvents.ChannelFileDownloadEvent other = (protobuf.ClientEvents.ChannelFileDownloadEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -8688,69 +16592,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8763,7 +16667,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientDownloadedChannelFileEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelFileDownloadEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8779,26 +16683,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientDownloadedChannelFileEvent}
+     * Protobuf type {@code protobuf.clientevents.ChannelFileDownloadEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientDownloadedChannelFileEvent)
-        protobuf.ClientEvents.ClientDownloadedChannelFileEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelFileDownloadEvent)
+        protobuf.ClientEvents.ChannelFileDownloadEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileDownloadEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientDownloadedChannelFileEvent.class, protobuf.ClientEvents.ClientDownloadedChannelFileEvent.Builder.class);
+                protobuf.ClientEvents.ChannelFileDownloadEvent.class, protobuf.ClientEvents.ChannelFileDownloadEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientDownloadedChannelFileEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ChannelFileDownloadEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8834,17 +16738,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedChannelFileEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientDownloadedChannelFileEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ChannelFileDownloadEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelFileDownloadEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedChannelFileEvent build() {
-        protobuf.ClientEvents.ClientDownloadedChannelFileEvent result = buildPartial();
+      public protobuf.ClientEvents.ChannelFileDownloadEvent build() {
+        protobuf.ClientEvents.ChannelFileDownloadEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8852,8 +16756,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedChannelFileEvent buildPartial() {
-        protobuf.ClientEvents.ClientDownloadedChannelFileEvent result = new protobuf.ClientEvents.ClientDownloadedChannelFileEvent(this);
+      public protobuf.ClientEvents.ChannelFileDownloadEvent buildPartial() {
+        protobuf.ClientEvents.ChannelFileDownloadEvent result = new protobuf.ClientEvents.ChannelFileDownloadEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -8902,16 +16806,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientDownloadedChannelFileEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientDownloadedChannelFileEvent)other);
+        if (other instanceof protobuf.ClientEvents.ChannelFileDownloadEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelFileDownloadEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientDownloadedChannelFileEvent other) {
-        if (other == protobuf.ClientEvents.ClientDownloadedChannelFileEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelFileDownloadEvent other) {
+        if (other == protobuf.ClientEvents.ChannelFileDownloadEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -8933,11 +16837,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientDownloadedChannelFileEvent parsedMessage = null;
+        protobuf.ClientEvents.ChannelFileDownloadEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientDownloadedChannelFileEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ChannelFileDownloadEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9197,48 +17101,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientDownloadedChannelFileEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelFileDownloadEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientDownloadedChannelFileEvent)
-    private static final protobuf.ClientEvents.ClientDownloadedChannelFileEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelFileDownloadEvent)
+    private static final protobuf.ClientEvents.ChannelFileDownloadEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientDownloadedChannelFileEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelFileDownloadEvent();
     }
 
-    public static protobuf.ClientEvents.ClientDownloadedChannelFileEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ChannelFileDownloadEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientDownloadedChannelFileEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientDownloadedChannelFileEvent>() {
+    private static final com.google.protobuf.Parser<ChannelFileDownloadEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelFileDownloadEvent>() {
       @java.lang.Override
-      public ClientDownloadedChannelFileEvent parsePartialFrom(
+      public ChannelFileDownloadEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientDownloadedChannelFileEvent(input, extensionRegistry);
+        return new ChannelFileDownloadEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientDownloadedChannelFileEvent> parser() {
+    public static com.google.protobuf.Parser<ChannelFileDownloadEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientDownloadedChannelFileEvent> getParserForType() {
+    public com.google.protobuf.Parser<ChannelFileDownloadEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientDownloadedChannelFileEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ChannelFileDownloadEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientUploadedChannelFileEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientUploadedChannelFileEvent)
+  public interface ChannelFileUploadEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ChannelFileUploadEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -9272,25 +17176,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientUploadedChannelFileEvent}
+   * Protobuf type {@code protobuf.clientevents.ChannelFileUploadEvent}
    */
-  public  static final class ClientUploadedChannelFileEvent extends
+  public  static final class ChannelFileUploadEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientUploadedChannelFileEvent)
-      ClientUploadedChannelFileEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ChannelFileUploadEvent)
+      ChannelFileUploadEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientUploadedChannelFileEvent.newBuilder() to construct.
-    private ClientUploadedChannelFileEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ChannelFileUploadEvent.newBuilder() to construct.
+    private ChannelFileUploadEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientUploadedChannelFileEvent() {
+    private ChannelFileUploadEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientUploadedChannelFileEvent();
+      return new ChannelFileUploadEvent();
     }
 
     @java.lang.Override
@@ -9298,7 +17202,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientUploadedChannelFileEvent(
+    private ChannelFileUploadEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9363,15 +17267,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileUploadEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientUploadedChannelFileEvent.class, protobuf.ClientEvents.ClientUploadedChannelFileEvent.Builder.class);
+              protobuf.ClientEvents.ChannelFileUploadEvent.class, protobuf.ClientEvents.ChannelFileUploadEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -9467,10 +17371,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientUploadedChannelFileEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.ChannelFileUploadEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientUploadedChannelFileEvent other = (protobuf.ClientEvents.ClientUploadedChannelFileEvent) obj;
+      protobuf.ClientEvents.ChannelFileUploadEvent other = (protobuf.ClientEvents.ChannelFileUploadEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -9506,69 +17410,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent parseFrom(
+    public static protobuf.ClientEvents.ChannelFileUploadEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9581,7 +17485,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientUploadedChannelFileEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.ChannelFileUploadEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9597,26 +17501,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientUploadedChannelFileEvent}
+     * Protobuf type {@code protobuf.clientevents.ChannelFileUploadEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientUploadedChannelFileEvent)
-        protobuf.ClientEvents.ClientUploadedChannelFileEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ChannelFileUploadEvent)
+        protobuf.ClientEvents.ChannelFileUploadEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileUploadEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientUploadedChannelFileEvent.class, protobuf.ClientEvents.ClientUploadedChannelFileEvent.Builder.class);
+                protobuf.ClientEvents.ChannelFileUploadEvent.class, protobuf.ClientEvents.ChannelFileUploadEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientUploadedChannelFileEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.ChannelFileUploadEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9652,17 +17556,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedChannelFileEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientUploadedChannelFileEvent.getDefaultInstance();
+      public protobuf.ClientEvents.ChannelFileUploadEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.ChannelFileUploadEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedChannelFileEvent build() {
-        protobuf.ClientEvents.ClientUploadedChannelFileEvent result = buildPartial();
+      public protobuf.ClientEvents.ChannelFileUploadEvent build() {
+        protobuf.ClientEvents.ChannelFileUploadEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9670,8 +17574,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedChannelFileEvent buildPartial() {
-        protobuf.ClientEvents.ClientUploadedChannelFileEvent result = new protobuf.ClientEvents.ClientUploadedChannelFileEvent(this);
+      public protobuf.ClientEvents.ChannelFileUploadEvent buildPartial() {
+        protobuf.ClientEvents.ChannelFileUploadEvent result = new protobuf.ClientEvents.ChannelFileUploadEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -9720,16 +17624,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientUploadedChannelFileEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientUploadedChannelFileEvent)other);
+        if (other instanceof protobuf.ClientEvents.ChannelFileUploadEvent) {
+          return mergeFrom((protobuf.ClientEvents.ChannelFileUploadEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientUploadedChannelFileEvent other) {
-        if (other == protobuf.ClientEvents.ClientUploadedChannelFileEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.ChannelFileUploadEvent other) {
+        if (other == protobuf.ClientEvents.ChannelFileUploadEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -9751,11 +17655,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientUploadedChannelFileEvent parsedMessage = null;
+        protobuf.ClientEvents.ChannelFileUploadEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientUploadedChannelFileEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.ChannelFileUploadEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10015,48 +17919,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientUploadedChannelFileEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ChannelFileUploadEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientUploadedChannelFileEvent)
-    private static final protobuf.ClientEvents.ClientUploadedChannelFileEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ChannelFileUploadEvent)
+    private static final protobuf.ClientEvents.ChannelFileUploadEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientUploadedChannelFileEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.ChannelFileUploadEvent();
     }
 
-    public static protobuf.ClientEvents.ClientUploadedChannelFileEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.ChannelFileUploadEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientUploadedChannelFileEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientUploadedChannelFileEvent>() {
+    private static final com.google.protobuf.Parser<ChannelFileUploadEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ChannelFileUploadEvent>() {
       @java.lang.Override
-      public ClientUploadedChannelFileEvent parsePartialFrom(
+      public ChannelFileUploadEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientUploadedChannelFileEvent(input, extensionRegistry);
+        return new ChannelFileUploadEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientUploadedChannelFileEvent> parser() {
+    public static com.google.protobuf.Parser<ChannelFileUploadEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientUploadedChannelFileEvent> getParserForType() {
+    public com.google.protobuf.Parser<ChannelFileUploadEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientUploadedChannelFileEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.ChannelFileUploadEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientDownloadedPrivateFileEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientDownloadedPrivateFileEvent)
+  public interface PrivateFileDownloadEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PrivateFileDownloadEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -10090,25 +17994,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientDownloadedPrivateFileEvent}
+   * Protobuf type {@code protobuf.clientevents.PrivateFileDownloadEvent}
    */
-  public  static final class ClientDownloadedPrivateFileEvent extends
+  public  static final class PrivateFileDownloadEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientDownloadedPrivateFileEvent)
-      ClientDownloadedPrivateFileEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PrivateFileDownloadEvent)
+      PrivateFileDownloadEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientDownloadedPrivateFileEvent.newBuilder() to construct.
-    private ClientDownloadedPrivateFileEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PrivateFileDownloadEvent.newBuilder() to construct.
+    private PrivateFileDownloadEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientDownloadedPrivateFileEvent() {
+    private PrivateFileDownloadEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientDownloadedPrivateFileEvent();
+      return new PrivateFileDownloadEvent();
     }
 
     @java.lang.Override
@@ -10116,7 +18020,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientDownloadedPrivateFileEvent(
+    private PrivateFileDownloadEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10181,15 +18085,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileDownloadEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.class, protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.Builder.class);
+              protobuf.ClientEvents.PrivateFileDownloadEvent.class, protobuf.ClientEvents.PrivateFileDownloadEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -10285,10 +18189,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientDownloadedPrivateFileEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.PrivateFileDownloadEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientDownloadedPrivateFileEvent other = (protobuf.ClientEvents.ClientDownloadedPrivateFileEvent) obj;
+      protobuf.ClientEvents.PrivateFileDownloadEvent other = (protobuf.ClientEvents.PrivateFileDownloadEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -10324,69 +18228,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10399,7 +18303,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientDownloadedPrivateFileEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.PrivateFileDownloadEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -10415,26 +18319,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientDownloadedPrivateFileEvent}
+     * Protobuf type {@code protobuf.clientevents.PrivateFileDownloadEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientDownloadedPrivateFileEvent)
-        protobuf.ClientEvents.ClientDownloadedPrivateFileEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PrivateFileDownloadEvent)
+        protobuf.ClientEvents.PrivateFileDownloadEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileDownloadEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.class, protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.Builder.class);
+                protobuf.ClientEvents.PrivateFileDownloadEvent.class, protobuf.ClientEvents.PrivateFileDownloadEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.PrivateFileDownloadEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10470,17 +18374,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedPrivateFileEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.getDefaultInstance();
+      public protobuf.ClientEvents.PrivateFileDownloadEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.PrivateFileDownloadEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedPrivateFileEvent build() {
-        protobuf.ClientEvents.ClientDownloadedPrivateFileEvent result = buildPartial();
+      public protobuf.ClientEvents.PrivateFileDownloadEvent build() {
+        protobuf.ClientEvents.PrivateFileDownloadEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10488,8 +18392,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientDownloadedPrivateFileEvent buildPartial() {
-        protobuf.ClientEvents.ClientDownloadedPrivateFileEvent result = new protobuf.ClientEvents.ClientDownloadedPrivateFileEvent(this);
+      public protobuf.ClientEvents.PrivateFileDownloadEvent buildPartial() {
+        protobuf.ClientEvents.PrivateFileDownloadEvent result = new protobuf.ClientEvents.PrivateFileDownloadEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -10538,16 +18442,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientDownloadedPrivateFileEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientDownloadedPrivateFileEvent)other);
+        if (other instanceof protobuf.ClientEvents.PrivateFileDownloadEvent) {
+          return mergeFrom((protobuf.ClientEvents.PrivateFileDownloadEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientDownloadedPrivateFileEvent other) {
-        if (other == protobuf.ClientEvents.ClientDownloadedPrivateFileEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.PrivateFileDownloadEvent other) {
+        if (other == protobuf.ClientEvents.PrivateFileDownloadEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -10569,11 +18473,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientDownloadedPrivateFileEvent parsedMessage = null;
+        protobuf.ClientEvents.PrivateFileDownloadEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientDownloadedPrivateFileEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.PrivateFileDownloadEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10833,48 +18737,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientDownloadedPrivateFileEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PrivateFileDownloadEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientDownloadedPrivateFileEvent)
-    private static final protobuf.ClientEvents.ClientDownloadedPrivateFileEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PrivateFileDownloadEvent)
+    private static final protobuf.ClientEvents.PrivateFileDownloadEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientDownloadedPrivateFileEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.PrivateFileDownloadEvent();
     }
 
-    public static protobuf.ClientEvents.ClientDownloadedPrivateFileEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.PrivateFileDownloadEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientDownloadedPrivateFileEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientDownloadedPrivateFileEvent>() {
+    private static final com.google.protobuf.Parser<PrivateFileDownloadEvent>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateFileDownloadEvent>() {
       @java.lang.Override
-      public ClientDownloadedPrivateFileEvent parsePartialFrom(
+      public PrivateFileDownloadEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientDownloadedPrivateFileEvent(input, extensionRegistry);
+        return new PrivateFileDownloadEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientDownloadedPrivateFileEvent> parser() {
+    public static com.google.protobuf.Parser<PrivateFileDownloadEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientDownloadedPrivateFileEvent> getParserForType() {
+    public com.google.protobuf.Parser<PrivateFileDownloadEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientDownloadedPrivateFileEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.PrivateFileDownloadEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientUploadedPrivateFileEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientUploadedPrivateFileEvent)
+  public interface PrivateFileUploadEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PrivateFileUploadEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -10908,25 +18812,25 @@ public final class ClientEvents {
     protobuf.ClientIdentities.ClientProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientUploadedPrivateFileEvent}
+   * Protobuf type {@code protobuf.clientevents.PrivateFileUploadEvent}
    */
-  public  static final class ClientUploadedPrivateFileEvent extends
+  public  static final class PrivateFileUploadEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientUploadedPrivateFileEvent)
-      ClientUploadedPrivateFileEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PrivateFileUploadEvent)
+      PrivateFileUploadEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientUploadedPrivateFileEvent.newBuilder() to construct.
-    private ClientUploadedPrivateFileEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PrivateFileUploadEvent.newBuilder() to construct.
+    private PrivateFileUploadEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientUploadedPrivateFileEvent() {
+    private PrivateFileUploadEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientUploadedPrivateFileEvent();
+      return new PrivateFileUploadEvent();
     }
 
     @java.lang.Override
@@ -10934,7 +18838,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientUploadedPrivateFileEvent(
+    private PrivateFileUploadEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10999,15 +18903,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileUploadEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientUploadedPrivateFileEvent.class, protobuf.ClientEvents.ClientUploadedPrivateFileEvent.Builder.class);
+              protobuf.ClientEvents.PrivateFileUploadEvent.class, protobuf.ClientEvents.PrivateFileUploadEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -11103,10 +19007,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientUploadedPrivateFileEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.PrivateFileUploadEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientUploadedPrivateFileEvent other = (protobuf.ClientEvents.ClientUploadedPrivateFileEvent) obj;
+      protobuf.ClientEvents.PrivateFileUploadEvent other = (protobuf.ClientEvents.PrivateFileUploadEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -11142,69 +19046,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent parseFrom(
+    public static protobuf.ClientEvents.PrivateFileUploadEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11217,7 +19121,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientUploadedPrivateFileEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.PrivateFileUploadEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -11233,26 +19137,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientUploadedPrivateFileEvent}
+     * Protobuf type {@code protobuf.clientevents.PrivateFileUploadEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientUploadedPrivateFileEvent)
-        protobuf.ClientEvents.ClientUploadedPrivateFileEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PrivateFileUploadEvent)
+        protobuf.ClientEvents.PrivateFileUploadEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileUploadEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientUploadedPrivateFileEvent.class, protobuf.ClientEvents.ClientUploadedPrivateFileEvent.Builder.class);
+                protobuf.ClientEvents.PrivateFileUploadEvent.class, protobuf.ClientEvents.PrivateFileUploadEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientUploadedPrivateFileEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.PrivateFileUploadEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11288,17 +19192,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedPrivateFileEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientUploadedPrivateFileEvent.getDefaultInstance();
+      public protobuf.ClientEvents.PrivateFileUploadEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.PrivateFileUploadEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedPrivateFileEvent build() {
-        protobuf.ClientEvents.ClientUploadedPrivateFileEvent result = buildPartial();
+      public protobuf.ClientEvents.PrivateFileUploadEvent build() {
+        protobuf.ClientEvents.PrivateFileUploadEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -11306,8 +19210,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientUploadedPrivateFileEvent buildPartial() {
-        protobuf.ClientEvents.ClientUploadedPrivateFileEvent result = new protobuf.ClientEvents.ClientUploadedPrivateFileEvent(this);
+      public protobuf.ClientEvents.PrivateFileUploadEvent buildPartial() {
+        protobuf.ClientEvents.PrivateFileUploadEvent result = new protobuf.ClientEvents.PrivateFileUploadEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -11356,16 +19260,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientUploadedPrivateFileEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientUploadedPrivateFileEvent)other);
+        if (other instanceof protobuf.ClientEvents.PrivateFileUploadEvent) {
+          return mergeFrom((protobuf.ClientEvents.PrivateFileUploadEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientUploadedPrivateFileEvent other) {
-        if (other == protobuf.ClientEvents.ClientUploadedPrivateFileEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.PrivateFileUploadEvent other) {
+        if (other == protobuf.ClientEvents.PrivateFileUploadEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -11387,11 +19291,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientUploadedPrivateFileEvent parsedMessage = null;
+        protobuf.ClientEvents.PrivateFileUploadEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientUploadedPrivateFileEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.PrivateFileUploadEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -11651,48 +19555,48 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientUploadedPrivateFileEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PrivateFileUploadEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientUploadedPrivateFileEvent)
-    private static final protobuf.ClientEvents.ClientUploadedPrivateFileEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PrivateFileUploadEvent)
+    private static final protobuf.ClientEvents.PrivateFileUploadEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientUploadedPrivateFileEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.PrivateFileUploadEvent();
     }
 
-    public static protobuf.ClientEvents.ClientUploadedPrivateFileEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.PrivateFileUploadEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientUploadedPrivateFileEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientUploadedPrivateFileEvent>() {
+    private static final com.google.protobuf.Parser<PrivateFileUploadEvent>
+        PARSER = new com.google.protobuf.AbstractParser<PrivateFileUploadEvent>() {
       @java.lang.Override
-      public ClientUploadedPrivateFileEvent parsePartialFrom(
+      public PrivateFileUploadEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientUploadedPrivateFileEvent(input, extensionRegistry);
+        return new PrivateFileUploadEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientUploadedPrivateFileEvent> parser() {
+    public static com.google.protobuf.Parser<PrivateFileUploadEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientUploadedPrivateFileEvent> getParserForType() {
+    public com.google.protobuf.Parser<PrivateFileUploadEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientUploadedPrivateFileEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.PrivateFileUploadEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientPingMeasurmentEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.ClientPingMeasurmentEvent)
+  public interface PingMeasurementEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientevents.PingMeasurementEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -11717,25 +19621,25 @@ public final class ClientEvents {
     long getMeasuredMillis();
   }
   /**
-   * Protobuf type {@code protobuf.clientevents.ClientPingMeasurmentEvent}
+   * Protobuf type {@code protobuf.clientevents.PingMeasurementEvent}
    */
-  public  static final class ClientPingMeasurmentEvent extends
+  public  static final class PingMeasurementEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientevents.ClientPingMeasurmentEvent)
-      ClientPingMeasurmentEventOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientevents.PingMeasurementEvent)
+      PingMeasurementEventOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientPingMeasurmentEvent.newBuilder() to construct.
-    private ClientPingMeasurmentEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PingMeasurementEvent.newBuilder() to construct.
+    private PingMeasurementEvent(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientPingMeasurmentEvent() {
+    private PingMeasurementEvent() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientPingMeasurmentEvent();
+      return new PingMeasurementEvent();
     }
 
     @java.lang.Override
@@ -11743,7 +19647,7 @@ public final class ClientEvents {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientPingMeasurmentEvent(
+    private PingMeasurementEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11800,15 +19704,15 @@ public final class ClientEvents {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor;
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_fieldAccessorTable
+      return protobuf.ClientEvents.internal_static_protobuf_clientevents_PingMeasurementEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientEvents.ClientPingMeasurmentEvent.class, protobuf.ClientEvents.ClientPingMeasurmentEvent.Builder.class);
+              protobuf.ClientEvents.PingMeasurementEvent.class, protobuf.ClientEvents.PingMeasurementEvent.Builder.class);
     }
 
     public static final int EVENTBASE_FIELD_NUMBER = 1;
@@ -11891,10 +19795,10 @@ public final class ClientEvents {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientEvents.ClientPingMeasurmentEvent)) {
+      if (!(obj instanceof protobuf.ClientEvents.PingMeasurementEvent)) {
         return super.equals(obj);
       }
-      protobuf.ClientEvents.ClientPingMeasurmentEvent other = (protobuf.ClientEvents.ClientPingMeasurmentEvent) obj;
+      protobuf.ClientEvents.PingMeasurementEvent other = (protobuf.ClientEvents.PingMeasurementEvent) obj;
 
       if (hasEventBase() != other.hasEventBase()) return false;
       if (hasEventBase()) {
@@ -11926,69 +19830,69 @@ public final class ClientEvents {
       return hash;
     }
 
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(byte[] data)
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientEvents.PingMeasurementEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseDelimitedFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent parseFrom(
+    public static protobuf.ClientEvents.PingMeasurementEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12001,7 +19905,7 @@ public final class ClientEvents {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientEvents.ClientPingMeasurmentEvent prototype) {
+    public static Builder newBuilder(protobuf.ClientEvents.PingMeasurementEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12017,26 +19921,26 @@ public final class ClientEvents {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientevents.ClientPingMeasurmentEvent}
+     * Protobuf type {@code protobuf.clientevents.PingMeasurementEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.ClientPingMeasurmentEvent)
-        protobuf.ClientEvents.ClientPingMeasurmentEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientevents.PingMeasurementEvent)
+        protobuf.ClientEvents.PingMeasurementEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_fieldAccessorTable
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PingMeasurementEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientEvents.ClientPingMeasurmentEvent.class, protobuf.ClientEvents.ClientPingMeasurmentEvent.Builder.class);
+                protobuf.ClientEvents.PingMeasurementEvent.class, protobuf.ClientEvents.PingMeasurementEvent.Builder.class);
       }
 
-      // Construct using protobuf.ClientEvents.ClientPingMeasurmentEvent.newBuilder()
+      // Construct using protobuf.ClientEvents.PingMeasurementEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12068,17 +19972,17 @@ public final class ClientEvents {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientEvents.internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor;
+        return protobuf.ClientEvents.internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientPingMeasurmentEvent getDefaultInstanceForType() {
-        return protobuf.ClientEvents.ClientPingMeasurmentEvent.getDefaultInstance();
+      public protobuf.ClientEvents.PingMeasurementEvent getDefaultInstanceForType() {
+        return protobuf.ClientEvents.PingMeasurementEvent.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientPingMeasurmentEvent build() {
-        protobuf.ClientEvents.ClientPingMeasurmentEvent result = buildPartial();
+      public protobuf.ClientEvents.PingMeasurementEvent build() {
+        protobuf.ClientEvents.PingMeasurementEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12086,8 +19990,8 @@ public final class ClientEvents {
       }
 
       @java.lang.Override
-      public protobuf.ClientEvents.ClientPingMeasurmentEvent buildPartial() {
-        protobuf.ClientEvents.ClientPingMeasurmentEvent result = new protobuf.ClientEvents.ClientPingMeasurmentEvent(this);
+      public protobuf.ClientEvents.PingMeasurementEvent buildPartial() {
+        protobuf.ClientEvents.PingMeasurementEvent result = new protobuf.ClientEvents.PingMeasurementEvent(this);
         if (eventBaseBuilder_ == null) {
           result.eventBase_ = eventBase_;
         } else {
@@ -12132,16 +20036,16 @@ public final class ClientEvents {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientEvents.ClientPingMeasurmentEvent) {
-          return mergeFrom((protobuf.ClientEvents.ClientPingMeasurmentEvent)other);
+        if (other instanceof protobuf.ClientEvents.PingMeasurementEvent) {
+          return mergeFrom((protobuf.ClientEvents.PingMeasurementEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientEvents.ClientPingMeasurmentEvent other) {
-        if (other == protobuf.ClientEvents.ClientPingMeasurmentEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientEvents.PingMeasurementEvent other) {
+        if (other == protobuf.ClientEvents.PingMeasurementEvent.getDefaultInstance()) return this;
         if (other.hasEventBase()) {
           mergeEventBase(other.getEventBase());
         }
@@ -12163,11 +20067,11 @@ public final class ClientEvents {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientEvents.ClientPingMeasurmentEvent parsedMessage = null;
+        protobuf.ClientEvents.PingMeasurementEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientEvents.ClientPingMeasurmentEvent) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientEvents.PingMeasurementEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -12338,41 +20242,41 @@ public final class ClientEvents {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.ClientPingMeasurmentEvent)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientevents.PingMeasurementEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientevents.ClientPingMeasurmentEvent)
-    private static final protobuf.ClientEvents.ClientPingMeasurmentEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientevents.PingMeasurementEvent)
+    private static final protobuf.ClientEvents.PingMeasurementEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientEvents.ClientPingMeasurmentEvent();
+      DEFAULT_INSTANCE = new protobuf.ClientEvents.PingMeasurementEvent();
     }
 
-    public static protobuf.ClientEvents.ClientPingMeasurmentEvent getDefaultInstance() {
+    public static protobuf.ClientEvents.PingMeasurementEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientPingMeasurmentEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ClientPingMeasurmentEvent>() {
+    private static final com.google.protobuf.Parser<PingMeasurementEvent>
+        PARSER = new com.google.protobuf.AbstractParser<PingMeasurementEvent>() {
       @java.lang.Override
-      public ClientPingMeasurmentEvent parsePartialFrom(
+      public PingMeasurementEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientPingMeasurmentEvent(input, extensionRegistry);
+        return new PingMeasurementEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientPingMeasurmentEvent> parser() {
+    public static com.google.protobuf.Parser<PingMeasurementEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientPingMeasurmentEvent> getParserForType() {
+    public com.google.protobuf.Parser<PingMeasurementEvent> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientEvents.ClientPingMeasurmentEvent getDefaultInstanceForType() {
+    public protobuf.ClientEvents.PingMeasurementEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12389,70 +20293,110 @@ public final class ClientEvents {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientevents_ClientRequestRejectedEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientProfileEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientProfileEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientProfileGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor;
+    internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ChannelMessageEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ChannelMessagePostEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor;
+    internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_PrivateMessageEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ChannelMessageGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor;
+    internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientJoinedChannelEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor;
+    internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientLeftChannelEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor;
+    internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientLoggedInEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_PrivateMessagePostEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor;
+    internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientLoggedOutEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_PrivateMessageGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientRegisteredEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientChannelJoinEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor;
+    internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_fieldAccessorTable;
+      internal_static_protobuf_clientevents_ClientChannelLeaveEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_ClientLoginEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_ClientLoginEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_ClientLogoutEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_ClientRegistrationEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_ChannelFileDownloadEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_ChannelFileUploadEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_PrivateFileDownloadEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_PrivateFileUploadEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_clientevents_PingMeasurementEvent_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12471,54 +20415,86 @@ public final class ClientEvents {
       "Base\"q\n\032ClientRequestRejectedEvent\0229\n\tev" +
       "entBase\030\001 \001(\0132&.protobuf.clientevents.Cl" +
       "ientEventBase\022\030\n\020rejectionMessage\030\002 \001(\t\"" +
-      "\212\001\n\022ClientProfileEvent\0229\n\teventBase\030\001 \001(" +
-      "\0132&.protobuf.clientevents.ClientEventBas" +
-      "e\0229\n\007profile\030\002 \001(\0132(.protobuf.clientiden" +
-      "tities.ClientProfile\"\212\001\n\023ChannelMessageE" +
-      "vent\0229\n\teventBase\030\001 \001(\0132&.protobuf.clien" +
-      "tevents.ClientEventBase\0228\n\007message\030\002 \003(\013" +
-      "2\'.protobuf.clientmessages.ChannelMessag" +
-      "e\"\212\001\n\023PrivateMessageEvent\0229\n\teventBase\030\001" +
-      " \001(\0132&.protobuf.clientevents.ClientEvent" +
-      "Base\0228\n\007message\030\002 \003(\0132\'.protobuf.clientm" +
-      "essages.PrivateMessage\"\220\001\n\030ClientJoinedC" +
-      "hannelEvent\0229\n\teventBase\030\001 \001(\0132&.protobu" +
-      "f.clientevents.ClientEventBase\0229\n\007profil" +
-      "e\030\002 \001(\0132(.protobuf.clientidentities.Clie" +
-      "ntProfile\"\216\001\n\026ClientLeftChannelEvent\0229\n\t" +
-      "eventBase\030\001 \001(\0132&.protobuf.clientevents." +
-      "ClientEventBase\0229\n\007profile\030\002 \001(\0132(.proto" +
-      "buf.clientidentities.ClientProfile\"\213\001\n\023C" +
-      "lientLoggedInEvent\0229\n\teventBase\030\001 \001(\0132&." +
-      "protobuf.clientevents.ClientEventBase\0229\n" +
-      "\007profile\030\002 \001(\0132(.protobuf.clientidentiti" +
-      "es.ClientProfile\"\214\001\n\024ClientLoggedOutEven" +
-      "t\0229\n\teventBase\030\001 \001(\0132&.protobuf.clientev" +
-      "ents.ClientEventBase\0229\n\007profile\030\002 \001(\0132(." +
-      "protobuf.clientidentities.ClientProfile\"" +
-      "\215\001\n\025ClientRegisteredEvent\0229\n\teventBase\030\001" +
+      "\215\001\n\025ClientProfileGetEvent\0229\n\teventBase\030\001" +
       " \001(\0132&.protobuf.clientevents.ClientEvent" +
       "Base\0229\n\007profile\030\002 \001(\0132(.protobuf.clienti" +
-      "dentities.ClientProfile\"\230\001\n ClientDownlo" +
-      "adedChannelFileEvent\0229\n\teventBase\030\001 \001(\0132" +
-      "&.protobuf.clientevents.ClientEventBase\022" +
-      "9\n\007profile\030\002 \001(\0132(.protobuf.clientidenti" +
-      "ties.ClientProfile\"\226\001\n\036ClientUploadedCha" +
-      "nnelFileEvent\0229\n\teventBase\030\001 \001(\0132&.proto" +
-      "buf.clientevents.ClientEventBase\0229\n\007prof" +
-      "ile\030\002 \001(\0132(.protobuf.clientidentities.Cl" +
-      "ientProfile\"\230\001\n ClientDownloadedPrivateF" +
-      "ileEvent\0229\n\teventBase\030\001 \001(\0132&.protobuf.c" +
+      "dentities.ClientProfile\"\216\001\n\027ChannelMessa" +
+      "gePostEvent\0229\n\teventBase\030\001 \001(\0132&.protobu" +
+      "f.clientevents.ClientEventBase\0228\n\007messag" +
+      "e\030\002 \003(\0132\'.protobuf.clientmessages.Channe" +
+      "lMessage\"\215\001\n\026ChannelMessageGetEvent\0229\n\te" +
+      "ventBase\030\001 \001(\0132&.protobuf.clientevents.C" +
+      "lientEventBase\0228\n\007message\030\002 \003(\0132\'.protob" +
+      "uf.clientmessages.ChannelMessage\"\237\001\n\034Cha" +
+      "nnelMessageAnswerGetEvent\0229\n\teventBase\030\001" +
+      " \001(\0132&.protobuf.clientevents.ClientEvent" +
+      "Base\022D\n\rmessageAnswer\030\003 \003(\0132-.protobuf.c" +
+      "lientmessages.ChannelMessageAnswer\"\240\001\n\035C" +
+      "hannelMessageAnswerPostEvent\0229\n\teventBas" +
+      "e\030\001 \001(\0132&.protobuf.clientevents.ClientEv" +
+      "entBase\022D\n\rmessageAnswer\030\002 \003(\0132-.protobu" +
+      "f.clientmessages.ChannelMessageAnswer\"\216\001" +
+      "\n\027PrivateMessagePostEvent\0229\n\teventBase\030\001" +
+      " \001(\0132&.protobuf.clientevents.ClientEvent" +
+      "Base\0228\n\007message\030\002 \003(\0132\'.protobuf.clientm" +
+      "essages.PrivateMessage\"\215\001\n\026PrivateMessag" +
+      "eGetEvent\0229\n\teventBase\030\001 \001(\0132&.protobuf." +
+      "clientevents.ClientEventBase\0228\n\007message\030" +
+      "\002 \003(\0132\'.protobuf.clientmessages.PrivateM" +
+      "essage\"\241\001\n\035ClientProfileCommentPostEvent" +
+      "\0229\n\teventBase\030\001 \001(\0132&.protobuf.clienteve" +
+      "nts.ClientEventBase\022E\n\016profileComment\030\002 " +
+      "\003(\0132-.protobuf.clientmessages.ClientProf" +
+      "ileComment\"\240\001\n\034ClientProfileCommentGetEv" +
+      "ent\0229\n\teventBase\030\001 \001(\0132&.protobuf.client" +
+      "events.ClientEventBase\022E\n\016profileComment" +
+      "\030\002 \003(\0132-.protobuf.clientmessages.ClientP" +
+      "rofileComment\"\263\001\n#ClientProfileCommentAn" +
+      "swerPostEvent\0229\n\teventBase\030\001 \001(\0132&.proto" +
+      "buf.clientevents.ClientEventBase\022Q\n\024prof" +
+      "ileCommentAnswer\030\002 \003(\01323.protobuf.client" +
+      "messages.ClientProfileCommentAnswer\"\262\001\n\"" +
+      "ClientProfileCommentAnswerGetEvent\0229\n\tev" +
+      "entBase\030\001 \001(\0132&.protobuf.clientevents.Cl" +
+      "ientEventBase\022Q\n\024profileCommentAnswer\030\002 " +
+      "\003(\01323.protobuf.clientmessages.ClientProf" +
+      "ileCommentAnswer\"\216\001\n\026ClientChannelJoinEv" +
+      "ent\0229\n\teventBase\030\001 \001(\0132&.protobuf.client" +
+      "events.ClientEventBase\0229\n\007profile\030\002 \001(\0132" +
+      "(.protobuf.clientidentities.ClientProfil" +
+      "e\"\217\001\n\027ClientChannelLeaveEvent\0229\n\teventBa" +
+      "se\030\001 \001(\0132&.protobuf.clientevents.ClientE" +
+      "ventBase\0229\n\007profile\030\002 \001(\0132(.protobuf.cli" +
+      "entidentities.ClientProfile\"\210\001\n\020ClientLo" +
+      "ginEvent\0229\n\teventBase\030\001 \001(\0132&.protobuf.c" +
       "lientevents.ClientEventBase\0229\n\007profile\030\002" +
       " \001(\0132(.protobuf.clientidentities.ClientP" +
-      "rofile\"\226\001\n\036ClientUploadedPrivateFileEven" +
+      "rofile\"\211\001\n\021ClientLogoutEvent\0229\n\teventBas" +
+      "e\030\001 \001(\0132&.protobuf.clientevents.ClientEv" +
+      "entBase\0229\n\007profile\030\002 \001(\0132(.protobuf.clie" +
+      "ntidentities.ClientProfile\"\217\001\n\027ClientReg" +
+      "istrationEvent\0229\n\teventBase\030\001 \001(\0132&.prot" +
+      "obuf.clientevents.ClientEventBase\0229\n\007pro" +
+      "file\030\002 \001(\0132(.protobuf.clientidentities.C" +
+      "lientProfile\"\220\001\n\030ChannelFileDownloadEven" +
       "t\0229\n\teventBase\030\001 \001(\0132&.protobuf.clientev" +
       "ents.ClientEventBase\0229\n\007profile\030\002 \001(\0132(." +
       "protobuf.clientidentities.ClientProfile\"" +
-      "n\n\031ClientPingMeasurmentEvent\0229\n\teventBas" +
-      "e\030\001 \001(\0132&.protobuf.clientevents.ClientEv" +
-      "entBase\022\026\n\016measuredMillis\030\002 \001(\003B\030\n\010proto" +
-      "bufB\014ClientEventsb\006proto3"
+      "\216\001\n\026ChannelFileUploadEvent\0229\n\teventBase\030" +
+      "\001 \001(\0132&.protobuf.clientevents.ClientEven" +
+      "tBase\0229\n\007profile\030\002 \001(\0132(.protobuf.client" +
+      "identities.ClientProfile\"\220\001\n\030PrivateFile" +
+      "DownloadEvent\0229\n\teventBase\030\001 \001(\0132&.proto" +
+      "buf.clientevents.ClientEventBase\0229\n\007prof" +
+      "ile\030\002 \001(\0132(.protobuf.clientidentities.Cl" +
+      "ientProfile\"\216\001\n\026PrivateFileUploadEvent\0229" +
+      "\n\teventBase\030\001 \001(\0132&.protobuf.clientevent" +
+      "s.ClientEventBase\0229\n\007profile\030\002 \001(\0132(.pro" +
+      "tobuf.clientidentities.ClientProfile\"i\n\024" +
+      "PingMeasurementEvent\0229\n\teventBase\030\001 \001(\0132" +
+      "&.protobuf.clientevents.ClientEventBase\022" +
+      "\026\n\016measuredMillis\030\002 \001(\003B\030\n\010protobufB\014Cli" +
+      "entEventsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12538,83 +20514,131 @@ public final class ClientEvents {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientevents_ClientRequestRejectedEvent_descriptor,
         new java.lang.String[] { "EventBase", "RejectionMessage", });
-    internal_static_protobuf_clientevents_ClientProfileEvent_descriptor =
+    internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_protobuf_clientevents_ClientProfileEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientProfileGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientProfileEvent_descriptor,
+        internal_static_protobuf_clientevents_ClientProfileGetEvent_descriptor,
         new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor =
+    internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_protobuf_clientevents_ChannelMessageEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ChannelMessagePostEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ChannelMessageEvent_descriptor,
+        internal_static_protobuf_clientevents_ChannelMessagePostEvent_descriptor,
         new java.lang.String[] { "EventBase", "Message", });
-    internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor =
+    internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_protobuf_clientevents_PrivateMessageEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ChannelMessageGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_PrivateMessageEvent_descriptor,
+        internal_static_protobuf_clientevents_ChannelMessageGetEvent_descriptor,
         new java.lang.String[] { "EventBase", "Message", });
-    internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor =
+    internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_protobuf_clientevents_ClientJoinedChannelEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientJoinedChannelEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor =
+        internal_static_protobuf_clientevents_ChannelMessageAnswerGetEvent_descriptor,
+        new java.lang.String[] { "EventBase", "MessageAnswer", });
+    internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_protobuf_clientevents_ClientLeftChannelEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientLeftChannelEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor =
+        internal_static_protobuf_clientevents_ChannelMessageAnswerPostEvent_descriptor,
+        new java.lang.String[] { "EventBase", "MessageAnswer", });
+    internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_protobuf_clientevents_ClientLoggedInEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_PrivateMessagePostEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientLoggedInEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor =
+        internal_static_protobuf_clientevents_PrivateMessagePostEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Message", });
+    internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_protobuf_clientevents_ClientLoggedOutEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_PrivateMessageGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientLoggedOutEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor =
+        internal_static_protobuf_clientevents_PrivateMessageGetEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Message", });
+    internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_protobuf_clientevents_ClientRegisteredEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientRegisteredEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor =
+        internal_static_protobuf_clientevents_ClientProfileCommentPostEvent_descriptor,
+        new java.lang.String[] { "EventBase", "ProfileComment", });
+    internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientDownloadedChannelFileEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor =
+        internal_static_protobuf_clientevents_ClientProfileCommentGetEvent_descriptor,
+        new java.lang.String[] { "EventBase", "ProfileComment", });
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientUploadedChannelFileEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor =
+        internal_static_protobuf_clientevents_ClientProfileCommentAnswerPostEvent_descriptor,
+        new java.lang.String[] { "EventBase", "ProfileCommentAnswer", });
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientDownloadedPrivateFileEvent_descriptor,
-        new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor =
+        internal_static_protobuf_clientevents_ClientProfileCommentAnswerGetEvent_descriptor,
+        new java.lang.String[] { "EventBase", "ProfileCommentAnswer", });
+    internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor =
       getDescriptor().getMessageTypes().get(13);
-    internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientChannelJoinEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientUploadedPrivateFileEvent_descriptor,
+        internal_static_protobuf_clientevents_ClientChannelJoinEvent_descriptor,
         new java.lang.String[] { "EventBase", "Profile", });
-    internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor =
+    internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor =
       getDescriptor().getMessageTypes().get(14);
-    internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_fieldAccessorTable = new
+    internal_static_protobuf_clientevents_ClientChannelLeaveEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientevents_ClientPingMeasurmentEvent_descriptor,
+        internal_static_protobuf_clientevents_ClientChannelLeaveEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_ClientLoginEvent_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_protobuf_clientevents_ClientLoginEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_ClientLoginEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_protobuf_clientevents_ClientLogoutEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_ClientLogoutEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_protobuf_clientevents_ClientRegistrationEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_ClientRegistrationEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_protobuf_clientevents_ChannelFileDownloadEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_ChannelFileDownloadEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_protobuf_clientevents_ChannelFileUploadEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_ChannelFileUploadEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_protobuf_clientevents_PrivateFileDownloadEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_PrivateFileDownloadEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_protobuf_clientevents_PrivateFileUploadEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_PrivateFileUploadEvent_descriptor,
+        new java.lang.String[] { "EventBase", "Profile", });
+    internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_protobuf_clientevents_PingMeasurementEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_clientevents_PingMeasurementEvent_descriptor,
         new java.lang.String[] { "EventBase", "MeasuredMillis", });
     protobuf.ClientIdentities.getDescriptor();
     protobuf.ClientMessages.getDescriptor();

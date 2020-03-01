@@ -1457,16 +1457,29 @@ public final class ClientChannels {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string invitationKey = 1;</code>
-     * @return The invitationKey.
+     * <code>repeated string invitationKey = 1;</code>
+     * @return A list containing the invitationKey.
      */
-    java.lang.String getInvitationKey();
+    java.util.List<java.lang.String>
+        getInvitationKeyList();
     /**
-     * <code>string invitationKey = 1;</code>
-     * @return The bytes for invitationKey.
+     * <code>repeated string invitationKey = 1;</code>
+     * @return The count of invitationKey.
+     */
+    int getInvitationKeyCount();
+    /**
+     * <code>repeated string invitationKey = 1;</code>
+     * @param index The index of the element to return.
+     * @return The invitationKey at the given index.
+     */
+    java.lang.String getInvitationKey(int index);
+    /**
+     * <code>repeated string invitationKey = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the invitationKey at the given index.
      */
     com.google.protobuf.ByteString
-        getInvitationKeyBytes();
+        getInvitationKeyBytes(int index);
 
     /**
      * <code>string channelPassword = 2;</code>
@@ -1493,7 +1506,7 @@ public final class ClientChannels {
       super(builder);
     }
     private ChannelMemberVerification() {
-      invitationKey_ = "";
+      invitationKey_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       channelPassword_ = "";
     }
 
@@ -1517,6 +1530,7 @@ public final class ClientChannels {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1529,8 +1543,11 @@ public final class ClientChannels {
               break;
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              invitationKey_ = s;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                invitationKey_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              invitationKey_.add(s);
               break;
             }
             case 18: {
@@ -1554,6 +1571,9 @@ public final class ClientChannels {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          invitationKey_ = invitationKey_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -1572,39 +1592,38 @@ public final class ClientChannels {
     }
 
     public static final int INVITATIONKEY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object invitationKey_;
+    private com.google.protobuf.LazyStringList invitationKey_;
     /**
-     * <code>string invitationKey = 1;</code>
-     * @return The invitationKey.
+     * <code>repeated string invitationKey = 1;</code>
+     * @return A list containing the invitationKey.
      */
-    public java.lang.String getInvitationKey() {
-      java.lang.Object ref = invitationKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        invitationKey_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getInvitationKeyList() {
+      return invitationKey_;
     }
     /**
-     * <code>string invitationKey = 1;</code>
-     * @return The bytes for invitationKey.
+     * <code>repeated string invitationKey = 1;</code>
+     * @return The count of invitationKey.
+     */
+    public int getInvitationKeyCount() {
+      return invitationKey_.size();
+    }
+    /**
+     * <code>repeated string invitationKey = 1;</code>
+     * @param index The index of the element to return.
+     * @return The invitationKey at the given index.
+     */
+    public java.lang.String getInvitationKey(int index) {
+      return invitationKey_.get(index);
+    }
+    /**
+     * <code>repeated string invitationKey = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the invitationKey at the given index.
      */
     public com.google.protobuf.ByteString
-        getInvitationKeyBytes() {
-      java.lang.Object ref = invitationKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        invitationKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getInvitationKeyBytes(int index) {
+      return invitationKey_.getByteString(index);
     }
 
     public static final int CHANNELPASSWORD_FIELD_NUMBER = 2;
@@ -1657,8 +1676,8 @@ public final class ClientChannels {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getInvitationKeyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, invitationKey_);
+      for (int i = 0; i < invitationKey_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, invitationKey_.getRaw(i));
       }
       if (!getChannelPasswordBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, channelPassword_);
@@ -1672,8 +1691,13 @@ public final class ClientChannels {
       if (size != -1) return size;
 
       size = 0;
-      if (!getInvitationKeyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, invitationKey_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < invitationKey_.size(); i++) {
+          dataSize += computeStringSizeNoTag(invitationKey_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getInvitationKeyList().size();
       }
       if (!getChannelPasswordBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, channelPassword_);
@@ -1693,8 +1717,8 @@ public final class ClientChannels {
       }
       protobuf.ClientChannels.ChannelMemberVerification other = (protobuf.ClientChannels.ChannelMemberVerification) obj;
 
-      if (!getInvitationKey()
-          .equals(other.getInvitationKey())) return false;
+      if (!getInvitationKeyList()
+          .equals(other.getInvitationKeyList())) return false;
       if (!getChannelPassword()
           .equals(other.getChannelPassword())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -1708,8 +1732,10 @@ public final class ClientChannels {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + INVITATIONKEY_FIELD_NUMBER;
-      hash = (53 * hash) + getInvitationKey().hashCode();
+      if (getInvitationKeyCount() > 0) {
+        hash = (37 * hash) + INVITATIONKEY_FIELD_NUMBER;
+        hash = (53 * hash) + getInvitationKeyList().hashCode();
+      }
       hash = (37 * hash) + CHANNELPASSWORD_FIELD_NUMBER;
       hash = (53 * hash) + getChannelPassword().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -1845,8 +1871,8 @@ public final class ClientChannels {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        invitationKey_ = "";
-
+        invitationKey_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         channelPassword_ = "";
 
         return this;
@@ -1875,6 +1901,11 @@ public final class ClientChannels {
       @java.lang.Override
       public protobuf.ClientChannels.ChannelMemberVerification buildPartial() {
         protobuf.ClientChannels.ChannelMemberVerification result = new protobuf.ClientChannels.ChannelMemberVerification(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          invitationKey_ = invitationKey_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
         result.invitationKey_ = invitationKey_;
         result.channelPassword_ = channelPassword_;
         onBuilt();
@@ -1925,8 +1956,14 @@ public final class ClientChannels {
 
       public Builder mergeFrom(protobuf.ClientChannels.ChannelMemberVerification other) {
         if (other == protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance()) return this;
-        if (!other.getInvitationKey().isEmpty()) {
-          invitationKey_ = other.invitationKey_;
+        if (!other.invitationKey_.isEmpty()) {
+          if (invitationKey_.isEmpty()) {
+            invitationKey_ = other.invitationKey_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureInvitationKeyIsMutable();
+            invitationKey_.addAll(other.invitationKey_);
+          }
           onChanged();
         }
         if (!other.getChannelPassword().isEmpty()) {
@@ -1961,79 +1998,114 @@ public final class ClientChannels {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object invitationKey_ = "";
-      /**
-       * <code>string invitationKey = 1;</code>
-       * @return The invitationKey.
-       */
-      public java.lang.String getInvitationKey() {
-        java.lang.Object ref = invitationKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          invitationKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList invitationKey_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureInvitationKeyIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          invitationKey_ = new com.google.protobuf.LazyStringArrayList(invitationKey_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>string invitationKey = 1;</code>
-       * @return The bytes for invitationKey.
+       * <code>repeated string invitationKey = 1;</code>
+       * @return A list containing the invitationKey.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getInvitationKeyList() {
+        return invitationKey_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string invitationKey = 1;</code>
+       * @return The count of invitationKey.
+       */
+      public int getInvitationKeyCount() {
+        return invitationKey_.size();
+      }
+      /**
+       * <code>repeated string invitationKey = 1;</code>
+       * @param index The index of the element to return.
+       * @return The invitationKey at the given index.
+       */
+      public java.lang.String getInvitationKey(int index) {
+        return invitationKey_.get(index);
+      }
+      /**
+       * <code>repeated string invitationKey = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the invitationKey at the given index.
        */
       public com.google.protobuf.ByteString
-          getInvitationKeyBytes() {
-        java.lang.Object ref = invitationKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          invitationKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getInvitationKeyBytes(int index) {
+        return invitationKey_.getByteString(index);
       }
       /**
-       * <code>string invitationKey = 1;</code>
+       * <code>repeated string invitationKey = 1;</code>
+       * @param index The index to set the value at.
        * @param value The invitationKey to set.
        * @return This builder for chaining.
        */
       public Builder setInvitationKey(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureInvitationKeyIsMutable();
+        invitationKey_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string invitationKey = 1;</code>
+       * @param value The invitationKey to add.
+       * @return This builder for chaining.
+       */
+      public Builder addInvitationKey(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        invitationKey_ = value;
+  ensureInvitationKeyIsMutable();
+        invitationKey_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string invitationKey = 1;</code>
+       * <code>repeated string invitationKey = 1;</code>
+       * @param values The invitationKey to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllInvitationKey(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureInvitationKeyIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, invitationKey_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string invitationKey = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearInvitationKey() {
-        
-        invitationKey_ = getDefaultInstance().getInvitationKey();
+        invitationKey_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string invitationKey = 1;</code>
-       * @param value The bytes for invitationKey to set.
+       * <code>repeated string invitationKey = 1;</code>
+       * @param value The bytes of the invitationKey to add.
        * @return This builder for chaining.
        */
-      public Builder setInvitationKeyBytes(
+      public Builder addInvitationKeyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        invitationKey_ = value;
+        ensureInvitationKeyIsMutable();
+        invitationKey_.add(value);
         onChanged();
         return this;
       }
@@ -2186,30 +2258,45 @@ public final class ClientChannels {
     protobuf.ClientChannels.ChannelBaseOrBuilder getBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return Whether the members field is set.
+     */
+    boolean hasMembers();
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return The members.
+     */
+    protobuf.ClientChannels.ChannelMembers getMembers();
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     int getRestrictionTypeValue();
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The restrictionType.
      */
     protobuf.ClientChannels.ChannelRestrictionType getRestrictionType();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return Whether the members field is set.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return Whether the memberVerification field is set.
      */
-    boolean hasMembers();
+    boolean hasMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return The members.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return The memberVerification.
      */
-    protobuf.ClientChannels.ChannelMembers getMembers();
+    protobuf.ClientChannels.ChannelMemberVerification getMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
      */
-    protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder();
+    protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientchannels.TextChannel}
@@ -2270,13 +2357,7 @@ public final class ClientChannels {
 
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              restrictionType_ = rawValue;
-              break;
-            }
-            case 26: {
+            case 18: {
               protobuf.ClientChannels.ChannelMembers.Builder subBuilder = null;
               if (members_ != null) {
                 subBuilder = members_.toBuilder();
@@ -2285,6 +2366,25 @@ public final class ClientChannels {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(members_);
                 members_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              restrictionType_ = rawValue;
+              break;
+            }
+            case 34: {
+              protobuf.ClientChannels.ChannelMemberVerification.Builder subBuilder = null;
+              if (memberVerification_ != null) {
+                subBuilder = memberVerification_.toBuilder();
+              }
+              memberVerification_ = input.readMessage(protobuf.ClientChannels.ChannelMemberVerification.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(memberVerification_);
+                memberVerification_ = subBuilder.buildPartial();
               }
 
               break;
@@ -2344,17 +2444,40 @@ public final class ClientChannels {
       return getBase();
     }
 
-    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 2;
+    public static final int MEMBERS_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelMembers members_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return Whether the members field is set.
+     */
+    public boolean hasMembers() {
+      return members_ != null;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return The members.
+     */
+    public protobuf.ClientChannels.ChannelMembers getMembers() {
+      return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
+      return getMembers();
+    }
+
+    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 3;
     private int restrictionType_;
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     public int getRestrictionTypeValue() {
       return restrictionType_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The restrictionType.
      */
     public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
@@ -2363,27 +2486,27 @@ public final class ClientChannels {
       return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
     }
 
-    public static final int MEMBERS_FIELD_NUMBER = 3;
-    private protobuf.ClientChannels.ChannelMembers members_;
+    public static final int MEMBERVERIFICATION_FIELD_NUMBER = 4;
+    private protobuf.ClientChannels.ChannelMemberVerification memberVerification_;
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return Whether the members field is set.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return Whether the memberVerification field is set.
      */
-    public boolean hasMembers() {
-      return members_ != null;
+    public boolean hasMemberVerification() {
+      return memberVerification_ != null;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return The members.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return The memberVerification.
      */
-    public protobuf.ClientChannels.ChannelMembers getMembers() {
-      return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
+    public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
+      return memberVerification_ == null ? protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
      */
-    public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
-      return getMembers();
+    public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
+      return getMemberVerification();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2403,11 +2526,14 @@ public final class ClientChannels {
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
-      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
-        output.writeEnum(2, restrictionType_);
-      }
       if (members_ != null) {
-        output.writeMessage(3, getMembers());
+        output.writeMessage(2, getMembers());
+      }
+      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
+        output.writeEnum(3, restrictionType_);
+      }
+      if (memberVerification_ != null) {
+        output.writeMessage(4, getMemberVerification());
       }
       unknownFields.writeTo(output);
     }
@@ -2422,13 +2548,17 @@ public final class ClientChannels {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
-      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, restrictionType_);
-      }
       if (members_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getMembers());
+          .computeMessageSize(2, getMembers());
+      }
+      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, restrictionType_);
+      }
+      if (memberVerification_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getMemberVerification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2450,11 +2580,16 @@ public final class ClientChannels {
         if (!getBase()
             .equals(other.getBase())) return false;
       }
-      if (restrictionType_ != other.restrictionType_) return false;
       if (hasMembers() != other.hasMembers()) return false;
       if (hasMembers()) {
         if (!getMembers()
             .equals(other.getMembers())) return false;
+      }
+      if (restrictionType_ != other.restrictionType_) return false;
+      if (hasMemberVerification() != other.hasMemberVerification()) return false;
+      if (hasMemberVerification()) {
+        if (!getMemberVerification()
+            .equals(other.getMemberVerification())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2471,11 +2606,15 @@ public final class ClientChannels {
         hash = (37 * hash) + BASE_FIELD_NUMBER;
         hash = (53 * hash) + getBase().hashCode();
       }
-      hash = (37 * hash) + RESTRICTIONTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + restrictionType_;
       if (hasMembers()) {
         hash = (37 * hash) + MEMBERS_FIELD_NUMBER;
         hash = (53 * hash) + getMembers().hashCode();
+      }
+      hash = (37 * hash) + RESTRICTIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + restrictionType_;
+      if (hasMemberVerification()) {
+        hash = (37 * hash) + MEMBERVERIFICATION_FIELD_NUMBER;
+        hash = (53 * hash) + getMemberVerification().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2616,13 +2755,19 @@ public final class ClientChannels {
           base_ = null;
           baseBuilder_ = null;
         }
-        restrictionType_ = 0;
-
         if (membersBuilder_ == null) {
           members_ = null;
         } else {
           members_ = null;
           membersBuilder_ = null;
+        }
+        restrictionType_ = 0;
+
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = null;
+        } else {
+          memberVerification_ = null;
+          memberVerificationBuilder_ = null;
         }
         return this;
       }
@@ -2655,11 +2800,16 @@ public final class ClientChannels {
         } else {
           result.base_ = baseBuilder_.build();
         }
-        result.restrictionType_ = restrictionType_;
         if (membersBuilder_ == null) {
           result.members_ = members_;
         } else {
           result.members_ = membersBuilder_.build();
+        }
+        result.restrictionType_ = restrictionType_;
+        if (memberVerificationBuilder_ == null) {
+          result.memberVerification_ = memberVerification_;
+        } else {
+          result.memberVerification_ = memberVerificationBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2712,11 +2862,14 @@ public final class ClientChannels {
         if (other.hasBase()) {
           mergeBase(other.getBase());
         }
+        if (other.hasMembers()) {
+          mergeMembers(other.getMembers());
+        }
         if (other.restrictionType_ != 0) {
           setRestrictionTypeValue(other.getRestrictionTypeValue());
         }
-        if (other.hasMembers()) {
-          mergeMembers(other.getMembers());
+        if (other.hasMemberVerification()) {
+          mergeMemberVerification(other.getMemberVerification());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2866,70 +3019,18 @@ public final class ClientChannels {
         return baseBuilder_;
       }
 
-      private int restrictionType_ = 0;
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return The enum numeric value on the wire for restrictionType.
-       */
-      public int getRestrictionTypeValue() {
-        return restrictionType_;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @param value The enum numeric value on the wire for restrictionType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRestrictionTypeValue(int value) {
-        restrictionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return The restrictionType.
-       */
-      public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
-        @SuppressWarnings("deprecation")
-        protobuf.ClientChannels.ChannelRestrictionType result = protobuf.ClientChannels.ChannelRestrictionType.valueOf(restrictionType_);
-        return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @param value The restrictionType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRestrictionType(protobuf.ClientChannels.ChannelRestrictionType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        restrictionType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRestrictionType() {
-        
-        restrictionType_ = 0;
-        onChanged();
-        return this;
-      }
-
       private protobuf.ClientChannels.ChannelMembers members_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> membersBuilder_;
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        * @return Whether the members field is set.
        */
       public boolean hasMembers() {
         return membersBuilder_ != null || members_ != null;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        * @return The members.
        */
       public protobuf.ClientChannels.ChannelMembers getMembers() {
@@ -2940,7 +3041,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder setMembers(protobuf.ClientChannels.ChannelMembers value) {
         if (membersBuilder_ == null) {
@@ -2956,7 +3057,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder setMembers(
           protobuf.ClientChannels.ChannelMembers.Builder builderForValue) {
@@ -2970,7 +3071,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder mergeMembers(protobuf.ClientChannels.ChannelMembers value) {
         if (membersBuilder_ == null) {
@@ -2988,7 +3089,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder clearMembers() {
         if (membersBuilder_ == null) {
@@ -3002,7 +3103,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public protobuf.ClientChannels.ChannelMembers.Builder getMembersBuilder() {
         
@@ -3010,7 +3111,7 @@ public final class ClientChannels {
         return getMembersFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
         if (membersBuilder_ != null) {
@@ -3021,7 +3122,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> 
@@ -3035,6 +3136,177 @@ public final class ClientChannels {
           members_ = null;
         }
         return membersBuilder_;
+      }
+
+      private int restrictionType_ = 0;
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return The enum numeric value on the wire for restrictionType.
+       */
+      public int getRestrictionTypeValue() {
+        return restrictionType_;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @param value The enum numeric value on the wire for restrictionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRestrictionTypeValue(int value) {
+        restrictionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return The restrictionType.
+       */
+      public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
+        @SuppressWarnings("deprecation")
+        protobuf.ClientChannels.ChannelRestrictionType result = protobuf.ClientChannels.ChannelRestrictionType.valueOf(restrictionType_);
+        return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @param value The restrictionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRestrictionType(protobuf.ClientChannels.ChannelRestrictionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        restrictionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRestrictionType() {
+        
+        restrictionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientChannels.ChannelMemberVerification memberVerification_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> memberVerificationBuilder_;
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * @return Whether the memberVerification field is set.
+       */
+      public boolean hasMemberVerification() {
+        return memberVerificationBuilder_ != null || memberVerification_ != null;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * @return The memberVerification.
+       */
+      public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
+        if (memberVerificationBuilder_ == null) {
+          return memberVerification_ == null ? protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
+        } else {
+          return memberVerificationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder setMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
+        if (memberVerificationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          memberVerification_ = value;
+          onChanged();
+        } else {
+          memberVerificationBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder setMemberVerification(
+          protobuf.ClientChannels.ChannelMemberVerification.Builder builderForValue) {
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = builderForValue.build();
+          onChanged();
+        } else {
+          memberVerificationBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder mergeMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
+        if (memberVerificationBuilder_ == null) {
+          if (memberVerification_ != null) {
+            memberVerification_ =
+              protobuf.ClientChannels.ChannelMemberVerification.newBuilder(memberVerification_).mergeFrom(value).buildPartial();
+          } else {
+            memberVerification_ = value;
+          }
+          onChanged();
+        } else {
+          memberVerificationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder clearMemberVerification() {
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = null;
+          onChanged();
+        } else {
+          memberVerification_ = null;
+          memberVerificationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public protobuf.ClientChannels.ChannelMemberVerification.Builder getMemberVerificationBuilder() {
+        
+        onChanged();
+        return getMemberVerificationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
+        if (memberVerificationBuilder_ != null) {
+          return memberVerificationBuilder_.getMessageOrBuilder();
+        } else {
+          return memberVerification_ == null ?
+              protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> 
+          getMemberVerificationFieldBuilder() {
+        if (memberVerificationBuilder_ == null) {
+          memberVerificationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder>(
+                  getMemberVerification(),
+                  getParentForChildren(),
+                  isClean());
+          memberVerification_ = null;
+        }
+        return memberVerificationBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3109,30 +3381,45 @@ public final class ClientChannels {
     protobuf.ClientChannels.ChannelBaseOrBuilder getBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return Whether the members field is set.
+     */
+    boolean hasMembers();
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return The members.
+     */
+    protobuf.ClientChannels.ChannelMembers getMembers();
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     */
+    protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     int getRestrictionTypeValue();
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The restrictionType.
      */
     protobuf.ClientChannels.ChannelRestrictionType getRestrictionType();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return Whether the members field is set.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return Whether the memberVerification field is set.
      */
-    boolean hasMembers();
+    boolean hasMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return The members.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return The memberVerification.
      */
-    protobuf.ClientChannels.ChannelMembers getMembers();
+    protobuf.ClientChannels.ChannelMemberVerification getMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
      */
-    protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder();
+    protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder();
   }
   /**
    * Protobuf type {@code protobuf.clientchannels.VoiceChannel}
@@ -3193,13 +3480,7 @@ public final class ClientChannels {
 
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              restrictionType_ = rawValue;
-              break;
-            }
-            case 26: {
+            case 18: {
               protobuf.ClientChannels.ChannelMembers.Builder subBuilder = null;
               if (members_ != null) {
                 subBuilder = members_.toBuilder();
@@ -3208,6 +3489,25 @@ public final class ClientChannels {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(members_);
                 members_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              restrictionType_ = rawValue;
+              break;
+            }
+            case 34: {
+              protobuf.ClientChannels.ChannelMemberVerification.Builder subBuilder = null;
+              if (memberVerification_ != null) {
+                subBuilder = memberVerification_.toBuilder();
+              }
+              memberVerification_ = input.readMessage(protobuf.ClientChannels.ChannelMemberVerification.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(memberVerification_);
+                memberVerification_ = subBuilder.buildPartial();
               }
 
               break;
@@ -3267,17 +3567,40 @@ public final class ClientChannels {
       return getBase();
     }
 
-    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 2;
+    public static final int MEMBERS_FIELD_NUMBER = 2;
+    private protobuf.ClientChannels.ChannelMembers members_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return Whether the members field is set.
+     */
+    public boolean hasMembers() {
+      return members_ != null;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     * @return The members.
+     */
+    public protobuf.ClientChannels.ChannelMembers getMembers() {
+      return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+     */
+    public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
+      return getMembers();
+    }
+
+    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 3;
     private int restrictionType_;
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     public int getRestrictionTypeValue() {
       return restrictionType_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
      * @return The restrictionType.
      */
     public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
@@ -3286,27 +3609,27 @@ public final class ClientChannels {
       return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
     }
 
-    public static final int MEMBERS_FIELD_NUMBER = 3;
-    private protobuf.ClientChannels.ChannelMembers members_;
+    public static final int MEMBERVERIFICATION_FIELD_NUMBER = 4;
+    private protobuf.ClientChannels.ChannelMemberVerification memberVerification_;
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return Whether the members field is set.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return Whether the memberVerification field is set.
      */
-    public boolean hasMembers() {
-      return members_ != null;
+    public boolean hasMemberVerification() {
+      return memberVerification_ != null;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
-     * @return The members.
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * @return The memberVerification.
      */
-    public protobuf.ClientChannels.ChannelMembers getMembers() {
-      return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
+    public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
+      return memberVerification_ == null ? protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
      */
-    public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
-      return getMembers();
+    public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
+      return getMemberVerification();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3326,11 +3649,14 @@ public final class ClientChannels {
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
-      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
-        output.writeEnum(2, restrictionType_);
-      }
       if (members_ != null) {
-        output.writeMessage(3, getMembers());
+        output.writeMessage(2, getMembers());
+      }
+      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
+        output.writeEnum(3, restrictionType_);
+      }
+      if (memberVerification_ != null) {
+        output.writeMessage(4, getMemberVerification());
       }
       unknownFields.writeTo(output);
     }
@@ -3345,13 +3671,17 @@ public final class ClientChannels {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
-      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, restrictionType_);
-      }
       if (members_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getMembers());
+          .computeMessageSize(2, getMembers());
+      }
+      if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, restrictionType_);
+      }
+      if (memberVerification_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getMemberVerification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3373,11 +3703,16 @@ public final class ClientChannels {
         if (!getBase()
             .equals(other.getBase())) return false;
       }
-      if (restrictionType_ != other.restrictionType_) return false;
       if (hasMembers() != other.hasMembers()) return false;
       if (hasMembers()) {
         if (!getMembers()
             .equals(other.getMembers())) return false;
+      }
+      if (restrictionType_ != other.restrictionType_) return false;
+      if (hasMemberVerification() != other.hasMemberVerification()) return false;
+      if (hasMemberVerification()) {
+        if (!getMemberVerification()
+            .equals(other.getMemberVerification())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -3394,11 +3729,15 @@ public final class ClientChannels {
         hash = (37 * hash) + BASE_FIELD_NUMBER;
         hash = (53 * hash) + getBase().hashCode();
       }
-      hash = (37 * hash) + RESTRICTIONTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + restrictionType_;
       if (hasMembers()) {
         hash = (37 * hash) + MEMBERS_FIELD_NUMBER;
         hash = (53 * hash) + getMembers().hashCode();
+      }
+      hash = (37 * hash) + RESTRICTIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + restrictionType_;
+      if (hasMemberVerification()) {
+        hash = (37 * hash) + MEMBERVERIFICATION_FIELD_NUMBER;
+        hash = (53 * hash) + getMemberVerification().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3539,13 +3878,19 @@ public final class ClientChannels {
           base_ = null;
           baseBuilder_ = null;
         }
-        restrictionType_ = 0;
-
         if (membersBuilder_ == null) {
           members_ = null;
         } else {
           members_ = null;
           membersBuilder_ = null;
+        }
+        restrictionType_ = 0;
+
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = null;
+        } else {
+          memberVerification_ = null;
+          memberVerificationBuilder_ = null;
         }
         return this;
       }
@@ -3578,11 +3923,16 @@ public final class ClientChannels {
         } else {
           result.base_ = baseBuilder_.build();
         }
-        result.restrictionType_ = restrictionType_;
         if (membersBuilder_ == null) {
           result.members_ = members_;
         } else {
           result.members_ = membersBuilder_.build();
+        }
+        result.restrictionType_ = restrictionType_;
+        if (memberVerificationBuilder_ == null) {
+          result.memberVerification_ = memberVerification_;
+        } else {
+          result.memberVerification_ = memberVerificationBuilder_.build();
         }
         onBuilt();
         return result;
@@ -3635,11 +3985,14 @@ public final class ClientChannels {
         if (other.hasBase()) {
           mergeBase(other.getBase());
         }
+        if (other.hasMembers()) {
+          mergeMembers(other.getMembers());
+        }
         if (other.restrictionType_ != 0) {
           setRestrictionTypeValue(other.getRestrictionTypeValue());
         }
-        if (other.hasMembers()) {
-          mergeMembers(other.getMembers());
+        if (other.hasMemberVerification()) {
+          mergeMemberVerification(other.getMemberVerification());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3789,70 +4142,18 @@ public final class ClientChannels {
         return baseBuilder_;
       }
 
-      private int restrictionType_ = 0;
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return The enum numeric value on the wire for restrictionType.
-       */
-      public int getRestrictionTypeValue() {
-        return restrictionType_;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @param value The enum numeric value on the wire for restrictionType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRestrictionTypeValue(int value) {
-        restrictionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return The restrictionType.
-       */
-      public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
-        @SuppressWarnings("deprecation")
-        protobuf.ClientChannels.ChannelRestrictionType result = protobuf.ClientChannels.ChannelRestrictionType.valueOf(restrictionType_);
-        return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @param value The restrictionType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRestrictionType(protobuf.ClientChannels.ChannelRestrictionType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        restrictionType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRestrictionType() {
-        
-        restrictionType_ = 0;
-        onChanged();
-        return this;
-      }
-
       private protobuf.ClientChannels.ChannelMembers members_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> membersBuilder_;
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        * @return Whether the members field is set.
        */
       public boolean hasMembers() {
         return membersBuilder_ != null || members_ != null;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        * @return The members.
        */
       public protobuf.ClientChannels.ChannelMembers getMembers() {
@@ -3863,7 +4164,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder setMembers(protobuf.ClientChannels.ChannelMembers value) {
         if (membersBuilder_ == null) {
@@ -3879,7 +4180,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder setMembers(
           protobuf.ClientChannels.ChannelMembers.Builder builderForValue) {
@@ -3893,7 +4194,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder mergeMembers(protobuf.ClientChannels.ChannelMembers value) {
         if (membersBuilder_ == null) {
@@ -3911,7 +4212,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public Builder clearMembers() {
         if (membersBuilder_ == null) {
@@ -3925,7 +4226,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public protobuf.ClientChannels.ChannelMembers.Builder getMembersBuilder() {
         
@@ -3933,7 +4234,7 @@ public final class ClientChannels {
         return getMembersFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
         if (membersBuilder_ != null) {
@@ -3944,7 +4245,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> 
@@ -3958,6 +4259,177 @@ public final class ClientChannels {
           members_ = null;
         }
         return membersBuilder_;
+      }
+
+      private int restrictionType_ = 0;
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return The enum numeric value on the wire for restrictionType.
+       */
+      public int getRestrictionTypeValue() {
+        return restrictionType_;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @param value The enum numeric value on the wire for restrictionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRestrictionTypeValue(int value) {
+        restrictionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return The restrictionType.
+       */
+      public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
+        @SuppressWarnings("deprecation")
+        protobuf.ClientChannels.ChannelRestrictionType result = protobuf.ClientChannels.ChannelRestrictionType.valueOf(restrictionType_);
+        return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @param value The restrictionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRestrictionType(protobuf.ClientChannels.ChannelRestrictionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        restrictionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRestrictionType() {
+        
+        restrictionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private protobuf.ClientChannels.ChannelMemberVerification memberVerification_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> memberVerificationBuilder_;
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * @return Whether the memberVerification field is set.
+       */
+      public boolean hasMemberVerification() {
+        return memberVerificationBuilder_ != null || memberVerification_ != null;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * @return The memberVerification.
+       */
+      public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
+        if (memberVerificationBuilder_ == null) {
+          return memberVerification_ == null ? protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
+        } else {
+          return memberVerificationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder setMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
+        if (memberVerificationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          memberVerification_ = value;
+          onChanged();
+        } else {
+          memberVerificationBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder setMemberVerification(
+          protobuf.ClientChannels.ChannelMemberVerification.Builder builderForValue) {
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = builderForValue.build();
+          onChanged();
+        } else {
+          memberVerificationBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder mergeMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
+        if (memberVerificationBuilder_ == null) {
+          if (memberVerification_ != null) {
+            memberVerification_ =
+              protobuf.ClientChannels.ChannelMemberVerification.newBuilder(memberVerification_).mergeFrom(value).buildPartial();
+          } else {
+            memberVerification_ = value;
+          }
+          onChanged();
+        } else {
+          memberVerificationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public Builder clearMemberVerification() {
+        if (memberVerificationBuilder_ == null) {
+          memberVerification_ = null;
+          onChanged();
+        } else {
+          memberVerification_ = null;
+          memberVerificationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public protobuf.ClientChannels.ChannelMemberVerification.Builder getMemberVerificationBuilder() {
+        
+        onChanged();
+        return getMemberVerificationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
+        if (memberVerificationBuilder_ != null) {
+          return memberVerificationBuilder_.getMessageOrBuilder();
+        } else {
+          return memberVerification_ == null ?
+              protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
+        }
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> 
+          getMemberVerificationFieldBuilder() {
+        if (memberVerificationBuilder_ == null) {
+          memberVerificationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder>(
+                  getMemberVerification(),
+                  getParentForChildren(),
+                  isClean());
+          memberVerification_ = null;
+        }
+        return memberVerificationBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4051,18 +4523,22 @@ public final class ClientChannels {
       "elId\030\001 \001(\005\022\023\n\013channelName\030\002 \001(\t\"6\n\016Chann" +
       "elMembers\022\022\n\nmaxMembers\030\001 \001(\005\022\020\n\010memberI" +
       "d\030\002 \003(\005\"K\n\031ChannelMemberVerification\022\025\n\r" +
-      "invitationKey\030\001 \001(\t\022\027\n\017channelPassword\030\002" +
-      " \001(\t\"\305\001\n\013TextChannel\0222\n\004base\030\001 \001(\0132$.pro" +
-      "tobuf.clientchannels.ChannelBase\022H\n\017rest" +
-      "rictionType\030\002 \001(\0162/.protobuf.clientchann" +
-      "els.ChannelRestrictionType\0228\n\007members\030\003 " +
-      "\001(\0132\'.protobuf.clientchannels.ChannelMem" +
-      "bers\"\306\001\n\014VoiceChannel\0222\n\004base\030\001 \001(\0132$.pr" +
-      "otobuf.clientchannels.ChannelBase\022H\n\017res" +
-      "trictionType\030\002 \001(\0162/.protobuf.clientchan" +
-      "nels.ChannelRestrictionType\0228\n\007members\030\003" +
-      " \001(\0132\'.protobuf.clientchannels.ChannelMe" +
-      "mbers*`\n\026ChannelRestrictionType\022\n\n\006PUBLI" +
+      "invitationKey\030\001 \003(\t\022\027\n\017channelPassword\030\002" +
+      " \001(\t\"\225\002\n\013TextChannel\0222\n\004base\030\001 \001(\0132$.pro" +
+      "tobuf.clientchannels.ChannelBase\0228\n\007memb" +
+      "ers\030\002 \001(\0132\'.protobuf.clientchannels.Chan" +
+      "nelMembers\022H\n\017restrictionType\030\003 \001(\0162/.pr" +
+      "otobuf.clientchannels.ChannelRestriction" +
+      "Type\022N\n\022memberVerification\030\004 \001(\01322.proto" +
+      "buf.clientchannels.ChannelMemberVerifica" +
+      "tion\"\226\002\n\014VoiceChannel\0222\n\004base\030\001 \001(\0132$.pr" +
+      "otobuf.clientchannels.ChannelBase\0228\n\007mem" +
+      "bers\030\002 \001(\0132\'.protobuf.clientchannels.Cha" +
+      "nnelMembers\022H\n\017restrictionType\030\003 \001(\0162/.p" +
+      "rotobuf.clientchannels.ChannelRestrictio" +
+      "nType\022N\n\022memberVerification\030\004 \001(\01322.prot" +
+      "obuf.clientchannels.ChannelMemberVerific" +
+      "ation*`\n\026ChannelRestrictionType\022\n\n\006PUBLI" +
       "C\020\000\022\025\n\021PASSWORD_REQUIRED\020\001\022\022\n\016WHITELIST_" +
       "ONLY\020\002\022\017\n\013INVITE_ONLY\020\003B\032\n\010protobufB\016Cli" +
       "entChannelsb\006proto3"
@@ -4094,13 +4570,13 @@ public final class ClientChannels {
     internal_static_protobuf_clientchannels_TextChannel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientchannels_TextChannel_descriptor,
-        new java.lang.String[] { "Base", "RestrictionType", "Members", });
+        new java.lang.String[] { "Base", "Members", "RestrictionType", "MemberVerification", });
     internal_static_protobuf_clientchannels_VoiceChannel_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_protobuf_clientchannels_VoiceChannel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientchannels_VoiceChannel_descriptor,
-        new java.lang.String[] { "Base", "RestrictionType", "Members", });
+        new java.lang.String[] { "Base", "Members", "RestrictionType", "MemberVerification", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

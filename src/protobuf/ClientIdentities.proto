@@ -10,7 +10,7 @@ message ClientBase {
 }
 
 enum ClientStatus {
-	UNKNOWN = 0;
+	UNKNOWN_STATUS = 0;
 	OFFLINE = 1;
 	ONLINE = 2;
 	AFK = 3;
@@ -90,17 +90,19 @@ message ClientDeviceOs {
 	ClientDeviceOsType deviceOsType = 3;
 	
 	enum ClientDeviceOsType {
-		WINDOWS = 0;
-		LINUX = 1;
-		IOS = 2;
-		ANDROID = 3;
+		UNKNOWN_DEVICE_OS_TYPE = 0;
+		WINDOWS = 1;
+		LINUX = 2;
+		IOS = 3;
+		ANDROID = 4;
 	}
 }
 
 enum ClientDeviceType {
-	DESKTOP = 0;
-	BROWSER = 1;
-	MOBILE = 2;
+	UNKNOWN_DEVICE_TYPE = 0;
+	DESKTOP = 1;
+	BROWSER = 2;
+	MOBILE = 3;
 }
 
 message ClientDevice {

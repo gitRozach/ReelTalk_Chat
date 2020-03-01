@@ -20,9 +20,9 @@ public final class ClientIdentities {
   public enum ClientStatus
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>UNKNOWN = 0;</code>
+     * <code>UNKNOWN_STATUS = 0;</code>
      */
-    UNKNOWN(0),
+    UNKNOWN_STATUS(0),
     /**
      * <code>OFFLINE = 1;</code>
      */
@@ -51,9 +51,9 @@ public final class ClientIdentities {
     ;
 
     /**
-     * <code>UNKNOWN = 0;</code>
+     * <code>UNKNOWN_STATUS = 0;</code>
      */
-    public static final int UNKNOWN_VALUE = 0;
+    public static final int UNKNOWN_STATUS_VALUE = 0;
     /**
      * <code>OFFLINE = 1;</code>
      */
@@ -104,7 +104,7 @@ public final class ClientIdentities {
      */
     public static ClientStatus forNumber(int value) {
       switch (value) {
-        case 0: return UNKNOWN;
+        case 0: return UNKNOWN_STATUS;
         case 1: return OFFLINE;
         case 2: return ONLINE;
         case 3: return AFK;
@@ -169,32 +169,40 @@ public final class ClientIdentities {
   public enum ClientDeviceType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>DESKTOP = 0;</code>
+     * <code>UNKNOWN_DEVICE_TYPE = 0;</code>
      */
-    DESKTOP(0),
+    UNKNOWN_DEVICE_TYPE(0),
     /**
-     * <code>BROWSER = 1;</code>
+     * <code>DESKTOP = 1;</code>
      */
-    BROWSER(1),
+    DESKTOP(1),
     /**
-     * <code>MOBILE = 2;</code>
+     * <code>BROWSER = 2;</code>
      */
-    MOBILE(2),
+    BROWSER(2),
+    /**
+     * <code>MOBILE = 3;</code>
+     */
+    MOBILE(3),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>DESKTOP = 0;</code>
+     * <code>UNKNOWN_DEVICE_TYPE = 0;</code>
      */
-    public static final int DESKTOP_VALUE = 0;
+    public static final int UNKNOWN_DEVICE_TYPE_VALUE = 0;
     /**
-     * <code>BROWSER = 1;</code>
+     * <code>DESKTOP = 1;</code>
      */
-    public static final int BROWSER_VALUE = 1;
+    public static final int DESKTOP_VALUE = 1;
     /**
-     * <code>MOBILE = 2;</code>
+     * <code>BROWSER = 2;</code>
      */
-    public static final int MOBILE_VALUE = 2;
+    public static final int BROWSER_VALUE = 2;
+    /**
+     * <code>MOBILE = 3;</code>
+     */
+    public static final int MOBILE_VALUE = 3;
 
 
     public final int getNumber() {
@@ -221,9 +229,10 @@ public final class ClientIdentities {
      */
     public static ClientDeviceType forNumber(int value) {
       switch (value) {
-        case 0: return DESKTOP;
-        case 1: return BROWSER;
-        case 2: return MOBILE;
+        case 0: return UNKNOWN_DEVICE_TYPE;
+        case 1: return DESKTOP;
+        case 2: return BROWSER;
+        case 3: return MOBILE;
         default: return null;
       }
     }
@@ -10335,40 +10344,48 @@ public final class ClientIdentities {
     public enum ClientDeviceOsType
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>WINDOWS = 0;</code>
+       * <code>UNKNOWN_DEVICE_OS_TYPE = 0;</code>
        */
-      WINDOWS(0),
+      UNKNOWN_DEVICE_OS_TYPE(0),
       /**
-       * <code>LINUX = 1;</code>
+       * <code>WINDOWS = 1;</code>
        */
-      LINUX(1),
+      WINDOWS(1),
       /**
-       * <code>IOS = 2;</code>
+       * <code>LINUX = 2;</code>
        */
-      IOS(2),
+      LINUX(2),
       /**
-       * <code>ANDROID = 3;</code>
+       * <code>IOS = 3;</code>
        */
-      ANDROID(3),
+      IOS(3),
+      /**
+       * <code>ANDROID = 4;</code>
+       */
+      ANDROID(4),
       UNRECOGNIZED(-1),
       ;
 
       /**
-       * <code>WINDOWS = 0;</code>
+       * <code>UNKNOWN_DEVICE_OS_TYPE = 0;</code>
        */
-      public static final int WINDOWS_VALUE = 0;
+      public static final int UNKNOWN_DEVICE_OS_TYPE_VALUE = 0;
       /**
-       * <code>LINUX = 1;</code>
+       * <code>WINDOWS = 1;</code>
        */
-      public static final int LINUX_VALUE = 1;
+      public static final int WINDOWS_VALUE = 1;
       /**
-       * <code>IOS = 2;</code>
+       * <code>LINUX = 2;</code>
        */
-      public static final int IOS_VALUE = 2;
+      public static final int LINUX_VALUE = 2;
       /**
-       * <code>ANDROID = 3;</code>
+       * <code>IOS = 3;</code>
        */
-      public static final int ANDROID_VALUE = 3;
+      public static final int IOS_VALUE = 3;
+      /**
+       * <code>ANDROID = 4;</code>
+       */
+      public static final int ANDROID_VALUE = 4;
 
 
       public final int getNumber() {
@@ -10395,10 +10412,11 @@ public final class ClientIdentities {
        */
       public static ClientDeviceOsType forNumber(int value) {
         switch (value) {
-          case 0: return WINDOWS;
-          case 1: return LINUX;
-          case 2: return IOS;
-          case 3: return ANDROID;
+          case 0: return UNKNOWN_DEVICE_OS_TYPE;
+          case 1: return WINDOWS;
+          case 2: return LINUX;
+          case 3: return IOS;
+          case 4: return ANDROID;
           default: return null;
         }
       }
@@ -10562,7 +10580,7 @@ public final class ClientIdentities {
       if (!getDeviceOsVersionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceOsVersion_);
       }
-      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.WINDOWS.getNumber()) {
+      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.UNKNOWN_DEVICE_OS_TYPE.getNumber()) {
         output.writeEnum(3, deviceOsType_);
       }
       unknownFields.writeTo(output);
@@ -10580,7 +10598,7 @@ public final class ClientIdentities {
       if (!getDeviceOsVersionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceOsVersion_);
       }
-      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.WINDOWS.getNumber()) {
+      if (deviceOsType_ != protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType.UNKNOWN_DEVICE_OS_TYPE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, deviceOsType_);
       }
@@ -11427,7 +11445,7 @@ public final class ClientIdentities {
       if (deviceOs_ != null) {
         output.writeMessage(3, getDeviceOs());
       }
-      if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.DESKTOP.getNumber()) {
+      if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.UNKNOWN_DEVICE_TYPE.getNumber()) {
         output.writeEnum(4, deviceType_);
       }
       unknownFields.writeTo(output);
@@ -11451,7 +11469,7 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getDeviceOs());
       }
-      if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.DESKTOP.getNumber()) {
+      if (deviceType_ != protobuf.ClientIdentities.ClientDeviceType.UNKNOWN_DEVICE_TYPE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(4, deviceType_);
       }
@@ -12748,7 +12766,7 @@ public final class ClientIdentities {
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
-      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN.getNumber()) {
+      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN_STATUS.getNumber()) {
         output.writeEnum(2, status_);
       }
       if (images_ != null) {
@@ -12782,7 +12800,7 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
-      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN.getNumber()) {
+      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN_STATUS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, status_);
       }
@@ -15435,40 +15453,42 @@ public final class ClientIdentities {
       "(\005\"8\n\020ClientDeviceBase\022\020\n\010deviceId\030\001 \001(\005" +
       "\022\022\n\ndeviceName\030\002 \001(\t\"=\n\023ClientDeviceAddr" +
       "ess\022\022\n\ndeviceIpV4\030\001 \003(\t\022\022\n\ndeviceIpV6\030\002 " +
-      "\003(\t\"\327\001\n\016ClientDeviceOs\022\024\n\014deviceOsName\030\001" +
+      "\003(\t\"\363\001\n\016ClientDeviceOs\022\024\n\014deviceOsName\030\001" +
       " \001(\t\022\027\n\017deviceOsVersion\030\002 \001(\t\022R\n\014deviceO" +
       "sType\030\003 \001(\0162<.protobuf.clientidentities." +
-      "ClientDeviceOs.ClientDeviceOsType\"B\n\022Cli" +
-      "entDeviceOsType\022\013\n\007WINDOWS\020\000\022\t\n\005LINUX\020\001\022" +
-      "\007\n\003IOS\020\002\022\013\n\007ANDROID\020\003\"\224\002\n\014ClientDevice\022?" +
-      "\n\ndeviceBase\030\001 \001(\0132+.protobuf.clientiden" +
-      "tities.ClientDeviceBase\022E\n\rdeviceAddress" +
-      "\030\002 \001(\0132..protobuf.clientidentities.Clien" +
-      "tDeviceAddress\022;\n\010deviceOs\030\003 \001(\0132).proto" +
-      "buf.clientidentities.ClientDeviceOs\022?\n\nd" +
-      "eviceType\030\004 \001(\0162+.protobuf.clientidentit" +
-      "ies.ClientDeviceType\"\345\003\n\rClientProfile\0223" +
-      "\n\004base\030\001 \001(\0132%.protobuf.clientidentities" +
-      ".ClientBase\0227\n\006status\030\002 \001(\0162\'.protobuf.c" +
-      "lientidentities.ClientStatus\0227\n\006images\030\003" +
-      " \001(\0132\'.protobuf.clientidentities.ClientI" +
-      "mages\0227\n\006groups\030\004 \001(\0132\'.protobuf.clienti" +
-      "dentities.ClientGroups\0227\n\006badges\030\005 \001(\0132\'" +
-      ".protobuf.clientidentities.ClientBadges\022" +
-      "9\n\007friends\030\006 \001(\0132(.protobuf.clientidenti" +
-      "ties.ClientFriends\022A\n\022dateOfRegistration" +
-      "\030\007 \001(\0132%.protobuf.clientidentities.Clien" +
-      "tDate\022=\n\016dateLastOnline\030\010 \001(\0132%.protobuf" +
-      ".clientidentities.ClientDate\"\237\001\n\rClientA" +
-      "ccount\0229\n\007profile\030\001 \001(\0132(.protobuf.clien" +
-      "tidentities.ClientProfile\022\020\n\010password\030\002 " +
-      "\001(\t\022A\n\020registeredDevice\030\003 \003(\0132\'.protobuf" +
-      ".clientidentities.ClientDevice*`\n\014Client" +
-      "Status\022\013\n\007UNKNOWN\020\000\022\013\n\007OFFLINE\020\001\022\n\n\006ONLI" +
-      "NE\020\002\022\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020\005\022\013\n\007D" +
-      "ELETED\020\006*8\n\020ClientDeviceType\022\013\n\007DESKTOP\020" +
-      "\000\022\013\n\007BROWSER\020\001\022\n\n\006MOBILE\020\002B\034\n\010protobufB\020" +
-      "ClientIdentitiesb\006proto3"
+      "ClientDeviceOs.ClientDeviceOsType\"^\n\022Cli" +
+      "entDeviceOsType\022\032\n\026UNKNOWN_DEVICE_OS_TYP" +
+      "E\020\000\022\013\n\007WINDOWS\020\001\022\t\n\005LINUX\020\002\022\007\n\003IOS\020\003\022\013\n\007" +
+      "ANDROID\020\004\"\224\002\n\014ClientDevice\022?\n\ndeviceBase" +
+      "\030\001 \001(\0132+.protobuf.clientidentities.Clien" +
+      "tDeviceBase\022E\n\rdeviceAddress\030\002 \001(\0132..pro" +
+      "tobuf.clientidentities.ClientDeviceAddre" +
+      "ss\022;\n\010deviceOs\030\003 \001(\0132).protobuf.clientid" +
+      "entities.ClientDeviceOs\022?\n\ndeviceType\030\004 " +
+      "\001(\0162+.protobuf.clientidentities.ClientDe" +
+      "viceType\"\345\003\n\rClientProfile\0223\n\004base\030\001 \001(\013" +
+      "2%.protobuf.clientidentities.ClientBase\022" +
+      "7\n\006status\030\002 \001(\0162\'.protobuf.clientidentit" +
+      "ies.ClientStatus\0227\n\006images\030\003 \001(\0132\'.proto" +
+      "buf.clientidentities.ClientImages\0227\n\006gro" +
+      "ups\030\004 \001(\0132\'.protobuf.clientidentities.Cl" +
+      "ientGroups\0227\n\006badges\030\005 \001(\0132\'.protobuf.cl" +
+      "ientidentities.ClientBadges\0229\n\007friends\030\006" +
+      " \001(\0132(.protobuf.clientidentities.ClientF" +
+      "riends\022A\n\022dateOfRegistration\030\007 \001(\0132%.pro" +
+      "tobuf.clientidentities.ClientDate\022=\n\016dat" +
+      "eLastOnline\030\010 \001(\0132%.protobuf.clientident" +
+      "ities.ClientDate\"\237\001\n\rClientAccount\0229\n\007pr" +
+      "ofile\030\001 \001(\0132(.protobuf.clientidentities." +
+      "ClientProfile\022\020\n\010password\030\002 \001(\t\022A\n\020regis" +
+      "teredDevice\030\003 \003(\0132\'.protobuf.clientident" +
+      "ities.ClientDevice*g\n\014ClientStatus\022\022\n\016UN" +
+      "KNOWN_STATUS\020\000\022\013\n\007OFFLINE\020\001\022\n\n\006ONLINE\020\002\022" +
+      "\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020\005\022\013\n\007DELETE" +
+      "D\020\006*Q\n\020ClientDeviceType\022\027\n\023UNKNOWN_DEVIC" +
+      "E_TYPE\020\000\022\013\n\007DESKTOP\020\001\022\013\n\007BROWSER\020\002\022\n\n\006MO" +
+      "BILE\020\003B\034\n\010protobufB\020ClientIdentitiesb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

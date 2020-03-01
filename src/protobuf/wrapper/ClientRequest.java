@@ -15,19 +15,22 @@ import protobuf.ClientRequests.ChannelFileDownloadRequest;
 import protobuf.ClientRequests.ChannelFileUploadRequest;
 import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
-import protobuf.ClientRequests.ChannelMessageAnswerRequest;
+import protobuf.ClientRequests.ChannelMessageAnswerGetRequest;
+import protobuf.ClientRequests.ChannelMessageAnswerPostRequest;
 import protobuf.ClientRequests.ChannelMessageGetRequest;
+import protobuf.ClientRequests.ChannelMessagePostRequest;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.ClientLogoutRequest;
-import protobuf.ClientRequests.ClientPingMeasurementRequest;
-import protobuf.ClientRequests.ClientProfileRequest;
+import protobuf.ClientRequests.ClientProfileGetRequest;
 import protobuf.ClientRequests.ClientRegistrationRequest;
 import protobuf.ClientRequests.ClientRequestBase;
 import protobuf.ClientRequests.FileDownloadBase;
 import protobuf.ClientRequests.FileDownloadVerification;
 import protobuf.ClientRequests.FileUploadBase;
+import protobuf.ClientRequests.PingMeasurementRequest;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
+import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
 import utils.system.SystemUtils;
 
@@ -37,20 +40,33 @@ public class ClientRequest {
 		if(message == null)
 			return false;
 		switch(message.getClass().getSimpleName()) {
+		case "ClientRequestBase":
+		case "FileDownloadVerification":
+		case "FileDownloadBase":
+		case "FileUploadBase":
 		case "ChannelJoinRequest":
 		case "ChannelLeaveRequest":
-		case "ChannelMessageRequest":
-		case "ChannelMessageAnswerRequest":
-		case "PrivateMessageRequest":
-		case "ClientProfileRequest":
-		case "ClientLoginRequest":
-		case "ClientLogoutRequest":
-		case "ClientRegistrationRequest":
+		case "ClientProfileGetRequest":
+		case "ChannelMessageGetRequest":
+		case "ChannelMessagePostRequest":
+		case "ChannelMessageAnswerGetRequest":
+		case "ChannelMessageAnswerPostRequest":
+		case "PrivateMessageGetRequest":
+		case "PrivateMessagePostRequest":
+		case "ClientProfileCommentGetRequest":
+		case "ClientProfileCommentPostRequest":
+		case "ClientProfileCommentAnswerGetRequest":
+		case "ClientProfileCommentAnswerPostRequest":
+		case "ClientChannelGetRequest":
+		case "ClientChannelPostRequest":
 		case "ChannelFileUploadRequest":
 		case "ChannelFileDownloadRequest":
 		case "PrivateFileUploadRequest":
 		case "PrivateFileDownloadRequest":
-		case "ClientPingMeasurementRequest":
+		case "ClientLoginRequest":
+		case "ClientLogoutRequest":
+		case "ClientRegistrationRequest":
+		case "PingMeasurementRequest":
 			return true;
 		default:
 			return false;
@@ -77,7 +93,7 @@ public class ClientRequest {
 															String requestedChannelName) {
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
 		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).setChannelName(requestedChannelName).build();
-		return ChannelJoinRequest.newBuilder()	.setRequestBase(requestorBase).setChannelBase(channelBase).build();
+		return ChannelJoinRequest.newBuilder().setRequestBase(requestorBase).setChannelBase(channelBase).build();
 	}
 	
 	public static ChannelLeaveRequest newChannelLeaveRequest(	int requestId, 
@@ -89,19 +105,19 @@ public class ClientRequest {
 		
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
 		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).setChannelName(requestedChannelName).build();
-		return ChannelLeaveRequest.newBuilder()	.setRequestBase(requestorBase).setChannelBase(channelBase).build();
+		return ChannelLeaveRequest.newBuilder().setRequestBase(requestorBase).setChannelBase(channelBase).build();
 	}
 	
-	public static ClientProfileRequest newProfileRequest(	int requestId, 
-															int requestorId, 
-															String requestorUsername, 
-															String requestorPassword,
-															int requestedId,
-															String requestedUsername) {
+	public static ClientProfileGetRequest newProfileGetRequest(	int requestId, 
+																int requestorId, 
+																String requestorUsername, 
+																String requestorPassword,
+																int requestedId,
+																String requestedUsername) {
 
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
 		ClientBase clientBase = ClientBase.newBuilder().setId(requestedId).setUsername(requestedUsername).build();
-		return ClientProfileRequest.newBuilder().setRequestBase(requestorBase).setClientBase(clientBase).build();
+		return ClientProfileGetRequest.newBuilder().setRequestBase(requestorBase).setClientBase(clientBase).build();
 	}
 	
 	public static ChannelMessageGetRequest newChannelMessageGetRequest(	int requestId, 
@@ -122,25 +138,72 @@ public class ClientRequest {
 														.build();
 	}
 	
-	public static ChannelMessageAnswerRequest newChannelMessageAnswerRequest(	int requestId, 
-																				int requestorId, 
-																				String requestorUsername, 
-																				String requestorPassword,
-																				int requestedChannelId,
-																				String requestedChannelName,
-																				int requestedMessageId,
-																				String answerText) {
+	public static ChannelMessagePostRequest newChannelMessagePostRequest(	int requestId, 
+																			int requestorId, 
+																			String requestorUsername, 
+																			String requestorPassword,
+																			int requestedChannelId,
+																			String requestedChannelName,
+																			int startFromMessageId,
+																			int messageCount) {
+		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
+		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).setChannelName(requestedChannelName).build();
+		return ChannelMessagePostRequest.newBuilder()	.setRequestBase(requestorBase)
+														.setChannelBase(channelBase)
+														.build();
+	}
+
+	public static ChannelMessageAnswerGetRequest newChannelMessageAnswerGetRequest(	int requestId, 
+																					int requestorId, 
+																					String requestorUsername, 
+																					String requestorPassword,
+																					int requestedChannelId,
+																					String requestedChannelName,
+																					int requestedMessageId,
+																					String answerText) {
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
 		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).setChannelName(requestedChannelName).build();
 		ClientMessageBase messageBase = ClientMessageBase.newBuilder().setMessageId(requestedMessageId).build();
-		return ChannelMessageAnswerRequest.newBuilder()	.setRequestBase(requestorBase)
-														.setChannelBase(channelBase)
-														.setMessageBase(messageBase)
-														.setAnswerText(answerText)
-														.build();
+		return ChannelMessageAnswerGetRequest.newBuilder()	.setRequestBase(requestorBase)
+															.setChannelBase(channelBase)
+															.setMessageBase(messageBase)
+															.setAnswerText(answerText)
+															.build();
 	}
 	
-	public static PrivateMessagePostRequest newPrivateMessageRequest(	int requestId, 
+	public static ChannelMessageAnswerPostRequest newChannelMessageAnswerPostRequest(	int requestId, 
+																					int requestorId, 
+																					String requestorUsername, 
+																					String requestorPassword,
+																					int requestedChannelId,
+																					String requestedChannelName,
+																					int requestedMessageId,
+																					String answerText) {
+		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
+		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).setChannelName(requestedChannelName).build();
+		ClientMessageBase messageBase = ClientMessageBase.newBuilder().setMessageId(requestedMessageId).build();
+		return ChannelMessageAnswerPostRequest.newBuilder()	.setRequestBase(requestorBase)
+															.setChannelBase(channelBase)
+															.setMessageBase(messageBase)
+															.setAnswerText(answerText)
+															.build();
+	}
+	
+	public static PrivateMessageGetRequest newPrivateMessageGetRequest(int requestId, 
+																		int requestorId, 
+																		String requestorUsername, 
+																		String requestorPassword,
+																		int requestedClientId,
+																		String requestedClientUsername,
+																		String requestedMessageText) {
+		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorId, requestorUsername, requestorPassword);
+		ClientBase requestedBase = ClientBase.newBuilder().setId(requestedClientId).setUsername(requestedClientUsername).build();
+		return PrivateMessageGetRequest.newBuilder().setRequestBase(requestorBase)
+													.setClientBase(requestedBase)
+													.build();
+	}
+	
+	public static PrivateMessagePostRequest newPrivateMessagePostRequest(	int requestId, 
 																		int requestorId, 
 																		String requestorUsername, 
 																		String requestorPassword,
@@ -172,10 +235,10 @@ public class ClientRequest {
 																.build();
 		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
 		ClientDevice requestorDevice = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
-														.setDeviceAddress(deviceAddress)
-														.setDeviceOs(deviceOs)
-														.setDeviceType(deviceType)
-														.build();
+																	.setDeviceAddress(deviceAddress)
+																	.setDeviceOs(deviceOs)
+																	.setDeviceType(deviceType)
+																	.build();
 		return ClientLoginRequest.newBuilder().setRequestBase(requestorBase).setDevice(requestorDevice).build();
 	}
 	
@@ -196,10 +259,10 @@ public class ClientRequest {
 																.build();
 		ClientDeviceType deviceType = ClientDeviceType.DESKTOP;
 		ClientDevice requestorDevice = ClientDevice.newBuilder()	.setDeviceBase(deviceBase)
-														.setDeviceAddress(deviceAddress)
-														.setDeviceOs(deviceOs)
-														.setDeviceType(deviceType)
-														.build();
+																	.setDeviceAddress(deviceAddress)
+																	.setDeviceOs(deviceOs)
+																	.setDeviceType(deviceType)
+																	.build();
 		return ClientLogoutRequest.newBuilder().setRequestBase(requestorBase).setDevice(requestorDevice).build();
 }
 	
@@ -289,10 +352,10 @@ public class ClientRequest {
 																		String requestedFilePath,
 																		long requestedFileSize) {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(requestId)
-				.setRequestId(requestId)
-				.setUsername(requestorUsername)
-				.setPassword(requestorPassword)
-				.build();
+																		.setRequestId(requestId)
+																		.setUsername(requestorUsername)
+																		.setPassword(requestorPassword)
+																		.build();
 		ClientBase requestedBase = ClientBase.newBuilder()	.setId(requestedClientId)
 															.setUsername(requestedClientUsername)
 															.build();
@@ -315,10 +378,10 @@ public class ClientRequest {
 																			int requestedFileId,
 																			String requestedFileName) {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(requestId)
-				.setRequestId(requestId)
-				.setUsername(requestorUsername)
-				.setPassword(requestorPassword)
-				.build();
+																		.setRequestId(requestId)
+																		.setUsername(requestorUsername)
+																		.setPassword(requestorPassword)
+																		.build();
 		ClientBase requestedBase = ClientBase.newBuilder()	.setId(requestedClientId)
 															.setUsername(requestedClientUsername)
 															.build();
@@ -333,7 +396,7 @@ public class ClientRequest {
 														.build();
 	}
 	
-	public static ClientPingMeasurementRequest newPingmeasurementRequest() {
+	public static PingMeasurementRequest newPingMeasurementRequest() {
 		ClientRequestBase requestorBase = ClientRequestBase.newBuilder().setRequestId(0)
 																		.setClientId(0)
 																		.setUsername("")
@@ -355,7 +418,7 @@ public class ClientRequest {
 														.setDeviceOs(deviceOs)
 														.setDeviceType(deviceType)
 														.build();
-		return ClientPingMeasurementRequest.newBuilder().setRequestBase(requestorBase)
+		return PingMeasurementRequest.newBuilder().setRequestBase(requestorBase)
 														.setDevice(device)
 														.build();
 	}

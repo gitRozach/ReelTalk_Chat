@@ -45,7 +45,7 @@ message ChannelLeaveRequest {
 	protobuf.clientchannels.ChannelBase channelBase = 2;
 }
 
-message ClientProfileRequest {
+message ClientProfileGetRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientidentities.ClientBase clientBase = 2;
 }
@@ -63,7 +63,14 @@ message ChannelMessageGetRequest {
 	int32 startCountWithMessageId = 4;
 }
 
-message ChannelMessageAnswerRequest {
+message ChannelMessageAnswerGetRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	protobuf.clientmessages.ClientMessageBase messageBase = 3;
+	string answerText = 4;
+}
+
+message ChannelMessageAnswerPostRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientchannels.ChannelBase channelBase = 2;
 	protobuf.clientmessages.ClientMessageBase messageBase = 3;
@@ -83,8 +90,38 @@ message PrivateMessagePostRequest {
 	string messageText = 3;
 }
 
-message ClientChannelGetRequest {
+message ClientProfileCommentGetRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	int32 commentCount = 3;
+	int32 startCountWithCommentId = 4;
+}
 
+message ClientProfileCommentPostRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	string commentText = 3;
+}
+
+message ClientProfileCommentAnswerGetRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	protobuf.clientmessages.ClientMessageBase messageBase = 3;
+	int32 answerCount = 4;
+	int32 startCountWithAnswerId = 5;
+}
+
+message ClientProfileCommentAnswerPostRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	protobuf.clientmessages.ClientMessageBase messageBase = 3;
+	int32 answerCount = 4;
+	int32 startCountWithAnswerId = 5;
+}
+
+message ClientChannelGetRequest {
+	ClientRequestBase requestBase = 1;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
 }
 
 message ClientChannelPostRequest {
@@ -134,7 +171,7 @@ message ClientRegistrationRequest {
 	protobuf.clientidentities.ClientDevice device = 6;
 }
 
-message ClientPingMeasurementRequest {
+message PingMeasurementRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientidentities.ClientDevice device = 2;
 }

@@ -5783,8 +5783,8 @@ public final class ClientMessages {
 
   }
 
-  public interface ProfileCommentOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ProfileComment)
+  public interface ClientProfileCommentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientProfileComment)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5818,42 +5818,42 @@ public final class ClientMessages {
     protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
 
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> 
+    java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> 
         getCommentAnswerList();
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index);
+    protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index);
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
     int getCommentAnswerCount();
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
+    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
         getCommentAnswerOrBuilderList();
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+    protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ProfileComment}
+   * Protobuf type {@code protobuf.clientmessages.ClientProfileComment}
    */
-  public  static final class ProfileComment extends
+  public  static final class ClientProfileComment extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ProfileComment)
-      ProfileCommentOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientProfileComment)
+      ClientProfileCommentOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ProfileComment.newBuilder() to construct.
-    private ProfileComment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientProfileComment.newBuilder() to construct.
+    private ClientProfileComment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ProfileComment() {
+    private ClientProfileComment() {
       commentAnswer_ = java.util.Collections.emptyList();
     }
 
@@ -5861,7 +5861,7 @@ public final class ClientMessages {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ProfileComment();
+      return new ClientProfileComment();
     }
 
     @java.lang.Override
@@ -5869,7 +5869,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ProfileComment(
+    private ClientProfileComment(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5916,11 +5916,11 @@ public final class ClientMessages {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ProfileCommentAnswer>();
+                commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>();
                 mutable_bitField0_ |= 0x00000001;
               }
               commentAnswer_.add(
-                  input.readMessage(protobuf.ClientMessages.ProfileCommentAnswer.parser(), extensionRegistry));
+                  input.readMessage(protobuf.ClientMessages.ClientProfileCommentAnswer.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -5947,15 +5947,15 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ProfileComment.class, protobuf.ClientMessages.ProfileComment.Builder.class);
+              protobuf.ClientMessages.ClientProfileComment.class, protobuf.ClientMessages.ClientProfileComment.Builder.class);
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
@@ -6005,36 +6005,36 @@ public final class ClientMessages {
     }
 
     public static final int COMMENTANSWER_FIELD_NUMBER = 3;
-    private java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> commentAnswer_;
+    private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> commentAnswer_;
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> getCommentAnswerList() {
+    public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getCommentAnswerList() {
       return commentAnswer_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
+    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
         getCommentAnswerOrBuilderList() {
       return commentAnswer_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
     public int getCommentAnswerCount() {
       return commentAnswer_.size();
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index) {
+    public protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index) {
       return commentAnswer_.get(index);
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+    public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
         int index) {
       return commentAnswer_.get(index);
     }
@@ -6093,10 +6093,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ProfileComment)) {
+      if (!(obj instanceof protobuf.ClientMessages.ClientProfileComment)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ProfileComment other = (protobuf.ClientMessages.ProfileComment) obj;
+      protobuf.ClientMessages.ClientProfileComment other = (protobuf.ClientMessages.ClientProfileComment) obj;
 
       if (hasMessageBase() != other.hasMessageBase()) return false;
       if (hasMessageBase()) {
@@ -6138,69 +6138,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(byte[] data)
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileComment parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ClientProfileComment parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileComment parseDelimitedFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileComment parseFrom(
+    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6213,7 +6213,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ProfileComment prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.ClientProfileComment prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6229,26 +6229,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ProfileComment}
+     * Protobuf type {@code protobuf.clientmessages.ClientProfileComment}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ProfileComment)
-        protobuf.ClientMessages.ProfileCommentOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientProfileComment)
+        protobuf.ClientMessages.ClientProfileCommentOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ProfileComment.class, protobuf.ClientMessages.ProfileComment.Builder.class);
+                protobuf.ClientMessages.ClientProfileComment.class, protobuf.ClientMessages.ClientProfileComment.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ProfileComment.newBuilder()
+      // Construct using protobuf.ClientMessages.ClientProfileComment.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6291,17 +6291,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileComment getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ProfileComment.getDefaultInstance();
+      public protobuf.ClientMessages.ClientProfileComment getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ClientProfileComment.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileComment build() {
-        protobuf.ClientMessages.ProfileComment result = buildPartial();
+      public protobuf.ClientMessages.ClientProfileComment build() {
+        protobuf.ClientMessages.ClientProfileComment result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6309,8 +6309,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileComment buildPartial() {
-        protobuf.ClientMessages.ProfileComment result = new protobuf.ClientMessages.ProfileComment(this);
+      public protobuf.ClientMessages.ClientProfileComment buildPartial() {
+        protobuf.ClientMessages.ClientProfileComment result = new protobuf.ClientMessages.ClientProfileComment(this);
         int from_bitField0_ = bitField0_;
         if (messageBaseBuilder_ == null) {
           result.messageBase_ = messageBase_;
@@ -6369,16 +6369,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ProfileComment) {
-          return mergeFrom((protobuf.ClientMessages.ProfileComment)other);
+        if (other instanceof protobuf.ClientMessages.ClientProfileComment) {
+          return mergeFrom((protobuf.ClientMessages.ClientProfileComment)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ProfileComment other) {
-        if (other == protobuf.ClientMessages.ProfileComment.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.ClientProfileComment other) {
+        if (other == protobuf.ClientMessages.ClientProfileComment.getDefaultInstance()) return this;
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
@@ -6426,11 +6426,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ProfileComment parsedMessage = null;
+        protobuf.ClientMessages.ClientProfileComment parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ProfileComment) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.ClientProfileComment) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6679,22 +6679,22 @@ public final class ClientMessages {
         return clientBaseBuilder_;
       }
 
-      private java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> commentAnswer_ =
+      private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> commentAnswer_ =
         java.util.Collections.emptyList();
       private void ensureCommentAnswerIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ProfileCommentAnswer>(commentAnswer_);
+          commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>(commentAnswer_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> commentAnswerBuilder_;
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> commentAnswerBuilder_;
 
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> getCommentAnswerList() {
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getCommentAnswerList() {
         if (commentAnswerBuilder_ == null) {
           return java.util.Collections.unmodifiableList(commentAnswer_);
         } else {
@@ -6702,7 +6702,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public int getCommentAnswerCount() {
         if (commentAnswerBuilder_ == null) {
@@ -6712,9 +6712,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index) {
+      public protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index) {
         if (commentAnswerBuilder_ == null) {
           return commentAnswer_.get(index);
         } else {
@@ -6722,10 +6722,10 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder setCommentAnswer(
-          int index, protobuf.ClientMessages.ProfileCommentAnswer value) {
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6739,10 +6739,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder setCommentAnswer(
-          int index, protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.set(index, builderForValue.build());
@@ -6753,9 +6753,9 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public Builder addCommentAnswer(protobuf.ClientMessages.ProfileCommentAnswer value) {
+      public Builder addCommentAnswer(protobuf.ClientMessages.ClientProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6769,10 +6769,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          int index, protobuf.ClientMessages.ProfileCommentAnswer value) {
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6786,10 +6786,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
+          protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.add(builderForValue.build());
@@ -6800,10 +6800,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          int index, protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
+          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.add(index, builderForValue.build());
@@ -6814,10 +6814,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addAllCommentAnswer(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ProfileCommentAnswer> values) {
+          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileCommentAnswer> values) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -6829,7 +6829,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder clearCommentAnswer() {
         if (commentAnswerBuilder_ == null) {
@@ -6842,7 +6842,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder removeCommentAnswer(int index) {
         if (commentAnswerBuilder_ == null) {
@@ -6855,16 +6855,16 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentAnswer.Builder getCommentAnswerBuilder(
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder getCommentAnswerBuilder(
           int index) {
         return getCommentAnswerFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+      public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
           int index) {
         if (commentAnswerBuilder_ == null) {
           return commentAnswer_.get(index);  } else {
@@ -6872,9 +6872,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
            getCommentAnswerOrBuilderList() {
         if (commentAnswerBuilder_ != null) {
           return commentAnswerBuilder_.getMessageOrBuilderList();
@@ -6883,33 +6883,33 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentAnswer.Builder addCommentAnswerBuilder() {
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addCommentAnswerBuilder() {
         return getCommentAnswerFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance());
+            protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ProfileCommentAnswer.Builder addCommentAnswerBuilder(
+      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addCommentAnswerBuilder(
           int index) {
         return getCommentAnswerFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance());
+            index, protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer.Builder> 
+      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer.Builder> 
            getCommentAnswerBuilderList() {
         return getCommentAnswerFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
+          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
           getCommentAnswerFieldBuilder() {
         if (commentAnswerBuilder_ == null) {
           commentAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder>(
+              protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder>(
                   commentAnswer_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -6931,48 +6931,48 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ProfileComment)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientProfileComment)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ProfileComment)
-    private static final protobuf.ClientMessages.ProfileComment DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientProfileComment)
+    private static final protobuf.ClientMessages.ClientProfileComment DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ProfileComment();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientProfileComment();
     }
 
-    public static protobuf.ClientMessages.ProfileComment getDefaultInstance() {
+    public static protobuf.ClientMessages.ClientProfileComment getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ProfileComment>
-        PARSER = new com.google.protobuf.AbstractParser<ProfileComment>() {
+    private static final com.google.protobuf.Parser<ClientProfileComment>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileComment>() {
       @java.lang.Override
-      public ProfileComment parsePartialFrom(
+      public ClientProfileComment parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProfileComment(input, extensionRegistry);
+        return new ClientProfileComment(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ProfileComment> parser() {
+    public static com.google.protobuf.Parser<ClientProfileComment> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ProfileComment> getParserForType() {
+    public com.google.protobuf.Parser<ClientProfileComment> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ProfileComment getDefaultInstanceForType() {
+    public protobuf.ClientMessages.ClientProfileComment getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ProfileCommentAnswerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ProfileCommentAnswer)
+  public interface ClientProfileCommentAnswerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientProfileCommentAnswer)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7012,25 +7012,25 @@ public final class ClientMessages {
     int getCommentToAnswerId();
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ProfileCommentAnswer}
+   * Protobuf type {@code protobuf.clientmessages.ClientProfileCommentAnswer}
    */
-  public  static final class ProfileCommentAnswer extends
+  public  static final class ClientProfileCommentAnswer extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ProfileCommentAnswer)
-      ProfileCommentAnswerOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientProfileCommentAnswer)
+      ClientProfileCommentAnswerOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ProfileCommentAnswer.newBuilder() to construct.
-    private ProfileCommentAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientProfileCommentAnswer.newBuilder() to construct.
+    private ClientProfileCommentAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ProfileCommentAnswer() {
+    private ClientProfileCommentAnswer() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ProfileCommentAnswer();
+      return new ClientProfileCommentAnswer();
     }
 
     @java.lang.Override
@@ -7038,7 +7038,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ProfileCommentAnswer(
+    private ClientProfileCommentAnswer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7108,15 +7108,15 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ProfileCommentAnswer.class, protobuf.ClientMessages.ProfileCommentAnswer.Builder.class);
+              protobuf.ClientMessages.ClientProfileCommentAnswer.class, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder.class);
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
@@ -7229,10 +7229,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ProfileCommentAnswer)) {
+      if (!(obj instanceof protobuf.ClientMessages.ClientProfileCommentAnswer)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ProfileCommentAnswer other = (protobuf.ClientMessages.ProfileCommentAnswer) obj;
+      protobuf.ClientMessages.ClientProfileCommentAnswer other = (protobuf.ClientMessages.ClientProfileCommentAnswer) obj;
 
       if (hasMessageBase() != other.hasMessageBase()) return false;
       if (hasMessageBase()) {
@@ -7272,69 +7272,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(byte[] data)
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseDelimitedFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7347,7 +7347,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ProfileCommentAnswer prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.ClientProfileCommentAnswer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7363,26 +7363,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ProfileCommentAnswer}
+     * Protobuf type {@code protobuf.clientmessages.ClientProfileCommentAnswer}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ProfileCommentAnswer)
-        protobuf.ClientMessages.ProfileCommentAnswerOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientProfileCommentAnswer)
+        protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ProfileCommentAnswer.class, protobuf.ClientMessages.ProfileCommentAnswer.Builder.class);
+                protobuf.ClientMessages.ClientProfileCommentAnswer.class, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ProfileCommentAnswer.newBuilder()
+      // Construct using protobuf.ClientMessages.ClientProfileCommentAnswer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7420,17 +7420,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance();
+      public protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileCommentAnswer build() {
-        protobuf.ClientMessages.ProfileCommentAnswer result = buildPartial();
+      public protobuf.ClientMessages.ClientProfileCommentAnswer build() {
+        protobuf.ClientMessages.ClientProfileCommentAnswer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7438,8 +7438,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ProfileCommentAnswer buildPartial() {
-        protobuf.ClientMessages.ProfileCommentAnswer result = new protobuf.ClientMessages.ProfileCommentAnswer(this);
+      public protobuf.ClientMessages.ClientProfileCommentAnswer buildPartial() {
+        protobuf.ClientMessages.ClientProfileCommentAnswer result = new protobuf.ClientMessages.ClientProfileCommentAnswer(this);
         if (messageBaseBuilder_ == null) {
           result.messageBase_ = messageBase_;
         } else {
@@ -7489,16 +7489,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ProfileCommentAnswer) {
-          return mergeFrom((protobuf.ClientMessages.ProfileCommentAnswer)other);
+        if (other instanceof protobuf.ClientMessages.ClientProfileCommentAnswer) {
+          return mergeFrom((protobuf.ClientMessages.ClientProfileCommentAnswer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ProfileCommentAnswer other) {
-        if (other == protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.ClientProfileCommentAnswer other) {
+        if (other == protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance()) return this;
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
@@ -7523,11 +7523,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ProfileCommentAnswer parsedMessage = null;
+        protobuf.ClientMessages.ClientProfileCommentAnswer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ProfileCommentAnswer) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.ClientProfileCommentAnswer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7817,41 +7817,41 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ProfileCommentAnswer)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientProfileCommentAnswer)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ProfileCommentAnswer)
-    private static final protobuf.ClientMessages.ProfileCommentAnswer DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientProfileCommentAnswer)
+    private static final protobuf.ClientMessages.ClientProfileCommentAnswer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ProfileCommentAnswer();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientProfileCommentAnswer();
     }
 
-    public static protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstance() {
+    public static protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ProfileCommentAnswer>
-        PARSER = new com.google.protobuf.AbstractParser<ProfileCommentAnswer>() {
+    private static final com.google.protobuf.Parser<ClientProfileCommentAnswer>
+        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentAnswer>() {
       @java.lang.Override
-      public ProfileCommentAnswer parsePartialFrom(
+      public ClientProfileCommentAnswer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProfileCommentAnswer(input, extensionRegistry);
+        return new ClientProfileCommentAnswer(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ProfileCommentAnswer> parser() {
+    public static com.google.protobuf.Parser<ClientProfileCommentAnswer> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ProfileCommentAnswer> getParserForType() {
+    public com.google.protobuf.Parser<ClientProfileCommentAnswer> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstanceForType() {
+    public protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7883,15 +7883,15 @@ public final class ClientMessages {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ProfileComment_descriptor;
+    internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
+    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7928,18 +7928,18 @@ public final class ClientMessages {
       "ssageBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf" +
       ".clientidentities.ClientBase\022K\n\023attached" +
       "FileMessage\030\003 \003(\0132..protobuf.clientmessa" +
-      "ges.ClientFileMessageBase\"\322\001\n\016ProfileCom" +
-      "ment\022?\n\013messageBase\030\001 \001(\0132*.protobuf.cli" +
-      "entmessages.ClientMessageBase\0229\n\nclientB" +
-      "ase\030\002 \001(\0132%.protobuf.clientidentities.Cl" +
-      "ientBase\022D\n\rcommentAnswer\030\003 \003(\0132-.protob" +
-      "uf.clientmessages.ProfileCommentAnswer\"\255" +
-      "\001\n\024ProfileCommentAnswer\022?\n\013messageBase\030\001" +
-      " \001(\0132*.protobuf.clientmessages.ClientMes" +
-      "sageBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf." +
-      "clientidentities.ClientBase\022\031\n\021commentTo" +
-      "AnswerId\030\003 \001(\005B\032\n\010protobufB\016ClientMessag" +
-      "esb\006proto3"
+      "ges.ClientFileMessageBase\"\336\001\n\024ClientProf" +
+      "ileComment\022?\n\013messageBase\030\001 \001(\0132*.protob" +
+      "uf.clientmessages.ClientMessageBase\0229\n\nc" +
+      "lientBase\030\002 \001(\0132%.protobuf.clientidentit" +
+      "ies.ClientBase\022J\n\rcommentAnswer\030\003 \003(\01323." +
+      "protobuf.clientmessages.ClientProfileCom" +
+      "mentAnswer\"\263\001\n\032ClientProfileCommentAnswe" +
+      "r\022?\n\013messageBase\030\001 \001(\0132*.protobuf.client" +
+      "messages.ClientMessageBase\0229\n\nclientBase" +
+      "\030\002 \001(\0132%.protobuf.clientidentities.Clien" +
+      "tBase\022\031\n\021commentToAnswerId\030\003 \001(\005B\032\n\010prot" +
+      "obufB\016ClientMessagesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7977,17 +7977,17 @@ public final class ClientMessages {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientmessages_PrivateMessage_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "AttachedFileMessage", });
-    internal_static_protobuf_clientmessages_ProfileComment_descriptor =
+    internal_static_protobuf_clientmessages_ClientProfileComment_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ProfileComment_descriptor,
+        internal_static_protobuf_clientmessages_ClientProfileComment_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "CommentAnswer", });
-    internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor =
+    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor,
+        internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "CommentToAnswerId", });
     protobuf.ClientIdentities.getDescriptor();
     protobuf.ClientChannels.getDescriptor();

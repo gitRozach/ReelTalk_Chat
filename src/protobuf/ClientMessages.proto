@@ -42,13 +42,13 @@ message PrivateMessage {
 	repeated ClientFileMessageBase attachedFileMessage = 3;
 }
 
-message ProfileComment {
+message ClientProfileComment {
 	ClientMessageBase messageBase = 1;
 	protobuf.clientidentities.ClientBase clientBase = 2;
-	repeated ProfileCommentAnswer commentAnswer = 3;
+	repeated ClientProfileCommentAnswer commentAnswer = 3;
 }
 
-message ProfileCommentAnswer {
+message ClientProfileCommentAnswer {
 	ClientMessageBase messageBase = 1;
 	protobuf.clientidentities.ClientBase clientBase = 2;
 	int32 commentToAnswerId = 3;
