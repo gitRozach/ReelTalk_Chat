@@ -88,7 +88,7 @@ public class SecuredClient extends SecuredPeer {
         return write(socketChannel, engine, message);
     }
 
-    protected byte[] read() throws Exception {
+    protected GeneratedMessageV3 read() throws Exception {
         return read(socketChannel, engine);
     }
     
@@ -120,15 +120,15 @@ public class SecuredClient extends SecuredPeer {
 	}
     
     public ProtobufMessage peekReceptionBytes() {
-    	if(receivedBytes.isEmpty())
+    	if(receivedMessages.isEmpty())
     		return null;
-    	return receivedBytes.get(0);
+    	return receivedMessages.get(0);
     }
     
     public ProtobufMessage pollReceptionBytes() {
-    	if(receivedBytes.isEmpty())
+    	if(receivedMessages.isEmpty())
     		return null;
-    	return receivedBytes.remove(0);
+    	return receivedMessages.remove(0);
     }
     
     public boolean hasOrderedBytes() {

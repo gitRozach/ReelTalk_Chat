@@ -26,6 +26,7 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
+import com.google.protobuf.Any;
 import com.google.protobuf.GeneratedMessageV3;
 
 import network.ssl.client.callbacks.PeerCallback;
@@ -45,24 +46,24 @@ public abstract class SecuredPeer implements Closeable {
     private final Object readLock = new Object();
     private final Object writeLock = new Object();
     
-    protected volatile boolean bufferingReceivedBytes;
-	protected volatile boolean bufferingSentBytes;
+    protected volatile boolean bufferingReceivedMessages;
+	protected volatile boolean bufferingSentMessages;
     protected volatile boolean receptionHandlerEnabled;
     protected volatile boolean sendingHandlerEnabled;
     
-    protected List<ProtobufMessage> receivedBytes;
-    protected List<ProtobufMessage> sentBytes;
+    protected List<ProtobufMessage> receivedMessages;
+    protected List<ProtobufMessage> sentMessages;
     
     protected ExecutorService asyncTaskExecutor;
     protected ExecutorService ioExecutor;
     
     public SecuredPeer() {
-    	bufferingReceivedBytes = false;
-    	bufferingSentBytes = false;
+    	bufferingReceivedMessages = false;
+    	bufferingSentMessages = false;
     	receptionHandlerEnabled = true;
     	sendingHandlerEnabled = true;
-    	receivedBytes = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
-        sentBytes = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
+    	receivedMessages = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
+        sentMessages = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
     	asyncTaskExecutor = Executors.newSingleThreadExecutor();
     	ioExecutor = Executors.newCachedThreadPool();
     }
@@ -178,30 +179,38 @@ public abstract class SecuredPeer implements Closeable {
         return engine.getHandshakeStatus();
     }
     
-    protected byte[] read(SocketChannel socketChannel, SSLEngine engine) throws Exception {
+    protected GeneratedMessageV3 read(SocketChannel socketChannel, SSLEngine engine) {
     	synchronized (readLock) {
-			int readBytes = 0;
-			if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
-				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
-				GeneratedMessageV3 message = (GeneratedMessageV3) GeneratedMessageV3.class.getDeclaredMethod("parseFrom", byte[].class).invoke(receptionBuffer);
-				if(receptionBuffer == null || message == null)
-					return null;
-				if(isBufferingReceivedBytes())
-					receivedBytes.add(new ProtobufMessage(socketChannel, message));	
-				if(isByteReceptionHandlerEnabled())
-					peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
-				return receptionBuffer;
-			}
-			if(readBytes == -1)
-				closeConnection(socketChannel, engine);
-			return null;
+    		try {
+				int readBytes = 0;
+				if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
+					byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
+					Any rawMessage = Any.parseFrom(receptionBuffer);
+					GeneratedMessageV3 message = rawMessage.unpack(ProtobufMessage.getMessageTypeOf(rawMessage));
+					if(receptionBuffer == null || message == null)
+						return null;
+					if(isBufferingReceivedMessages())
+						receivedMessages.add(new ProtobufMessage(socketChannel, message));	
+					if(isMessageReceptionHandlerEnabled())
+						peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
+					return message;
+				}
+				if(readBytes == -1)
+					closeConnection(socketChannel, engine);
+				return null;
+    		}
+    		catch(Exception e) {
+    			e.printStackTrace();
+    			return null;
+    		}
 		}
     }
     
     protected int write(SocketChannel socketChannel, SSLEngine engine, GeneratedMessageV3 message) throws IOException {
         synchronized (writeLock) {
         	int writtenBytes = 0;
-            putBytesIntoBufferAndFlip(message.toByteArray());
+        	Any packedMessage = Any.pack(message);
+            putBytesIntoBufferAndFlip(packedMessage.toByteArray());
             while (myApplicationBuffer.hasRemaining()) {
             	SSLEngineResult encryptionResult = encryptBufferedBytes(engine);
     			if(checkEngineResult(encryptionResult))
@@ -210,9 +219,9 @@ public abstract class SecuredPeer implements Closeable {
     				handleEncryptionResult(socketChannel, engine, encryptionResult);
             }
             if(writtenBytes > 0) {
-            	if(isBufferingSentBytes())
-            		sentBytes.add(new ProtobufMessage(socketChannel, message));		
-            	if(isByteSendingHandlerEnabled())
+            	if(isBufferingSentMessages())
+            		sentMessages.add(new ProtobufMessage(socketChannel, message));		
+            	if(isMessageSendingHandlerEnabled())
             		peerCallback.messageSent(new ProtobufMessage(socketChannel, message));
             }
             return writtenBytes;
@@ -416,36 +425,36 @@ public abstract class SecuredPeer implements Closeable {
     	peerCallback = callback;
     }
     
-    public boolean isByteReceptionHandlerEnabled() {
+    public boolean isMessageReceptionHandlerEnabled() {
 		return receptionHandlerEnabled;
 	}
 	
-	public boolean isByteSendingHandlerEnabled() {
+	public boolean isMessageSendingHandlerEnabled() {
 		return sendingHandlerEnabled;
 	}
 	
-	public void setByteReceptionHandlerEnabled(boolean value) {
+	public void setMessageReceptionHandlerEnabled(boolean value) {
 		receptionHandlerEnabled = value;
 	}
 	
-	public void setByteSendingHandlerEnabled(boolean value) {
+	public void setMessageSendingHandlerEnabled(boolean value) {
 		sendingHandlerEnabled = value;
 	}
 	
-	public boolean isBufferingReceivedBytes() {
-    	return bufferingReceivedBytes;
+	public boolean isBufferingReceivedMessages() {
+    	return bufferingReceivedMessages;
     }
     
-    public void setBufferingReceivedBytes(boolean value) {
-    	bufferingReceivedBytes = value;
+    public void setBufferingReceivedMessages(boolean value) {
+    	bufferingReceivedMessages = value;
     }
     
-    public boolean isBufferingSentBytes() {
-    	return bufferingSentBytes;
+    public boolean isBufferingSentMessages() {
+    	return bufferingSentMessages;
     }
     
-    public void setBufferingSentBytes(boolean value) {
-    	bufferingSentBytes = value;
+    public void setBufferingSentMessages(boolean value) {
+    	bufferingSentMessages = value;
     }
 
     /**

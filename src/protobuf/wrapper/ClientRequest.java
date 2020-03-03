@@ -115,7 +115,7 @@ public class ClientRequest {
 																int requestedId) {
 
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorUsername, requestorPassword);
-		ClientBase clientBase = ClientBase.newBuilder().setId(requestedId).setUsername(requestorUsername).build();
+		ClientBase clientBase = ClientBase.newBuilder().setId(requestedId).build();
 		return ClientProfileGetRequest.newBuilder().setRequestBase(requestorBase).setClientBase(clientBase).build();
 	}
 	
@@ -271,7 +271,8 @@ public class ClientRequest {
 														.setDeviceOs(deviceOs)
 														.setDeviceType(deviceType)
 														.build();
-		return ClientRegistrationRequest.newBuilder()	.setUsername(username)
+		return ClientRegistrationRequest.newBuilder()	.setRequestBase(ClientRequest.newClientRequestBase(requestId, username, password))
+														.setUsername(username)
 														.setPassword(password)
 														.setPasswordRepeat(passwordRepeat)
 														.setEmail(email)

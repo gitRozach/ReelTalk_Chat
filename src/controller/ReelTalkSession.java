@@ -26,14 +26,9 @@ import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.SecuredMessageClient;
 import network.ssl.communication.ProtobufMessage;
 import network.ssl.server.SecuredMessageServer;
-import protobuf.ClientEvents.ChannelMessageEvent;
-import protobuf.ClientIdentities.ClientBase;
-import protobuf.ClientMessages.ChannelClientMessage;
-import protobuf.ClientMessages.ChannelMessage;
-import protobuf.ClientMessages.ClientMessageBase;
-import protobuf.ClientRequests.ChannelMessageRequest;
-import protobuf.ClientRequests.ClientLoginRequest;
-import protobuf.ClientRequests.ClientRequestBase;
+import protobuf.ClientEvents.ChannelMessagePostEvent;
+import protobuf.ClientRequests.ChannelMessagePostRequest;
+import protobuf.wrapper.ClientRequest;
 
 public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";
@@ -65,7 +60,7 @@ public class ReelTalkSession extends Application {
 	
 	private void startClient() throws Exception {
 		if(chatClient.connect()) {
-			chatClient.sendMessage(new ProtobufMessage(ClientLoginRequest.newBuilder().setRequestedUsername("TestoRozach").setRequestedPassword("rozachPass").build()));
+			chatClient.sendMessage(new ProtobufMessage(ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass")));
 		}
 	}
 	
@@ -168,12 +163,12 @@ public class ReelTalkSession extends Application {
 	private void handleClientEvent(GeneratedMessageV3 event) {
 		if(event == null)
 			return;
-		if(event instanceof ChannelMessageEvent) {
-			ChannelMessageEvent channelMessage = (ChannelMessageEvent) event;
-			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getChannelMessage(0)
+		if(event instanceof ChannelMessagePostEvent) {
+			ChannelMessagePostEvent channelMessage = (ChannelMessagePostEvent) event;
+			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getMessage(0)
 																						.getMessageBase()
 																						.getSenderUsername(), 
-																		channelMessage	.getChannelMessage(0)
+																		channelMessage	.getMessage(0)
 																						.getMessageBase()
 																						.getMessageText()));
 		}
@@ -184,23 +179,7 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void onInputFieldEnterPressed() {
-		ClientRequestBase base = ClientRequestBase	.newBuilder()
-													.setRequestorClientId(0)
-													.setRequestorClientUsername("TestoRozach")
-													.setRequestorClientPassword("rozachPass")
-													.build();
-		ClientMessageBase messageBase = ClientMessageBase.newBuilder()	.setSenderId(0)
-																		.setSenderUsername("Rozach")
-																		.setMessageId(0)
-																		.setMessageText(chatView.getMessageInputField().getText())
-																		.build();
-		ChannelMessage message = ChannelMessage	.newBuilder()
-												.setMessageBase(messageBase)
-												.build();
-		ChannelMessageRequest request = ChannelMessageRequest	.newBuilder()
-																.setRequestBase(base)
-																.set(message)
-																.build();
+		ChannelMessagePostRequest request = ClientRequest.newChannelMessagePostRequest(1, "TestoRozach", "rozachPass", 1, chatView.getMessageInputField().getText());
 		chatClient.sendMessage(new ProtobufMessage(request));
 		chatView.getMessageInputField().getTextField().clear();
 	}

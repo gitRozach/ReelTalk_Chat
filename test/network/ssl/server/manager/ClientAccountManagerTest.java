@@ -3,6 +3,7 @@ package network.ssl.server.manager;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.After;
@@ -10,9 +11,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
+import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientAccount;
-import protobuf.ClientIdentities.ClientBase;
-import protobuf.ClientIdentities.ClientPictures;
+import protobuf.ClientIdentities.ClientBadge;
+import protobuf.ClientIdentities.ClientBadges;
+import protobuf.ClientIdentities.ClientDevice;
+import protobuf.ClientIdentities.ClientFriend;
+import protobuf.ClientIdentities.ClientFriends;
+import protobuf.ClientIdentities.ClientGroup;
+import protobuf.ClientIdentities.ClientGroups;
+import protobuf.ClientIdentities.ClientImages;
+import protobuf.ClientIdentities.ClientProfile;
+import protobuf.ClientIdentities.ClientStatus;
+import protobuf.wrapper.ClientIdentity;
 
 class ClientAccountManagerTest {
 	protected ClientAccountManager database;
@@ -22,125 +33,79 @@ class ClientAccountManagerTest {
 	protected static ClientAccount testAccount3;
 	protected static ClientAccount testAccount4;
 	protected static ClientAccount testAccount5;
-	protected static ClientAccount testAccount6;
-	protected static ClientAccount testAccount7;
-	protected static ClientAccount testAccount8;
-	protected static ClientAccount testAccount9;
-	protected static ClientAccount testAccount10;
 	
 	@BeforeAll
 	public static void init() {
-		testAccount1 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("TestoRozach"))
-		.setPassword("rozachPass")
-		.setPictures(ClientPictures.getDefaultInstance())
-		.setServerGroup(1)
-		.setAdminGroup(5)
-		.addFriend(8)
-		.addFriend(17)
-		.addFriend(28)
-		.setDeleted(false)
-		.setBanned(false)
-		.build();
+		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
 		
-		testAccount2 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(3).setUsername("Felix"))
-				.setPassword("superPass")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(0)
-				.setAdminGroup(0)
-				.addFriend(44)
-				.addFriend(56)
-				.addFriend(67)
-				.setDeleted(true)
-				.setBanned(false)
-				.build();
-		testAccount3 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(8).setUsername("Jenn"))
-				.setPassword("dumbPass")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(5)
-				.setAdminGroup(5)
-				.addFriend(0)
-				.addFriend(17)
-				.addFriend(28)
-				.setDeleted(false)
-				.setBanned(true)
-				.build();
-		testAccount4 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_4"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount5 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_5"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount6 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_6"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount7 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_7"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount8 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_8"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount9 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_9"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
-		testAccount10 = ClientAccount.newBuilder().setBase(ClientBase.newBuilder().setId(0).setUsername("Client_10"))
-				.setPassword("password")
-				.setPictures(ClientPictures.getDefaultInstance())
-				.setServerGroup(3)
-				.setAdminGroup(0)
-				.addFriend(0)
-				.addFriend(5)
-				.addFriend(12)
-				.setDeleted(false)
-				.setBanned(false)
-				.build();
+		ClientBadge badge1 = ClientBadge.newBuilder().setBadgeId(1).setBadgeName("Badge 1").setBadgeDescription("Badge Description 1").build();
+		ClientBadge badge2 = ClientBadge.newBuilder().setBadgeId(2).setBadgeName("Badge 2").setBadgeDescription("Badge Description 2").build();
+		ClientBadge badge3 = ClientBadge.newBuilder().setBadgeId(3).setBadgeName("Badge 3").setBadgeDescription("Badge Description 3").build();
+		ClientBadges badges = ClientBadges.newBuilder().addBadge(badge1).addBadge(badge2).addBadge(badge3).build();
+		
+		ClientFriend friend1 = ClientFriend.newBuilder().setClientId(10).setMarkedAsBuddy(true).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 22, 30, 0).getTimeInMillis())).build();
+		ClientFriend friend2 = ClientFriend.newBuilder().setClientId(11).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 21, 30, 0).getTimeInMillis())).build();
+		ClientFriend friend3 = ClientFriend.newBuilder().setClientId(12).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 20, 30, 0).getTimeInMillis())).build();
+		ClientFriends friends = ClientFriends.newBuilder().addFriend(friend1).addFriend(friend2).addFriend(friend3).build();
+		
+		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
+		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
+		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
+		
+		ClientProfile profile1 = ClientIdentity.newClientProfile(	1, 
+																	"Rozach", 
+																	ClientStatus.ONLINE, 
+																	images, 
+																	badges, 
+																	friends, 
+																	groups, 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		testAccount1 = ClientIdentity.newClientAccount(profile1, ClientDevice.getDefaultInstance(), "rozachPass");
+		
+		ClientProfile profile2 = ClientIdentity.newClientProfile(	1, 
+																	"Jenn", 
+																	ClientStatus.ONLINE, 
+																	images, 
+																	badges, 
+																	friends, 
+																	groups, 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		testAccount2 = ClientIdentity.newClientAccount(profile2, ClientDevice.getDefaultInstance(), "jennPass");
+
+		ClientProfile profile3 = ClientIdentity.newClientProfile(	1, 
+																	"Husan", 
+																	ClientStatus.ONLINE, 
+																	images, 
+																	badges, 
+																	friends, 
+																	groups, 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		testAccount3 = ClientIdentity.newClientAccount(profile3, ClientDevice.getDefaultInstance(), "husanPass");
+		
+		ClientProfile profile4 = ClientIdentity.newClientProfile(	1, 
+																	"Hendrizio", 
+																	ClientStatus.ONLINE, 
+																	images, 
+																	badges, 
+																	friends, 
+																	groups, 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		testAccount4 = ClientIdentity.newClientAccount(profile4, ClientDevice.getDefaultInstance(), "hendrizioPass");
+
+		ClientProfile profile5 = ClientIdentity.newClientProfile(	1, 
+																	"Farkan", 
+																	ClientStatus.ONLINE, 
+																	images, 
+																	badges, 
+																	friends, 
+																	groups,  
+																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		testAccount5 = ClientIdentity.newClientAccount(profile5, ClientDevice.getDefaultInstance(), "farkanPass");
 	}
 	
 	@After
@@ -159,38 +124,24 @@ class ClientAccountManagerTest {
 		assertTrue(database.addItem(testAccount3));
 		assertTrue(database.addItem(testAccount4));
 		assertTrue(database.addItem(testAccount5));
-		assertTrue(database.addItem(testAccount6));
-		assertTrue(database.addItem(testAccount7));
-		assertTrue(database.addItem(testAccount8));
-		assertTrue(database.addItem(testAccount9));
-		assertTrue(database.addItem(testAccount10));
+
 		assertTrue(database.getItems().indexOf(testAccount1) == 0);
 		assertTrue(database.getItems().indexOf(testAccount2) == 1);
 		assertTrue(database.getItems().indexOf(testAccount3) == 2);
 		assertTrue(database.getItems().indexOf(testAccount4) == 3);
 		assertTrue(database.getItems().indexOf(testAccount5) == 4);
-		assertTrue(database.getItems().indexOf(testAccount6) == 5);
-		assertTrue(database.getItems().indexOf(testAccount7) == 6);
-		assertTrue(database.getItems().indexOf(testAccount8) == 7);
-		assertTrue(database.getItems().indexOf(testAccount9) == 8);
-		assertTrue(database.getItems().indexOf(testAccount10) == 9);
 	}
 	
 	@Test
 	public void readItems_readsAllItemsFromDatabaseFile() throws IOException {
 		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
 		List<ClientAccount> accounts = database.readItems();
-		assertTrue(accounts.size() == 10);
+		assertTrue(accounts.size() == 5);
 		assertTrue(accounts.get(0).equals(testAccount1));
 		assertTrue(accounts.get(1).equals(testAccount2));
 		assertTrue(accounts.get(2).equals(testAccount3));
 		assertTrue(accounts.get(3).equals(testAccount4));
 		assertTrue(accounts.get(4).equals(testAccount5));
-		assertTrue(accounts.get(5).equals(testAccount6));
-		assertTrue(accounts.get(6).equals(testAccount7));
-		assertTrue(accounts.get(7).equals(testAccount8));
-		assertTrue(accounts.get(8).equals(testAccount9));
-		assertTrue(accounts.get(9).equals(testAccount10));
 	}
 
 }

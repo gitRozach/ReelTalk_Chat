@@ -1,6 +1,8 @@
 package protobuf.wrapper;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +24,9 @@ import protobuf.ClientRequests.ClientLogoutRequest;
 import protobuf.ClientRequests.ClientProfileGetRequest;
 import protobuf.ClientRequests.ClientRegistrationRequest;
 import protobuf.ClientRequests.ClientRequestBase;
+import protobuf.ClientRequests.FileDownloadBase;
+import protobuf.ClientRequests.FileDownloadVerification;
+import protobuf.ClientRequests.FileUploadBase;
 import protobuf.ClientRequests.PingMeasurementRequest;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
@@ -93,6 +98,12 @@ class ClientRequestTest {
 	@Test
 	public void newClientProfileGetRequest_checkProfileRequestValues() {
 		ClientProfileGetRequest profileGetRequest = ClientRequest.newProfileGetRequest(1, "Rozach", "rozachPassword", 11);
+		assertEquals(profileGetRequest.getClientBase().getId(), 11);
+		assertEquals(profileGetRequest.getClientBase().getUsername(), "");
+		assertEquals(profileGetRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(profileGetRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(profileGetRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertTrue(profileGetRequest.getRequestBase().getTimestampMillis() > 0L);
 	}
 	
 	@Test
@@ -107,6 +118,14 @@ class ClientRequestTest {
 	@Test
 	public void newChannelMessageGetRequest_checkMessageRequestValues() {
 		ChannelMessageGetRequest messageGetRequest = ClientRequest.newChannelMessageGetRequest(1, "Rozach", "rozachPassword", 5, 0, 1);
+		assertEquals(messageGetRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(messageGetRequest.getChannelBase().getChannelName(), "");
+		assertEquals(messageGetRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(messageGetRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(messageGetRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertTrue(messageGetRequest.getRequestBase().getTimestampMillis() > 0L);
+		assertEquals(messageGetRequest.getStartCountWithMessageId(), 0);
+		assertEquals(messageGetRequest.getMessageCount(), 1);
 	}
 	
 	@Test
@@ -120,6 +139,13 @@ class ClientRequestTest {
 	@Test
 	public void newChannelMessagePostRequest_checkMessageRequestValues() {
 		ChannelMessagePostRequest messagePostRequest = ClientRequest.newChannelMessagePostRequest(1, "Rozach", "rozachPassword", 5, "Hallo!");
+		assertEquals(messagePostRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(messagePostRequest.getChannelBase().getChannelName(), "");
+		assertEquals(messagePostRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(messagePostRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(messagePostRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertTrue(messagePostRequest.getRequestBase().getTimestampMillis() > 0L);
+		assertEquals(messagePostRequest.getMessageText(), "Hallo!");
 	}
 	
 	@Test
@@ -135,6 +161,15 @@ class ClientRequestTest {
 	@Test
 	public void newChannelMessageAnswerGetRequest_checkMessageAnswerRequestValues() {
 		ChannelMessageAnswerGetRequest answerGetRequest = ClientRequest.newChannelMessageAnswerGetRequest(1, "Rozach", "rozachPassword", 5, 1, 0, 3);
+		assertEquals(answerGetRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(answerGetRequest.getChannelBase().getChannelName(), "");
+		assertEquals(answerGetRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(answerGetRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(answerGetRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertTrue(answerGetRequest.getRequestBase().getTimestampMillis() > 0L);
+		assertEquals(answerGetRequest.getStartCountWithAnswerId(), 0);
+		assertEquals(answerGetRequest.getAnswerCount(), 3);
+		assertEquals(answerGetRequest.getMessageBase().getMessageId(), 1);
 	}
 	
 	@Test
@@ -149,6 +184,13 @@ class ClientRequestTest {
 	@Test
 	public void newChannelMessageAnswerPostRequest_checkMessageAnswerRequestValues() {
 		ChannelMessageAnswerPostRequest answerPostRequest = ClientRequest.newChannelMessageAnswerPostRequest(1, "Rozach", "rozachPassword", 5, 2, "Antwort");
+		assertEquals(answerPostRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(answerPostRequest.getChannelBase().getChannelName(), "");
+		assertEquals(answerPostRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(answerPostRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(answerPostRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertEquals(answerPostRequest.getMessageBase().getMessageId(), 2);
+		assertEquals(answerPostRequest.getAnswerText(), "Antwort");
 	}
 	
 	@Test
@@ -163,6 +205,13 @@ class ClientRequestTest {
 	@Test
 	public void newPrivateMessageGetRequest_checkMessageRequestValues() {
 		PrivateMessageGetRequest messageGetRequest = ClientRequest.newPrivateMessageGetRequest(1, "Rozach", "rozachPassword", 11, 0, 10);
+		assertEquals(messageGetRequest.getClientBase().getId(), 11);
+		assertEquals(messageGetRequest.getClientBase().getUsername(), "");
+		assertEquals(messageGetRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(messageGetRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(messageGetRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertEquals(messageGetRequest.getMessageCount(), 10);
+		assertEquals(messageGetRequest.getStartCountWithMessageId(), 0);
 	}
 	
 	@Test
@@ -176,6 +225,12 @@ class ClientRequestTest {
 	@Test
 	public void newPrivateMessagePostRequest_checkMessageRequestValues() {
 		PrivateMessagePostRequest messagePostRequest = ClientRequest.newPrivateMessagePostRequest(1, "Jann", "jannPassword", 12, "Hallo Rozach");
+		assertEquals(messagePostRequest.getClientBase().getId(), 12);
+		assertEquals(messagePostRequest.getClientBase().getUsername(), "");
+		assertEquals(messagePostRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(messagePostRequest.getRequestBase().getUsername(), "Jann");
+		assertEquals(messagePostRequest.getRequestBase().getPassword(), "jannPassword");
+		assertEquals(messagePostRequest.getMessageText(), "Hallo Rozach");
 	}
 	
 	@Test
@@ -188,75 +243,147 @@ class ClientRequestTest {
 	@Test
 	public void newClientLoginRequest_checkLoginRequestValues() {
 		ClientLoginRequest loginRequest = ClientRequest.newLoginRequest(1, "Jann", "jannPassword");
+		assertEquals(loginRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(loginRequest.getRequestBase().getUsername(), "Jann");
+		assertEquals(loginRequest.getRequestBase().getPassword(), "jannPassword");
+		assertFalse(loginRequest.getDevice().equals(ClientDevice.getDefaultInstance()));
 	}
 	
 	@Test
 	public void clientLogoutRequestDefaultInstance_checkDefaultLogoutRequestValues() {
 		ClientLogoutRequest logoutRequest = ClientLogoutRequest.getDefaultInstance();
+		assertEquals(logoutRequest.getDevice(), ClientDevice.getDefaultInstance());
+		assertEquals(logoutRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
 	}
 	
 	@Test
 	public void newClientLogoutRequest_checkLogoutRequestValues() {
 		ClientLogoutRequest logoutRequest = ClientRequest.newLogoutRequest(1, "Jann", "jannPassword");
+		assertEquals(logoutRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(logoutRequest.getRequestBase().getUsername(), "Jann");
+		assertEquals(logoutRequest.getRequestBase().getPassword(), "jannPassword");
+		assertFalse(logoutRequest.getDevice().equals(ClientDevice.getDefaultInstance()));
 	}
 	
 	@Test
 	public void clientRegistrationRequestDefaultInstance_checkDefaultRegistrationRequestValues() {
 		ClientRegistrationRequest registrationRequest = ClientRegistrationRequest.getDefaultInstance();
+		assertEquals(registrationRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(registrationRequest.getUsername(), "");
+		assertEquals(registrationRequest.getPassword(), "");
+		assertEquals(registrationRequest.getPasswordRepeat(), "");
+		assertEquals(registrationRequest.getEmail(), "");
+		assertEquals(registrationRequest.getInvitationKey(), "");
+		assertEquals(registrationRequest.getDevice(), ClientDevice.getDefaultInstance());
 	}
 	
 	@Test
 	public void newClientRegistrationRequest_checkRegistrationRequestValues() {
 		ClientRegistrationRequest registrationRequest = ClientRequest.newRegistrationRequest(1, "Hasan", "husseini", "husseini", "egonecohasan@gmail.com");
+		assertEquals(registrationRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(registrationRequest.getRequestBase().getUsername(), "Hasan");
+		assertEquals(registrationRequest.getRequestBase().getPassword(), "husseini");
+		assertEquals(registrationRequest.getUsername(), "Hasan");
+		assertEquals(registrationRequest.getPassword(), "husseini");
+		assertEquals(registrationRequest.getPasswordRepeat(), "husseini");
+		assertEquals(registrationRequest.getEmail(), "egonecohasan@gmail.com");
+		assertEquals(registrationRequest.getInvitationKey(), "");
+		assertFalse(registrationRequest.getDevice().equals(ClientDevice.getDefaultInstance()));
 	}
 	
 	@Test
 	public void channelFileUploadRequestDefaultInstance_checkDefaultFileUploadRequestValues() {
 		ChannelFileUploadRequest uploadRequest = ChannelFileUploadRequest.getDefaultInstance();
+		assertEquals(uploadRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(uploadRequest.getChannelBase(), ChannelBase.getDefaultInstance());
+		assertEquals(uploadRequest.getFileBase(), FileUploadBase.getDefaultInstance());
 	}
 	
 	@Test
 	public void newChannelFileUploadRequest_checkFileUploadRequestValues() {
 		ChannelFileUploadRequest uploadRequest = ClientRequest.newChannelFileUploadRequest(1, "Rozach", "rozachPassword", 5, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
+		assertEquals(uploadRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(uploadRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(uploadRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertEquals(uploadRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(uploadRequest.getFileBase().getFileName(), "readme.txt");
+		assertEquals(uploadRequest.getFileBase().getFilePath(), "C:/Users/Rozach/readme.txt");
+		assertEquals(uploadRequest.getFileBase().getFileSize(), 1024L);
 	}
 	
 	@Test
 	public void channelFileDownloadRequestDefaultInstance_checkDefaultFileDownloadRequestValues() {
 		ChannelFileDownloadRequest downloadRequest = ChannelFileDownloadRequest.getDefaultInstance();
+		assertEquals(downloadRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(downloadRequest.getChannelBase(), ChannelBase.getDefaultInstance());
+		assertEquals(downloadRequest.getFileBase(), FileDownloadBase.getDefaultInstance());
 	}
 	
 	@Test
 	public void newChannelFileDownloadRequest_checkFileDownloadRequestValues() {
-		ChannelFileDownloadRequest downloadRequest = ClientRequest.newChannelFileDownloadRequest(1, "Jann", "jannPassword", 5, "readme.txt", "C:/Users/Jann/Downloads/readme.txt");
+		ChannelFileDownloadRequest downloadRequest = ClientRequest.newChannelFileDownloadRequest(1, "Jann", "jannPassword", 5, "readme.txt", "C:/Users/Jann/Downloads");
+		assertEquals(downloadRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(downloadRequest.getRequestBase().getUsername(), "Jann");
+		assertEquals(downloadRequest.getRequestBase().getPassword(), "jannPassword");
+		assertEquals(downloadRequest.getChannelBase().getChannelId(), 5);
+		assertEquals(downloadRequest.getFileBase().getFileName(), "readme.txt");
+		assertEquals(downloadRequest.getFileBase().getDownloadPath(), "C:/Users/Jann/Downloads");
+		assertEquals(downloadRequest.getFileBase().getDownloadVerification(), FileDownloadVerification.getDefaultInstance());
 	}
 	
 	@Test
 	public void privateFileUploadRequestDefaultInstance_checkDefaultFileUploadRequestValues() {
 		PrivateFileUploadRequest uploadRequest = PrivateFileUploadRequest.getDefaultInstance();
+		assertEquals(uploadRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(uploadRequest.getClientBase(), ClientBase.getDefaultInstance());
+		assertEquals(uploadRequest.getFileBase(), FileUploadBase.getDefaultInstance());
 	}
 	
 	@Test
 	public void newPrivateFileUploadRequest_checkFileUploadRequestValues() {
-		PrivateFileUploadRequest uploadRequest = ClientRequest.newPrivateFileUploadRequest(1, "Rozach", "rozachPassword", 5, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
+		PrivateFileUploadRequest uploadRequest = ClientRequest.newPrivateFileUploadRequest(1, "Rozach", "rozachPassword", 11, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
+		assertEquals(uploadRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(uploadRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(uploadRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertEquals(uploadRequest.getClientBase().getId(), 11);
+		assertEquals(uploadRequest.getFileBase().getFileName(), "readme.txt");
+		assertEquals(uploadRequest.getFileBase().getFilePath(), "C:/Users/Rozach/readme.txt");
+		assertEquals(uploadRequest.getFileBase().getFileSize(), 1024L);
 	}
 	
 	@Test
 	public void privateFileDownloadRequestDefaultInstance_checkDefaultFileDownloadRequestValues() {
 		PrivateFileDownloadRequest downloadRequest = PrivateFileDownloadRequest.getDefaultInstance();
+		assertEquals(downloadRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(downloadRequest.getClientBase(), ClientBase.getDefaultInstance());
+		assertEquals(downloadRequest.getFileBase(), FileDownloadBase.getDefaultInstance());
 	}
 	
 	@Test
 	public void newPrivateFileDownloadRequest_checkFileDownloadRequestValues() {
-		PrivateFileDownloadRequest downloadRequest = ClientRequest.newPrivateFileDownloadRequest(1, "Jann", "jannPassword", 5, "readme.txt", "C:/Users/Jann/Downloads/readme.txt");
+		PrivateFileDownloadRequest downloadRequest = ClientRequest.newPrivateFileDownloadRequest(1, "Jann", "jannPassword", 12, "readme.txt", "C:/Users/Jann/Downloads");
+		assertEquals(downloadRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(downloadRequest.getRequestBase().getUsername(), "Jann");
+		assertEquals(downloadRequest.getRequestBase().getPassword(), "jannPassword");
+		assertEquals(downloadRequest.getClientBase().getId(), 12);
+		assertEquals(downloadRequest.getFileBase().getFileName(), "readme.txt");
+		assertEquals(downloadRequest.getFileBase().getDownloadPath(), "C:/Users/Jann/Downloads");
+		assertEquals(downloadRequest.getFileBase().getDownloadVerification(), FileDownloadVerification.getDefaultInstance());
 	}
 	
 	@Test
 	public void pingMeasurementRequestDefaultInstance_checkDefaultMeasurementRequestValues() {
 		PingMeasurementRequest measurementRequest = PingMeasurementRequest.getDefaultInstance();
+		assertEquals(measurementRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
+		assertEquals(measurementRequest.getDevice(), ClientDevice.getDefaultInstance());
 	}
 	
 	@Test
 	public void newPingMeasurementRequest_checkMeasurementRequestValues() {
 		PingMeasurementRequest measurementRequest = ClientRequest.newPingMeasurementRequest(1, "Rozach", "rozachPassword");
+		assertEquals(measurementRequest.getRequestBase().getRequestId(), 1);
+		assertEquals(measurementRequest.getRequestBase().getUsername(), "Rozach");
+		assertEquals(measurementRequest.getRequestBase().getPassword(), "rozachPassword");
+		assertFalse(measurementRequest.getDevice().equals(ClientDevice.getDefaultInstance()));
 	}
 }

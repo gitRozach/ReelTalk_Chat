@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import protobuf.ClientMessages.ChannelMessage;
+import protobuf.ClientMessages.ClientProfileComment;
 import protobuf.ClientMessages.PrivateMessage;
-import protobuf.ClientMessages.ProfileComment;
 
 public class ClientMessageManager {
 	private PrivateMessageManager privateMessageManager;
@@ -78,27 +78,27 @@ public class ClientMessageManager {
 		return resultList.toArray(new ChannelMessage[resultList.size()]);
 	}
 	
-	public void addProfileComment(ProfileComment message) {
+	public void addProfileComment(ClientProfileComment message) {
 		profileCommentManager.addItem(message);
 	}
 	
-	public ProfileComment getProfileComment(int index) {
+	public ClientProfileComment getProfileComment(int index) {
 		return profileCommentManager.getItem(index);
 	}
 	
-	public ProfileComment[] getProfileComments() {
+	public ClientProfileComment[] getProfileComments() {
 		if(profileCommentManager.isEmpty())
-			return new ProfileComment[]{};
+			return new ClientProfileComment[]{};
 		return getProfileComments(0, profileCommentManager.size());
 	}
 	
-	public ProfileComment[] getProfileComments(int startIndexInclusive, int endIndexInclusive) {
-		ArrayList<ProfileComment> resultList = new ArrayList<>();
+	public ClientProfileComment[] getProfileComments(int startIndexInclusive, int endIndexInclusive) {
+		ArrayList<ClientProfileComment> resultList = new ArrayList<>();
 		if(startIndexInclusive <= endIndexInclusive) {
 			for(int i = startIndexInclusive; i <= endIndexInclusive; ++i) 
 				resultList.add(profileCommentManager.getItem(i));
 		}
-		return resultList.toArray(new ProfileComment[resultList.size()]);
+		return resultList.toArray(new ClientProfileComment[resultList.size()]);
 	}
 
 	public PrivateMessageManager getPrivateMessageManager() {

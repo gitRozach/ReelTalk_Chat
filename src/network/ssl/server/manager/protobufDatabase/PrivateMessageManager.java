@@ -2,6 +2,7 @@ package network.ssl.server.manager.protobufDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.Channels;
 
 import protobuf.ClientMessages.PrivateMessage;
 
@@ -16,6 +17,12 @@ public class PrivateMessageManager extends ProtobufFileDatabase<PrivateMessage>{
 
 	@Override
 	public PrivateMessage readItem() {
-		return null;
+		try {
+			return PrivateMessage.parseDelimitedFrom(Channels.newInputStream(databaseChannel));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

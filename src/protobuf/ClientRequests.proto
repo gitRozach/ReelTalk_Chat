@@ -161,12 +161,13 @@ message ClientLogoutRequest {
 }
 
 message ClientRegistrationRequest {
-	string username = 1;
-	string password = 2;
-	string passwordRepeat = 3;
-	string email = 4;
-	string invitationKey = 5;
-	protobuf.clientidentities.ClientDevice device = 6;
+	ClientRequestBase requestBase = 1;
+	string username = 2;
+	string password = 3;
+	string passwordRepeat = 4;
+	string email = 5;
+	string invitationKey = 6;
+	protobuf.clientidentities.ClientDevice device = 7;
 }
 
 message PingMeasurementRequest {

@@ -3,6 +3,9 @@ package network.ssl.server;
 import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.protobuf.GeneratedMessageV3;
 
@@ -13,8 +16,8 @@ import network.ssl.communication.ProtobufMessage;
 import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
 import network.ssl.server.manager.protobufDatabase.ClientChannelManager;
 import network.ssl.server.manager.protobufDatabase.ClientMessageManager;
-import protobuf.ClientEvents.ChannelMessageEvent;
-import protobuf.ClientEvents.ClientProfileDataEvent;
+import protobuf.ClientEvents.ChannelMessagePostEvent;
+import protobuf.ClientEvents.ClientProfileGetEvent;
 import protobuf.ClientEvents.ClientRequestRejectedEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientMessages.ChannelMessage;
@@ -24,17 +27,17 @@ import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
 import protobuf.ClientRequests.ChannelMessageGetRequest;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
-import protobuf.ClientRequests.ChannelMessageRequest;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.ClientLogoutRequest;
-import protobuf.ClientRequests.ClientPingMeasurementRequest;
-import protobuf.ClientRequests.ClientProfileRequest;
+import protobuf.ClientRequests.ClientProfileGetRequest;
 import protobuf.ClientRequests.ClientRegistrationRequest;
+import protobuf.ClientRequests.PingMeasurementRequest;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import protobuf.ClientRequests.PrivateMessageRequest;
+import protobuf.wrapper.ClientEvent;
+import protobuf.wrapper.ClientMessage;
 
 public class SecuredMessageServer extends SecuredServer {
 	protected ClientAccountManager clients;
@@ -158,10 +161,10 @@ public class SecuredMessageServer extends SecuredServer {
 				handlePrivateFileUploadRequest(clientKey, (PrivateFileUploadRequest)request);
 				break;
 			case "ClientPingMeasurementRequest":
-				handleClientPingMeasurementRequest(clientKey, (ClientPingMeasurementRequest)request);
+				handlePingMeasurementRequest(clientKey, (PingMeasurementRequest)request);
 				break;
 			case "ClientProfileRequest":
-				handleClientProfileRequest(clientKey, (ClientProfileRequest)request);
+				handleClientProfileGetRequest(clientKey, (ClientProfileGetRequest)request);
 				break;
 			case "ClientChannelRequest":
 				break;
@@ -176,7 +179,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleChannelJoinRequest(SelectionKey clientKey, ChannelJoinRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -186,7 +189,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleChannelLeaveRequest(SelectionKey clientKey, ChannelLeaveRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -195,20 +198,28 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 	}
 	
-	private void handleChannelMessageRequest(SelectionKey clientKey, ChannelMessageRequest request) {
+	private void handleChannelMessageGetRequest(SelectionKey clientKey, ChannelMessageGetRequest request) {
+		
+	}
+	
+	private void handleChannelMessagePostRequest(SelectionKey clientKey, ChannelMessagePostRequest request) {
 		for(SelectionKey key : selector.keys()) {
 			if(key.channel() instanceof SocketChannel) {
-				ChannelMessageEvent eventMessage = null;
+				ChannelMessage channelMessage = ClientMessage.newChannelMessage(1, "Hallo Leude", 0, "Rozach", 1, System.currentTimeMillis(), Collections.emptyList());
+				List<ChannelMessage> messages = new ArrayList<ChannelMessage>();
+				messages.add(channelMessage);
+				
+				ChannelMessagePostEvent eventMessage = ClientEvent.newChannelMessagePostEvent(request.getRequestBase().getRequestId(), 0, messages);
 				sendMessage(new ProtobufMessage(key, eventMessage));
-				messageManager.addChannelMessage(eventMessage.getChannelMessage(0));
+				messageManager.addChannelMessage(eventMessage.getMessage(0));
 			}
 		}
 	}
 	
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
-		ClientAccount clientData = login(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword());
+		ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
 		if(clientData != null) {
-			ClientProfileDataEvent dataMessage = null;
+			ClientProfileGetEvent dataMessage = null;
 			sendMessage(clientKey, new ProtobufMessage(clientKey, dataMessage));
 			for(ChannelMessage message : messageManager.getChannelMessages()) {
 				sendMessage(new ProtobufMessage(clientKey, message));
@@ -227,7 +238,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleClientLogoutRequest(SelectionKey clientKey, ClientLogoutRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -241,7 +252,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleChannelFileDownloadRequest(SelectionKey clientKey, ChannelFileDownloadRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -251,7 +262,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleChannelFileUploadRequest(SelectionKey clientKey, ChannelFileUploadRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -261,7 +272,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handlePrivateFileDownloadRequest(SelectionKey clientKey, PrivateFileDownloadRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -271,7 +282,7 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handlePrivateFileUploadRequest(SelectionKey clientKey, PrivateFileUploadRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -280,8 +291,8 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 	}
 	
-	private void handleClientPingMeasurementRequest(SelectionKey clientKey, ClientPingMeasurementRequest request) {
-		if(checkLogin(request.getRequestorBase().getRequestorClientUsername(), request.getRequestorBase().getRequestorClientPassword())) {
+	private void handlePingMeasurementRequest(SelectionKey clientKey, PingMeasurementRequest request) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -290,8 +301,8 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 	}
 	
-	private void handlePrivateMessageRequest(SelectionKey clientKey, PrivateMessageRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+	private void handlePrivateMessagePostRequest(SelectionKey clientKey, PrivateMessagePostRequest request) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
@@ -300,8 +311,12 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 	}
 	
-	private void handleClientProfileRequest(SelectionKey clientKey, ClientProfileRequest request) {
-		if(checkLogin(request.getRequestBase().getRequestorClientUsername(), request.getRequestBase().getRequestorClientPassword())) {
+	private void handlePrivateMessageGetRequest(SelectionKey clientKey, PrivateMessageGetRequest request) {
+		
+	}
+	
+	private void handleClientProfileGetRequest(SelectionKey clientKey, ClientProfileGetRequest request) {
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {

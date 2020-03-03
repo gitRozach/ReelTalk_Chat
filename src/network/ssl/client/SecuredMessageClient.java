@@ -58,7 +58,7 @@ public class SecuredMessageClient extends SecuredClient {
     }
     
     public GeneratedMessageV3 readMessage(Class<?> messageClass) {
-    	for(ProtobufMessage currentMessage : receivedBytes) {
+    	for(ProtobufMessage currentMessage : receivedMessages) {
     		if(currentMessage.hasMessage() && currentMessage.getMessage().getClass().equals(messageClass))
     			return currentMessage.getMessage();
     	}

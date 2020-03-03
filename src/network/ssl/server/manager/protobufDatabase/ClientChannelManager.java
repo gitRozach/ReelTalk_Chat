@@ -2,6 +2,7 @@ package network.ssl.server.manager.protobufDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.Channels;
 
 import protobuf.ClientChannels.TextChannel;
 
@@ -17,6 +18,12 @@ public class ClientChannelManager extends ProtobufFileDatabase<TextChannel> {
 
 	@Override
 	public TextChannel readItem() {
-		return null;
+		try {
+			return TextChannel.parseDelimitedFrom(Channels.newInputStream(databaseChannel));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}	
 }
