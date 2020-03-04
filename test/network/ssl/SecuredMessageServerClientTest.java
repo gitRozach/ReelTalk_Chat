@@ -57,7 +57,7 @@ class SecuredMessageServerClientTest {
 		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
-		sampleProfile = ClientIdentity.newClientProfile(	1, 
+		sampleProfile = ClientIdentity.newClientProfile(			1, 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -70,6 +70,7 @@ class SecuredMessageServerClientTest {
 	
 	@BeforeAll
 	public static void setUp() throws Exception {
+		init();
 		server = new SecuredMessageServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 		server.setBufferingReceivedMessages(true);
 		server.start();
@@ -97,11 +98,11 @@ class SecuredMessageServerClientTest {
 			ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, sampleProfile);
 			
 			for(int i = 0; i < 100; ++i) {
-				server.sendMessage(server.getLocalSocketChannel(client1.getChannel()), new ProtobufMessage(eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client2.getChannel()), new ProtobufMessage(eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client3.getChannel()), new ProtobufMessage(eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client4.getChannel()), new ProtobufMessage(eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client5.getChannel()), new ProtobufMessage(eventMessage));
+				server.sendMessage(server.getLocalSocketChannel(client1.getChannel()), new ProtobufMessage(client1.getChannel(), eventMessage));
+				server.sendMessage(server.getLocalSocketChannel(client2.getChannel()), new ProtobufMessage(client2.getChannel(), eventMessage));
+				server.sendMessage(server.getLocalSocketChannel(client3.getChannel()), new ProtobufMessage(client3.getChannel(), eventMessage));
+				server.sendMessage(server.getLocalSocketChannel(client4.getChannel()), new ProtobufMessage(client4.getChannel(), eventMessage));
+				server.sendMessage(server.getLocalSocketChannel(client5.getChannel()), new ProtobufMessage(client5.getChannel(), eventMessage));
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());

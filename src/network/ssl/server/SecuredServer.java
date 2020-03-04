@@ -290,11 +290,14 @@ public class SecuredServer extends SecuredPeer {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						write((SocketChannel) currentMessage.getSocketChannel(), (SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), currentMessage.getMessage());
+						write(	currentMessage.getSocketChannel(), 
+								(SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), 
+								currentMessage.getMessage());
 						pollOrderedBytes();
 					}
 				} 
 				catch (Exception e) {
+					e.printStackTrace();
 					logger.severe(e.toString());
 				}
 				Utils.sleep(loopDelayMillis);

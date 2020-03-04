@@ -1,7 +1,0 @@
-id=0#name=Channel_1
-id=1#name=Channel_2
-id=2#name=Channel_3
-id=3#name=Channel_4
-id=4#name=Channel_5
-id=5#name=Channel_6
-id=6#name=Channel_7
