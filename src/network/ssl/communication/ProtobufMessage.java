@@ -172,6 +172,7 @@ public class ProtobufMessage {
 		else if(message.is(PingMeasurementRequest.class))
 			return PingMeasurementRequest.class;
 		
+		System.out.println("NOT FOUND!");
 		return null;
 	}
 

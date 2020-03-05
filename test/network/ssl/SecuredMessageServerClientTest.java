@@ -7,7 +7,6 @@ import java.time.Duration;
 import java.util.GregorianCalendar;
 
 import org.awaitility.Awaitility;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -40,11 +39,8 @@ class SecuredMessageServerClientTest {
 	protected static final String TEST_PROTOCOL = "TLSv1.2";
 	protected static final String TEST_HOST_ADDRESS = "localhost";
 	protected static final int TEST_HOST_PORT = 2197;
-	
-	protected static ClientProfile sampleProfile;
-	
-	@Before	
-	public static void init() {
+		
+	public static ClientProfile createSampleProfile() {
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
 		ClientBadge badge1 = ClientBadge.newBuilder().setBadgeId(1).setBadgeName("Badge 1").setBadgeDescription("Badge Description 1").build();
 		ClientBadge badge2 = ClientBadge.newBuilder().setBadgeId(2).setBadgeName("Badge 2").setBadgeDescription("Badge Description 2").build();
@@ -57,7 +53,7 @@ class SecuredMessageServerClientTest {
 		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
-		sampleProfile = ClientIdentity.newClientProfile(			1, 
+		return ClientIdentity.newClientProfile(			1, 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -70,7 +66,6 @@ class SecuredMessageServerClientTest {
 	
 	@BeforeAll
 	public static void setUp() throws Exception {
-		init();
 		server = new SecuredMessageServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 		server.setBufferingReceivedMessages(true);
 		server.start();
@@ -95,14 +90,14 @@ class SecuredMessageServerClientTest {
 			client5.connect();
 			client5.setBufferingReceivedMessages(true);
 			
-			ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, sampleProfile);
+			ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
 			
 			for(int i = 0; i < 100; ++i) {
-				server.sendMessage(server.getLocalSocketChannel(client1.getChannel()), new ProtobufMessage(client1.getChannel(), eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client2.getChannel()), new ProtobufMessage(client2.getChannel(), eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client3.getChannel()), new ProtobufMessage(client3.getChannel(), eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client4.getChannel()), new ProtobufMessage(client4.getChannel(), eventMessage));
-				server.sendMessage(server.getLocalSocketChannel(client5.getChannel()), new ProtobufMessage(client5.getChannel(), eventMessage));
+				server.sendMessage(new ProtobufMessage(client1.getChannel(), eventMessage));
+				server.sendMessage(new ProtobufMessage(client2.getChannel(), eventMessage));
+				server.sendMessage(new ProtobufMessage(client3.getChannel(), eventMessage));
+				server.sendMessage(new ProtobufMessage(client4.getChannel(), eventMessage));
+				server.sendMessage(new ProtobufMessage(client5.getChannel(), eventMessage));
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());
@@ -130,14 +125,14 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
-		ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, sampleProfile);
+		ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
 		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedMessages(true);
 			
 			Thread.sleep(250L);
 			
-			server.sendMessage(server.getLocalSocketChannel(client.getChannel()), new ProtobufMessage(eventMessage));
+			server.sendMessage(new ProtobufMessage(eventMessage));
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReceivableBytes());
 			GeneratedMessageV3 reception = client.readMessage();
 			assertTrue(reception.getClass().equals(eventMessage.getClass()));

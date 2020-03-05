@@ -186,7 +186,9 @@ public abstract class SecuredPeer implements Closeable {
 				if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
 					byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
 					Any rawMessage = Any.parseFrom(receptionBuffer);
-					GeneratedMessageV3 message = rawMessage.unpack(ProtobufMessage.getMessageTypeOf(rawMessage));
+					Class<? extends GeneratedMessageV3> messageClass = ProtobufMessage.getMessageTypeOf(rawMessage);
+					System.out.println(messageClass.getSimpleName());
+					GeneratedMessageV3 message = rawMessage.unpack(messageClass);
 					if(receptionBuffer == null || message == null)
 						return null;
 					if(isBufferingReceivedMessages())
@@ -195,8 +197,10 @@ public abstract class SecuredPeer implements Closeable {
 						peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
 					return message;
 				}
-				if(readBytes == -1)
+				if(readBytes == -1) {
+					logger.severe("Peer read -1");
 					closeConnection(socketChannel, engine);
+				}
 				return null;
     		}
     		catch(Exception e) {

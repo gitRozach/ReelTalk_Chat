@@ -211,16 +211,16 @@ public class SecuredServer extends SecuredPeer {
 //    	return null;
 //    }
 	
-	public boolean sendMessage(SelectionKey clientKey, ProtobufMessage message) {
-		return sendMessage((SocketChannel)clientKey.channel(), message);
-	}
+//	public boolean sendMessage(SelectionKey clientKey, ProtobufMessage message) {
+//		return sendMessage((SocketChannel)clientKey.channel(), message);
+//	}
 
-	public boolean sendMessage(SocketChannel clientChannel, ProtobufMessage message) {
-		SelectionKey clientKey = clientChannel.keyFor(selector);
-		if(clientKey != null)
-			return sendMessage(message);
-		return false;
-	}
+//	public boolean sendMessage(SocketChannel clientChannel, ProtobufMessage message) {
+//		SelectionKey clientKey = clientChannel.keyFor(selector);
+//		if(clientKey != null)
+//			return sendMessage(message);
+//		return false;
+//	}
 	
 	public boolean sendMessage(ProtobufMessage byteMessage) {
 		return orderedBytes.offer(byteMessage);
@@ -270,7 +270,7 @@ public class SecuredServer extends SecuredPeer {
 					}
 				} 
 				catch (Exception e) {
-					//logger.severe(e.toString());
+					logger.severe(e.toString());
 				}
 				Utils.sleep(loopDelayMillis);
 			}
@@ -290,9 +290,9 @@ public class SecuredServer extends SecuredPeer {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						write(	currentMessage.getSocketChannel(), 
+						System.out.println(write(	currentMessage.getSocketChannel(), 
 								(SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), 
-								currentMessage.getMessage());
+								currentMessage.getMessage()));
 						pollOrderedBytes();
 					}
 				} 
