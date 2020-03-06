@@ -184,7 +184,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -194,7 +194,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -210,7 +210,7 @@ public class SecuredMessageServer extends SecuredServer {
 				messages.add(channelMessage);
 				
 				ChannelMessagePostEvent eventMessage = ClientEvent.newChannelMessagePostEvent(request.getRequestBase().getRequestId(), 0, messages);
-				sendMessage(new ProtobufMessage(key, eventMessage));
+				sendMessage(key, eventMessage);
 				messageManager.addChannelMessage(eventMessage.getMessage(0));
 			}
 		}
@@ -220,9 +220,9 @@ public class SecuredMessageServer extends SecuredServer {
 		ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
 		if(clientData != null) {
 			ClientProfileGetEvent dataMessage = null;
-			sendMessage(new ProtobufMessage(clientKey, dataMessage));
+			sendMessage(clientKey, dataMessage);
 			for(ChannelMessage message : messageManager.getChannelMessages()) {
-				sendMessage(new ProtobufMessage(clientKey, message));
+				sendMessage(clientKey, message);
 				try {
 					Thread.sleep(50L);
 				} 
@@ -233,7 +233,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage(clientKey, rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -243,7 +243,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -257,7 +257,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -267,7 +267,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -277,7 +277,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -287,7 +287,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -297,7 +297,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -307,7 +307,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -321,7 +321,7 @@ public class SecuredMessageServer extends SecuredServer {
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
-			sendMessage(new ProtobufMessage((SocketChannel)clientKey.channel(), rejMessage));
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	

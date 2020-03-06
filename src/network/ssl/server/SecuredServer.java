@@ -18,6 +18,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSession;
 
+import com.google.protobuf.GeneratedMessageV3;
+
 import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ProtobufMessage;
 import network.ssl.peer.SecuredPeer;
@@ -157,9 +159,15 @@ public class SecuredServer extends SecuredPeer {
 	}
 	
 	public SocketChannel getLocalSocketChannel(SocketChannel remoteClientChannel) throws IOException {
+		if(remoteClientChannel == null || !remoteClientChannel.isOpen())
+			return null;
 		Iterator<SelectionKey> keyIt = selector.keys().iterator();
 		while (keyIt.hasNext()) {
 			SelectionKey currentKey = keyIt.next();
+			if(!currentKey.isValid()) {
+				currentKey.cancel();
+				continue;
+			}
 			if (!(currentKey.channel() instanceof SocketChannel))
 				continue;
 			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(remoteClientChannel.getLocalAddress()))
@@ -222,8 +230,20 @@ public class SecuredServer extends SecuredPeer {
 //		return false;
 //	}
 	
-	public boolean sendMessage(ProtobufMessage byteMessage) {
-		return orderedBytes.offer(byteMessage);
+//	public boolean sendMessage(ProtobufMessage byteMessage) {
+//		return orderedBytes.offer(byteMessage);
+//	}
+	
+	public boolean sendMessage(SelectionKey clientKey, GeneratedMessageV3 message) {
+		return sendMessage((SocketChannel)clientKey.channel(), message);
+	}
+	
+	public boolean sendMessage(SocketChannel clientChannel, GeneratedMessageV3 message) {
+		if(clientChannel == null || message == null)
+			return false;
+		if(!clientChannel.isOpen())
+			return false;
+		return orderedBytes.offer(new ProtobufMessage(clientChannel, message));
 	}
 	
 	@Override
@@ -290,8 +310,9 @@ public class SecuredServer extends SecuredPeer {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						System.out.println(write(	currentMessage.getSocketChannel(), 
-								(SSLEngine) currentMessage.getSocketChannel().keyFor(selector).attachment(), 
+						System.out.println(currentMessage.getSocketChannel().toString());
+						System.out.println(write(getLocalSocketChannel(currentMessage.getSocketChannel()), 
+								(SSLEngine) getLocalSocketChannel(currentMessage.getSocketChannel()).keyFor(selector).attachment(), 
 								currentMessage.getMessage()));
 						pollOrderedBytes();
 					}

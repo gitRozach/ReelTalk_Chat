@@ -143,10 +143,10 @@ public class SecuredClient extends SecuredPeer {
 		return orderedBytes.poll();
 	}
     
-    public void sendMessage(ProtobufMessage message) {
-    	if(!message.hasMessage())
+    public void sendMessage(GeneratedMessageV3 message) {
+    	if(message == null)
     		return;
-    	orderedBytes.offer(message);
+    	orderedBytes.offer(new ProtobufMessage(getChannel(), message));
     	Utils.sleep(1L);
     }
     

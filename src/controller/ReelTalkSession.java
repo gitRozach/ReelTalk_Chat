@@ -60,7 +60,7 @@ public class ReelTalkSession extends Application {
 	
 	private void startClient() throws Exception {
 		if(chatClient.connect()) {
-			chatClient.sendMessage(new ProtobufMessage(ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass")));
+			chatClient.sendMessage(ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass"));
 		}
 	}
 	
@@ -180,7 +180,7 @@ public class ReelTalkSession extends Application {
 	
 	private void onInputFieldEnterPressed() {
 		ChannelMessagePostRequest request = ClientRequest.newChannelMessagePostRequest(1, "TestoRozach", "rozachPass", 1, chatView.getMessageInputField().getText());
-		chatClient.sendMessage(new ProtobufMessage(request));
+		chatClient.sendMessage(request);
 		chatView.getMessageInputField().getTextField().clear();
 	}
 	

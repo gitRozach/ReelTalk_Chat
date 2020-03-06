@@ -93,11 +93,11 @@ class SecuredMessageServerClientTest {
 			ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
 			
 			for(int i = 0; i < 100; ++i) {
-				server.sendMessage(new ProtobufMessage(client1.getChannel(), eventMessage));
-				server.sendMessage(new ProtobufMessage(client2.getChannel(), eventMessage));
-				server.sendMessage(new ProtobufMessage(client3.getChannel(), eventMessage));
-				server.sendMessage(new ProtobufMessage(client4.getChannel(), eventMessage));
-				server.sendMessage(new ProtobufMessage(client5.getChannel(), eventMessage));
+				server.sendMessage(client1.getChannel(), eventMessage);
+				server.sendMessage(client2.getChannel(), eventMessage);
+				server.sendMessage(client3.getChannel(), eventMessage);
+				server.sendMessage(client4.getChannel(), eventMessage);
+				server.sendMessage(client5.getChannel(), eventMessage);
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());
@@ -132,7 +132,7 @@ class SecuredMessageServerClientTest {
 			
 			Thread.sleep(250L);
 			
-			server.sendMessage(new ProtobufMessage(eventMessage));
+			server.sendMessage(client.getChannel(), eventMessage);
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReceivableBytes());
 			GeneratedMessageV3 reception = client.readMessage();
 			assertTrue(reception.getClass().equals(eventMessage.getClass()));
@@ -167,7 +167,7 @@ class SecuredMessageServerClientTest {
 		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass");
 		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
-			client.sendMessage(new ProtobufMessage(client.getChannel(), req));
+			client.sendMessage(req);
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
 			ProtobufMessage message = server.pollReceptionBytes();
 			assertTrue(message.getMessage() instanceof ClientLoginRequest);
@@ -179,7 +179,7 @@ class SecuredMessageServerClientTest {
 		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "Rozach", "rozachPass");
 		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
-			client.sendMessage(new ProtobufMessage(client.getChannel(), req));
+			client.sendMessage(req);
 			
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
 			ProtobufMessage message = server.pollReceptionBytes();
@@ -211,16 +211,16 @@ class SecuredMessageServerClientTest {
 			client9.connect();
 			client10.connect();
 			for(int i = 0; i < 10; ++i) {
-				client1.sendMessage(new ProtobufMessage(requestMessage));
-				client2.sendMessage(new ProtobufMessage(requestMessage));
-				client3.sendMessage(new ProtobufMessage(requestMessage));
-				client4.sendMessage(new ProtobufMessage(requestMessage));
-				client5.sendMessage(new ProtobufMessage(requestMessage));
-				client6.sendMessage(new ProtobufMessage(requestMessage));
-				client7.sendMessage(new ProtobufMessage(requestMessage));
-				client8.sendMessage(new ProtobufMessage(requestMessage));
-				client9.sendMessage(new ProtobufMessage(requestMessage));
-				client10.sendMessage(new ProtobufMessage(requestMessage));
+				client1.sendMessage(requestMessage);
+				client2.sendMessage(requestMessage);
+				client3.sendMessage(requestMessage);
+				client4.sendMessage(requestMessage);
+				client5.sendMessage(requestMessage);
+				client6.sendMessage(requestMessage);
+				client7.sendMessage(requestMessage);
+				client8.sendMessage(requestMessage);
+				client9.sendMessage(requestMessage);
+				client10.sendMessage(requestMessage);
 			}
 			for(int y = 0; y < 100; ++y) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> server.hasReceivableBytes());
