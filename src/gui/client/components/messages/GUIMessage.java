@@ -33,7 +33,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import network.ssl.client.message.CMessage;
 import utils.Utils;
 
 public class GUIMessage extends HBox {
@@ -48,10 +47,6 @@ public class GUIMessage extends HBox {
 	private Label timeLabel;
 
 	private CustomContextMenu contextMenu;
-
-	public GUIMessage(CMessage message) {
-		this(message.getSender(), message.getMessage());
-	}
 
 	public GUIMessage(String sender, String message) {
 		getStylesheets().add("/stylesheets/client/GUIMessage.css");

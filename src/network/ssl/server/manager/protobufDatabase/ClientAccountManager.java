@@ -2,7 +2,6 @@ package network.ssl.server.manager.protobufDatabase;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.channels.Channels;
 
 import protobuf.ClientIdentities.ClientAccount;
 
@@ -12,19 +11,8 @@ public class ClientAccountManager extends ProtobufFileDatabase<ClientAccount> {
 	}
 	
 	public ClientAccountManager(File databaseFile) throws IOException {
-		super(databaseFile);
-	}
-	
-	@Override
-	public ClientAccount readItem() {
-		try {
-			return ClientAccount.parseDelimitedFrom(Channels.newInputStream(databaseChannel));
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+		super(ClientAccount.class, databaseFile);
+	}	
 	
 	public ClientAccount getByUsernameAndPassword(String username, String password) {
 		for(ClientAccount currentAccount : getItems()) {

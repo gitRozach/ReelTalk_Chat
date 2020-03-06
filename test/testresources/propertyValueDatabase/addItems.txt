@@ -1,5 +1,0 @@
-messageId=0#senderName=Hasan#senderId=1#messageText=Hallo Rozach#receiverId=0#receiverName=Rozach#
-messageId=1#senderName=Rozach#senderId=0#messageText=Hallo Hasan#receiverId=1#receiverName=Hasan#
-messageId=2#senderName=Hasan#senderId=1#messageText=Spast!!!#receiverId=0#receiverName=Rozach#
-messageId=3#senderName=Rozach#senderId=0#messageText=Alter chill sonst klappts#receiverId=1#receiverName=Hasan#
-messageId=4#senderName=Hasan#senderId=1#messageText=Huehuehuehuehue!#receiverId=0#receiverName=Rozach#

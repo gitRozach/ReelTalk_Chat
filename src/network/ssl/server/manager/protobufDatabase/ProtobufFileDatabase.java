@@ -11,9 +11,11 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.protobuf.Any;
 import com.google.protobuf.GeneratedMessageV3;
 
 public abstract class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Closeable {
+	protected final Class<T> itemClass;
 	protected volatile boolean initialized;
 	protected volatile boolean closed;
 	protected volatile boolean autoSave;
@@ -23,11 +25,12 @@ public abstract class ProtobufFileDatabase<T extends GeneratedMessageV3> impleme
 	protected final String databaseFilePath;
 	protected final Charset encoding;
 
-	public ProtobufFileDatabase(String databaseFilePath) throws IOException {
-		this(new File(databaseFilePath));
+	public ProtobufFileDatabase(Class<T> protobufItemClass, String databaseFilePath) throws IOException {
+		this(protobufItemClass, new File(databaseFilePath));
 	}
 
-	public ProtobufFileDatabase(File file) throws IOException {
+	public ProtobufFileDatabase(Class<T> protobufItemClass, File file) throws IOException {
+		itemClass = protobufItemClass;
 		initialized = false;
 		closed = false;
 		autoSave = true;
@@ -41,8 +44,9 @@ public abstract class ProtobufFileDatabase<T extends GeneratedMessageV3> impleme
 	public int writeItem(T item) {
 		try {
 			OutputStream fileOutput = Channels.newOutputStream(databaseChannel);
-			item.writeDelimitedTo(fileOutput);
-			return item.toByteArray().length;
+			Any itemToWrite = Any.pack(item);
+			itemToWrite.writeDelimitedTo(fileOutput);
+			return itemToWrite.toByteArray().length;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +68,18 @@ public abstract class ProtobufFileDatabase<T extends GeneratedMessageV3> impleme
 		}
 	}
 	
-	public abstract T readItem();
+	public T readItem() {
+		try {
+			Any readMessage = Any.parseDelimitedFrom(Channels.newInputStream(databaseChannel));
+			if(readMessage == null)
+				return null;
+			return readMessage.unpack(itemClass);
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public List<T> readItems() {
 		List<T> resultList = new ArrayList<T>();
@@ -188,6 +203,14 @@ public abstract class ProtobufFileDatabase<T extends GeneratedMessageV3> impleme
 
 	public boolean isEmpty() {
 		return size() == 0;
+	}
+	
+	public Class<T> getItemClass() {
+		return itemClass;
+	}
+
+	public void setInitialized(boolean initialized) {
+		this.initialized = initialized;
 	}
 	
 	public boolean isInitialized() {

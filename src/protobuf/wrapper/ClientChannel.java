@@ -13,20 +13,17 @@ import protobuf.ClientChannels.VoiceChannel;
 
 public class ClientChannel {
 	
-	public static boolean isClientChannel(GeneratedMessageV3 message) {
-		if(message == null)
+	public static String[] getRegisteredTypeNames() {
+		return new String[] {"TextChannel", "VoiceChannel"};
+	}
+	
+	public static boolean isClientChannel(Class<? extends GeneratedMessageV3> messageClass) {
+		if(messageClass == null)
 			return false;
-		switch(message.getClass().getSimpleName()) {
-		case "ChannelBase":
-		case "ChannelMembers":
-		case "ChannelRestrictionType":
-		case "ChannelMemberVerification":
-		case "TextChannel":
-		case "VoiceChannel":
-			return true;
-		default:
-			return false;
-		}
+		for(String registeredTypeName : getRegisteredTypeNames())
+			if(registeredTypeName.equalsIgnoreCase(messageClass.getSimpleName()))
+				return true;
+		return false;
 	}
 	
 	public static ChannelBase newChannelBase(int channelId, String channelName) {

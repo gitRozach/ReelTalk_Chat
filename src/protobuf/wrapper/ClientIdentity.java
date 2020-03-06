@@ -22,34 +22,19 @@ import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
 
 public class ClientIdentity {
+	public static String[] getRegisteredTypeNames() {
+		return new String[] {	"ClientBase",
+								"ClientProfile",
+								"ClientAccount"};
+	}
 	
-	public static boolean isClientIdentity(GeneratedMessageV3 message) {
-		if(message == null)
+	public static boolean isClientIdentity(Class<? extends GeneratedMessageV3> messageClass) {
+		if(messageClass == null)
 			return false;
-		switch(message.getClass().getSimpleName()) {
-		case "ClientBase":
-		case "ClientProfile":
-		case "ClientAccount":
-		case "ClientStatus":
-		case "ClientImages":
-		case "AdminGroup":
-		case "ClientGroup":
-		case "ClientGroups":
-		case "ClientBadge":
-		case "ClientBadges":
-		case "ClientFriend":
-		case "ClientFriends":
-		case "ClientDate":
-		case "ClientDeviceBase":
-		case "ClientDeviceAddress":
-		case "ClientDeviceOs":
-		case "ClientDeviceOsType":
-		case "ClientDeviceType":
-		case "ClientDevice":
-			return true;
-		default:
-			return false;
-		}
+		for(String registeredTypeName : getRegisteredTypeNames())
+			if(registeredTypeName.equalsIgnoreCase(messageClass.getSimpleName()))
+				return true;
+		return false;
 	}
 
 	public static ClientBase newClientBase(int clientId, String clientUsername) {

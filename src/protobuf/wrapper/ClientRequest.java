@@ -34,43 +34,44 @@ import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
 import utils.system.SystemUtils;
 
-public class ClientRequest {
+public class ClientRequest {	
+	public static String[] getRegisteredTypeNames() {
+		return new String[] {	"ClientRequestBase",
+								"FileDownloadVerification",
+								"FileDownloadBase",
+								"FileUploadBase",
+								"ChannelJoinRequest",
+								"ChannelLeaveRequest",
+								"ClientProfileGetRequest",
+								"ChannelMessageGetRequest",
+								"ChannelMessagePostRequest",
+								"ChannelMessageAnswerGetRequest",
+								"ChannelMessageAnswerPostRequest",
+								"PrivateMessageGetRequest",
+								"PrivateMessagePostRequest",
+								"ClientProfileCommentGetRequest",
+								"ClientProfileCommentPostRequest",
+								"ClientProfileCommentAnswerGetRequest",
+								"ClientProfileCommentAnswerPostRequest",
+								"ClientChannelGetRequest",
+								"ClientChannelPostRequest",
+								"ChannelFileUploadRequest",
+								"ChannelFileDownloadRequest",
+								"PrivateFileUploadRequest",
+								"PrivateFileDownloadRequest",
+								"ClientLoginRequest",
+								"ClientLogoutRequest",
+								"ClientRegistrationRequest",
+								"PingMeasurementRequest"};
+	}
 	
-	public static boolean isClientRequest(GeneratedMessageV3 message) {
-		if(message == null)
+	public static boolean isClientRequest(Class<? extends GeneratedMessageV3> messageClass) {
+		if(messageClass == null)
 			return false;
-		switch(message.getClass().getSimpleName()) {
-		case "ClientRequestBase":
-		case "FileDownloadVerification":
-		case "FileDownloadBase":
-		case "FileUploadBase":
-		case "ChannelJoinRequest":
-		case "ChannelLeaveRequest":
-		case "ClientProfileGetRequest":
-		case "ChannelMessageGetRequest":
-		case "ChannelMessagePostRequest":
-		case "ChannelMessageAnswerGetRequest":
-		case "ChannelMessageAnswerPostRequest":
-		case "PrivateMessageGetRequest":
-		case "PrivateMessagePostRequest":
-		case "ClientProfileCommentGetRequest":
-		case "ClientProfileCommentPostRequest":
-		case "ClientProfileCommentAnswerGetRequest":
-		case "ClientProfileCommentAnswerPostRequest":
-		case "ClientChannelGetRequest":
-		case "ClientChannelPostRequest":
-		case "ChannelFileUploadRequest":
-		case "ChannelFileDownloadRequest":
-		case "PrivateFileUploadRequest":
-		case "PrivateFileDownloadRequest":
-		case "ClientLoginRequest":
-		case "ClientLogoutRequest":
-		case "ClientRegistrationRequest":
-		case "PingMeasurementRequest":
-			return true;
-		default:
-			return false;
-		}
+		for(String registeredTypeName : getRegisteredTypeNames())
+			if(registeredTypeName.equalsIgnoreCase(messageClass.getSimpleName()))
+				return true;
+		return false;
 	}
 	
 	public static ClientRequestBase newClientRequestBase(	int requestId,

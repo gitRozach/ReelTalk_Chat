@@ -29,8 +29,8 @@ public class SecuredClient extends SecuredPeer {
     protected SocketChannel socketChannel;
     protected Queue<ProtobufMessage> orderedBytes;
     
-    protected ClientByteSender sender;
-    protected ClientByteReceiver receiver;
+    protected ClientMessageWriter sender;
+    protected ClientMessageReader receiver;
 
     public SecuredClient(String protocol, String hostAddress, int hostPort) throws Exception  {
     	super();
@@ -52,8 +52,8 @@ public class SecuredClient extends SecuredPeer {
         setPeerCallback(new LoggerCallback(logger));
         
         orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
-        sender = new ClientByteSender(1L);
-        receiver = new ClientByteReceiver(1L);
+        sender = new ClientMessageWriter(1L);
+        receiver = new ClientMessageReader(1L);
     }
 
     public boolean connect() {
@@ -177,14 +177,14 @@ public class SecuredClient extends SecuredPeer {
     	return socketChannel;
     }
 
-	protected class ClientByteReceiver extends LoopingRunnable {
-		public ClientByteReceiver(long loopingDelay) {
+	protected class ClientMessageReader extends LoopingRunnable {
+		public ClientMessageReader(long loopingDelay) {
 			super(loopingDelay);
 		}	
 		@Override
 		public void run() {
 			super.run();
-			logger.info("ClientReceiver startet...");
+			logger.info("ClientMessageReader startet...");
 	        while (isRunning()) {
 				try {
 					read();
@@ -195,18 +195,18 @@ public class SecuredClient extends SecuredPeer {
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-	        logger.info("ClientReceiver beendet.");
+	        logger.info("ClientMessageReader beendet.");
 		}
 	}
 	    
-    protected class ClientByteSender extends LoopingRunnable {
-    	public ClientByteSender(long loopingDelay) {
+    protected class ClientMessageWriter extends LoopingRunnable {
+    	public ClientMessageWriter(long loopingDelay) {
 			super(loopingDelay);
 		}
     	@Override
 		public void run() {
     		super.run();
-			logger.info("ClientSender startet...");
+			logger.info("ClientMessageWriter startet...");
 			while(isRunning()) {
 				ProtobufMessage sendingMessage = null;
 				if((sendingMessage = peekOrderedBytes()) != null) {
@@ -221,7 +221,7 @@ public class SecuredClient extends SecuredPeer {
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-			logger.info("ClientSender beendet.");
+			logger.info("ClientMessageWriter beendet.");
 		}
     }
 }

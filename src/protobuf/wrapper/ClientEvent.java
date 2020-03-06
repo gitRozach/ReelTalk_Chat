@@ -37,36 +37,38 @@ import protobuf.ClientMessages.PrivateMessage;
 
 public class ClientEvent {
 	
-	public static boolean isClientEvent(GeneratedMessageV3 message) {
-		if(message == null)
+	public static String[] getRegisteredTypeNames() {
+		return new String[] {	"ClientRequestRejectedEvent", 
+								"ClientProfileGetEvent",
+								"ChannelMessagePostEvent", 
+								"ChannelMessageGetEvent",
+								"ChannelMessageAnswerPostEvent",
+								"ChannelMessageAnswerGetEvent",
+								"PrivateMessagePostEvent",
+								"PrivateMessageGetEvent",
+								"ClientProfileCommentPostEvent",
+								"ClientProfileCommentGetEvent",
+								"ClientProfileCommentAnswerPostEvent",
+								"ClientProfileCommentAnswerGetEvent",
+								"ClientChannelJoinEvent",
+								"ClientChannelLeaveEvent",
+								"ClientLoginEvent",
+								"ClientLogoutEvent",
+								"ClientRegistrationEvent",
+								"ChannelFileDownloadEvent",
+								"ChannelFileUploadEvent",
+								"PrivateFileDownloadEvent",
+								"PrivateFileUploadEvent",
+								"PingMeasurementEvent"};
+	}
+	
+	public static boolean isClientEvent(Class<? extends GeneratedMessageV3> messageClass) {
+		if(messageClass == null)
 			return false;
-		switch(message.getClass().getSimpleName()) {
-		case "ClientRequestRejectedEvent":
-		case "ClientProfileGetEvent":
-		case "ChannelMessagePostEvent":
-		case "ChannelMessageGetEvent":
-		case "ChannelMessageAnswerPostEvent":
-		case "ChannelMessageAnswerGetEvent":
-		case "PrivateMessagePostEvent":
-		case "PrivateMessageGetEvent":
-		case "ClientProfileCommentPostEvent":
-		case "ClientProfileCommentGetEvent":
-		case "ClientProfileCommentAnswerPostEvent":
-		case "ClientProfileCommentAnswerGetEvent":
-		case "ClientChannelJoinEvent":
-		case "ClientChannelLeaveEvent":
-		case "ClientLoginEvent":
-		case "ClientLogoutEvent":
-		case "ClientRegistrationEvent":
-		case "ChannelFileDownloadEvent":
-		case "ChannelFileUploadEvent":
-		case "PrivateFileDownloadEvent":
-		case "PrivateFileUploadEvent":
-		case "PingMeasurementEvent":
-			return true;
-		default:
-			return false;
-		}
+		for(String registeredTypeName : getRegisteredTypeNames())
+			if(registeredTypeName.equalsIgnoreCase(messageClass.getSimpleName()))
+				return true;
+		return false;
 	}
 	
 	public static ClientEventBase newClientEventBase(int eventId, int clientId) {

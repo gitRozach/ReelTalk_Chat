@@ -14,23 +14,24 @@ import protobuf.ClientMessages.ClientProfileComment;
 import protobuf.ClientMessages.ClientProfileCommentAnswer;
 import protobuf.ClientMessages.PrivateMessage;
 
-public class ClientMessage {
+public class ClientMessage {	
+	public static String[] getRegisteredTypeNames() {
+		return new String[] {	"ClientMessageBase",
+								"ClientFileMessageBase",
+								"ChannelMessage",
+								"ChannelMessageAnswer",
+								"PrivateMessage",
+								"ClientProfileComment",
+								"ClientProfileCommentAnswer"};
+	}
 	
-	public static boolean isClientMessage(GeneratedMessageV3 message) {
-		if(message == null)
+	public static boolean isClientMessage(Class<? extends GeneratedMessageV3> messageClass) {
+		if(messageClass == null)
 			return false;
-		switch(message.getClass().getSimpleName()) {
-		case "ClientMessageBase":
-		case "ClientFileMessageBase":
-		case "ChannelMessage":
-		case "ChannelMessageAnswer":
-		case "PrivateMessage":
-		case "ClientProfileComment":
-		case "ClientProfileCommentAnswer":
-			return true;
-		default:
-			return false;
-		}
+		for(String registeredTypeName : getRegisteredTypeNames())
+			if(registeredTypeName.equalsIgnoreCase(messageClass.getSimpleName()))
+				return true;
+		return false;
 	}
 	
 	public static ClientMessageBase newClientMessageBase(	int messageId, 

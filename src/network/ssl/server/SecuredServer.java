@@ -36,8 +36,8 @@ public class SecuredServer extends SecuredPeer {
 	protected Selector selector;
 	protected Queue<ProtobufMessage> orderedBytes;
 	
-	protected ServerMessageReceiver receiver;
-	protected ServerMessageSender sender;
+	protected ServerMessageReader receiver;
+	protected ServerMessageWriter sender;
 
 	public SecuredServer(String protocol, String hostAddress, int hostPort) throws Exception {
 		super();
@@ -72,8 +72,8 @@ public class SecuredServer extends SecuredPeer {
 		serverSocketChannel.bind(new InetSocketAddress(hostAddress, hostPort));
 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 		orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
-		receiver = new ServerMessageReceiver(1L);
-		sender = new ServerMessageSender(1L);
+		receiver = new ServerMessageReader(1L);
+		sender = new ServerMessageWriter(1L);
 		active = true;
 		receptionCounter = 0;
 	}
@@ -115,7 +115,7 @@ public class SecuredServer extends SecuredPeer {
 
 	private boolean accept(SelectionKey key) {
 		try {
-			logger.fine("Ein neuer Client moechte sich verbinden...");
+			logger.fine("Client is about to connect...");
 			SocketChannel socketChannel = ((ServerSocketChannel) key.channel()).accept();
 			socketChannel.configureBlocking(false);
 			while (!socketChannel.finishConnect())
@@ -127,12 +127,12 @@ public class SecuredServer extends SecuredPeer {
 	
 			if (doHandshake(socketChannel, engine)) {
 				socketChannel.register(selector, SelectionKey.OP_READ, engine);
-				logger.info("Ein neuer Client hat sich verbunden.");
+				logger.info("Client connected.");
 				return true;
 			} 
 			else {
 				closeConnection(socketChannel, engine);
-				logger.info("Die Verbindung zum Client wurde aufgrund eines Handshake-Fehlers geschlossen.");
+				logger.info("The connection to the client was closed due to a handshake error.");
 				return false;
 			}
 		}
@@ -219,22 +219,9 @@ public class SecuredServer extends SecuredPeer {
 //    	return null;
 //    }
 	
-//	public boolean sendMessage(SelectionKey clientKey, ProtobufMessage message) {
-//		return sendMessage((SocketChannel)clientKey.channel(), message);
-//	}
-
-//	public boolean sendMessage(SocketChannel clientChannel, ProtobufMessage message) {
-//		SelectionKey clientKey = clientChannel.keyFor(selector);
-//		if(clientKey != null)
-//			return sendMessage(message);
-//		return false;
-//	}
-	
-//	public boolean sendMessage(ProtobufMessage byteMessage) {
-//		return orderedBytes.offer(byteMessage);
-//	}
-	
 	public boolean sendMessage(SelectionKey clientKey, GeneratedMessageV3 message) {
+		if(clientKey == null)
+			return false;
 		return sendMessage((SocketChannel)clientKey.channel(), message);
 	}
 	
@@ -263,14 +250,14 @@ public class SecuredServer extends SecuredPeer {
 		return receptionCounter;
 	}
 
-	protected class ServerMessageReceiver extends LoopingRunnable {
-		public ServerMessageReceiver(long loopingDelay) {
+	protected class ServerMessageReader extends LoopingRunnable {
+		public ServerMessageReader(long loopingDelay) {
 			super(loopingDelay);
 		}	
 		@Override
 		public synchronized void run() {
 			super.run();
-			logger.info("ServerMessageReceiver startet...");
+			logger.info("ServerMessageReader startet...");
 			while (isRunning()) {
 				try {
 					selector.select();
@@ -294,27 +281,25 @@ public class SecuredServer extends SecuredPeer {
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-			logger.info("ServerMessageReceiver beendet.");
+			logger.info("ServerMessageReader beendet.");
 		}
 	}
 
-	protected class ServerMessageSender extends LoopingRunnable {
-		public ServerMessageSender(long loopingDelay) {
+	protected class ServerMessageWriter extends LoopingRunnable {
+		public ServerMessageWriter(long loopingDelay) {
 			super(loopingDelay);
 		}		
 		@Override
 		public void run() {
 			super.run();
-			logger.info("ServerMessageSender startet...");
+			logger.info("ServerMessageWriter startet...");
 			while (isRunning()) {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						System.out.println(currentMessage.getSocketChannel().toString());
-						System.out.println(write(getLocalSocketChannel(currentMessage.getSocketChannel()), 
-								(SSLEngine) getLocalSocketChannel(currentMessage.getSocketChannel()).keyFor(selector).attachment(), 
-								currentMessage.getMessage()));
-						pollOrderedBytes();
+						SocketChannel localChannel = getLocalSocketChannel(currentMessage.getSocketChannel());
+						if(write(localChannel, (SSLEngine) localChannel.keyFor(selector).attachment(), currentMessage.getMessage()) > 0)
+							pollOrderedBytes();
 					}
 				} 
 				catch (Exception e) {
@@ -323,7 +308,7 @@ public class SecuredServer extends SecuredPeer {
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-			logger.info("ServerMessageSender beendet.");
+			logger.info("ServerMessageWriter beendet.");
 		}
 	}
 }

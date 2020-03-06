@@ -1,5 +1,6 @@
 package protobuf.wrapper;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,8 +14,36 @@ import protobuf.ClientChannels.ChannelMemberVerification;
 import protobuf.ClientChannels.ChannelRestrictionType;
 import protobuf.ClientChannels.TextChannel;
 import protobuf.ClientChannels.VoiceChannel;
+import protobuf.ClientEvents.ClientLoginEvent;
+import protobuf.ClientIdentities.ClientAccount;
+import protobuf.ClientMessages.ChannelMessage;
+import protobuf.ClientRequests.ClientLoginRequest;
 
 class ClientChannelTest {
+	
+	@Test
+	public void isClientChannel_validClientChannelsReturnTrue() {
+		TextChannel c1 = TextChannel.getDefaultInstance();
+		TextChannel c2 = TextChannel.getDefaultInstance();
+		VoiceChannel v1 = VoiceChannel.getDefaultInstance();
+		VoiceChannel v2 = VoiceChannel.getDefaultInstance();
+		assertTrue(ClientChannel.isClientChannel(c1.getClass()));
+		assertTrue(ClientChannel.isClientChannel(c2.getClass()));
+		assertTrue(ClientChannel.isClientChannel(v1.getClass()));
+		assertTrue(ClientChannel.isClientChannel(v2.getClass()));
+	}
+	
+	@Test
+	public void isClientChannel_invalidClientChannelsReturnFalse() {
+		ClientAccount account = ClientAccount.getDefaultInstance();
+		ChannelMessage channelMessage = ChannelMessage.getDefaultInstance();
+		ClientLoginEvent loginEvent = ClientLoginEvent.getDefaultInstance();
+		ClientLoginRequest loginRequest = ClientLoginRequest.getDefaultInstance();
+		assertFalse(ClientChannel.isClientChannel(account.getClass()));
+		assertFalse(ClientChannel.isClientChannel(channelMessage.getClass()));
+		assertFalse(ClientChannel.isClientChannel(loginEvent.getClass()));
+		assertFalse(ClientChannel.isClientChannel(loginRequest.getClass()));
+	}
 	
 	@Test
 	public void newChannelBase_checkValues() {
