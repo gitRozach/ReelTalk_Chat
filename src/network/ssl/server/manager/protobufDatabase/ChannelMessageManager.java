@@ -13,4 +13,6 @@ public class ChannelMessageManager extends ProtobufFileDatabase<ChannelMessage>{
 	public ChannelMessageManager(File databaseFile) throws IOException {
 		super(ChannelMessage.class, databaseFile);
 	}
+	
+	
 }

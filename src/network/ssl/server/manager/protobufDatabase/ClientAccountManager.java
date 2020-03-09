@@ -22,7 +22,7 @@ public class ClientAccountManager extends ProtobufFileDatabase<ClientAccount> {
 		return null;
 	}
 	
-	public int generateUniqueId() {
+	public int generateUniqueId()ssssssssssss {
 		return generateUniqueClientId(items.isEmpty() ? 1 : 0, Integer.MAX_VALUE);
 	}
 	

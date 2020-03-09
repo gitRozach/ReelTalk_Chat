@@ -32,7 +32,7 @@ import com.google.protobuf.GeneratedMessageV3;
 import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ProtobufMessage;
 
-public abstract class SecuredPeer implements Closeable {	
+public abstract class SecuredProtobufPeer implements Closeable {	
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
 	
 	protected PeerCallback peerCallback;
@@ -57,7 +57,7 @@ public abstract class SecuredPeer implements Closeable {
     protected ExecutorService asyncTaskExecutor;
     protected ExecutorService ioExecutor;
     
-    public SecuredPeer() {
+    public SecuredProtobufPeer() {
     	bufferingReceivedMessages = false;
     	bufferingSentMessages = false;
     	receptionHandlerEnabled = true;

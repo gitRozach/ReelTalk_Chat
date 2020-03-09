@@ -17,7 +17,6 @@ import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
 import network.ssl.server.manager.protobufDatabase.ClientChannelManager;
 import network.ssl.server.manager.protobufDatabase.ClientMessageManager;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
-import protobuf.ClientEvents.ClientProfileGetEvent;
 import protobuf.ClientEvents.ClientRequestRejectedEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientMessages.ChannelMessage;
@@ -39,7 +38,7 @@ import protobuf.ClientRequests.PrivateMessagePostRequest;
 import protobuf.wrapper.ClientEvent;
 import protobuf.wrapper.ClientMessage;
 
-public class SecuredMessageServer extends SecuredServer {
+public class ReelTalkServer extends SecuredProtobufServer {
 	protected ClientAccountManager clients;
 	protected ClientChannelManager channelManager;
 	protected ClientMessageManager messageManager;
@@ -47,7 +46,7 @@ public class SecuredMessageServer extends SecuredServer {
 	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
 
-	public SecuredMessageServer(String protocol, String hostAddress, int port) throws Exception {
+	public ReelTalkServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
 		int camRes = initClientDatabase();
 		int cmRes = initChannelManager();
@@ -205,7 +204,7 @@ public class SecuredMessageServer extends SecuredServer {
 	private void handleChannelMessagePostRequest(SelectionKey clientKey, ChannelMessagePostRequest request) {
 		for(SelectionKey key : selector.keys()) {
 			if(key.channel() instanceof SocketChannel) {
-				ChannelMessage channelMessage = ClientMessage.newChannelMessage(1, "Hallo Leude", 0, "Rozach", 1, System.currentTimeMillis(), Collections.emptyList());
+				ChannelMessage channelMessage = ClientMessage.newChannelMessage(1, request.getMessageText(), 0, request.getRequestBase().getUsername(), 1, System.currentTimeMillis(), Collections.emptyList());
 				List<ChannelMessage> messages = new ArrayList<ChannelMessage>();
 				messages.add(channelMessage);
 				
@@ -217,24 +216,32 @@ public class SecuredMessageServer extends SecuredServer {
 	}
 	
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
-		ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
-		if(clientData != null) {
-			ClientProfileGetEvent dataMessage = null;
-			sendMessage(clientKey, dataMessage);
-			for(ChannelMessage message : messageManager.getChannelMessages()) {
-				sendMessage(clientKey, message);
-				try {
-					Thread.sleep(50L);
-				} 
-				catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
+
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, rejMessage);
 		}
+		
+//		ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
+//		if(clientData != null) {
+//			ClientProfileGetEvent dataMessage = null;
+//			sendMessage(clientKey, dataMessage);
+//			for(ChannelMessage message : messageManager.getChannelMessages()) {
+//				sendMessage(clientKey, message);
+//				try {
+//					Thread.sleep(50L);
+//				} 
+//				catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//		else {
+//			ClientRequestRejectedEvent rejMessage = null;
+//			sendMessage(clientKey, rejMessage);
+//		}
 	}
 	
 	private void handleClientLogoutRequest(SelectionKey clientKey, ClientLogoutRequest request) {

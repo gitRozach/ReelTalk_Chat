@@ -26,7 +26,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import network.ssl.client.SecuredMessageClient;
+import network.ssl.client.ReelTalkClient;
 import utils.gui.GUITools;
 
 public class ChannelBar extends StackPane {
@@ -46,7 +46,7 @@ public class ChannelBar extends StackPane {
 		this(initialize, null);
 	}
 	
-	public ChannelBar(boolean initialize, SecuredMessageClient clientAttachment) {
+	public ChannelBar(boolean initialize, ReelTalkClient clientAttachment) {
 		super();
 		
 		if(initialize)
@@ -223,7 +223,7 @@ public class ChannelBar extends StackPane {
 		return -1;
 	}
 	
-	public void attachClient(SecuredMessageClient client) {
+	public void attachClient(ReelTalkClient client) {
 		
 	}
 	

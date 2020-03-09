@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import com.google.protobuf.GeneratedMessageV3;
 
-import network.ssl.client.SecuredMessageClient;
+import network.ssl.client.ReelTalkClient;
 import network.ssl.communication.ProtobufMessage;
-import network.ssl.server.SecuredMessageServer;
+import network.ssl.server.ReelTalkServer;
 import protobuf.ClientEvents.ClientLoginEvent;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientBadge;
@@ -34,7 +34,7 @@ import protobuf.wrapper.ClientRequest;
 
 class SecuredMessageServerClientTest {
 
-	protected static SecuredMessageServer server;
+	protected static ReelTalkServer server;
 	
 	protected static final String TEST_PROTOCOL = "TLSv1.2";
 	protected static final String TEST_HOST_ADDRESS = "localhost";
@@ -66,7 +66,7 @@ class SecuredMessageServerClientTest {
 	
 	@BeforeAll
 	public static void setUp() throws Exception {
-		server = new SecuredMessageServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+		server = new ReelTalkServer(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 		server.setBufferingReceivedMessages(true);
 		server.start();
 		Thread.sleep(50L);
@@ -74,11 +74,11 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void sendMessage_serverSendsMultipleMessagesAndClientReceivesAllMessages() throws Exception {
-		try(SecuredMessageClient client1 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client2 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client3 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client4 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client5 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(ReelTalkClient client1 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client2 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client3 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client4 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client5 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
 			client1.setBufferingReceivedMessages(true);
 			client2.connect();
@@ -126,7 +126,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
 		ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
-		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedMessages(true);
 			
@@ -165,7 +165,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void clientLogin_validLoginTest() throws Exception {
 		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass");
-		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
 			client.sendMessage(req);
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
@@ -177,7 +177,7 @@ class SecuredMessageServerClientTest {
 	@Test
 	void clientLogin_invalidLoginTest() throws Exception {
 		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "Rozach", "rozachPass");
-		try(SecuredMessageClient client = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.sendMessage(req);
 			
@@ -190,16 +190,16 @@ class SecuredMessageServerClientTest {
 	@Test
 	void sendMessage_tenClientsSendMultipleMessagesAndServerReceivesAllMessages() throws Exception {
 		PrivateMessagePostRequest requestMessage = ClientRequest.newPrivateMessagePostRequest(1, "Rozach", "rozachPass", 12, "Hallo Jann!");
-		try(SecuredMessageClient client1 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client2 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client3 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client4 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client5 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client6 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client7 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client8 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client9 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
-			SecuredMessageClient client10 = new SecuredMessageClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
+		try(ReelTalkClient client1 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client2 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client3 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client4 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client5 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client6 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client7 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client8 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client9 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
+			ReelTalkClient client10 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client1.connect();
 			client2.connect();
 			client3.connect();

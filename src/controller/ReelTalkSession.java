@@ -23,9 +23,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
-import network.ssl.client.SecuredMessageClient;
+import network.ssl.client.ReelTalkClient;
 import network.ssl.communication.ProtobufMessage;
-import network.ssl.server.SecuredMessageServer;
+import network.ssl.server.ReelTalkServer;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
 import protobuf.wrapper.ClientRequest;
@@ -39,8 +39,8 @@ public class ReelTalkSession extends Application {
 	private LoadableStackPane rootPane;
 	private ClientChatView chatView;
 	
-	private SecuredMessageServer chatServer;
-	private SecuredMessageClient chatClient;
+	private ReelTalkServer chatServer;
+	private ReelTalkClient chatClient;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -87,11 +87,11 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initServer() throws Exception {
-		chatServer = new SecuredMessageServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
+		chatServer = new ReelTalkServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initClient() throws Exception {
-		chatClient = new SecuredMessageClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
+		chatClient = new ReelTalkClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initStage(Stage stage) {

@@ -22,11 +22,11 @@ import com.google.protobuf.GeneratedMessageV3;
 
 import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ProtobufMessage;
-import network.ssl.peer.SecuredPeer;
+import network.ssl.peer.SecuredProtobufPeer;
 import utils.Utils;
 import utils.concurrency.LoopingRunnable;
 
-public class SecuredServer extends SecuredPeer {
+public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected volatile boolean active;
 	protected volatile int receptionCounter;
 	protected volatile boolean connected;
@@ -36,10 +36,10 @@ public class SecuredServer extends SecuredPeer {
 	protected Selector selector;
 	protected Queue<ProtobufMessage> orderedBytes;
 	
-	protected ServerMessageReader receiver;
-	protected ServerMessageWriter sender;
+	protected ServerProtobufReader receiver;
+	protected ServerProtobufWriter sender;
 
-	public SecuredServer(String protocol, String hostAddress, int hostPort) throws Exception {
+	public SecuredProtobufServer(String protocol, String hostAddress, int hostPort) throws Exception {
 		super();
 		context = SSLContext.getInstance(protocol);
 		context.init(createKeyManagers("src/resources/server.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
@@ -72,8 +72,8 @@ public class SecuredServer extends SecuredPeer {
 		serverSocketChannel.bind(new InetSocketAddress(hostAddress, hostPort));
 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 		orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
-		receiver = new ServerMessageReader(1L);
-		sender = new ServerMessageWriter(1L);
+		receiver = new ServerProtobufReader(1L);
+		sender = new ServerProtobufWriter(1L);
 		active = true;
 		receptionCounter = 0;
 	}
@@ -250,14 +250,14 @@ public class SecuredServer extends SecuredPeer {
 		return receptionCounter;
 	}
 
-	protected class ServerMessageReader extends LoopingRunnable {
-		public ServerMessageReader(long loopingDelay) {
+	protected class ServerProtobufReader extends LoopingRunnable {
+		public ServerProtobufReader(long loopingDelay) {
 			super(loopingDelay);
 		}	
 		@Override
 		public synchronized void run() {
 			super.run();
-			logger.info("ServerMessageReader startet...");
+			logger.info("ServerProtobufReader startet...");
 			while (isRunning()) {
 				try {
 					selector.select();
@@ -281,23 +281,25 @@ public class SecuredServer extends SecuredPeer {
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-			logger.info("ServerMessageReader beendet.");
+			logger.info("ServerProtobufReader beendet.");
 		}
 	}
 
-	protected class ServerMessageWriter extends LoopingRunnable {
-		public ServerMessageWriter(long loopingDelay) {
+	protected class ServerProtobufWriter extends LoopingRunnable {
+		public ServerProtobufWriter(long loopingDelay) {
 			super(loopingDelay);
 		}		
 		@Override
 		public void run() {
 			super.run();
-			logger.info("ServerMessageWriter startet...");
+			logger.info("ServerProtobufWriter startet...");
 			while (isRunning()) {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
 						SocketChannel localChannel = getLocalSocketChannel(currentMessage.getSocketChannel());
+						if(localChannel == null)
+							localChannel = currentMessage.getSocketChannel();
 						if(write(localChannel, (SSLEngine) localChannel.keyFor(selector).attachment(), currentMessage.getMessage()) > 0)
 							pollOrderedBytes();
 					}
@@ -305,10 +307,11 @@ public class SecuredServer extends SecuredPeer {
 				catch (Exception e) {
 					e.printStackTrace();
 					logger.severe(e.toString());
+					return;
 				}
 				Utils.sleep(loopDelayMillis);
 			}
-			logger.info("ServerMessageWriter beendet.");
+			logger.info("ServerProtobufWriter beendet.");
 		}
 	}
 }

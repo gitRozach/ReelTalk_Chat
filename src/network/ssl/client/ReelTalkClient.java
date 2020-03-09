@@ -7,11 +7,11 @@ import network.client.eventHandlers.ObjectEventHandler;
 import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ProtobufMessage;
 
-public class SecuredMessageClient extends SecuredClient {
+public class ReelTalkClient extends SecuredProtobufClient {
 	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
 	
-	public SecuredMessageClient(String protocol, String remoteAddress, int port) throws Exception {
+	public ReelTalkClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
 		initHandlers();
 		initCallbacks();

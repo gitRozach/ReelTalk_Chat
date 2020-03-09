@@ -24,7 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import network.ssl.client.SecuredMessageClient;
+import network.ssl.client.ReelTalkClient;
 import utils.gui.GUITools;
 
 public class ClientBar extends LoadableStackPane {
@@ -72,7 +72,7 @@ public class ClientBar extends LoadableStackPane {
 		this(initialize, null);
 	}
 
-	public ClientBar(boolean initialize, SecuredMessageClient clientAttachment) {
+	public ClientBar(boolean initialize, ReelTalkClient clientAttachment) {
 		super();
 		
 		if(initialize)
@@ -366,7 +366,7 @@ public class ClientBar extends LoadableStackPane {
 		mediaView.getChildren().add(createAppItem("Downloads"));
 	}
 
-	public void attachClient(SecuredMessageClient client) {
+	public void attachClient(ReelTalkClient client) {
 		
 	}
 
