@@ -1,0 +1,13 @@
+ 
+:type.googleapis.com/protobuf.clientmessages.ChannelMessageb
+%Hallo Jann!"TestoRozach(€Ýéÿÿ-	file1	file2	file3	file4	file5›
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage]
+ Hallo Rozach!
+"Jenn(à±íÿÿ-	file1	file2	file3	file4	file5g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#	Ah, Jann!"TestoRozach(À†ñÿÿ-i
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
+%AH! Rozach!
+"TestoRozach( Ûôÿÿ-w
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage9
+3Jungs haltet mal die Fressen."Thuraeh(€°øÿÿ-

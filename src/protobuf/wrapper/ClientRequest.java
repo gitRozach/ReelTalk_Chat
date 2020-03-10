@@ -32,7 +32,7 @@ import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import utils.system.SystemUtils;
+import utils.SystemUtils;
 
 public class ClientRequest {	
 	public static String[] getRegisteredTypeNames() {

@@ -1,0 +1,13 @@
+i
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
+%Hallo Jann!"TestoRozach(€İéÿÿ-d
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ Hallo Rozach!
+"Jenn(à±íÿÿ-g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#	Ah, Jann!"TestoRozach(ÀãÌ€.i
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
+%AH! Rozach!
+"TestoRozach( ¸Ğ€.c
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage%
+	Jungs ..."Thuraeh(€ê¯ƒ€.

@@ -1,4 +1,4 @@
-package utils.gui;
+package utils;
 
 import com.jfoenix.controls.JFXTabPane;
 
@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
-public class GUITools {
+public class JFXUtils {
 
 	public static void setFixedTabWidth(JFXTabPane tabPane, double width) {
 		tabPane.setTabMinWidth(width);
@@ -29,7 +29,7 @@ public class GUITools {
 	
 	public static Node createHorizontalSpacer(double width) {
 		HBox spacer = new HBox();
-		GUITools.setFixedWidthOf(spacer, width);
+		JFXUtils.setFixedWidthOf(spacer, width);
 		return spacer;
 	}
 	

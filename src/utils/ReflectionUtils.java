@@ -1,4 +1,4 @@
-package utils.reflection;
+package utils;
 
 public class ReflectionUtils {
 	

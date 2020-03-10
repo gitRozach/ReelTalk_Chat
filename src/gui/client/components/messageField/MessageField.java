@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import network.client.eventHandlers.ObjectEvent;
 import network.client.eventHandlers.ObjectEventHandler;
-import utils.gui.GUITools;
+import utils.JFXUtils;
 
 public class MessageField extends VBox {
 	private HBox messageBox;
@@ -71,7 +71,7 @@ public class MessageField extends VBox {
 		onFileButtonClicked = (mouseEvent -> {});
 		
 		emojiTextField = new EmojiTextField();
-		GUITools.setFixedHeightOf(emojiTextField, 50d);
+		JFXUtils.setFixedHeightOf(emojiTextField, 50d);
 		HBox.setHgrow(emojiTextField, Priority.ALWAYS);
 
 		emojiButton = new ImageView(new Image("/resources/icons/img_smiley.png"));

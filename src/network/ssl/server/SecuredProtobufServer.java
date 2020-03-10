@@ -23,8 +23,8 @@ import com.google.protobuf.GeneratedMessageV3;
 import network.ssl.client.callbacks.PeerCallback;
 import network.ssl.communication.ProtobufMessage;
 import network.ssl.peer.SecuredProtobufPeer;
+import utils.LoopingRunnable;
 import utils.Utils;
-import utils.concurrency.LoopingRunnable;
 
 public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected volatile boolean active;

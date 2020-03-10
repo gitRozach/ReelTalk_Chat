@@ -27,7 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import network.ssl.client.ReelTalkClient;
-import utils.gui.GUITools;
+import utils.JFXUtils;
 
 public class ChannelBar extends StackPane {
 	private VBox contentBox;
@@ -69,7 +69,7 @@ public class ChannelBar extends StackPane {
 
 	private void initServerBar() {
 		serverBarBox = new HBox();
-		GUITools.setFixedHeightOf(serverBarBox, 50d);
+		JFXUtils.setFixedHeightOf(serverBarBox, 50d);
 	}
 	
 	private void initButtons() {	
@@ -292,7 +292,7 @@ public class ChannelBar extends StackPane {
 				profilePic.setStroke(Color.GREEN);
 				profilePic.setStrokeWidth(2d);
 				
-				HBox graphicBox = new HBox(profilePic, GUITools.createHorizontalSpacer(10d));
+				HBox graphicBox = new HBox(profilePic, JFXUtils.createHorizontalSpacer(10d));
 				
 				setGraphic(graphicBox);
 				setPrefWidth(150d);

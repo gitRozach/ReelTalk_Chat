@@ -25,7 +25,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import network.ssl.client.ReelTalkClient;
-import utils.gui.GUITools;
+import utils.JFXUtils;
 
 public class ClientBar extends LoadableStackPane {
 	private VBox rootContentBox;
@@ -166,7 +166,7 @@ public class ClientBar extends LoadableStackPane {
 		
 		profileTabPane = new JFXTabPane();
 		profileTabPane.getTabs().addAll(messagesTab, membersTab, mediaTab);
-		GUITools.hideTabs(profileTabPane);
+		JFXUtils.hideTabs(profileTabPane);
 	}
 	
 	private void initRootContentBox() {
@@ -300,7 +300,7 @@ public class ClientBar extends LoadableStackPane {
 		
 		memberTabPane = new JFXTabPane();
 		memberTabPane.getTabs().addAll(friendsTab, membersTab, onlineTab);
-		GUITools.hideTabs(memberTabPane);
+		JFXUtils.hideTabs(memberTabPane);
 	}
 	
 	private void initFriendsView() {
@@ -500,7 +500,7 @@ public class ClientBar extends LoadableStackPane {
 				profilePic.setStroke(Color.GREEN);
 				profilePic.setStrokeWidth(1d);
 				
-				HBox graphicBox = new HBox(profilePic, GUITools.createHorizontalSpacer(10d));
+				HBox graphicBox = new HBox(profilePic, JFXUtils.createHorizontalSpacer(10d));
 				graphicBox.setPadding(new Insets(0d, 0d, 0d, 10d));
 				
 				setGraphic(graphicBox);

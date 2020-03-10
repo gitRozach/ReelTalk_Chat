@@ -108,16 +108,16 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public boolean removeItem(int index) {
-		return false;
+		if(index < 0 || index >= items.size())
+			return false;
+		boolean res = items.remove(index) != null;
+		if(isAutoSave())
+			return rewrite();
+		return res;
 	}
 	
 	public boolean removeItem(T item) {
-		if(removeItem(items.indexOf(item))) {
-			if(isAutoSave())
-				return rewrite();
-			return true;
-		}
-		return false;
+		return item != null && removeItem(items.indexOf(item));
 	}
 	
 	public boolean rewrite() {

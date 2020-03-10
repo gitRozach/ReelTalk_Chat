@@ -1,4 +1,4 @@
-package utils.network;
+package utils;
 
 import java.io.IOException;
 import java.net.DatagramSocket;

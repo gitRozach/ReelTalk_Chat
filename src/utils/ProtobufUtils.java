@@ -1,4 +1,4 @@
-package utils.protobuf;
+package utils;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;

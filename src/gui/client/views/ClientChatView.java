@@ -18,7 +18,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import utils.gui.GUITools;
+import utils.JFXUtils;
 
 public final class ClientChatView extends StackPane {	
 	private double minWidth;
@@ -87,7 +87,7 @@ public final class ClientChatView extends StackPane {
 	
 	private void initTabContainer() {
 		tabPane = new JFXTabPane();
-		GUITools.hideTabs(tabPane);
+		JFXUtils.hideTabs(tabPane);
 		
 		VBox emptyBox = new VBox();
 		emptyBox.setFillWidth(true);
@@ -131,7 +131,7 @@ public final class ClientChatView extends StackPane {
 	private void initTitleBar() {
 		titleBar = new HBox();
 		titleBar.getStyleClass().add("title-bar");
-		GUITools.setFixedHeightOf(titleBar, 50d);
+		JFXUtils.setFixedHeightOf(titleBar, 50d);
 		
 		HBox spacer = new HBox();
 		

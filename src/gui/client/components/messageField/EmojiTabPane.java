@@ -11,8 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import network.client.eventHandlers.ObjectEvent;
+import utils.JFXUtils;
 import utils.Utils;
-import utils.gui.GUITools;
 
 public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;
@@ -110,7 +110,7 @@ public class EmojiTabPane extends StackPane {
 		skinChooser = new EmojiSkinChooser();
 		skinChooser.setFromColor(EmojiSkinChooser.SKIN_COLORS[0]);
 		skinChooser.setPickOnBounds(true);
-		GUITools.setFixedSizeOf(skinChooser, 25d, 25d);
+		JFXUtils.setFixedSizeOf(skinChooser, 25d, 25d);
 		EmojiTabPane.setAlignment(skinChooser, Pos.TOP_RIGHT);
 		EmojiTabPane.setMargin(skinChooser, new Insets(0d, 15d, 5d, 5d));
 

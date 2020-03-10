@@ -1,4 +1,4 @@
-package utils.concurrency;
+package utils;
 
 public abstract class LoopingRunnable implements Runnable {
 	protected volatile boolean running;

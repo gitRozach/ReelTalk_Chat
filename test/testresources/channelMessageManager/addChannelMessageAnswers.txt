@@ -1,0 +1,20 @@
+‰
+:type.googleapis.com/protobuf.clientmessages.ChannelMessageÊ
+%Hallo Jann!"TestoRozach(€Ýéÿÿ-"
+	Antwort 1
+"Jann"
+	Antwort 2"Rozach"
+	Antwort 3
+"Jann"
+	Antwort 4"Rozach"
+	Antwort 5"Jannd
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ Hallo Rozach!
+"Jenn(à±íÿÿ-g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#	Ah, Jann!"TestoRozach(À†ñÿÿ-i
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
+%AH! Rozach!
+"TestoRozach( Ûôÿÿ-w
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage9
+3Jungs haltet mal die Fressen."Thuraeh(€°øÿÿ-

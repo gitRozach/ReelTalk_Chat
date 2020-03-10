@@ -1,16 +1,19 @@
 package network.client.eventHandlers;
 
+import com.google.protobuf.GeneratedMessageV3;
+
 import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.event.EventType;
 
 public abstract class ObjectEvent<T> extends Event {
-	private static final long serialVersionUID = 5975228043408569550L;
-	protected T attachedObject;
-	
+	private static final long serialVersionUID = 5975228043408569550L;	
 	public static EventType<ObjectEvent<?>> ANY = new EventType<ObjectEvent<?>>("ANY");
 	public static EventType<ObjectEvent<String>> STRING = new EventType<ObjectEvent<String>>("STRING");
+	public static EventType<ObjectEvent<GeneratedMessageV3>> PROTOBUF_MESSAGE = new EventType<ObjectEvent<GeneratedMessageV3>>("PROTOBUF_MESSAGE");
 
+	protected T attachedObject;
+	
 	public ObjectEvent(EventType<? extends Event> type) {
 		this(type, null);
 	}
