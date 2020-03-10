@@ -14,8 +14,6 @@ import java.util.List;
 import com.google.protobuf.Any;
 import com.google.protobuf.GeneratedMessageV3;
 
-import utils.protobuf.ProtobufUtils;
-
 public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Closeable {
 	protected final Class<T> itemClass;
 	protected volatile boolean initialized;
@@ -41,39 +39,6 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		databaseChannel = this.databaseFile.getChannel();
 		databaseFilePath = file.getPath();
 		encoding = Charset.forName("utf-8");
-	}
-	
-	public int generateUniqueIdFor(String fieldName, int startValue) throws Exception {
-		if(!isInitialized())
-			throw new Exception("The database has not been initialized.");
-		if(isEmpty()) {
-			System.out.println("EMPTY -> Return 1");
-			return 1;
-		}
-		
-		boolean currentIdFound = false;
-		for(int currentId = startValue; currentId < Integer.MAX_VALUE; ++currentId) {
-			for(int i = 0; i < items.size(); ++i) {
-//				if(!ProtobufUtils.isFieldTypeInt(items.get(i), fieldName)) {
-//					System.out.println("Item at index " + i + " is not an int!");
-//					continue;
-//				}
-				Integer currentValue = ProtobufUtils.getFieldValueOf(items.get(i), fieldName);
-				if(currentValue == null) {
-					System.out.println("CurrentValue = null. Continue");
-					continue;
-				}
-				System.out.println("Integer Value: " + currentValue);
-				if(currentValue == currentId) {
-					System.out.println("Value already exists. Breaking.");
-					currentIdFound = true;
-					break;
-				}
-			}
-			if(!currentIdFound)
-				return currentId;
-		}
-		return 0;
 	}
 	
 	public int writeItem(T item) {
@@ -223,6 +188,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		try {
 			if(isClosed())
 				return;
+			rewrite();
 			databaseFile.close();
 			items.clear();
 			setClosed(true);

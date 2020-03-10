@@ -38,4 +38,10 @@ b
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage!
 lul"TestoRozach(òù½Œ._
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage!
-wtf"TestoRozach(Ôÿ½Œ.
+wtf"TestoRozach(Ôÿ½Œ.a
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage#
+hallo"TestoRozach(¡«‘Œ.m
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage/
+)iugig iugig iug#+"TestoRozach(Ú»«‘Œ.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+xd"TestoRozach(ÓÌ«‘Œ.

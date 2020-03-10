@@ -1,5 +1,6 @@
 package network.ssl.server.manager;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -7,7 +8,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
@@ -34,8 +34,18 @@ class ClientAccountManagerTest {
 	protected static ClientAccount testAccount4;
 	protected static ClientAccount testAccount5;
 	
-	@BeforeAll
-	public static void init() {
+	@After
+	public void tearDown() {
+		if(database != null)
+			database.close();
+	}
+	
+	@Test
+	void addItem_addsMultipleItemsToDatabaseFile() throws IOException {
+		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
+		database.initialize();
+		database.clear();
+		
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
 		
 		ClientBadge badge1 = ClientBadge.newBuilder().setBadgeId(1).setBadgeName("Badge 1").setBadgeDescription("Badge Description 1").build();
@@ -52,7 +62,7 @@ class ClientAccountManagerTest {
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
 		
-		ClientProfile profile1 = ClientIdentity.newClientProfile(	1, 
+		ClientProfile profile1 = ClientIdentity.newClientProfile(	database.generateUniqueBaseId(), 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -62,8 +72,9 @@ class ClientAccountManagerTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount1 = ClientIdentity.newClientAccount(profile1, ClientDevice.getDefaultInstance(), "rozachPass");
+		assertTrue(database.addItem(testAccount1));
 		
-		ClientProfile profile2 = ClientIdentity.newClientProfile(	1, 
+		ClientProfile profile2 = ClientIdentity.newClientProfile(	database.generateUniqueBaseId(1), 
 																	"Jenn", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -73,8 +84,9 @@ class ClientAccountManagerTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount2 = ClientIdentity.newClientAccount(profile2, ClientDevice.getDefaultInstance(), "jennPass");
-
-		ClientProfile profile3 = ClientIdentity.newClientProfile(	1, 
+		assertTrue(database.addItem(testAccount2));
+		
+		ClientProfile profile3 = ClientIdentity.newClientProfile(	database.generateUniqueBaseId(1, 10), 
 																	"Husan", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -84,8 +96,9 @@ class ClientAccountManagerTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount3 = ClientIdentity.newClientAccount(profile3, ClientDevice.getDefaultInstance(), "husanPass");
+		assertTrue(database.addItem(testAccount3));
 		
-		ClientProfile profile4 = ClientIdentity.newClientProfile(	1, 
+		ClientProfile profile4 = ClientIdentity.newClientProfile(	database.generateUniqueBaseId(1), 
 																	"Hendrizio", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -95,8 +108,9 @@ class ClientAccountManagerTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount4 = ClientIdentity.newClientAccount(profile4, ClientDevice.getDefaultInstance(), "hendrizioPass");
-
-		ClientProfile profile5 = ClientIdentity.newClientProfile(	1, 
+		assertTrue(database.addItem(testAccount4));
+		
+		ClientProfile profile5 = ClientIdentity.newClientProfile(	database.generateUniqueBaseId(), 
 																	"Farkan", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -106,25 +120,14 @@ class ClientAccountManagerTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount5 = ClientIdentity.newClientAccount(profile5, ClientDevice.getDefaultInstance(), "farkanPass");
-	}
-	
-	@After
-	public void tearDown() {
-		if(database != null)
-			database.close();
-	}
-	
-	@Test
-	void addItem_addsMultipleItemsToDatabaseFile() throws IOException {
-		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
-		database.clear();
-		
-		assertTrue(database.addItem(testAccount1));
-		assertTrue(database.addItem(testAccount2));
-		assertTrue(database.addItem(testAccount3));
-		assertTrue(database.addItem(testAccount4));
 		assertTrue(database.addItem(testAccount5));
-
+		
+		assertTrue(testAccount1.getProfile().getBase().getId() == 1);
+		assertTrue(testAccount2.getProfile().getBase().getId() == 2);
+		assertTrue(testAccount3.getProfile().getBase().getId() == 3);
+		assertTrue(testAccount4.getProfile().getBase().getId() == 4);
+		assertTrue(testAccount5.getProfile().getBase().getId() == 5);
+		
 		assertTrue(database.getItems().indexOf(testAccount1) == 0);
 		assertTrue(database.getItems().indexOf(testAccount2) == 1);
 		assertTrue(database.getItems().indexOf(testAccount3) == 2);
@@ -135,8 +138,9 @@ class ClientAccountManagerTest {
 	@Test
 	public void readItems_readsAllItemsFromDatabaseFile() throws IOException {
 		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
+		assertEquals(database.initialize(), 5);
+		
 		List<ClientAccount> accounts = database.readItems();
-		assertTrue(accounts.size() == 5);
 		assertTrue(accounts.get(0).equals(testAccount1));
 		assertTrue(accounts.get(1).equals(testAccount2));
 		assertTrue(accounts.get(2).equals(testAccount3));

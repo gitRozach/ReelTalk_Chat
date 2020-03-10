@@ -2,35 +2,68 @@ package network.ssl.server.manager.protobufDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import protobuf.ClientIdentities.ClientAccount;
 
 public class ClientAccountManager extends ProtobufFileDatabase<ClientAccount> {
+	private final Object idLock = new Object();
+	
 	public ClientAccountManager(String databaseFilePath) throws IOException {
 		this(new File(databaseFilePath));
 	}
 	
 	public ClientAccountManager(File databaseFile) throws IOException {
 		super(ClientAccount.class, databaseFile);
+		initialize();
 	}	
 	
-	public ClientAccount getByUsernameAndPassword(String username, String password) {
+	public List<ClientAccount> getByBaseId(int id) {
+		List<ClientAccount> resultList = new ArrayList<>();
+		for(ClientAccount currentAccount : getItems()) {
+			if(currentAccount.getProfile().getBase().getId() == id)
+				resultList.add(currentAccount);
+		}
+		return resultList;
+	}
+	
+	public List<ClientAccount> getByUsernameAndPassword(String username, String password) {
+		List<ClientAccount> resultList = new ArrayList<>();
 		for(ClientAccount currentAccount : getItems()) {
 			if(currentAccount.getProfile().getBase().getUsername().equals(username) && currentAccount.getPassword().equals(password))
-				return currentAccount;
+				resultList.add(currentAccount);
 		}
-		return null;
+		return resultList;
 	}
 	
-	public int generateUniqueId()ssssssssssss {
-		return generateUniqueClientId(items.isEmpty() ? 1 : 0, Integer.MAX_VALUE);
+	public int generateUniqueBaseId() {
+		return getItems().isEmpty() ? 1 : generateUniqueBaseId(getItem(getItems().size() - 1).getProfile().getBase().getId() + 1); 
 	}
 	
-	public int generateUniqueId(int minId) {
-		return generateUniqueClientId(minId, Integer.MAX_VALUE);
+	public int generateUniqueBaseId(int minId) {
+		return generateUniqueBaseId(minId, Integer.MAX_VALUE);
 	}
 	
-	public synchronized int generateUniqueClientId(int minId, int maxId) {
-		return 0;
+	public int generateUniqueBaseId(int minId, int maxId) {
+		synchronized (idLock) {
+			if(minId > maxId)
+				return -1;
+			if(getItems().isEmpty())
+				return minId;
+			boolean idAlreadyExists = false;
+			for(int currentId = minId; currentId <= maxId; ++currentId) {
+				idAlreadyExists = false;
+				for(ClientAccount currentAccount : getItems()) {
+					if(currentAccount.getProfile().getBase().getId() == currentId) {
+						idAlreadyExists = true;
+						break;
+					}
+				}
+				if(!idAlreadyExists)
+					return currentId;
+			}
+			return -1;
+		}
 	}
 }

@@ -58,7 +58,7 @@ class ProtobufFileDatabaseTest {
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
 		
-		ClientProfile profile1 = ClientIdentity.newClientProfile(	database.generateUniqueIdFor("id", 1), 
+		ClientProfile profile1 = ClientIdentity.newClientProfile(	1, 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -70,7 +70,7 @@ class ProtobufFileDatabaseTest {
 		testAccount1 = ClientIdentity.newClientAccount(profile1, ClientDevice.getDefaultInstance(), "rozachPass");
 		assertTrue(database.addItem(testAccount1));
 		
-		ClientProfile profile2 = ClientIdentity.newClientProfile(	database.generateUniqueIdFor("id", 1), 
+		ClientProfile profile2 = ClientIdentity.newClientProfile(	2, 
 																	"Jenn", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -82,7 +82,7 @@ class ProtobufFileDatabaseTest {
 		testAccount2 = ClientIdentity.newClientAccount(profile2, ClientDevice.getDefaultInstance(), "jennPass");
 		assertTrue(database.addItem(testAccount2));
 		
-		ClientProfile profile3 = ClientIdentity.newClientProfile(	database.generateUniqueIdFor("id", 1), 
+		ClientProfile profile3 = ClientIdentity.newClientProfile(	3, 
 																	"Husan", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -94,7 +94,7 @@ class ProtobufFileDatabaseTest {
 		testAccount3 = ClientIdentity.newClientAccount(profile3, ClientDevice.getDefaultInstance(), "husanPass");
 		assertTrue(database.addItem(testAccount3));
 		
-		ClientProfile profile4 = ClientIdentity.newClientProfile(	database.generateUniqueIdFor("id", 1), 
+		ClientProfile profile4 = ClientIdentity.newClientProfile(	4, 
 																	"Hendrizio", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -106,7 +106,7 @@ class ProtobufFileDatabaseTest {
 		testAccount4 = ClientIdentity.newClientAccount(profile4, ClientDevice.getDefaultInstance(), "hendrizioPass");
 		assertTrue(database.addItem(testAccount4));
 		
-		ClientProfile profile5 = ClientIdentity.newClientProfile(	database.generateUniqueIdFor("id", 1), 
+		ClientProfile profile5 = ClientIdentity.newClientProfile(	5, 
 																	"Farkan", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -117,12 +117,6 @@ class ProtobufFileDatabaseTest {
 																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 		testAccount5 = ClientIdentity.newClientAccount(profile5, ClientDevice.getDefaultInstance(), "farkanPass");
 		assertTrue(database.addItem(testAccount5));
-		
-		System.out.println(testAccount1.getProfile().getBase().getId());
-		System.out.println(testAccount2.getProfile().getBase().getId());
-		System.out.println(testAccount3.getProfile().getBase().getId());
-		System.out.println(testAccount4.getProfile().getBase().getId());
-		System.out.println(testAccount5.getProfile().getBase().getId());
 		
 		assertTrue(testAccount1.getProfile().getBase().getId() == 1);
 		assertTrue(testAccount2.getProfile().getBase().getId() == 2);

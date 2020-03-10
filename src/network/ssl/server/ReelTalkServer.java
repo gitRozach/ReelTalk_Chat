@@ -114,7 +114,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	public ClientAccount login(String username, String password) {
-		return clients.getByUsernameAndPassword(username, password);
+		return clients.getByUsernameAndPassword(username, password).get(0);
 	}
 	
 	private void handleMessageReception(ProtobufMessage receivedMessage) {
