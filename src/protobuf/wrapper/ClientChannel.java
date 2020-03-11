@@ -26,6 +26,10 @@ public class ClientChannel {
 		return false;
 	}
 	
+	public static ClientChannel addMemberIdsToChannel(ClientChannel channel, int ... memberIds) {
+		
+	}
+	
 	public static ChannelBase newChannelBase(int channelId, String channelName) {
 		return ChannelBase.newBuilder().setChannelId(channelId).setChannelName(channelName).build();
 	}
