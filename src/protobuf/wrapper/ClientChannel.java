@@ -1,5 +1,6 @@
 package protobuf.wrapper;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import com.google.protobuf.GeneratedMessageV3;
@@ -26,8 +27,22 @@ public class ClientChannel {
 		return false;
 	}
 	
-	public static ClientChannel addMemberIdsToChannel(ClientChannel channel, int ... memberIds) {
-		
+	public static TextChannel addMemberIdToChannel(TextChannel channel, Integer id) {
+		return addMemberIdsToChannel(channel, Arrays.asList(id));
+	}
+	
+	public static TextChannel addMemberIdsToChannel(TextChannel channel, Collection<Integer> memberIds) {
+		ChannelMembers members = channel.getMembers().toBuilder().addAllMemberId(memberIds).build();
+		return channel.toBuilder().setMembers(members).build();
+	}
+	
+	public static VoiceChannel addMemberIdToChannel(VoiceChannel channel, Integer id) {
+		return addMemberIdsToChannel(channel, Arrays.asList(id));
+	}
+	
+	public static VoiceChannel addMemberIdsToChannel(VoiceChannel channel, Collection<Integer> memberIds) {
+		ChannelMembers members = channel.getMembers().toBuilder().addAllMemberId(memberIds).build();
+		return channel.toBuilder().setMembers(members).build();
 	}
 	
 	public static ChannelBase newChannelBase(int channelId, String channelName) {
