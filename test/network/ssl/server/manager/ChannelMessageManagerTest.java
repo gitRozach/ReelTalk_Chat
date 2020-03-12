@@ -12,15 +12,15 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.protobufDatabase.ChannelMessageManager;
+import network.peer.server.database.protobuf.ChannelMessageDatabase;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
 import protobuf.ClientMessages.ClientFileMessageBase;
-import protobuf.wrapper.ClientMessage;
+import protobuf.wrapper.java.ClientMessage;
 
 class ChannelMessageManagerTest {
 
-	protected ChannelMessageManager database;
+	protected ChannelMessageDatabase database;
 	
 	@AfterEach
 	public void tearDown() {
@@ -30,7 +30,7 @@ class ChannelMessageManagerTest {
 
 	@Test
 	public void addMessage_checkGeneratedIdValues() throws IOException {
-		database = new ChannelMessageManager("test/testresources/channelMessageManager/addChannelMessages.txt");
+		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addChannelMessages.txt");
 		database.initialize();
 		database.clear();
 		
@@ -76,7 +76,7 @@ class ChannelMessageManagerTest {
 	
 	@Test
 	public void removeMessage_removeAndAddItemsCheckGeneratedIdValues() throws IOException {
-		database = new ChannelMessageManager("test/testresources/channelMessageManager/addAndRemoveChannelMessages.txt");
+		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addAndRemoveChannelMessages.txt");
 		database.initialize();
 		database.clear();
 		
@@ -129,24 +129,24 @@ class ChannelMessageManagerTest {
 	
 	@Test
 	public void addMessage_attachMessageAnswersAndCheckGeneratedAnswerIdValues() throws IOException {
-		database = new ChannelMessageManager("test/testresources/channelMessageManager/addChannelMessageAnswers.txt");
+		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addChannelMessageAnswers.txt");
 		database.initialize();
 		database.clear();
 		
 		ChannelMessage message1 = ClientMessage.newChannelMessage(database.generateUniqueMessageId(), "Hallo Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 0, 0).getTimeInMillis(), Collections.emptyList());
-		ChannelMessageAnswer answer1 = ClientMessage.newChannelMessageAnswer(ChannelMessageManager.generateAnswerIdFor(message1), "Antwort 1", 10, "Jann", 1, 1, 0L);
+		ChannelMessageAnswer answer1 = ClientMessage.newChannelMessageAnswer(ChannelMessageDatabase.generateAnswerIdFor(message1), "Antwort 1", 10, "Jann", 1, 1, 0L);
 		message1 = message1.toBuilder().addMessageAnswer(answer1).build();
 		
-		ChannelMessageAnswer answer2 = ClientMessage.newChannelMessageAnswer(ChannelMessageManager.generateAnswerIdFor(message1), "Antwort 2", 1, "Rozach", 1, 1, 0L);
+		ChannelMessageAnswer answer2 = ClientMessage.newChannelMessageAnswer(ChannelMessageDatabase.generateAnswerIdFor(message1), "Antwort 2", 1, "Rozach", 1, 1, 0L);
 		message1 = message1.toBuilder().addMessageAnswer(answer2).build();
 		
-		ChannelMessageAnswer answer3 = ClientMessage.newChannelMessageAnswer(ChannelMessageManager.generateAnswerIdFor(message1), "Antwort 3", 10, "Jann", 1, 1, 0L);
+		ChannelMessageAnswer answer3 = ClientMessage.newChannelMessageAnswer(ChannelMessageDatabase.generateAnswerIdFor(message1), "Antwort 3", 10, "Jann", 1, 1, 0L);
 		message1 = message1.toBuilder().addMessageAnswer(answer3).build();
 		
-		ChannelMessageAnswer answer4 = ClientMessage.newChannelMessageAnswer(ChannelMessageManager.generateAnswerIdFor(message1), "Antwort 4", 1, "Rozach", 1, 1, 0L);
+		ChannelMessageAnswer answer4 = ClientMessage.newChannelMessageAnswer(ChannelMessageDatabase.generateAnswerIdFor(message1), "Antwort 4", 1, "Rozach", 1, 1, 0L);
 		message1 = message1.toBuilder().addMessageAnswer(answer4).build();
 		
-		ChannelMessageAnswer answer5 = ClientMessage.newChannelMessageAnswer(ChannelMessageManager.generateAnswerIdFor(message1), "Antwort 5", 1, "Jann", 1, 1, 0L);
+		ChannelMessageAnswer answer5 = ClientMessage.newChannelMessageAnswer(ChannelMessageDatabase.generateAnswerIdFor(message1), "Antwort 5", 1, "Jann", 1, 1, 0L);
 		message1 = message1.toBuilder().addMessageAnswer(answer5).build();
 		
 		assertTrue(database.addItem(message1));

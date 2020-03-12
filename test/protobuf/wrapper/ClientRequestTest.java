@@ -32,6 +32,7 @@ import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
+import protobuf.wrapper.java.ClientRequest;
 
 class ClientRequestTest {
 	@Test

@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.protobufDatabase.ClientAccountManager;
+import network.peer.server.database.protobuf.ClientAccountDatabase;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadge;
@@ -23,10 +23,10 @@ import protobuf.ClientIdentities.ClientGroups;
 import protobuf.ClientIdentities.ClientImages;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
-import protobuf.wrapper.ClientIdentity;
+import protobuf.wrapper.java.ClientIdentity;
 
 class ClientAccountManagerTest {
-	protected ClientAccountManager database;
+	protected ClientAccountDatabase database;
 	
 	protected static ClientAccount testAccount1;
 	protected static ClientAccount testAccount2;
@@ -42,7 +42,7 @@ class ClientAccountManagerTest {
 	
 	@Test
 	void addItem_addsMultipleItemsToDatabaseFile() throws IOException {
-		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
+		database = new ClientAccountDatabase("test/testresources/clientAccountManager/writeItemTest.txt");
 		database.initialize();
 		database.clear();
 		
@@ -137,7 +137,7 @@ class ClientAccountManagerTest {
 	
 	@Test
 	public void readItems_readsAllItemsFromDatabaseFile() throws IOException {
-		database = new ClientAccountManager("test/testresources/clientAccountManager/writeItemTest.txt");
+		database = new ClientAccountDatabase("test/testresources/clientAccountManager/writeItemTest.txt");
 		assertEquals(database.initialize(), 5);
 		
 		List<ClientAccount> accounts = database.readItems();

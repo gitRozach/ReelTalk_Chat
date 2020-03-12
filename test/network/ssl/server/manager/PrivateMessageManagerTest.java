@@ -9,12 +9,12 @@ import java.util.Collections;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.protobufDatabase.PrivateMessageManager;
+import network.peer.server.database.protobuf.PrivateMessageDatabase;
 import protobuf.ClientMessages.PrivateMessage;
-import protobuf.wrapper.ClientMessage;
+import protobuf.wrapper.java.ClientMessage;
 
 class PrivateMessageManagerTest {
-	protected PrivateMessageManager messageDatabase;
+	protected PrivateMessageDatabase messageDatabase;
 	
 	@After
 	public void afterEach() throws IOException {
@@ -24,7 +24,7 @@ class PrivateMessageManagerTest {
 	
 	@Test
 	public void addItem_addsProtobufMessagesAndWritesToFile() throws IOException {
-		messageDatabase = new PrivateMessageManager("test/testresources/messageManager/messagesToWrite.txt");
+		messageDatabase = new PrivateMessageDatabase("test/testresources/messageManager/messagesToWrite.txt");
 		messageDatabase.clear();
 		assertEquals(messageDatabase.initialize(), 0); //Init 0 items because database should be empty
 		
@@ -43,7 +43,7 @@ class PrivateMessageManagerTest {
 	
 	@Test
 	public void getItem_getsExpectedProtobufItems() throws IOException {
-		messageDatabase = new PrivateMessageManager("test/testresources/messageManager/messagesToRead.txt");
+		messageDatabase = new PrivateMessageDatabase("test/testresources/messageManager/messagesToRead.txt");
 		assertEquals(messageDatabase.initialize(), 5); //Init 5 items
 		
 		PrivateMessage m1 = messageDatabase.getItem(0);

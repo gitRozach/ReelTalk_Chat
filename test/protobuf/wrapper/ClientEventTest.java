@@ -45,6 +45,9 @@ import protobuf.ClientMessages.ChannelMessageAnswer;
 import protobuf.ClientMessages.ClientProfileComment;
 import protobuf.ClientMessages.ClientProfileCommentAnswer;
 import protobuf.ClientMessages.PrivateMessage;
+import protobuf.wrapper.java.ClientEvent;
+import protobuf.wrapper.java.ClientIdentity;
+import protobuf.wrapper.java.ClientMessage;
 
 class ClientEventTest {
 	@Test

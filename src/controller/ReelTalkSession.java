@@ -9,26 +9,26 @@ import java.io.InputStream;
 
 import com.google.protobuf.GeneratedMessageV3;
 
-import gui.client.components.layouts.LoadableStackPane;
-import gui.client.components.messageField.EmojiCategory;
-import gui.client.components.messageField.EmojiSkinColor;
-import gui.client.components.messageField.EmojiTabPane;
-import gui.client.components.messageField.EmojiTextField;
-import gui.client.components.messageField.messageFieldItems.EmojiMessageItem;
-import gui.client.components.messages.GUIMessage;
-import gui.client.views.ClientChatView;
+import gui.components.messageField.EmojiCategory;
+import gui.components.messageField.EmojiSkinColor;
+import gui.components.messageField.EmojiTabPane;
+import gui.components.messageField.EmojiTextField;
+import gui.components.messageField.items.EmojiMessageItem;
+import gui.components.messages.GUIMessage;
+import gui.layouts.LoadableStackPane;
+import gui.views.client.ClientChatView;
+import handler.ObjectEventHandler;
+import handler.events.ObjectEvent;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import network.client.eventHandlers.ObjectEvent;
-import network.client.eventHandlers.ObjectEventHandler;
-import network.ssl.client.ReelTalkClient;
-import network.ssl.communication.ProtobufMessage;
-import network.ssl.server.ReelTalkServer;
+import network.messages.ProtobufMessage;
+import network.peer.client.ReelTalkClient;
+import network.peer.server.ReelTalkServer;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
-import protobuf.wrapper.ClientRequest;
+import protobuf.wrapper.java.ClientRequest;
 
 public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";

@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import com.google.protobuf.GeneratedMessageV3;
 
-import network.ssl.client.ReelTalkClient;
-import network.ssl.communication.ProtobufMessage;
-import network.ssl.server.ReelTalkServer;
+import network.messages.ProtobufMessage;
+import network.peer.client.ReelTalkClient;
+import network.peer.server.ReelTalkServer;
 import protobuf.ClientEvents.ClientLoginEvent;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientBadge;
@@ -28,9 +28,9 @@ import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import protobuf.wrapper.ClientEvent;
-import protobuf.wrapper.ClientIdentity;
-import protobuf.wrapper.ClientRequest;
+import protobuf.wrapper.java.ClientEvent;
+import protobuf.wrapper.java.ClientIdentity;
+import protobuf.wrapper.java.ClientRequest;
 
 class SecuredMessageServerClientTest {
 

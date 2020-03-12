@@ -16,6 +16,7 @@ import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientIdentities.ClientDate;
 import protobuf.ClientIdentities.ClientDevice;
 import protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType;
+import protobuf.wrapper.java.ClientIdentity;
 import protobuf.ClientIdentities.ClientDeviceType;
 import protobuf.ClientIdentities.ClientFriend;
 import protobuf.ClientIdentities.ClientFriends;

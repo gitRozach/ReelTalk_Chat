@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.ssl.server.manager.protobufDatabase.ProtobufFileDatabase;
+import network.peer.server.database.protobuf.ProtobufFileDatabase;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadge;
@@ -20,7 +20,7 @@ import protobuf.ClientIdentities.ClientGroups;
 import protobuf.ClientIdentities.ClientImages;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
-import protobuf.wrapper.ClientIdentity;
+import protobuf.wrapper.java.ClientIdentity;
 
 class ProtobufFileDatabaseTest {
 	protected ProtobufFileDatabase<ClientAccount> database;

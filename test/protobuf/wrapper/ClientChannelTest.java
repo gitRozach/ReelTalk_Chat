@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,7 @@ import protobuf.ClientEvents.ClientLoginEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientRequests.ClientLoginRequest;
+import protobuf.wrapper.java.ClientChannel;
 
 class ClientChannelTest {
 	
@@ -43,6 +45,66 @@ class ClientChannelTest {
 		assertFalse(ClientChannel.isClientChannel(channelMessage.getClass()));
 		assertFalse(ClientChannel.isClientChannel(loginEvent.getClass()));
 		assertFalse(ClientChannel.isClientChannel(loginRequest.getClass()));
+	}
+	
+	@Test
+	public void addMemberIdsToChannel_addTextChannelMemberIdsAndCheckMemberList() {
+		TextChannel channel = ClientChannel.newPublicTextChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		channel = ClientChannel.addMemberIdsToChannel(channel, Arrays.asList(6, 7, 8, 9, 10));
+		assertTrue(channel != null);
+		assertEquals(channel.getMembers().getMemberIdCount(), 10);
+		assertEquals(channel.getMembers().getMemberId(5), 6);
+		assertEquals(channel.getMembers().getMemberId(6), 7);
+		assertEquals(channel.getMembers().getMemberId(7), 8);
+		assertEquals(channel.getMembers().getMemberId(8), 9);
+		assertEquals(channel.getMembers().getMemberId(9), 10);
+	}
+	
+	@Test
+	public void addMemberIdToChannel_addTextChannelMemberIdsAndCheckMemberList() {
+		TextChannel channel = ClientChannel.newPublicTextChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		channel = ClientChannel.addMemberIdToChannel(channel, 6);
+		channel = ClientChannel.addMemberIdToChannel(channel, 7);
+		channel = ClientChannel.addMemberIdToChannel(channel, 8);
+		channel = ClientChannel.addMemberIdToChannel(channel, 9);
+		channel = ClientChannel.addMemberIdToChannel(channel, 10);
+		assertTrue(channel != null);
+		assertEquals(channel.getMembers().getMemberIdCount(), 10);
+		assertEquals(channel.getMembers().getMemberId(5), 6);
+		assertEquals(channel.getMembers().getMemberId(6), 7);
+		assertEquals(channel.getMembers().getMemberId(7), 8);
+		assertEquals(channel.getMembers().getMemberId(8), 9);
+		assertEquals(channel.getMembers().getMemberId(9), 10);
+	}
+	
+	@Test
+	public void addMemberIdsToChannel_addVoiceChannelMemberIdsAndCheckMemberList() {
+		VoiceChannel channel = ClientChannel.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		channel = ClientChannel.addMemberIdsToChannel(channel, Arrays.asList(6, 7, 8, 9, 10));
+		assertTrue(channel != null);
+		assertEquals(channel.getMembers().getMemberIdCount(), 10);
+		assertEquals(channel.getMembers().getMemberId(5), 6);
+		assertEquals(channel.getMembers().getMemberId(6), 7);
+		assertEquals(channel.getMembers().getMemberId(7), 8);
+		assertEquals(channel.getMembers().getMemberId(8), 9);
+		assertEquals(channel.getMembers().getMemberId(9), 10);
+	}
+	
+	@Test
+	public void addMemberIdToChannel_addVoiceChannelMemberIdsAndCheckMemberList() {
+		VoiceChannel channel = ClientChannel.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		channel = ClientChannel.addMemberIdToChannel(channel, 6);
+		channel = ClientChannel.addMemberIdToChannel(channel, 7);
+		channel = ClientChannel.addMemberIdToChannel(channel, 8);
+		channel = ClientChannel.addMemberIdToChannel(channel, 9);
+		channel = ClientChannel.addMemberIdToChannel(channel, 10);
+		assertTrue(channel != null);
+		assertEquals(channel.getMembers().getMemberIdCount(), 10);
+		assertEquals(channel.getMembers().getMemberId(5), 6);
+		assertEquals(channel.getMembers().getMemberId(6), 7);
+		assertEquals(channel.getMembers().getMemberId(7), 8);
+		assertEquals(channel.getMembers().getMemberId(8), 9);
+		assertEquals(channel.getMembers().getMemberId(9), 10);
 	}
 	
 	@Test
