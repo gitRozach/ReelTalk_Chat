@@ -9,6 +9,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.google.protobuf.Any;
@@ -16,10 +17,16 @@ import com.google.protobuf.GeneratedMessageV3;
 
 public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Closeable {
 	protected final Class<T> itemClass;
+	
 	protected volatile boolean initialized;
 	protected volatile boolean closed;
 	protected volatile boolean autoSave;
+	
+	//hmm?
+	protected final HashMap<String, List<T>> openFileDatabases;
+	protected String currentDatabaseFilePath;
 	protected final List<T> items;
+	
 	protected final RandomAccessFile databaseFile;
 	protected final FileChannel databaseChannel;
 	protected final String databaseFilePath;
@@ -34,11 +41,37 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		initialized = false;
 		closed = false;
 		autoSave = true;
+		
+		openFileDatabases = new HashMap<String, List<T>>();
+		currentDatabaseFilePath = "";
+		
 		items = new ArrayList<T>();
 		databaseFile = new RandomAccessFile(file, "rwd");
 		databaseChannel = this.databaseFile.getChannel();
 		databaseFilePath = file.getPath();
 		encoding = Charset.forName("utf-8");
+	}
+	
+	public int reloadFile(String databaseFilePath) {
+		return -1;
+	}
+
+	public int loadFile(String databaseFilePath) {
+		return loadFile(databaseFilePath, true);
+	}
+	
+	public int loadFile(String databaseFilePath, boolean keepOpen) {
+		if(!hasOpenDatabase(databaseFilePath)) {
+			//Fuege neue Datenbank hinzu, falls keepOpen
+		}
+		else {
+			//Lade Items aus neuer Datei und speichere die Liste in HashMap, falls, keepOpen
+		}
+		return -1;
+	}
+	
+	public boolean hasOpenDatabase(String databaseFilePath) {
+		return getOpenFileDatabases().get(databaseFilePath) != null;
 	}
 	
 	public int writeItem(T item) {
@@ -236,6 +269,18 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 
 	public List<T> getItems() {
 		return items;
+	}
+	
+	public String getCurrentDatabaseFilePath() {
+		return currentDatabaseFilePath;
+	}
+
+	private void setCurrentDatabaseFilePath(String currentDatabaseFilePath) {
+		this.currentDatabaseFilePath = currentDatabaseFilePath;
+	}
+
+	public HashMap<String, List<T>> getOpenFileDatabases() {
+		return openFileDatabases;
 	}
 	
 	public RandomAccessFile getDatabaseFile() {
