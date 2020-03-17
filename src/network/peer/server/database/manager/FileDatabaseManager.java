@@ -17,12 +17,12 @@ public class FileDatabaseManager {
 	private ClientChannelDatabase clientChannelDatabase;
 	
 	public FileDatabaseManager() throws IOException {
-		channelMessageDatabase = new ChannelMessageDatabase("");
-		privateMessageDatabase = new PrivateMessageDatabase("");
-		profileCommentDatabase = new ProfileCommentDatabase("");
+		channelMessageDatabase = new ChannelMessageDatabase();
+		privateMessageDatabase = new PrivateMessageDatabase();
+		profileCommentDatabase = new ProfileCommentDatabase();
 		
-		clientAccountDatabase = new ClientAccountDatabase("");
-		clientChannelDatabase = new ClientChannelDatabase("");
+		clientAccountDatabase = new ClientAccountDatabase();
+		clientChannelDatabase = new ClientChannelDatabase();
 	}
 	
 	

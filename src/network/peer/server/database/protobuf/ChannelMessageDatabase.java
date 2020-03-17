@@ -1,6 +1,5 @@
 package network.peer.server.database.protobuf;
 
-import java.io.File;
 import java.io.IOException;
 
 import protobuf.ClientMessages.ChannelMessage;
@@ -9,16 +8,12 @@ import protobuf.ClientMessages.ChannelMessageAnswer;
 public class ChannelMessageDatabase extends ProtobufFileDatabase<ChannelMessage>{
 	private final Object idLock = new Object(); 
 	
-	public ChannelMessageDatabase(String databaseFilePath) throws IOException {
-		this(new File(databaseFilePath));
-	}
-
-	public ChannelMessageDatabase(File databaseFile) throws IOException {
-		super(ChannelMessage.class, databaseFile);
+	public ChannelMessageDatabase() throws IOException {
+		super(ChannelMessage.class);
 	}
 	
 	public int generateUniqueMessageId() {
-		return getItems().isEmpty() ? 1 : generateUniqueMessageId(getItem(getItems().size() - 1).getMessageBase().getMessageId() + 1); 
+		return getLoadedItems().isEmpty() ? 1 : generateUniqueMessageId(getItem(getLoadedItems().size() - 1).getMessageBase().getMessageId() + 1); 
 	}
 	
 	public int generateUniqueMessageId(int minId) {
@@ -29,12 +24,12 @@ public class ChannelMessageDatabase extends ProtobufFileDatabase<ChannelMessage>
 		synchronized (idLock) {
 			if(minId > maxId)
 				return -1;
-			if(getItems().isEmpty())
+			if(getLoadedItems().isEmpty())
 				return minId;
 			boolean idAlreadyExists = false;
 			for(int currentId = minId; currentId <= maxId; ++currentId) {
 				idAlreadyExists = false;
-				for(ChannelMessage currentMessage : getItems()) {
+				for(ChannelMessage currentMessage : getLoadedItems()) {
 					if(currentMessage.getMessageBase().getMessageId() == currentId) {
 						idAlreadyExists = true;
 						break;

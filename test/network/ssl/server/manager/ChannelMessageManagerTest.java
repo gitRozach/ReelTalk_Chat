@@ -30,8 +30,8 @@ class ChannelMessageManagerTest {
 
 	@Test
 	public void addMessage_checkGeneratedIdValues() throws IOException {
-		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addChannelMessages.txt");
-		database.initialize();
+		database = new ChannelMessageDatabase();
+		database.loadFileItems("test/testresources/channelMessageManager/addChannelMessages.txt");
 		database.clear();
 		
 		ClientFileMessageBase file1 = ClientFileMessageBase.newBuilder().setFileName("file1").setIsDownloadMessage(true).build();
@@ -76,8 +76,8 @@ class ChannelMessageManagerTest {
 	
 	@Test
 	public void removeMessage_removeAndAddItemsCheckGeneratedIdValues() throws IOException {
-		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addAndRemoveChannelMessages.txt");
-		database.initialize();
+		database = new ChannelMessageDatabase();
+		database.loadFileItems("test/testresources/channelMessageManager/addAndRemoveChannelMessages.txt");
 		database.clear();
 		
 		ChannelMessage message1 = ClientMessage.newChannelMessage(database.generateUniqueMessageId(), "Hallo Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 0, 0).getTimeInMillis(), Collections.emptyList());
@@ -129,8 +129,8 @@ class ChannelMessageManagerTest {
 	
 	@Test
 	public void addMessage_attachMessageAnswersAndCheckGeneratedAnswerIdValues() throws IOException {
-		database = new ChannelMessageDatabase("test/testresources/channelMessageManager/addChannelMessageAnswers.txt");
-		database.initialize();
+		database = new ChannelMessageDatabase();
+		database.loadFileItems("test/testresources/channelMessageManager/addChannelMessageAnswers.txt");
 		database.clear();
 		
 		ChannelMessage message1 = ClientMessage.newChannelMessage(database.generateUniqueMessageId(), "Hallo Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 0, 0).getTimeInMillis(), Collections.emptyList());

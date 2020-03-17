@@ -42,8 +42,8 @@ class ClientAccountManagerTest {
 	
 	@Test
 	void addItem_addsMultipleItemsToDatabaseFile() throws IOException {
-		database = new ClientAccountDatabase("test/testresources/clientAccountManager/writeItemTest.txt");
-		database.initialize();
+		database = new ClientAccountDatabase();
+		database.loadFileItems("test/testresources/clientAccountManager/writeItemTest.txt");
 		database.clear();
 		
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
@@ -128,17 +128,17 @@ class ClientAccountManagerTest {
 		assertTrue(testAccount4.getProfile().getBase().getId() == 4);
 		assertTrue(testAccount5.getProfile().getBase().getId() == 5);
 		
-		assertTrue(database.getItems().indexOf(testAccount1) == 0);
-		assertTrue(database.getItems().indexOf(testAccount2) == 1);
-		assertTrue(database.getItems().indexOf(testAccount3) == 2);
-		assertTrue(database.getItems().indexOf(testAccount4) == 3);
-		assertTrue(database.getItems().indexOf(testAccount5) == 4);
+		assertTrue(database.getLoadedItems().indexOf(testAccount1) == 0);
+		assertTrue(database.getLoadedItems().indexOf(testAccount2) == 1);
+		assertTrue(database.getLoadedItems().indexOf(testAccount3) == 2);
+		assertTrue(database.getLoadedItems().indexOf(testAccount4) == 3);
+		assertTrue(database.getLoadedItems().indexOf(testAccount5) == 4);
 	}
 	
 	@Test
 	public void readItems_readsAllItemsFromDatabaseFile() throws IOException {
-		database = new ClientAccountDatabase("test/testresources/clientAccountManager/writeItemTest.txt");
-		assertEquals(database.initialize(), 5);
+		database = new ClientAccountDatabase();
+		assertEquals(database.loadFileItems("test/testresources/clientAccountManager/writeItemTest.txt"), 5);
 		
 		List<ClientAccount> accounts = database.readItems();
 		assertTrue(accounts.get(0).equals(testAccount1));

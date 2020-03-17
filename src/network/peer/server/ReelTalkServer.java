@@ -58,21 +58,17 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	private int initClientDatabase() throws IOException {
-		clients = new ClientAccountDatabase("src/clientData/accounts.txt");
-		return clients.initialize();
+		clients = new ClientAccountDatabase();
+		return clients.loadFileItems("src/clientData/accounts.txt", true);
 	}
 	
 	private int initChannelManager() throws IOException {
-		channelManager = new ClientChannelDatabase("src/clientData/channels.txt");
-		return channelManager.initialize();
+		channelManager = new ClientChannelDatabase();
+		return channelManager.loadFileItems("src/clientData/channels.txt", true);
 	}
 	
 	private void initMessageManager() throws IOException {
 		messageManager = new ClientMessageDatabase();
-		messageManager.configurePrivateMessageManagerPath("src/clientData/messages/privateMessages.txt");
-		messageManager.configureChannelMessageManagerPath("src/clientData/messages/channelMessages.txt");
-		messageManager.configureProfileCommentManagerPath("src/clientData/messages/profileComments.txt");
-		messageManager.initialize();
 	}
 	
 	private void initHandlers() {
@@ -92,15 +88,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			@Override
 			public void messageReceived(ProtobufMessage message) {
 				handleMessageReception(message);
-				onMessageReceivedHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message) {
-					private static final long serialVersionUID = -1115235010001672312L;
-				});	
+				onMessageReceivedHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message) {private static final long serialVersionUID = -1115235010001672312L;});	
 			}
 			@Override
 			public void messageSent(ProtobufMessage message) {
-				onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message) {
-					private static final long serialVersionUID = 8588402449968090480L;
-				});
+				onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message) {private static final long serialVersionUID = 8588402449968090480L;});
 			}
 			@Override
 			public void connectionLost(Throwable throwable) {
@@ -320,7 +312,13 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	private void handlePrivateMessageGetRequest(SelectionKey clientKey, PrivateMessageGetRequest request) {
-		
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
+			
+		}
+		else {
+			ClientRequestRejectedEvent rejMessage = null;
+			sendMessage(clientKey, rejMessage);
+		}
 	}
 	
 	private void handleClientProfileGetRequest(SelectionKey clientKey, ClientProfileGetRequest request) {

@@ -38,8 +38,8 @@ class ProtobufFileDatabaseTest {
 	
 	@Test
 	void generateUniqueId_addItemsAndCheckIdValues() throws Exception {
-		database = new ProtobufFileDatabase<ClientAccount>(ClientAccount.class, "test/testresources/protobufFileDatabase/generateId.txt");
-		database.initialize();
+		database = new ProtobufFileDatabase<ClientAccount>(ClientAccount.class);
+		database.loadFileItems("test/testresources/protobufFileDatabase/generateId.txt");
 		database.clear();
 		
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();

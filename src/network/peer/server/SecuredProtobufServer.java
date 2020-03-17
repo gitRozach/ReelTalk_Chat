@@ -207,17 +207,6 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 	public ProtobufMessage pollOrderedBytes() {
 		return orderedBytes.poll();
 	}
-
-//    public byte[] receiveBytesFrom(SelectionKey clientKey) {
-//    	Iterator<Pair<SelectionKey, byte[]>> queueIter = receptionQueue.iterator();
-//    	Pair<SelectionKey, byte[]> currentPair = null;
-//    	while(queueIter.hasNext()) {
-//    		currentPair = queueIter.next();
-//    		if(currentPair.getKey().equals(clientKey))
-//    			return currentPair.getValue();
-//    	}
-//    	return null;
-//    }
 	
 	public boolean sendMessage(SelectionKey clientKey, GeneratedMessageV3 message) {
 		if(clientKey == null)

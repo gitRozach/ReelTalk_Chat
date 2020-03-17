@@ -1,15 +1,16 @@
 package network.peer.server.database.protobuf;
 
 import java.io.Closeable;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.protobuf.Any;
@@ -22,31 +23,22 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	protected volatile boolean closed;
 	protected volatile boolean autoSave;
 	
-	protected final HashMap<String, List<T>> openFileDatabases;
+	protected final List<T> loadedItems;
+	protected final HashMap<String, List<T>> bufferedDatabases;
+	
+	protected RandomAccessFile databaseFile;
+	protected FileChannel databaseChannel;
+	protected String databaseFilePath;
 	protected String currentDatabaseFilePath;
 	
-	protected final RandomAccessFile databaseFile;
-	protected final FileChannel databaseChannel;
-	protected final String databaseFilePath;
-	protected final Charset encoding;
-
-	public ProtobufFileDatabase(Class<T> protobufItemClass, String databaseFilePath) throws IOException {
-		this(protobufItemClass, new File(databaseFilePath));
-	}
-
-	public ProtobufFileDatabase(Class<T> protobufItemClass, File file) throws IOException {
+	public ProtobufFileDatabase(Class<T> protobufItemClass) throws IOException {
 		itemClass = protobufItemClass;
 		initialized = false;
 		closed = false;
 		autoSave = true;
 		
-		openFileDatabases = new HashMap<String, List<T>>();
-		currentDatabaseFilePath = "";
-		
-		databaseFile = new RandomAccessFile(file, "rwd");
-		databaseChannel = this.databaseFile.getChannel();
-		databaseFilePath = file.getPath();
-		encoding = Charset.forName("utf-8");
+		loadedItems = Collections.synchronizedList(new LinkedList<T>());
+		bufferedDatabases = new HashMap<String, List<T>>();
 	}
 	
 	public int reloadFileItems(String databaseFilePath) {
@@ -57,29 +49,39 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		return loadFileItems(databaseFilePath, true);
 	}
 	
-	public int loadFileItems(String databaseFilePath, boolean keepOpen) {
-		if(!hasOpenDatabase(databaseFilePath)) {
-			//Fuege neue Datenbank hinzu, falls keepOpen
+	public int loadFileItems(String filePath, boolean bufferDatabase) {
+		try {
+			databaseFile = new RandomAccessFile(filePath, "rwd");
+			databaseChannel = databaseFile.getChannel();
+			databaseFilePath = filePath;
+			currentDatabaseFilePath = filePath;
+			
+			List<T> loadedItems = hasBufferedDatabase(filePath) ? getBufferedFileDatabases().get(databaseFilePath) : readItems();
+			if(bufferDatabase && !hasBufferedDatabase(filePath))
+				getBufferedFileDatabases().put(filePath, loadedItems);
+			return fillItems(loadedItems, false);
 		}
-		else {
-			//Lade Items aus neuer Datei und speichere die Liste in HashMap, falls, keepOpen
+		catch(Exception io) {
+			return -1;
 		}
-		return -1;
 	}
 	
-	public boolean hasOpenDatabase(String databaseFilePath) {
-		return getOpenFileDatabases().get(databaseFilePath) != null;
-	}
-	
-	public List<T> getCurrentDatabaseItems() {
-		return getOpenDatabaseItems(currentDatabaseFilePath);
-	}
-	
-	public List<T> getOpenDatabaseItems(String databaseFilePath) {
-		if(databaseFilePath == null || databaseFilePath.isEmpty())
-			return null;
-		return getOpenFileDatabases().get(databaseFilePath);
+	private int fillItems(Collection<T> itemCollection, boolean append) {
+		if(itemCollection == null)
+			return -1;
 		
+		int itemCtr = 0;
+		if(!append)
+			loadedItems.clear();
+		for(T currentItem : itemCollection) {
+			loadedItems.add(currentItem);
+			++itemCtr;
+		}
+		return itemCtr;
+	}
+	
+	public boolean hasBufferedDatabase(String databaseFilePath) {
+		return getBufferedFileDatabases().get(databaseFilePath) != null;
 	}
 	
 	public int writeItem(T item) {
@@ -97,10 +99,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	
 	public boolean writeItems() {
 		try {
-			List<T> items = getCurrentDatabaseItems();
-			if(items == null)
-				return false;
-			for(T item : items) {
+			for(T item : loadedItems) {
 				if(writeItem(item) <= 0)
 					return false;
 			}
@@ -141,16 +140,16 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public boolean removeItem(int index) {
-		if(index < 0 || index >= getCurrentDatabaseItems().size())
+		if(index < 0 || index >= loadedItems.size())
 			return false;
-		boolean res = items.remove(index) != null;
+		boolean res = loadedItems.remove(index) != null;
 		if(isAutoSave())
 			return rewrite();
 		return res;
 	}
 	
 	public boolean removeItem(T item) {
-		return item != null && removeItem(items.indexOf(item));
+		return item != null && removeItem(loadedItems.indexOf(item));
 	}
 	
 	public boolean rewrite() {
@@ -167,7 +166,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public boolean addItem(T newItem) {
-		if(items.add(newItem)) {
+		if(loadedItems.add(newItem)) {
 			if(isAutoSave())
 				return rewrite();
 			return true;
@@ -176,7 +175,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public T getItem(int index) {
-		return (index < 0 || index >= items.size()) ? null : items.get(index);
+		return (index < 0 || index >= loadedItems.size()) ? null : loadedItems.get(index);
 	}
 	
 	public boolean replaceItem(T oldItem, T newItem) {
@@ -184,8 +183,8 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public boolean replaceItem(int index, T newItem) {
-		if(items.remove(index) != null) {
-			items.add(index, newItem);
+		if(loadedItems.remove(index) != null) {
+			loadedItems.add(index, newItem);
 			if(isAutoSave())
 				return rewrite();
 			return true;
@@ -194,22 +193,23 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 
 	public int indexOf(T item) {
-		return items.indexOf(item);
+		return loadedItems.indexOf(item);
 	}
 
 	public int lastIndexOf(T item) {
-		return items.lastIndexOf(item);
+		return loadedItems.lastIndexOf(item);
 	}
 	
 	public boolean exists(T item) {
-		return items.contains(item);
+		return loadedItems.contains(item);
 	}
 
 	public synchronized void clear() {
 		try {
 			//TODO Backup generieren
-			databaseChannel.truncate(0L);
-			items.clear();
+			if(databaseChannel != null)
+				databaseChannel.truncate(0L);
+			loadedItems.clear();
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -223,7 +223,8 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 				return;
 			rewrite();
 			databaseFile.close();
-			items.clear();
+			loadedItems.clear();
+			bufferedDatabases.clear();
 			setClosed(true);
 		} 
 		catch (IOException e) {
@@ -232,7 +233,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	}
 	
 	public int size() {
-		return items.size();
+		return loadedItems.size();
 	}
 
 	public boolean isEmpty() {
@@ -243,10 +244,6 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		return itemClass;
 	}
 
-	private void setInitialized(boolean initialized) {
-		this.initialized = initialized;
-	}
-	
 	public boolean isInitialized() {
 		return initialized;
 	}
@@ -270,13 +267,13 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	public String getCurrentDatabaseFilePath() {
 		return currentDatabaseFilePath;
 	}
-
-	private void setCurrentDatabaseFilePath(String currentDatabaseFilePath) {
-		this.currentDatabaseFilePath = currentDatabaseFilePath;
+	
+	public List<T> getLoadedItems() {
+		return loadedItems;
 	}
 
-	public HashMap<String, List<T>> getOpenFileDatabases() {
-		return openFileDatabases;
+	public HashMap<String, List<T>> getBufferedFileDatabases() {
+		return bufferedDatabases;
 	}
 	
 	public RandomAccessFile getDatabaseFile() {
@@ -289,9 +286,5 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 
 	public String getDatabaseFilePath() {
 		return databaseFilePath;
-	}
-
-	public Charset getEncoding() {
-		return encoding;
 	}
 }

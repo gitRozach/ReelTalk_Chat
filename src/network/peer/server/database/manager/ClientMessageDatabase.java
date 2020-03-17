@@ -15,23 +15,17 @@ public class ClientMessageDatabase {
 	private ChannelMessageDatabase channelMessageManager;
 	private ProfileCommentDatabase profileCommentManager;
 	
-	private String privateMessageManagerPath;
-	private String channelMessageManagerPath;
-	private String profileCommentManagerPath;
-	
 	public ClientMessageDatabase() throws IOException {
-		privateMessageManagerPath = "";
-		channelMessageManagerPath = "";
-		profileCommentManagerPath = "";
+		initialize();
 	}
 	
 	public void initialize() throws IOException {
-		privateMessageManager = new PrivateMessageDatabase(privateMessageManagerPath);
-		channelMessageManager = new ChannelMessageDatabase(channelMessageManagerPath);
-		profileCommentManager = new ProfileCommentDatabase(profileCommentManagerPath);
-		privateMessageManager.initialize();
-		channelMessageManager.initialize();
-		profileCommentManager.initialize();
+		privateMessageManager = new PrivateMessageDatabase();
+		privateMessageManager.loadFileItems("src/clientData/messages/privateMessages.txt", true);
+		channelMessageManager = new ChannelMessageDatabase();
+		channelMessageManager.loadFileItems("src/clientData/messages/channelMessages.txt", true);
+		profileCommentManager = new ProfileCommentDatabase();
+		profileCommentManager.loadFileItems("src/clientData/messages/profileComments.txt", true);
 	}
 	
 	public void addPrivateMessage(PrivateMessage message) {
@@ -113,29 +107,5 @@ public class ClientMessageDatabase {
 	
 	public ProfileCommentDatabase getProfileCommentManager() {
 		return profileCommentManager;
-	}
-
-	public String getPrivateMessageManagerPath() {
-		return privateMessageManagerPath;
-	}
-	
-	public String getChannelMessageManagerPath() {
-		return channelMessageManagerPath;
-	}
-
-	public String getProfileCommentManagerPath() {
-		return profileCommentManagerPath;
-	}
-	
-	public void configurePrivateMessageManagerPath(String path) {
-		privateMessageManagerPath = path;
-	}
-	
-	public void configureChannelMessageManagerPath(String path) {
-		channelMessageManagerPath = path;
-	}
-	
-	public void configureProfileCommentManagerPath(String path) {
-		profileCommentManagerPath = path;
 	}
 }

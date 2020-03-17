@@ -1,8 +1,13 @@
-
+\
+:type.googleapis.com/protobuf.clientmessages.PrivateMessage
 
-Hallo Jann"Rozach
-Hallo Rozach"Jann
+Hallo Jann"Rozach\
+:type.googleapis.com/protobuf.clientmessages.PrivateMessage
+Hallo Rozach"Jann\
+:type.googleapis.com/protobuf.clientmessages.PrivateMessage
 
-Hallo Jann"Rozach&
- Ganz gut und selbst?"Jann
+Hallo Jann"Rozachd
+:type.googleapis.com/protobuf.clientmessages.PrivateMessage&
+ Ganz gut und selbst?"JannZ
+:type.googleapis.com/protobuf.clientmessages.PrivateMessage
 Auch gut"Rozach

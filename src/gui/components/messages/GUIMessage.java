@@ -49,7 +49,7 @@ public class GUIMessage extends HBox {
 	private CustomContextMenu contextMenu;
 
 	public GUIMessage(String sender, String message) {
-		getStylesheets().add("/stylesheets/client/GUIMessage.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/GUIMessage.css");
 		getStyleClass().add("gui-message");
 		
 		senderProperty = new SimpleStringProperty(sender != null ? sender : "");

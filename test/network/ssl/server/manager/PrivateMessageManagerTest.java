@@ -24,9 +24,9 @@ class PrivateMessageManagerTest {
 	
 	@Test
 	public void addItem_addsProtobufMessagesAndWritesToFile() throws IOException {
-		messageDatabase = new PrivateMessageDatabase("test/testresources/messageManager/messagesToWrite.txt");
+		messageDatabase = new PrivateMessageDatabase();
+		messageDatabase.loadFileItems("test/testresources/privateMessageManager/messagesToWrite.txt");
 		messageDatabase.clear();
-		assertEquals(messageDatabase.initialize(), 0); //Init 0 items because database should be empty
 		
 		PrivateMessage m1 = ClientMessage.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
 		PrivateMessage m2 = ClientMessage.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
@@ -43,8 +43,8 @@ class PrivateMessageManagerTest {
 	
 	@Test
 	public void getItem_getsExpectedProtobufItems() throws IOException {
-		messageDatabase = new PrivateMessageDatabase("test/testresources/messageManager/messagesToRead.txt");
-		assertEquals(messageDatabase.initialize(), 5); //Init 5 items
+		messageDatabase = new PrivateMessageDatabase();
+		assertEquals(messageDatabase.loadFileItems("test/testresources/privateMessageManager/messagesToRead.txt"), 5); //Init 5 items
 		
 		PrivateMessage m1 = messageDatabase.getItem(0);
 		PrivateMessage m2 = messageDatabase.getItem(1);
