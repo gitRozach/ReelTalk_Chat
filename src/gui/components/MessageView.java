@@ -47,7 +47,7 @@ public class MessageView extends StackPane {
 
 	public MessageView() {
 		getStyleClass().add("message-view");
-		getStylesheets().add("/stylesheets/client/MessageView.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/MessageView.css");
 		
 		this.maxMessages = 20;
 		this.maxMessagesAtInit = maxMessages;

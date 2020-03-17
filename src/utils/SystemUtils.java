@@ -108,11 +108,12 @@ public class SystemUtils {
             return in.readLine();
         }
         catch(IOException io) {
-        	return null;
+        	return "";
         }
         finally {
 			try {
-				in.close();
+				if(in != null)
+					in.close();
 			} 
 			catch (IOException e) {}
         }

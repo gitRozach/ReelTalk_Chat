@@ -75,7 +75,7 @@ public final class ClientChatView extends StackPane {
 	}
 	
 	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/ClientChat.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/ClientChat.css");
 	}
 	
 	private void initProperties() {

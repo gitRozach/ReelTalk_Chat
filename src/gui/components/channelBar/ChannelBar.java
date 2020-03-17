@@ -97,7 +97,7 @@ public class ChannelBar extends StackPane {
 	}
 	
 	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/ChannelBar.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/ChannelBar.css");
 	}
 	
 	private void initClientAttachment() {

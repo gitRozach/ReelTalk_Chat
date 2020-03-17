@@ -42,7 +42,7 @@ public class MessageField extends VBox {
 	private Animation smileyOut;
 
 	public MessageField() {
-		getStylesheets().add("/stylesheets/client/MessageField.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/MessageField.css");
 
 		messageBox = new HBox();
 		messageBox.setFillHeight(true);

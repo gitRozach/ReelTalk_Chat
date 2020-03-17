@@ -122,4 +122,10 @@ $uiiugigiggig"TestoRozach(ŞÿÈ­Œ.^
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage 
 xd"TestoRozach(ÿçÉƒ.s
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage5
-/:D80: :D80: :D80: :D80:"TestoRozach(ı¿Êƒ.
+/:D80: :D80: :D80: :D80:"TestoRozach(ı¿Êƒ.b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+jfffif"TestoRozach(î¾ú¡.b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+ihhiho"TestoRozach(éÈú¡._
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
+hph"TestoRozach(»Ñú¡.

@@ -186,7 +186,7 @@ public class ClientBar extends LoadableStackPane {
 	}
 	
 	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/ClientBar.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/ClientBar.css");
 	}
 	
 	private void initMouseListener() {

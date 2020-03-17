@@ -533,7 +533,7 @@ public class AudioPlayer {
 		public CAudioPlayerGUI() {
 			super();
 
-			this.getStylesheets().add("/stylesheets/client/AudioPlayer.css");
+			this.getStylesheets().add("/stylesheets/client/defaultStyle/AudioPlayer.css");
 
 			this.volumeProperty = new SimpleDoubleProperty(0.5d);
 			this.volumeBeforeMuteProperty = new SimpleDoubleProperty(0.5d);

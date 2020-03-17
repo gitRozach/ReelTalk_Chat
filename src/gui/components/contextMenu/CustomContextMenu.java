@@ -42,7 +42,7 @@ public class CustomContextMenu extends Popup {
 		this.content.setPadding(new Insets(3d));
 		this.content.setEffect(new DropShadow(10d, 5d, 5d, Color.rgb(0, 0, 0, 0.5d)));
 		this.content.setId("root");
-		this.content.getStylesheets().add("/stylesheets/client/CustomContextMenu.css");
+		this.content.getStylesheets().add("/stylesheets/client/defaultStyle/CustomContextMenu.css");
 		this.getContent().add(this.content);
 
 		this.animationDuration = Duration.seconds(0.15d);
