@@ -16,7 +16,7 @@ import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientIdentities.ClientDate;
 import protobuf.ClientIdentities.ClientDevice;
 import protobuf.ClientIdentities.ClientDeviceOs.ClientDeviceOsType;
-import protobuf.wrapper.java.ClientIdentity;
+import protobuf.wrapper.ClientIdentities;
 import protobuf.ClientIdentities.ClientDeviceType;
 import protobuf.ClientIdentities.ClientFriend;
 import protobuf.ClientIdentities.ClientFriends;
@@ -36,7 +36,7 @@ class ClientIdentityTest {
 	
 	@Test
 	public void newClientBase_checkBaseValues() {
-		ClientBase base = ClientIdentity.newClientBase(1, "Rozett");
+		ClientBase base = ClientIdentities.newClientBase(1, "Rozett");
 		assertEquals(base.getId(), 1);
 		assertEquals(base.getUsername(), "Rozett");
 	}
@@ -55,7 +55,7 @@ class ClientIdentityTest {
 	@Test
 	public void newClientDate_checkDateValues() {
 		Calendar customDate = new GregorianCalendar(2020, 1, 28, 4, 20, 0); //Month = 1 -> February
-		ClientDate clientDate = ClientIdentity.newClientDate(customDate.getTimeInMillis());
+		ClientDate clientDate = ClientIdentities.newClientDate(customDate.getTimeInMillis());
 		assertEquals(clientDate.getYear(), 2020);
 		assertEquals(clientDate.getMonth(), 2);
 		assertEquals(clientDate.getDay(), 28);
@@ -79,7 +79,7 @@ class ClientIdentityTest {
 	
 	@Test
 	public void newClientDevice_checkDeviceValues() {
-		ClientDevice device = ClientIdentity.newClientDevice(1, 
+		ClientDevice device = ClientIdentities.newClientDevice(1, 
 															"Gaming-PC", 
 															ClientDeviceType.DESKTOP, 
 															"Windows 10 Pro", 
@@ -122,38 +122,38 @@ class ClientIdentityTest {
 		ClientBadge badge1 = ClientBadge.newBuilder()	.setBadgeId(1)
 														.setBadgeName("Badge 1")
 														.setBadgeDescription("Description for Badge 1")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2017, 12, 10, 9, 15).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2017, 12, 10, 9, 15).getTimeInMillis()))
 														.build();
 		ClientBadge badge2 = ClientBadge.newBuilder()	.setBadgeId(2)
 														.setBadgeName("Badge 2")
 														.setBadgeDescription("Description for Badge 2")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2018, 11, 11, 8, 30).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2018, 11, 11, 8, 30).getTimeInMillis()))
 														.build();
 		ClientBadge badge3 = ClientBadge.newBuilder()	.setBadgeId(3)
 														.setBadgeName("Badge 3")
 														.setBadgeDescription("Description for Badge 3")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2019, 10, 12, 7, 45).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2019, 10, 12, 7, 45).getTimeInMillis()))
 														.build();
 		ClientBadges badges = ClientBadges.newBuilder().addBadge(badge1).addBadge(badge2).addBadge(badge3).build();
 		
-		ClientDate dateFriend1 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 3, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend1 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 3, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend1 = ClientFriend.newBuilder().setClientId(44).setMarkedAsBuddy(false).setDateFriendsSince(dateFriend1).build();
-		ClientDate dateFriend2 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 4, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend2 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 4, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend2 = ClientFriend.newBuilder().setClientId(33).setMarkedAsBuddy(false).setDateFriendsSince(dateFriend2).build();
-		ClientDate dateFriend3 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 5, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend3 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 5, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend3 = ClientFriend.newBuilder().setClientId(22).setMarkedAsBuddy(true).setDateFriendsSince(dateFriend3).build();
 		ClientFriends friends = ClientFriends.newBuilder().addFriend(friend1).addFriend(friend2).addFriend(friend3).build();
 		
-		ClientDate dateClientGroup = ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 15, 20, 15).getTimeInMillis());
+		ClientDate dateClientGroup = ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 15, 20, 15).getTimeInMillis());
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupLevel(1).setGroupName("Junior").setDateMemberSince(dateClientGroup).build();
-		ClientDate dateAdminGroup = ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 20, 14, 20).getTimeInMillis());
+		ClientDate dateAdminGroup = ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 20, 14, 20).getTimeInMillis());
 		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(3).setDateMemberSince(dateAdminGroup).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
 		
-		ClientDate lastOnlineDate = ClientIdentity.newClientDate(new GregorianCalendar(2020, 3, 1, 12, 0).getTimeInMillis());
-		ClientDate registrationDate = ClientIdentity.newClientDate(new GregorianCalendar(2019, 1, 1, 4, 20).getTimeInMillis());
+		ClientDate lastOnlineDate = ClientIdentities.newClientDate(new GregorianCalendar(2020, 3, 1, 12, 0).getTimeInMillis());
+		ClientDate registrationDate = ClientIdentities.newClientDate(new GregorianCalendar(2019, 1, 1, 4, 20).getTimeInMillis());
 		
-		ClientProfile profile = ClientIdentity.newClientProfile(	11, 
+		ClientProfile profile = ClientIdentities.newClientProfile(	11, 
 																	"Rozach", 
 																	ClientStatus.OFFLINE, 
 																	images, 
@@ -194,38 +194,38 @@ class ClientIdentityTest {
 		ClientBadge badge1 = ClientBadge.newBuilder()	.setBadgeId(1)
 														.setBadgeName("Badge 1")
 														.setBadgeDescription("Description for Badge 1")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2017, 12, 10, 9, 15).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2017, 12, 10, 9, 15).getTimeInMillis()))
 														.build();
 		ClientBadge badge2 = ClientBadge.newBuilder()	.setBadgeId(2)
 														.setBadgeName("Badge 2")
 														.setBadgeDescription("Description for Badge 2")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2018, 11, 11, 8, 30).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2018, 11, 11, 8, 30).getTimeInMillis()))
 														.build();
 		ClientBadge badge3 = ClientBadge.newBuilder()	.setBadgeId(3)
 														.setBadgeName("Badge 3")
 														.setBadgeDescription("Description for Badge 3")
-														.setDateOfReception(ClientIdentity.newClientDate(new GregorianCalendar(2019, 10, 12, 7, 45).getTimeInMillis()))
+														.setDateOfReception(ClientIdentities.newClientDate(new GregorianCalendar(2019, 10, 12, 7, 45).getTimeInMillis()))
 														.build();
 		ClientBadges badges = ClientBadges.newBuilder().addBadge(badge1).addBadge(badge2).addBadge(badge3).build();
 		
-		ClientDate dateFriend1 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 3, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend1 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 3, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend1 = ClientFriend.newBuilder().setClientId(44).setMarkedAsBuddy(false).setDateFriendsSince(dateFriend1).build();
-		ClientDate dateFriend2 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 4, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend2 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 4, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend2 = ClientFriend.newBuilder().setClientId(33).setMarkedAsBuddy(false).setDateFriendsSince(dateFriend2).build();
-		ClientDate dateFriend3 = ClientIdentity.newClientDate(new GregorianCalendar(2019, 5, 1, 12, 30).getTimeInMillis());
+		ClientDate dateFriend3 = ClientIdentities.newClientDate(new GregorianCalendar(2019, 5, 1, 12, 30).getTimeInMillis());
 		ClientFriend friend3 = ClientFriend.newBuilder().setClientId(22).setMarkedAsBuddy(true).setDateFriendsSince(dateFriend3).build();
 		ClientFriends friends = ClientFriends.newBuilder().addFriend(friend1).addFriend(friend2).addFriend(friend3).build();
 		
-		ClientDate dateClientGroup = ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 15, 20, 15).getTimeInMillis());
+		ClientDate dateClientGroup = ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 15, 20, 15).getTimeInMillis());
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupLevel(1).setGroupName("Junior").setDateMemberSince(dateClientGroup).build();
-		ClientDate dateAdminGroup = ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 20, 14, 20).getTimeInMillis());
+		ClientDate dateAdminGroup = ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 20, 14, 20).getTimeInMillis());
 		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(3).setDateMemberSince(dateAdminGroup).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
 		
-		ClientDate lastOnlineDate = ClientIdentity.newClientDate(new GregorianCalendar(2020, 3, 1, 12, 0).getTimeInMillis());
-		ClientDate registrationDate = ClientIdentity.newClientDate(new GregorianCalendar(2019, 1, 1, 4, 20).getTimeInMillis());
+		ClientDate lastOnlineDate = ClientIdentities.newClientDate(new GregorianCalendar(2020, 3, 1, 12, 0).getTimeInMillis());
+		ClientDate registrationDate = ClientIdentities.newClientDate(new GregorianCalendar(2019, 1, 1, 4, 20).getTimeInMillis());
 		
-		ClientProfile profile = ClientIdentity.newClientProfile(11, 
+		ClientProfile profile = ClientIdentities.newClientProfile(11, 
 																"Rozach", 
 																ClientStatus.OFFLINE, 
 																images, 
@@ -235,14 +235,14 @@ class ClientIdentityTest {
 																lastOnlineDate, 
 																registrationDate);
 		
-		ClientDevice device = ClientIdentity.newClientDevice(	1, 
+		ClientDevice device = ClientIdentities.newClientDevice(	1, 
 																"Gaming-PC", 
 																ClientDeviceType.DESKTOP, 
 																"Windows 10 Pro", 
 																"9.12",
 																ClientDeviceOsType.WINDOWS,
 																"104.103.2.11");
-		ClientAccount account = ClientIdentity.newClientAccount(profile, device, "rozachPassword");
+		ClientAccount account = ClientIdentities.newClientAccount(profile, device, "rozachPassword");
 		assertEquals(account.getProfile(), profile);
 		assertEquals(account.getRegisteredDevice(0), device);
 		assertEquals(account.getPassword(), "rozachPassword");

@@ -2,6 +2,7 @@ package network.peer.server.database.protobuf;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import protobuf.ClientIdentities.ClientAccount;
@@ -58,6 +59,18 @@ public class ClientAccountDatabase extends ProtobufFileDatabase<ClientAccount> {
 					return currentId;
 			}
 			return -1;
+		}
+	}
+	
+	public class ClientAccountComparator implements Comparator<ClientAccount> {
+		@Override
+		public int compare(ClientAccount o1, ClientAccount o2) {
+			if(o1.getProfile().getBase().getId() > o2.getProfile().getBase().getId())
+				return 1;
+			else if(o1.getProfile().getBase().getId() < o2.getProfile().getBase().getId())
+				return -1;
+			else
+				return 0;
 		}
 	}
 }

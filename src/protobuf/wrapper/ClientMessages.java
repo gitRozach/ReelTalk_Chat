@@ -1,4 +1,4 @@
-package protobuf.wrapper.java;
+package protobuf.wrapper;
 
 import java.util.Collection;
 
@@ -14,7 +14,8 @@ import protobuf.ClientMessages.ClientProfileComment;
 import protobuf.ClientMessages.ClientProfileCommentAnswer;
 import protobuf.ClientMessages.PrivateMessage;
 
-public class ClientMessage {	
+public class ClientMessages {	
+	
 	public static String[] getRegisteredTypeNames() {
 		return new String[] {	"ClientMessageBase",
 								"ClientFileMessageBase",

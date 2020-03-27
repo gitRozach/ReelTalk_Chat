@@ -1,5 +1,6 @@
 package network.peer.server.database.manager;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 import network.peer.server.database.protobuf.ChannelMessageDatabase;
@@ -8,7 +9,7 @@ import network.peer.server.database.protobuf.ClientChannelDatabase;
 import network.peer.server.database.protobuf.PrivateMessageDatabase;
 import network.peer.server.database.protobuf.ProfileCommentDatabase;
 
-public class FileDatabaseManager {
+public class ReelTalkDatabaseManager implements Closeable {
 	private ChannelMessageDatabase channelMessageDatabase;
 	private PrivateMessageDatabase privateMessageDatabase;
 	private ProfileCommentDatabase profileCommentDatabase;
@@ -16,7 +17,7 @@ public class FileDatabaseManager {
 	private ClientAccountDatabase clientAccountDatabase;
 	private ClientChannelDatabase clientChannelDatabase;
 	
-	public FileDatabaseManager() throws IOException {
+	public ReelTalkDatabaseManager() throws IOException {
 		channelMessageDatabase = new ChannelMessageDatabase();
 		privateMessageDatabase = new PrivateMessageDatabase();
 		profileCommentDatabase = new ProfileCommentDatabase();
@@ -25,7 +26,14 @@ public class FileDatabaseManager {
 		clientChannelDatabase = new ClientChannelDatabase();
 	}
 	
-	
+	@Override
+	public void close() throws IOException {
+		channelMessageDatabase.close();
+		privateMessageDatabase.close();
+		profileCommentDatabase.close();
+		clientAccountDatabase.close();
+		clientChannelDatabase.close();
+	}
 
 	public ChannelMessageDatabase getChannelMessageDatabase() {
 		return channelMessageDatabase;

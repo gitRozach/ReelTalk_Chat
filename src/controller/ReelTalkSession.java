@@ -28,7 +28,7 @@ import network.peer.client.ReelTalkClient;
 import network.peer.server.ReelTalkServer;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
-import protobuf.wrapper.java.ClientRequest;
+import protobuf.wrapper.ClientRequests;
 
 public class ReelTalkSession extends Application {
 	private static final String HOST_PROTOCOL = "TLSv1.2";
@@ -60,7 +60,7 @@ public class ReelTalkSession extends Application {
 	
 	private void startClient() throws Exception {
 		if(chatClient.connect()) {
-			chatClient.sendMessage(ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass"));
+			chatClient.sendMessage(ClientRequests.newLoginRequest(1, "TestoRozach", "rozachPass"));
 		}
 	}
 	
@@ -179,7 +179,7 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void onInputFieldEnterPressed() {
-		ChannelMessagePostRequest request = ClientRequest.newChannelMessagePostRequest(1, "TestoRozach", "rozachPass", 1, chatView.getMessageInputField().getText());
+		ChannelMessagePostRequest request = ClientRequests.newChannelMessagePostRequest(1, "TestoRozach", "rozachPass", 1, chatView.getMessageInputField().getText());
 		chatClient.sendMessage(request);
 		chatView.getMessageInputField().getTextField().clear();
 	}

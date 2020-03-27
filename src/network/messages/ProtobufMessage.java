@@ -6,8 +6,7 @@ import java.nio.channels.SocketChannel;
 import com.google.protobuf.Any;
 import com.google.protobuf.GeneratedMessageV3;
 
-import protobuf.ClientChannels.TextChannel;
-import protobuf.ClientChannels.VoiceChannel;
+import protobuf.ClientChannels.ClientChannel;
 import protobuf.ClientEvents.ChannelFileDownloadEvent;
 import protobuf.ClientEvents.ChannelFileUploadEvent;
 import protobuf.ClientEvents.ChannelMessageAnswerGetEvent;
@@ -77,10 +76,8 @@ public class ProtobufMessage {
 	}
 	
 	public static Class<? extends GeneratedMessageV3> getMessageTypeOf(Any message){
-		if(message.is(TextChannel.class))
-			return TextChannel.class;
-		else if(message.is(VoiceChannel.class))
-			return VoiceChannel.class;
+		if(message.is(ClientChannel.class))
+			return ClientChannel.class;
 		
 		else if(message.is(ClientRequestRejectedEvent.class))
 			return ClientRequestRejectedEvent.class;

@@ -1,6 +1,7 @@
 package network.peer.server.database.protobuf;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
@@ -40,33 +41,47 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		loadedItems = Collections.synchronizedList(new LinkedList<T>());
 		bufferedDatabases = new HashMap<String, List<T>>();
 	}
-	
-	public int reloadFileItems(String databaseFilePath) {
-		return -1;
-	}
 
 	public int loadFileItems(String databaseFilePath) {
 		return loadFileItems(databaseFilePath, true);
 	}
 	
 	public int loadFileItems(String filePath, boolean bufferDatabase) {
+		if(!changeDatabaseFile(filePath))
+			return -1;
+		List<T> loadedItems = hasBufferedDatabase(filePath) ? getBufferedFileDatabases().get(databaseFilePath) : readItems();
+		if(bufferDatabase && !hasBufferedDatabase(filePath))
+			getBufferedFileDatabases().put(filePath, loadedItems);
+		return fillItems(loadedItems, false);
+	}
+	
+	public boolean fileExists(String filePath) {
+		if(filePath == null)
+			return false;
+		return new File(filePath).exists();
+	}
+	
+	public boolean fileExistsAndIsAccessible(String filePath) {
+		if(filePath == null)
+			return false;
+		File file = new File(filePath);
+		return file.exists() && file.canRead() && file.canWrite();
+	}
+	
+	protected boolean changeDatabaseFile(String filePath) {
 		try {
 			databaseFile = new RandomAccessFile(filePath, "rwd");
 			databaseChannel = databaseFile.getChannel();
 			databaseFilePath = filePath;
 			currentDatabaseFilePath = filePath;
-			
-			List<T> loadedItems = hasBufferedDatabase(filePath) ? getBufferedFileDatabases().get(databaseFilePath) : readItems();
-			if(bufferDatabase && !hasBufferedDatabase(filePath))
-				getBufferedFileDatabases().put(filePath, loadedItems);
-			return fillItems(loadedItems, false);
+			return true;
 		}
-		catch(Exception io) {
-			return -1;
+		catch(IOException io) {
+			return false;
 		}
 	}
 	
-	private int fillItems(Collection<T> itemCollection, boolean append) {
+	protected int fillItems(Collection<T> itemCollection, boolean append) {
 		if(itemCollection == null)
 			return -1;
 		

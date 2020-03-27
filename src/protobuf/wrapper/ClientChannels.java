@@ -1,4 +1,4 @@
-package protobuf.wrapper.java;
+package protobuf.wrapper;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,10 +9,9 @@ import protobuf.ClientChannels.ChannelBase;
 import protobuf.ClientChannels.ChannelMemberVerification;
 import protobuf.ClientChannels.ChannelMembers;
 import protobuf.ClientChannels.ChannelRestrictionType;
-import protobuf.ClientChannels.TextChannel;
-import protobuf.ClientChannels.VoiceChannel;
+import protobuf.ClientChannels.ClientChannel;
 
-public class ClientChannel {
+public class ClientChannels {
 	
 	public static String[] getRegisteredTypeNames() {
 		return new String[] {"TextChannel", "VoiceChannel"};
@@ -27,20 +26,11 @@ public class ClientChannel {
 		return false;
 	}
 	
-	public static TextChannel addMemberIdToChannel(TextChannel channel, Integer id) {
+	public static ClientChannel addMemberIdToChannel(ClientChannel channel, Integer id) {
 		return addMemberIdsToChannel(channel, Arrays.asList(id));
 	}
 	
-	public static TextChannel addMemberIdsToChannel(TextChannel channel, Collection<Integer> memberIds) {
-		ChannelMembers members = channel.getMembers().toBuilder().addAllMemberId(memberIds).build();
-		return channel.toBuilder().setMembers(members).build();
-	}
-	
-	public static VoiceChannel addMemberIdToChannel(VoiceChannel channel, Integer id) {
-		return addMemberIdsToChannel(channel, Arrays.asList(id));
-	}
-	
-	public static VoiceChannel addMemberIdsToChannel(VoiceChannel channel, Collection<Integer> memberIds) {
+	public static ClientChannel addMemberIdsToChannel(ClientChannel channel, Collection<Integer> memberIds) {
 		ChannelMembers members = channel.getMembers().toBuilder().addAllMemberId(memberIds).build();
 		return channel.toBuilder().setMembers(members).build();
 	}
@@ -50,14 +40,14 @@ public class ClientChannel {
 	}
 	
 	public static ChannelMemberVerification newChannelMemberPasswordVerification(String password) {
-		return ChannelMemberVerification.newBuilder().setChannelPassword(password).build();
+		return ChannelMemberVerification.newBuilder().setPassword(password).build();
 	}
 	
 	public static ChannelMemberVerification newChannelMemberInvitationKeyVerification(Collection<String> invitationKeys) {
 		return ChannelMemberVerification.newBuilder().addAllInvitationKey(invitationKeys).build();
 	}
 	
-	public static TextChannel newPublicTextChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
+	public static ClientChannel newPublicTextChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
 		return newTextChannel(	id, 
 								name, 
 								ChannelRestrictionType.PUBLIC, 
@@ -66,7 +56,7 @@ public class ClientChannel {
 								memberIds);
 	}
 	
-	public static TextChannel newPasswordSecuredTextChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
+	public static ClientChannel newPasswordSecuredTextChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
 		return newTextChannel(	id, 
 								name, 
 								ChannelRestrictionType.PASSWORD_REQUIRED, 
@@ -75,7 +65,7 @@ public class ClientChannel {
 								memberIds);
 	}
 	
-	public static TextChannel newTextChannel(	int id,
+	public static ClientChannel newTextChannel(	int id,
 												String name,
 												ChannelRestrictionType type, 
 												ChannelMemberVerification verification, 
@@ -83,18 +73,18 @@ public class ClientChannel {
 												Collection<Integer> memberIds) {
 		ChannelBase base = newChannelBase(id, name);
 		ChannelMembers members = ChannelMembers.newBuilder().setMaxMembers(maxMembers).addAllMemberId(memberIds).build();
-		return TextChannel.newBuilder()	.setBase(base)
+		return ClientChannel.newBuilder()	.setBase(base)
 										.setMembers(members)
 										.setRestrictionType(type)
 										.setMemberVerification(verification)
 										.build();
 	}
 	
-	public static VoiceChannel newPublicVoiceChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
+	public static ClientChannel newPublicVoiceChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
 		return newVoiceChannel(id, name, ChannelRestrictionType.PUBLIC, ChannelMemberVerification.getDefaultInstance(), maxMembers, memberIds);
 	}
 	
-	public static VoiceChannel newPasswordSecuredVoiceChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
+	public static ClientChannel newPasswordSecuredVoiceChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
 		return newVoiceChannel(	id, 
 								name, 
 								ChannelRestrictionType.PASSWORD_REQUIRED, 
@@ -103,7 +93,7 @@ public class ClientChannel {
 								memberIds);	
 	}
 	
-	public static VoiceChannel newVoiceChannel(	int id,
+	public static ClientChannel newVoiceChannel(	int id,
 												String name,
 												ChannelRestrictionType type,
 												ChannelMemberVerification verification,
@@ -111,7 +101,7 @@ public class ClientChannel {
 												Collection<Integer> memberIds) {
 		ChannelBase base = newChannelBase(id, name);
 		ChannelMembers members = ChannelMembers.newBuilder().setMaxMembers(maxMembers).addAllMemberId(memberIds).build();
-		return VoiceChannel.newBuilder()	.setBase(base)
+		return ClientChannel.newBuilder()	.setBase(base)
 											.setMembers(members)
 											.setRestrictionType(type)
 											.setMemberVerification(verification)

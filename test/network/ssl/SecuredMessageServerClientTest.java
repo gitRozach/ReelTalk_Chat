@@ -28,9 +28,9 @@ import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
 import protobuf.ClientRequests.ClientLoginRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import protobuf.wrapper.java.ClientEvent;
-import protobuf.wrapper.java.ClientIdentity;
-import protobuf.wrapper.java.ClientRequest;
+import protobuf.wrapper.ClientEvents;
+import protobuf.wrapper.ClientIdentities;
+import protobuf.wrapper.ClientRequests;
 
 class SecuredMessageServerClientTest {
 
@@ -46,22 +46,22 @@ class SecuredMessageServerClientTest {
 		ClientBadge badge2 = ClientBadge.newBuilder().setBadgeId(2).setBadgeName("Badge 2").setBadgeDescription("Badge Description 2").build();
 		ClientBadge badge3 = ClientBadge.newBuilder().setBadgeId(3).setBadgeName("Badge 3").setBadgeDescription("Badge Description 3").build();
 		ClientBadges badges = ClientBadges.newBuilder().addBadge(badge1).addBadge(badge2).addBadge(badge3).build();
-		ClientFriend friend1 = ClientFriend.newBuilder().setClientId(10).setMarkedAsBuddy(true).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 22, 30, 0).getTimeInMillis())).build();
-		ClientFriend friend2 = ClientFriend.newBuilder().setClientId(11).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 21, 30, 0).getTimeInMillis())).build();
-		ClientFriend friend3 = ClientFriend.newBuilder().setClientId(12).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 20, 30, 0).getTimeInMillis())).build();
+		ClientFriend friend1 = ClientFriend.newBuilder().setClientId(10).setMarkedAsBuddy(true).setDateFriendsSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 2, 2, 22, 30, 0).getTimeInMillis())).build();
+		ClientFriend friend2 = ClientFriend.newBuilder().setClientId(11).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 2, 2, 21, 30, 0).getTimeInMillis())).build();
+		ClientFriend friend3 = ClientFriend.newBuilder().setClientId(12).setMarkedAsBuddy(false).setDateFriendsSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 2, 2, 20, 30, 0).getTimeInMillis())).build();
 		ClientFriends friends = ClientFriends.newBuilder().addFriend(friend1).addFriend(friend2).addFriend(friend3).build();
-		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
-		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentity.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
+		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
+		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
-		return ClientIdentity.newClientProfile(			1, 
+		return ClientIdentities.newClientProfile(			1, 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
 																	badges, 
 																	friends, 
 																	groups, 
-																	ClientIdentity.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
-																	ClientIdentity.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+																	ClientIdentities.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
+																	ClientIdentities.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
 	}
 	
 	@BeforeAll
@@ -90,7 +90,7 @@ class SecuredMessageServerClientTest {
 			client5.connect();
 			client5.setBufferingReceivedMessages(true);
 			
-			ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
+			ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleProfile());
 			
 			for(int i = 0; i < 100; ++i) {
 				server.sendMessage(client1.getChannel(), eventMessage);
@@ -125,7 +125,7 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
-		ClientLoginEvent eventMessage = ClientEvent.newClientLoginEvent(1, createSampleProfile());
+		ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleProfile());
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedMessages(true);
@@ -164,7 +164,7 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void clientLogin_validLoginTest() throws Exception {
-		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "TestoRozach", "rozachPass");
+		ClientLoginRequest req = ClientRequests.newLoginRequest(1, "TestoRozach", "rozachPass");
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
 			client.sendMessage(req);
@@ -176,7 +176,7 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void clientLogin_invalidLoginTest() throws Exception {
-		ClientLoginRequest req = ClientRequest.newLoginRequest(1, "Rozach", "rozachPass");
+		ClientLoginRequest req = ClientRequests.newLoginRequest(1, "Rozach", "rozachPass");
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.sendMessage(req);
@@ -189,7 +189,7 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void sendMessage_tenClientsSendMultipleMessagesAndServerReceivesAllMessages() throws Exception {
-		PrivateMessagePostRequest requestMessage = ClientRequest.newPrivateMessagePostRequest(1, "Rozach", "rozachPass", 12, "Hallo Jann!");
+		PrivateMessagePostRequest requestMessage = ClientRequests.newPrivateMessagePostRequest(1, "Rozach", "rozachPass", 12, "Hallo Jann!");
 		try(ReelTalkClient client1 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			ReelTalkClient client2 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);
 			ReelTalkClient client3 = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT);

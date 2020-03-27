@@ -35,8 +35,8 @@ import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import protobuf.wrapper.java.ClientEvent;
-import protobuf.wrapper.java.ClientMessage;
+import protobuf.wrapper.ClientEvents;
+import protobuf.wrapper.ClientMessages;
 
 public class ReelTalkServer extends SecuredProtobufServer {
 	protected ClientAccountDatabase clients;
@@ -197,11 +197,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void handleChannelMessagePostRequest(SelectionKey clientKey, ChannelMessagePostRequest request) {
 		for(SelectionKey key : selector.keys()) {
 			if(key.channel() instanceof SocketChannel) {
-				ChannelMessage channelMessage = ClientMessage.newChannelMessage(1, request.getMessageText(), 0, request.getRequestBase().getUsername(), 1, System.currentTimeMillis(), Collections.emptyList());
+				ChannelMessage channelMessage = ClientMessages.newChannelMessage(1, request.getMessageText(), 0, request.getRequestBase().getUsername(), 1, System.currentTimeMillis(), Collections.emptyList());
 				List<ChannelMessage> messages = new ArrayList<ChannelMessage>();
 				messages.add(channelMessage);
 				
-				ChannelMessagePostEvent eventMessage = ClientEvent.newChannelMessagePostEvent(request.getRequestBase().getRequestId(), 0, messages);
+				ChannelMessagePostEvent eventMessage = ClientEvents.newChannelMessagePostEvent(request.getRequestBase().getRequestId(), 0, messages);
 				sendMessage(key, eventMessage);
 				messageManager.addChannelMessage(eventMessage.getMessage(0));
 			}

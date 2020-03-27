@@ -32,7 +32,7 @@ import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
-import protobuf.wrapper.java.ClientRequest;
+import protobuf.wrapper.ClientRequests;
 
 class ClientRequestTest {
 	@Test
@@ -46,7 +46,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newClientRequestBase_checkRequestBaseValues() {
-		ClientRequestBase base = ClientRequest.newClientRequestBase(1, "Jann", "jannPassword", 0L);
+		ClientRequestBase base = ClientRequests.newClientRequestBase(1, "Jann", "jannPassword", 0L);
 		assertEquals(base.getRequestId(), 1);
 		assertEquals(base.getUsername(), "Jann");
 		assertEquals(base.getPassword(), "jannPassword");
@@ -63,7 +63,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelJoinRequest_checkJoinRequestValues() {
-		ChannelJoinRequest joinRequest = ClientRequest.newChannelJoinRequest(1, "Rozach", "rozachPassword", 5);
+		ChannelJoinRequest joinRequest = ClientRequests.newChannelJoinRequest(1, "Rozach", "rozachPassword", 5);
 		assertEquals(joinRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(joinRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(joinRequest.getRequestBase().getPassword(), "rozachPassword");
@@ -81,7 +81,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelLeaveRequest_checkLeaveRequestValues() {
-		ChannelLeaveRequest leaveRequest = ClientRequest.newChannelLeaveRequest(1, "Rozach", "rozachPassword", 5);
+		ChannelLeaveRequest leaveRequest = ClientRequests.newChannelLeaveRequest(1, "Rozach", "rozachPassword", 5);
 		assertEquals(leaveRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(leaveRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(leaveRequest.getRequestBase().getPassword(), "rozachPassword");
@@ -98,7 +98,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newClientProfileGetRequest_checkProfileRequestValues() {
-		ClientProfileGetRequest profileGetRequest = ClientRequest.newProfileGetRequest(1, "Rozach", "rozachPassword", 11);
+		ClientProfileGetRequest profileGetRequest = ClientRequests.newProfileGetRequest(1, "Rozach", "rozachPassword", 11);
 		assertEquals(profileGetRequest.getClientBase().getId(), 11);
 		assertEquals(profileGetRequest.getClientBase().getUsername(), "");
 		assertEquals(profileGetRequest.getRequestBase().getRequestId(), 1);
@@ -118,7 +118,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelMessageGetRequest_checkMessageRequestValues() {
-		ChannelMessageGetRequest messageGetRequest = ClientRequest.newChannelMessageGetRequest(1, "Rozach", "rozachPassword", 5, 0, 1);
+		ChannelMessageGetRequest messageGetRequest = ClientRequests.newChannelMessageGetRequest(1, "Rozach", "rozachPassword", 5, 0, 1);
 		assertEquals(messageGetRequest.getChannelBase().getChannelId(), 5);
 		assertEquals(messageGetRequest.getChannelBase().getChannelName(), "");
 		assertEquals(messageGetRequest.getRequestBase().getRequestId(), 1);
@@ -139,7 +139,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelMessagePostRequest_checkMessageRequestValues() {
-		ChannelMessagePostRequest messagePostRequest = ClientRequest.newChannelMessagePostRequest(1, "Rozach", "rozachPassword", 5, "Hallo!");
+		ChannelMessagePostRequest messagePostRequest = ClientRequests.newChannelMessagePostRequest(1, "Rozach", "rozachPassword", 5, "Hallo!");
 		assertEquals(messagePostRequest.getChannelBase().getChannelId(), 5);
 		assertEquals(messagePostRequest.getChannelBase().getChannelName(), "");
 		assertEquals(messagePostRequest.getRequestBase().getRequestId(), 1);
@@ -161,7 +161,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelMessageAnswerGetRequest_checkMessageAnswerRequestValues() {
-		ChannelMessageAnswerGetRequest answerGetRequest = ClientRequest.newChannelMessageAnswerGetRequest(1, "Rozach", "rozachPassword", 5, 1, 0, 3);
+		ChannelMessageAnswerGetRequest answerGetRequest = ClientRequests.newChannelMessageAnswerGetRequest(1, "Rozach", "rozachPassword", 5, 1, 0, 3);
 		assertEquals(answerGetRequest.getChannelBase().getChannelId(), 5);
 		assertEquals(answerGetRequest.getChannelBase().getChannelName(), "");
 		assertEquals(answerGetRequest.getRequestBase().getRequestId(), 1);
@@ -184,7 +184,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelMessageAnswerPostRequest_checkMessageAnswerRequestValues() {
-		ChannelMessageAnswerPostRequest answerPostRequest = ClientRequest.newChannelMessageAnswerPostRequest(1, "Rozach", "rozachPassword", 5, 2, "Antwort");
+		ChannelMessageAnswerPostRequest answerPostRequest = ClientRequests.newChannelMessageAnswerPostRequest(1, "Rozach", "rozachPassword", 5, 2, "Antwort");
 		assertEquals(answerPostRequest.getChannelBase().getChannelId(), 5);
 		assertEquals(answerPostRequest.getChannelBase().getChannelName(), "");
 		assertEquals(answerPostRequest.getRequestBase().getRequestId(), 1);
@@ -205,7 +205,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newPrivateMessageGetRequest_checkMessageRequestValues() {
-		PrivateMessageGetRequest messageGetRequest = ClientRequest.newPrivateMessageGetRequest(1, "Rozach", "rozachPassword", 11, 0, 10);
+		PrivateMessageGetRequest messageGetRequest = ClientRequests.newPrivateMessageGetRequest(1, "Rozach", "rozachPassword", 11, 0, 10);
 		assertEquals(messageGetRequest.getClientBase().getId(), 11);
 		assertEquals(messageGetRequest.getClientBase().getUsername(), "");
 		assertEquals(messageGetRequest.getRequestBase().getRequestId(), 1);
@@ -225,7 +225,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newPrivateMessagePostRequest_checkMessageRequestValues() {
-		PrivateMessagePostRequest messagePostRequest = ClientRequest.newPrivateMessagePostRequest(1, "Jann", "jannPassword", 12, "Hallo Rozach");
+		PrivateMessagePostRequest messagePostRequest = ClientRequests.newPrivateMessagePostRequest(1, "Jann", "jannPassword", 12, "Hallo Rozach");
 		assertEquals(messagePostRequest.getClientBase().getId(), 12);
 		assertEquals(messagePostRequest.getClientBase().getUsername(), "");
 		assertEquals(messagePostRequest.getRequestBase().getRequestId(), 1);
@@ -243,7 +243,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newClientLoginRequest_checkLoginRequestValues() {
-		ClientLoginRequest loginRequest = ClientRequest.newLoginRequest(1, "Jann", "jannPassword");
+		ClientLoginRequest loginRequest = ClientRequests.newLoginRequest(1, "Jann", "jannPassword");
 		assertEquals(loginRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(loginRequest.getRequestBase().getUsername(), "Jann");
 		assertEquals(loginRequest.getRequestBase().getPassword(), "jannPassword");
@@ -259,7 +259,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newClientLogoutRequest_checkLogoutRequestValues() {
-		ClientLogoutRequest logoutRequest = ClientRequest.newLogoutRequest(1, "Jann", "jannPassword");
+		ClientLogoutRequest logoutRequest = ClientRequests.newLogoutRequest(1, "Jann", "jannPassword");
 		assertEquals(logoutRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(logoutRequest.getRequestBase().getUsername(), "Jann");
 		assertEquals(logoutRequest.getRequestBase().getPassword(), "jannPassword");
@@ -280,7 +280,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newClientRegistrationRequest_checkRegistrationRequestValues() {
-		ClientRegistrationRequest registrationRequest = ClientRequest.newRegistrationRequest(1, "Hasan", "husseini", "husseini", "egonecohasan@gmail.com");
+		ClientRegistrationRequest registrationRequest = ClientRequests.newRegistrationRequest(1, "Hasan", "husseini", "husseini", "egonecohasan@gmail.com");
 		assertEquals(registrationRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(registrationRequest.getRequestBase().getUsername(), "Hasan");
 		assertEquals(registrationRequest.getRequestBase().getPassword(), "husseini");
@@ -302,7 +302,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelFileUploadRequest_checkFileUploadRequestValues() {
-		ChannelFileUploadRequest uploadRequest = ClientRequest.newChannelFileUploadRequest(1, "Rozach", "rozachPassword", 5, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
+		ChannelFileUploadRequest uploadRequest = ClientRequests.newChannelFileUploadRequest(1, "Rozach", "rozachPassword", 5, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
 		assertEquals(uploadRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(uploadRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(uploadRequest.getRequestBase().getPassword(), "rozachPassword");
@@ -322,7 +322,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newChannelFileDownloadRequest_checkFileDownloadRequestValues() {
-		ChannelFileDownloadRequest downloadRequest = ClientRequest.newChannelFileDownloadRequest(1, "Jann", "jannPassword", 5, "readme.txt", "C:/Users/Jann/Downloads");
+		ChannelFileDownloadRequest downloadRequest = ClientRequests.newChannelFileDownloadRequest(1, "Jann", "jannPassword", 5, "readme.txt", "C:/Users/Jann/Downloads");
 		assertEquals(downloadRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(downloadRequest.getRequestBase().getUsername(), "Jann");
 		assertEquals(downloadRequest.getRequestBase().getPassword(), "jannPassword");
@@ -342,7 +342,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newPrivateFileUploadRequest_checkFileUploadRequestValues() {
-		PrivateFileUploadRequest uploadRequest = ClientRequest.newPrivateFileUploadRequest(1, "Rozach", "rozachPassword", 11, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
+		PrivateFileUploadRequest uploadRequest = ClientRequests.newPrivateFileUploadRequest(1, "Rozach", "rozachPassword", 11, "readme.txt", "C:/Users/Rozach/readme.txt", 1024L);
 		assertEquals(uploadRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(uploadRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(uploadRequest.getRequestBase().getPassword(), "rozachPassword");
@@ -362,7 +362,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newPrivateFileDownloadRequest_checkFileDownloadRequestValues() {
-		PrivateFileDownloadRequest downloadRequest = ClientRequest.newPrivateFileDownloadRequest(1, "Jann", "jannPassword", 12, "readme.txt", "C:/Users/Jann/Downloads");
+		PrivateFileDownloadRequest downloadRequest = ClientRequests.newPrivateFileDownloadRequest(1, "Jann", "jannPassword", 12, "readme.txt", "C:/Users/Jann/Downloads");
 		assertEquals(downloadRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(downloadRequest.getRequestBase().getUsername(), "Jann");
 		assertEquals(downloadRequest.getRequestBase().getPassword(), "jannPassword");
@@ -381,7 +381,7 @@ class ClientRequestTest {
 	
 	@Test
 	public void newPingMeasurementRequest_checkMeasurementRequestValues() {
-		PingMeasurementRequest measurementRequest = ClientRequest.newPingMeasurementRequest(1, "Rozach", "rozachPassword");
+		PingMeasurementRequest measurementRequest = ClientRequests.newPingMeasurementRequest(1, "Rozach", "rozachPassword");
 		assertEquals(measurementRequest.getRequestBase().getRequestId(), 1);
 		assertEquals(measurementRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(measurementRequest.getRequestBase().getPassword(), "rozachPassword");

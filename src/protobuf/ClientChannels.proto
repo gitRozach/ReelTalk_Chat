@@ -23,17 +23,15 @@ enum ChannelRestrictionType {
 
 message ChannelMemberVerification {
 	repeated string invitationKey = 1;
-	string channelPassword = 2;
+	string password = 2;
 }
 
-message TextChannel {
-	ChannelBase base = 1;
-	ChannelMembers members = 2;
-	ChannelRestrictionType restrictionType = 3;
-	ChannelMemberVerification memberVerification = 4;
+enum ChannelCommunicationType {
+	VOICE = 0;
+	TEXT = 1;
 }
 
-message VoiceChannel {
+message ClientChannel {
 	ChannelBase base = 1;
 	ChannelMembers members = 2;
 	ChannelRestrictionType restrictionType = 3;

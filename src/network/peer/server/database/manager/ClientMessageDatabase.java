@@ -14,7 +14,7 @@ public class ClientMessageDatabase {
 	private PrivateMessageDatabase privateMessageManager;
 	private ChannelMessageDatabase channelMessageManager;
 	private ProfileCommentDatabase profileCommentManager;
-	
+		
 	public ClientMessageDatabase() throws IOException {
 		initialize();
 	}

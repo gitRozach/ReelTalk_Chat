@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import network.peer.server.database.protobuf.PrivateMessageDatabase;
 import protobuf.ClientMessages.PrivateMessage;
-import protobuf.wrapper.java.ClientMessage;
+import protobuf.wrapper.ClientMessages;
 
 class PrivateMessageManagerTest {
 	protected PrivateMessageDatabase messageDatabase;
@@ -28,11 +28,11 @@ class PrivateMessageManagerTest {
 		messageDatabase.loadFileItems("test/testresources/privateMessageManager/messagesToWrite.txt");
 		messageDatabase.clear();
 		
-		PrivateMessage m1 = ClientMessage.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage m2 = ClientMessage.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage m3 = ClientMessage.newPrivateMessage(3, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage m4 = ClientMessage.newPrivateMessage(4, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage m5 = ClientMessage.newPrivateMessage(5, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m1 = ClientMessages.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m2 = ClientMessages.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage m3 = ClientMessages.newPrivateMessage(3, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m4 = ClientMessages.newPrivateMessage(4, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage m5 = ClientMessages.newPrivateMessage(5, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
 		
 		assertTrue(messageDatabase.addItem(m1));
 		assertTrue(messageDatabase.addItem(m2));
@@ -52,11 +52,11 @@ class PrivateMessageManagerTest {
 		PrivateMessage m4 = messageDatabase.getItem(3);
 		PrivateMessage m5 = messageDatabase.getItem(4);
 				
-		PrivateMessage expM1 = ClientMessage.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage expM2 = ClientMessage.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage expM3 = ClientMessage.newPrivateMessage(3, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage expM4 = ClientMessage.newPrivateMessage(4, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage expM5 = ClientMessage.newPrivateMessage(5, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage expM1 = ClientMessages.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage expM2 = ClientMessages.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage expM3 = ClientMessages.newPrivateMessage(3, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage expM4 = ClientMessages.newPrivateMessage(4, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage expM5 = ClientMessages.newPrivateMessage(5, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
 		
 		assertEquals(m1, expM1);
 		assertEquals(m2, expM2);

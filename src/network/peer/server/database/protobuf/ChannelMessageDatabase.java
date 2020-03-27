@@ -1,6 +1,7 @@
 package network.peer.server.database.protobuf;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
@@ -71,4 +72,15 @@ public class ChannelMessageDatabase extends ProtobufFileDatabase<ChannelMessage>
 		return -1;
 	}
 	
+	public class ChannelMessageComparator implements Comparator<ChannelMessage> {
+		@Override
+		public int compare(ChannelMessage o1, ChannelMessage o2) {
+			if(o1.getMessageBase().getMessageId() > o2.getMessageBase().getMessageId())
+				return 1;
+			else if(o1.getMessageBase().getMessageId() < o2.getMessageBase().getMessageId())
+				return -1;
+			else
+				return 0;
+		}
+	}
 }

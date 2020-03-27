@@ -1,4 +1,4 @@
-package protobuf.wrapper.java;
+package protobuf.wrapper;
 
 import com.google.protobuf.GeneratedMessageV3;
 
@@ -34,7 +34,7 @@ import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
 import utils.SystemUtils;
 
-public class ClientRequest {	
+public class ClientRequests {	
 	public static String[] getRegisteredTypeNames() {
 		return new String[] {	"ClientRequestBase",
 								"FileDownloadVerification",
@@ -272,7 +272,7 @@ public class ClientRequest {
 														.setDeviceOs(deviceOs)
 														.setDeviceType(deviceType)
 														.build();
-		return ClientRegistrationRequest.newBuilder()	.setRequestBase(ClientRequest.newClientRequestBase(requestId, username, password))
+		return ClientRegistrationRequest.newBuilder()	.setRequestBase(ClientRequests.newClientRequestBase(requestId, username, password))
 														.setUsername(username)
 														.setPassword(password)
 														.setPasswordRepeat(passwordRepeat)

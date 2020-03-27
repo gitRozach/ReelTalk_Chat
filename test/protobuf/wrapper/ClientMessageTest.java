@@ -17,7 +17,7 @@ import protobuf.ClientMessages.ClientMessageBase;
 import protobuf.ClientMessages.ClientProfileComment;
 import protobuf.ClientMessages.ClientProfileCommentAnswer;
 import protobuf.ClientMessages.PrivateMessage;
-import protobuf.wrapper.java.ClientMessage;
+import protobuf.wrapper.ClientMessages;
 
 class ClientMessageTest {
 	@Test
@@ -32,7 +32,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newClientMessageBase_checkMessageValues() {
-		ClientMessageBase base = ClientMessage.newClientMessageBase(1, "Hallo", 11, "Jann", new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis());
+		ClientMessageBase base = ClientMessages.newClientMessageBase(1, "Hallo", 11, "Jann", new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis());
 		assertEquals(base.getMessageId(), 1);
 		assertEquals(base.getMessageText(), "Hallo");
 		assertEquals(base.getSenderId(), 11);
@@ -58,7 +58,7 @@ class ClientMessageTest {
 																				.build();
 		List<ClientFileMessageBase> attachedFiles = new ArrayList<ClientFileMessageBase>();
 		attachedFiles.add(fileToAttach);
-		ChannelMessage defaultMessage = ClientMessage.newChannelMessage(1, "Hallo", 11, "Jann", 5, new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis(), attachedFiles);																		
+		ChannelMessage defaultMessage = ClientMessages.newChannelMessage(1, "Hallo", 11, "Jann", 5, new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis(), attachedFiles);																		
 		assertEquals(defaultMessage.getMessageBase().getMessageId(), 1);
 		assertEquals(defaultMessage.getMessageBase().getMessageText(), "Hallo");
 		assertEquals(defaultMessage.getMessageBase().getSenderId(), 11);
@@ -84,7 +84,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newChannelMessageAnswer_checkChannelMessageAnswerValues() {
-		ChannelMessageAnswer answer = ClientMessage.newChannelMessageAnswer(1, "Antwort", 11, "Jann", 5, 1, 0L);
+		ChannelMessageAnswer answer = ClientMessages.newChannelMessageAnswer(1, "Antwort", 11, "Jann", 5, 1, 0L);
 		assertEquals(answer.getMessageBase().getMessageId(), 1);
 		assertEquals(answer.getMessageBase().getMessageText(), "Antwort");
 		assertEquals(answer.getMessageBase().getSenderId(), 11);
@@ -110,7 +110,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newPrivateMessage_checkPrivateMessageValues() {
-		PrivateMessage message = ClientMessage.newPrivateMessage(1, "Hallo", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage message = ClientMessages.newPrivateMessage(1, "Hallo", 12, "Rozach", 11, 0L, Collections.emptyList());
 		assertEquals(message.getMessageBase().getMessageId(), 1);
 		assertEquals(message.getMessageBase().getMessageText(), "Hallo");
 		assertEquals(message.getMessageBase().getSenderId(), 12);
@@ -136,7 +136,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newClientProfileComment_checkProfileCommentValues() {
-		ClientProfileComment comment = ClientMessage.newClientProfileComment(1, "Kommentar", 12, "Rozach", 11, 0L, Collections.emptyList());
+		ClientProfileComment comment = ClientMessages.newClientProfileComment(1, "Kommentar", 12, "Rozach", 11, 0L, Collections.emptyList());
 		assertEquals(comment.getMessageBase().getMessageId(), 1);
 		assertEquals(comment.getMessageBase().getMessageText(), "Kommentar");
 		assertEquals(comment.getMessageBase().getSenderId(), 12);
@@ -162,7 +162,7 @@ class ClientMessageTest {
 
 	@Test
 	public void newClientProfileCommentAnswer_checkProfileCommentAnswerValues() {
-		ClientProfileCommentAnswer answer = ClientMessage.newClientProfileCommentAnswer(1, "Antwort", 11, "Jann", 11, 1, 0L);
+		ClientProfileCommentAnswer answer = ClientMessages.newClientProfileCommentAnswer(1, "Antwort", 11, "Jann", 11, 1, 0L);
 		assertEquals(answer.getMessageBase().getMessageId(), 1);
 		assertEquals(answer.getMessageBase().getMessageText(), "Antwort");
 		assertEquals(answer.getMessageBase().getSenderId(), 11);

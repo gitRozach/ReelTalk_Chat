@@ -1,4 +1,4 @@
-package protobuf.wrapper.java;
+package protobuf.wrapper;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -21,7 +21,7 @@ import protobuf.ClientIdentities.ClientImages;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
 
-public class ClientIdentity {
+public class ClientIdentities {
 	public static String[] getRegisteredTypeNames() {
 		return new String[] {	"ClientBase",
 								"ClientProfile",

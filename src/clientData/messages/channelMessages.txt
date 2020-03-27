@@ -8,4 +8,6 @@ d
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage+
 %igigigiugiggi"TestoRozach(Á™¤ÕŽ.`
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage"
-haga"TestoRozach(÷²¤ÕŽ.
+haga"TestoRozach(÷²¤ÕŽ.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+xd"TestoRozach(´ªÈì‘.
