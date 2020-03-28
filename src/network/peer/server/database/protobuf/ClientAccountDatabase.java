@@ -2,6 +2,7 @@ package network.peer.server.database.protobuf;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,6 +13,15 @@ public class ClientAccountDatabase extends ProtobufFileDatabase<ClientAccount> {
 	
 	public ClientAccountDatabase() throws IOException {
 		super(ClientAccount.class);
+	}
+	
+	public ClientAccountDatabase(String filePath) throws IOException {
+		super(ClientAccount.class, filePath);
+	}
+	
+	@Override
+	public void sort(List<ClientAccount> items) {
+		Collections.sort(items, ClientAccountComparator);
 	}
 	
 	public List<ClientAccount> getByBaseId(int id) {
@@ -29,6 +39,7 @@ public class ClientAccountDatabase extends ProtobufFileDatabase<ClientAccount> {
 			if(currentAccount.getProfile().getBase().getUsername().equals(username) && currentAccount.getPassword().equals(password))
 				resultList.add(currentAccount);
 		}
+		System.out.println("Found: " + resultList.size() + " items");
 		return resultList;
 	}
 	
@@ -62,15 +73,10 @@ public class ClientAccountDatabase extends ProtobufFileDatabase<ClientAccount> {
 		}
 	}
 	
-	public class ClientAccountComparator implements Comparator<ClientAccount> {
+	public static Comparator<ClientAccount> ClientAccountComparator = new Comparator<ClientAccount>() {
 		@Override
 		public int compare(ClientAccount o1, ClientAccount o2) {
-			if(o1.getProfile().getBase().getId() > o2.getProfile().getBase().getId())
-				return 1;
-			else if(o1.getProfile().getBase().getId() < o2.getProfile().getBase().getId())
-				return -1;
-			else
-				return 0;
+			return o1.getProfile().getBase().getId() - o2.getProfile().getBase().getId();
 		}
-	}
+	};
 }

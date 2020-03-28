@@ -13,10 +13,10 @@ import handler.ObjectEventHandler;
 import handler.events.ObjectEvent;
 import network.messages.ProtobufMessage;
 import network.peer.client.callbacks.PeerCallback;
-import network.peer.server.database.manager.ClientMessageDatabase;
-import network.peer.server.database.protobuf.ClientAccountDatabase;
-import network.peer.server.database.protobuf.ClientChannelDatabase;
+import network.peer.server.database.manager.ReelTalkDatabaseManager;
+import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
+import protobuf.ClientEvents.ClientProfileGetEvent;
 import protobuf.ClientEvents.ClientRequestRejectedEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientMessages.ChannelMessage;
@@ -39,36 +39,31 @@ import protobuf.wrapper.ClientEvents;
 import protobuf.wrapper.ClientMessages;
 
 public class ReelTalkServer extends SecuredProtobufServer {
-	protected ClientAccountDatabase clients;
-	protected ClientChannelDatabase channelManager;
-	protected ClientMessageDatabase messageManager;
+	protected ReelTalkDatabaseManager databaseManager;
 	
 	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
 
 	public ReelTalkServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
-		int camRes = initClientDatabase();
-		int cmRes = initChannelManager();
-		initMessageManager();
+		initDatabaseManager();
 		initHandlers();
 		initCallbacks();
-		logger.info(camRes + " Clients loaded.");
-		logger.info(cmRes + " Channels loaded.");
+		logger.info(databaseManager.getClientAccountDatabase().size() + " clients loaded.");
+		logger.info(databaseManager.getClientChannelDatabase().size() + " channels loaded.");
+		logger.info(databaseManager.getChannelMessageDatabase().size() + " channel messages loaded.");
+		logger.info(databaseManager.getPrivateMessageDatabase().size() + " private messages loaded.");
+		logger.info(databaseManager.getProfileCommentDatabase().size() + " profile comments loaded.");
 	}
 	
-	private int initClientDatabase() throws IOException {
-		clients = new ClientAccountDatabase();
-		return clients.loadFileItems("src/clientData/accounts.txt", true);
-	}
-	
-	private int initChannelManager() throws IOException {
-		channelManager = new ClientChannelDatabase();
-		return channelManager.loadFileItems("src/clientData/channels.txt", true);
-	}
-	
-	private void initMessageManager() throws IOException {
-		messageManager = new ClientMessageDatabase();
+	private void initDatabaseManager() throws IOException {
+		databaseManager = new ReelTalkDatabaseManager();
+		databaseManager.configureChannelMessageDatabasePath("src/clientData/messages/channelMessages.txt");
+		databaseManager.configurePrivateMessageDatabasePath("src/clientData/messages/privateMessages.txt");
+		databaseManager.configureProfileCommentDatabasePath("src/clientData/messages/profileComments.txt");
+		databaseManager.configureClientAccountDatabasePath("src/clientData/accounts.txt");
+		databaseManager.configureClientChannelDatabasePath("src/clientData/channels.txt");
+		databaseManager.loadItems();
 	}
 	
 	private void initHandlers() {
@@ -106,7 +101,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	public ClientAccount login(String username, String password) {
-		List<ClientAccount> accounts = clients.getByUsernameAndPassword(username, password);
+		List<ClientAccount> accounts = databaseManager.getClientAccountDatabase().getByUsernameAndPassword(username, password);
 		return accounts.isEmpty() ? null : accounts.get(0);
 	}
 	
@@ -191,7 +186,18 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	private void handleChannelMessageGetRequest(SelectionKey clientKey, ChannelMessageGetRequest request) {
-		
+		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
+			System.out.println("lastKnownId: " + request.getStartCountWithMessageId());
+			ChannelMessageGetEvent channelMessage = ClientEvents.newChannelMessageGetEvent(	1, 
+																							1, 
+																							databaseManager.getChannelMessageDatabase().getChannelMessagesByLastId(request.getStartCountWithMessageId(), request.getMessageCount()));
+			sendMessage(clientKey, channelMessage);
+		}
+		else {
+			System.out.println("KRH");
+			ClientRequestRejectedEvent rejMessage = null;
+			sendMessage(clientKey, rejMessage);
+		}
 	}
 	
 	private void handleChannelMessagePostRequest(SelectionKey clientKey, ChannelMessagePostRequest request) {
@@ -203,38 +209,27 @@ public class ReelTalkServer extends SecuredProtobufServer {
 				
 				ChannelMessagePostEvent eventMessage = ClientEvents.newChannelMessagePostEvent(request.getRequestBase().getRequestId(), 0, messages);
 				sendMessage(key, eventMessage);
-				messageManager.addChannelMessage(eventMessage.getMessage(0));
+				databaseManager.getChannelMessageDatabase().addItem(eventMessage.getMessage(0));
 			}
 		}
 	}
 	
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
 		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
-
+			
+			ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
+			if(clientData != null) {
+				ClientProfileGetEvent dataMessage = ClientEvents.newClientProfileGetEvent(1, 1, clientData.getProfile());
+				sendMessage(clientKey, dataMessage);
+				ChannelMessagePostEvent event = ClientEvents.newChannelMessagePostEvent(1, clientData.getProfile().getBase().getId(), databaseManager.getChannelMessageDatabase().getLastItemsWithMaxAmount(10));
+				sendMessage(clientKey, event);
+			}
 		}
 		else {
+			logger.info("Login rejected.");
 			ClientRequestRejectedEvent rejMessage = null;
 			sendMessage(clientKey, rejMessage);
 		}
-		
-//		ClientAccount clientData = login(request.getRequestBase().getUsername(), request.getRequestBase().getPassword());
-//		if(clientData != null) {
-//			ClientProfileGetEvent dataMessage = null;
-//			sendMessage(clientKey, dataMessage);
-//			for(ChannelMessage message : messageManager.getChannelMessages()) {
-//				sendMessage(clientKey, message);
-//				try {
-//					Thread.sleep(50L);
-//				} 
-//				catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//		else {
-//			ClientRequestRejectedEvent rejMessage = null;
-//			sendMessage(clientKey, rejMessage);
-//		}
 	}
 	
 	private void handleClientLogoutRequest(SelectionKey clientKey, ClientLogoutRequest request) {

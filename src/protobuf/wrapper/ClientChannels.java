@@ -14,7 +14,7 @@ import protobuf.ClientChannels.ClientChannel;
 public class ClientChannels {
 	
 	public static String[] getRegisteredTypeNames() {
-		return new String[] {"TextChannel", "VoiceChannel"};
+		return new String[] {"ClientChannel"};
 	}
 	
 	public static boolean isClientChannel(Class<? extends GeneratedMessageV3> messageClass) {
@@ -93,7 +93,7 @@ public class ClientChannels {
 								memberIds);	
 	}
 	
-	public static ClientChannel newVoiceChannel(	int id,
+	public static ClientChannel newVoiceChannel(int id,
 												String name,
 												ChannelRestrictionType type,
 												ChannelMemberVerification verification,

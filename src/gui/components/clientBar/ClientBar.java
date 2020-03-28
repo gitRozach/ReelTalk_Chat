@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXTabPane;
 
 import gui.components.clientBar.items.ClientBarItem;
 import gui.components.clientBar.items.ClientBarMemberItem;
-import gui.components.clientBar.items.FriendClientBarItem;
 import gui.layouts.LoadableStackPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +23,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import network.peer.client.ReelTalkClient;
 import utils.JFXUtils;
 
 public class ClientBar extends LoadableStackPane {
@@ -53,7 +51,6 @@ public class ClientBar extends LoadableStackPane {
 	private JFXButton videoPlayerButton;
 	private JFXButton imageViewerButton;
 
-	// memberTab Root
 	private JFXTabPane memberTabPane;
 	private JFXListView<ClientBarItem> friendsView;
 	private Tab friendsTab;
@@ -62,24 +59,14 @@ public class ClientBar extends LoadableStackPane {
 	private JFXListView<ClientBarItem> onlineView;
 	private Tab onlineTab;
 
-	
-
 	public ClientBar() {
-		this(false, null);
+		this(false);
 	}
 
 	public ClientBar(boolean initialize) {
-		this(initialize, null);
-	}
-
-	public ClientBar(boolean initialize, ReelTalkClient clientAttachment) {
 		super();
-		
 		if(initialize)
 			initialize();
-		if(clientAttachment != null)
-			attachClient(clientAttachment);
-				
 	}
 
 	public void initialize() {
@@ -95,7 +82,51 @@ public class ClientBar extends LoadableStackPane {
 		getStyleClass().add("root-content-box");
 		loadContent(rootContentBox);
 	}
-
+	
+	public HBox createPrivateMessageItem(String sender, String text) {
+		HBox messageGraphic = new HBox(5d);
+		messageGraphic.setAlignment(Pos.CENTER_LEFT);
+		
+		ImageView senderPicture = new ImageView(new Image("/resources/clientBar/message_received.png", 24d, 34d, true, false));
+		
+		VBox senderAndText = new VBox(3d);
+		senderAndText.setPadding(new Insets(0d, 0d, 0d, 10d));
+		senderAndText.setFillWidth(true);
+		senderAndText.setAlignment(Pos.TOP_LEFT);
+		Label senderLabel = new Label(sender);
+		senderLabel.setFont(Font.font("Tahoma", 13d));
+		Label textLabel = new Label(text);
+		textLabel.setFont(Font.font("Tahoma", 13d));
+		senderAndText.getChildren().addAll(senderLabel, textLabel);
+		
+		messageGraphic.getChildren().addAll(senderPicture, senderAndText);
+		HBox.setHgrow(senderAndText, Priority.ALWAYS);
+		
+		JFXButton messageButton = new JFXButton("", messageGraphic);
+		messageButton.setRipplerFill(Color.DARKGRAY);
+		HBox messageBox = new HBox(messageButton);
+		messageButton.prefWidthProperty().bind(messageBox.widthProperty());
+		return messageBox;
+	}
+	
+	public HBox createAppItem(String appName) {
+		HBox appGraphic = new HBox(15d);
+		appGraphic.setAlignment(Pos.CENTER_LEFT);
+		
+		ImageView appPicture = new ImageView(new Image("/resources/clientBar/apps.png", 24d, 24d, true, false));
+		
+		Label textLabel = new Label(appName);
+		textLabel.setFont(Font.font("Tahoma", 13d));
+		
+		appGraphic.getChildren().addAll(appPicture, textLabel);
+		HBox.setHgrow(textLabel, Priority.ALWAYS);
+		
+		JFXButton messageButton = new JFXButton("", appGraphic);
+		HBox appBox = new HBox(messageButton);
+		messageButton.prefWidthProperty().bind(appBox.widthProperty());
+		return appBox;
+	}
+	
 	private void initProfileBox() {
 		Image profileImage = new Image("/resources/icons/member.png", 128d, 128d, true, true);
 		profilePictureView = new ImageView(profileImage);
@@ -179,10 +210,6 @@ public class ClientBar extends LoadableStackPane {
 		messageView = new VBox();
 		messageView.setFillWidth(true);
 		messageView.setAlignment(Pos.TOP_CENTER);
-		
-		messageView.getChildren().add(createPrivateMessageItem("Rozach", "1 neue Nachricht"));
-		messageView.getChildren().add(createPrivateMessageItem("Jenn", "5 neue Nachrichten"));
-		messageView.getChildren().add(createPrivateMessageItem("Husseini", "3 neue Nachrichten"));
 	}
 	
 	private void initStylesheets() {
@@ -245,50 +272,6 @@ public class ClientBar extends LoadableStackPane {
 		});
 	}
 	
-	private HBox createPrivateMessageItem(String sender, String text) {
-		HBox messageGraphic = new HBox(5d);
-		messageGraphic.setAlignment(Pos.CENTER_LEFT);
-		
-		ImageView senderPicture = new ImageView(new Image("/resources/clientBar/message_received.png", 24d, 34d, true, false));
-		
-		VBox senderAndText = new VBox(3d);
-		senderAndText.setPadding(new Insets(0d, 0d, 0d, 10d));
-		senderAndText.setFillWidth(true);
-		senderAndText.setAlignment(Pos.TOP_LEFT);
-		Label senderLabel = new Label(sender);
-		senderLabel.setFont(Font.font("Tahoma", 13d));
-		Label textLabel = new Label(text);
-		textLabel.setFont(Font.font("Tahoma", 13d));
-		senderAndText.getChildren().addAll(senderLabel, textLabel);
-		
-		messageGraphic.getChildren().addAll(senderPicture, senderAndText);
-		HBox.setHgrow(senderAndText, Priority.ALWAYS);
-		
-		JFXButton messageButton = new JFXButton("", messageGraphic);
-		messageButton.setRipplerFill(Color.DARKGRAY);
-		HBox messageBox = new HBox(messageButton);
-		messageButton.prefWidthProperty().bind(messageBox.widthProperty());
-		return messageBox;
-	}
-	
-	private HBox createAppItem(String appName) {
-		HBox appGraphic = new HBox(15d);
-		appGraphic.setAlignment(Pos.CENTER_LEFT);
-		
-		ImageView appPicture = new ImageView(new Image("/resources/clientBar/apps.png", 24d, 24d, true, false));
-		
-		Label textLabel = new Label(appName);
-		textLabel.setFont(Font.font("Tahoma", 13d));
-		
-		appGraphic.getChildren().addAll(appPicture, textLabel);
-		HBox.setHgrow(textLabel, Priority.ALWAYS);
-		
-		JFXButton messageButton = new JFXButton("", appGraphic);
-		HBox appBox = new HBox(messageButton);
-		messageButton.prefWidthProperty().bind(appBox.widthProperty());
-		return appBox;
-	}
-
 	private void initMemberTabPane() {			
 		initFriendsView();
 		initNonFriendsView();
@@ -307,52 +290,18 @@ public class ClientBar extends LoadableStackPane {
 		friendsView = new JFXListView<ClientBarItem>();
 		friendsView.setCenterShape(true);
 		friendsView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
-		
-		friendsView.getItems().add(new FriendClientBarItem(0, "Rozach"));
-		friendsView.getItems().add(new FriendClientBarItem(1, "Jenn"));
-		friendsView.getItems().add(new FriendClientBarItem(2, "Hendrik"));
-		friendsView.getItems().add(new FriendClientBarItem(3, "Max"));
-		friendsView.getItems().add(new FriendClientBarItem(4, "Husseini"));
-		friendsView.getItems().add(new FriendClientBarItem(5, "Jan"));
-		friendsView.getItems().add(new FriendClientBarItem(6, "Florian"));
-		friendsView.getItems().add(new FriendClientBarItem(7, "Moustafa"));
-		friendsView.getItems().add(new FriendClientBarItem(8, "Osama"));
-		friendsView.getItems().add(new FriendClientBarItem(9, "Peter"));
 	}
 	
 	private void initNonFriendsView() {
 		nonFriendsView = new JFXListView<ClientBarItem>();
 		nonFriendsView.setCenterShape(true);
 		nonFriendsView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
-		
-		nonFriendsView.getItems().add(new FriendClientBarItem(0, "Rozach"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(1, "Jenn"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(2, "Hendrik"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(3, "Max"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(4, "Husseini"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(5, "Jan"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(6, "Florian"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(7, "Pascal"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(8, "Mats"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(9, "Thure"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(10, "Carlo"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(11, "Nick"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(12, "Julius"));
-		nonFriendsView.getItems().add(new FriendClientBarItem(13, "Anton"));
 	}
 	
 	private void initOnlineView() {
 		onlineView = new JFXListView<ClientBarItem>();
 		onlineView.setCenterShape(true);
 		onlineView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
-		
-		onlineView.getItems().add(new FriendClientBarItem(0, "Rozach"));
-		onlineView.getItems().add(new FriendClientBarItem(1, "Jenn"));
-		onlineView.getItems().add(new FriendClientBarItem(2, "Hendrik"));
-		onlineView.getItems().add(new FriendClientBarItem(3, "Max"));
-		onlineView.getItems().add(new FriendClientBarItem(4, "Husseini"));
-		onlineView.getItems().add(new FriendClientBarItem(5, "Jan"));
-		onlineView.getItems().add(new FriendClientBarItem(6, "Florian"));
 	}
 
 	private void initMediaBox() {
@@ -364,10 +313,6 @@ public class ClientBar extends LoadableStackPane {
 		mediaView.getChildren().add(createAppItem("Video Player"));
 		mediaView.getChildren().add(createAppItem("Bildbetrachter"));
 		mediaView.getChildren().add(createAppItem("Downloads"));
-	}
-
-	public void attachClient(ReelTalkClient client) {
-		
 	}
 
 	public VBox getRootContentBox() {

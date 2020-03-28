@@ -11,6 +11,8 @@ import gui.components.channelBar.channelBarItems.GuestChannelBarItem;
 import gui.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.components.channelBar.channelBarItems.VoiceChannelBarItem;
+import handler.ObjectEventHandler;
+import handler.events.ObjectEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -26,7 +28,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import network.peer.client.ReelTalkClient;
 import utils.JFXUtils;
 
 public class ChannelBar extends StackPane {
@@ -37,22 +38,18 @@ public class ChannelBar extends StackPane {
 	private JFXButton microphoneButton;
 	private JFXButton speakersButton;
 	private JFXTreeView<ChannelBarItem> channelView;
+		
+	private ObjectEventHandler<ChannelBarChannelItem> onChannelClickedHandler;
+	private ObjectEventHandler<ChannelBarClientItem> onClientClickedHandler; 
 	
 	public ChannelBar()	{
-		this(false, null);
+		this(false);
 	}
 	
 	public ChannelBar(boolean initialize) {
-		this(initialize, null);
-	}
-	
-	public ChannelBar(boolean initialize, ReelTalkClient clientAttachment) {
 		super();
-		
 		if(initialize)
 			initialize();
-		if(clientAttachment != null)
-			attachClient(clientAttachment);
 	}
 	
 	public void initialize() {
@@ -60,7 +57,7 @@ public class ChannelBar extends StackPane {
 		initServerBar();
 		initButtons();
 		initChannels();
-		initClientAttachment();
+		initEventHandlers();
 		initContentBox();
 		initMouseListener();
 		//loadContent(contentBox);
@@ -88,7 +85,7 @@ public class ChannelBar extends StackPane {
 		channelView = new JFXTreeView<ChannelBarItem>(new TreeItem<ChannelBarItem>(null));
 		channelView.setCellFactory((TreeView<ChannelBarItem> param) -> new ChannelCell());
 		channelView.setShowRoot(false);
-		
+				
 		channels = new ScrollPane();
 		channels.setCenterShape(true);
 		channels.setFitToHeight(true);
@@ -96,12 +93,19 @@ public class ChannelBar extends StackPane {
 		channels.setContent(channelView);
 	}
 	
-	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/defaultStyle/ChannelBar.css");
+	private void initEventHandlers() {
+		onChannelClickedHandler = new ObjectEventHandler<ChannelBarChannelItem>() {
+			@Override
+			public void handle(ObjectEvent<ChannelBarChannelItem> event) {}
+		};
+		onClientClickedHandler = new ObjectEventHandler<ChannelBarClientItem>() {
+			@Override
+			public void handle(ObjectEvent<ChannelBarClientItem> event) {}
+		};
 	}
 	
-	private void initClientAttachment() {
-		
+	private void initStylesheets() {
+		getStylesheets().add("/stylesheets/client/defaultStyle/ChannelBar.css");
 	}
 	
 	private void initContentBox() {
@@ -208,23 +212,41 @@ public class ChannelBar extends StackPane {
 		
 	}
 	
-	public int indexOfChannel(int channelId) {
-		int[] currentIndex = {-1};
-		channelView.getRoot().getChildren().forEach(currentChannel -> {
-			++currentIndex[0];
-			if(((ChannelBarChannelItem)(currentChannel.getValue())).getChannelId() == channelId) {
-				return;
-			}
-		});
-		return currentIndex[0];
+	public boolean containsChannelWithId(int id) {
+		return getChannelById(id) != null;
 	}
 	
-	public int indexOfClient(int clientId) {
+	public boolean channelContainsClientWithId(int channelId, int clientId) {
+		TreeItem<ChannelBarItem> channelBarItem = getChannelById(channelId);
+		TreeItem<ChannelBarItem> clientBarItem = getClientById(clientId);
+		if(channelBarItem == null || clientBarItem == null)
+			return false;
+		return indexOfClient(((ChannelBarChannelItem)(channelBarItem.getValue())).getChannelId(), 
+							((ChannelBarClientItem)(clientBarItem.getValue())).getClientId()) != -1;
+	}
+	
+	public int indexOfChannel(int channelId) {
+		int currentIndex = -1;
+		for(TreeItem<ChannelBarItem> currentItem : channelView.getRoot().getChildren()) {
+			++currentIndex;
+			if(((ChannelBarChannelItem)(currentItem.getValue())).getChannelId() == channelId) {
+				return currentIndex;
+			}
+		}
 		return -1;
 	}
 	
-	public void attachClient(ReelTalkClient client) {
-		
+	public int indexOfClient(int channelId, int clientId) {
+		int currentIndex = -1;
+		int channelIndex = indexOfChannel(channelId);
+		if(channelIndex == -1)
+			return -1;
+		for(TreeItem<ChannelBarItem> currentChildren : channelView.getRoot().getChildren().get(channelIndex).getChildren()) {
+			++currentIndex;
+			if(((ChannelBarClientItem)(currentChildren.getValue())).getClientId() == clientId)
+				return currentIndex;
+		}
+		return -1;
 	}
 	
 	private class ChannelCell extends TreeCell<ChannelBarItem> {
@@ -260,6 +282,9 @@ public class ChannelBar extends StackPane {
 				getStyleClass().add("channel-tree-cell");
 				setText(text.getChannelName());
 				setGraphic(null);
+				setOnMouseClicked(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, text) {
+																		private static final long serialVersionUID = -8246283748073868549L;
+				}));
 				setPrefWidth(200d);
 				setPrefHeight(50d);
 			}
@@ -269,10 +294,9 @@ public class ChannelBar extends StackPane {
 				setText(voice.getChannelName());
 				//setGraphic(new Text("[Voice ("+ voice.getChannelId() +")]"));
 				setGraphic(null);
-				setOnMouseClicked(a -> {
-					addClient(voice.getChannelId(), new MemberChannelBarItem(420, "CHÄFF!"));
-					a.consume();
-				});
+				setOnMouseClicked(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, voice) {
+																		private static final long serialVersionUID = -8246283748073868549L;
+				}));
 				setPrefWidth(200d);
 				setPrefHeight(50d);
 				addEventHandler(TreeItem.branchCollapsedEvent(), a -> a.getTreeItem().setExpanded(true));
@@ -309,5 +333,21 @@ public class ChannelBar extends StackPane {
 				
 			}
 		}
+	}
+	
+	public ObjectEventHandler<ChannelBarChannelItem> getOnChannelClicked() {
+		return onChannelClickedHandler;
+	}
+	
+	public void setOnChannelClicked(ObjectEventHandler<ChannelBarChannelItem> handler) {
+		onChannelClickedHandler = handler;
+	}
+	
+	public ObjectEventHandler<ChannelBarClientItem> getOnClientClicked() {
+		return onClientClickedHandler;
+	}
+	
+	public void setOnClientClicked(ObjectEventHandler<ChannelBarClientItem> handler) {
+		onClientClickedHandler = handler;
 	}
 }

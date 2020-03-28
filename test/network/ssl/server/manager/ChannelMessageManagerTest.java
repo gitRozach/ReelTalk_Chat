@@ -29,7 +29,7 @@ class ChannelMessageManagerTest {
 	}
 
 	@Test
-	public void addMessage_checkGeneratedIdValues() throws IOException {
+	public void addMessage_addItemsAndCheckIfListIsSorted() throws IOException {
 		database = new ChannelMessageDatabase();
 		database.loadFileItems("test/testresources/channelMessageManager/addChannelMessages.txt");
 		database.clear();
@@ -46,20 +46,20 @@ class ChannelMessageManagerTest {
 		files.add(file4);
 		files.add(file5);
 		
-		ChannelMessage message1 = ClientMessages.newChannelMessage(database.generateUniqueMessageId(), "Hallo Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 0, 0).getTimeInMillis(), files);
-		assertTrue(database.addItem(message1));
-
-		ChannelMessage message2 = ClientMessages.newChannelMessage(database.generateUniqueMessageId(), "Hallo Rozach!", 10, "Jenn", 1, new GregorianCalendar(2020, 1, 1, 10, 1, 0).getTimeInMillis(), files);
-		assertTrue(database.addItem(message2));
-
-		ChannelMessage message3 = ClientMessages.newChannelMessage(database.generateUniqueMessageId(), "Ah, Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 2, 0).getTimeInMillis(), Collections.emptyList());
-		assertTrue(database.addItem(message3));
-
-		ChannelMessage message4 = ClientMessages.newChannelMessage(database.generateUniqueMessageId(), "AH! Rozach!", 10, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 3, 0).getTimeInMillis(), Collections.emptyList());
-		assertTrue(database.addItem(message4));
-
-		ChannelMessage message5 = ClientMessages.newChannelMessage(database.generateUniqueMessageId(), "Jungs haltet mal die Fressen.", 30, "Thuraeh", 1, new GregorianCalendar(2020, 1, 1, 10, 4, 0).getTimeInMillis(), Collections.emptyList());
+		ChannelMessage message5 = ClientMessages.newChannelMessage(5, "Jungs haltet mal die Fressen.", 30, "Thuraeh", 1, new GregorianCalendar(2020, 1, 1, 10, 4, 0).getTimeInMillis(), Collections.emptyList());
 		assertTrue(database.addItem(message5));
+		
+		ChannelMessage message4 = ClientMessages.newChannelMessage(4, "AH! Rozach!", 10, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 3, 0).getTimeInMillis(), Collections.emptyList());
+		assertTrue(database.addItem(message4));
+		
+		ChannelMessage message3 = ClientMessages.newChannelMessage(3, "Ah, Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 2, 0).getTimeInMillis(), Collections.emptyList());
+		assertTrue(database.addItem(message3));
+		
+		ChannelMessage message2 = ClientMessages.newChannelMessage(2, "Hallo Rozach!", 10, "Jenn", 1, new GregorianCalendar(2020, 1, 1, 10, 1, 0).getTimeInMillis(), files);
+		assertTrue(database.addItem(message2));
+		
+		ChannelMessage message1 = ClientMessages.newChannelMessage(1, "Hallo Jann!", 1, "TestoRozach", 1, new GregorianCalendar(2020, 1, 1, 10, 0, 0).getTimeInMillis(), files);
+		assertTrue(database.addItem(message1));
 		
 		assertEquals(database.getItem(0), message1);
 		assertEquals(database.getItem(1), message2);

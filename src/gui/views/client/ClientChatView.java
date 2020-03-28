@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXTabPane;
 
 import gui.components.MessageView;
 import gui.components.channelBar.ChannelBar;
-import gui.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.components.channelBar.channelBarItems.VoiceChannelBarItem;
 import gui.components.clientBar.ClientBar;
@@ -147,33 +146,9 @@ public final class ClientChatView extends StackPane {
 		VoiceChannelBarItem voiceC1 = new VoiceChannelBarItem(2, "Voice Channel 1");
 		VoiceChannelBarItem voiceC2 = new VoiceChannelBarItem(3, "Voice Channel 2");
 		
-		MemberChannelBarItem mem1 = new MemberChannelBarItem(1, "Rozach");
-		MemberChannelBarItem mem2 = new MemberChannelBarItem(2, "Jenn");
-		MemberChannelBarItem mem3 = new MemberChannelBarItem(3, "Max");
-		MemberChannelBarItem mem4 = new MemberChannelBarItem(4, "Hendrik");
-		MemberChannelBarItem mem5 = new MemberChannelBarItem(5, "Husseini");
-		MemberChannelBarItem mem6 = new MemberChannelBarItem(6, "Peter");
-		MemberChannelBarItem mem7 = new MemberChannelBarItem(7, "Michael");
-		MemberChannelBarItem mem8 = new MemberChannelBarItem(8, "Moustafa");
-		MemberChannelBarItem mem9 = new MemberChannelBarItem(9, "Osama");
-		MemberChannelBarItem mem10 = new MemberChannelBarItem(10, "Nasya");
-		
 		channelBar.addChannel(textC1);
 		channelBar.addChannel(voiceC1);
 		channelBar.addChannel(voiceC2);
-		
-		channelBar.addClient(1, mem1);
-		channelBar.addClient(1, mem2);
-		channelBar.addClient(1, mem3);
-		channelBar.addClient(1, mem4);
-		channelBar.addClient(1, mem5);
-		
-		channelBar.addClient(2, mem6);
-		channelBar.addClient(2, mem7);
-		
-		channelBar.addClient(3, mem8);
-		channelBar.addClient(3, mem9);
-		channelBar.addClient(3, mem10);
 	}
 	
 	private void initClientBar() {

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -13,22 +14,20 @@ import org.junit.jupiter.api.Test;
 import protobuf.ClientChannels.ChannelBase;
 import protobuf.ClientChannels.ChannelMemberVerification;
 import protobuf.ClientChannels.ChannelRestrictionType;
-import protobuf.ClientChannels.TextChannel;
-import protobuf.ClientChannels.VoiceChannel;
+import protobuf.ClientChannels.ClientChannel;
 import protobuf.ClientEvents.ClientLoginEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientRequests.ClientLoginRequest;
-import protobuf.wrapper.ClientChannels;
 
 class ClientChannelTest {
 	
 	@Test
 	public void isClientChannel_validClientChannelsReturnTrue() {
-		TextChannel c1 = TextChannel.getDefaultInstance();
-		TextChannel c2 = TextChannel.getDefaultInstance();
-		VoiceChannel v1 = VoiceChannel.getDefaultInstance();
-		VoiceChannel v2 = VoiceChannel.getDefaultInstance();
+		ClientChannel c1 = ClientChannels.newPublicTextChannel(1, "Text 1", 25, Collections.emptyList());
+		ClientChannel c2 = ClientChannels.newPublicTextChannel(2, "Text 2", 25, Collections.emptyList());
+		ClientChannel v1 = ClientChannels.newPublicVoiceChannel(3, "Voice 1", 10, Collections.emptyList());
+		ClientChannel v2 = ClientChannels.newPublicVoiceChannel(4, "Voice 2", 10, Collections.emptyList());
 		assertTrue(ClientChannels.isClientChannel(c1.getClass()));
 		assertTrue(ClientChannels.isClientChannel(c2.getClass()));
 		assertTrue(ClientChannels.isClientChannel(v1.getClass()));
@@ -49,7 +48,7 @@ class ClientChannelTest {
 	
 	@Test
 	public void addMemberIdsToChannel_addTextChannelMemberIdsAndCheckMemberList() {
-		TextChannel channel = ClientChannels.newPublicTextChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		ClientChannel channel = ClientChannels.newPublicTextChannel(1, "Channel 1", 100, Arrays.asList(1, 2, 3, 4, 5));
 		channel = ClientChannels.addMemberIdsToChannel(channel, Arrays.asList(6, 7, 8, 9, 10));
 		assertTrue(channel != null);
 		assertEquals(channel.getMembers().getMemberIdCount(), 10);
@@ -62,7 +61,7 @@ class ClientChannelTest {
 	
 	@Test
 	public void addMemberIdToChannel_addTextChannelMemberIdsAndCheckMemberList() {
-		TextChannel channel = ClientChannels.newPublicTextChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		ClientChannel channel = ClientChannels.newPublicTextChannel(1, "Channel 1", 100, Arrays.asList(1, 2, 3, 4, 5));
 		channel = ClientChannels.addMemberIdToChannel(channel, 6);
 		channel = ClientChannels.addMemberIdToChannel(channel, 7);
 		channel = ClientChannels.addMemberIdToChannel(channel, 8);
@@ -79,7 +78,7 @@ class ClientChannelTest {
 	
 	@Test
 	public void addMemberIdsToChannel_addVoiceChannelMemberIdsAndCheckMemberList() {
-		VoiceChannel channel = ClientChannels.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		ClientChannel channel = ClientChannels.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
 		channel = ClientChannels.addMemberIdsToChannel(channel, Arrays.asList(6, 7, 8, 9, 10));
 		assertTrue(channel != null);
 		assertEquals(channel.getMembers().getMemberIdCount(), 10);
@@ -92,7 +91,7 @@ class ClientChannelTest {
 	
 	@Test
 	public void addMemberIdToChannel_addVoiceChannelMemberIdsAndCheckMemberList() {
-		VoiceChannel channel = ClientChannels.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
+		ClientChannel channel = ClientChannels.newPublicVoiceChannel(1, "Channel 1", 100, Arrays.<Integer>asList(1, 2, 3, 4, 5));
 		channel = ClientChannels.addMemberIdToChannel(channel, 6);
 		channel = ClientChannels.addMemberIdToChannel(channel, 7);
 		channel = ClientChannels.addMemberIdToChannel(channel, 8);
@@ -117,7 +116,7 @@ class ClientChannelTest {
 	@Test
 	public void newChannelMemberPasswordVerification_checkPasswordValue() {
 		ChannelMemberVerification verification = ClientChannels.newChannelMemberPasswordVerification("verification_password");
-		assertEquals(verification.getChannelPassword(), "verification_password");
+		assertEquals(verification.getPassword(), "verification_password");
 	}
 	
 	@Test
@@ -138,7 +137,7 @@ class ClientChannelTest {
 		memberIds.add(8);
 		memberIds.add(12);
 		memberIds.add(16);
-		TextChannel channel = ClientChannels.newPublicTextChannel(11, "Channel 11", 100, memberIds);
+		ClientChannel channel = ClientChannels.newPublicTextChannel(11, "Channel 11", 100, memberIds);
 		assertEquals(channel.getBase().getChannelId(), 11);
 		assertEquals(channel.getBase().getChannelName(), "Channel 11");
 		assertEquals(channel.getMembers().getMaxMembers(), 100);
@@ -153,10 +152,10 @@ class ClientChannelTest {
 		memberIds.add(8);
 		memberIds.add(12);
 		memberIds.add(16);
-		TextChannel channel = ClientChannels.newPasswordSecuredTextChannel(11, "Channel 11", "Channel11Password", 10, memberIds);
+		ClientChannel channel = ClientChannels.newPasswordSecuredTextChannel(11, "Channel 11", "Channel11Password", 10, memberIds);
 		assertEquals(channel.getBase().getChannelId(), 11);
 		assertEquals(channel.getBase().getChannelName(), "Channel 11");
-		assertEquals(channel.getMemberVerification().getChannelPassword(), "Channel11Password");
+		assertEquals(channel.getMemberVerification().getPassword(), "Channel11Password");
 		assertEquals(channel.getMembers().getMaxMembers(), 10);
 		assertEquals(channel.getMembers().getMemberId(0), 8);
 		assertEquals(channel.getMembers().getMemberId(1), 12);
@@ -169,7 +168,7 @@ class ClientChannelTest {
 		memberIds.add(8);
 		memberIds.add(12);
 		memberIds.add(16);
-		TextChannel channel = ClientChannels.newTextChannel(	420, 
+		ClientChannel channel = ClientChannels.newTextChannel(	420, 
 															"Channel 420", 
 															ChannelRestrictionType.INVITE_ONLY, 
 															ChannelMemberVerification.getDefaultInstance(), 
@@ -178,7 +177,7 @@ class ClientChannelTest {
 		assertEquals(channel.getBase().getChannelId(), 420);
 		assertEquals(channel.getBase().getChannelName(), "Channel 420");
 		assertEquals(channel.getRestrictionType(), ChannelRestrictionType.INVITE_ONLY);
-		assertEquals(channel.getMemberVerification().getChannelPassword(), "");
+		assertEquals(channel.getMemberVerification().getPassword(), "");
 		assertTrue(channel.getMemberVerification().getInvitationKeyList().isEmpty());
 		assertEquals(channel.getMembers().getMaxMembers(), 50);
 		assertEquals(channel.getMembers().getMemberId(0), 8);
@@ -195,7 +194,7 @@ class ClientChannelTest {
 		memberIds.add(8);
 		memberIds.add(12);
 		memberIds.add(16);
-		VoiceChannel channel = ClientChannels.newPublicVoiceChannel(101, "Public Voice Channel 101", 49, memberIds);
+		ClientChannel channel = ClientChannels.newPublicVoiceChannel(101, "Public Voice Channel 101", 49, memberIds);
 		assertEquals(channel.getBase().getChannelId(), 101);
 		assertEquals(channel.getBase().getChannelName(), "Public Voice Channel 101");
 		assertEquals(channel.getMembers().getMaxMembers(), 49);
@@ -213,10 +212,10 @@ class ClientChannelTest {
 		memberIds.add(8);
 		memberIds.add(12);
 		memberIds.add(16);
-		VoiceChannel channel = ClientChannels.newPasswordSecuredVoiceChannel(11, "Voice 11", "Voice11Password", 63, memberIds);
+		ClientChannel channel = ClientChannels.newPasswordSecuredVoiceChannel(11, "Voice 11", "Voice11Password", 63, memberIds);
 		assertEquals(channel.getBase().getChannelId(), 11);
 		assertEquals(channel.getBase().getChannelName(), "Voice 11");
-		assertEquals(channel.getMemberVerification().getChannelPassword(), "Voice11Password");
+		assertEquals(channel.getMemberVerification().getPassword(), "Voice11Password");
 		assertEquals(channel.getMembers().getMaxMembers(), 63);
 		assertEquals(channel.getMembers().getMemberId(0), 8);
 		assertEquals(channel.getMembers().getMemberId(1), 12);
@@ -232,7 +231,7 @@ class ClientChannelTest {
 		memberIds.add(20);
 		memberIds.add(24);
 		memberIds.add(28);
-		VoiceChannel channel = ClientChannels.newVoiceChannel(	10, 
+		ClientChannel channel = ClientChannels.newVoiceChannel(	10, 
 																"Public Voice Channel", 
 																ChannelRestrictionType.PUBLIC, 
 																ChannelMemberVerification.getDefaultInstance(), 
@@ -241,7 +240,7 @@ class ClientChannelTest {
 		assertEquals(channel.getBase().getChannelId(), 10);
 		assertEquals(channel.getBase().getChannelName(), "Public Voice Channel");
 		assertEquals(channel.getRestrictionType(), ChannelRestrictionType.PUBLIC);
-		assertEquals(channel.getMemberVerification().getChannelPassword(), "");
+		assertEquals(channel.getMemberVerification().getPassword(), "");
 		assertTrue(channel.getMemberVerification().getInvitationKeyList().isEmpty());
 		assertEquals(channel.getMembers().getMaxMembers(), 100);
 		assertEquals(channel.getMembers().getMemberId(0), 8);

@@ -9,6 +9,8 @@ import java.io.InputStream;
 
 import com.google.protobuf.GeneratedMessageV3;
 
+import gui.components.channelBar.channelBarItems.ChannelBarChannelItem;
+import gui.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.components.messageField.EmojiCategory;
 import gui.components.messageField.EmojiSkinColor;
 import gui.components.messageField.EmojiTabPane;
@@ -26,7 +28,10 @@ import javafx.stage.Stage;
 import network.messages.ProtobufMessage;
 import network.peer.client.ReelTalkClient;
 import network.peer.server.ReelTalkServer;
+import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
+import protobuf.ClientEvents.ClientProfileGetEvent;
+import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
 import protobuf.wrapper.ClientRequests;
 
@@ -38,6 +43,8 @@ public class ReelTalkSession extends Application {
 	private Stage window;
 	private LoadableStackPane rootPane;
 	private ClientChatView chatView;
+	
+	private int currentChannelId;
 	
 	private ReelTalkServer chatServer;
 	private ReelTalkClient chatClient;
@@ -59,9 +66,8 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void startClient() throws Exception {
-		if(chatClient.connect()) {
-			chatClient.sendMessage(ClientRequests.newLoginRequest(1, "TestoRozach", "rozachPass"));
-		}
+		if(chatClient.connect())
+			chatClient.sendMessage(ClientRequests.newLoginRequest(1, chatClient.getClientUsername(), chatClient.getClientPassword()));
 	}
 	
 	public void closeAll() {
@@ -76,6 +82,7 @@ public class ReelTalkSession extends Application {
 	}
 	
 	public void initialize(Stage stage) throws Exception {
+		initProperties();
 		initServer();
 		initChatView();
 		initRootPane();
@@ -86,12 +93,18 @@ public class ReelTalkSession extends Application {
 		window.show();
 	}
 	
+	private void initProperties() {
+		currentChannelId = -1;
+	}
+	
 	private void initServer() throws Exception {
 		chatServer = new ReelTalkServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initClient() throws Exception {
 		chatClient = new ReelTalkClient(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
+		chatClient.setClientUsername("Rozach");
+		chatClient.setClientPassword("rozachPass");
 	}
 	
 	private void initStage(Stage stage) {
@@ -153,6 +166,34 @@ public class ReelTalkSession extends Application {
 		});
 		
 		chatView.getMessageInputField().getEmojiPane().getEmojiSkinChooser().setOnSkinChooserClicked(c -> onSkinChooserClicked());
+		
+		chatView.getMessageView().scrollValueVerticalProperty().addListener((obs, oldV, newV) -> {
+			if(newV.doubleValue() == 0) {
+				int lastKnownMessageId = 0;
+				if(!chatClient.hasBufferedChannelMessages(currentChannelId))
+					lastKnownMessageId = -1;
+				else
+					lastKnownMessageId = chatClient.getBufferedChannelMessages(currentChannelId).get(0).getMessageBase().getMessageId();
+				chatClient.sendMessage(ClientRequests.newChannelMessageGetRequest(	1, 
+																					chatClient.getClientUsername(), 
+																					chatClient.getClientPassword(), 
+																					currentChannelId, 
+																					lastKnownMessageId, 
+																					20));
+			}
+		});
+		
+		chatView.getChannelBar().setOnChannelClicked(new ObjectEventHandler<ChannelBarChannelItem>() {
+			@Override
+			public void handle(ObjectEvent<ChannelBarChannelItem> event) {
+				int channelId = event.getAttachedObject().getChannelId();
+				int clientId = chatClient.getClientProfile().getBase().getId();
+				if(!chatView.getChannelBar().channelContainsClientWithId(channelId, clientId)) {
+					chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(clientId, chatClient.getClientProfile().getBase().getUsername()));
+					currentChannelId = channelId;
+				}
+			}
+		});
 	}
 	
 	private void handleClientReception(ProtobufMessage byteMessage) {
@@ -165,12 +206,23 @@ public class ReelTalkSession extends Application {
 			return;
 		if(event instanceof ChannelMessagePostEvent) {
 			ChannelMessagePostEvent channelMessage = (ChannelMessagePostEvent) event;
-			chatView.getMessageView().addMessageAnimated(new GUIMessage(channelMessage	.getMessage(0)
-																						.getMessageBase()
-																						.getSenderUsername(), 
-																		channelMessage	.getMessage(0)
-																						.getMessageBase()
-																						.getMessageText()));
+			for(ChannelMessage currentMessage : channelMessage.getMessageList()) {
+				chatClient.getBufferedChannelMessages(currentMessage.getChannelBase().getChannelId()).add(currentMessage);
+				chatView.getMessageView().addMessageAnimated(new GUIMessage(currentMessage.getMessageBase().getSenderUsername(),
+																			currentMessage.getMessageBase().getMessageText()));
+			}
+		}
+		else if(event instanceof ChannelMessageGetEvent) {
+			ChannelMessageGetEvent channelMessage = (ChannelMessageGetEvent) event;
+			for(int i = channelMessage.getMessageCount() - 1; i >= 0; --i) {
+				chatClient.getBufferedChannelMessages(channelMessage.getMessage(i).getChannelBase().getChannelId()).add(channelMessage.getMessage(i));
+				chatView.getMessageView().addMessage(0, new GUIMessage(	channelMessage.getMessage(i).getMessageBase().getSenderUsername(),
+																		channelMessage.getMessage(i).getMessageBase().getMessageText()));
+			}
+		}
+		else if(event instanceof ClientProfileGetEvent) {
+			ClientProfileGetEvent profileEvent = (ClientProfileGetEvent) event;
+			chatClient.setClientProfile(profileEvent.getProfile());
 		}
 	}
 	

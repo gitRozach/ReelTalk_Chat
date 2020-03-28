@@ -1,7 +1,6 @@
 package network.peer.server.database.protobuf;
 
 import java.io.Closeable;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
@@ -17,12 +16,14 @@ import java.util.List;
 import com.google.protobuf.Any;
 import com.google.protobuf.GeneratedMessageV3;
 
-public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Closeable {
+public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements SortedProtobufFileDatabase<T>, Closeable {
 	protected final Class<T> itemClass;
 	
 	protected volatile boolean initialized;
 	protected volatile boolean closed;
 	protected volatile boolean autoSave;
+	
+	protected volatile int currentItemIndex;
 	
 	protected final List<T> loadedItems;
 	protected final HashMap<String, List<T>> bufferedDatabases;
@@ -30,16 +31,33 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	protected RandomAccessFile databaseFile;
 	protected FileChannel databaseChannel;
 	protected String databaseFilePath;
-	protected String currentDatabaseFilePath;
 	
 	public ProtobufFileDatabase(Class<T> protobufItemClass) throws IOException {
+		this(protobufItemClass, null);
+	}
+	
+	public ProtobufFileDatabase(Class<T> protobufItemClass, String protobufFilePath) throws IOException {
 		itemClass = protobufItemClass;
 		initialized = false;
 		closed = false;
 		autoSave = true;
+		currentItemIndex = -1;
 		
 		loadedItems = Collections.synchronizedList(new LinkedList<T>());
 		bufferedDatabases = new HashMap<String, List<T>>();
+		
+		if(protobufFilePath != null && !protobufFilePath.trim().isEmpty())
+			if(!changeDatabaseFile(protobufFilePath))
+				throw new IOException("Database file not found!");
+	}
+	
+	@Override
+	public void sort(List<T> items) {
+		//This database is not meant to be sorted, only high classes are
+	}
+	
+	public int loadFileItems() {
+		return loadFileItems(databaseFilePath);
 	}
 
 	public int loadFileItems(String databaseFilePath) {
@@ -55,28 +73,19 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		return fillItems(loadedItems, false);
 	}
 	
-	public boolean fileExists(String filePath) {
-		if(filePath == null)
-			return false;
-		return new File(filePath).exists();
+	public boolean hasBufferedDatabase(String databaseFilePath) {
+		return getBufferedFileDatabases().get(databaseFilePath) != null;
 	}
 	
-	public boolean fileExistsAndIsAccessible(String filePath) {
-		if(filePath == null)
-			return false;
-		File file = new File(filePath);
-		return file.exists() && file.canRead() && file.canWrite();
-	}
-	
-	protected boolean changeDatabaseFile(String filePath) {
+	public boolean changeDatabaseFile(String newFilePath) {
 		try {
-			databaseFile = new RandomAccessFile(filePath, "rwd");
+			databaseFile = new RandomAccessFile(newFilePath, "rwd");
 			databaseChannel = databaseFile.getChannel();
-			databaseFilePath = filePath;
-			currentDatabaseFilePath = filePath;
+			databaseFilePath = newFilePath;
 			return true;
 		}
 		catch(IOException io) {
+			io.printStackTrace();
 			return false;
 		}
 	}
@@ -95,11 +104,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		return itemCtr;
 	}
 	
-	public boolean hasBufferedDatabase(String databaseFilePath) {
-		return getBufferedFileDatabases().get(databaseFilePath) != null;
-	}
-	
-	public int writeItem(T item) {
+	protected int writeItem(T item) {
 		try {
 			OutputStream fileOutput = Channels.newOutputStream(databaseChannel);
 			Any itemToWrite = Any.pack(item);
@@ -112,7 +117,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		}
 	}
 	
-	public boolean writeItems() {
+	protected boolean writeItems() {
 		try {
 			for(T item : loadedItems) {
 				if(writeItem(item) <= 0)
@@ -126,7 +131,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		}
 	}
 	
-	public T readItem() {
+	protected T readItem() {
 		try {
 			Any readMessage = Any.parseDelimitedFrom(Channels.newInputStream(databaseChannel));
 			if(readMessage == null)
@@ -139,7 +144,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 		}
 	}
 	
-	public List<T> readItems() {
+	protected List<T> readItems() {
 		List<T> resultList = new ArrayList<T>();
 		try {
 			T currentItem = null;
@@ -182,6 +187,7 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	
 	public boolean addItem(T newItem) {
 		if(loadedItems.add(newItem)) {
+			sort(loadedItems);
 			if(isAutoSave())
 				return rewrite();
 			return true;
@@ -191,6 +197,36 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	
 	public T getItem(int index) {
 		return (index < 0 || index >= loadedItems.size()) ? null : loadedItems.get(index);
+	}
+	
+	public List<T> getFirstItemsWithMaxAmount(int maxAmount) {
+		int endIndexIncl = maxAmount >= loadedItems.size() ? loadedItems.size() - 1 : (maxAmount - 1);
+		return getItems(0, endIndexIncl);
+	}
+	
+	public List<T> getLastItemsWithMaxAmount(int maxAmount) {
+		int startIndexIncl = (loadedItems.size() - maxAmount) < 0 ? 0 : (loadedItems.size() - maxAmount);
+		return getItems(startIndexIncl, loadedItems.size() - 1);
+	}
+	
+	public List<T> getItemsWithMaxAmount(int startIndexIncl, int maxAmount) {
+		int endIndexIncl = (startIndexIncl + maxAmount) >= loadedItems.size() ? loadedItems.size() - 1 : (startIndexIncl + maxAmount - 1);
+		return getItems(startIndexIncl, endIndexIncl);
+	}
+	
+	public List<T> getItems(int startIndexIncl) {
+		return getItems(startIndexIncl, loadedItems.size() - 1);
+	}
+	
+	public List<T> getItems(int startIndexIncl, int endIndexIncl){
+		if(startIndexIncl > endIndexIncl)
+			return null;
+		if(startIndexIncl < 0 || startIndexIncl >= loadedItems.size() || endIndexIncl < 0 || endIndexIncl >= loadedItems.size())
+			return null;
+		List<T> resultList = new ArrayList<T>();
+		for(int i = startIndexIncl; i <= endIndexIncl; ++i)
+			resultList.add(loadedItems.get(i));
+		return resultList;
 	}
 	
 	public boolean replaceItem(T oldItem, T newItem) {
@@ -277,10 +313,6 @@ public class ProtobufFileDatabase<T extends GeneratedMessageV3> implements Close
 	
 	public boolean isAutoSave() {
 		return autoSave;
-	}
-	
-	public String getCurrentDatabaseFilePath() {
-		return currentDatabaseFilePath;
 	}
 	
 	public List<T> getLoadedItems() {

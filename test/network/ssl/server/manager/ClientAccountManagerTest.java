@@ -44,6 +44,7 @@ class ClientAccountManagerTest {
 	void addItem_addsMultipleItemsToDatabaseFile() throws IOException {
 		database = new ClientAccountDatabase();
 		database.loadFileItems("test/testresources/clientAccountManager/writeItemTest.txt");
+		//TESTdatabase.loadFileItems("src/clientData/accounts.txt");
 		database.clear();
 		
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
@@ -140,7 +141,7 @@ class ClientAccountManagerTest {
 		database = new ClientAccountDatabase();
 		assertEquals(database.loadFileItems("test/testresources/clientAccountManager/writeItemTest.txt"), 5);
 		
-		List<ClientAccount> accounts = database.readItems();
+		List<ClientAccount> accounts = database.getLoadedItems();
 		assertTrue(accounts.get(0).equals(testAccount1));
 		assertTrue(accounts.get(1).equals(testAccount2));
 		assertTrue(accounts.get(2).equals(testAccount3));

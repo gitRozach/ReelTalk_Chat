@@ -1,6 +1,8 @@
 package gui.components;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import gui.components.contextMenu.CustomContextMenu;
 import gui.components.contextMenu.MenuItemButton;
@@ -14,6 +16,9 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -40,21 +45,29 @@ public class MessageView extends StackPane {
 	private HBox loadButton;
 	private CustomContextMenu contextMenu;
 	
+	private DoubleProperty scrollValueVerticalProperty;
+	
 	private int maxMessages;
 	private int maxMessagesAtInit;
 	private int loadValue;
+	private List<Double> messageYPositions;
 	private ObservableList<GUIMessage> unloadedMessages;
 
 	public MessageView() {
 		getStyleClass().add("message-view");
 		getStylesheets().add("/stylesheets/client/defaultStyle/MessageView.css");
 		
-		this.maxMessages = 20;
-		this.maxMessagesAtInit = maxMessages;
-		this.loadValue = 20;
-		this.unloadedMessages = FXCollections.observableArrayList();
+		scrollValueVerticalProperty = new SimpleDoubleProperty(0d);
+		
+		maxMessages = 20;
+		maxMessagesAtInit = maxMessages;
+		loadValue = 20;
+		
+		messageYPositions = new ArrayList<Double>();
+		unloadedMessages = FXCollections.observableArrayList();
 
-		this.rootContent = new ScrollPane();
+		rootContent = new ScrollPane();
+		scrollValueVerticalProperty.bindBidirectional(rootContent.vvalueProperty());
 		
 		rootContent.setOnMouseEntered(a -> {
 			Node bar1 = rootContent.lookup(".scroll-bar:horizontal");
@@ -74,38 +87,38 @@ public class MessageView extends StackPane {
 				bar2.setOpacity(0d);
 		});
 		
-		this.rootContent.setFitToWidth(true);
-		this.messagesAndLoadButton = new StackPane();
+		rootContent.setFitToWidth(true);
+		messagesAndLoadButton = new StackPane();
 
-		this.messages = new VBox(0d);
-		this.messages.setFillWidth(true);
-		this.messages.setAlignment(Pos.TOP_LEFT);
-		this.messages.setPadding(new Insets(0d));
+		messages = new VBox(0d);
+		messages.setFillWidth(true);
+		messages.setAlignment(Pos.TOP_LEFT);
+		messages.setPadding(new Insets(0d));
 		//this.messages.setSpacing(0d);
 
-		this.loadButton = new HBox();
-		this.loadButton.visibleProperty().bind(Bindings.isEmpty(unloadedMessages).not());
-		this.loadButton.setStyle("-fx-background-color: rgb(0, 0, 0, 0.7);");
-		this.loadButton.setMinHeight(40d);
-		this.loadButton.setMaxHeight(40d);
-		this.loadButton.setAlignment(Pos.CENTER);
-		this.loadButton.setPadding(new Insets(10d));
-		this.loadButton.setSpacing(10d);
+		loadButton = new HBox();
+		loadButton.visibleProperty().bind(Bindings.isEmpty(unloadedMessages).not());
+		loadButton.setStyle("-fx-background-color: rgb(0, 0, 0, 0.7);");
+		loadButton.setMinHeight(40d);
+		loadButton.setMaxHeight(40d);
+		loadButton.setAlignment(Pos.CENTER);
+		loadButton.setPadding(new Insets(10d));
+		loadButton.setSpacing(10d);
 
-		this.contextMenu = createContextMenu();
+		contextMenu = createContextMenu();
 
 		Label loadLabel = new Label("Weitere Nachrichten anzeigen");
 		loadLabel.setOnMouseClicked(a -> this.onLoadClicked());
 		loadLabel.setStyle("-fx-text-fill: white;");
 		loadLabel.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 15d));
 
-		this.loadButton.getChildren().add(loadLabel);
+		loadButton.getChildren().add(loadLabel);
 
 		StackPane.setAlignment(loadButton, Pos.TOP_CENTER);
-		this.messagesAndLoadButton.getChildren().addAll(messages, loadButton);
+		messagesAndLoadButton.getChildren().addAll(messages, loadButton);
 
-		this.setOnContextMenuRequested(a -> onContextMenuRequested(a));
-		this.setOnMouseClicked(b -> onMouseClicked(b));
+		setOnContextMenuRequested(a -> onContextMenuRequested(a));
+		setOnMouseClicked(b -> onMouseClicked(b));
 
 		rootContent.setContent(messagesAndLoadButton);
 		//loadContent(rootContent);
@@ -132,8 +145,11 @@ public class MessageView extends StackPane {
 			HBox root = new HBox(message);
 			root.setAlignment(Pos.TOP_LEFT);
 			HBox.setHgrow(message, Priority.SOMETIMES);
+			root.applyCss();
+			root.layout();
 			messages.getChildren().add(index, root);
-
+			//ADD y pos
+			
 			if (this.messageCount() > maxMessages) {
 				GUIMessage firstMessage = getFirstMessage();
 				if (firstMessage != null) {
@@ -310,6 +326,18 @@ public class MessageView extends StackPane {
 		return loadButton;
 	}
 
+	public ReadOnlyDoubleProperty scrollValueVerticalProperty() {
+		return scrollValueVerticalProperty;
+	}
+	
+	public double getScrollValueVertical() {
+		return scrollValueVerticalProperty.get();
+	}
+	
+	public void setScrollValueVertical(double value) {
+		scrollValueVerticalProperty.set(value);
+	}
+	
 	public int getMaxMessages() {
 		return maxMessages;
 	}
@@ -324,6 +352,10 @@ public class MessageView extends StackPane {
 
 	public int messageCount() {
 		return messages.getChildren().size();
+	}
+	
+	public List<Double> getMessageYPositions() {
+		return messageYPositions;
 	}
 
 	public ObservableList<GUIMessage> getUnloadedMessages() {

@@ -28,17 +28,23 @@ class PrivateMessageManagerTest {
 		messageDatabase.loadFileItems("test/testresources/privateMessageManager/messagesToWrite.txt");
 		messageDatabase.clear();
 		
-		PrivateMessage m1 = ClientMessages.newPrivateMessage(1, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage m2 = ClientMessages.newPrivateMessage(2, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage m3 = ClientMessages.newPrivateMessage(3, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
-		PrivateMessage m4 = ClientMessages.newPrivateMessage(4, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
-		PrivateMessage m5 = ClientMessages.newPrivateMessage(5, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m1 = ClientMessages.newPrivateMessage(5, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m2 = ClientMessages.newPrivateMessage(1, "Hallo Rozach", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage m3 = ClientMessages.newPrivateMessage(4, "Hallo Jann", 12, "Rozach", 11, 0L, Collections.emptyList());
+		PrivateMessage m4 = ClientMessages.newPrivateMessage(2, "Ganz gut und selbst?", 11, "Jann", 12, 0L, Collections.emptyList());
+		PrivateMessage m5 = ClientMessages.newPrivateMessage(3, "Auch gut", 12, "Rozach", 11, 0L, Collections.emptyList());
 		
 		assertTrue(messageDatabase.addItem(m1));
 		assertTrue(messageDatabase.addItem(m2));
 		assertTrue(messageDatabase.addItem(m3));
 		assertTrue(messageDatabase.addItem(m4));
 		assertTrue(messageDatabase.addItem(m5));
+		
+		assertEquals(messageDatabase.getItem(0), m2);
+		assertEquals(messageDatabase.getItem(1), m4);
+		assertEquals(messageDatabase.getItem(2), m5);
+		assertEquals(messageDatabase.getItem(3), m3);
+		assertEquals(messageDatabase.getItem(4), m1);
 	}
 	
 	@Test
