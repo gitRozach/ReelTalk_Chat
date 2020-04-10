@@ -13,18 +13,18 @@
 .title-bar{
 	-fx-border-width: 0px 0px 2px 0px;
 	-fx-border-color: white;
-	-fx-background-color: #404040;
+	-fx-background-color: -theme-color;
 }
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color: white;
-   -fx-pref-width: 2px;
-   -fx-min-width: 2px;
-   -fx-max-width: 2px;
+   	-fx-background-color: white;
+   	-fx-pref-width: 2px;
+   	-fx-min-width: 2px;
+   	-fx-max-width: 2px;
 }
 
 .jfx-tab-pane {
-	-fx-background-color: #404040;
+	-fx-background-color: -theme-color;
 }
 
 .jfx-tab-pane .tab .tab-label {
@@ -53,26 +53,9 @@
 	-fx-background-color: -contrast-color;
 }
 
-.jfx-password-field {
-	-fx-font-size: 15.0;
-	-fx-text-fill: -contrast-color;
-	-fx-prompt-text-fill: -contrast-color;
-	-fx-focus-color: -theme-color;
-}
-
 .jfx-button {
 	-fx-background-color: -theme-color;
 	-fx-text-fill: -contrast-color;
-}
-
-.jfx-check-box {
-	-fx-checked-color: -theme-color;
-	-fx-unchecked-color: -contrast-color;
-	-fx-text-fill: -contrast-color;
-}
-
-.jfx-check-box .mark {
-	-fx-border-color: -contrast-color;
 }
 
 .glyph-icon {

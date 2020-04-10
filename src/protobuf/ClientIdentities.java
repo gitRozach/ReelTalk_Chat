@@ -20,64 +20,56 @@ public final class ClientIdentities {
   public enum ClientStatus
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>UNKNOWN_STATUS = 0;</code>
+     * <code>OFFLINE = 0;</code>
      */
-    UNKNOWN_STATUS(0),
+    OFFLINE(0),
     /**
-     * <code>OFFLINE = 1;</code>
+     * <code>ONLINE = 1;</code>
      */
-    OFFLINE(1),
+    ONLINE(1),
     /**
-     * <code>ONLINE = 2;</code>
+     * <code>AFK = 2;</code>
      */
-    ONLINE(2),
+    AFK(2),
     /**
-     * <code>AFK = 3;</code>
+     * <code>BUSY = 3;</code>
      */
-    AFK(3),
+    BUSY(3),
     /**
-     * <code>BUSY = 4;</code>
+     * <code>BANNED = 4;</code>
      */
-    BUSY(4),
+    BANNED(4),
     /**
-     * <code>BANNED = 5;</code>
+     * <code>DELETED = 5;</code>
      */
-    BANNED(5),
-    /**
-     * <code>DELETED = 6;</code>
-     */
-    DELETED(6),
+    DELETED(5),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>UNKNOWN_STATUS = 0;</code>
+     * <code>OFFLINE = 0;</code>
      */
-    public static final int UNKNOWN_STATUS_VALUE = 0;
+    public static final int OFFLINE_VALUE = 0;
     /**
-     * <code>OFFLINE = 1;</code>
+     * <code>ONLINE = 1;</code>
      */
-    public static final int OFFLINE_VALUE = 1;
+    public static final int ONLINE_VALUE = 1;
     /**
-     * <code>ONLINE = 2;</code>
+     * <code>AFK = 2;</code>
      */
-    public static final int ONLINE_VALUE = 2;
+    public static final int AFK_VALUE = 2;
     /**
-     * <code>AFK = 3;</code>
+     * <code>BUSY = 3;</code>
      */
-    public static final int AFK_VALUE = 3;
+    public static final int BUSY_VALUE = 3;
     /**
-     * <code>BUSY = 4;</code>
+     * <code>BANNED = 4;</code>
      */
-    public static final int BUSY_VALUE = 4;
+    public static final int BANNED_VALUE = 4;
     /**
-     * <code>BANNED = 5;</code>
+     * <code>DELETED = 5;</code>
      */
-    public static final int BANNED_VALUE = 5;
-    /**
-     * <code>DELETED = 6;</code>
-     */
-    public static final int DELETED_VALUE = 6;
+    public static final int DELETED_VALUE = 5;
 
 
     public final int getNumber() {
@@ -104,13 +96,12 @@ public final class ClientIdentities {
      */
     public static ClientStatus forNumber(int value) {
       switch (value) {
-        case 0: return UNKNOWN_STATUS;
-        case 1: return OFFLINE;
-        case 2: return ONLINE;
-        case 3: return AFK;
-        case 4: return BUSY;
-        case 5: return BANNED;
-        case 6: return DELETED;
+        case 0: return OFFLINE;
+        case 1: return ONLINE;
+        case 2: return AFK;
+        case 3: return BUSY;
+        case 4: return BANNED;
+        case 5: return DELETED;
         default: return null;
       }
     }
@@ -12766,7 +12757,7 @@ public final class ClientIdentities {
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
-      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN_STATUS.getNumber()) {
+      if (status_ != protobuf.ClientIdentities.ClientStatus.OFFLINE.getNumber()) {
         output.writeEnum(2, status_);
       }
       if (images_ != null) {
@@ -12800,7 +12791,7 @@ public final class ClientIdentities {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
-      if (status_ != protobuf.ClientIdentities.ClientStatus.UNKNOWN_STATUS.getNumber()) {
+      if (status_ != protobuf.ClientIdentities.ClientStatus.OFFLINE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, status_);
       }
@@ -15482,13 +15473,12 @@ public final class ClientIdentities {
       "ofile\030\001 \001(\0132(.protobuf.clientidentities." +
       "ClientProfile\022\020\n\010password\030\002 \001(\t\022A\n\020regis" +
       "teredDevice\030\003 \003(\0132\'.protobuf.clientident" +
-      "ities.ClientDevice*g\n\014ClientStatus\022\022\n\016UN" +
-      "KNOWN_STATUS\020\000\022\013\n\007OFFLINE\020\001\022\n\n\006ONLINE\020\002\022" +
-      "\007\n\003AFK\020\003\022\010\n\004BUSY\020\004\022\n\n\006BANNED\020\005\022\013\n\007DELETE" +
-      "D\020\006*Q\n\020ClientDeviceType\022\027\n\023UNKNOWN_DEVIC" +
-      "E_TYPE\020\000\022\013\n\007DESKTOP\020\001\022\013\n\007BROWSER\020\002\022\n\n\006MO" +
-      "BILE\020\003B\034\n\010protobufB\020ClientIdentitiesb\006pr" +
-      "oto3"
+      "ities.ClientDevice*S\n\014ClientStatus\022\013\n\007OF" +
+      "FLINE\020\000\022\n\n\006ONLINE\020\001\022\007\n\003AFK\020\002\022\010\n\004BUSY\020\003\022\n" +
+      "\n\006BANNED\020\004\022\013\n\007DELETED\020\005*Q\n\020ClientDeviceT" +
+      "ype\022\027\n\023UNKNOWN_DEVICE_TYPE\020\000\022\013\n\007DESKTOP\020" +
+      "\001\022\013\n\007BROWSER\020\002\022\n\n\006MOBILE\020\003B\034\n\010protobufB\020" +
+      "ClientIdentitiesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

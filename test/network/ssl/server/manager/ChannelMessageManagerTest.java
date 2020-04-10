@@ -12,7 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import network.peer.server.database.protobuf.ChannelMessageDatabase;
+import database.protobuf.server.ChannelMessageDatabase;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
 import protobuf.ClientMessages.ClientFileMessageBase;
@@ -30,6 +30,23 @@ class ChannelMessageManagerTest {
 
 	@Test
 	public void addMessage_addItemsAndCheckIfListIsSorted() throws IOException {
+//		ProtobufFileDatabase<ClientChannel> cdb = new ProtobufFileDatabase<ClientChannel>(ClientChannel.class);
+//		cdb.loadFileItems("src/clientData/channels.txt");
+//		cdb.clear();
+//		
+//		ClientChannel c1 = ClientChannels.newPublicTextChannel(1, "Text 1", 10, Collections.emptyList());
+//		ClientChannel c2 = ClientChannels.newPublicTextChannel(2, "Text 2", 10, Collections.emptyList());
+//		ClientChannel c3 = ClientChannels.newPublicTextChannel(3, "Text 3", 10, Collections.emptyList());
+//		ClientChannel v4 = ClientChannels.newPublicVoiceChannel(4, "Voice 4", 10, Collections.emptyList());
+//		ClientChannel v5 = ClientChannels.newPublicVoiceChannel(5, "Voice 5", 10, Collections.emptyList());
+//		
+//		cdb.addItem(c1);
+//		cdb.addItem(c2);
+//		cdb.addItem(c3);
+//		cdb.addItem(v4);
+//		cdb.addItem(v5);
+//		
+//		cdb.close();
 		database = new ChannelMessageDatabase();
 		database.loadFileItems("test/testresources/channelMessageManager/addChannelMessages.txt");
 		database.clear();

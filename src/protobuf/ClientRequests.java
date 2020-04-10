@@ -6937,10 +6937,10 @@ public final class ClientRequests {
     int getMessageCount();
 
     /**
-     * <code>int32 startCountWithMessageId = 4;</code>
-     * @return The startCountWithMessageId.
+     * <code>int32 lastIndex = 4;</code>
+     * @return The lastIndex.
      */
-    int getStartCountWithMessageId();
+    int getLastIndex();
   }
   /**
    * Protobuf type {@code protobuf.clientrequests.ChannelMessageGetRequest}
@@ -7020,7 +7020,7 @@ public final class ClientRequests {
             }
             case 32: {
 
-              startCountWithMessageId_ = input.readInt32();
+              lastIndex_ = input.readInt32();
               break;
             }
             default: {
@@ -7111,14 +7111,14 @@ public final class ClientRequests {
       return messageCount_;
     }
 
-    public static final int STARTCOUNTWITHMESSAGEID_FIELD_NUMBER = 4;
-    private int startCountWithMessageId_;
+    public static final int LASTINDEX_FIELD_NUMBER = 4;
+    private int lastIndex_;
     /**
-     * <code>int32 startCountWithMessageId = 4;</code>
-     * @return The startCountWithMessageId.
+     * <code>int32 lastIndex = 4;</code>
+     * @return The lastIndex.
      */
-    public int getStartCountWithMessageId() {
-      return startCountWithMessageId_;
+    public int getLastIndex() {
+      return lastIndex_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7144,8 +7144,8 @@ public final class ClientRequests {
       if (messageCount_ != 0) {
         output.writeInt32(3, messageCount_);
       }
-      if (startCountWithMessageId_ != 0) {
-        output.writeInt32(4, startCountWithMessageId_);
+      if (lastIndex_ != 0) {
+        output.writeInt32(4, lastIndex_);
       }
       unknownFields.writeTo(output);
     }
@@ -7168,9 +7168,9 @@ public final class ClientRequests {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, messageCount_);
       }
-      if (startCountWithMessageId_ != 0) {
+      if (lastIndex_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, startCountWithMessageId_);
+          .computeInt32Size(4, lastIndex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7199,8 +7199,8 @@ public final class ClientRequests {
       }
       if (getMessageCount()
           != other.getMessageCount()) return false;
-      if (getStartCountWithMessageId()
-          != other.getStartCountWithMessageId()) return false;
+      if (getLastIndex()
+          != other.getLastIndex()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7222,8 +7222,8 @@ public final class ClientRequests {
       }
       hash = (37 * hash) + MESSAGECOUNT_FIELD_NUMBER;
       hash = (53 * hash) + getMessageCount();
-      hash = (37 * hash) + STARTCOUNTWITHMESSAGEID_FIELD_NUMBER;
-      hash = (53 * hash) + getStartCountWithMessageId();
+      hash = (37 * hash) + LASTINDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getLastIndex();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7371,7 +7371,7 @@ public final class ClientRequests {
         }
         messageCount_ = 0;
 
-        startCountWithMessageId_ = 0;
+        lastIndex_ = 0;
 
         return this;
       }
@@ -7410,7 +7410,7 @@ public final class ClientRequests {
           result.channelBase_ = channelBaseBuilder_.build();
         }
         result.messageCount_ = messageCount_;
-        result.startCountWithMessageId_ = startCountWithMessageId_;
+        result.lastIndex_ = lastIndex_;
         onBuilt();
         return result;
       }
@@ -7468,8 +7468,8 @@ public final class ClientRequests {
         if (other.getMessageCount() != 0) {
           setMessageCount(other.getMessageCount());
         }
-        if (other.getStartCountWithMessageId() != 0) {
-          setStartCountWithMessageId(other.getStartCountWithMessageId());
+        if (other.getLastIndex() != 0) {
+          setLastIndex(other.getLastIndex());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7768,32 +7768,32 @@ public final class ClientRequests {
         return this;
       }
 
-      private int startCountWithMessageId_ ;
+      private int lastIndex_ ;
       /**
-       * <code>int32 startCountWithMessageId = 4;</code>
-       * @return The startCountWithMessageId.
+       * <code>int32 lastIndex = 4;</code>
+       * @return The lastIndex.
        */
-      public int getStartCountWithMessageId() {
-        return startCountWithMessageId_;
+      public int getLastIndex() {
+        return lastIndex_;
       }
       /**
-       * <code>int32 startCountWithMessageId = 4;</code>
-       * @param value The startCountWithMessageId to set.
+       * <code>int32 lastIndex = 4;</code>
+       * @param value The lastIndex to set.
        * @return This builder for chaining.
        */
-      public Builder setStartCountWithMessageId(int value) {
+      public Builder setLastIndex(int value) {
         
-        startCountWithMessageId_ = value;
+        lastIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 startCountWithMessageId = 4;</code>
+       * <code>int32 lastIndex = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearStartCountWithMessageId() {
+      public Builder clearLastIndex() {
         
-        startCountWithMessageId_ = 0;
+        lastIndex_ = 0;
         onChanged();
         return this;
       }
@@ -25824,102 +25824,102 @@ public final class ClientRequests {
       "stRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
       "f.clientrequests.ClientRequestBase\0229\n\013ch" +
       "annelBase\030\002 \001(\0132$.protobuf.clientchannel" +
-      "s.ChannelBase\022\023\n\013messageText\030\003 \001(\t\"\315\001\n\030C" +
+      "s.ChannelBase\022\023\n\013messageText\030\003 \001(\t\"\277\001\n\030C" +
       "hannelMessageGetRequest\022?\n\013requestBase\030\001" +
       " \001(\0132*.protobuf.clientrequests.ClientReq" +
       "uestBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf" +
       ".clientchannels.ChannelBase\022\024\n\014messageCo" +
-      "unt\030\003 \001(\005\022\037\n\027startCountWithMessageId\030\004 \001" +
-      "(\005\"\222\002\n\036ChannelMessageAnswerGetRequest\022?\n" +
-      "\013requestBase\030\001 \001(\0132*.protobuf.clientrequ" +
-      "ests.ClientRequestBase\0229\n\013channelBase\030\002 " +
-      "\001(\0132$.protobuf.clientchannels.ChannelBas" +
-      "e\022?\n\013messageBase\030\003 \001(\0132*.protobuf.client" +
-      "messages.ClientMessageBase\022\023\n\013answerCoun" +
-      "t\030\004 \001(\005\022\036\n\026startCountWithAnswerId\030\005 \001(\005\"" +
-      "\362\001\n\037ChannelMessageAnswerPostRequest\022?\n\013r" +
-      "equestBase\030\001 \001(\0132*.protobuf.clientreques" +
-      "ts.ClientRequestBase\0229\n\013channelBase\030\002 \001(" +
-      "\0132$.protobuf.clientchannels.ChannelBase\022" +
-      "?\n\013messageBase\030\003 \001(\0132*.protobuf.clientme" +
-      "ssages.ClientMessageBase\022\022\n\nanswerText\030\004" +
-      " \001(\t\"\315\001\n\030PrivateMessageGetRequest\022?\n\013req" +
-      "uestBase\030\001 \001(\0132*.protobuf.clientrequests" +
-      ".ClientRequestBase\0229\n\nclientBase\030\002 \001(\0132%" +
-      ".protobuf.clientidentities.ClientBase\022\024\n" +
-      "\014messageCount\030\003 \001(\005\022\037\n\027startCountWithMes" +
-      "sageId\030\004 \001(\005\"\254\001\n\031PrivateMessagePostReque" +
-      "st\022?\n\013requestBase\030\001 \001(\0132*.protobuf.clien" +
-      "trequests.ClientRequestBase\0229\n\nclientBas" +
-      "e\030\002 \001(\0132%.protobuf.clientidentities.Clie" +
-      "ntBase\022\023\n\013messageText\030\003 \001(\t\"\323\001\n\036ClientPr" +
-      "ofileCommentGetRequest\022?\n\013requestBase\030\001 " +
-      "\001(\0132*.protobuf.clientrequests.ClientRequ" +
-      "estBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf.c" +
-      "lientidentities.ClientBase\022\024\n\014commentCou" +
-      "nt\030\003 \001(\005\022\037\n\027startCountWithCommentId\030\004 \001(" +
-      "\005\"\262\001\n\037ClientProfileCommentPostRequest\022?\n" +
-      "\013requestBase\030\001 \001(\0132*.protobuf.clientrequ" +
-      "ests.ClientRequestBase\0229\n\nclientBase\030\002 \001" +
-      "(\0132%.protobuf.clientidentities.ClientBas" +
-      "e\022\023\n\013commentText\030\003 \001(\t\"\230\002\n$ClientProfile" +
-      "CommentAnswerGetRequest\022?\n\013requestBase\030\001" +
+      "unt\030\003 \001(\005\022\021\n\tlastIndex\030\004 \001(\005\"\222\002\n\036Channel" +
+      "MessageAnswerGetRequest\022?\n\013requestBase\030\001" +
       " \001(\0132*.protobuf.clientrequests.ClientReq" +
-      "uestBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf." +
-      "clientidentities.ClientBase\022?\n\013messageBa" +
+      "uestBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf" +
+      ".clientchannels.ChannelBase\022?\n\013messageBa" +
       "se\030\003 \001(\0132*.protobuf.clientmessages.Clien" +
       "tMessageBase\022\023\n\013answerCount\030\004 \001(\005\022\036\n\026sta" +
-      "rtCountWithAnswerId\030\005 \001(\005\"\370\001\n%ClientProf" +
-      "ileCommentAnswerPostRequest\022?\n\013requestBa" +
-      "se\030\001 \001(\0132*.protobuf.clientrequests.Clien" +
-      "tRequestBase\0229\n\nclientBase\030\002 \001(\0132%.proto" +
-      "buf.clientidentities.ClientBase\022?\n\013messa" +
-      "geBase\030\003 \001(\0132*.protobuf.clientmessages.C" +
-      "lientMessageBase\022\022\n\nanswerText\030\004 \001(\t\"\225\001\n" +
-      "\027ClientChannelGetRequest\022?\n\013requestBase\030" +
-      "\001 \001(\0132*.protobuf.clientrequests.ClientRe" +
-      "questBase\0229\n\013channelBase\030\002 \001(\0132$.protobu" +
-      "f.clientchannels.ChannelBase\"\032\n\030ClientCh" +
-      "annelPostRequest\"\325\001\n\032ChannelFileDownload" +
+      "rtCountWithAnswerId\030\005 \001(\005\"\362\001\n\037ChannelMes" +
+      "sageAnswerPostRequest\022?\n\013requestBase\030\001 \001" +
+      "(\0132*.protobuf.clientrequests.ClientReque" +
+      "stBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf.c" +
+      "lientchannels.ChannelBase\022?\n\013messageBase" +
+      "\030\003 \001(\0132*.protobuf.clientmessages.ClientM" +
+      "essageBase\022\022\n\nanswerText\030\004 \001(\t\"\315\001\n\030Priva" +
+      "teMessageGetRequest\022?\n\013requestBase\030\001 \001(\013" +
+      "2*.protobuf.clientrequests.ClientRequest" +
+      "Base\0229\n\nclientBase\030\002 \001(\0132%.protobuf.clie" +
+      "ntidentities.ClientBase\022\024\n\014messageCount\030" +
+      "\003 \001(\005\022\037\n\027startCountWithMessageId\030\004 \001(\005\"\254" +
+      "\001\n\031PrivateMessagePostRequest\022?\n\013requestB" +
+      "ase\030\001 \001(\0132*.protobuf.clientrequests.Clie" +
+      "ntRequestBase\0229\n\nclientBase\030\002 \001(\0132%.prot" +
+      "obuf.clientidentities.ClientBase\022\023\n\013mess" +
+      "ageText\030\003 \001(\t\"\323\001\n\036ClientProfileCommentGe" +
+      "tRequest\022?\n\013requestBase\030\001 \001(\0132*.protobuf" +
+      ".clientrequests.ClientRequestBase\0229\n\ncli" +
+      "entBase\030\002 \001(\0132%.protobuf.clientidentitie" +
+      "s.ClientBase\022\024\n\014commentCount\030\003 \001(\005\022\037\n\027st" +
+      "artCountWithCommentId\030\004 \001(\005\"\262\001\n\037ClientPr" +
+      "ofileCommentPostRequest\022?\n\013requestBase\030\001" +
+      " \001(\0132*.protobuf.clientrequests.ClientReq" +
+      "uestBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf." +
+      "clientidentities.ClientBase\022\023\n\013commentTe" +
+      "xt\030\003 \001(\t\"\230\002\n$ClientProfileCommentAnswerG" +
+      "etRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
+      "f.clientrequests.ClientRequestBase\0229\n\ncl" +
+      "ientBase\030\002 \001(\0132%.protobuf.clientidentiti" +
+      "es.ClientBase\022?\n\013messageBase\030\003 \001(\0132*.pro" +
+      "tobuf.clientmessages.ClientMessageBase\022\023" +
+      "\n\013answerCount\030\004 \001(\005\022\036\n\026startCountWithAns" +
+      "werId\030\005 \001(\005\"\370\001\n%ClientProfileCommentAnsw" +
+      "erPostRequest\022?\n\013requestBase\030\001 \001(\0132*.pro" +
+      "tobuf.clientrequests.ClientRequestBase\0229" +
+      "\n\nclientBase\030\002 \001(\0132%.protobuf.clientiden" +
+      "tities.ClientBase\022?\n\013messageBase\030\003 \001(\0132*" +
+      ".protobuf.clientmessages.ClientMessageBa" +
+      "se\022\022\n\nanswerText\030\004 \001(\t\"\225\001\n\027ClientChannel" +
+      "GetRequest\022?\n\013requestBase\030\001 \001(\0132*.protob" +
+      "uf.clientrequests.ClientRequestBase\0229\n\013c" +
+      "hannelBase\030\002 \001(\0132$.protobuf.clientchanne" +
+      "ls.ChannelBase\"\032\n\030ClientChannelPostReque" +
+      "st\"\325\001\n\032ChannelFileDownloadRequest\022?\n\013req" +
+      "uestBase\030\001 \001(\0132*.protobuf.clientrequests" +
+      ".ClientRequestBase\0229\n\013channelBase\030\002 \001(\0132" +
+      "$.protobuf.clientchannels.ChannelBase\022;\n" +
+      "\010fileBase\030\003 \001(\0132).protobuf.clientrequest" +
+      "s.FileDownloadBase\"\321\001\n\030ChannelFileUpload" +
       "Request\022?\n\013requestBase\030\001 \001(\0132*.protobuf." +
       "clientrequests.ClientRequestBase\0229\n\013chan" +
       "nelBase\030\002 \001(\0132$.protobuf.clientchannels." +
-      "ChannelBase\022;\n\010fileBase\030\003 \001(\0132).protobuf" +
-      ".clientrequests.FileDownloadBase\"\321\001\n\030Cha" +
-      "nnelFileUploadRequest\022?\n\013requestBase\030\001 \001" +
+      "ChannelBase\0229\n\010fileBase\030\003 \001(\0132\'.protobuf" +
+      ".clientrequests.FileUploadBase\"\325\001\n\032Priva" +
+      "teFileDownloadRequest\022?\n\013requestBase\030\001 \001" +
       "(\0132*.protobuf.clientrequests.ClientReque" +
-      "stBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf.c" +
-      "lientchannels.ChannelBase\0229\n\010fileBase\030\003 " +
-      "\001(\0132\'.protobuf.clientrequests.FileUpload" +
-      "Base\"\325\001\n\032PrivateFileDownloadRequest\022?\n\013r" +
+      "stBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf.cl" +
+      "ientidentities.ClientBase\022;\n\010fileBase\030\003 " +
+      "\001(\0132).protobuf.clientrequests.FileDownlo" +
+      "adBase\"\321\001\n\030PrivateFileUploadRequest\022?\n\013r" +
       "equestBase\030\001 \001(\0132*.protobuf.clientreques" +
       "ts.ClientRequestBase\0229\n\nclientBase\030\002 \001(\013" +
       "2%.protobuf.clientidentities.ClientBase\022" +
-      ";\n\010fileBase\030\003 \001(\0132).protobuf.clientreque" +
-      "sts.FileDownloadBase\"\321\001\n\030PrivateFileUplo" +
-      "adRequest\022?\n\013requestBase\030\001 \001(\0132*.protobu" +
-      "f.clientrequests.ClientRequestBase\0229\n\ncl" +
-      "ientBase\030\002 \001(\0132%.protobuf.clientidentiti" +
-      "es.ClientBase\0229\n\010fileBase\030\003 \001(\0132\'.protob" +
-      "uf.clientrequests.FileUploadBase\"\216\001\n\022Cli" +
-      "entLoginRequest\022?\n\013requestBase\030\001 \001(\0132*.p" +
-      "rotobuf.clientrequests.ClientRequestBase" +
-      "\0227\n\006device\030\002 \001(\0132\'.protobuf.clientidenti" +
-      "ties.ClientDevice\"\217\001\n\023ClientLogoutReques" +
+      "9\n\010fileBase\030\003 \001(\0132\'.protobuf.clientreque" +
+      "sts.FileUploadBase\"\216\001\n\022ClientLoginReques" +
       "t\022?\n\013requestBase\030\001 \001(\0132*.protobuf.client" +
       "requests.ClientRequestBase\0227\n\006device\030\002 \001" +
       "(\0132\'.protobuf.clientidentities.ClientDev" +
-      "ice\"\367\001\n\031ClientRegistrationRequest\022?\n\013req" +
-      "uestBase\030\001 \001(\0132*.protobuf.clientrequests" +
-      ".ClientRequestBase\022\020\n\010username\030\002 \001(\t\022\020\n\010" +
-      "password\030\003 \001(\t\022\026\n\016passwordRepeat\030\004 \001(\t\022\r" +
-      "\n\005email\030\005 \001(\t\022\025\n\rinvitationKey\030\006 \001(\t\0227\n\006" +
-      "device\030\007 \001(\0132\'.protobuf.clientidentities" +
-      ".ClientDevice\"\222\001\n\026PingMeasurementRequest" +
-      "\022?\n\013requestBase\030\001 \001(\0132*.protobuf.clientr" +
-      "equests.ClientRequestBase\0227\n\006device\030\002 \001(" +
-      "\0132\'.protobuf.clientidentities.ClientDevi" +
-      "ceB\032\n\010protobufB\016ClientRequestsb\006proto3"
+      "ice\"\217\001\n\023ClientLogoutRequest\022?\n\013requestBa" +
+      "se\030\001 \001(\0132*.protobuf.clientrequests.Clien" +
+      "tRequestBase\0227\n\006device\030\002 \001(\0132\'.protobuf." +
+      "clientidentities.ClientDevice\"\367\001\n\031Client" +
+      "RegistrationRequest\022?\n\013requestBase\030\001 \001(\013" +
+      "2*.protobuf.clientrequests.ClientRequest" +
+      "Base\022\020\n\010username\030\002 \001(\t\022\020\n\010password\030\003 \001(\t" +
+      "\022\026\n\016passwordRepeat\030\004 \001(\t\022\r\n\005email\030\005 \001(\t\022" +
+      "\025\n\rinvitationKey\030\006 \001(\t\0227\n\006device\030\007 \001(\0132\'" +
+      ".protobuf.clientidentities.ClientDevice\"" +
+      "\222\001\n\026PingMeasurementRequest\022?\n\013requestBas" +
+      "e\030\001 \001(\0132*.protobuf.clientrequests.Client" +
+      "RequestBase\0227\n\006device\030\002 \001(\0132\'.protobuf.c" +
+      "lientidentities.ClientDeviceB\032\n\010protobuf" +
+      "B\016ClientRequestsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25981,7 +25981,7 @@ public final class ClientRequests {
     internal_static_protobuf_clientrequests_ChannelMessageGetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientrequests_ChannelMessageGetRequest_descriptor,
-        new java.lang.String[] { "RequestBase", "ChannelBase", "MessageCount", "StartCountWithMessageId", });
+        new java.lang.String[] { "RequestBase", "ChannelBase", "MessageCount", "LastIndex", });
     internal_static_protobuf_clientrequests_ChannelMessageAnswerGetRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_protobuf_clientrequests_ChannelMessageAnswerGetRequest_fieldAccessorTable = new

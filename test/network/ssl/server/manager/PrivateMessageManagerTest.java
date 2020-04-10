@@ -9,7 +9,7 @@ import java.util.Collections;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.peer.server.database.protobuf.PrivateMessageDatabase;
+import database.protobuf.server.PrivateMessageDatabase;
 import protobuf.ClientMessages.PrivateMessage;
 import protobuf.wrapper.ClientMessages;
 

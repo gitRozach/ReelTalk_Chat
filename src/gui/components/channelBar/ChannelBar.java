@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import utils.JFXUtils;
+import utils.FXUtils;
 
 public class ChannelBar extends StackPane {
 	private VBox contentBox;
@@ -66,7 +66,7 @@ public class ChannelBar extends StackPane {
 
 	private void initServerBar() {
 		serverBarBox = new HBox();
-		JFXUtils.setFixedHeightOf(serverBarBox, 50d);
+		FXUtils.setFixedHeightOf(serverBarBox, 50d);
 	}
 	
 	private void initButtons() {	
@@ -287,14 +287,14 @@ public class ChannelBar extends StackPane {
 				}));
 				setPrefWidth(200d);
 				setPrefHeight(50d);
+				addEventHandler(TreeItem.branchCollapsedEvent(), a -> a.getTreeItem().setExpanded(true));
 			}
 			else if(item instanceof VoiceChannelBarItem) {
 				VoiceChannelBarItem voice = (VoiceChannelBarItem)item;
 				getStyleClass().add("channel-tree-cell");
 				setText(voice.getChannelName());
-				//setGraphic(new Text("[Voice ("+ voice.getChannelId() +")]"));
 				setGraphic(null);
-				setOnMouseClicked(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, voice) {
+				setOnMouseReleased(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, voice) {
 																		private static final long serialVersionUID = -8246283748073868549L;
 				}));
 				setPrefWidth(200d);
@@ -316,7 +316,7 @@ public class ChannelBar extends StackPane {
 				profilePic.setStroke(Color.GREEN);
 				profilePic.setStrokeWidth(2d);
 				
-				HBox graphicBox = new HBox(profilePic, JFXUtils.createHorizontalSpacer(10d));
+				HBox graphicBox = new HBox(profilePic, FXUtils.createHorizontalSpacer(10d));
 				
 				setGraphic(graphicBox);
 				setPrefWidth(150d);

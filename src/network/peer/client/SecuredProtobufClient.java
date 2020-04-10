@@ -2,27 +2,24 @@ package network.peer.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.security.SecureRandom;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
 import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
 import network.peer.SecuredProtobufPeer;
-import network.peer.client.callbacks.LoggerCallback;
+import network.peer.callbacks.LoggerCallback;
 import utils.LoopingRunnable;
-import utils.Utils;
+import utils.ThreadUtils;
 
 public class SecuredProtobufClient extends SecuredProtobufPeer {
 	protected String remoteAddress;
 	protected int remotePort;
-	protected String encryptionProtocol;
 	protected volatile boolean connected;
 	
 	protected SSLEngine engine;
@@ -33,23 +30,17 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     protected ClientProtobufReader receiver;
 
     public SecuredProtobufClient(String protocol, String hostAddress, int hostPort) throws Exception  {
-    	super();
-    	encryptionProtocol = protocol;
-    	remoteAddress = hostAddress;
+    	super(protocol);
+    	initClientSSLContext();
+    	initBuffers();
+    	
+        setPeerCallback(new LoggerCallback(logger));
+        
+        remoteAddress = hostAddress;
     	remotePort = hostPort;
     	connected = false;
-    	
-        SSLContext context = SSLContext.getInstance(protocol);
-        context.init(createKeyManagers("src/resources/client.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
         engine = context.createSSLEngine(remoteAddress, remotePort);
         engine.setUseClientMode(true);
-        
-        myApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
-        myNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
-        peerApplicationBuffer = ByteBuffer.allocate(engine.getSession().getApplicationBufferSize());
-        peerNetworkBuffer = ByteBuffer.allocate(engine.getSession().getPacketBufferSize());
-        
-        setPeerCallback(new LoggerCallback(logger));
         
         orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
         sender = new ClientProtobufWriter(1L);
@@ -84,11 +75,11 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     	return false;
     }
 
-    protected int write(GeneratedMessageV3 message) throws IOException {
+    protected int write(Message message) throws IOException {
         return write(socketChannel, engine, message);
     }
 
-    protected GeneratedMessageV3 read() throws Exception {
+    protected Message read() throws Exception {
         return read(socketChannel, engine);
     }
     
@@ -147,7 +138,7 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     	if(message == null)
     		return;
     	orderedBytes.offer(new ProtobufMessage(getChannel(), message));
-    	Utils.sleep(1L);
+    	ThreadUtils.sleep(1L);
     }
     
     @Override
@@ -193,7 +184,7 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 					logger.severe(e.toString());
 					continue;
 				}
-				Utils.sleep(loopDelayMillis);
+				ThreadUtils.sleep(loopDelayMillis);
 			}
 	        logger.info("ClientProtobufReader beendet.");
 		}
@@ -219,7 +210,7 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 		    			continue;
 		    		}
 				}
-				Utils.sleep(loopDelayMillis);
+				ThreadUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ClientProtobufWriter beendet.");
 		}

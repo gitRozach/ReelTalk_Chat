@@ -102,7 +102,7 @@ class ClientIdentityTest {
 		
 		assertEquals(defaultProfile.getBase().getId(), 0);
 		assertEquals(defaultProfile.getBase().getUsername(), "");
-		assertEquals(defaultProfile.getStatus(), ClientStatus.UNKNOWN_STATUS);
+		assertEquals(defaultProfile.getStatus(), ClientStatus.OFFLINE);
 		assertEquals(defaultProfile.getImages().getBackgroundImageURI(), "");
 		assertEquals(defaultProfile.getImages().getProfileImageURI(), "");
 		assertEquals(defaultProfile.getImages().getTitleImageURI(), "");

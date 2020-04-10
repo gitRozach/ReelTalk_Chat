@@ -1,15 +1,19 @@
 package protobuf.wrapper;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import com.google.protobuf.GeneratedMessageV3;
 
+import protobuf.ClientChannels.ChannelBase;
+import protobuf.ClientChannels.ClientChannel;
 import protobuf.ClientEvents.ChannelFileDownloadEvent;
 import protobuf.ClientEvents.ChannelFileUploadEvent;
 import protobuf.ClientEvents.ChannelMessageAnswerGetEvent;
 import protobuf.ClientEvents.ChannelMessageAnswerPostEvent;
 import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
+import protobuf.ClientEvents.ClientChannelGetEvent;
 import protobuf.ClientEvents.ClientChannelJoinEvent;
 import protobuf.ClientEvents.ClientChannelLeaveEvent;
 import protobuf.ClientEvents.ClientEventBase;
@@ -27,6 +31,7 @@ import protobuf.ClientEvents.PrivateFileDownloadEvent;
 import protobuf.ClientEvents.PrivateFileUploadEvent;
 import protobuf.ClientEvents.PrivateMessageGetEvent;
 import protobuf.ClientEvents.PrivateMessagePostEvent;
+import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientMessages.ChannelMessage;
@@ -59,6 +64,7 @@ public class ClientEvents {
 								"ChannelFileUploadEvent",
 								"PrivateFileDownloadEvent",
 								"PrivateFileUploadEvent",
+								"ClientChannelGetEvent",
 								"PingMeasurementEvent"};
 	}
 	
@@ -79,10 +85,8 @@ public class ClientEvents {
 											.build();
 	}
 	
-	public static ClientRequestRejectedEvent newClientRequestRejectedEvent(int eventId, int clientId, String rejectionMessage) {
-		ClientBase clientBase = ClientBase.newBuilder().setId(clientId).build();
-		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
-																.setEventId(eventId)
+	public static ClientRequestRejectedEvent newClientRequestRejectedEvent(int eventId, String rejectionMessage) {
+		ClientEventBase eventBase = ClientEventBase.newBuilder().setEventId(eventId)
 																.setEventTimestamp(System.currentTimeMillis())
 																.build();
 		return ClientRequestRejectedEvent.newBuilder()	.setEventBase(eventBase)
@@ -215,20 +219,19 @@ public class ClientEvents {
 																.build();
 	}
 	
-	public static ClientChannelJoinEvent newClientChannelJoinEvent(int eventId, ClientProfile clientProfile) {
-		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientProfile.getBase().getId())
-														.setUsername(clientProfile.getBase().getUsername())
-														.build();
+	public static ClientChannelJoinEvent newClientChannelJoinEvent(int eventId, int channelId, Collection<ChannelMessage> channelMessages) {
+		ClientBase clientBase = ClientBase.newBuilder().build();
 		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
 																.setEventId(eventId)
 																.setEventTimestamp(System.currentTimeMillis())
 																.build();
 		return ClientChannelJoinEvent.newBuilder()	.setEventBase(eventBase)
-													.setProfile(clientProfile)
+													.setChannelBase(ChannelBase.newBuilder().setChannelId(channelId))
+													.addAllChannelMessage(channelMessages)
 													.build();
 	}
 	
-	public static ClientChannelLeaveEvent newClientChannelLeaveEvent(int eventId, ClientProfile clientProfile) {
+	public static ClientChannelLeaveEvent newClientChannelLeaveEvent(int eventId, int channelId, ClientProfile clientProfile) {
 		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientProfile.getBase().getId())
 														.setUsername(clientProfile.getBase().getUsername())
 														.build();
@@ -237,20 +240,27 @@ public class ClientEvents {
 																.setEventTimestamp(System.currentTimeMillis())
 																.build();
 		return ClientChannelLeaveEvent.newBuilder()	.setEventBase(eventBase)
+													.setChannelBase(ChannelBase.newBuilder().setChannelId(channelId))
 													.setProfile(clientProfile)
 													.build();
 	}
 	
-	public static ClientLoginEvent newClientLoginEvent(int eventId, ClientProfile clientProfile) {
-		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientProfile.getBase().getId())
-														.setUsername(clientProfile.getBase().getUsername())
+	public static ClientLoginEvent newClientLoginEvent(int eventId, ClientAccount clientAccount) {
+		return newClientLoginEvent(eventId, clientAccount, Collections.emptyList(), Collections.emptyList());
+	}
+	
+	public static ClientLoginEvent newClientLoginEvent(int eventId, ClientAccount clientAccount, Collection<ClientChannel> channels, Collection<ClientProfile> members) {
+		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientAccount.getProfile().getBase().getId())
+														.setUsername(clientAccount.getProfile().getBase().getUsername())
 														.build();
 		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
 																.setEventId(eventId)
 																.setEventTimestamp(System.currentTimeMillis())
 																.build();
 		return ClientLoginEvent.newBuilder().setEventBase(eventBase)
-											.setProfile(clientProfile)
+											.setAccount(clientAccount)
+											.addAllServerChannel(channels)
+											.addAllMemberProfile(members)
 											.build();
 	}
 	
@@ -329,6 +339,18 @@ public class ClientEvents {
 																.build();
 		return PrivateFileUploadEvent.newBuilder()	.setEventBase(eventBase)
 													.setProfile(clientProfile)
+													.build();
+	}
+	
+	public static ClientChannelGetEvent newClientChannelGetEvent(int eventId, int clientId, Collection<ClientChannel> channels) {
+		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientId).build();
+		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
+																.setEventId(eventId)
+																.setEventTimestamp(System.currentTimeMillis())
+																.build();
+		return ClientChannelGetEvent.newBuilder()	.setEventBase(eventBase)
+													.setClientBase(clientBase)
+													.addAllChannel(channels)
 													.build();
 	}
 	

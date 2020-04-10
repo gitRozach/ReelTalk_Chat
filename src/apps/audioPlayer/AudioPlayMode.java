@@ -1,6 +1,5 @@
 package apps.audioPlayer;
 
-public enum AudioPlayMode
-{
-	DEFAULT, REPEAT_SINGLE, REPEAT_PLAYLIST, SHUFFLE; //FAVORITES?!
+public enum AudioPlayMode {
+	DEFAULT, REPEAT_SINGLE, REPEAT_PLAYLIST, SHUFFLE;
 }

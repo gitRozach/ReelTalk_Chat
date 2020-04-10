@@ -1,0 +1,13 @@
+b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+	Channel 3"Rozach(³Ö¥Œ”._
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
+hahaha"Rozach(íÚ°Œ”.a
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage#
+awdadwwd"Rozach(€ê°Œ”._
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
+awdadw"Rozach(¬õ°Œ”.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+ok"Rozach(æú°Œ”.i
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
+%hallo channel 3!"Rozach(Ê×þ¥”.

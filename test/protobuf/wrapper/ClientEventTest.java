@@ -32,7 +32,9 @@ import protobuf.ClientEvents.PrivateFileUploadEvent;
 import protobuf.ClientEvents.PrivateMessageGetEvent;
 import protobuf.ClientEvents.PrivateMessagePostEvent;
 import protobuf.ClientIdentities.AdminGroup;
+import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadges;
+import protobuf.ClientIdentities.ClientDevice;
 import protobuf.ClientIdentities.ClientFriend;
 import protobuf.ClientIdentities.ClientFriends;
 import protobuf.ClientIdentities.ClientGroup;
@@ -59,9 +61,8 @@ class ClientEventTest {
 	
 	@Test
 	public void newClientRequestRejectedEvent_checkValues() {
-		ClientRequestRejectedEvent rejectedEvent = ClientEvents.newClientRequestRejectedEvent(0, 1, "Request rejected!");
+		ClientRequestRejectedEvent rejectedEvent = ClientEvents.newClientRequestRejectedEvent(0, "Request rejected!");
 		assertEquals(rejectedEvent.getEventBase().getEventId(), 0);
-		assertEquals(rejectedEvent.getEventBase().getRequestorClientBase().getId(), 1);
 		assertEquals(rejectedEvent.getRejectionMessage(), "Request rejected!");
 	}
 	
@@ -261,9 +262,10 @@ class ClientEventTest {
 				ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build(),
 				ClientIdentities.newClientDate(0L), 
 				ClientIdentities.newClientDate(0L));
-		ClientChannelJoinEvent joinEvent = ClientEvents.newClientChannelJoinEvent(0, profile);
+		ClientChannelJoinEvent joinEvent = ClientEvents.newClientChannelJoinEvent(0, 1, profile);
 		assertEquals(joinEvent.getEventBase().getEventId(), 0);
 		assertEquals(joinEvent.getEventBase().getRequestorClientBase().getId(), 1);
+		assertEquals(joinEvent.getChannelBase().getChannelId(), 1);
 		assertEquals(joinEvent.getProfile(), profile);
 	}
 	
@@ -281,9 +283,10 @@ class ClientEventTest {
 				ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build(),
 				ClientIdentities.newClientDate(0L), 
 				ClientIdentities.newClientDate(0L));
-		ClientChannelLeaveEvent leaveEvent = ClientEvents.newClientChannelLeaveEvent(0, profile);
+		ClientChannelLeaveEvent leaveEvent = ClientEvents.newClientChannelLeaveEvent(0, 1, profile);
 		assertEquals(leaveEvent.getEventBase().getEventId(), 0);
 		assertEquals(leaveEvent.getEventBase().getRequestorClientBase().getId(), 1);
+		assertEquals(leaveEvent.getChannelBase().getChannelId(), 1);
 		assertEquals(leaveEvent.getProfile(), profile);
 	}
 	
@@ -301,10 +304,12 @@ class ClientEventTest {
 				ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build(),
 				ClientIdentities.newClientDate(0L), 
 				ClientIdentities.newClientDate(0L));
-		ClientLoginEvent loginEvent = ClientEvents.newClientLoginEvent(0, profile);
+		ClientAccount account = ClientIdentities.newClientAccount(profile, "rozachPass");
+		ClientLoginEvent loginEvent = ClientEvents.newClientLoginEvent(0, account);
 		assertEquals(loginEvent.getEventBase().getEventId(), 0);
 		assertEquals(loginEvent.getEventBase().getRequestorClientBase().getId(), 1);
-		assertEquals(loginEvent.getProfile(), profile);
+		assertEquals(loginEvent.getAccount().getRegisteredDevice(0), ClientDevice.getDefaultInstance());
+		assertEquals(loginEvent.getAccount(), account);
 	}
 	
 	@Test

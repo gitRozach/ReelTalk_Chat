@@ -47,7 +47,7 @@ public class MediaPane extends StackPane
 		this.heightProperty().addListener((obs, oldV, newV) ->
 		{
 			if(!this.showingAudioPlayer)
-				this.audioPlayer.getGUI().setTranslateY(-newV.doubleValue());
+				this.audioPlayer.getUI().setTranslateY(-newV.doubleValue());
 			if(!this.showingVideoPlayer)
 				this.videoPlayer.setTranslateY(-newV.doubleValue());
 			if(!this.showingImageViewer)
@@ -93,11 +93,11 @@ public class MediaPane extends StackPane
 		//CMediaPane.setAlignment(buttons, Pos.TOP_CENTER);
 
 		this.setAlignment(Pos.CENTER);
-		this.getChildren().addAll(this.getContent(), this.audioPlayer.getGUI(), this.videoPlayer, this.imageViewer, buttons);
+		this.getChildren().addAll(this.getContent(), this.audioPlayer.getUI(), this.videoPlayer, this.imageViewer, buttons);
 
-		this.showAudioPlayerAnimation = Animations.newTranslateTransition(this.audioPlayer.getGUI(), Duration.seconds(0.3d), Interpolator.EASE_BOTH, 1, false);
+		this.showAudioPlayerAnimation = Animations.newTranslateTransition(this.audioPlayer.getUI(), Duration.seconds(0.3d), Interpolator.EASE_BOTH, 1, false);
 		this.showAudioPlayerAnimation.setToY(0d);
-		this.hideAudioPlayerAnimation = Animations.newTranslateTransition(this.audioPlayer.getGUI(), Duration.seconds(0.3d), Interpolator.EASE_BOTH, 1, false);
+		this.hideAudioPlayerAnimation = Animations.newTranslateTransition(this.audioPlayer.getUI(), Duration.seconds(0.3d), Interpolator.EASE_BOTH, 1, false);
 		this.hideAudioPlayerAnimation.toYProperty().bind(this.heightProperty().negate());
 		//
 		this.showVideoPlayerAnimation = Animations.newTranslateTransition(this.videoPlayer, Duration.seconds(0.3d), Interpolator.EASE_BOTH, 1, false);

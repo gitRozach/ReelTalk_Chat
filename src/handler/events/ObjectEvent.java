@@ -6,7 +6,7 @@ import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.event.EventType;
 
-public abstract class ObjectEvent<T> extends Event {
+public class ObjectEvent<T> extends Event {
 	private static final long serialVersionUID = 5975228043408569550L;	
 	public static EventType<ObjectEvent<?>> ANY = new EventType<ObjectEvent<?>>("ANY");
 	public static EventType<ObjectEvent<String>> STRING = new EventType<ObjectEvent<String>>("STRING");
@@ -32,6 +32,10 @@ public abstract class ObjectEvent<T> extends Event {
 		attachObject(attachment);
 	}
 
+	public boolean hasAttachedObject() {
+		return getAttachedObject() != null;
+	}
+	
 	public void attachObject(T attachment) {
 		attachedObject = attachment;
 	}

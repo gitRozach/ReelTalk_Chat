@@ -9,10 +9,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import utils.JFXUtils;
-import utils.Utils;
+import utils.FXUtils;
 
 public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;
@@ -46,63 +46,63 @@ public class EmojiTabPane extends StackPane {
 
 		smileyTabA = new EmojiTab();
 		Label labelTabA = new Label("A");
-		labelTabA.setFont(Utils.CFont(15d));
+		labelTabA.setFont(FXUtils.Font(15d));
 		labelTabA.setTextFill(Color.DARKGRAY);
 		smileyTabA.setGraphic(labelTabA);
 		initSmileys(EmojiCategory.A, false);
 
 		smileyTabB = new EmojiTab();
 		Label labelTabB = new Label("B");
-		labelTabB.setFont(Utils.CFont(15d));
+		labelTabB.setFont(FXUtils.Font(15d));
 		labelTabB.setTextFill(Color.DARKGRAY);
 		smileyTabB.setGraphic(labelTabB);
 		initSmileys(EmojiCategory.B, false);
 
 		smileyTabC = new EmojiTab();
 		Label labelTabC = new Label("C");
-		labelTabC.setFont(Utils.CFont(15d));
+		labelTabC.setFont(FXUtils.Font(15d));
 		labelTabC.setTextFill(Color.DARKGRAY);
 		smileyTabC.setGraphic(labelTabC);
 		initSmileys(EmojiCategory.C, false);
 
 		smileyTabD = new EmojiTab();
 		Label labelTabD = new Label("D");
-		labelTabD.setFont(Utils.CFont(15d));
+		labelTabD.setFont(FXUtils.Font(15d));
 		labelTabD.setTextFill(Color.DARKGRAY);
 		smileyTabD.setGraphic(labelTabD);
 		initSmileys(EmojiCategory.D, false);
 
 		smileyTabE = new EmojiTab();
 		Label labelTabE = new Label("E");
-		labelTabE.setFont(Utils.CFont(15d));
+		labelTabE.setFont(FXUtils.Font(15d));
 		labelTabE.setTextFill(Color.DARKGRAY);
 		smileyTabE.setGraphic(labelTabE);
 		initSmileys(EmojiCategory.E, false);
 
 		smileyTabF = new EmojiTab();
 		Label labelTabF = new Label("F");
-		labelTabF.setFont(Utils.CFont(15d));
+		labelTabF.setFont(FXUtils.Font(15d));
 		labelTabF.setTextFill(Color.DARKGRAY);
 		smileyTabF.setGraphic(labelTabF);
 		initSmileys(EmojiCategory.F, false);
 
 		smileyTabG = new EmojiTab();
 		Label labelTabG = new Label("G");
-		labelTabG.setFont(Utils.CFont(15d));
+		labelTabG.setFont(FXUtils.Font(15d));
 		labelTabG.setTextFill(Color.DARKGRAY);
 		smileyTabG.setGraphic(labelTabG);
 		initSmileys(EmojiCategory.G, false);
 
 		smileyTabH = new EmojiTab();
 		Label labelTabH = new Label("H");
-		labelTabH.setFont(Utils.CFont(15d));
+		labelTabH.setFont(FXUtils.Font(15d));
 		labelTabH.setTextFill(Color.DARKGRAY);
 		smileyTabH.setGraphic(labelTabH);
 		initSmileys(EmojiCategory.H, false);
 
 		smileyTabI = new EmojiTab();
 		Label labelTabI = new Label("I");
-		labelTabI.setFont(Utils.CFont(15d));
+		labelTabI.setFont(FXUtils.Font(15d));
 		labelTabI.setTextFill(Color.DARKGRAY);
 		smileyTabI.setGraphic(labelTabI);
 		initSmileys(EmojiCategory.I, false);
@@ -110,7 +110,7 @@ public class EmojiTabPane extends StackPane {
 		skinChooser = new EmojiSkinChooser();
 		skinChooser.setFromColor(EmojiSkinChooser.SKIN_COLORS[0]);
 		skinChooser.setPickOnBounds(true);
-		JFXUtils.setFixedSizeOf(skinChooser, 25d, 25d);
+		FXUtils.setFixedSizeOf(skinChooser, 25d, 25d);
 		EmojiTabPane.setAlignment(skinChooser, Pos.TOP_RIGHT);
 		EmojiTabPane.setMargin(skinChooser, new Insets(0d, 15d, 5d, 5d));
 
@@ -170,7 +170,7 @@ public class EmojiTabPane extends StackPane {
 		new Thread(() -> {
 			for (int i = 0; i < smileyCount; i++) {
 				boolean[] withSkinColors = { false };
-				int[] tempIndex = { i };
+				int tempIndex = i;
 				String currentImageTitle = smileyCategory + (i + 1);
 				Image currentImage;
 				ImageView currentImageView;
@@ -185,11 +185,11 @@ public class EmojiTabPane extends StackPane {
 				}
 
 				currentImageView = new ImageView(currentImage);
-				currentImageView.setSmooth(true);
+				//currentImageView.setSmooth(true);
 				currentImageView.setCache(true);
 				currentImageView.getStyleClass().add("smiley");
 				
-				currentImageView.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, a -> {});
+				currentImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, a -> {});
 				
 				currentImageView.setOnMouseClicked(a -> {
 					fireEvent(new ObjectEvent<String>(ObjectEvent.STRING, new String(currentImageTitle + (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : ""))) {
@@ -199,7 +199,7 @@ public class EmojiTabPane extends StackPane {
 
 				Platform.runLater(() -> {
 					if (override)
-						smileyTab.setSmiley(tempIndex[0], currentImageView);
+						smileyTab.setSmiley(tempIndex, currentImageView);
 					else
 						smileyTab.addSmiley(currentImageView);
 				});

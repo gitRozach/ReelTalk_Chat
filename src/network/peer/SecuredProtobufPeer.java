@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.security.KeyManagementException;
 import java.security.KeyStore;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,28 +25,33 @@ import javax.net.ssl.SSLEngineResult;
 import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.net.ssl.SSLEngineResult.Status;
 import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 import com.google.protobuf.Any;
-import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
-import network.peer.client.callbacks.PeerCallback;
+import network.peer.callbacks.PeerCallback;
+import utils.ProtobufUtils;
 
-public abstract class SecuredProtobufPeer implements Closeable {	
+public abstract class SecuredProtobufPeer implements Closeable {
+	private final Object handshakeLock = new Object();
+    private final Object readLock = new Object();
+    private final Object writeLock = new Object();
+	    
 	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
 	
 	protected PeerCallback peerCallback;
+	
+	protected String protocol;
+	protected SSLContext context;
 	
 	protected ByteBuffer myApplicationBuffer;
     protected ByteBuffer myNetworkBuffer;
     protected ByteBuffer peerApplicationBuffer;
     protected ByteBuffer peerNetworkBuffer;
-    
-    private final Object handshakeLock = new Object();
-    private final Object readLock = new Object();
-    private final Object writeLock = new Object();
     
     protected volatile boolean bufferingReceivedMessages;
 	protected volatile boolean bufferingSentMessages;
@@ -57,7 +64,9 @@ public abstract class SecuredProtobufPeer implements Closeable {
     protected ExecutorService asyncTaskExecutor;
     protected ExecutorService ioExecutor;
     
-    public SecuredProtobufPeer() {
+    public SecuredProtobufPeer(String sslProtocol) throws Exception {
+    	protocol = sslProtocol;
+    	context = SSLContext.getInstance(protocol);
     	bufferingReceivedMessages = false;
     	bufferingSentMessages = false;
     	receptionHandlerEnabled = true;
@@ -80,7 +89,39 @@ public abstract class SecuredProtobufPeer implements Closeable {
      *   <li>7. unwrap:   Finished</li>
      * </ul>
      * <p/>
+     * @throws Exception 
+     * @throws KeyManagementException 
      */
+    
+    protected void initServerSSLContext() throws Exception {
+		context.init(createKeyManagers("src/resources/server.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
+    }
+    
+    protected void initClientSSLContext() throws Exception {
+    	 context.init(createKeyManagers("src/resources/client.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
+    }
+    
+    protected void initBuffers() {
+    	SSLSession dummySession = context.createSSLEngine().getSession();
+    	initBuffers(dummySession.getApplicationBufferSize(), dummySession.getPacketBufferSize());
+		dummySession.invalidate();
+    }
+    
+    protected void initBuffers(int applicationBufferSize, int networkBufferSize) {    	
+		myApplicationBuffer = ByteBuffer.allocate(applicationBufferSize);
+		myNetworkBuffer = ByteBuffer.allocate(networkBufferSize);
+		peerApplicationBuffer = ByteBuffer.allocate(applicationBufferSize);
+		peerNetworkBuffer = ByteBuffer.allocate(networkBufferSize);
+    }
+    
+    protected void resizeApplicationBuffer(int newApplicationBufferSize) {
+    	resizeApplicationBuffer(newApplicationBufferSize, true);
+    }
+    
+    protected void resizeApplicationBuffer(int newApplicationBufferSize, boolean keepExistingItems) {
+    	byte[] newAppBuffer = keepExistingItems ? Arrays.copyOf(myApplicationBuffer.array(), newApplicationBufferSize) : new byte[newApplicationBufferSize];
+    	myApplicationBuffer = ByteBuffer.wrap(newAppBuffer);
+    }
     
     protected boolean doHandshake(SocketChannel socketChannel, SSLEngine engine) {
     	synchronized (handshakeLock) {
@@ -179,29 +220,23 @@ public abstract class SecuredProtobufPeer implements Closeable {
         return engine.getHandshakeStatus();
     }
     
-    protected GeneratedMessageV3 read(SocketChannel socketChannel, SSLEngine engine) {
+    protected Message read(SocketChannel socketChannel, SSLEngine engine) {
     	synchronized (readLock) {
     		try {
-				int readBytes = 0;
-				if ((readBytes = readEncryptedBytes(socketChannel)) > 0) {
-					byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
-					Any rawMessage = Any.parseFrom(receptionBuffer);
-					Class<? extends GeneratedMessageV3> messageClass = ProtobufMessage.getMessageTypeOf(rawMessage);
-					System.out.println(messageClass.getSimpleName());
-					GeneratedMessageV3 message = rawMessage.unpack(messageClass);
+    			if(readEncryptedBytes(socketChannel) > 0) {
+    				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
+	    			Any rawMessage = Any.parseFrom(receptionBuffer);
+					Class<? extends Message> messageClass = ProtobufUtils.getClassOf(rawMessage);
+					Message message = rawMessage.unpack(messageClass);
 					if(receptionBuffer == null || message == null)
 						return null;
 					if(isBufferingReceivedMessages())
 						receivedMessages.add(new ProtobufMessage(socketChannel, message));	
 					if(isMessageReceptionHandlerEnabled())
 						peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
-					return message;
-				}
-				if(readBytes == -1) {
-					logger.severe("Peer read -1");
-					closeConnection(socketChannel, engine);
-				}
-				return null;
+	    			return message;
+    			}
+    			return null;
     		}
     		catch(Exception e) {
     			e.printStackTrace();
@@ -210,11 +245,12 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		}
     }
     
-    protected int write(SocketChannel socketChannel, SSLEngine engine, GeneratedMessageV3 message) throws IOException {
+    protected int write(SocketChannel socketChannel, SSLEngine engine, Message message) throws IOException {
         synchronized (writeLock) {
         	int writtenBytes = 0;
-        	Any packedMessage = Any.pack(message);
-            putBytesIntoBufferAndFlip(packedMessage.toByteArray());
+        	Any packedMessage = Any.pack(message);        	
+        	putBytesIntoBufferAndFlip(packedMessage.toByteArray());
+        	
             while (myApplicationBuffer.hasRemaining()) {
             	SSLEngineResult encryptionResult = encryptBufferedBytes(engine);
     			if(checkEngineResult(encryptionResult))
@@ -222,7 +258,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
     			else
     				handleEncryptionResult(socketChannel, engine, encryptionResult);
             }
-            if(writtenBytes > 0) {
+        	if(writtenBytes > 0) {
             	if(isBufferingSentMessages())
             		sentMessages.add(new ProtobufMessage(socketChannel, message));		
             	if(isMessageSendingHandlerEnabled())
@@ -295,10 +331,6 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		}
 	}
 	
-	protected SSLEngineResult decryptBufferedBytes(SSLEngine engine) {
-		return decryptBufferedBytes(engine, false);
-	}
-	
 	protected SSLEngineResult decryptBufferedBytes(SSLEngine engine, boolean flipNetworkBuffer) {
 		try {
 			if(flipNetworkBuffer)
@@ -309,9 +341,29 @@ public abstract class SecuredProtobufPeer implements Closeable {
 			return res;
 		} 
     	catch (SSLException e) {
+    		e.printStackTrace();
 			return null;
 		}
     }
+	
+	protected ByteBuffer decryptBytes(SSLEngine engine, byte[] encryptedBytes) {
+		return decryptBytes(engine, ByteBuffer.wrap(encryptedBytes));
+	}
+	
+	protected ByteBuffer decryptBytes(SSLEngine engine, ByteBuffer encryptedBytes) {
+		try {
+			encryptedBytes.flip();
+			ByteBuffer decryptedBytes = ByteBuffer.allocateDirect(encryptedBytes.remaining());
+			if(checkEngineResult(engine.unwrap(encryptedBytes, decryptedBytes))) {
+				encryptedBytes.compact();
+				return decryptedBytes;
+			}
+		} 
+		catch (SSLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	protected boolean checkEngineResult(SSLEngineResult result) {
 		if (result == null)
@@ -381,15 +433,19 @@ public abstract class SecuredProtobufPeer implements Closeable {
     		return false;
     	}
     }
+    
+    protected void putBytesIntoBufferAndFlip(byte[] data) {
+    	putBytesIntoBufferAndFlip(data, 0);
+    }
 	
-	protected void putBytesIntoBufferAndFlip(byte[] data) {
-    	putBytesIntoBufferAndFlip(data, true);
+	protected void putBytesIntoBufferAndFlip(byte[] data, int offset) {
+		putBytesIntoBufferAndFlip(data, offset, data.length - offset, true);
     }
     
-    protected synchronized void putBytesIntoBufferAndFlip(byte[] data, boolean clearBufferBeforeAdding) {
+    protected synchronized void putBytesIntoBufferAndFlip(byte[] data, int offset, int length, boolean clearBufferBeforeAdding) {
     	if(clearBufferBeforeAdding)
 			myApplicationBuffer.clear();
-		myApplicationBuffer.put(data);
+    	myApplicationBuffer.put(data, offset, length);
 		myApplicationBuffer.flip();
 	}
 	
@@ -412,13 +468,15 @@ public abstract class SecuredProtobufPeer implements Closeable {
     
     protected boolean closeConnection(SocketChannel socketChannel, SSLEngine engine)  {
     	try {
-	        engine.closeOutbound();
-	        socketChannel.close();
+    		if(engine != null)
+    			engine.closeOutbound();
+    		if(socketChannel != null)
+    			socketChannel.close();
     	}
     	catch(IOException io) {
     		logger.severe(io.toString());
     	}
-    	return !socketChannel.isConnected();
+    	return socketChannel == null ? false : !socketChannel.isConnected();
     }
     
     public PeerCallback getPeerCallback() {

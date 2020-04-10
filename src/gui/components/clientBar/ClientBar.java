@@ -7,6 +7,8 @@ import com.jfoenix.controls.JFXTabPane;
 
 import gui.components.clientBar.items.ClientBarItem;
 import gui.components.clientBar.items.ClientBarMemberItem;
+import gui.components.clientBar.items.FriendClientBarItem;
+import gui.components.clientBar.items.MemberClientBarItem;
 import gui.layouts.LoadableStackPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,7 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import utils.JFXUtils;
+import utils.FXUtils;
 
 public class ClientBar extends LoadableStackPane {
 	private VBox rootContentBox;
@@ -51,10 +53,10 @@ public class ClientBar extends LoadableStackPane {
 	private JFXButton videoPlayerButton;
 	private JFXButton imageViewerButton;
 
-	private JFXTabPane memberTabPane;
+	private JFXTabPane clientTabPane;
 	private JFXListView<ClientBarItem> friendsView;
 	private Tab friendsTab;
-	private JFXListView<ClientBarItem> nonFriendsView;
+	private JFXListView<ClientBarItem> membersView;
 	private Tab membersTab;
 	private JFXListView<ClientBarItem> onlineView;
 	private Tab onlineTab;
@@ -68,12 +70,45 @@ public class ClientBar extends LoadableStackPane {
 		if(initialize)
 			initialize();
 	}
+	
+	public void addFriendsItem(int clientId, String clientUsername) {
+		addFriendsItem(friendsView.getItems().isEmpty() ? 0 : friendsView.getItems().size() - 1, clientId, clientUsername);
+	}
+	
+	public boolean addFriendsItem(int index, int clientId, String clientUsername) {
+		if(index < 0 || index > friendsView.getItems().size() || clientUsername == null)
+			return false;
+		friendsView.getItems().add(index, new FriendClientBarItem(clientId, clientUsername));
+		return true;
+	}
+	
+	public void addMemberItem(int clientId, String clientUsername) {
+		addMemberItem(membersView.getItems().size(), clientId, clientUsername);
+	}
+	
+	public boolean addMemberItem(int index, int clientId, String clientUsername) {
+		if(index < 0 || index > membersView.getItems().size() || clientUsername == null)
+			return false;
+		membersView.getItems().add(index, new MemberClientBarItem(clientId, clientUsername));
+		return true;
+	}
+	
+	public void addOnlineItem(int clientId, String clientUsername) {
+		addOnlineItem(onlineView.getItems().isEmpty() ? 0 : onlineView.getItems().size() - 1, clientId, clientUsername);
+	}
+	
+	public boolean addOnlineItem(int index, int clientId, String clientUsername) {
+		if(index < 0 || index > onlineView.getItems().size() || clientUsername == null)
+			return false;
+		onlineView.getItems().add(index, new MemberClientBarItem(clientId, clientUsername));
+		return true;
+	}
 
 	public void initialize() {
 		super.initialize();
 		initProfileBox();
 		initMessagesView();
-		initMemberTabPane();
+		initClientTabPane();
 		initMediaBox();
 		initProfileTabPane();
 		initRootContentBox();
@@ -177,19 +212,19 @@ public class ClientBar extends LoadableStackPane {
 		messagesTab = new Tab("N", messageView);
 		
 		JFXButton bFriends = new JFXButton("Freunde");
-		bFriends.setOnAction(a -> memberTabPane.getSelectionModel().select(0));
+		bFriends.setOnAction(a -> clientTabPane.getSelectionModel().select(0));
 		JFXButton bMembers = new JFXButton("Members");
-		bMembers.setOnAction(a -> memberTabPane.getSelectionModel().select(1));
+		bMembers.setOnAction(a -> clientTabPane.getSelectionModel().select(1));
 		JFXButton bOnline = new JFXButton("Online");
-		bOnline.setOnAction(a -> memberTabPane.getSelectionModel().select(2));
+		bOnline.setOnAction(a -> clientTabPane.getSelectionModel().select(2));
 		
-		VBox memberBox = new VBox(bFriends, bMembers, bOnline, memberTabPane);
+		VBox memberBox = new VBox(bFriends, bMembers, bOnline, clientTabPane);
 		bFriends.prefWidthProperty().bind(memberBox.widthProperty());
 		bMembers.prefWidthProperty().bind(memberBox.widthProperty());
 		bOnline.prefWidthProperty().bind(memberBox.widthProperty());
 		memberBox.setFillWidth(true);
 		memberBox.setAlignment(Pos.TOP_CENTER);
-		VBox.setVgrow(memberTabPane, Priority.ALWAYS);
+		VBox.setVgrow(clientTabPane, Priority.ALWAYS);
 		membersTab = new Tab("M", memberBox);
 		
 		
@@ -197,7 +232,7 @@ public class ClientBar extends LoadableStackPane {
 		
 		profileTabPane = new JFXTabPane();
 		profileTabPane.getTabs().addAll(messagesTab, membersTab, mediaTab);
-		JFXUtils.hideTabs(profileTabPane);
+		FXUtils.hideTabs(profileTabPane);
 	}
 	
 	private void initRootContentBox() {
@@ -226,9 +261,9 @@ public class ClientBar extends LoadableStackPane {
 				bar2.setOpacity(1d);
 		});
 		
-		nonFriendsView.setOnMouseEntered(a -> {
-			Node bar1 = nonFriendsView.lookup(".scroll-bar:horizontal");
-			Node bar2 = nonFriendsView.lookup(".scroll-bar:vertical");
+		membersView.setOnMouseEntered(a -> {
+			Node bar1 = membersView.lookup(".scroll-bar:horizontal");
+			Node bar2 = membersView.lookup(".scroll-bar:vertical");
 			if(bar1 != null)
 				bar1.setOpacity(1d);
 			if(bar2 != null)
@@ -253,9 +288,9 @@ public class ClientBar extends LoadableStackPane {
 				bar2.setOpacity(0d);
 		});
 		
-		nonFriendsView.setOnMouseExited(b -> {
-			Node bar1 = nonFriendsView.lookup(".scroll-bar:horizontal");
-			Node bar2 = nonFriendsView.lookup(".scroll-bar:vertical");
+		membersView.setOnMouseExited(b -> {
+			Node bar1 = membersView.lookup(".scroll-bar:horizontal");
+			Node bar2 = membersView.lookup(".scroll-bar:vertical");
 			if(bar1 != null)
 				bar1.setOpacity(0d);
 			if(bar2 != null)
@@ -272,18 +307,18 @@ public class ClientBar extends LoadableStackPane {
 		});
 	}
 	
-	private void initMemberTabPane() {			
+	private void initClientTabPane() {			
 		initFriendsView();
-		initNonFriendsView();
+		initMembersView();
 		initOnlineView();
 		
 		friendsTab = new Tab("", friendsView);
-		membersTab = new Tab("", nonFriendsView);
+		membersTab = new Tab("", membersView);
 		onlineTab = new Tab("", onlineView);
 		
-		memberTabPane = new JFXTabPane();
-		memberTabPane.getTabs().addAll(friendsTab, membersTab, onlineTab);
-		JFXUtils.hideTabs(memberTabPane);
+		clientTabPane = new JFXTabPane();
+		clientTabPane.getTabs().addAll(friendsTab, membersTab, onlineTab);
+		FXUtils.hideTabs(clientTabPane);
 	}
 	
 	private void initFriendsView() {
@@ -292,10 +327,10 @@ public class ClientBar extends LoadableStackPane {
 		friendsView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
 	}
 	
-	private void initNonFriendsView() {
-		nonFriendsView = new JFXListView<ClientBarItem>();
-		nonFriendsView.setCenterShape(true);
-		nonFriendsView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
+	private void initMembersView() {
+		membersView = new JFXListView<ClientBarItem>();
+		membersView.setCenterShape(true);
+		membersView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
 	}
 	
 	private void initOnlineView() {
@@ -334,9 +369,21 @@ public class ClientBar extends LoadableStackPane {
 	public ImageView getProfilePictureView() {
 		return profilePictureView;
 	}
+	
+	public void setProfilePictureView(ImageView value) {
+		profilePictureView = value;
+	}
 
 	public Label getProfileNameLabel() {
 		return profileNameLabel;
+	}
+	
+	public String getProfileName() {
+		return profileNameLabel.getText();
+	}
+	
+	public void setProfileName(String value) {
+		profileNameLabel.setText(value);
 	}
 
 	public ImageView getAdminLevelView() {
@@ -396,7 +443,7 @@ public class ClientBar extends LoadableStackPane {
 	}
 
 	public JFXTabPane getMemberTabPane() {
-		return memberTabPane;
+		return clientTabPane;
 	}
 
 	public JFXListView<ClientBarItem> getFriendsView() {
@@ -408,7 +455,7 @@ public class ClientBar extends LoadableStackPane {
 	}
 
 	public JFXListView<ClientBarItem> getNonFriendsView() {
-		return nonFriendsView;
+		return membersView;
 	}
 
 	public Tab getMembersTab() {
@@ -445,7 +492,7 @@ public class ClientBar extends LoadableStackPane {
 				profilePic.setStroke(Color.GREEN);
 				profilePic.setStrokeWidth(1d);
 				
-				HBox graphicBox = new HBox(profilePic, JFXUtils.createHorizontalSpacer(10d));
+				HBox graphicBox = new HBox(profilePic, FXUtils.createHorizontalSpacer(10d));
 				graphicBox.setPadding(new Insets(0d, 0d, 0d, 10d));
 				
 				setGraphic(graphicBox);

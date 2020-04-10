@@ -17,6 +17,7 @@ import network.peer.client.ReelTalkClient;
 import network.peer.server.ReelTalkServer;
 import protobuf.ClientEvents.ClientLoginEvent;
 import protobuf.ClientIdentities.AdminGroup;
+import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadge;
 import protobuf.ClientIdentities.ClientBadges;
 import protobuf.ClientIdentities.ClientFriend;
@@ -40,7 +41,7 @@ class SecuredMessageServerClientTest {
 	protected static final String TEST_HOST_ADDRESS = "localhost";
 	protected static final int TEST_HOST_PORT = 2197;
 		
-	public static ClientProfile createSampleProfile() {
+	public static ClientAccount createSampleAccount() {
 		ClientImages images = ClientImages.newBuilder().setProfileImageURI("/accounts/TestoRozach/pictures/profileImage.png").build();
 		ClientBadge badge1 = ClientBadge.newBuilder().setBadgeId(1).setBadgeName("Badge 1").setBadgeDescription("Badge Description 1").build();
 		ClientBadge badge2 = ClientBadge.newBuilder().setBadgeId(2).setBadgeName("Badge 2").setBadgeDescription("Badge Description 2").build();
@@ -53,7 +54,7 @@ class SecuredMessageServerClientTest {
 		AdminGroup adminGroup = AdminGroup.newBuilder().setGroupId(1).setGroupName("Moderator").setPermissionLevel(1).setDateMemberSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 1, 1).getTimeInMillis())).build();
 		ClientGroup clientGroup = ClientGroup.newBuilder().setGroupId(1).setGroupName("Junior").setGroupLevel(2).setDateMemberSince(ClientIdentities.newClientDate(new GregorianCalendar(2020, 0, 30).getTimeInMillis())).build();
 		ClientGroups groups = ClientGroups.newBuilder().setAdminGroup(adminGroup).addClientGroup(clientGroup).build();
-		return ClientIdentities.newClientProfile(			1, 
+		ClientProfile profile =  ClientIdentities.newClientProfile(	1, 
 																	"Rozach", 
 																	ClientStatus.ONLINE, 
 																	images, 
@@ -62,6 +63,7 @@ class SecuredMessageServerClientTest {
 																	groups, 
 																	ClientIdentities.newClientDate(new GregorianCalendar(2020, 2, 2, 19, 34, 32).getTimeInMillis()), 
 																	ClientIdentities.newClientDate(new GregorianCalendar(2019, 11, 12, 18, 25, 10).getTimeInMillis()));
+		return ClientIdentities.newClientAccount(profile, "rozachPass");
 	}
 	
 	@BeforeAll
@@ -90,7 +92,7 @@ class SecuredMessageServerClientTest {
 			client5.connect();
 			client5.setBufferingReceivedMessages(true);
 			
-			ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleProfile());
+			ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleAccount());
 			
 			for(int i = 0; i < 100; ++i) {
 				server.sendMessage(client1.getChannel(), eventMessage);
@@ -125,7 +127,7 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
-		ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleProfile());
+		ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleAccount());
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedMessages(true);

@@ -1,0 +1,132 @@
+*{
+	-theme-color: #404040;
+	-theme-color-light: #666679;
+	-contrast-color: white;
+}
+
+.jfx-tab-pane {
+	-fx-background-color: transparent;
+}
+
+.jfx-tab-pane .tab .tab-label {
+	-fx-font-weight: normal;
+	-fx-font-size: 20.0;
+	-fx-text-fill: -contrast-color;
+}
+
+.jfx-tab-pane .tab:selected .tab-label {
+	-fx-text-fill: green;
+}
+
+.jfx-tab-pane .headers-region {
+	-fx-background-color: transparent;
+}
+
+.jfx-tab-pane .tab-header-background {
+	-fx-background-color: transparent;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+	-jfx-rippler-fill: -contrast-color;
+}
+
+.jfx-tab-pane .tab-selected-line {
+	-fx-background-color: green;
+}
+
+.jfx-tab-pane .control-buttons-tab{
+	-fx-background-color: transparent;
+	-fx-min-width: 0px;
+	-fx-max-width: 0px;
+	-fx-pref-width: 0px;
+	-fx-min-height: 0px;
+	-fx-max-height: 0px;
+	-fx-pref-height: 0px;
+}
+
+.jfx-tab-pane .control-buttons-tab .tab-down-button{
+    	-fx-background-color: transparent;
+	-fx-opacitiy: 0;	
+	-fx-min-width: 0px;
+	-fx-max-width: 0px;
+	-fx-pref-width: 0px;
+	-fx-min-height: 0px;
+	-fx-max-height: 0px;
+	-fx-pref-height: 0px;
+}
+
+.jfx-tab-pane .control-buttons-tab .tab-up-button{
+    	-fx-background-color: transparent;
+	-fx-opacitiy: 0;
+	-fx-min-width: 0px;
+	-fx-max-width: 0px;
+	-fx-pref-width: 0px;
+	-fx-min-height: 0px;
+	-fx-max-height: 0px;
+	-fx-pref-height: 0px;
+}
+
+.jfx-tab-pane .control-buttons-tab .jfx-rippler{
+    	-jfx-rippler-fill: -contrast-color;
+}
+
+.jfx-button{
+	-fx-font-size: 17px;
+}
+
+.jfx-text-field {
+	-fx-prompt-text-fill: gray;
+	-fx-font-size: 15px;
+	-fx-text-fill: -contrast-color;
+	-jfx-focus-color: green;
+	-jfx-unfocus-color: -contrast-color;
+	-jfx-label-float: true;
+}
+
+.jfx-password-field {
+	-fx-prompt-text-fill: gray;
+	-fx-font-size: 15px;
+	-fx-text-fill: -contrast-color;
+	-jfx-focus-color: green;
+	-jfx-unfocus-color: -contrast-color;
+	-jfx-label-float: true;
+}
+
+.jfx-toggle-button{
+	-jfx-toggle-color: green;
+	-fx-font-size: 15px;
+	-jfx-toggle-line-color: lightgreen;
+	-jfx-untoggle-color: gray;
+	-jfx-untoggle-line-color: -contrast-color;
+	-fx-text-fill: -contrast-color;
+}
+
+.jfx-check-box{
+	-jfx-checked-color: green;
+	-fx-font-size: 15px;
+	-jfx-unchecked-color: -contrast-color;
+	-fx-text-fill: -contrast-color;
+}
+
+.jfx-check-box .mark {
+	-fx-border-color: -contrast-color;
+}
+
+.confirm-button {
+	-fx-background-color: green;
+	-fx-text-fill: white;
+	-fx-background-border-radius: 2px;
+	-fx-border-radius: 2px;
+}
+
+.cancel-button {
+	-fx-background-color: -theme-color-light;
+	-fx-text-fill: -contrast-color;
+	-fx-background-border-radius: 2px;
+	-fx-border-radius: 2px;
+}
+
+.glyph-icon
+{
+	-fx-fill: -contrast-color;
+}

@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import network.peer.server.database.protobuf.ProtobufFileDatabase;
+import database.protobuf.ProtobufFileDatabase;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadge;

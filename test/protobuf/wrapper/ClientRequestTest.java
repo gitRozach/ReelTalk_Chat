@@ -113,7 +113,7 @@ class ClientRequestTest {
 		assertEquals(messageGetRequest.getChannelBase(), ChannelBase.getDefaultInstance());
 		assertEquals(messageGetRequest.getRequestBase(), ClientRequestBase.getDefaultInstance());
 		assertEquals(messageGetRequest.getMessageCount(), 0);
-		assertEquals(messageGetRequest.getStartCountWithMessageId(), 0);
+		assertEquals(messageGetRequest.getLastIndex(), 0);
 	}
 	
 	@Test
@@ -125,7 +125,7 @@ class ClientRequestTest {
 		assertEquals(messageGetRequest.getRequestBase().getUsername(), "Rozach");
 		assertEquals(messageGetRequest.getRequestBase().getPassword(), "rozachPassword");
 		assertTrue(messageGetRequest.getRequestBase().getTimestampMillis() > 0L);
-		assertEquals(messageGetRequest.getStartCountWithMessageId(), 0);
+		assertEquals(messageGetRequest.getLastIndex(), 0);
 		assertEquals(messageGetRequest.getMessageCount(), 1);
 	}
 	

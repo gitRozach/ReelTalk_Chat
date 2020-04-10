@@ -1,8 +1,6 @@
 package gui.components;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import gui.components.contextMenu.CustomContextMenu;
 import gui.components.contextMenu.MenuItemButton;
@@ -37,6 +35,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+import utils.FXUtils;
 
 public class MessageView extends StackPane {
 	private ScrollPane rootContent;
@@ -50,7 +49,7 @@ public class MessageView extends StackPane {
 	private int maxMessages;
 	private int maxMessagesAtInit;
 	private int loadValue;
-	private List<Double> messageYPositions;
+	private int size;
 	private ObservableList<GUIMessage> unloadedMessages;
 
 	public MessageView() {
@@ -62,12 +61,12 @@ public class MessageView extends StackPane {
 		maxMessages = 20;
 		maxMessagesAtInit = maxMessages;
 		loadValue = 20;
+		size = 0;
 		
-		messageYPositions = new ArrayList<Double>();
 		unloadedMessages = FXCollections.observableArrayList();
 
 		rootContent = new ScrollPane();
-		scrollValueVerticalProperty.bindBidirectional(rootContent.vvalueProperty());
+		scrollValueVerticalProperty.addListener((obs, oldV, newV) -> rootContent.setVvalue(newV.doubleValue()));
 		
 		rootContent.setOnMouseEntered(a -> {
 			Node bar1 = rootContent.lookup(".scroll-bar:horizontal");
@@ -94,21 +93,18 @@ public class MessageView extends StackPane {
 		messages.setFillWidth(true);
 		messages.setAlignment(Pos.TOP_LEFT);
 		messages.setPadding(new Insets(0d));
-		//this.messages.setSpacing(0d);
 
-		loadButton = new HBox();
+		loadButton = new HBox(10d);
 		loadButton.visibleProperty().bind(Bindings.isEmpty(unloadedMessages).not());
 		loadButton.setStyle("-fx-background-color: rgb(0, 0, 0, 0.7);");
-		loadButton.setMinHeight(40d);
-		loadButton.setMaxHeight(40d);
 		loadButton.setAlignment(Pos.CENTER);
 		loadButton.setPadding(new Insets(10d));
-		loadButton.setSpacing(10d);
+		FXUtils.setFixedHeightOf(loadButton, 40d);
 
 		contextMenu = createContextMenu();
 
 		Label loadLabel = new Label("Weitere Nachrichten anzeigen");
-		loadLabel.setOnMouseClicked(a -> this.onLoadClicked());
+		loadLabel.setOnMouseClicked(a -> onLoadClicked());
 		loadLabel.setStyle("-fx-text-fill: white;");
 		loadLabel.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 15d));
 
@@ -137,7 +133,7 @@ public class MessageView extends StackPane {
 	}
 
 	public void addMessage(GUIMessage message) {
-		addMessage(messageCount(), message);
+		addMessage(getLoadedMessageCount(), message);
 	}
 
 	public void addMessage(int index, GUIMessage message) {
@@ -148,9 +144,9 @@ public class MessageView extends StackPane {
 			root.applyCss();
 			root.layout();
 			messages.getChildren().add(index, root);
-			//ADD y pos
+			++size;
 			
-			if (this.messageCount() > maxMessages) {
+			if (getLoadedMessageCount() > maxMessages) {
 				GUIMessage firstMessage = getFirstMessage();
 				if (firstMessage != null) {
 					unloadedMessages.add(firstMessage);
@@ -167,13 +163,16 @@ public class MessageView extends StackPane {
 	}
 
 	public void removeMessage(GUIMessage message) {
-		this.removeMessage(indexOf(message));
+		removeMessage(indexOf(message));
 	}
 
 	public void removeMessage(int index) {
 		Platform.runLater(() -> {
-			if (index >= 0 && index < messageCount())
+			if (index >= 0 && index < getLoadedMessageCount()) {
 				messages.getChildren().remove(index);
+				--size;
+			}
+			
 		});
 	}
 
@@ -182,11 +181,12 @@ public class MessageView extends StackPane {
 			maxMessages = maxMessagesAtInit;
 			unloadedMessages.clear();
 			messages.getChildren().clear();
+			size = 0;
 		});
 	}
 
 	public GUIMessage getFirstMessage() {
-		if (messageCount() > 0) {
+		if (getLoadedMessageCount() > 0) {
 			HBox firstNode = (HBox) messages.getChildren().get(0);
 			for (Node n : firstNode.getChildren()) {
 				if (n instanceof GUIMessage)
@@ -198,7 +198,7 @@ public class MessageView extends StackPane {
 	}
 
 	public GUIMessage getLastMessage() {
-		int messageCount = messageCount();
+		int messageCount = getLoadedMessageCount();
 		if (messageCount > 0) {
 			HBox lastNode = (HBox) messages.getChildren().get(messageCount - 1);
 			for (Node n : lastNode.getChildren()) {
@@ -241,9 +241,9 @@ public class MessageView extends StackPane {
 						try {
 							//setBackground(new Background(new BackgroundImage(new Image(imgFile.toURI().toURL().toString()), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, new BackgroundS)));
 							//setBackground(new Background(new BackgroundFill(Color.rgb(64, 64, 64, 0d), new CornerRadii(100d), new Insets(5d))));
-							
 							setStyle("-fx-background-image: url(\"" + imgFile.toURI().toURL() + "\");" + "-fx-background: rgba(64, 64, 64, 0);");
-						} catch (Exception e) {
+						} 
+						catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
@@ -269,7 +269,7 @@ public class MessageView extends StackPane {
 		KeyValue moveValue1 = null;
 		KeyValue moveValue2 = null;
 
-		moveValue1 = new KeyValue(message.translateXProperty(), 0d);
+		moveValue1 = new KeyValue(message.translateXProperty(), -100d);
 		moveValue2 = new KeyValue(message.translateXProperty(), 0d);
 		message.setTranslateX(0d);
 
@@ -318,6 +318,18 @@ public class MessageView extends StackPane {
 	 *
 	 */
 
+	public int size() {
+		return size;
+	}
+	
+	public boolean hasUnloadedMessages() {
+		return !unloadedMessages.isEmpty();
+	}
+	
+	public boolean hasMessages() {
+		return !messages.getChildren().isEmpty();
+	}
+	
 	public VBox getMessages() {
 		return messages;
 	}
@@ -350,15 +362,19 @@ public class MessageView extends StackPane {
 		return loadValue;
 	}
 
-	public int messageCount() {
+	public int getLoadedMessageCount() {
 		return messages.getChildren().size();
 	}
 	
-	public List<Double> getMessageYPositions() {
-		return messageYPositions;
+	public int getUnloadedMessageCount() {
+		return getUnloadedMessages().size();
 	}
 
 	public ObservableList<GUIMessage> getUnloadedMessages() {
 		return unloadedMessages;
+	}
+	
+	public int getTotalMessageCount() {
+		return getLoadedMessageCount() + getUnloadedMessageCount();
 	}
 }

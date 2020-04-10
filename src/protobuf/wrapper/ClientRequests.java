@@ -124,14 +124,14 @@ public class ClientRequests {
 																	String requestorUsername, 
 																	String requestorPassword,
 																	int requestedChannelId,
-																	int startFromMessageId,
+																	int lastIndex,
 																	int messageCount) {
 		
 		ClientRequestBase requestorBase = newClientRequestBase(requestId, requestorUsername, requestorPassword);
 		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(requestedChannelId).build();
 		return ChannelMessageGetRequest.newBuilder()	.setRequestBase(requestorBase)
 														.setChannelBase(channelBase)
-														.setStartCountWithMessageId(startFromMessageId)
+														.setLastIndex(lastIndex)
 														.setMessageCount(messageCount)
 														.build();
 	}

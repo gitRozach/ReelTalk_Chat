@@ -6,6 +6,7 @@ option java_outer_classname = "ClientEvents";
 
 import "protobuf/ClientIdentities.proto";
 import "protobuf/ClientMessages.proto";
+import "protobuf/ClientChannels.proto";
 
 message ClientEventBase {
 	int32 eventId = 1;
@@ -75,22 +76,31 @@ message ClientProfileCommentAnswerGetEvent {
 
 message ClientChannelJoinEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile profile = 2;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	repeated protobuf.clientmessages.ChannelMessage channelMessage = 3;
 }
 
 message ClientChannelLeaveEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile profile = 2;
+	protobuf.clientchannels.ChannelBase channelBase = 2;
+	protobuf.clientidentities.ClientProfile profile = 3;
 }
 
 message ClientLoginEvent {
 	ClientEventBase eventBase = 1;
-	protobuf.clientidentities.ClientProfile profile = 2;
+	protobuf.clientidentities.ClientAccount account = 2;
+	repeated protobuf.clientchannels.ClientChannel serverChannel = 3;
+	repeated protobuf.clientidentities.ClientProfile memberProfile = 4;
 }
 
 message ClientLogoutEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
+}
+
+message ClientStatusChangeEvent {
+	protobuf.clientidentities.ClientBase clientBase = 1;
+	protobuf.clientidentities.ClientStatus status = 2;
 }
 
 message ClientRegistrationEvent {
@@ -116,6 +126,16 @@ message PrivateFileDownloadEvent {
 message PrivateFileUploadEvent {
 	ClientEventBase eventBase = 1;
 	protobuf.clientidentities.ClientProfile profile = 2;
+}
+
+message ClientChannelGetEvent {
+	ClientEventBase eventBase = 1;
+	protobuf.clientidentities.ClientBase clientBase = 2;
+	repeated protobuf.clientchannels.ClientChannel channel = 3;
+}
+
+message ClientChannelPostEvent {
+	ClientEventBase eventBase = 1;
 }
 
 message PingMeasurementEvent {

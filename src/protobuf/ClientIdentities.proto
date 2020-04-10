@@ -10,13 +10,12 @@ message ClientBase {
 }
 
 enum ClientStatus {
-	UNKNOWN_STATUS = 0;
-	OFFLINE = 1;
-	ONLINE = 2;
-	AFK = 3;
-	BUSY = 4;
-	BANNED = 5;
-	DELETED = 6;
+	OFFLINE = 0;
+	ONLINE = 1;
+	AFK = 2;
+	BUSY = 3;
+	BANNED = 4;
+	DELETED = 5;
 }
 
 message ClientImages {

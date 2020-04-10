@@ -58,7 +58,7 @@ message ChannelMessageGetRequest {
 	ClientRequestBase requestBase = 1;
 	protobuf.clientchannels.ChannelBase channelBase = 2;
 	int32 messageCount = 3;
-	int32 startCountWithMessageId = 4;
+	int32 lastIndex = 4;
 }
 
 message ChannelMessageAnswerGetRequest {

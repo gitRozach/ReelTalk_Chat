@@ -4,8 +4,6 @@ import com.jfoenix.controls.JFXTabPane;
 
 import gui.components.MessageView;
 import gui.components.channelBar.ChannelBar;
-import gui.components.channelBar.channelBarItems.TextChannelBarItem;
-import gui.components.channelBar.channelBarItems.VoiceChannelBarItem;
 import gui.components.clientBar.ClientBar;
 import gui.components.messageField.MessageField;
 import gui.components.messages.GUIMessage;
@@ -14,45 +12,45 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import utils.JFXUtils;
+import utils.FXUtils;
 
-public final class ClientChatView extends StackPane {	
+public final class ClientChatView extends VBox {	
 	private double minWidth;
 	private double minHeight;
-	
 	private double preferredChannelBarWidth;
 	private double preferredClientBarWidth;
 	
 	private Stage parentWindow;
+	
 	private JFXTabPane tabPane;
 	private VBox contentRoot;
-	
 	private SplitPane splitPane;
 	
 	private HBox titleBar;
 	private ChannelBar channelBar;
 	private ClientBar clientBar;
 	private MessageView messageView;
-	
 	private MessageField messageInputField;
 	
 	public ClientChatView() {
-		this(false);
+		this(false, null);
 	}
 	
 	public ClientChatView(boolean initialize) {
 		this(initialize, null);
 	}
 	
+	public ClientChatView(Stage parentStage) {
+		this(false, parentStage);
+	}
+	
 	public ClientChatView(boolean initialize, Stage parentWindow) {
 		super();
-		
 		if(initialize)
 			initialize();
-		setStage(parentWindow);
+		setParentWindow(parentWindow);
 	}
 	
 	public void initialize() {
@@ -66,36 +64,27 @@ public final class ClientChatView extends StackPane {
 		initSplitPane();
 		initMainContainer();
 		initTabContainer();
-		
+		initRoot();
+	}
+	
+	private void initRoot() {
 		setMinWidth(minWidth);
 		setMinHeight(minHeight);
-		//loadContent(tabPane);
+		setFillWidth(true);
 		getChildren().add(tabPane);
-	}
-	
-	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/defaultStyle/ClientChat.css");
-	}
-	
-	private void initProperties() {
-		minWidth = 800d;
-		minHeight = 600d;
-		preferredChannelBarWidth = 200d;
-		preferredClientBarWidth = 200d;
+		VBox.setVgrow(tabPane, Priority.ALWAYS);
 	}
 	
 	private void initTabContainer() {
-		tabPane = new JFXTabPane();
-		JFXUtils.hideTabs(tabPane);
-		
 		VBox emptyBox = new VBox();
 		emptyBox.setFillWidth(true);
 		MediaPane mediaRoot = new MediaPane(emptyBox);
-		
 		Tab mainTab = new Tab("", contentRoot);
 		Tab appTab = new Tab("", mediaRoot);
 		
+		tabPane = new JFXTabPane();
 		tabPane.getTabs().addAll(mainTab, appTab);
+		FXUtils.hideTabs(tabPane);	
 	}
 	
 	private void initMainContainer() {
@@ -107,48 +96,31 @@ public final class ClientChatView extends StackPane {
 	}
 	
 	private void initSplitPane() {
-		splitPane = new SplitPane();
-		splitPane.getStyleClass().add("root-content-box");
-		
 		VBox titleBarAndMessageView = new VBox();
 		titleBarAndMessageView.getChildren().addAll(titleBar, messageView);
 		VBox.setVgrow(messageView, Priority.ALWAYS);
-
-		//primarySplitPane.getItems().add(0, titleBarAndSecondarySplitPane);
+		
+		splitPane = new SplitPane();
+		splitPane.getStyleClass().add("root-content-box");
 		splitPane.getItems().add(0, channelBar);
 		splitPane.getItems().add(1, titleBarAndMessageView);
 		splitPane.getItems().add(2, clientBar);
 		splitPane.setDividerPositions(preferredChannelBarWidth / 1000d, 1 - (preferredClientBarWidth / 1000d));
 		SplitPane.setResizableWithParent(channelBar, false);
 		SplitPane.setResizableWithParent(clientBar, false);
-		
-//		primarySplitPane.getDividers().get(0).positionProperty().addListener((obs, oldV, newV) -> {
-//			preferredClientBarWidth = getWidth() * (1 - newV.doubleValue());
-//		});
 	}
 	
 	private void initTitleBar() {
-		titleBar = new HBox();
-		titleBar.getStyleClass().add("title-bar");
-		JFXUtils.setFixedHeightOf(titleBar, 50d);
-		
 		HBox spacer = new HBox();
-		
-		titleBar.getChildren().addAll(spacer);
+		titleBar = new HBox(spacer);
+		titleBar.getStyleClass().add("title-bar");
+		FXUtils.setFixedHeightOf(titleBar, 50d);
 		HBox.setHgrow(spacer, Priority.SOMETIMES);
 	}
 	
 	private void initChannelBar() {
 		channelBar = new ChannelBar(true);
 		channelBar.setAlignment(Pos.TOP_LEFT);
-		
-		TextChannelBarItem textC1 = new TextChannelBarItem(1, "Text Channel 1");
-		VoiceChannelBarItem voiceC1 = new VoiceChannelBarItem(2, "Voice Channel 1");
-		VoiceChannelBarItem voiceC2 = new VoiceChannelBarItem(3, "Voice Channel 2");
-		
-		channelBar.addChannel(textC1);
-		channelBar.addChannel(voiceC1);
-		channelBar.addChannel(voiceC2);
 	}
 	
 	private void initClientBar() {
@@ -164,8 +136,15 @@ public final class ClientChatView extends StackPane {
 		messageInputField = new MessageField();
 	}
 	
-	public Stage getParentWindow() {
-		return parentWindow;
+	private void initProperties() {
+		minWidth = 1000d;
+		minHeight = 800d;
+		preferredChannelBarWidth = 200d;
+		preferredClientBarWidth = 200d;
+	}
+	
+	private void initStylesheets() {
+		getStylesheets().add("/stylesheets/client/defaultStyle/ClientChat.css");
 	}
 
 	public VBox getContentRoot() {
@@ -200,11 +179,15 @@ public final class ClientChatView extends StackPane {
 		messageView.addMessage(index, message);
 	}
 	
-	public void setStage(Stage parentWindow) {
-		if(parentWindow == null)
+	public Stage getParentWindow() {
+		return parentWindow;
+	}
+	
+	public void setParentWindow(Stage window) {
+		parentWindow = window;
+		if(window == null)
 			return;
-		this.parentWindow = parentWindow;
-		this.parentWindow.setMinWidth(minWidth);
-		this.parentWindow.setMinHeight(minHeight);
+		parentWindow.setMinWidth(minWidth);
+		parentWindow.setMinHeight(minHeight);
 	}
 }

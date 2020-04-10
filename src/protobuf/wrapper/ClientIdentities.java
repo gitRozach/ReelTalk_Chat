@@ -36,6 +36,14 @@ public class ClientIdentities {
 				return true;
 		return false;
 	}
+	
+	public static boolean isClientOnline(ClientStatus clientStatus) {
+		if(clientStatus == null)
+			return false;
+		if(clientStatus == ClientStatus.ONLINE || clientStatus == ClientStatus.AFK || clientStatus == ClientStatus.BUSY)
+			return true;
+		return false;
+	}
 
 	public static ClientBase newClientBase(int clientId, String clientUsername) {
 		return ClientBase.newBuilder().setId(clientId).setUsername(clientUsername).build();
@@ -96,6 +104,10 @@ public class ClientIdentities {
 											.setDateLastOnline(lastOnlineDate)
 											.setDateOfRegistration(registrationDate)
 											.build();
+	}
+	
+	public static ClientAccount newClientAccount(ClientProfile clientProfile, String clientPassword) {
+		return newClientAccount(clientProfile, ClientDevice.getDefaultInstance(), clientPassword);
 	}
 	
 	public static ClientAccount newClientAccount(ClientProfile clientProfile, ClientDevice clientDevice, String clientPassword) {

@@ -2,29 +2,25 @@ package network.peer.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
-import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
-import javax.net.ssl.SSLSession;
 
-import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
 import network.peer.SecuredProtobufPeer;
-import network.peer.client.callbacks.PeerCallback;
+import network.peer.callbacks.LoggerCallback;
 import utils.LoopingRunnable;
-import utils.Utils;
+import utils.ThreadUtils;
 
 public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected volatile boolean active;
@@ -32,7 +28,6 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected volatile boolean connected;
 
 	protected ServerSocketChannel serverSocketChannel;
-	protected SSLContext context;
 	protected Selector selector;
 	protected Queue<ProtobufMessage> orderedBytes;
 	
@@ -40,31 +35,11 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected ServerProtobufWriter sender;
 
 	public SecuredProtobufServer(String protocol, String hostAddress, int hostPort) throws Exception {
-		super();
-		context = SSLContext.getInstance(protocol);
-		context.init(createKeyManagers("src/resources/server.jks", "storepass", "keypass"), createTrustManagers("src/resources/trustedCerts.jks", "storepass"), new SecureRandom());
-
-		SSLSession dummySession = context.createSSLEngine().getSession();
-		myApplicationBuffer = ByteBuffer.allocate(dummySession.getApplicationBufferSize());
-		myNetworkBuffer = ByteBuffer.allocate(dummySession.getPacketBufferSize());
-		peerApplicationBuffer = ByteBuffer.allocate(dummySession.getApplicationBufferSize());
-		peerNetworkBuffer = ByteBuffer.allocate(dummySession.getPacketBufferSize());
-		dummySession.invalidate();
-
-		setPeerCallback(new PeerCallback() {
-			@Override
-			public void messageReceived(ProtobufMessage byteMessage) {
-				logger.info("Server received: " + byteMessage.getMessage().toString());
-			}
-			@Override
-			public void messageSent(ProtobufMessage byteMessage) {
-				logger.info("Server sent: " + byteMessage.getMessage().toString());
-			}
-			@Override
-			public void connectionLost(Throwable throwable) {
-				logger.info("Server lost network connection: " + throwable.getMessage());
-			}
-		});
+		super(protocol);
+		initServerSSLContext();
+		initBuffers();
+		
+		setPeerCallback(new LoggerCallback(logger));
 		
 		selector = SelectorProvider.provider().openSelector();
 		serverSocketChannel = ServerSocketChannel.open();
@@ -208,13 +183,13 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 		return orderedBytes.poll();
 	}
 	
-	public boolean sendMessage(SelectionKey clientKey, GeneratedMessageV3 message) {
+	public boolean sendMessage(SelectionKey clientKey, Message message) {
 		if(clientKey == null)
 			return false;
 		return sendMessage((SocketChannel)clientKey.channel(), message);
 	}
 	
-	public boolean sendMessage(SocketChannel clientChannel, GeneratedMessageV3 message) {
+	public boolean sendMessage(SocketChannel clientChannel, Message message) {
 		if(clientChannel == null || message == null)
 			return false;
 		if(!clientChannel.isOpen())
@@ -268,7 +243,7 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 				catch (Exception e) {
 					logger.severe(e.toString());
 				}
-				Utils.sleep(loopDelayMillis);
+				ThreadUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerProtobufReader beendet.");
 		}
@@ -298,7 +273,7 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 					logger.severe(e.toString());
 					return;
 				}
-				Utils.sleep(loopDelayMillis);
+				ThreadUtils.sleep(loopDelayMillis);
 			}
 			logger.info("ServerProtobufWriter beendet.");
 		}
