@@ -5,11 +5,11 @@ import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
+import gui.components.LoadableStackPane;
 import gui.components.clientBar.items.ClientBarItem;
 import gui.components.clientBar.items.ClientBarMemberItem;
 import gui.components.clientBar.items.FriendClientBarItem;
 import gui.components.clientBar.items.MemberClientBarItem;
-import gui.layouts.LoadableStackPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

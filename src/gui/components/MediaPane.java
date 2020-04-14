@@ -1,4 +1,4 @@
-package gui.views.client;
+package gui.components;
 
 import java.net.URL;
 

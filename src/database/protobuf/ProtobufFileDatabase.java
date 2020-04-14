@@ -115,11 +115,11 @@ public class ProtobufFileDatabase<T extends Message> implements SortedProtobufFi
 	
 	public boolean addItem(T newItem) {
 		if(loadedItems.add(newItem)) {
+			sort(loadedItems);
 			if(hasBufferedDatabase(databaseFilePath)) {
 				getBufferedFileDatabases().get(databaseFilePath).add(newItem);
 				sort(getBufferedFileDatabases().get(databaseFilePath));
 			}
-			sort(loadedItems);
 			if(isAutoSave())
 				return rewrite();
 			return true;
@@ -157,10 +157,11 @@ public class ProtobufFileDatabase<T extends Message> implements SortedProtobufFi
 	public List<T> getItems(int startIndexIncl, int endIndexIncl){
 		if(startIndexIncl > endIndexIncl)
 			return null;
-		if(startIndexIncl < 0 || startIndexIncl >= loadedItems.size() || endIndexIncl < 0 || endIndexIncl >= loadedItems.size())
+		if(startIndexIncl < 0 || endIndexIncl < 0)
 			return null;
 		List<T> resultList = new ArrayList<T>();
-		for(int i = startIndexIncl; i <= endIndexIncl; ++i)
+		int lastIndex = endIndexIncl >= loadedItems.size() ? loadedItems.size() - 1 : endIndexIncl;
+		for(int i = startIndexIncl; i <= lastIndex; ++i)
 			resultList.add(loadedItems.get(i));
 		return resultList;
 	}
@@ -243,6 +244,9 @@ public class ProtobufFileDatabase<T extends Message> implements SortedProtobufFi
 			loadedItems.add(currentItem);
 			++itemCtr;
 		}
+		sort(loadedItems);
+		for(T item : loadedItems)
+			System.out.println(item.toString());
 		return itemCtr;
 	}
 	

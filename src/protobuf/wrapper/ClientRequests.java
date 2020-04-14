@@ -1,6 +1,6 @@
 package protobuf.wrapper;
 
-import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 
 import protobuf.ClientChannels.ChannelBase;
 import protobuf.ClientIdentities.ClientBase;
@@ -65,7 +65,7 @@ public class ClientRequests {
 								"PingMeasurementRequest"};
 	}
 	
-	public static boolean isClientRequest(Class<? extends GeneratedMessageV3> messageClass) {
+	public static boolean isClientRequest(Class<? extends Message> messageClass) {
 		if(messageClass == null)
 			return false;
 		for(String registeredTypeName : getRegisteredTypeNames())

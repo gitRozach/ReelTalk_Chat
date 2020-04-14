@@ -29,6 +29,7 @@ public class ReelTalkClient extends SecuredProtobufClient {
 	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
 	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
 	protected ObjectEventHandler<ProtobufMessage> onMessageTimedOutHandler;
+	protected ObjectEventHandler<Throwable> onConnectionLostHandler;
 	
 	public ReelTalkClient(String protocol, String remoteAddress, int port) throws Exception {
 		super(protocol, remoteAddress, port);
@@ -78,6 +79,10 @@ public class ReelTalkClient extends SecuredProtobufClient {
 			@Override
 			public void handle(ObjectEvent<ProtobufMessage> event) {}
 		};
+		onConnectionLostHandler = new ObjectEventHandler<Throwable>() {
+			@Override
+			public void handle(ObjectEvent<Throwable> event) {}
+		};
 	}
 	
 	private void initCallbacks() {
@@ -89,15 +94,18 @@ public class ReelTalkClient extends SecuredProtobufClient {
 			}
 			@Override
 			public void messageSent(ProtobufMessage message) {
+				handleSentMessage(message);
 				onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message));
 			}
 			@Override
 			public void messageTimedOut(ProtobufMessage message) {
+				handleTimedOutMessage(message);
 				onMessageTimedOutHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message));
 			}
 			@Override
 			public void connectionLost(Throwable throwable) {
-				
+				handleLostConnection(throwable);
+				onConnectionLostHandler.handle(new ObjectEvent<Throwable>(ObjectEvent.ANY, throwable));
 			}
 		});
 	}
@@ -138,6 +146,10 @@ public class ReelTalkClient extends SecuredProtobufClient {
 			return;
 	}
 	
+	public void handleLostConnection(Throwable throwable) {
+		
+	}
+	
 	public ObjectEventHandler<ProtobufMessage> getOnMessageReceived() {
 		return onMessageReceivedHandler;
 	}
@@ -152,6 +164,22 @@ public class ReelTalkClient extends SecuredProtobufClient {
 	
 	public void setOnMessageSent(ObjectEventHandler<ProtobufMessage> handler) {
 		onMessageSentHandler = handler;
+	}
+	
+	public ObjectEventHandler<ProtobufMessage> getOnMessageTimedOut() {
+		return onMessageTimedOutHandler;
+	}
+	
+	public void setOnMessageTimedOut(ObjectEventHandler<ProtobufMessage> handler) {
+		onMessageTimedOutHandler = handler;
+	}
+	
+	public ObjectEventHandler<Throwable> getOnConnectionLost() {
+		return onConnectionLostHandler;
+	}
+	
+	public void setOnConnectionLost(ObjectEventHandler<Throwable> handler) {
+		onConnectionLostHandler = handler;
 	}
 	
 	public ReelTalkIdentityManager getIdentityManager() {

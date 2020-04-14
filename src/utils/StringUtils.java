@@ -13,8 +13,14 @@ public class StringUtils {
 	}
 	
 	public static String trimFront(String value) {
-		if(value == null || value.isEmpty() || !value.startsWith(" "))
-			return value;
-		return trimFront(value.substring(1));
+		if(value == null)
+			return null;
+		StringBuilder builder = new StringBuilder(value);
+		String trimmedReverseValue = builder.reverse().toString().trim();
+		return new StringBuilder(trimmedReverseValue).reverse().toString();
+	}
+	
+	public static String trimHeadAndTail(String value) {
+		return trimFront(value.trim());
 	}
 }

@@ -15,6 +15,13 @@ public class ChannelMessageDatabase extends ProtobufFileDatabase<ChannelMessage>
 	
 	private final Object idLock = new Object(); 
 	
+	public static Comparator<ChannelMessage> ChannelMessageComparator = new Comparator<ChannelMessage>() {
+		@Override
+		public int compare(ChannelMessage o1, ChannelMessage o2) {
+			return (int)(o1.getMessageBase().getTimestampMillis() - o2.getMessageBase().getTimestampMillis());
+		}
+	};
+	
 	public ChannelMessageDatabase() throws IOException {
 		this("", "");
 	}
@@ -106,11 +113,4 @@ public class ChannelMessageDatabase extends ProtobufFileDatabase<ChannelMessage>
 		}
 		return -1;
 	}
-	
-	public static Comparator<ChannelMessage> ChannelMessageComparator = new Comparator<ChannelMessage>() {
-		@Override
-		public int compare(ChannelMessage o1, ChannelMessage o2) {
-			return o1.getMessageBase().getMessageId() - o2.getMessageBase().getMessageId();
-		}
-	};
 }

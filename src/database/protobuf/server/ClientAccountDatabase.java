@@ -37,6 +37,19 @@ public class ClientAccountDatabase extends ProtobufFileDatabase<ClientAccount> {
 		return resultList;
 	}
 	
+	public boolean usernameExists(String username) {
+		return findByUsername(username) != -1;
+	}
+	
+	public int findByUsername(String username) {
+		if(username == null)
+			return -1;
+		for(int i = 0; i < getLoadedItems().size(); ++i) 
+			if(getLoadedItems().get(i).getProfile().getBase().getUsername().equals(username))
+				return i;
+		return -1;
+	}
+	
 	public List<ClientAccount> getByUsernameAndPassword(String username, String password) {
 		List<ClientAccount> resultList = new ArrayList<>();
 		for(ClientAccount currentAccount : getLoadedItems()) {

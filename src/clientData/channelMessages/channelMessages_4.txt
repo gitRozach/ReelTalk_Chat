@@ -1,27 +1,11 @@
-a
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage#
-hallo xd"Rozach(åÊ∆åî.\
+\
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xdd"Rozach(ﬂÈ˝•î.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xdd"Rozach(ÏÔ˝•î.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-lal"Rozach(÷∫§Åñ.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-lal"Rozach(È∫§Åñ.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(∆§Åñ.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(ã«§Åñ.j
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
-&jz jeht et wieder"Rozach(„‚§Åñ.j
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
-&jz jeht et wieder"Rozach(Á‚§Åñ.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(ºÓ§Åñ.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(¡Ó§Åñ.f
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
-"oder aich ned"Rozach(ﬂ˝§Åñ.f
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
-"oder aich ned"Rozach(‰˝§Åñ.
+f√º"Rozach(∫öê»ó.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+f√º√º"Rozach(ä§ê»ó.`
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
+f√º√º√º"Rozach(¨´ê»ó.b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+	f√º√º√º√º"Rozach(üµê»ó.d
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ f√º√º√º√º√º"Rozach(úÀê»ó.

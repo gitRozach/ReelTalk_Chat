@@ -1,4 +1,4 @@
-package gui.views.client;
+package gui.views;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -10,6 +10,11 @@ import com.jfoenix.controls.JFXToggleButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gui.animations.ScaleFadeAnimation;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,15 +22,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import utils.FXUtils;
 
-public class LoginView extends VBox {
-	private double minWidth;
-	private double minHeight;
-	
+public class LoginView extends StackPane {	
 	private Stage parentWindow;
 	
 	private JFXTabPane tabPane;
@@ -65,6 +68,10 @@ public class LoginView extends VBox {
 	private ScaleFadeAnimation showRegisterBoxAnimation;
 	private ScaleFadeAnimation showHostBoxAnimation;
 	
+	private DoubleProperty minViewWidthProperty;
+	private DoubleProperty minViewHeightProperty;
+	private IntegerProperty defaultPortProperty;
+	
 	public LoginView() {
 		this(false, null);
 	}
@@ -94,36 +101,50 @@ public class LoginView extends VBox {
 	}
 	
 	public void onConfigureLoginPortButtonClicked() {
-		if(loginConfigurePortButton.isSelected())
+		if(loginConfigurePortButton.isSelected()) {
 			addLoginPortField();
-		else
-			removeLoginPortField();
-		if(loginAddressField.getText().isEmpty())
-			loginAddressField.requestFocus();
-		else if(loginConfigurePortButton.isSelected()) {
 			loginPortField.requestFocus();
 			loginPortField.positionCaret(loginPortField.getText().length());
 		}
 		else {
-			loginUsernameField.requestFocus();
-			loginUsernameField.positionCaret(loginUsernameField.getText().length());
+			removeLoginPortField();
+			setLoginPortText(Integer.toString(getDefaultPort()));
+			JFXTextField textFieldToFocus = null;
+			
+			if(getLoginAddressText().isEmpty())
+				textFieldToFocus = loginAddressField;
+			else if(loginConfigurePortButton.isSelected())
+				textFieldToFocus = loginPortField;
+			else
+				textFieldToFocus = loginUsernameField;
+			if(textFieldToFocus != null) {
+				textFieldToFocus.requestFocus();
+				textFieldToFocus.positionCaret(textFieldToFocus.getText().length());
+			}
 		}
 	}
 	
 	public void onConfigureRegisterPortButtonClicked() {
-		if(registerConfigurePortButton.isSelected())
+		if(registerConfigurePortButton.isSelected()) {
 			addRegisterPortField();
-		else
-			removeRegisterPortField();
-		if(registerAddressField.getText().isEmpty())
-			registerAddressField.requestFocus();
-		else if(registerConfigurePortButton.isSelected()) {
 			registerPortField.requestFocus();
-			registerPortField.positionCaret(loginPortField.getText().length());
+			registerPortField.positionCaret(registerPortField.getText().length());
 		}
 		else {
-			registerUsernameField.requestFocus();
-			registerUsernameField.positionCaret(loginUsernameField.getText().length());
+			removeRegisterPortField();
+			setRegisterPortText(Integer.toString(getDefaultPort()));
+			JFXTextField textFieldToFocus = null;
+			
+			if(getRegisterAddressText().isEmpty())
+				textFieldToFocus = registerAddressField;
+			else if(registerConfigurePortButton.isSelected())
+				textFieldToFocus = registerPortField;
+			else
+				textFieldToFocus = registerUsernameField;
+			if(textFieldToFocus != null) {
+				textFieldToFocus.requestFocus();
+				textFieldToFocus.positionCaret(textFieldToFocus.getText().length());
+			}
 		}
 	}
 	
@@ -188,9 +209,9 @@ public class LoginView extends VBox {
 	private void initRoot() {
 		setAlignment(Pos.CENTER);
 		setPadding(new Insets(150d, 200d, 0d, 200d));
-		setMinWidth(minWidth);
-		setMinHeight(minHeight);
-		setFillWidth(true);
+		setMinWidth(getMinViewWidth());
+		setMinHeight(getMinViewHeight());
+		//setFillWidth(true);
 		getChildren().add(tabPane);
 		VBox.setVgrow(tabPane, Priority.ALWAYS);
 	}
@@ -343,6 +364,7 @@ public class LoginView extends VBox {
 		loginAddressField.setPromptText("Server-Adresse");
 		
 		loginPortField = new JFXTextField();
+		loginPortField.setText(Integer.toString(getDefaultPort()));
 		loginPortField.setPromptText("Server-Port");
 		FXUtils.setFixedWidthOf(loginPortField, 150d);
 		
@@ -372,6 +394,7 @@ public class LoginView extends VBox {
 		registerAddressField.setPromptText("Server-Adresse");
 		
 		registerPortField = new JFXTextField();
+		registerPortField.setText(Integer.toString(getDefaultPort()));
 		registerPortField.setPromptText("Server-Port");
 		FXUtils.setFixedWidthOf(registerPortField, 150d);
 		
@@ -408,8 +431,9 @@ public class LoginView extends VBox {
 	}
 	
 	private void initProperties() {
-		minWidth = 1000d;
-		minHeight = 1000d;
+		minViewWidthProperty = new SimpleDoubleProperty(1000d);
+		minViewHeightProperty = new SimpleDoubleProperty(1000d);
+		defaultPortProperty = new SimpleIntegerProperty(2199);
 	}
 	
 	private void initStylesheets() {
@@ -459,8 +483,8 @@ public class LoginView extends VBox {
 		parentWindow = window;
 		if(window == null)
 			return;
-		parentWindow.setMinWidth(minWidth);
-		parentWindow.setMinHeight(minHeight);
+		parentWindow.setMinWidth(getMinWidth());
+		parentWindow.setMinHeight(getMinHeight());
 	}
 	
 	public JFXTabPane getTabPane() {
@@ -476,8 +500,11 @@ public class LoginView extends VBox {
 	}
 	
 	public void setLoginAddressText(String value) {
-		if(value != null)
-			loginAddressField.setText(value);
+		loginAddressField.setText(value);		
+	}
+	
+	public boolean isLoginPortVisible() {
+		return ((HBox)loginContainer.getChildren().get(0)).getChildren().contains(loginPortField);
 	}
 	
 	public JFXTextField getLoginPortField() {
@@ -489,8 +516,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setLoginPortText(String value) {
-		if(value != null)
-			loginPortField.setText(value);
+		loginPortField.setText(value);		
 	}
 	
 	public JFXTextField getLoginUsernameField() {
@@ -502,8 +528,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setLoginUsernameText(String value) {
-		if(value != null)
-			loginUsernameField.setText(value);
+		loginUsernameField.setText(value);	
 	}
 	
 	public JFXPasswordField getLoginPasswordField() {
@@ -515,8 +540,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setLoginPasswordText(String value) {
-		if(value != null)
-			loginPasswordField.setText(value);
+		loginPasswordField.setText(value);
 	}
 	
 	public JFXToggleButton getLoginConfigurePortButton() {
@@ -572,8 +596,11 @@ public class LoginView extends VBox {
 	}
 	
 	public void setRegisterAddressText(String value) {
-		if(value != null)
-			registerAddressField.setText(value);
+		registerAddressField.setText(value);
+	}
+	
+	public boolean isRegisterPortVisible() {
+		return ((HBox)registerContainer.getChildren().get(0)).getChildren().contains(registerPortField);
 	}
 	
 	public JFXTextField getRegisterPortField() {
@@ -585,8 +612,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setRegisterPortText(String value) {
-		if(value != null)
-			registerPortField.setText(value);
+		registerPortField.setText(value);	
 	}
 	
 	public JFXTextField getRegisterUsernameField() {
@@ -598,8 +624,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setRegisterUsernameText(String value) {
-		if(value != null)
-			registerUsernameField.setText(value);
+		registerUsernameField.setText(value);
 	}
 	
 	public JFXPasswordField getRegisterPasswordField() {
@@ -611,8 +636,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setRegisterPasswordText(String value) {
-		if(value != null)
-			registerPasswordField.setText(value);
+		registerPasswordField.setText(value);	
 	}
 	
 	public JFXPasswordField getRegisterPasswordRepeatField() {
@@ -624,8 +648,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setRegisterPasswordRepeatText(String value) {
-		if(value != null)
-			registerPasswordRepeatField.setText(value);
+		registerPasswordRepeatField.setText(value);	
 	}
 	
 	public JFXToggleButton getRegisterConfigurePortButton() {
@@ -657,8 +680,7 @@ public class LoginView extends VBox {
 	}
 	
 	public void setHostPortFieldText(String value) {
-		if(value != null)
-			hostPortField.setText(value);
+		hostPortField.setText(value);	
 	}
 	
 	public JFXButton getHostButton() {
@@ -667,5 +689,41 @@ public class LoginView extends VBox {
 	
 	public JFXButton getHostCancelButton() {
 		return hostCancelButton;
+	}
+	
+	public ReadOnlyDoubleProperty minViewWidthProperty() {
+		return minViewWidthProperty;
+	}
+	
+	public double getMinViewWidth() {
+		return minViewWidthProperty.get();
+	}
+	
+	public void setMinViewWidth(double value) {
+		minViewWidthProperty.set(value);
+	}
+	
+	public ReadOnlyDoubleProperty minViewHeightProperty() {
+		return minViewHeightProperty;
+	}
+	
+	public double getMinViewHeight() {
+		return minViewHeightProperty.get();
+	}
+	
+	public void setMinViewHeight(double value) {
+		minViewHeightProperty.set(value);
+	}
+	
+	public IntegerProperty defaultPortProperty() {
+		return defaultPortProperty;
+	}
+	
+	public int getDefaultPort() {
+		return defaultPortProperty.get();
+	}
+	
+	public void setDefaultPort(int value) {
+		defaultPortProperty.set(value);
 	}
 }

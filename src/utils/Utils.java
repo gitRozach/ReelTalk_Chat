@@ -61,8 +61,9 @@ public class Utils {
 		return (hours < 10 ? "0"+hours : ""+hours) + ":" + (minutes < 10 ? "0"+minutes : ""+minutes) + ":" + (seconds < 10 ? "0"+seconds : ""+seconds);
 	}
 
-	public static String getCurrentTimeHM() {
+	public static String durationToHHMM(Duration duration) {
 		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis((long)duration.toMillis());
 
 		String timeHours = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
 		timeHours = timeHours.length() < 2 ? ("0"+timeHours) : timeHours;

@@ -1,22 +1,24 @@
-package gui.views.client;
+package gui.views;
 
 import com.jfoenix.controls.JFXTabPane;
 
+import gui.components.MediaPane;
 import gui.components.MessageView;
 import gui.components.channelBar.ChannelBar;
 import gui.components.clientBar.ClientBar;
 import gui.components.messageField.MessageField;
-import gui.components.messages.GUIMessage;
+import gui.components.messages.ChatViewMessage;
 import javafx.geometry.Pos;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.FXUtils;
 
-public final class ClientChatView extends VBox {	
+public final class ChatView extends StackPane {	
 	private double minWidth;
 	private double minHeight;
 	private double preferredChannelBarWidth;
@@ -32,21 +34,21 @@ public final class ClientChatView extends VBox {
 	private ChannelBar channelBar;
 	private ClientBar clientBar;
 	private MessageView messageView;
-	private MessageField messageInputField;
+	private MessageField messageInputField;	
 	
-	public ClientChatView() {
+	public ChatView() {
 		this(false, null);
 	}
 	
-	public ClientChatView(boolean initialize) {
+	public ChatView(boolean initialize) {
 		this(initialize, null);
 	}
 	
-	public ClientChatView(Stage parentStage) {
+	public ChatView(Stage parentStage) {
 		this(false, parentStage);
 	}
 	
-	public ClientChatView(boolean initialize, Stage parentWindow) {
+	public ChatView(boolean initialize, Stage parentWindow) {
 		super();
 		if(initialize)
 			initialize();
@@ -67,10 +69,9 @@ public final class ClientChatView extends VBox {
 		initRoot();
 	}
 	
-	private void initRoot() {
+	private void initRoot() {		
 		setMinWidth(minWidth);
 		setMinHeight(minHeight);
-		setFillWidth(true);
 		getChildren().add(tabPane);
 		VBox.setVgrow(tabPane, Priority.ALWAYS);
 	}
@@ -167,15 +168,15 @@ public final class ClientChatView extends VBox {
 		return messageInputField;
 	}
 
-	public void insertMessage(GUIMessage message) {
+	public void insertMessage(ChatViewMessage message) {
 		messageView.addMessage(0, message);
 	}
 	
-	public void appendMessage(GUIMessage message) {
+	public void appendMessage(ChatViewMessage message) {
 		messageView.addMessage(message);
 	}
 	
-	public void addMessage(int index, GUIMessage message) {
+	public void addMessage(int index, ChatViewMessage message) {
 		messageView.addMessage(index, message);
 	}
 	

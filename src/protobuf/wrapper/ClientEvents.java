@@ -343,7 +343,7 @@ public class ClientEvents {
 	}
 	
 	public static ClientChannelGetEvent newClientChannelGetEvent(int eventId, int clientId, Collection<ClientChannel> channels) {
-		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientId).build();
+		ClientBase clientBase = ClientBase.newBuilder().setId(clientId).build();
 		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
 																.setEventId(eventId)
 																.setEventTimestamp(System.currentTimeMillis())
@@ -355,7 +355,7 @@ public class ClientEvents {
 	}
 	
 	public static PingMeasurementEvent newPingMeasurementEvent(int eventId, int clientId, long measurementMillis) {
-		ClientBase clientBase = ClientBase.newBuilder()	.setId(clientId).build();
+		ClientBase clientBase = ClientBase.newBuilder().setId(clientId).build();
 		ClientEventBase eventBase = ClientEventBase.newBuilder().setRequestorClientBase(clientBase)
 																.setEventId(eventId)
 																.setEventTimestamp(System.currentTimeMillis())
