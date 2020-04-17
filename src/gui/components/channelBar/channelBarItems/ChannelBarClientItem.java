@@ -5,20 +5,20 @@ public abstract class ChannelBarClientItem implements ChannelBarItem {
 	protected String clientName;
 	
 	public ChannelBarClientItem(int id, String name) {
-		this.clientId = id;
-		this.clientName = name;
+		clientId = id;
+		clientName = name;
 	}
 	
 	public int getClientId() {
 		return clientId;
 	}
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
+	public void setClientId(int id) {
+		clientId = id;
 	}
 	public String getClientName() {
 		return clientName;
 	}
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+	public void setClientName(String name) {
+		clientName = name;
 	}	
 }

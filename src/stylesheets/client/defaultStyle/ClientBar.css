@@ -101,3 +101,7 @@
 .jfx-rippler {
     -jfx-rippler-fill: lightgray;
 }
+
+.glyph-icon {
+	-fx-fill: gray;
+}

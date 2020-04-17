@@ -18,110 +18,51 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 public class CustomContextMenu extends Popup {
-	//
 	private VBox content;
-	//
+
 	private Duration animationDuration;
 	private DoubleProperty animationTranslateWidthProperty;
 	private DoubleProperty animationTranslateHeightProperty;
-	//
+	private volatile BooleanProperty animatingProperty;
+
 	private ParallelTransition scaleAndTranslateAnimation;
 	private ScaleTransition scaleAnimation;
 	private TranslateTransition translateAnimation;
-	//
-	private volatile BooleanProperty animatingProperty;
 
-	//
 	public CustomContextMenu() {
-		this.setAutoFix(true);
-		this.setAutoHide(true);
-		this.setHideOnEscape(true);
-		this.addEventFilter(MouseEvent.MOUSE_CLICKED, a -> hide());
-
-		this.content = new VBox();
-		this.content.setPadding(new Insets(3d));
-		this.content.setEffect(new DropShadow(10d, 5d, 5d, Color.rgb(0, 0, 0, 0.5d)));
-		this.content.setId("root");
-		this.content.getStylesheets().add("/stylesheets/client/defaultStyle/CustomContextMenu.css");
-		this.getContent().add(this.content);
-
-		this.animationDuration = Duration.seconds(0.15d);
-		this.animationTranslateWidthProperty = new SimpleDoubleProperty(100d);
-		this.animationTranslateHeightProperty = new SimpleDoubleProperty(0d);
-
-		this.initAnimations();
-		this.animatingProperty = new SimpleBooleanProperty(false);
+		this(true);
 	}
-
-	//
-	public CustomContextMenu(MenuItemButton... items) {
-		this();
-		content.getChildren().addAll(items);
+	
+	public CustomContextMenu(boolean init) {
+		super();
+		if(init)
+			initialize();
 	}
-
-	//
-	public void showAnimated(Window ownerWindow, double screenX, double screenY) {
-		if (!isAnimating()) {
-			animatingProperty.set(true);
-			scaleAndTranslateAnimation.playFromStart();
-			show(ownerWindow, screenX - getAnimationTranslateWidth(),
-					screenY - getAnimationTranslateHeight());
-			content.requestFocus();
-		}
+	
+	public void initialize() {
+		initProperties();
+		initContentBox();
+		initAnimations();
+		initEventHandlers();
+		initRoot();
 	}
-
-	//
-	public void showAnimated(Node anchorNode, double screenX, double screenY) {
-		if (!isAnimating()) {
-			animatingProperty.set(true);
-			scaleAndTranslateAnimation.playFromStart();
-			show(anchorNode, screenX - getAnimationTranslateWidth(),
-					screenY - getAnimationTranslateHeight());
-			content.requestFocus();
-		}
+	
+	private void initProperties() {
+		animationDuration = Duration.seconds(0.15d);
+		animationTranslateWidthProperty = new SimpleDoubleProperty(100d);
+		animationTranslateHeightProperty = new SimpleDoubleProperty(0d);
+		animatingProperty = new SimpleBooleanProperty(false);
 	}
-
-	//
-	public void add(MenuItemButton item) {
-		getContent().add(item);
+	
+	private void initContentBox() {
+		content = new VBox();
+		content.setPadding(new Insets(3d));
+		content.setEffect(new DropShadow(10d, 5d, 5d, Color.rgb(0, 0, 0, 0.5d)));
+		content.setId("root");
+		content.getStylesheets().add("/stylesheets/client/defaultStyle/CustomContextMenu.css");
+		getContent().add(content);
 	}
-
-	//
-	public void addAll(MenuItemButton... items) {
-		getContent().addAll(items);
-	}
-
-	//
-	public MenuItemButton remove(int index) {
-		return (MenuItemButton) (getContent().remove(index));
-	}
-
-	//
-	public boolean remove(MenuItemButton item) {
-		return getContent().remove(item);
-	}
-
-	//
-	public boolean removeAll(MenuItemButton... items) {
-		return getContent().removeAll(items);
-	}
-
-	//
-	public int indexOf(MenuItemButton item) {
-		int index = 0;
-		for (Node n : getContent()) {
-			if (n instanceof MenuItemButton && ((MenuItemButton) n).equals(item))
-				return index;
-			index++;
-		}
-		return -1;
-	}
-
-	/*
-	 *
-	 */
-
-	//
+	
 	private void initAnimations() {
 		scaleAnimation = new ScaleTransition(animationDuration, content);
 		scaleAnimation.setFromX(0.3d);
@@ -140,10 +81,71 @@ public class CustomContextMenu extends Popup {
 		scaleAndTranslateAnimation = new ParallelTransition(scaleAnimation, translateAnimation);
 		scaleAndTranslateAnimation.setOnFinished(a -> animatingProperty.set(false));
 	}
+	
+	private void initEventHandlers() {
+		addEventFilter(MouseEvent.MOUSE_CLICKED, a -> hide());
+	}
+	
+	private void initRoot() {
+		setAutoFix(true);
+		setAutoHide(true);
+		setHideOnEscape(true);
+	}
 
-	/*
-	 *
-	 */
+	public CustomContextMenu(MenuItemButton... items) {
+		this();
+		content.getChildren().addAll(items);
+	}
+	
+	public void showAnimated(Window ownerWindow, double screenX, double screenY) {
+		if (!isAnimating()) {
+			animatingProperty.set(true);
+			scaleAndTranslateAnimation.playFromStart();
+			show(ownerWindow, screenX - getAnimationTranslateWidth(),
+					screenY - getAnimationTranslateHeight());
+			content.requestFocus();
+		}
+	}
+
+	public void showAnimated(Node anchorNode, double screenX, double screenY) {
+		if (!isAnimating()) {
+			animatingProperty.set(true);
+			scaleAndTranslateAnimation.playFromStart();
+			show(anchorNode, screenX - getAnimationTranslateWidth(),
+					screenY - getAnimationTranslateHeight());
+			content.requestFocus();
+		}
+	}
+
+	public void add(MenuItemButton item) {
+		getContent().add(item);
+	}
+
+	public void addAll(MenuItemButton... items) {
+		getContent().addAll(items);
+	}
+
+	public MenuItemButton remove(int index) {
+		return (MenuItemButton) (getContent().remove(index));
+	}
+
+	public boolean remove(MenuItemButton item) {
+		return getContent().remove(item);
+	}
+
+	public boolean removeAll(MenuItemButton... items) {
+		return getContent().removeAll(items);
+	}
+
+	public int indexOf(MenuItemButton item) {
+		int index = 0;
+		for (Node n : getContent()) {
+			if (n instanceof MenuItemButton && ((MenuItemButton) n).equals(item))
+				return index;
+			index++;
+		}
+		return -1;
+	}
 
 	public Duration getAnimationDuration() {
 		return animationDuration;

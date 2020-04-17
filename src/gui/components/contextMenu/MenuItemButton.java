@@ -6,29 +6,20 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-//
 public class MenuItemButton extends JFXButton {
 	public MenuItemButton(String text) {
 		super(text);
-		setButtonType(ButtonType.FLAT);
-		setRipplerFill(Color.DEEPSKYBLUE);
-		setFont(Font.font("Tahoma", 20d));
+		initialize();
 	}
 
 	public MenuItemButton(String text, Node graphic) {
 		super(text, graphic);
+		initialize();
+	}
+	
+	private void initialize() {
+		setButtonType(ButtonType.RAISED);
+		setRipplerFill(Color.GREEN);
 		setFont(Font.font("Tahoma", 20d));
-	}
-
-	public void setFixedWidth(double width) {
-		this.setPrefWidth(width);
-		this.setMinWidth(width);
-		this.setMaxWidth(width);
-	}
-
-	public void setFixedHeight(double height) {
-		this.setPrefHeight(height);
-		this.setMinHeight(height);
-		this.setMaxHeight(height);
 	}
 }

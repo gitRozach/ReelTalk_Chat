@@ -33,23 +33,30 @@ public class AudioPlayerUI extends VBox {
 	private BooleanProperty showingLibraryProperty;
 	private BooleanProperty showingSettingsProperty;
 	
+	private HBox thumbnailAndDescrLibr;
 	private AudioLibrary library;
 	private ImageView thumbnailView;
 	
+	private VBox description;
 	private Label textTitle;
 	private Label textAlbum;
 	private Label textArtist;
 	private Label textYear;
 	
+	private HBox settingsAndVisualizer;
 	private VBox settingsBox;
 	private VBox audioSpectrumVisualizer;
+	
+	private VBox sliderAndLabelNodes;
+	private HBox labelNodes;
 	private Label labelCurrentTime;
 	private Label labelTotalTime;
-
 	private JFXSlider timeSlider;
+	
 	private JFXSlider volumeSlider;
 	private JFXSlider rateSlider;
 	
+	private HBox controlNodes;
 	private JFXButton buttonVolume;
 	private JFXButton buttonRate;
 	private JFXButton buttonLibrary;
@@ -72,174 +79,67 @@ public class AudioPlayerUI extends VBox {
 	private FadeTranslateAnimation showDescriptionAnimation;
 	private FadeTranslateAnimation hideDescriptionAnimation;
 
-	public static final Image IMG_PLAY = new Image("/resources/icons/img_play.png", 32d, 32d, true, true);
-	public static final Image IMG_PAUSE = new Image("/resources/icons/img_pause.png", 32d, 32d, true, true);
-	public static final Image IMG_PREVIOUS = new Image("/resources/icons/img_previous.png", 32d, 32d, true, true);
-	public static final Image IMG_NEXT = new Image("/resources/icons/img_next.png", 32d, 32d, true, true);
-	public static final Image IMG_VOLUME_MUTED = new Image("/resources/icons/img_volume_muted.png", 48d, 48d, true, true);
-	public static final Image IMG_VOLUME_LOW = new Image("/resources/icons/img_volume_low.png", 48d, 48d, true, true);
-	public static final Image IMG_VOLUME_MEDIUM = new Image("/resources/icons/img_volume_medium.png", 48d, 48d, true, true);
-	public static final Image IMG_VOLUME_HIGH = new Image("/resources/icons/img_volume_high.png", 48d, 48d, true, true);
-	public static final Image IMG_LIBRARY = new Image("/resources/icons/img_audio_library.png", 32d, 32d, true, true);
-	public static final Image IMG_REPLAY_DEFAULT = new Image("/resources/icons/img_repeat_default.png", 32d, 32d, true, true);
-	public static final Image IMG_REPLAY_SINGLE = new Image("/resources/icons/img_repeat_single.png", 32d, 32d, true, true);
-	public static final Image IMG_SHUFFLE = new Image("/resources/icons/img_shuffle.png", 32d, 32d, true, true);
+	public static Image IMG_PLAY;
+	public static Image IMG_PAUSE;
+	public static Image IMG_PREVIOUS;
+	public static Image IMG_NEXT;
+	public static Image IMG_VOLUME_MUTED;
+	public static Image IMG_VOLUME_LOW;
+	public static Image IMG_VOLUME_MEDIUM;
+	public static Image IMG_VOLUME_HIGH;
+	public static Image IMG_LIBRARY;
+	public static Image IMG_REPLAY_DEFAULT;
+	public static Image IMG_REPLAY_SINGLE;
+	public static Image IMG_SHUFFLE;
 	
 	public AudioPlayerUI() {
 		super();
-
+		initialize();
+	}
+	
+	public void initialize() {
+		initStylesheets();
+		initImageResources();
+		initProperies();
+		
+		initHeaderControls();
+		initAudioSpectrumVisualizer(getAudioSpectrumBands());
+		initBottomControls();
+		
+		initHeaderContainers();
+		initSettingsBox();
+		initSettingsAndVisualizerBox();
+		initBottomContainers();
+		initAnimations();
+		initRoot();
+	}
+	
+	private void initStylesheets() {
 		getStylesheets().add("/stylesheets/client/defaultStyle/AudioPlayer.css");
-
+	}
+	
+	private void initImageResources() {
+		IMG_PLAY = new Image("/resources/icons/img_play.png", 32d, 32d, true, true);
+		IMG_PAUSE = new Image("/resources/icons/img_pause.png", 32d, 32d, true, true);
+		IMG_PREVIOUS = new Image("/resources/icons/img_previous.png", 32d, 32d, true, true);
+		IMG_NEXT = new Image("/resources/icons/img_next.png", 32d, 32d, true, true);
+		IMG_VOLUME_MUTED = new Image("/resources/icons/img_volume_muted.png", 48d, 48d, true, true);
+		IMG_VOLUME_LOW = new Image("/resources/icons/img_volume_low.png", 48d, 48d, true, true);
+		IMG_VOLUME_MEDIUM = new Image("/resources/icons/img_volume_medium.png", 48d, 48d, true, true);
+		IMG_VOLUME_HIGH = new Image("/resources/icons/img_volume_high.png", 48d, 48d, true, true);
+		IMG_LIBRARY = new Image("/resources/icons/img_audio_library.png", 32d, 32d, true, true);
+		IMG_REPLAY_DEFAULT = new Image("/resources/icons/img_repeat_default.png", 32d, 32d, true, true);
+		IMG_REPLAY_SINGLE = new Image("/resources/icons/img_repeat_single.png", 32d, 32d, true, true);
+		IMG_SHUFFLE = new Image("/resources/icons/img_shuffle.png", 32d, 32d, true, true);
+	}
+	
+	private void initProperies() {
 		audioSpectrumBandsProperty = new SimpleIntegerProperty(25);
 		showingLibraryProperty = new SimpleBooleanProperty(false);
 		showingSettingsProperty = new SimpleBooleanProperty(false);
-
-		setStyle("-fx-background-color: rgba(0, 0, 0, 0.7);");
-
-		thumbnailView = new ImageView(new Image("/resources/icons/cover.jpg", 256d, 256d, true, true, true));
-		thumbnailView.setPreserveRatio(true);
-		thumbnailView.setFitWidth(256d);
-		thumbnailView.setFitHeight(256d);
-
-		textTitle = new Label("-");
-		textTitle.setStyle("-fx-text-fill: white;");
-		textTitle.setFont(Font.font("Tahoma", 22d));
-
-		textAlbum = new Label("-");
-		textAlbum.setStyle("-fx-text-fill: white;");
-		textAlbum.setFont(Font.font("Tahoma", 22d));
-
-		textArtist = new Label("-");
-		textArtist.setStyle("-fx-text-fill: white;");
-		textArtist.setFont(Font.font("Tahoma", 22d));
-
-		textYear = new Label("-");
-		textYear.setStyle("-fx-text-fill: white;");
-		textYear.setFont(Font.font("Tahoma", 22d));
-
-		initAudioSpectrumVisualizer(getAudioSpectrumBands());
-		VBox.setVgrow(audioSpectrumVisualizer, Priority.SOMETIMES);
-
-		labelCurrentTime = new Label();
-		labelCurrentTime.setFont(Font.font("Tahoma", 12d));
-
-		labelTotalTime = new Label();
-		labelTotalTime.setFont(Font.font("Tahoma", 12d));
-
-		timeSlider = new JFXSlider();
-		timeSlider.setValue(0d);
-
-		volumeSlider = new JFXSlider(0d, 1d, 0.5d);
-
-		rateSlider = new JFXSlider(0.5d, 2d, 1d);
-		rateSlider.setSnapToTicks(true);
-		rateSlider.setBlockIncrement(0.25d);
-		rateSlider.setMinorTickCount(1);
-		rateSlider.setMajorTickUnit(0.5d);
-
-		buttonVolume = new JFXButton();
-		buttonVolume.setManaged(true);
-		buttonVolume.setGraphic(new ImageView(IMG_VOLUME_MEDIUM));
-
-		buttonRate = new JFXButton();
-		buttonRate.minWidthProperty().bind(buttonVolume.widthProperty());
-		buttonRate.minHeightProperty().bind(buttonVolume.heightProperty());
-		Label initRateLabel = new Label("1.0x");
-		initRateLabel.setTextFill(Color.WHITE);
-		initRateLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18d));
-		buttonRate.setGraphic(initRateLabel);
-
-		buttonPrevious = new JFXButton("", new ImageView(IMG_PREVIOUS));
-
-		buttonPlayPause = new JFXButton("", new ImageView(IMG_PLAY));
-
-		buttonNext = new JFXButton("", new ImageView(IMG_NEXT));
-
-		library = new AudioLibrary();
-		library.getStyleClass().add("c-audio-library");
-		// library.setVisible(false);
-
-		buttonLibrary = new JFXButton();
-		buttonLibrary.setGraphic(new ImageView(IMG_LIBRARY));
-		buttonLibrary.disableProperty().bind(Bindings.isEmpty(library.getItems()));
-
-		buttonRepeat = new JFXButton();
-		buttonRepeat.setGraphic(new ImageView(IMG_REPLAY_DEFAULT));
-
-		labelReplayFrom = new Label("Von:");
-		labelReplayFrom.setMinWidth(30d);
-		labelReplayTo = new Label("Bis:");
-		labelReplayTo.setMinWidth(30d);
-
-		replayFromSlider = new JFXSlider();
-		replayToSlider = new JFXSlider();
-
-		// Text Nodes and ImageView
-		VBox description = new VBox(textTitle, textAlbum, textArtist, textYear);
-		description.setFillWidth(false);
-		description.setSpacing(3d);
-
-		StackPane descriptionAndLibrary = new StackPane(description, library);
-		descriptionAndLibrary.setMaxHeight(thumbnailView.getFitHeight());
-		showLibrary(false);
-
-		HBox thumbnailAndDescrLibr = new HBox(thumbnailView, descriptionAndLibrary);
-		HBox.setHgrow(descriptionAndLibrary, Priority.ALWAYS);
-		thumbnailAndDescrLibr.setFillHeight(true);
-		thumbnailAndDescrLibr.setSpacing(20d);
-		HBox.setHgrow(audioSpectrumVisualizer, Priority.SOMETIMES);
-
-		// Time Slider and Label Nodes
-		HBox labelSpace = new HBox();
-		HBox labelNodes = new HBox(labelCurrentTime, labelSpace, labelTotalTime);
-		HBox.setHgrow(labelSpace, Priority.SOMETIMES);
-		VBox sliderAndLabelNodes = new VBox(timeSlider, labelNodes);
-		sliderAndLabelNodes.setAlignment(Pos.BOTTOM_CENTER);
-		sliderAndLabelNodes.setSpacing(5d);
-
-		// Button Nodes
-		HBox spaceX1 = new HBox();
-		HBox spaceX2 = new HBox();
-		HBox controlNodes = new HBox(spaceX1, buttonPrevious, buttonPlayPause, buttonNext, spaceX2);
-		HBox.setHgrow(spaceX1, Priority.SOMETIMES);
-		HBox.setHgrow(spaceX2, Priority.SOMETIMES);
-		controlNodes.setFillHeight(false);
-		controlNodes.setAlignment(Pos.BOTTOM_CENTER);
-		controlNodes.setPadding(new Insets(0d, 0d, 15d, 0d));
-
-		VBox replayTool = new VBox(10d);
-		HBox replayFrom = new HBox(labelReplayFrom, replayFromSlider);
-		replayFrom.setSpacing(5d);
-		HBox replayTo = new HBox(labelReplayTo, replayToSlider);
-		replayTo.setSpacing(5d);
-		replayTool.getChildren().addAll(replayFrom, replayTo);
-
-		HBox volumeTool = new HBox(buttonVolume, volumeSlider);
-		volumeTool.setManaged(true);
-		volumeTool.setAlignment(Pos.CENTER_LEFT);
-		HBox rateTool = new HBox(buttonRate, rateSlider);
-		rateTool.setAlignment(Pos.CENTER_LEFT);
-
-		settingsBox = new VBox();
-		settingsBox.setPrefWidth(256d);
-		settingsBox.setPadding(new Insets(15d));
-		settingsBox.setSpacing(25d);
-		settingsBox.getChildren().addAll(volumeTool, rateTool, replayTool);
-		showSettings(false);
-
-		HBox settingsAndVisualizer = new HBox(settingsBox, audioSpectrumVisualizer);
-		settingsAndVisualizer.setPadding(new Insets(10d, 0d, 10d, 0d));
-		settingsAndVisualizer.setOnMouseEntered(a -> showSettingsAnimated(true));
-		settingsAndVisualizer.setOnMouseExited(b -> showSettingsAnimated(false));
-
-		HBox.setHgrow(volumeSlider, Priority.SOMETIMES);
-		HBox.setHgrow(rateSlider, Priority.SOMETIMES);
-		HBox.setHgrow(replayFromSlider, Priority.SOMETIMES);
-		HBox.setHgrow(replayToSlider, Priority.SOMETIMES);
-		HBox.setHgrow(library, Priority.SOMETIMES);
-
-		VBox.setVgrow(settingsAndVisualizer, Priority.SOMETIMES);
-
+	}
+	
+	private void initAnimations() {
 		showSettingsAnimation = Animations.newResizeFadeAnimation(settingsBox, Duration.seconds(0.25d),
 				Duration.seconds(0.1d), true, 0d, 256d, 0d, 1d, Interpolator.EASE_OUT);
 		showSettingsAnimation.setOnFinished(a -> setShowingSettings(true));
@@ -279,12 +179,191 @@ public class AudioPlayerUI extends VBox {
 		hideDescriptionAnimation.setTranslateFromY(0d);
 		hideDescriptionAnimation.setTranslateToY(20d);
 		hideDescriptionAnimation.setTranslateDuration(Duration.seconds(0.2d));
+	}
+	
+	private void initHeaderControls() {
+		thumbnailView = new ImageView(new Image("/resources/icons/cover.jpg", 256d, 256d, true, true, true));
+		thumbnailView.setPreserveRatio(true);
+		thumbnailView.setFitWidth(256d);
+		thumbnailView.setFitHeight(256d);
 
+		textTitle = new Label("-");
+		textTitle.setStyle("-fx-text-fill: white;");
+		textTitle.setFont(Font.font("Tahoma", 22d));
+
+		textAlbum = new Label("-");
+		textAlbum.setStyle("-fx-text-fill: white;");
+		textAlbum.setFont(Font.font("Tahoma", 22d));
+
+		textArtist = new Label("-");
+		textArtist.setStyle("-fx-text-fill: white;");
+		textArtist.setFont(Font.font("Tahoma", 22d));
+
+		textYear = new Label("-");
+		textYear.setStyle("-fx-text-fill: white;");
+		textYear.setFont(Font.font("Tahoma", 22d));
+		
+		library = new AudioLibrary();
+		library.getStyleClass().add("c-audio-library");
+	}
+	
+	private void initHeaderContainers() {
+		description = new VBox(textTitle, textAlbum, textArtist, textYear);
+		description.setFillWidth(false);
+		description.setSpacing(3d);
+
+		StackPane descriptionAndLibrary = new StackPane(description, library);
+		descriptionAndLibrary.setMaxHeight(thumbnailView.getFitHeight());
+		showLibrary(false);
+
+		thumbnailAndDescrLibr = new HBox(thumbnailView, descriptionAndLibrary);
+		thumbnailAndDescrLibr.setFillHeight(true);
+		thumbnailAndDescrLibr.setSpacing(20d);
+		HBox.setHgrow(descriptionAndLibrary, Priority.ALWAYS);
+	}
+	
+	private void initSettingsBox() {
+		VBox replayTool = new VBox(10d);
+		HBox replayFrom = new HBox(labelReplayFrom, replayFromSlider);
+		replayFrom.setSpacing(5d);
+		HBox.setHgrow(replayFromSlider, Priority.SOMETIMES);
+		
+		HBox replayTo = new HBox(labelReplayTo, replayToSlider);
+		replayTo.setSpacing(5d);
+		HBox.setHgrow(replayToSlider, Priority.SOMETIMES);
+		
+		replayTool.getChildren().addAll(replayFrom, replayTo);
+		
+
+		HBox volumeTool = new HBox(buttonVolume, volumeSlider);
+		volumeTool.setManaged(true);
+		volumeTool.setAlignment(Pos.CENTER_LEFT);
+		HBox.setHgrow(volumeSlider, Priority.SOMETIMES);
+		
+		HBox rateTool = new HBox(buttonRate, rateSlider);
+		rateTool.setAlignment(Pos.CENTER_LEFT);
+		HBox.setHgrow(rateSlider, Priority.SOMETIMES);
+		
+		settingsBox = new VBox();
+		settingsBox.setPrefWidth(256d);
+		settingsBox.setPadding(new Insets(15d));
+		settingsBox.setSpacing(25d);
+		settingsBox.getChildren().addAll(volumeTool, rateTool, replayTool);
+		showSettings(false);
+	}
+	
+	private void initAudioSpectrumVisualizer(int bands) {
+		audioSpectrumVisualizer = new VBox();
+		audioSpectrumVisualizer.setAlignment(Pos.BOTTOM_CENTER);
+		HBox bandsBox = new HBox();
+		bandsBox.maxWidthProperty().bind(audioSpectrumVisualizer.widthProperty());
+		bandsBox.setSpacing(5d);
+		bandsBox.setOpacity(0.6d);
+		// bandsBox.setPadding(new Insets(0d));
+		bandsBox.setAlignment(Pos.BOTTOM_CENTER);
+
+		for (int i = 0; i < bands; i++) {
+			HBox rect = new HBox();
+			rect.setStyle("-fx-border-color: white; -fx-border-radius: 5 5 0 0; -fx-background-radius: 5 5 0 0;");
+			rect.setMinWidth(5d);
+			rect.maxWidthProperty().bind(bandsBox.widthProperty().divide(bands).subtract(bandsBox.getSpacing()));
+			rect.setMinHeight(0d);
+			rect.setMaxHeight(0d);
+			bandsBox.getChildren().add(rect);
+			HBox.setHgrow(rect, Priority.SOMETIMES);
+		}
+		audioSpectrumVisualizer.getChildren().add(bandsBox);
+	}
+	
+	
+	private void initSettingsAndVisualizerBox() {
+		settingsAndVisualizer = new HBox(settingsBox, audioSpectrumVisualizer);
+		settingsAndVisualizer.setPadding(new Insets(10d, 0d, 10d, 0d));
+		settingsAndVisualizer.setOnMouseEntered(a -> showSettingsAnimated(true));
+		settingsAndVisualizer.setOnMouseExited(b -> showSettingsAnimated(false));
+		HBox.setHgrow(audioSpectrumVisualizer, Priority.SOMETIMES);
+	}
+	
+	private void initBottomControls() {
+		labelCurrentTime = new Label();
+		labelCurrentTime.setFont(Font.font("Tahoma", 12d));
+
+		labelTotalTime = new Label();
+		labelTotalTime.setFont(Font.font("Tahoma", 12d));
+
+		timeSlider = new JFXSlider();
+		timeSlider.setValue(0d);
+
+		volumeSlider = new JFXSlider(0d, 1d, 0.5d);
+
+		rateSlider = new JFXSlider(0.5d, 2d, 1d);
+		rateSlider.setSnapToTicks(true);
+		rateSlider.setBlockIncrement(0.25d);
+		rateSlider.setMinorTickCount(1);
+		rateSlider.setMajorTickUnit(0.5d);
+
+		buttonVolume = new JFXButton();
+		buttonVolume.setManaged(true);
+		buttonVolume.setGraphic(new ImageView(IMG_VOLUME_MEDIUM));
+
+		buttonRate = new JFXButton();
+		buttonRate.minWidthProperty().bind(buttonVolume.widthProperty());
+		buttonRate.minHeightProperty().bind(buttonVolume.heightProperty());
+		Label initRateLabel = new Label("1.0x");
+		initRateLabel.setTextFill(Color.WHITE);
+		initRateLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18d));
+		buttonRate.setGraphic(initRateLabel);
+
+		buttonPrevious = new JFXButton("", new ImageView(IMG_PREVIOUS));
+
+		buttonPlayPause = new JFXButton("", new ImageView(IMG_PLAY));
+
+		buttonNext = new JFXButton("", new ImageView(IMG_NEXT));
+
+		buttonLibrary = new JFXButton();
+		buttonLibrary.setGraphic(new ImageView(IMG_LIBRARY));
+		buttonLibrary.disableProperty().bind(Bindings.isEmpty(library.getItems()));
+
+		buttonRepeat = new JFXButton();
+		buttonRepeat.setGraphic(new ImageView(IMG_REPLAY_DEFAULT));
+
+		labelReplayFrom = new Label("Von:");
+		labelReplayFrom.setMinWidth(30d);
+		labelReplayTo = new Label("Bis:");
+		labelReplayTo.setMinWidth(30d);
+
+		replayFromSlider = new JFXSlider();
+		replayToSlider = new JFXSlider();
+	}
+	
+	private void initBottomContainers() {
+		HBox labelSpace = new HBox();
+		labelNodes = new HBox(labelCurrentTime, labelSpace, labelTotalTime);
+		HBox.setHgrow(labelSpace, Priority.SOMETIMES);
+		
+		sliderAndLabelNodes = new VBox(timeSlider, labelNodes);
+		sliderAndLabelNodes.setAlignment(Pos.BOTTOM_CENTER);
+		sliderAndLabelNodes.setSpacing(5d);
+
+		HBox spaceX1 = new HBox();
+		HBox spaceX2 = new HBox();
+		controlNodes = new HBox(spaceX1, buttonPrevious, buttonPlayPause, buttonNext, spaceX2);
+		controlNodes.setFillHeight(false);
+		controlNodes.setAlignment(Pos.BOTTOM_CENTER);
+		controlNodes.setPadding(new Insets(0d, 0d, 15d, 0d));
+		HBox.setHgrow(spaceX1, Priority.SOMETIMES);
+		HBox.setHgrow(spaceX2, Priority.SOMETIMES);
+	}
+	
+	private void initRoot() {
+		setStyle("-fx-background-color: rgba(0, 0, 0, 0.7);");
 		setSpacing(5d);
 		setPadding(new Insets(15d));
 		setFillWidth(true);
 		setPickOnBounds(true);
 		getChildren().addAll(thumbnailAndDescrLibr, settingsAndVisualizer, sliderAndLabelNodes, controlNodes);
+		VBox.setVgrow(audioSpectrumVisualizer, Priority.SOMETIMES);
+		VBox.setVgrow(settingsAndVisualizer, Priority.SOMETIMES);
 	}
 
 	public void showLibrary(boolean value) {
@@ -339,29 +418,6 @@ public class AudioPlayerUI extends VBox {
 		}
 	}
 
-	public void initAudioSpectrumVisualizer(int bands) {
-		audioSpectrumVisualizer = new VBox();
-		audioSpectrumVisualizer.setAlignment(Pos.BOTTOM_CENTER);
-		HBox bandsBox = new HBox();
-		bandsBox.maxWidthProperty().bind(audioSpectrumVisualizer.widthProperty());
-		bandsBox.setSpacing(5d);
-		bandsBox.setOpacity(0.6d);
-		// bandsBox.setPadding(new Insets(0d));
-		bandsBox.setAlignment(Pos.BOTTOM_CENTER);
-
-		for (int i = 0; i < bands; i++) {
-			HBox rect = new HBox();
-			rect.setStyle("-fx-border-color: white; -fx-border-radius: 5 5 0 0; -fx-background-radius: 5 5 0 0;");
-			rect.setMinWidth(5d);
-			rect.maxWidthProperty().bind(bandsBox.widthProperty().divide(bands).subtract(bandsBox.getSpacing()));
-			rect.setMinHeight(0d);
-			rect.setMaxHeight(0d);
-			bandsBox.getChildren().add(rect);
-			HBox.setHgrow(rect, Priority.SOMETIMES);
-		}
-		audioSpectrumVisualizer.getChildren().add(bandsBox);
-	}
-	
 	public void switchToPlayMode(AudioPlayMode mode) {
 		if (mode == AudioPlayMode.DEFAULT || mode == AudioPlayMode.SHUFFLE)
 			buttonRepeat.setGraphic(new ImageView(IMG_REPLAY_DEFAULT)); 

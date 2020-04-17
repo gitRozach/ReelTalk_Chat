@@ -2,7 +2,6 @@ package apps.audioPlayer;
 
 import java.io.Closeable;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -297,7 +296,7 @@ public class AudioPlayer implements Closeable {
 	}
 	
 	@Override
-	public void close() throws IOException {
+	public void close() {
 		playerUI = null;
 		player.stop();
 		playlist.clear();

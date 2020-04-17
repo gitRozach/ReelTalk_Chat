@@ -76,4 +76,56 @@ $BOAH BESCHISSEN"Rozach(¶öË»ó.[
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
 29"Rozach(û⁄ÍÕó.[
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
-30"Rozach(¡‚ÍÕó.
+30"Rozach(¡‚ÍÕó.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+JOJO!"Rozach(†Ê√ªò.y
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage;
+5 JAUAJAUA :A22: :A22: :A22: :A22:"Rozach(øƒªò.f
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
+"Hallo Rozach!"Rozett(Æ‚ï≈ò.f
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
+"Hallo Rozach!"Rozett(Æ‚ï≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+xd"Rozett(ˇóñ≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+xd"Rozett(ˇóñ≈ò.g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#HALLO DU SPAST"Rozach(æôó≈ò.g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#HALLO DU SPAST"Rozach(æôó≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+"xd""Rozach(äœó≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+"xd""Rozach(äœó≈ò.d
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ HAHAHAHHAHH"Rozach(•çò≈ò.d
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ HAHAHAHHAHH"Rozach(•çò≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+hehe"Rozett(ò´ò≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+hehe"Rozett(ò´ò≈ò.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+f√º√º"Rozach(¡‡£≈ò.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+f√º√º"Rozach(¡‡£≈ò.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+f√º√º"Rozach(˝Î£≈ò.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+f√º√º"Rozach(˝Î£≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+2x"Rozach(Çâ§≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+2x"Rozach(Çâ§≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+jaja"Rozett(€†§≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+jaja"Rozett(€†§≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+xd"Rozett(ü©§≈ò.[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+xd"Rozett(ü©§≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+HEHE"Rozett(⁄≥§≈ò.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+HEHE"Rozett(⁄≥§≈ò.

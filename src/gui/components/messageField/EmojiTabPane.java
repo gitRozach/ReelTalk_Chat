@@ -185,7 +185,6 @@ public class EmojiTabPane extends StackPane {
 				}
 
 				currentImageView = new ImageView(currentImage);
-				//currentImageView.setSmooth(true);
 				currentImageView.setCache(true);
 				currentImageView.getStyleClass().add("smiley");
 				

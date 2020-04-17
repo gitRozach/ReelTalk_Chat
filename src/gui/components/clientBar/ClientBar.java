@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gui.components.LoadableStackPane;
 import gui.components.clientBar.items.ClientBarItem;
 import gui.components.clientBar.items.ClientBarMemberItem;
@@ -62,7 +64,7 @@ public class ClientBar extends LoadableStackPane {
 	private Tab onlineTab;
 
 	public ClientBar() {
-		this(false);
+		this(true);
 	}
 
 	public ClientBar(boolean initialize) {
@@ -122,7 +124,9 @@ public class ClientBar extends LoadableStackPane {
 		HBox messageGraphic = new HBox(5d);
 		messageGraphic.setAlignment(Pos.CENTER_LEFT);
 		
-		ImageView senderPicture = new ImageView(new Image("/resources/clientBar/message_received.png", 24d, 34d, true, false));
+		FontAwesomeIconView senderIcon = new FontAwesomeIconView(FontAwesomeIcon.ENVELOPE_OPEN);
+		senderIcon.setGlyphSize(24d);
+		senderIcon.setWrappingWidth(24d);
 		
 		VBox senderAndText = new VBox(3d);
 		senderAndText.setPadding(new Insets(0d, 0d, 0d, 10d));
@@ -134,7 +138,7 @@ public class ClientBar extends LoadableStackPane {
 		textLabel.setFont(Font.font("Tahoma", 13d));
 		senderAndText.getChildren().addAll(senderLabel, textLabel);
 		
-		messageGraphic.getChildren().addAll(senderPicture, senderAndText);
+		messageGraphic.getChildren().addAll(senderIcon, senderAndText);
 		HBox.setHgrow(senderAndText, Priority.ALWAYS);
 		
 		JFXButton messageButton = new JFXButton("", messageGraphic);
@@ -148,12 +152,14 @@ public class ClientBar extends LoadableStackPane {
 		HBox appGraphic = new HBox(15d);
 		appGraphic.setAlignment(Pos.CENTER_LEFT);
 		
-		ImageView appPicture = new ImageView(new Image("/resources/clientBar/apps.png", 24d, 24d, true, false));
+		FontAwesomeIconView appIcon = new FontAwesomeIconView(FontAwesomeIcon.TH_LARGE);
+		appIcon.setGlyphSize(24d);
+		appIcon.setWrappingWidth(24d);
 		
 		Label textLabel = new Label(appName);
 		textLabel.setFont(Font.font("Tahoma", 13d));
 		
-		appGraphic.getChildren().addAll(appPicture, textLabel);
+		appGraphic.getChildren().addAll(appIcon, textLabel);
 		HBox.setHgrow(textLabel, Priority.ALWAYS);
 		
 		JFXButton messageButton = new JFXButton("", appGraphic);
@@ -189,17 +195,27 @@ public class ClientBar extends LoadableStackPane {
 		profileNameLabel = new Label("Rouman");
 		profileNameLabel.setFont(Font.font("Tahoma", 16d));
 		
-		messagesButton = new JFXButton("", new ImageView(new Image("/resources/clientBar/messages.png", /*60*/32d, 52d, true, false)));
-		messagesButton.setPrefWidth(10d);
+		FontAwesomeIconView messagesIcon = new FontAwesomeIconView(FontAwesomeIcon.ENVELOPE);
+		messagesIcon.setGlyphSize(25d);
+		messagesIcon.setWrappingWidth(25d);
+		FontAwesomeIconView usersIcon = new FontAwesomeIconView(FontAwesomeIcon.USERS);
+		usersIcon.setGlyphSize(24d);
+		usersIcon.setWrappingWidth(24d);
+		FontAwesomeIconView appsIcon = new FontAwesomeIconView(FontAwesomeIcon.TH_LARGE);
+		appsIcon.setGlyphSize(28d);
+		appsIcon.setWrappingWidth(28d);
+		
+		messagesButton = new JFXButton("", messagesIcon);
+		FXUtils.setFixedSizeOf(messagesButton, 50d, 40d);
 		messagesButton.setOnAction(a -> profileTabPane.getSelectionModel().select(0));
-		membersButton = new JFXButton("", new ImageView(new Image("/resources/clientBar/users.png", /*48*/ 32d, 27d, true, false)));
-		membersButton.setPrefWidth(10d);
+		membersButton = new JFXButton("", usersIcon);
+		FXUtils.setFixedSizeOf(membersButton, 50d, 40d);
 		membersButton.setOnAction(b -> profileTabPane.getSelectionModel().select(1));
-		appsButton = new JFXButton("", new ImageView(new Image("/resources/clientBar/apps.png", /*63*/32d, 62d, true, false)));
-		appsButton.setPrefWidth(10d);
+		appsButton = new JFXButton("", appsIcon);
+		FXUtils.setFixedSizeOf(appsButton, 50d, 40d);
 		appsButton.setOnAction(c -> profileTabPane.getSelectionModel().select(2));
 		profileTabButtonBox = new HBox(messagesButton, membersButton, appsButton);
-		profileTabButtonBox.setPadding(new Insets(5d, 0d, 10d, 0d));
+		profileTabButtonBox.setPadding(new Insets(10d, 0d, 10d, 0d));
 		profileTabButtonBox.setAlignment(Pos.CENTER);
 		
 		profileBox = new VBox(profileImageBox, profileNameLabel, profileTabButtonBox);

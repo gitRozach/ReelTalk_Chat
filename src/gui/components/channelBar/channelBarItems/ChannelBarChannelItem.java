@@ -5,20 +5,20 @@ public abstract class ChannelBarChannelItem implements ChannelBarItem {
 	protected String channelName;
 	
 	public ChannelBarChannelItem(int id, String name) {
-		this.channelId = id;
-		this.channelName = name;
+		channelId = id;
+		channelName = name;
 	}
 	
 	public int getChannelId() {
 		return channelId;
 	}
-	public void setChannelId(int channelId) {
-		this.channelId = channelId;
+	public void setChannelId(int id) {
+		channelId = id;
 	}
 	public String getChannelName() {
 		return channelName;
 	}
-	public void setChannelName(String channelName) {
-		this.channelName = channelName;
+	public void setChannelName(String name) {
+		channelName = name;
 	}
 }

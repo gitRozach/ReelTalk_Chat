@@ -24,4 +24,26 @@
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
 9"Rozach(¡ÀÄÊ—.[
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
-10"Rozach(îËÄÊ—.
+10"Rozach(îËÄÊ—.f
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
+"hallo nochmal"Rozach(İ›¤ü—.]
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+:A1:"Rozach(ûÀ¤ü—.b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+	:A1: :A1:"Rozach(–œ©ü—.g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#:A6: :A6: :A6:"Rozach(ºø­ü—.p
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage2
+,:A42: :A42: :A42: :A42:"Rozach(Ííµü—.d
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
+ :A92: :A92:"Rozach(ûá½ü—.g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#:A8: :A8: :A8:"Rozach(¾œÃü—.`
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
+:A104A:"Rozach(¤½Ãü—.j
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
+&funzt jetzt leude"Rozach(¬ëÃü—.h
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage*
+$also chillt mal"Rozach(Â€Äü—.f
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
+"sonst klappts"Rozach(·˜Äü—.

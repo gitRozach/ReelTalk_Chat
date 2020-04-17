@@ -13,6 +13,10 @@ public class ParagraphMessageItem extends VBox implements MessageFieldItem  {
 	}
 	
 	public ParagraphMessageItem(double height) {
+		initialize(height);
+	}
+	
+	private void initialize(double height) {
 		initSpacer(height);
 		initStyleClass("paragraph-message-item");
 	}

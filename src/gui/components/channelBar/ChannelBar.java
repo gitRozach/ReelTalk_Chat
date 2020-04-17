@@ -3,6 +3,8 @@ package gui.components.channelBar;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeView;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gui.components.channelBar.channelBarItems.ChannelBarChannelItem;
 import gui.components.channelBar.channelBarItems.ChannelBarClientItem;
 import gui.components.channelBar.channelBarItems.ChannelBarItem;
@@ -20,7 +22,6 @@ import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
@@ -35,15 +36,17 @@ public class ChannelBar extends StackPane {
 	private HBox serverBarBox;
 	private HBox buttonBox;
 	private ScrollPane channels;
+	
 	private JFXButton microphoneButton;
 	private JFXButton speakersButton;
+	private JFXButton callButton;
 	private JFXTreeView<ChannelBarItem> channelView;
 		
 	private ObjectEventHandler<ChannelBarChannelItem> onChannelClickedHandler;
 	private ObjectEventHandler<ChannelBarClientItem> onClientClickedHandler; 
 	
 	public ChannelBar()	{
-		this(false);
+		this(true);
 	}
 	
 	public ChannelBar(boolean initialize) {
@@ -60,7 +63,6 @@ public class ChannelBar extends StackPane {
 		initEventHandlers();
 		initContentBox();
 		initMouseListener();
-		//loadContent(contentBox);
 		getChildren().add(contentBox);
 	}
 
@@ -70,19 +72,36 @@ public class ChannelBar extends StackPane {
 	}
 	
 	private void initButtons() {	
-		microphoneButton = new JFXButton("", new ImageView(new Image("/resources/channelBar/microphone_enabled.png", 24d, 24d, true, false)));
-		speakersButton = new JFXButton("", new ImageView(new Image("/resources/channelBar/speakers_enabled.png", 24d, 24d, true, false)));
-		//callButton = new JFXButton("[Call]");
+		FontAwesomeIconView microphoneIconEnabled = new FontAwesomeIconView(FontAwesomeIcon.MICROPHONE);
+		microphoneIconEnabled.setGlyphSize(25d);
+		microphoneIconEnabled.setWrappingWidth(25d);
+		FontAwesomeIconView headphonesIcon = new FontAwesomeIconView(FontAwesomeIcon.HEADPHONES);
+		headphonesIcon.setGlyphSize(25d);
+		headphonesIcon.setWrappingWidth(25d);
+		FontAwesomeIconView phoneIcon = new FontAwesomeIconView(FontAwesomeIcon.PHONE);
+		phoneIcon.setGlyphSize(25d);
+		phoneIcon.setWrappingWidth(25d);
 		
-		buttonBox = new HBox(0d);
+		microphoneButton = new JFXButton("", microphoneIconEnabled);
+		microphoneButton.prefWidthProperty().bind(widthProperty().divide(4d));
+		FXUtils.setFixedHeightOf(microphoneButton, 40d);
+		speakersButton = new JFXButton("", headphonesIcon);
+		speakersButton.prefWidthProperty().bind(widthProperty().divide(4d));
+		FXUtils.setFixedHeightOf(speakersButton, 40d);
+		callButton = new JFXButton("", phoneIcon);
+		callButton.prefWidthProperty().bind(widthProperty().divide(2d));
+		FXUtils.setFixedHeightOf(callButton, 40d);
+		
+		buttonBox = new HBox(10d);
 		buttonBox.getStyleClass().add("buttonBox");
 		buttonBox.setAlignment(Pos.CENTER_LEFT);
-		buttonBox.getChildren().addAll(microphoneButton, speakersButton);
-		
+		buttonBox.getChildren().addAll(microphoneButton, speakersButton, callButton);		
+		HBox.setHgrow(callButton, Priority.ALWAYS);
 	}
 	
 	private void initChannels() {
 		channelView = new JFXTreeView<ChannelBarItem>(new TreeItem<ChannelBarItem>(null));
+		channelView.setFocusTraversable(false);
 		channelView.setCellFactory((TreeView<ChannelBarItem> param) -> new ChannelCell());
 		channelView.setShowRoot(false);
 				

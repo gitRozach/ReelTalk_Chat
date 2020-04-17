@@ -2,6 +2,7 @@ package gui.views;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
@@ -61,6 +62,8 @@ public class LoginView extends StackPane {
 	private JFXButton registerCancelButton;
 	
 	private JFXTextField hostPortField;
+	private JFXComboBox<String> hostDirectories;
+	private JFXCheckBox hostRememberDirectory;
 	private JFXButton hostButton;
 	private JFXButton hostCancelButton;
 	
@@ -211,9 +214,7 @@ public class LoginView extends StackPane {
 		setPadding(new Insets(150d, 200d, 0d, 200d));
 		setMinWidth(getMinViewWidth());
 		setMinHeight(getMinViewHeight());
-		//setFillWidth(true);
 		getChildren().add(tabPane);
-		VBox.setVgrow(tabPane, Priority.ALWAYS);
 	}
 	
 	private void initContainers() {
@@ -255,9 +256,37 @@ public class LoginView extends StackPane {
 	}
 	
 	private void initHostContainers() {
-		hostContainer = new VBox();
+		FontAwesomeIconView portIcon = new FontAwesomeIconView(FontAwesomeIcon.SERVER);
+		portIcon.setGlyphSize(25d);
+		portIcon.setWrappingWidth(25d);
+		FontAwesomeIconView directoryIcon = new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN);
+		directoryIcon.setGlyphSize(25d);
+		directoryIcon.setWrappingWidth(25d);
+		
+		HBox hostPortBox = createIconBox(portIcon, 20d, hostPortField);
+		HBox.setHgrow(hostPortField, Priority.ALWAYS);
+		
+		HBox hostDirectoryBox = createIconBox(directoryIcon, 20d, hostDirectories);
+		
+		HBox hostRememberDirectoryBox = new HBox(hostRememberDirectory);
+		hostRememberDirectoryBox.setFillHeight(true);
+		hostRememberDirectoryBox.setAlignment(Pos.CENTER_LEFT);
+		
+		HBox hostSpacer = new HBox();
+		
+		HBox hostButtons = new HBox(20d);
+		hostButtons.setAlignment(Pos.CENTER);
+		hostButtons.setPadding(new Insets(100d, 0d, 0d, 0d));
+		hostButtons.getChildren().addAll(hostButton, hostCancelButton);
+		HBox.setHgrow(hostButton, Priority.ALWAYS);
+		HBox.setHgrow(hostCancelButton, Priority.ALWAYS);
+		
+		hostContainer = new VBox(20d);
+		hostContainer.setPadding(new Insets(150d, 0d, 150d, 0d));
 		hostContainer.setAlignment(Pos.TOP_CENTER);
-		hostContainer.setFillWidth(true);		
+		hostContainer.setFillWidth(true);
+		hostContainer.getChildren().addAll(hostPortBox, hostDirectoryBox, hostRememberDirectoryBox, hostSpacer, hostButtons);
+		VBox.setVgrow(hostSpacer, Priority.SOMETIMES);
 	}
 	
 	private void initRegisterContainers() {
@@ -424,9 +453,13 @@ public class LoginView extends StackPane {
 	
 	private void initHostControls() {
 		hostPortField = new JFXTextField();
-		hostButton = new JFXButton();
+		hostPortField.setPromptText("Server-Port");
+		hostDirectories = new JFXComboBox<String>();
+		hostDirectories.prefWidthProperty().bind(hostPortField.widthProperty());
+		hostRememberDirectory = new JFXCheckBox("Verzeichnis merken");
+		hostButton = new JFXButton("Server starten");
 		hostButton.getStyleClass().add("confirm-button");
-		hostCancelButton = new JFXButton();
+		hostCancelButton = new JFXButton("Abbrechen");
 		hostCancelButton.getStyleClass().add("cancel-button");
 	}
 	

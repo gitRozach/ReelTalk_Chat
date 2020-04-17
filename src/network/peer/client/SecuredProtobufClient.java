@@ -64,7 +64,7 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 	    	}
 	    	return false;
     	}
-    	catch(IOException io) {
+    	catch(Exception io) {
     		logger.severe(io.toString());
     		return false;
     	}

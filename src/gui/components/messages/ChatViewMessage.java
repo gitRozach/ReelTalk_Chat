@@ -58,18 +58,10 @@ public class ChatViewMessage extends BorderPane {
 		if(value == null || value.isEmpty())
 			return null;
 		try {
-			String emojiText = value;
-			if(emojiText.startsWith(":"))
-				emojiText = emojiText.substring(1);
-			if(emojiText.endsWith(":"))
-				emojiText = emojiText.substring(0, emojiText.length() - 1);
-			String prefix; // Category (A, B, C, ..., H)
-			String infix; // Index (1, 2, 3, ...)
-			String postfix; // Skin color (A, B, C, D, E or F)
-			if (isSmiley(StringUtils.trimHeadAndTail(emojiText))) {
-				prefix = emojiText.substring(1, 2);
-				infix = emojiText.substring(2, emojiText.length() - 2);
-				postfix = emojiText.substring(emojiText.length() - 2, emojiText.length() - 1);
+			if (isSmiley(StringUtils.trimHeadAndTail(value))) {
+				String prefix = value.substring(1, 2); // Category (A, B, C, ..., H)
+				String infix = value.substring(2, value.length() - 2); // Index (1, 2, 3, ...)
+				String postfix = value.substring(value.length() - 2, value.length() - 1); // Skin color (A, B, C, D, E or F)
 				return new Image("/resources/smileys/category" + prefix + "/" + prefix + infix + postfix + ".png");
 			} 
 		} 
@@ -94,6 +86,7 @@ public class ChatViewMessage extends BorderPane {
 
 	private FlowPane splitMessage(Font font) {
 		FlowPane messagePane = new FlowPane();
+		messagePane.setPadding(new Insets(10d, 10d, 10d, 10d));
 		messagePane.setAlignment(Pos.CENTER_LEFT);
 		messagePane.setHgap(3d);
 		messagePane.setVgap(3d);

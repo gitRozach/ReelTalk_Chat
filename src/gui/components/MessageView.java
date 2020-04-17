@@ -246,6 +246,7 @@ public class MessageView extends StackPane {
 	}
 	
 	private void initRoot() {
+		setFocusTraversable(false);
 		setOnContextMenuRequested(a -> onContextMenuRequested(a));
 		setOnMouseClicked(b -> onMouseClicked(b));
 		getChildren().add(scrollPane);
@@ -262,8 +263,6 @@ public class MessageView extends StackPane {
 					File imgFile = fc.showOpenDialog(null);
 					if (imgFile != null) {
 						try {
-							//setBackground(new Background(new BackgroundImage(new Image(imgFile.toURI().toURL().toString()), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, new BackgroundS)));
-							//setBackground(new Background(new BackgroundFill(Color.rgb(64, 64, 64, 0d), new CornerRadii(100d), new Insets(5d))));
 							setStyle("-fx-background-image: url(\"" + imgFile.toURI().toURL() + "\");" + "-fx-background: rgba(64, 64, 64, 0);");
 						} 
 						catch (Exception e) {
@@ -279,9 +278,6 @@ public class MessageView extends StackPane {
 	}
 
 	private ParallelTransition createAddAnimation(ChatViewMessage message, Duration duration, Interpolator interpolator) {
-		message.applyCss();
-		message.layout();
-
 		ScaleTransition growAnimation = new ScaleTransition(duration, message);
 		growAnimation.setFromY(0.5d);
 		growAnimation.setToY(1d);

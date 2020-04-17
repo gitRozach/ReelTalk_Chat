@@ -3,6 +3,7 @@ package gui.components.messageField;
 import com.jfoenix.controls.JFXNodesList;
 
 import gui.animations.Animations;
+import gui.components.messageField.items.EmojiMessageItem;
 import handler.ObjectEventHandler;
 import handler.events.ObjectEvent;
 import javafx.animation.Animation;
@@ -54,6 +55,7 @@ public class MessageField extends VBox {
 		openProperty = new SimpleBooleanProperty(false);
 
 		emojiPane = new EmojiTabPane();
+		emojiPane.getEmojiSkinChooser().setOnSkinChooserClicked(a -> onSkinChooserClicked());
 		emojiPane.setMinHeight(0d);
 		emojiPane.setPrefHeight(0d);
 		emojiPane.setMaxHeight(0d);
@@ -69,6 +71,12 @@ public class MessageField extends VBox {
 			}
 		});
 		onFileButtonClicked = (mouseEvent -> {});
+		onEmojiPressed = new ObjectEventHandler<String>() {
+			@Override
+			public void handle(ObjectEvent<String> event) {
+				onEmojiClicked(event.getAttachedObject());
+			}
+		};
 		
 		emojiTextField = new EmojiTextField();
 		FXUtils.setFixedHeightOf(emojiTextField, 50d);
@@ -124,6 +132,30 @@ public class MessageField extends VBox {
 		messageBox.getChildren().addAll(emojiButton, emojiTextField, fileButtons);
 
 		getChildren().addAll(messageBox, emojiPane);
+	}
+	
+	public void onEmojiClicked(String emojiString) {		
+		String currentText = emojiTextField.getCurrentText();
+		int currentTextPos = emojiTextField.getOldCaretPosition();
+		
+		if(!currentText.isEmpty()) {
+			String firstWord = currentText.substring(0, currentTextPos);
+			String secondWord = currentText.substring(currentTextPos);
+			
+			if(!firstWord.isEmpty())
+				emojiTextField.addText(firstWord);
+			emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + emojiString.charAt(0) + "/" + emojiString + ".png", emojiString));
+			if(!secondWord.isEmpty())
+				emojiTextField.addText(secondWord);
+		}			
+		else
+			emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + emojiString.charAt(0) + "/" + emojiString + ".png", emojiString));
+		emojiTextField.getInputField().requestFocus();	
+	}
+
+	public void onSkinChooserClicked() {
+		for (int i = 0; i < EmojiCategory.values().length; i++)
+			emojiPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(emojiPane.getEmojiSkinChooser().getCurrentColorIndex()), true);
 	}
 
 	public void openEmojiPane() {

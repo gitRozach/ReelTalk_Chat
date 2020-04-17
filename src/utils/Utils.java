@@ -47,6 +47,16 @@ public class Utils {
 	public static boolean isIntBetween(int value, int min, int max)	{
 		return value >= min && value <= max;
 	}
+	
+	public static Duration durationBetween(long millisOne, long millisTwo) {
+		return new Duration(millisOne).subtract(new Duration(millisTwo));
+	}
+	
+	public static long durationBetween(Duration durationOne, Duration durationTwo) {
+		if(durationOne == null || durationTwo == null)
+			return -1L;
+		return (long)durationOne.subtract(durationTwo).toMillis();
+	}
 
 	public static String durationToMMSS(Duration duration) {
 		int minutes = (int) duration.toSeconds() / 60;

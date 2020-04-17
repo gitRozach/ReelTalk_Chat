@@ -20,63 +20,80 @@ public class AudioLibrary extends TableView<AudioLibraryItem> {
 	
 	public AudioLibrary() {
 		super();
-
+		initialize();
+	}
+	
+	public void initialize() {
+		initProperties();
+		initTableColumnTitle();
+		initTableColumnArtist();
+		initTableColumnAlbum();
+		initTableColumnYear();
+		initRoot();
+	}
+	
+	private void initProperties() {
 		items = FXCollections.observableArrayList();
-
+	}
+	
+	private void initTableColumnTitle() {
 		tableColumnTitle = new TableColumn<>("Titel");
 		tableColumnTitle.setSortable(false);
 		tableColumnTitle.prefWidthProperty().bind(widthProperty().multiply(0.25d));
-		tableColumnTitle.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
-						return param.getValue().titleProperty();
-					}
-				});
-
+		tableColumnTitle.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
+				return param.getValue().titleProperty();
+			}
+		});
+	}
+	
+	private void initTableColumnArtist() {
 		tableColumnArtist = new TableColumn<>("Interpret");
 		tableColumnArtist.setSortable(false);
 		tableColumnArtist.prefWidthProperty().bind(widthProperty().multiply(0.25d));
-		tableColumnArtist.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
-						return param.getValue().artistProperty();
-					}
-				});
-
+		tableColumnArtist.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
+				return param.getValue().artistProperty();
+			}
+		});
+	}
+	
+	private void initTableColumnAlbum() {
 		tableColumnAlbum = new TableColumn<>("Album");
 		tableColumnAlbum.setSortable(false);
 		tableColumnAlbum.prefWidthProperty().bind(widthProperty().multiply(0.25d));
-		tableColumnAlbum.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
-						return param.getValue().albumProperty();
-					}
-				});
-
+		tableColumnAlbum.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
+				return param.getValue().albumProperty();
+			}
+		});
+	}
+	
+	private void initTableColumnYear() {
 		tableColumnYear = new TableColumn<>("Jahr");
 		tableColumnYear.setSortable(false);
 		tableColumnYear.prefWidthProperty().bind(widthProperty().multiply(0.25d));
-		tableColumnYear.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
-						return param.getValue().yearProperty();
-					}
-				});
-
+		tableColumnYear.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AudioLibraryItem, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<AudioLibraryItem, String> param) {
+				return param.getValue().yearProperty();
+			}
+		});
+	}
+	
+	private void initRoot() {
+		getColumns().add(tableColumnTitle);
+		getColumns().add(tableColumnArtist);
+		getColumns().add(tableColumnAlbum);
+		getColumns().add(tableColumnYear);
 		setPlaceholder(new Label(""));
 		setFixedCellSize(40d);
 		getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		setColumnResizePolicy(AudioLibrary.CONSTRAINED_RESIZE_POLICY);
 		setEditable(false);
-
-		getColumns().add(tableColumnTitle);
-		getColumns().add(tableColumnArtist);
-		getColumns().add(tableColumnAlbum);
-		getColumns().add(tableColumnYear);
 		setItems(items);
 	}
 

@@ -10,17 +10,14 @@ import java.util.Comparator;
 
 import com.google.protobuf.Message;
 
+import apps.audioPlayer.AudioPlayer;
 import gui.components.LoadableStackPane;
 import gui.components.channelBar.channelBarItems.ChannelBarChannelItem;
 import gui.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.components.channelBar.channelBarItems.TextChannelBarItem;
-import gui.components.messageField.EmojiCategory;
-import gui.components.messageField.EmojiSkinColor;
-import gui.components.messageField.EmojiTabPane;
-import gui.components.messageField.EmojiTextField;
-import gui.components.messageField.items.EmojiMessageItem;
 import gui.components.messages.ChatViewMessage;
 import gui.views.ChatView;
+import gui.views.HostView;
 import gui.views.LoginView;
 import handler.ObjectEventHandler;
 import handler.events.ObjectEvent;
@@ -58,6 +55,7 @@ public class ReelTalkSession extends Application {
 	
 	private LoginView loginView;
 	private ChatView chatView;
+	private HostView hostView;
 	
 	private ReelTalkServer chatServer;
 	private ReelTalkClient chatClient;
@@ -96,7 +94,6 @@ public class ReelTalkSession extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			initialize(primaryStage);
-			startServer();
 			loadView(loginView);
 			showWindow(800d, 1500d, 850d, 1000d);
 		}
@@ -106,11 +103,7 @@ public class ReelTalkSession extends Application {
 	}
 	
 	public void loadView(Node view) {
-		rootPane.loadContent(view, 3000L);
-	}
-	
-	public void startServer() throws Exception {
-		chatServer.start();
+		ThreadUtils.createNewThread(() -> rootPane.loadContent(view, 3000L), true);
 	}
 	
 	public void showWindow() {
@@ -172,7 +165,8 @@ public class ReelTalkSession extends Application {
 				window.close();
 			if(chatClient != null)
 				chatClient.close();
-			chatServer.stop();
+			if(chatServer != null)
+				chatServer.close();
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -182,7 +176,6 @@ public class ReelTalkSession extends Application {
 	
 	public void initialize(Stage stage) throws Exception {
 		initProperties();
-		initServer();
 		initLoginView();
 		initChatView();
 		initRootPane();
@@ -193,10 +186,6 @@ public class ReelTalkSession extends Application {
 	
 	private void initProperties() {
 		currentChannelId = -1;
-	}
-	
-	private void initServer() throws Exception {
-		chatServer = new ReelTalkServer(HOST_PROTOCOL, HOST_ADDRESS, HOST_PORT);
 	}
 	
 	private void initStage(Stage stage) {
@@ -227,16 +216,22 @@ public class ReelTalkSession extends Application {
 		rootPane.initialize();
 	}
 	
-	private void initChatView() {
-		chatView = new ChatView(true, window);
-	}
-	
 	private void initLoginView() {
 		loginView = new LoginView(true, window);
 		loginView.getLoginButton().setOnAction(login -> onLoginButtonClicked());
 		loginView.getLoginCancelButton().setOnAction(cancelLogin -> onLoginCancelButtonClicked());
 		loginView.getRegisterButton().setOnAction(register -> onRegisterButtonClicked());
 		loginView.getRegisterCancelButton().setOnAction(cancelRegister -> onRegisterCancelButtonClicked());
+		loginView.getHostButton().setOnAction(host -> onHostButtonClicked());
+		loginView.getHostCancelButton().setOnAction(cancelHost -> onHostCancelButtonClicked());
+	}
+	
+	private void initChatView() {
+		chatView = new ChatView(true, window);
+	}
+	
+	private void initHostView() {
+		hostView = new HostView();
 	}
 	
 	private void initChatClientEventHandlers() {
@@ -251,29 +246,12 @@ public class ReelTalkSession extends Application {
 	private void initChatViewEventHandlers() {
 		chatView.getMessageInputField().setOnEnterPressed(a -> onInputFieldEnterPressed());
 		chatView.getMessageInputField().getTextField().setOnEnterPressed(b -> onInputFieldEnterPressed());
-		chatView.getMessageInputField().setOnEmojiPressed(new ObjectEventHandler<String>() {
-			@Override
-			public void handle(ObjectEvent<String> event) {
-				onEmojiClicked(event.getAttachedObject());
-			}
+		chatView.getMessageView().getScrollPane().vvalueProperty().addListener(ScrollValueVerticalListener);				
+		chatView.getClientBar().getMediaView().setOnMouseClicked(a -> {
+			@SuppressWarnings("resource")
+			AudioPlayer audioPlayer = new AudioPlayer();
+			rootPane.showPopup(audioPlayer.getUI());
 		});
-		
-		chatView.getMessageInputField().getEmojiPane().getEmojiSkinChooser().setOnSkinChooserClicked(c -> onSkinChooserClicked());
-		
-		chatView.getMessageView().getScrollPane().vvalueProperty().addListener(ScrollValueVerticalListener);
-		
-//		chatView.getMessageView().getScrollPane().setOnScroll(a -> {
-//			if(a.getDeltaY() > 0d && chatView.getMessageView().getScrollValueVertical() == 0d && !chatView.getMessageView().hasUnloadedMessages()) {
-//				chatClient.sendMessage(ClientRequests.newChannelMessageGetRequest(	1, 
-//																					chatClient.getIdentityManager().getClientUsername(), 
-//																					chatClient.getIdentityManager().getClientPassword(), 
-//																					currentChannelId, 
-//																					chatView.getMessageView().getTotalMessageCount() - 1, 
-//																					20));
-//				System.out.println("ChannelMessageGetRequest sent.");
-//			}
-//		});
-		
 		chatView.getChannelBar().setOnChannelClicked(new ObjectEventHandler<ChannelBarChannelItem>() {
 			@Override
 			public void handle(ObjectEvent<ChannelBarChannelItem> event) {
@@ -288,23 +266,26 @@ public class ReelTalkSession extends Application {
 		String username = loginView.getLoginUsernameText();
 		String password = loginView.getLoginPasswordText();
 		
-		ThreadUtils.createNewThread(() -> {
-			boolean connectedToServer = false;
+		ThreadUtils.createNewThread(() -> {			
+			rootPane.setLoading(true);
+			ThreadUtils.sleep(1000L);
 			try {
 				if(chatClient != null)
 					chatClient.close();
 				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, port);
 				initChatClientEventHandlers();
-				connectedToServer = chatClient.connect();
+
+				if(chatClient.connect())
+					chatClient.sendMessage(ClientRequests.newLoginRequest(1, username, password));
+				else {
+					rootPane.setLoading(false);
+					rootPane.showPopup("Es konnte keine Verbindung zum Server hergestellt werden.");
+				}
 			} 
 			catch (Exception e) {
-				connectedToServer = false;
+				rootPane.setLoading(false);
+				rootPane.showPopup(e.getMessage());
 			}
-			
-			if(connectedToServer)
-				chatClient.sendMessage(ClientRequests.newLoginRequest(1, username, password));
-			else
-				;//Show Error Popup
 		}, true);
 	}
 	
@@ -319,28 +300,54 @@ public class ReelTalkSession extends Application {
 		String password = loginView.getRegisterPasswordText();
 		String passwordRepeat = loginView.getRegisterPasswordRepeatText();
 		
-		ThreadUtils.createNewThread(() -> {
-			boolean connectedToServer = false;
+		ThreadUtils.createNewThread(() -> {			
+			rootPane.setLoading(true);
+			ThreadUtils.sleep(1000L);
 			try {
 				if(chatClient != null)
 					chatClient.close();
 				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, port);
 				initChatClientEventHandlers();
-				connectedToServer = chatClient.connect();
+				if(chatClient.connect())
+					chatClient.sendMessage(ClientRequests.newRegistrationRequest(1, username, password, passwordRepeat, ""));
+				else {
+					rootPane.setLoading(false);
+					rootPane.showPopup("Es konnte keine Verbindung zum Server hergestellt werden.");
+				}
 			} 
 			catch (Exception e) {
-				connectedToServer = false;
+				rootPane.setLoading(false);
+				rootPane.showPopup(e.getMessage());
 			}
-			
-			if(connectedToServer)
-				chatClient.sendMessage(ClientRequests.newRegistrationRequest(1, username, password, passwordRepeat, ""));
-			else
-				;//Show Error Popup
 		}, true);
 	}
 	
 	public void onRegisterCancelButtonClicked() {
 		closeAll();	
+	}
+	
+	public void onHostButtonClicked() {
+		String port = loginView.getHostPortText();
+		ThreadUtils.createNewThread(() -> {			
+			rootPane.setLoading(true);
+			ThreadUtils.sleep(1000L);
+			try {
+				if(chatServer != null)
+					chatServer.close();
+				chatServer = new ReelTalkServer(HOST_PROTOCOL, "localhost", Integer.parseInt(port));
+				chatServer.start();
+				initHostView();
+				loadView(hostView);
+			}
+			catch(Exception e) {
+				rootPane.setLoading(false);
+				rootPane.showPopup(e.getMessage());
+			}
+		}, true);
+	}
+	
+	public void onHostCancelButtonClicked() {
+		closeAll();
 	}
 	
 	public void onChannelBarItemClicked(ChannelBarChannelItem item) {
@@ -358,128 +365,98 @@ public class ReelTalkSession extends Application {
 		}
 	}
 	
-	public void onMessageReceived(ProtobufMessage reception) {
-		Message message = reception.getMessage();
-		if(message == null)
-			return;
-		else if(message instanceof ClientRequestRejectedEvent) {
-			ClientRequestRejectedEvent rejectedEvent = (ClientRequestRejectedEvent) message;
-			rootPane.showPopup(rejectedEvent.getRejectionMessage());
-		}
-		else if(message instanceof ClientLoginEvent) {
-			System.out.println("ClientLoginEvent");
-			ClientLoginEvent loginMessage = (ClientLoginEvent) message;
-			
-			chatView.getClientBar().setProfileName(loginMessage.getAccount().getProfile().getBase().getUsername());
-			for(ClientChannel currentChannel : loginMessage.getServerChannelList())
-				chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
-			for(ClientProfile currentProfile : loginMessage.getMemberProfileList()) 
-				chatView.getClientBar().addMemberItem(currentProfile.getBase().getId(), currentProfile.getBase().getUsername());
-			loadView(chatView);
-			setWindowMinSize(1000d, 900d);
-		}
-		else if(message instanceof ChannelMessagePostEvent) {
-			ChannelMessagePostEvent channelMessage = (ChannelMessagePostEvent) message;
-			for(ChannelMessage currentMessage : channelMessage.getMessageList()) {
-				ChatViewMessage newMessage = new ChatViewMessage();
-				newMessage.setSender(currentMessage.getMessageBase().getSenderUsername());
-				newMessage.setMessage(currentMessage.getMessageBase().getMessageText());
-				newMessage.setTime(currentMessage.getMessageBase().getTimestampMillis());
-				chatView.getMessageView().addMessageAnimated(newMessage);
-			}
-			if(channelMessage.getMessageCount() > 0) {
-				Platform.runLater(() -> {
-					chatView.getMessageView().applyCss();
-					chatView.getMessageView().layout();
-					chatView.getMessageView().setScrollValueVertical(1d);
-				});
-			}
-		}
-		else if(message instanceof ChannelMessageGetEvent) {
-			ChannelMessageGetEvent channelMessage = (ChannelMessageGetEvent) message;
-			for(int i = channelMessage.getMessageCount() - 1; i >= 0; --i) {
-				ChannelMessage currentMessage = channelMessage.getMessage(i);
-				ChatViewMessage newMessage = new ChatViewMessage();
-				newMessage.setSender(currentMessage.getMessageBase().getSenderUsername());
-				newMessage.setMessage(currentMessage.getMessageBase().getMessageText());
-				newMessage.setTime(currentMessage.getMessageBase().getTimestampMillis());
-				chatView.getMessageView().addMessage(0, newMessage);
-			}
-			if(channelMessage.getMessageCount() > 0) {
-				Platform.runLater(() -> {
-					chatView.getMessageView().applyCss();
-					chatView.getMessageView().layout();
-					chatView.getMessageView().setScrollValueVertical(1d);
-				});
-			}
-			chatView.getMessageView().setLoading(false);
-		}
-		else if(message instanceof ClientChannelJoinEvent) {
-			ClientChannelJoinEvent joinEvent = (ClientChannelJoinEvent) message;
-			int channelId = joinEvent.getChannelBase().getChannelId();
-			int clientId = chatClient.getIdentityManager().getClientId();
-			String clientUsername = chatClient.getIdentityManager().getClientUsername();
-			
-			currentChannelId = channelId;
-					
-			if(!chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
-				chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(clientId, clientUsername));
-			
-			for(ChannelMessage channelMessage : joinEvent.getChannelMessageList()) {
-				ChatViewMessage newMessage = new ChatViewMessage();
-				newMessage.setSender(channelMessage.getMessageBase().getSenderUsername());
-				newMessage.setMessage(channelMessage.getMessageBase().getMessageText());
-				newMessage.setTime(channelMessage.getMessageBase().getTimestampMillis());
-				chatView.getMessageView().addMessage(newMessage);
-			}
-			chatView.getMessageView().setLoading(false);
-		}
-		else if(message instanceof ClientChannelLeaveEvent) {
-			ClientChannelLeaveEvent leaveEvent = (ClientChannelLeaveEvent) message;
-			int channelId = leaveEvent.getChannelBase().getChannelId();
-			int clientId = leaveEvent.getEventBase().getRequestorClientBase().getId();
-			
-			if(chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
-				chatView.getChannelBar().removeClientFromChannel(clientId, channelId);
-		}
-		else if(message instanceof ClientChannelGetEvent) {
-			ClientChannelGetEvent channelEvent = (ClientChannelGetEvent) message;
-			for(ClientChannel currentChannel : channelEvent.getChannelList())
-				chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
-		}
-	}
-	
 	public void onInputFieldEnterPressed() {
 		ChannelMessagePostRequest request = ClientRequests.newChannelMessagePostRequest(1, chatClient.getIdentityManager().getClientUsername(), chatClient.getIdentityManager().getClientPassword(), 1, chatView.getMessageInputField().getText());
 		chatClient.sendMessage(request);
 		chatView.getMessageInputField().getTextField().clear();
 	}
 	
-	public void onEmojiClicked(String emojiString) {		
-		EmojiTextField emojiTextField = chatView.getMessageInputField().getTextField();
-		
-		String currentText = emojiTextField.getCurrentText();
-		int currentTextPos = emojiTextField.getOldCaretPosition();
-		
-		if(!currentText.isEmpty()) {
-			String firstWord = currentText.substring(0, currentTextPos);
-			String secondWord = currentText.substring(currentTextPos);
-			
-			if(!firstWord.isEmpty())
-				emojiTextField.addText(firstWord);
-			emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + emojiString.charAt(0) + "/" + emojiString + ".png", emojiString));
-			if(!secondWord.isEmpty())
-				emojiTextField.addText(secondWord);
-		}			
-		else
-			emojiTextField.addItem(new EmojiMessageItem("/resources/smileys/category" + emojiString.charAt(0) + "/" + emojiString + ".png", emojiString));
-		emojiTextField.getInputField().requestFocus();	
-	}
-
-	public void onSkinChooserClicked() {
-		EmojiTabPane emojiTabPane = chatView.getMessageInputField().getEmojiPane();
-		for (int i = 0; i < EmojiCategory.values().length; i++)
-			emojiTabPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(emojiTabPane.getEmojiSkinChooser().getCurrentColorIndex()), true);
+	public void onMessageReceived(ProtobufMessage reception) {
+		if(reception == null || !reception.hasMessage())
+			return;
+		Message message = reception.getMessage();
+		if(message instanceof ClientRequestRejectedEvent)
+			onClientRequestRejectedEvent((ClientRequestRejectedEvent) message);
+		else if(message instanceof ClientLoginEvent)
+			onClientLoginEvent((ClientLoginEvent) message);
+		else if(message instanceof ChannelMessagePostEvent)
+			onChannelMessagePostEvent((ChannelMessagePostEvent) message);
+		else if(message instanceof ChannelMessageGetEvent)
+			onChannelMessageGetEvent((ChannelMessageGetEvent) message);
+		else if(message instanceof ClientChannelJoinEvent)
+			onClientChannelJoinEvent((ClientChannelJoinEvent) message);
+		else if(message instanceof ClientChannelLeaveEvent)
+			onClientChannelLeaveEvent((ClientChannelLeaveEvent) message);
+		else if(message instanceof ClientChannelGetEvent)
+			onClientChannelGetEvent((ClientChannelGetEvent) message);
 	}
 	
+	public void onClientRequestRejectedEvent(ClientRequestRejectedEvent event) {
+		rootPane.setLoading(false);
+		rootPane.showPopup(event.getRejectionMessage());
+	}
+	
+	public void onClientLoginEvent(ClientLoginEvent event) {
+		chatView.getClientBar().setProfileName(event.getAccount().getProfile().getBase().getUsername());
+		for(ClientChannel currentChannel : event.getServerChannelList())
+			chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
+		for(ClientProfile currentProfile : event.getMemberProfileList()) 
+			chatView.getClientBar().addMemberItem(currentProfile.getBase().getId(), currentProfile.getBase().getUsername());
+		loadView(chatView);
+		setWindowMinSize(1000d, 900d);
+	}
+	
+	public void onChannelMessagePostEvent(ChannelMessagePostEvent event) {
+		for(ChannelMessage currentMessage : event.getMessageList()) {
+			ChatViewMessage newMessage = new ChatViewMessage();
+			newMessage.setSender(currentMessage.getMessageBase().getSenderUsername());
+			newMessage.setMessage(currentMessage.getMessageBase().getMessageText());
+			newMessage.setTime(currentMessage.getMessageBase().getTimestampMillis());
+			chatView.getMessageView().addMessageAnimated(newMessage);
+		}
+	}
+	
+	public void onChannelMessageGetEvent(ChannelMessageGetEvent event) {
+		for(int i = event.getMessageCount() - 1; i >= 0; --i) {
+			ChannelMessage currentMessage = event.getMessage(i);
+			ChatViewMessage newMessage = new ChatViewMessage();
+			newMessage.setSender(currentMessage.getMessageBase().getSenderUsername());
+			newMessage.setMessage(currentMessage.getMessageBase().getMessageText());
+			newMessage.setTime(currentMessage.getMessageBase().getTimestampMillis());
+			chatView.getMessageView().addMessage(0, newMessage);
+		}
+		chatView.getMessageView().setLoading(false);
+	}
+	
+	public void onClientChannelJoinEvent(ClientChannelJoinEvent event) {
+		int channelId = event.getChannelBase().getChannelId();
+		int clientId = chatClient.getIdentityManager().getClientId();
+		String clientUsername = chatClient.getIdentityManager().getClientUsername();
+		
+		currentChannelId = channelId;
+				
+		if(!chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
+			chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(clientId, clientUsername));
+		
+		for(ChannelMessage channelMessage : event.getChannelMessageList()) {
+			ChatViewMessage newMessage = new ChatViewMessage();
+			newMessage.setSender(channelMessage.getMessageBase().getSenderUsername());
+			newMessage.setMessage(channelMessage.getMessageBase().getMessageText());
+			newMessage.setTime(channelMessage.getMessageBase().getTimestampMillis());
+			chatView.getMessageView().addMessage(newMessage);
+		}
+		chatView.getMessageView().setLoading(false);
+	}
+	
+	public void onClientChannelLeaveEvent(ClientChannelLeaveEvent event) {
+		int channelId = event.getChannelBase().getChannelId();
+		int clientId = event.getEventBase().getRequestorClientBase().getId();
+		if(chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
+			chatView.getChannelBar().removeClientFromChannel(clientId, channelId);
+	}
+	
+	public void onClientChannelGetEvent(ClientChannelGetEvent event) {
+		for(ClientChannel currentChannel : event.getChannelList())
+			chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
+	}
 }
