@@ -300,7 +300,7 @@ public class ChannelBar extends StackPane {
 				TextChannelBarItem text = (TextChannelBarItem)item;
 				getStyleClass().add("channel-tree-cell");
 				setText(text.getChannelName());
-				setGraphic(null);
+				setGraphic(new FontAwesomeIconView(FontAwesomeIcon.HASHTAG));
 				setOnMouseClicked(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, text) {
 																		private static final long serialVersionUID = -8246283748073868549L;
 				}));
@@ -312,7 +312,7 @@ public class ChannelBar extends StackPane {
 				VoiceChannelBarItem voice = (VoiceChannelBarItem)item;
 				getStyleClass().add("channel-tree-cell");
 				setText(voice.getChannelName());
-				setGraphic(null);
+				setGraphic(new FontAwesomeIconView(FontAwesomeIcon.VOLUME_DOWN));
 				setOnMouseReleased(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, voice) {
 																		private static final long serialVersionUID = -8246283748073868549L;
 				}));

@@ -116,7 +116,7 @@ public class ChatViewMessage extends BorderPane {
 	}
 	
 	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/defaultStyle/GUIMessage.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/ChatViewMessage.css");
 		getStyleClass().add("gui-message");
 	}
 	

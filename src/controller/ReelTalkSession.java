@@ -60,7 +60,7 @@ public class ReelTalkSession extends Application {
 	private ReelTalkServer chatServer;
 	private ReelTalkClient chatClient;
 	
-	private int currentChannelId;
+	private volatile int currentChannelId;
 	
 	static final Comparator<ClientChannel> ClientChannelComparator = new Comparator<ClientChannel>() {
 		@Override
@@ -163,10 +163,12 @@ public class ReelTalkSession extends Application {
 		try {
 			if(window.isShowing())
 				window.close();
-			if(chatClient != null)
-				chatClient.close();
-			if(chatServer != null)
+			if(chatClient != null) 
+				chatClient.disconnect();
+			if(chatServer != null) {
+				chatServer.stop();
 				chatServer.close();
+			}
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
@@ -398,8 +400,16 @@ public class ReelTalkSession extends Application {
 	
 	public void onClientLoginEvent(ClientLoginEvent event) {
 		chatView.getClientBar().setProfileName(event.getAccount().getProfile().getBase().getUsername());
-		for(ClientChannel currentChannel : event.getServerChannelList())
-			chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
+		for(ClientChannel currentChannel : event.getServerChannelList()) {
+			int channelId = currentChannel.getBase().getChannelId();
+		
+			chatView.getChannelBar().addChannel(new TextChannelBarItem(channelId, currentChannel.getBase().getChannelName()));
+			for(Integer memberId : currentChannel.getMembers().getMemberIdList()) {
+				ClientProfile memberProfile = chatClient.getProfileManager().getClientProfileById(memberId);
+				if(!chatView.getChannelBar().channelContainsClientWithId(channelId, memberId))
+					chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(memberId, memberProfile.getBase().getUsername()));
+			}
+		}
 		for(ClientProfile currentProfile : event.getMemberProfileList()) 
 			chatView.getClientBar().addMemberItem(currentProfile.getBase().getId(), currentProfile.getBase().getUsername());
 		loadView(chatView);
@@ -450,7 +460,7 @@ public class ReelTalkSession extends Application {
 	
 	public void onClientChannelLeaveEvent(ClientChannelLeaveEvent event) {
 		int channelId = event.getChannelBase().getChannelId();
-		int clientId = event.getEventBase().getRequestorClientBase().getId();
+		int clientId = event.getProfile().getBase().getId();
 		if(chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
 			chatView.getChannelBar().removeClientFromChannel(clientId, channelId);
 	}

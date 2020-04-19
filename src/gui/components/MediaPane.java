@@ -1,5 +1,6 @@
 package gui.components;
 
+import java.net.URI;
 import java.net.URL;
 
 import com.jfoenix.controls.JFXButton;
@@ -183,11 +184,11 @@ public class MediaPane extends StackPane
 	}
 
 	//
-	public void startAudioPlayer(URL ... urls)
+	public void startAudioPlayer(URI ... uris)
 	{
 		if(this.audioPlayer != null)
 		{
-			this.audioPlayer.addToPlaylist(urls);
+			this.audioPlayer.addToPlaylist(uris);
 			this.audioPlayer.play();
 		}
 	}

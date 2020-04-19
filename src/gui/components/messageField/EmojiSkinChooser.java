@@ -2,8 +2,10 @@ package gui.components.messageField;
 
 import com.jfoenix.transitions.JFXFillTransition;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
@@ -15,27 +17,44 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class EmojiSkinChooser extends HBox {
-	private JFXFillTransition fillAnimation;
+	private DoubleProperty circleRadiusProperty;
 	private ObjectProperty<Duration> durationProperty;
 	private ObjectProperty<Color> fromColorProperty;
 	private ObjectProperty<Color> toColorProperty;
-	private IntegerProperty currentColorIndexProperty;
+	private volatile IntegerProperty currentColorIndexProperty;
+	
+	private Circle circle;
+	
+	private JFXFillTransition fillAnimation;
+	
 	
 	private EventHandler<MouseEvent> onSkinChooserClicked;
 
 	public static final Color[] SKIN_COLORS = { Color.web("ffd766"), Color.web("fae0c1"), Color.web("e3c29c"),
-			Color.web("c6956c"), Color.web("a06940"), Color.web("5c473c") };
+												Color.web("c6956c"), Color.web("a06940"), Color.web("5c473c") };
 
 	public EmojiSkinChooser() {
+		initialize();
+	}
+	
+	private void initialize() {
+		initStylesheets();
+		initProperties();
+		initCircle();
+		initAnimations();
+		initEventHandlers();
+		initRoot();
+	}
+	
+	private void initStylesheets() {
 		getStyleClass().add("smiley-skin-chooser");
+	}
+	
+	private void initProperties() {
+		circleRadiusProperty = new SimpleDoubleProperty(12.5d);
 		
-		Circle circle = new Circle(12.5d);
-		circle.setFill(SKIN_COLORS[0]);
-		setShape(circle);
-		setVisible(true);
-
-		durationProperty = new SimpleObjectProperty<>(Duration.seconds(0.5));
-
+		durationProperty = new SimpleObjectProperty<>(Duration.seconds(0.85d));
+		
 		fromColorProperty = new SimpleObjectProperty<>(Color.TRANSPARENT);
 		fromColorProperty.addListener((obs, oldV, newV) -> {
 			fillAnimation = new JFXFillTransition(getDuration(), this, oldV, newV);
@@ -62,30 +81,55 @@ public class EmojiSkinChooser extends HBox {
 				toColorIndex = SKIN_COLORS.length - 1;
 			else if (toColorIndex >= SKIN_COLORS.length)
 				toColorIndex = 0;
-
+			
 			fromColorProperty.set(SKIN_COLORS[fromColorIndex]);
 			toColorProperty.set(SKIN_COLORS[toColorIndex]);
 		});
 
+	}
+	
+	private void initCircle() {
+		circle = new Circle();
+		circle.radiusProperty().bind(circleRadiusProperty);
+		circle.setFill(SKIN_COLORS[0]);
+	}
+	
+	private void initAnimations() {
 		fillAnimation = new JFXFillTransition();
 		fillAnimation.setRegion(this);
 		fillAnimation.durationProperty().bindBidirectional(durationProperty);
 		fillAnimation.fromValueProperty().bindBidirectional(fromColorProperty);
 		fillAnimation.toValueProperty().bindBidirectional(toColorProperty);
 		fillAnimation.playFromStart();
-
+	}
+	
+	private void initEventHandlers() {
+		onSkinChooserClicked = a -> {};
+	}
+	
+	private void initRoot() {
 		setOnMouseClicked(a -> {
 			handleAction(a);
-			if(onSkinChooserClicked != null)
-				onSkinChooserClicked.handle(a);
+			onSkinChooserClicked.handle(a);
 		});
+		setShape(circle);
 	}
 
 	public void handleAction(MouseEvent mouse) {
-		if (mouse.getButton() == MouseButton.PRIMARY) {
+		if (mouse.getButton() == MouseButton.PRIMARY)
 			fillAnimation.playFromStart();
-			currentColorIndexProperty.set((getCurrentColorIndex() + 1) >= SKIN_COLORS.length ? 0 : currentColorIndexProperty.get() + 1);
-		}	
+	}
+	
+	public DoubleProperty circleRadiusProperty() {
+		return circleRadiusProperty;
+	}
+	
+	public double getCircleRadius() {
+		return circleRadiusProperty.get();
+	}
+	
+	public void setCircleRadius(double value) {
+		circleRadiusProperty.set(value);
 	}
 
 	public ObjectProperty<Duration> durationProperty() {
@@ -125,6 +169,16 @@ public class EmojiSkinChooser extends HBox {
 	}
 
 	public int getCurrentColorIndex() {
+		return currentColorIndexProperty.get();
+	}
+	
+	public void setCurrentColorIndex(int value) {
+		currentColorIndexProperty.set(value);
+	}
+	
+	public int nextColorIndex() {
+		int newIndex = getCurrentColorIndex() + 1;
+		currentColorIndexProperty.set(newIndex >= SKIN_COLORS.length ? 0 : newIndex);
 		return currentColorIndexProperty.get();
 	}
 	

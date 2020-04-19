@@ -145,7 +145,7 @@ public final class ChatView extends StackPane {
 	}
 	
 	private void initStylesheets() {
-		getStylesheets().add("/stylesheets/client/defaultStyle/ClientChat.css");
+		getStylesheets().add("/stylesheets/client/defaultStyle/ChatView.css");
 	}
 
 	public VBox getContentRoot() {

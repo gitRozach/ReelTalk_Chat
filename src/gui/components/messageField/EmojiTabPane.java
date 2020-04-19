@@ -2,164 +2,174 @@ package gui.components.messageField;
 
 import com.jfoenix.controls.JFXTabPane;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import handler.events.ObjectEvent;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import utils.FXUtils;
 
 public class EmojiTabPane extends StackPane {	
 	private JFXTabPane tabPane;
 	private EmojiSkinChooser skinChooser;
 
-	private EmojiTab smileyTabA;
-	private EmojiTab smileyTabB;
-	private EmojiTab smileyTabC;
-	private EmojiTab smileyTabD;
-	private EmojiTab smileyTabE;
-	private EmojiTab smileyTabF;
-	private EmojiTab smileyTabG;
-	private EmojiTab smileyTabH;
-	private EmojiTab smileyTabI;
+	private EmojiTab emojiTabA;
+	private EmojiTab emojiTabB;
+	private EmojiTab emojiTabC;
+	private EmojiTab emojiTabD;
+	private EmojiTab emojiTabE;
+	private EmojiTab emojiTabF;
+	private EmojiTab emojiTabG;
+	private EmojiTab emojiTabH;
+	private EmojiTab emojiTabI;
 
-	private final int CATEGORY_A_LENGTH = 289;
-	private final int CATEGORY_B_LENGTH = 159;
-	private final int CATEGORY_C_LENGTH = 86;
-	private final int CATEGORY_D_LENGTH = 80;
-	private final int CATEGORY_E_LENGTH = 119;
-	private final int CATEGORY_F_LENGTH = 172;
-	private final int CATEGORY_G_LENGTH = 257;
-	private final int CATEGORY_H_LENGTH = 250;
-	private final int CATEGORY_I_LENGTH = 0;
+	private int CATEGORY_A_LENGTH;
+	private int CATEGORY_B_LENGTH;
+	private int CATEGORY_C_LENGTH;
+	private int CATEGORY_D_LENGTH;
+	private int CATEGORY_E_LENGTH;
+	private int CATEGORY_F_LENGTH;
+	private int CATEGORY_G_LENGTH;
+	private int CATEGORY_H_LENGTH;
+	private int CATEGORY_I_LENGTH;
 
 	public EmojiTabPane() {
+		initialize();
+	}
+	
+	private void initialize() {
+		initProperties();
+		initEmojiTabs();
+		initAllEmojis();
+		initEmojiTabPane();
+		initEmojiSkinChooser();
+		initRoot();
+	}
+	
+	private void initProperties() {
+		CATEGORY_A_LENGTH = 289;
+		CATEGORY_B_LENGTH = 159;
+		CATEGORY_C_LENGTH = 86;
+		CATEGORY_D_LENGTH = 80;
+		CATEGORY_E_LENGTH = 119;
+		CATEGORY_F_LENGTH = 172;
+		CATEGORY_G_LENGTH = 257;
+		CATEGORY_H_LENGTH = 250;
+		CATEGORY_I_LENGTH = 0;
+	}
+	
+	private void initEmojiTabs() {
+		FontAwesomeIconView iconTabA = new FontAwesomeIconView(FontAwesomeIcon.MALE);
+		emojiTabA = new EmojiTab();
+		emojiTabA.setGraphic(iconTabA);
+
+		FontAwesomeIconView iconTabB = new FontAwesomeIconView(FontAwesomeIcon.CLOUD);
+		emojiTabB = new EmojiTab();
+		emojiTabB.setGraphic(iconTabB);
+
+		FontAwesomeIconView iconTabC = new FontAwesomeIconView(FontAwesomeIcon.COFFEE);
+		emojiTabC = new EmojiTab();
+		emojiTabC.setGraphic(iconTabC);
+
+		FontAwesomeIconView iconTabD = new FontAwesomeIconView(FontAwesomeIcon.SOCCER_BALL_ALT);
+		emojiTabD = new EmojiTab();
+		emojiTabD.setGraphic(iconTabD);
+
+		FontAwesomeIconView iconTabE = new FontAwesomeIconView(FontAwesomeIcon.CAR);
+		emojiTabE = new EmojiTab();
+		emojiTabE.setGraphic(iconTabE);
+
+		FontAwesomeIconView iconTabF = new FontAwesomeIconView(FontAwesomeIcon.DESKTOP);
+		emojiTabF = new EmojiTab();
+		emojiTabF.setGraphic(iconTabF);
+
+		FontAwesomeIconView iconTabG = new FontAwesomeIconView(FontAwesomeIcon.HEART);
+		emojiTabG = new EmojiTab();
+		emojiTabG.setGraphic(iconTabG);
+
+		FontAwesomeIconView iconTabH = new FontAwesomeIconView(FontAwesomeIcon.FLAG);
+		emojiTabH = new EmojiTab();
+		emojiTabH.setGraphic(iconTabH);
+
+		FontAwesomeIconView iconTabI = new FontAwesomeIconView(FontAwesomeIcon.SERVER);
+		emojiTabI = new EmojiTab();
+		emojiTabI.setGraphic(iconTabI);
+	}
+	
+	private void initEmojiTabPane() {
 		tabPane = new JFXTabPane();
 		tabPane.setPickOnBounds(true);
 		tabPane.setTabMaxHeight(35d);
 		tabPane.setTabMinHeight(35d);
-
-		smileyTabA = new EmojiTab();
-		Label labelTabA = new Label("A");
-		labelTabA.setFont(FXUtils.Font(15d));
-		labelTabA.setTextFill(Color.DARKGRAY);
-		smileyTabA.setGraphic(labelTabA);
-		initSmileys(EmojiCategory.A, false);
-
-		smileyTabB = new EmojiTab();
-		Label labelTabB = new Label("B");
-		labelTabB.setFont(FXUtils.Font(15d));
-		labelTabB.setTextFill(Color.DARKGRAY);
-		smileyTabB.setGraphic(labelTabB);
-		initSmileys(EmojiCategory.B, false);
-
-		smileyTabC = new EmojiTab();
-		Label labelTabC = new Label("C");
-		labelTabC.setFont(FXUtils.Font(15d));
-		labelTabC.setTextFill(Color.DARKGRAY);
-		smileyTabC.setGraphic(labelTabC);
-		initSmileys(EmojiCategory.C, false);
-
-		smileyTabD = new EmojiTab();
-		Label labelTabD = new Label("D");
-		labelTabD.setFont(FXUtils.Font(15d));
-		labelTabD.setTextFill(Color.DARKGRAY);
-		smileyTabD.setGraphic(labelTabD);
-		initSmileys(EmojiCategory.D, false);
-
-		smileyTabE = new EmojiTab();
-		Label labelTabE = new Label("E");
-		labelTabE.setFont(FXUtils.Font(15d));
-		labelTabE.setTextFill(Color.DARKGRAY);
-		smileyTabE.setGraphic(labelTabE);
-		initSmileys(EmojiCategory.E, false);
-
-		smileyTabF = new EmojiTab();
-		Label labelTabF = new Label("F");
-		labelTabF.setFont(FXUtils.Font(15d));
-		labelTabF.setTextFill(Color.DARKGRAY);
-		smileyTabF.setGraphic(labelTabF);
-		initSmileys(EmojiCategory.F, false);
-
-		smileyTabG = new EmojiTab();
-		Label labelTabG = new Label("G");
-		labelTabG.setFont(FXUtils.Font(15d));
-		labelTabG.setTextFill(Color.DARKGRAY);
-		smileyTabG.setGraphic(labelTabG);
-		initSmileys(EmojiCategory.G, false);
-
-		smileyTabH = new EmojiTab();
-		Label labelTabH = new Label("H");
-		labelTabH.setFont(FXUtils.Font(15d));
-		labelTabH.setTextFill(Color.DARKGRAY);
-		smileyTabH.setGraphic(labelTabH);
-		initSmileys(EmojiCategory.H, false);
-
-		smileyTabI = new EmojiTab();
-		Label labelTabI = new Label("I");
-		labelTabI.setFont(FXUtils.Font(15d));
-		labelTabI.setTextFill(Color.DARKGRAY);
-		smileyTabI.setGraphic(labelTabI);
-		initSmileys(EmojiCategory.I, false);
-
+		tabPane.getTabs().addAll(emojiTabA, emojiTabB, emojiTabC, emojiTabD, emojiTabE, emojiTabF, emojiTabG, emojiTabH, emojiTabI);
+	}
+	
+	private void initEmojiSkinChooser() {
 		skinChooser = new EmojiSkinChooser();
 		skinChooser.setFromColor(EmojiSkinChooser.SKIN_COLORS[0]);
 		skinChooser.setPickOnBounds(true);
 		FXUtils.setFixedSizeOf(skinChooser, 25d, 25d);
+	}
+	
+	private void initRoot() {
+		getChildren().addAll(tabPane, skinChooser);
 		EmojiTabPane.setAlignment(skinChooser, Pos.TOP_RIGHT);
 		EmojiTabPane.setMargin(skinChooser, new Insets(0d, 15d, 5d, 5d));
-
-		tabPane.getTabs().addAll(smileyTabA, smileyTabB, smileyTabC, smileyTabD, smileyTabE, smileyTabF,
-				smileyTabG, smileyTabH, smileyTabI);
-
-		getChildren().addAll(tabPane, skinChooser);
+	}
+	
+	private void initAllEmojis() {
+		initAllEmojis(false, EmojiSkinColor.YELLOW);
+	}
+	
+	private void initAllEmojis(boolean override, EmojiSkinColor color) {
+		for(EmojiCategory category : EmojiCategory.values())
+			initEmojis(category, color, override);
 	}
 
-	public void initSmileys(EmojiCategory category, EmojiSkinColor color, boolean override) {
+	private void initEmojis(EmojiCategory category, EmojiSkinColor color, boolean override) {
 		final EmojiTab smileyTab;
 		final int smileyCount;
 		final String smileyCategory = category.name();
 
 		switch (category) {
 		case A:
-			smileyTab = smileyTabA;
+			smileyTab = emojiTabA;
 			smileyCount = CATEGORY_A_LENGTH;
 			break;
 		case B:
-			smileyTab = smileyTabB;
+			smileyTab = emojiTabB;
 			smileyCount = CATEGORY_B_LENGTH;
 			break;
 		case C:
-			smileyTab = smileyTabC;
+			smileyTab = emojiTabC;
 			smileyCount = CATEGORY_C_LENGTH;
 			break;
 		case D:
-			smileyTab = smileyTabD;
+			smileyTab = emojiTabD;
 			smileyCount = CATEGORY_D_LENGTH;
 			break;
 		case E:
-			smileyTab = smileyTabE;
+			smileyTab = emojiTabE;
 			smileyCount = CATEGORY_E_LENGTH;
 			break;
 		case F:
-			smileyTab = smileyTabF;
+			smileyTab = emojiTabF;
 			smileyCount = CATEGORY_F_LENGTH;
 			break;
 		case G:
-			smileyTab = smileyTabG;
+			smileyTab = emojiTabG;
 			smileyCount = CATEGORY_G_LENGTH;
 			break;
 		case H:
-			smileyTab = smileyTabH;
+			smileyTab = emojiTabH;
 			smileyCount = CATEGORY_H_LENGTH;
 			break;
 		case I:
-			smileyTab = smileyTabI;
+			smileyTab = emojiTabI;
 			smileyCount = CATEGORY_I_LENGTH;
 			break;
 		default:
@@ -185,11 +195,10 @@ public class EmojiTabPane extends StackPane {
 				}
 
 				currentImageView = new ImageView(currentImage);
+				currentImageView.applyCss();
 				currentImageView.setCache(true);
 				currentImageView.getStyleClass().add("smiley");
-				
-				currentImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, a -> {});
-				
+								
 				currentImageView.setOnMouseClicked(a -> {
 					fireEvent(new ObjectEvent<String>(ObjectEvent.STRING, new String(currentImageTitle + (withSkinColors[0] ? EmojiSkinColor.toEmojiString(color) : ""))) {
 						private static final long serialVersionUID = -1195663894069989722L;
@@ -198,16 +207,16 @@ public class EmojiTabPane extends StackPane {
 
 				Platform.runLater(() -> {
 					if (override)
-						smileyTab.setSmiley(tempIndex, currentImageView);
+						smileyTab.setEmoji(tempIndex, currentImageView);
 					else
-						smileyTab.addSmiley(currentImageView);
+						smileyTab.addEmoji(currentImageView);
 				});
 			}
 		}).start();
 	}
-
-	private void initSmileys(EmojiCategory category, boolean override) {
-		initSmileys(category, EmojiSkinColor.YELLOW, override);
+	
+	public void initAllEmojisWithSkinColor(EmojiSkinColor color) {
+		initAllEmojis(true, color);
 	}
 	
 	public EmojiSkinChooser getEmojiSkinChooser() {

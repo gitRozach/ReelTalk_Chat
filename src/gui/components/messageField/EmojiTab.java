@@ -8,56 +8,74 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.FlowPane;
 
 public class EmojiTab extends Tab {
-	private ScrollPane smileyScrollPane;
-	private FlowPane smileyFlowPane;
+	private ScrollPane emojiScrollPane;
+	private FlowPane emojiFlowPane;
 
 	public EmojiTab() {
-		smileyScrollPane = new ScrollPane();
-		smileyScrollPane.getStyleClass().add("smiley-scroll-pane");
-		smileyScrollPane.setFitToWidth(true);
-		smileyScrollPane.setFitToHeight(true);
-
-		smileyFlowPane = new FlowPane();
-		smileyFlowPane.getStyleClass().add("smiley-flow-pane");
-		smileyFlowPane.setPadding(new Insets(5));
-		smileyFlowPane.setHgap(3);
-		smileyFlowPane.setVgap(3);
-
-		smileyScrollPane.setContent(smileyFlowPane);
+		initialize();
+	}
+	
+	private void initialize() {
+		initEmojiFlowPane();
+		initEmojiScrollPane();
+		initRoot();
+	}
+	
+	private void initEmojiFlowPane() {
+		emojiFlowPane = new FlowPane();
+		emojiFlowPane.getStyleClass().add("smiley-flow-pane");
+		emojiFlowPane.setPadding(new Insets(5));
+		emojiFlowPane.setHgap(3);
+		emojiFlowPane.setVgap(3);
+	}
+	
+	private void initEmojiScrollPane() {
+		emojiScrollPane = new ScrollPane();
+		emojiScrollPane.getStyleClass().add("smiley-scroll-pane");
+		emojiScrollPane.setFitToWidth(true);
+		emojiScrollPane.setFitToHeight(true);
+		emojiScrollPane.setContent(emojiFlowPane);
+	}
+	
+	private void initRoot() {
 		setClosable(false);
-		setContent(smileyScrollPane);
+		setContent(emojiScrollPane);
 	}
 
-	public void addSmiley(Node smiley) {
-		if (smiley != null)
-			smileyFlowPane.getChildren().add(smiley);
+	public void addEmoji(Node emoji) {
+		if (emoji != null)
+			emojiFlowPane.getChildren().add(emoji);
 	}
 
-	public boolean setSmiley(int index, Node smiley) {
-		if (smiley != null && index >= 0 && index < smileyFlowPane.getChildren().size()) {
-			smileyFlowPane.getChildren().set(index, smiley);
+	public boolean setEmoji(int index, Node emoji) {
+		if (emoji != null && index >= 0 && index < emojiFlowPane.getChildren().size()) {
+			emojiFlowPane.getChildren().set(index, emoji);
 			return true;
 		} 
 		else
 			return false;
 	}
 
-	public boolean removeSmiley(int index) {
-		if (smileyFlowPane.getChildren().size() > index) {
-			smileyFlowPane.getChildren().remove(index);
+	public boolean removeEmojis(int index) {
+		if (emojiFlowPane.getChildren().size() > index) {
+			emojiFlowPane.getChildren().remove(index);
 			return true;
 		} 
 		else
 			return false;
 	}
 
-	public void setSmileys(ObservableList<Node> smileys) {
-		if (smileys != null)
-			if (!smileys.isEmpty())
-				smileyFlowPane.getChildren().setAll(smileys);
+	public void setEmojis(ObservableList<Node> emojis) {
+		if (emojis != null)
+			if (!emojis.isEmpty())
+				emojiFlowPane.getChildren().setAll(emojis);
+	}
+	
+	public boolean hasEmojis() {
+		return !getEmojis().isEmpty();
 	}
 
-	public ObservableList<Node> getSmileys() {
-		return smileyFlowPane.getChildren();
+	public ObservableList<Node> getEmojis() {
+		return emojiFlowPane.getChildren();
 	}
 }

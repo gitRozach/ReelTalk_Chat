@@ -121,16 +121,19 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 		return closeConnection(clientChannel, getEngineFrom(clientChannel));
 	}
 
-	public SSLEngine getEngineFrom(SocketChannel localClientChannel) throws IOException {
-		Iterator<SelectionKey> keyIt = selector.keys().iterator();
-		while (keyIt.hasNext()) {
-			SelectionKey currentKey = keyIt.next();
-			if (!(currentKey.channel() instanceof SocketChannel))
-				continue;
-			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(localClientChannel.getLocalAddress()))
-				return (SSLEngine) currentKey.attachment();
-		}
-		return null;
+	public SSLEngine getEngineFrom(SocketChannel localClientChannel) {
+		if(localClientChannel == null || localClientChannel.keyFor(selector) == null)
+			return null;
+		return (SSLEngine)localClientChannel.keyFor(selector).attachment();
+//		Iterator<SelectionKey> keyIt = selector.keys().iterator();
+//		while (keyIt.hasNext()) {
+//			SelectionKey currentKey = keyIt.next();
+//			if (!(currentKey.channel() instanceof SocketChannel))
+//				continue;
+//			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(localClientChannel.getLocalAddress()))
+//				return (SSLEngine) currentKey.attachment();
+//		}
+//		return null;
 	}
 	
 	public SocketChannel getLocalSocketChannel(SocketChannel remoteClientChannel) throws IOException {
@@ -145,7 +148,8 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 			}
 			if (!(currentKey.channel() instanceof SocketChannel))
 				continue;
-			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(remoteClientChannel.getLocalAddress()))
+			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(remoteClientChannel.getLocalAddress()) &&
+				((SocketChannel) currentKey.channel()).getLocalAddress().equals(remoteClientChannel.getRemoteAddress()))
 				return (SocketChannel) currentKey.channel();
 		}
 		return null;
@@ -230,14 +234,14 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 					while (!selectedKeys.isEmpty()) {
 						SelectionKey currentKey = keyIt.next();
 						keyIt.remove();
-						if (!currentKey.isValid())
+						if (!currentKey.isValid()) {
+							currentKey.cancel();
 							continue;
+						}
 						if (currentKey.isAcceptable())
 							accept(currentKey);
 						else if (currentKey.isReadable())
 							read((SocketChannel) currentKey.channel(), (SSLEngine) currentKey.attachment());
-						else if (!currentKey.isValid())
-							currentKey.cancel();
 					}
 				} 
 				catch (Exception e) {
@@ -261,10 +265,12 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 				try {
 					ProtobufMessage currentMessage = null;
 					if ((currentMessage = peekOrderedBytes()) != null) {
-						SocketChannel localChannel = getLocalSocketChannel(currentMessage.getSocketChannel());
-						if(localChannel == null)
-							localChannel = currentMessage.getSocketChannel();
-						if(write(localChannel, (SSLEngine) localChannel.keyFor(selector).attachment(), currentMessage.getMessage()) > 0)
+						if(!currentMessage.hasSocketChannel() || !currentMessage.hasMessage()) {
+							pollOrderedBytes();
+							continue;
+						}
+						SelectionKey clientKey = currentMessage.getSocketChannel().keyFor(selector);
+						if(write((SocketChannel) clientKey.channel(), (SSLEngine) clientKey.attachment(), currentMessage.getMessage()) > 0)
 							pollOrderedBytes();
 					}
 				} 

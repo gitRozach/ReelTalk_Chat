@@ -2,8 +2,7 @@ package apps.audioPlayer;
 
 import java.io.Closeable;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Random;
 
@@ -39,20 +38,20 @@ import utils.FXUtils;
 import utils.Utils;
 
 public class AudioPlayer implements Closeable {	
+	private IntegerProperty currentTrackIndexProperty;
+	private IntegerProperty previousTrackIndexProperty;
+	private DoubleProperty volumeProperty;
+	private DoubleProperty volumeBeforeMuteProperty;
+	private DoubleProperty rateProperty;
+	private BooleanProperty partReplayProperty;
+	private ObjectProperty<Duration> replayFromDurationProperty;
+	private ObjectProperty<Duration> replayToDurationProperty;
+	
 	private AudioPlayMode playerMode;
 	private AudioPlayerUI playerUI;
 	private MediaPlayer player;
 	
-	private ObservableList<URL> playlist;
-	
-	private ObjectProperty<Duration> replayFromDurationProperty;
-	private ObjectProperty<Duration> replayToDurationProperty;
-	private IntegerProperty currentTrackIndexProperty;
-	private IntegerProperty previousTrackIndexProperty;
-	private BooleanProperty partReplayProperty;
-	private DoubleProperty volumeProperty;
-	private DoubleProperty volumeBeforeMuteProperty;
-	private DoubleProperty rateProperty;
+	private ObservableList<URI> playlist;
 	
 	public AudioPlayer() {
 		initialize();
@@ -64,19 +63,19 @@ public class AudioPlayer implements Closeable {
 	}
 	
 	private void initProperties() {
+		currentTrackIndexProperty = new SimpleIntegerProperty(-1);
+		previousTrackIndexProperty = new SimpleIntegerProperty(-1);
+		volumeProperty = new SimpleDoubleProperty(0.5d);
+		volumeBeforeMuteProperty = new SimpleDoubleProperty(0.5d);
+		rateProperty = new SimpleDoubleProperty(1d);
+		partReplayProperty = new SimpleBooleanProperty(false);
+		replayFromDurationProperty = new SimpleObjectProperty<>(Duration.millis(0d));
+		replayToDurationProperty = new SimpleObjectProperty<>(Duration.millis(0d));
+		
 		playerMode = AudioPlayMode.DEFAULT;
 		playerUI = new AudioPlayerUI();
 		
 		playlist = FXCollections.observableArrayList();
-
-		replayFromDurationProperty = new SimpleObjectProperty<>(Duration.millis(0d));
-		replayToDurationProperty = new SimpleObjectProperty<>(Duration.millis(0d));
-		currentTrackIndexProperty = new SimpleIntegerProperty(-1);
-		previousTrackIndexProperty = new SimpleIntegerProperty(-1);
-		partReplayProperty = new SimpleBooleanProperty(false);
-		volumeProperty = new SimpleDoubleProperty(0.5d);
-		volumeBeforeMuteProperty = new SimpleDoubleProperty(0.5d);
-		rateProperty = new SimpleDoubleProperty(1d);
 	}
 	
 	private void initEventHandlers() {
@@ -85,14 +84,8 @@ public class AudioPlayer implements Closeable {
 				FileChooser fc = new FileChooser();
 				List<File> files = fc.showOpenMultipleDialog(playerUI.getScene().getWindow());
 				if (files != null) {
-					files.forEach(file -> {
-						try {
-							addToPlaylist(file.toURI().toURL());
-						} 
-						catch (MalformedURLException e) {
-							e.printStackTrace();
-						}
-					});
+					for(File file : files)
+						addToPlaylist(file.toURI());
 					play();
 				}
 			}
@@ -310,8 +303,8 @@ public class AudioPlayer implements Closeable {
 		return (int) getRate() * 100;
 	}
 
-	private Media initMedia(URL mediaUrl) {
-		Media media = new Media(mediaUrl.toString());
+	private Media initMedia(URI mediaUri) {
+		Media media = new Media(mediaUri.toString());
 		media.getMetadata().addListener((MapChangeListener<String, Object>) change -> {
 			Object newValue = change.getValueAdded();
 			int tempIndex[] = new int[] { 0 };
@@ -323,7 +316,7 @@ public class AudioPlayer implements Closeable {
 					break;
 				case "title":
 					playlist.forEach(a -> {
-						if (a.sameFile(mediaUrl))
+						if (a.compareTo(mediaUri) == 0)
 							playerUI.getLibrary().getItems().get(tempIndex[0]).setTitle((String) newValue);
 						if (getCurrentTrackIndex() == playlist.indexOf(a))
 							playerUI.setTitle((String) newValue);
@@ -332,7 +325,7 @@ public class AudioPlayer implements Closeable {
 					break;
 				case "artist":
 					playlist.forEach(a -> {
-						if (a.sameFile(mediaUrl))
+						if (a.compareTo(mediaUri) == 0)
 							playerUI.getLibrary().getItems().get(tempIndex[0]).setArtist((String) newValue);
 						if (getCurrentTrackIndex() == playlist.indexOf(a))
 							playerUI.setArtist((String) newValue);
@@ -341,7 +334,7 @@ public class AudioPlayer implements Closeable {
 					break;
 				case "album":
 					playlist.forEach(a -> {
-						if (a.sameFile(mediaUrl))
+						if (a.compareTo(mediaUri) == 0)
 							playerUI.getLibrary().getItems().get(tempIndex[0]).setAlbum((String) newValue);
 						if (getCurrentTrackIndex() == playlist.indexOf(a))
 							playerUI.setAlbum((String) newValue);
@@ -350,7 +343,7 @@ public class AudioPlayer implements Closeable {
 					break;
 				case "year":
 					playlist.forEach(a -> {
-						if (a.sameFile(mediaUrl))
+						if (a.compareTo(mediaUri) == 0)
 							playerUI.getLibrary().getItems().get(tempIndex[0]).setYear(Integer.toString((int) newValue));
 						if (getCurrentTrackIndex() == playlist.indexOf(a))
 							playerUI.setYear(Integer.toString((int) newValue));
@@ -363,13 +356,13 @@ public class AudioPlayer implements Closeable {
 		return media;
 	}
 
-	private MediaPlayer initPlayer(URL mediaUrl, boolean autoPlay) throws Exception {
+	private MediaPlayer initPlayer(URI mediaUri, boolean autoPlay) {
 		playerUI.setTitle("-");
 		playerUI.setArtist("-");
 		playerUI.setAlbum("-");
 		playerUI.setYear("-");
 
-		Media media = initMedia(mediaUrl);
+		Media media = initMedia(mediaUri);
 
 		MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -382,12 +375,6 @@ public class AudioPlayer implements Closeable {
 		});
 		mediaPlayer.currentTimeProperty().addListener((obs, oldV, newV) -> {
 			if (isPartReplay()) {
-				// Duration replayTo =
-				// this.audioController.sliderValueToDuration(audioController.getReplayToSlider(),
-				// mediaPlayer.getTotalDuration());
-				// Duration replayFrom =
-				// this.audioController.sliderValueToDuration(audioController.getReplayFromSlider(),
-				// mediaPlayer.getTotalDuration());
 				Duration replayFrom = getReplayFromDuration();
 				Duration replayTo = getReplayToDuration();
 				if (newV.greaterThanOrEqualTo(replayTo) && replayTo.greaterThanOrEqualTo(replayFrom.add(Duration.seconds(1d))))
@@ -397,8 +384,6 @@ public class AudioPlayer implements Closeable {
 				double sliderMax = playerUI.getTimeSlider().getMax();
 				playerUI.getTimeSlider().setValue((newV.toMillis() / mediaPlayer.getTotalDuration().toMillis()) * sliderMax);
 				playerUI.setCurrentTime(Utils.durationToMMSS(newV));
-				// this.audioController.setTotalTime("-" +
-				// CUtils.durationToMMSS(media.getDuration().subtract(newV)));
 			}
 		});
 		mediaPlayer.totalDurationProperty().addListener((obs, oldV, newV) -> {
@@ -409,8 +394,6 @@ public class AudioPlayer implements Closeable {
 		mediaPlayer.setAutoPlay(autoPlay);
 		mediaPlayer.volumeProperty().bindBidirectional(volumeProperty());
 		mediaPlayer.rateProperty().bindBidirectional(rateProperty());
-		// mediaPlayer.setVolume(this.getVolume());
-		// mediaPlayer.setRate(this.getRate());
 
 		mediaPlayer.setAudioSpectrumNumBands(playerUI.getAudioSpectrumBands());
 		mediaPlayer.setAudioSpectrumInterval(0.05d);
@@ -434,18 +417,18 @@ public class AudioPlayer implements Closeable {
 		return mediaPlayer;
 	}
 
-	public void addToPlaylist(URL... urls) {
-		for (URL url : urls)
-			initMedia(url);
+	public void addToPlaylist(URI... uris) {
+		for (URI uri : uris)
+			initMedia(uri);
 		playerUI.getLibrary().addAudioData(new AudioLibraryItem("-", "-", "-", "-"));
-		playlist.addAll(urls);
+		playlist.addAll(uris);
 	}
 
-	public boolean removeFromPlaylist(URL... urls) {
+	public boolean removeFromPlaylist(URI... uris) {
 		int oldSize = playlist.size();
 		int currentIndex;
-		for (int i = 0; i < urls.length; i++) {
-			currentIndex = playlist.indexOf(urls[i]);
+		for (int i = 0; i < uris.length; i++) {
+			currentIndex = playlist.indexOf(uris[i]);
 			if (currentIndex >= 0) {
 				playerUI.getLibrary().removeAudioData(currentIndex);
 				playlist.remove(currentIndex);

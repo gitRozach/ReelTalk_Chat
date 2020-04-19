@@ -225,26 +225,52 @@ public class ClientBar extends LoadableStackPane {
 	}
 
 	private void initProfileTabPane() {
-		messagesTab = new Tab("N", messageView);
+		messagesTab = new Tab("", messageView);
 		
-		JFXButton bFriends = new JFXButton("Freunde");
+		FontAwesomeIconView friendsIcon = new FontAwesomeIconView(FontAwesomeIcon.USER_PLUS);
+		friendsIcon.setGlyphSize(18d);
+		friendsIcon.setWrappingWidth(15d);
+		Label friendsLabel = new Label("Freunde");
+		HBox friendsGraphic = new HBox(friendsIcon, friendsLabel);
+		HBox.setMargin(friendsIcon, new Insets(0d, 15d, 0d, 0d));
+		friendsGraphic.setAlignment(Pos.CENTER);
+		
+		FontAwesomeIconView membersIcon = new FontAwesomeIconView(FontAwesomeIcon.USERS);
+		membersIcon.setGlyphSize(18d);
+		membersIcon.setWrappingWidth(15d);
+		Label membersLabel = new Label("Mitglieder");
+		HBox membersGraphic = new HBox(membersIcon, membersLabel);
+		HBox.setMargin(membersIcon, new Insets(0d, 15d, 0d, 0d));
+		membersGraphic.setAlignment(Pos.CENTER);
+		
+		FontAwesomeIconView onlineIcon = new FontAwesomeIconView(FontAwesomeIcon.USER);
+		onlineIcon.setGlyphSize(18d);
+		onlineIcon.setWrappingWidth(15d);
+		Label onlineLabel = new Label("Online");
+		HBox onlineGraphic = new HBox(onlineIcon, onlineLabel);
+		HBox.setMargin(onlineIcon, new Insets(0d, 15d, 0d, 0d));
+		onlineGraphic.setAlignment(Pos.CENTER);
+		
+		JFXButton bFriends = new JFXButton("", friendsGraphic);
+		bFriends.setAlignment(Pos.CENTER);
 		bFriends.setOnAction(a -> clientTabPane.getSelectionModel().select(0));
-		JFXButton bMembers = new JFXButton("Members");
+		JFXButton bMembers = new JFXButton("", membersGraphic);
+		bMembers.setAlignment(Pos.CENTER);
 		bMembers.setOnAction(a -> clientTabPane.getSelectionModel().select(1));
-		JFXButton bOnline = new JFXButton("Online");
+		JFXButton bOnline = new JFXButton("", onlineGraphic);
+		bOnline.setAlignment(Pos.CENTER);
 		bOnline.setOnAction(a -> clientTabPane.getSelectionModel().select(2));
 		
 		VBox memberBox = new VBox(bFriends, bMembers, bOnline, clientTabPane);
-		bFriends.prefWidthProperty().bind(memberBox.widthProperty());
-		bMembers.prefWidthProperty().bind(memberBox.widthProperty());
-		bOnline.prefWidthProperty().bind(memberBox.widthProperty());
 		memberBox.setFillWidth(true);
 		memberBox.setAlignment(Pos.TOP_CENTER);
 		VBox.setVgrow(clientTabPane, Priority.ALWAYS);
-		membersTab = new Tab("M", memberBox);
+		bFriends.prefWidthProperty().bind(memberBox.widthProperty());
+		bMembers.prefWidthProperty().bind(memberBox.widthProperty());
+		bOnline.prefWidthProperty().bind(memberBox.widthProperty());
 		
-		
-		mediaTab = new Tab("A", mediaView);
+		membersTab = new Tab("", memberBox);
+		mediaTab = new Tab("", mediaView);
 		
 		profileTabPane = new JFXTabPane();
 		profileTabPane.getTabs().addAll(messagesTab, membersTab, mediaTab);

@@ -25,62 +25,52 @@ import javafx.util.Duration;
 import utils.FXUtils;
 
 public class MessageField extends VBox {
+	private BooleanProperty openProperty;
+	
 	private HBox messageBox;
-
-	private EmojiTabPane emojiPane;
 	private EmojiTextField emojiTextField;
 	private ImageView emojiButton;
+	private JFXNodesList fileButtons;
 	private ImageView fileButton;
-
-	private BooleanProperty openProperty;
+	private ImageView fileButton1;
+	private ImageView fileButton2;
+	
+	private EmojiTabPane emojiPane;
 
 	private EventHandler<KeyEvent> onEnterPressed;
 	private EventHandler<MouseEvent> onEmojiButtonClicked;
 	private EventHandler<MouseEvent> onFileButtonClicked;
 	private ObjectEventHandler<String> onEmojiPressed;
 
-	private Animation smileyIn;
-	private Animation smileyOut;
+	private Animation showEmojiTabPaneAnimation;
+	private Animation hideEmojiTabPaneAnimation;
 
 	public MessageField() {
+		initialize();
+	}
+	
+	public void initialize() {
+		initStylesheets();
+		initProperties();
+		initControls();
+		initEmojiTabPane();
+		initMessageBox();
+		initAnimations();
+		initEventHandlers();
+		initRoot();
+	}
+	
+	private void initStylesheets() {
 		getStylesheets().add("/stylesheets/client/defaultStyle/MessageField.css");
-
-		messageBox = new HBox();
-		messageBox.setFillHeight(true);
-		messageBox.getStyleClass().add("message-box");
-		messageBox.setOnDragOver(getOnDragOver());
-		messageBox.setOnDragDropped(getOnDragDropped());
-		messageBox.setPadding(new Insets(5d, 10d, 5d, 5d));
-
+	}
+	
+	private void initProperties() {
 		openProperty = new SimpleBooleanProperty(false);
-
-		emojiPane = new EmojiTabPane();
-		emojiPane.getEmojiSkinChooser().setOnSkinChooserClicked(a -> onSkinChooserClicked());
-		emojiPane.setMinHeight(0d);
-		emojiPane.setPrefHeight(0d);
-		emojiPane.setMaxHeight(0d);
-		emojiPane.setOpacity(0d);
-
-		onEnterPressed = (keyEvent -> {});
-		onEmojiButtonClicked = (mouseEvent -> {
-			if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-				if (isOpen())
-					closeEmojiPane();
-				else
-					openEmojiPane();
-			}
-		});
-		onFileButtonClicked = (mouseEvent -> {});
-		onEmojiPressed = new ObjectEventHandler<String>() {
-			@Override
-			public void handle(ObjectEvent<String> event) {
-				onEmojiClicked(event.getAttachedObject());
-			}
-		};
-		
+	}
+	
+	private void initControls() {
 		emojiTextField = new EmojiTextField();
 		FXUtils.setFixedHeightOf(emojiTextField, 50d);
-		HBox.setHgrow(emojiTextField, Priority.ALWAYS);
 
 		emojiButton = new ImageView(new Image("/resources/icons/img_smiley.png"));
 		emojiButton.setSmooth(true);
@@ -88,7 +78,7 @@ public class MessageField extends VBox {
 		emojiButton.setPickOnBounds(true);
 		emojiButton.setOnMouseClicked(a -> onEmojiButtonClicked.handle(a));
 
-		JFXNodesList fileButtons = new JFXNodesList();
+		fileButtons = new JFXNodesList();
 		fileButtons.setRotate(90d);
 		fileButtons.setSpacing(10d);
 		
@@ -98,13 +88,13 @@ public class MessageField extends VBox {
 		fileButton.setPickOnBounds(true);
 		fileButton.setOnMouseClicked(a -> onFileButtonClicked.handle(a));
 		
-		ImageView fileButton1 = new ImageView(new Image("/resources/icons/img_file.png"));
+		fileButton1 = new ImageView(new Image("/resources/icons/img_file.png"));
 		fileButton1.setSmooth(true);
 		fileButton1.getStyleClass().add("file-button");
 		fileButton1.setPickOnBounds(true);
 		fileButton1.setOnMouseClicked(a -> onFileButtonClicked.handle(a));
 		
-		ImageView fileButton2 = new ImageView(new Image("/resources/icons/img_file.png"));
+		fileButton2 = new ImageView(new Image("/resources/icons/img_file.png"));
 		fileButton2.setSmooth(true);
 		fileButton2.getStyleClass().add("file-button");
 		fileButton2.setPickOnBounds(true);
@@ -113,28 +103,68 @@ public class MessageField extends VBox {
 		fileButtons.addAnimatedNode(new VBox(fileButton));
 		fileButtons.addAnimatedNode(new VBox(fileButton1));
 		fileButtons.addAnimatedNode(new VBox(fileButton2));
-
-		Animation resizeInAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.4d), false, 0d, 200d,
-				Interpolator.EASE_BOTH);
-		Animation fadeInAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.5d), 0d, 1d,
-				Interpolator.EASE_BOTH);
-
-		Animation resizeOutAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.3d), false, 200d,
-				0d, Interpolator.EASE_BOTH);
-		Animation fadeOutAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.4d), 1d, 0d,
-				Interpolator.EASE_BOTH);
-
-		smileyIn = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeInAnimation,
-				fadeInAnimation);
-		smileyOut = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeOutAnimation,
-				fadeOutAnimation);
-
+	}
+	
+	private void initEmojiTabPane() {
+		emojiPane = new EmojiTabPane();
+		emojiPane.getEmojiSkinChooser().setOnSkinChooserClicked(a -> onSkinChooserClicked());
+		emojiPane.setMinHeight(0d);
+		emojiPane.setPrefHeight(0d);
+		emojiPane.setMaxHeight(0d);
+		emojiPane.setOpacity(0d);
+	}
+	
+	private void initMessageBox() {
+		messageBox = new HBox();
+		messageBox.setFillHeight(true);
+		messageBox.getStyleClass().add("message-box");
+		messageBox.setOnDragOver(getOnDragOver());
+		messageBox.setOnDragDropped(getOnDragDropped());
+		messageBox.setPadding(new Insets(5d, 10d, 5d, 5d));
 		messageBox.getChildren().addAll(emojiButton, emojiTextField, fileButtons);
-
+		HBox.setHgrow(emojiTextField, Priority.ALWAYS);
+	}
+	
+	private void initAnimations() {
+		Animation resizeStartAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.4d), false, 0d, 200d, Interpolator.EASE_BOTH);
+		Animation fadeStartAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.5d), 0d, 1d, Interpolator.EASE_BOTH);
+		showEmojiTabPaneAnimation = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeStartAnimation, fadeStartAnimation);
+		
+		Animation resizeHideAnimation = Animations.newResizeAnimation(emojiPane, Duration.seconds(0.3d), false, 200d, 0d, Interpolator.EASE_BOTH);
+		Animation fadeHideAnimation = Animations.newFadeAnimation(emojiPane, Duration.seconds(0.4d), 1d, 0d, Interpolator.EASE_BOTH);
+		hideEmojiTabPaneAnimation = Animations.newParallelTransition(Interpolator.EASE_BOTH, 1, false, resizeHideAnimation, fadeHideAnimation);		
+	}
+	
+	private void initEventHandlers() {
+		onEnterPressed = (keyEvent -> {});
+		onEmojiButtonClicked = mouseEvent -> onEmojiButtonClicked(mouseEvent);
+		onFileButtonClicked = mouseEvent -> onFileButtonClicked(mouseEvent);
+		setOnEmojiPressed(new ObjectEventHandler<String>() {
+			@Override
+			public void handle(ObjectEvent<String> event) {
+				onEmojiClicked(event.getAttachedObject());
+			}
+		});
+	}
+	
+	private void initRoot() {
 		getChildren().addAll(messageBox, emojiPane);
 	}
 	
-	public void onEmojiClicked(String emojiString) {		
+	public void onEmojiButtonClicked(MouseEvent event) {
+		if (event.getButton() == MouseButton.PRIMARY) {
+			if (isOpen())
+				closeEmojiPane();
+			else
+				openEmojiPane();
+		}
+	}
+	
+	public void onFileButtonClicked(MouseEvent event) {
+		
+	}
+	
+	public void onEmojiClicked(String emojiString) {
 		String currentText = emojiTextField.getCurrentText();
 		int currentTextPos = emojiTextField.getOldCaretPosition();
 		
@@ -154,21 +184,21 @@ public class MessageField extends VBox {
 	}
 
 	public void onSkinChooserClicked() {
-		for (int i = 0; i < EmojiCategory.values().length; i++)
-			emojiPane.initSmileys(EmojiCategory.getByInt(i), EmojiSkinColor.getByInt(emojiPane.getEmojiSkinChooser().getCurrentColorIndex()), true);
+		int nextIndex = emojiPane.getEmojiSkinChooser().nextColorIndex();
+		emojiPane.initAllEmojisWithSkinColor(EmojiSkinColor.getByInt(nextIndex));
 	}
 
 	public void openEmojiPane() {
-		if (!isOpen() && smileyIn != null && smileyOut.getStatus() != Status.RUNNING) {
+		if (!isOpen() && showEmojiTabPaneAnimation != null && hideEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
 			setOpen(true);
-			smileyIn.playFromStart();
+			showEmojiTabPaneAnimation.playFromStart();
 		}
 	}
 
 	public void closeEmojiPane() {
-		if (isOpen() && smileyOut != null && smileyIn.getStatus() != Status.RUNNING) {
+		if (isOpen() && hideEmojiTabPaneAnimation != null && showEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
 			setOpen(false);
-			smileyOut.playFromStart();
+			hideEmojiTabPaneAnimation.playFromStart();
 		}
 	}
 	

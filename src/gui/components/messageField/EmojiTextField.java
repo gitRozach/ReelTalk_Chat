@@ -476,10 +476,7 @@ public class EmojiTextField extends ScrollPane {
 		for(Node currentNode : inputFlowPane.getChildren()) {
 			if(currentNode instanceof MessageFieldItem)
 				builder.append(((MessageFieldItem)currentNode).toMessageString() + " ");
-			else if(currentNode instanceof HBox) {
-				System.out.println("has text? : " + hasCurrentSelectionText());
-				System.out.println(getCurrentText());
-				
+			else if(currentNode instanceof HBox) {				
 				if(hasCurrentSelectionSmileyLeftSide())
 					builder.append(getCurrentSelectionSmileyLeftSide().toMessageString() + " ");
 				if(hasCurrentSelectionText())

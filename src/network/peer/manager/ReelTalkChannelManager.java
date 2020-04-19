@@ -4,30 +4,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
+import protobuf.ClientChannels.ChannelMembers;
 import protobuf.ClientChannels.ClientChannel;
-import protobuf.ClientIdentities.ClientProfile;
 
 public class ReelTalkChannelManager {
 	protected List<ClientChannel> channelList;
-	protected Map<Integer, List<ClientProfile>> channelMap;
 
 	public ReelTalkChannelManager() {
 		channelList = Collections.synchronizedList(new LinkedList<ClientChannel>());
-		channelMap = Collections.synchronizedMap(new HashMap<Integer, List<ClientProfile>>());
 	}
-	
-	protected static final Comparator<ClientProfile> ClientProfileComparator = new Comparator<ClientProfile>() {
-		@Override
-		public int compare(ClientProfile o1, ClientProfile o2) {
-			return o1.getBase().getId() - o2.getBase().getId();
-		}
-	};
 	
 	protected static final Comparator<ClientChannel> ClientChannelComparator = new Comparator<ClientChannel>() {
 		@Override
@@ -38,7 +26,6 @@ public class ReelTalkChannelManager {
 	
 	public void clear() {
 		channelList.clear();
-		channelMap.clear();
 	}
 	
 	public void addChannels(Collection<ClientChannel> channels) {
@@ -90,89 +77,67 @@ public class ReelTalkChannelManager {
 	 * 
 	 */
 	
-	public void addClientsToChannel(int channelId, Collection<ClientProfile> clientProfiles) {
+	public void addClientsToChannel(int channelId, Collection<Integer> clientProfiles) {
 		if(clientProfiles != null)
 			clientProfiles.forEach(a -> addClientToChannel(channelId, a));
 	}
 	
-	public void addClientToChannel(int channelId, ClientProfile clientProfile) {
-		if(clientProfile == null)
+	public void addClientToChannel(int channelId, int clientId) {
+		ClientChannel channel = getChannelById(channelId);
+		if(channel == null)
 			return;
-		if(!channelMap.containsKey(channelId)) {
-			List<ClientProfile> memberList = new ArrayList<>();
-			memberList.add(clientProfile);
-			channelMap.put(channelId, memberList);
-			return;
-		}
-		channelMap.get(channelId).add(0, clientProfile);
-		channelMap.get(channelId).sort(ClientProfileComparator);
+		int channelIndex = channelList.indexOf(channel);
+		ChannelMembers newMembers = channel.getMembers().toBuilder().addAllMemberId(List.of(clientId)).build();
+		ClientChannel newChannel = channel.toBuilder().setMembers(newMembers).build();
+		channelList.set(channelIndex, newChannel);
 	}
 	
 	public boolean removeClientFromChannel(int clientId, int channelId) {
-		return removeClientFromChannel(getClientProfileById(clientId), channelId);
-	}
-	
-	public boolean removeClientFromChannel(ClientProfile clientProfile, int channelId) {
-		if(clientProfile == null || !channelMap.containsKey(channelId))
+		ClientChannel channel = getChannelById(channelId);
+		if(channel == null || !channelContainsClient(channelId, clientId))
 			return false;
-		return channelMap.get(channelId).remove(clientProfile);
+		int channelIndex = channelList.indexOf(channel);
+
+		List<Integer> memberList = new ArrayList<Integer>(channel.getMembers().getMemberIdList());
+		memberList.remove(memberList.indexOf(clientId));
+		ChannelMembers newMembers = ChannelMembers.newBuilder().addAllMemberId(memberList).build();
+				
+		ClientChannel newChannel = channel.toBuilder().setMembers(newMembers).build();
+		channelList.set(channelIndex, newChannel);
+		return true;
 	}
 	
-	public List<ClientProfile> getChannelMembersOf(int channelId) {
-		if(!channelMap.containsKey(channelId))
+	public List<Integer> getChannelMembersOf(int channelId) {
+		ClientChannel channel = getChannelById(channelId);
+		if(channel == null)
 			return null;
-		return channelMap.get(channelId);
+		return List.copyOf(channel.getMembers().getMemberIdList());
 	}
 	
 	public List<ClientChannel> getChannels() {
 		return channelList;
 	}
 	
-	public ClientProfile getClientProfileById(int clientId)	{
-		for(Entry<Integer, List<ClientProfile>> currentEntry : channelMap.entrySet()) {
-			for(ClientProfile currentProfile : currentEntry.getValue())
-				if(currentProfile.getBase().getId() == clientId)
-					return currentProfile;
-		}
-		return null;
-	}
-	
 	public int getChannelIdOfClient(int id) {
-		return getChannelIdOfClient(getClientProfileById(id));
-	}
-	
-	public int getChannelIdOfClient(ClientProfile clientProfile) {
-		if(clientProfile == null)
-			return -1;
-		for(Entry<Integer, List<ClientProfile>> currentEntry : channelMap.entrySet())
-			if(currentEntry.getValue().contains(clientProfile))
-				return currentEntry.getKey();
-		return -1;
+		int resultId = -1;
+		for(ClientChannel currentChannel : channelList)
+			if(currentChannel.getMembers().getMemberIdList().contains(id))
+				return currentChannel.getBase().getChannelId();
+		return resultId;
 	}
 	
 	public boolean isClientChannelMember(int id) {
-		return isClientChannelMember(getClientProfileById(id));
-	}
-	
-	public boolean isClientChannelMember(ClientProfile clientProfile) {
-		return getChannelIdOfClient(clientProfile) != -1;
+		return getChannelIdOfClient(id) != -1;
 	}
 	
 	public boolean isClientChannelMemberOf(int clientId, int channelId) {
-		return isClientChannelMemberOf(getClientProfileById(clientId), channelId);
-	}
-	
-	public boolean isClientChannelMemberOf(ClientProfile clientProfile, int channelId) {
-		return getChannelIdOfClient(clientProfile) == channelId;
+		return getChannelIdOfClient(clientId) == channelId;
 	}
 	
 	public boolean channelContainsClient(int channelId, int clientId) {
-		return channelContainsClient(channelId, getClientProfileById(clientId));
-	}
-	
-	public boolean channelContainsClient(int channelId, ClientProfile clientProfile) {
-		if(clientProfile == null)
+		ClientChannel channel = getChannelById(channelId);
+		if(channel == null)
 			return false;
-		return channelMap.containsKey(channelId) && channelMap.get(channelId).contains(clientProfile);
+		return channel.getMembers().getMemberIdList().contains(clientId);
 	}
 }

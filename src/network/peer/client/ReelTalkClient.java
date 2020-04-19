@@ -150,6 +150,46 @@ public class ReelTalkClient extends SecuredProtobufClient {
 		
 	}
 	
+	public ReelTalkConfigurationManager getConfigManager() {
+		return configManager;
+	}
+
+	public void setConfigManager(ReelTalkConfigurationManager value) {
+		configManager = value;
+	}
+
+	public ReelTalkChannelManager getChannelManager() {
+		return channelManager;
+	}
+
+	public void setChannelManager(ReelTalkChannelManager value) {
+		channelManager = value;
+	}
+
+	public ReelTalkClientProfileManager getProfileManager() {
+		return profileManager;
+	}
+
+	public void setProfileManager(ReelTalkClientProfileManager value) {
+		profileManager = value;
+	}
+
+	public ReelTalkMessageManager getMessageManager() {
+		return messageManager;
+	}
+
+	public void setMessageManager(ReelTalkMessageManager value) {
+		messageManager = value;
+	}
+
+	public void setIdentityManager(ReelTalkIdentityManager value) {
+		identityManager = value;
+	}
+
+	public void setRequestManager(ReelTalkRequestManager value) {
+		requestManager = value;
+	}
+	
 	public ObjectEventHandler<ProtobufMessage> getOnMessageReceived() {
 		return onMessageReceivedHandler;
 	}

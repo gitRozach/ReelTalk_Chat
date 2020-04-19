@@ -230,16 +230,21 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	private void handleChannelJoinRequest(SelectionKey clientKey, ChannelJoinRequest request) {
+		if(request == null)
+			return;
+		int channelId = request.getChannelBase().getChannelId();
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
+		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
-		if(checkLogin(clientUsername, clientPassword)) {
+		if(clientAccount != null) {
+			channelManager.addClientToChannel(channelId, clientAccount.getProfile().getBase().getId());
 			ChannelMessageDatabase messageDb = databaseManager.getChannelMessageDatabase();
-			messageDb.loadFileItems("src/clientData/channelMessages/" + messageDb.createChannelMessageFileNameFromId(request.getChannelBase().getChannelId()));
+			messageDb.loadFileItems("src/clientData/channelMessages/" + messageDb.createChannelMessageFileNameFromId(channelId));
 			List<ChannelMessage> channelMessages = messageDb.getChannelMessages(20);
 			if(channelMessages == null)
 				channelMessages = Collections.emptyList();
-			ClientChannelJoinEvent joinEvent = ClientEvents.newClientChannelJoinEvent(1, request.getChannelBase().getChannelId(), channelMessages);
+			ClientChannelJoinEvent joinEvent = ClientEvents.newClientChannelJoinEvent(1, channelId, channelMessages);
 			sendMessage(clientKey, joinEvent);
 			System.out.println("Server sent: " + joinEvent.toByteArray().length + " bytes");
 		}
@@ -250,12 +255,16 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	}
 	
 	private void handleChannelLeaveRequest(SelectionKey clientKey, ChannelLeaveRequest request) {
+		if(request == null)
+			return;
+		int channelId = request.getChannelBase().getChannelId();
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
-		ClientAccount clientAccount = null;
+		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
-		if((clientAccount = login(clientUsername, clientPassword)) != null) {
-			ClientChannelLeaveEvent leaveEvent = ClientEvents.newClientChannelLeaveEvent(1, request.getChannelBase().getChannelId(), clientAccount.getProfile());
+		if(clientAccount != null) {
+			channelManager.removeClientFromChannel(clientAccount.getProfile().getBase().getId(), channelId);
+			ClientChannelLeaveEvent leaveEvent = ClientEvents.newClientChannelLeaveEvent(1, channelId, clientAccount.getProfile());
 			sendMessage(clientKey, leaveEvent);
 		}
 		else {
@@ -295,17 +304,15 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		
 		if((clientAccount = login(clientUsername, clientPassword)) != null) {
 			int clientId = clientAccount.getProfile().getBase().getId();
-			for(SelectionKey key : selector.keys()) {
-				if(key.channel() instanceof SocketChannel) {
-					ChannelMessage channelMessage = ClientMessages.newChannelMessage(messageId, messageText, clientId, clientUsername, channelId, messageTime, attachedFiles);		
-					databaseManager.getChannelMessageDatabase().addItem(channelMessage);
-					
-					List<ChannelMessage> messages = new ArrayList<ChannelMessage>();
-					messages.add(channelMessage);
-					ChannelMessagePostEvent eventMessage = ClientEvents.newChannelMessagePostEvent(eventId, clientId, messages);
+			ChannelMessage channelMessage = ClientMessages.newChannelMessage(messageId, messageText, clientId, clientUsername, channelId, messageTime, attachedFiles);		
+			databaseManager.getChannelMessageDatabase().addItem(channelMessage);
+			
+			List<ChannelMessage> messages = new ArrayList<ChannelMessage>();
+			messages.add(channelMessage);
+			ChannelMessagePostEvent eventMessage = ClientEvents.newChannelMessagePostEvent(eventId, clientId, messages);
+			for(SelectionKey key : selector.keys())
+				if(key.channel() instanceof SocketChannel)
 					sendMessage(key, eventMessage);
-				}
-			}
 		}
 		else {
 			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(eventId, "Invalid login data.");
@@ -316,10 +323,10 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
-		ClientAccount clientAccount = null;
+		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
-		if((clientAccount = login(clientUsername, clientPassword)) != null) {
-			List<ClientChannel> serverChannels = databaseManager.getClientChannelDatabase().getLoadedItems();
+		if(clientAccount != null) {
+			List<ClientChannel> serverChannels = channelManager.getChannels();//databaseManager.getClientChannelDatabase().getLoadedItems();
 			List<ClientProfile> serverMembers = new ArrayList<ClientProfile>();
 			serverMembers.addAll(clientManager.getOnlineMembers());
 			serverMembers.addAll(clientManager.getOfflineMembers());
