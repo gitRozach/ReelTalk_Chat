@@ -42,4 +42,10 @@ D/:A117A: :A117B: :A117C: :A118D: :A118E: :A118F:"Rozach(ύ€δη™.l
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage=
 7":D34A: :D34A: :D34A: :D34A: :D34A:"Rozett(‡σση™.b
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage$
-	:A3: :A3:"Rozett(ƒ©Αλ™.
+	:A3: :A3:"Rozett(ƒ©Αλ™.`
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
+:A107E:"Rozett(³›ξτ.x
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage:
+4:A120E: :A119E: :A118E: :A117E:"Rozett(θΕξτ.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+:B11:"Rozett(θόρτ.

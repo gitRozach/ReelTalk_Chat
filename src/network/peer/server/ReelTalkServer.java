@@ -161,22 +161,18 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			@Override
 			public void messageReceived(ProtobufMessage message) {
 				handleReceivedMessage(message);
-				onMessageReceivedHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message));	
 			}
 			@Override
 			public void messageSent(ProtobufMessage message) {
 				handleSentMessage(message);
-				onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message));
 			}
 			@Override
 			public void messageTimedOut(ProtobufMessage message) {
 				handleTimedOutMessage(message);
-				onMessageTimedOutHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, message));	
 			}
 			@Override
 			public void connectionLost(Throwable throwable) {
 				handleLostConnection(throwable);
-				onConnectionLostHandler.handle(new ObjectEvent<Throwable>(ObjectEvent.ANY, throwable));
 			}
 		});
 	}
@@ -186,18 +182,19 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			return;
 		if(ClientRequests.isRequest(receivedMessage.getMessage().getClass()))
 			handleRequest(getLocalSelectionKey(receivedMessage.getSocketChannel()), receivedMessage.getMessage());
+		onMessageReceivedHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, receivedMessage));	
 	}
 	
 	private void handleSentMessage(ProtobufMessage sentMessage) {
-		
+		onMessageSentHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, sentMessage));
 	}
 	
 	private void handleTimedOutMessage(ProtobufMessage timedOutMessage) {
-		
+		onMessageTimedOutHandler.handle(new ObjectEvent<ProtobufMessage>(ObjectEvent.ANY, timedOutMessage));	
 	}
 	
 	private void handleLostConnection(Throwable throwable) {
-		
+		onConnectionLostHandler.handle(new ObjectEvent<Throwable>(ObjectEvent.ANY, throwable));
 	}
 	
 	private void handleRequest(SelectionKey clientKey, Message request) {
