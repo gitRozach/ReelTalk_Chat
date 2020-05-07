@@ -295,7 +295,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
 		if(clientAccount != null) {
-			channelManager.removeClientFromChannel(clientAccount.getProfile().getBase().getId(), channelId);
+			System.out.println("Channel leave result: " + channelManager.removeClientFromChannel(clientAccount.getProfile().getBase().getId(), channelId));
 			ChannelLeaveEvent leaveEvent = ClientEvents.newChannelLeaveEvent(1, channelId, clientAccount.getProfile());
 			sendMessage(clientKey, leaveEvent);
 			

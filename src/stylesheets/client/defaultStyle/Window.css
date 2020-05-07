@@ -1,0 +1,12 @@
+.jfx-decorator{
+	-fx-decorator-color: green;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container{
+	-fx-background-color: green;
+}
+
+.jfx-decorator .resize-border{
+	-fx-border-color: green;
+	-fx-border-width: 0px 3px 3px 3px;
+}

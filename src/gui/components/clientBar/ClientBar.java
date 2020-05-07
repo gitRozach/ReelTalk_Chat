@@ -1,5 +1,6 @@
 package gui.components.clientBar;
 
+import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
@@ -172,7 +173,7 @@ public class ClientBar extends LoadableStackPane {
 		profilePictureCircle = new Circle(64d);
 		profilePictureCircle.setFill(new ImagePattern(profileImage));
 		profilePictureCircle.setStroke(Color.GREEN);
-		profilePictureCircle.setStrokeWidth(2d);
+		profilePictureCircle.setStrokeWidth(3d);
 		profilePictureCircle.setTranslateX(20d);
 		
 		Image adminLevelImage = new Image("/resources/icons/rank_admin.png", 32d, 32d, true, true);
@@ -208,6 +209,9 @@ public class ClientBar extends LoadableStackPane {
 		appsIcon.setWrappingWidth(28d);
 		
 		messagesButton = new JFXButton("", messagesIcon);
+		JFXBadge messagesBadge = new JFXBadge(messagesButton, Pos.TOP_RIGHT);
+		messagesBadge.setText("5");
+		
 		FXUtils.setFixedSizeOf(messagesButton, 50d, 40d);
 		messagesButton.setOnAction(a -> profileTabPane.getSelectionModel().select(0));
 		membersButton = new JFXButton("", usersIcon);
@@ -216,7 +220,7 @@ public class ClientBar extends LoadableStackPane {
 		appsButton = new JFXButton("", appsIcon);
 		FXUtils.setFixedSizeOf(appsButton, 50d, 40d);
 		appsButton.setOnAction(c -> profileTabPane.getSelectionModel().select(2));
-		profileTabButtonBox = new HBox(messagesButton, membersButton, appsButton);
+		profileTabButtonBox = new HBox(messagesBadge, membersButton, appsButton);
 		profileTabButtonBox.setPadding(new Insets(10d, 0d, 10d, 0d));
 		profileTabButtonBox.setAlignment(Pos.CENTER);
 		

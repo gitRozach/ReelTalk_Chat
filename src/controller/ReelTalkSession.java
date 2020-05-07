@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.Comparator;
 
 import com.google.protobuf.Message;
+import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXListView;
 
 import apps.audioPlayer.AudioPlayer;
@@ -32,6 +33,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -212,7 +214,13 @@ public class ReelTalkSession extends Application {
 		window = stage;
 		window.setOnCloseRequest(a -> closeAll());
 		window.setTitle("ReelTalk - Launcher");
-		window.setScene(new Scene(rootPane, 1000d, 800d));
+		
+		JFXDecorator decoratedWindow = new JFXDecorator(window, rootPane);
+		decoratedWindow.getStylesheets().add("/stylesheets/client/defaultStyle/Window.css");
+		decoratedWindow.setGraphic(new Label("Icon"));
+		decoratedWindow.setCustomMaximize(false);
+		
+		window.setScene(new Scene(decoratedWindow, 1000d, 800d));
 	}
 	
 	private void initFonts() {
