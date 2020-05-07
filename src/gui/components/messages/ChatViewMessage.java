@@ -4,6 +4,10 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 
+import com.jfoenix.controls.JFXScrollPane;
+
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
@@ -22,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -38,11 +43,16 @@ public class ChatViewMessage extends BorderPane {
 	private LongProperty timeProperty;
 	private ObjectProperty<Color> colorProperty;
 	private ObjectProperty<MessageStatus> statusProperty;
-
-	private HBox senderBox;
+	
+	private Circle senderPictureCircle;
 	private Label senderLabel;
+	private FontAwesomeIconView menuIcon;
 	private Label timeLabel;
+	
+	private HBox senderBox;
 	private FlowPane messageFlow;
+	private JFXScrollPane attachedFilesScrollPane;
+	private HBox statusBox;
 	
 	private EventHandler<ActionEvent> onHyperlinkClickedHandler;
 	
@@ -51,6 +61,7 @@ public class ChatViewMessage extends BorderPane {
 		initProperties();
 		initEventHandlers();
 		initControls();
+		initAttachedFilesScrollPane();
 		initRootPane();
 	}
 
@@ -86,7 +97,7 @@ public class ChatViewMessage extends BorderPane {
 
 	private FlowPane splitMessage(Font font) {
 		FlowPane messagePane = new FlowPane();
-		messagePane.setPadding(new Insets(10d, 10d, 10d, 10d));
+		messagePane.setPadding(new Insets(10d, 15d, 0d, 15d));
 		messagePane.setAlignment(Pos.CENTER_LEFT);
 		messagePane.setHgap(3d);
 		messagePane.setVgap(3d);
@@ -126,9 +137,12 @@ public class ChatViewMessage extends BorderPane {
 		timeProperty = new SimpleLongProperty(System.currentTimeMillis());
 		colorProperty = new SimpleObjectProperty<>(Color.BLACK);
 		statusProperty = new SimpleObjectProperty<>(MessageStatus.NEW);
+		statusProperty.addListener((obs, oldV, newV) -> updateMessage(newV));
 	}
 	
 	private void initEventHandlers() {
+		setOnMouseEntered(a -> menuIcon.setVisible(true));
+		setOnMouseExited(b -> menuIcon.setVisible(false));
 		onHyperlinkClickedHandler = a -> {
 			try {
 				if(a.getSource() == null || !(a.getSource() instanceof Hyperlink))
@@ -145,44 +159,56 @@ public class ChatViewMessage extends BorderPane {
 	
 	private void initControls() {
 		Image pic = new Image("/resources/icons/member.png", 26d, 26d, true, true);
-		Circle profilePic = new Circle(13d);
-		profilePic.setFill(new ImagePattern(pic));
-		profilePic.setStroke(Color.GREEN);
-		profilePic.setStrokeWidth(2d);
+		senderPictureCircle = new Circle(13d);
+		senderPictureCircle.setFill(new ImagePattern(pic));
+		senderPictureCircle.setStroke(Color.GREEN);
+		senderPictureCircle.setStrokeWidth(2d);
 		
 		senderLabel = new Label(getSender());
 		senderLabel.setTextFill(getColor());
 		senderLabel.setFont(FXUtils.Font(18d, FontWeight.BOLD));
 		
+		HBox senderSpace = new HBox();
+		
+		menuIcon = new FontAwesomeIconView(FontAwesomeIcon.ELLIPSIS_V);
+		menuIcon.setGlyphSize(20d);
+		menuIcon.setVisible(false);
+		
 		senderBox = new HBox(10d);
 		senderBox.setAlignment(Pos.CENTER_LEFT);
-		senderBox.setPadding(new Insets(10d, 10d, 10d, 10d));
-		senderBox.getChildren().addAll(profilePic, senderLabel);
+		senderBox.getChildren().addAll(senderPictureCircle, senderLabel, senderSpace, menuIcon);
+		HBox.setHgrow(senderSpace, Priority.ALWAYS);
 
 		messageFlow = splitMessage();
 		
 		timeLabel = new Label(Utils.durationToHHMM(Duration.millis(getTime())));
 		timeLabel.setTextFill(Color.web("#" + getColor().toString().substring(2)));
 		timeLabel.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 13d));
+		
+		statusBox = new HBox(10d);
+		statusBox.setAlignment(Pos.CENTER_RIGHT);
+		statusBox.getChildren().addAll(timeLabel);
+	}
+	
+	private void initAttachedFilesScrollPane() {
+		attachedFilesScrollPane = new JFXScrollPane();
+		attachedFilesScrollPane.setDisable(true);
 	}
 	
 	private void initRootPane() {
-		BorderPane.setAlignment(senderLabel, Pos.TOP_CENTER);
-		BorderPane.setMargin(senderLabel, new Insets(5d, 0d, 10d, 0d));
-		BorderPane.setAlignment(messageFlow, Pos.CENTER_LEFT);
-		BorderPane.setMargin(messageFlow, new Insets(0d, 10d, 10d, 10d));
-		BorderPane.setAlignment(timeLabel, Pos.BOTTOM_RIGHT);
-		BorderPane.setMargin(timeLabel, new Insets(0d, 10d, 5d, 0d));
+		BorderPane.setMargin(senderBox, new Insets(10d, 15d, 10d, 15d));
+		BorderPane.setMargin(messageFlow, new Insets(10d, 15d, 10d, 15d));
+		BorderPane.setMargin(statusBox, new Insets(10d, 15d, 10d, 15d));
 
 		setMinSize(0d, 0d);
 		setTop(senderBox);
 		setCenter(messageFlow);
-		setBottom(timeLabel);
+		setBottom(statusBox);
 	}
 
-	/*
-	 * 
-	 */
+	private void updateMessage(MessageStatus status) {
+		
+	}
 
 	public StringProperty senderProperty() {
 		return senderProperty;

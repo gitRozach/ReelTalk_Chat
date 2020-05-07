@@ -10,12 +10,12 @@ import org.awaitility.Awaitility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
 import network.peer.client.ReelTalkClient;
 import network.peer.server.ReelTalkServer;
-import protobuf.ClientEvents.ClientLoginEvent;
+import protobuf.ClientEvents.LoginEvent;
 import protobuf.ClientIdentities.AdminGroup;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadge;
@@ -27,7 +27,7 @@ import protobuf.ClientIdentities.ClientGroups;
 import protobuf.ClientIdentities.ClientImages;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
-import protobuf.ClientRequests.ClientLoginRequest;
+import protobuf.ClientRequests.LoginRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
 import protobuf.wrapper.ClientEvents;
 import protobuf.wrapper.ClientIdentities;
@@ -92,7 +92,7 @@ class SecuredMessageServerClientTest {
 			client5.connect();
 			client5.setBufferingReceivedMessages(true);
 			
-			ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleAccount());
+			LoginEvent eventMessage = ClientEvents.newLoginEvent(1, createSampleAccount());
 			
 			for(int i = 0; i < 100; ++i) {
 				server.sendMessage(client1.getChannel(), eventMessage);
@@ -103,31 +103,31 @@ class SecuredMessageServerClientTest {
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());
-				GeneratedMessageV3 reception1 = client1.readMessage();
-				assertTrue(reception1 instanceof ClientLoginEvent);
+				Message reception1 = client1.readMessage();
+				assertTrue(reception1 instanceof LoginEvent);
 				
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client2.hasReceivableBytes());
-				GeneratedMessageV3 reception2 = client2.readMessage();
-				assertTrue(reception2 instanceof ClientLoginEvent);
+				Message reception2 = client2.readMessage();
+				assertTrue(reception2 instanceof LoginEvent);
 				
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client3.hasReceivableBytes());
-				GeneratedMessageV3 reception3 = client3.readMessage();
-				assertTrue(reception3 instanceof ClientLoginEvent);
+				Message reception3 = client3.readMessage();
+				assertTrue(reception3 instanceof LoginEvent);
 				
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client4.hasReceivableBytes());
-				GeneratedMessageV3 reception4 = client4.readMessage();
-				assertTrue(reception4 instanceof ClientLoginEvent);
+				Message reception4 = client4.readMessage();
+				assertTrue(reception4 instanceof LoginEvent);
 				
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client5.hasReceivableBytes());
-				GeneratedMessageV3 reception5 = client5.readMessage();
-				assertTrue(reception5 instanceof ClientLoginEvent);
+				Message reception5 = client5.readMessage();
+				assertTrue(reception5 instanceof LoginEvent);
 			}
 		}
 	}
 	
 	@Test
 	void readMessage_clientRetrievesFirstMessage() throws Exception {
-		ClientLoginEvent eventMessage = ClientEvents.newClientLoginEvent(1, createSampleAccount());
+		LoginEvent eventMessage = ClientEvents.newLoginEvent(1, createSampleAccount());
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.setBufferingReceivedMessages(true);
@@ -136,7 +136,7 @@ class SecuredMessageServerClientTest {
 			
 			server.sendMessage(client.getChannel(), eventMessage);
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReceivableBytes());
-			GeneratedMessageV3 reception = client.readMessage();
+			Message reception = client.readMessage();
 			assertTrue(reception.getClass().equals(eventMessage.getClass()));
 		}
 	}
@@ -166,26 +166,26 @@ class SecuredMessageServerClientTest {
 	
 	@Test
 	void clientLogin_validLoginTest() throws Exception {
-		ClientLoginRequest req = ClientRequests.newLoginRequest(1, "TestoRozach", "rozachPass");
+		LoginRequest req = ClientRequests.newLoginRequest(1, "TestoRozach", "rozachPass");
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			assertTrue(client.connect());
 			client.sendMessage(req);
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
 			ProtobufMessage message = server.pollReceptionBytes();
-			assertTrue(message.getMessage() instanceof ClientLoginRequest);
+			assertTrue(message.getMessage() instanceof LoginRequest);
 		}
 	}
 	
 	@Test
 	void clientLogin_invalidLoginTest() throws Exception {
-		ClientLoginRequest req = ClientRequests.newLoginRequest(1, "Rozach", "rozachPass");
+		LoginRequest req = ClientRequests.newLoginRequest(1, "Rozach", "rozachPass");
 		try(ReelTalkClient client = new ReelTalkClient(TEST_PROTOCOL, TEST_HOST_ADDRESS, TEST_HOST_PORT)) {
 			client.connect();
 			client.sendMessage(req);
 			
 			Awaitility.await().atMost(Duration.ofSeconds(3L)).until(() -> server.hasReceivableBytes());
 			ProtobufMessage message = server.pollReceptionBytes();
-			assertTrue(message.getMessage() instanceof ClientLoginRequest);
+			assertTrue(message.getMessage() instanceof LoginRequest);
 		}
 	}
 	

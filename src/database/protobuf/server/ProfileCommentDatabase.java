@@ -5,23 +5,23 @@ import java.util.Comparator;
 import java.util.List;
 
 import database.protobuf.ProtobufFileDatabase;
-import protobuf.ClientMessages.ClientProfileComment;
+import protobuf.ClientMessages.ProfileComment;
 
-public class ClientProfileCommentDatabase extends ProtobufFileDatabase<ClientProfileComment>{
+public class ProfileCommentDatabase extends ProtobufFileDatabase<ProfileComment>{
 	protected final String PROFILE_COMMENT_FILE_NAME_PREFIX = "profileComments";
 	protected final String PROFILE_COMMENT_NAME_VALUE_SEPARATOR = "_";
 	protected final String PROFILE_COMMENT_FILE_TYPE = ".txt";
 	
-	public ClientProfileCommentDatabase() throws IOException {
+	public ProfileCommentDatabase() throws IOException {
 		this("", "");
 	}
 	
-	public ClientProfileCommentDatabase(String databaseName) throws IOException	{
+	public ProfileCommentDatabase(String databaseName) throws IOException	{
 		this(databaseName, "");
 	}
 	
-	public ClientProfileCommentDatabase(String databaseName, String filePath) throws IOException {
-		super(ClientProfileComment.class, databaseName, filePath);
+	public ProfileCommentDatabase(String databaseName, String filePath) throws IOException {
+		super(ProfileComment.class, databaseName, filePath);
 	}
 	
 	public String createProfileCommentFileNameFromId(int clientId) {
@@ -29,13 +29,13 @@ public class ClientProfileCommentDatabase extends ProtobufFileDatabase<ClientPro
 	}
 	
 	@Override
-	public void sort(List<ClientProfileComment> items) {
+	public void sort(List<ProfileComment> items) {
 		items.sort(ClientProfileCommentComparator);
 	}
 	
-	public static Comparator<ClientProfileComment> ClientProfileCommentComparator = new Comparator<ClientProfileComment>() {
+	public static Comparator<ProfileComment> ClientProfileCommentComparator = new Comparator<ProfileComment>() {
 		@Override
-		public int compare(ClientProfileComment o1, ClientProfileComment o2) {
+		public int compare(ProfileComment o1, ProfileComment o2) {
 			return o1.getMessageBase().getMessageId() - o2.getMessageBase().getMessageId();
 		}
 	};

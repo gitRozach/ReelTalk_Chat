@@ -45,7 +45,7 @@
 }
 
 .jfx-tab-pane .control-buttons-tab .tab-down-button{
-    	-fx-background-color: transparent;
+    -fx-background-color: transparent;
 	-fx-opacitiy: 0;	
 	-fx-min-width: 0px;
 	-fx-max-width: 0px;
@@ -56,7 +56,7 @@
 }
 
 .jfx-tab-pane .control-buttons-tab .tab-up-button{
-    	-fx-background-color: transparent;
+    -fx-background-color: transparent;
 	-fx-opacitiy: 0;
 	-fx-min-width: 0px;
 	-fx-max-width: 0px;
@@ -67,7 +67,7 @@
 }
 
 .jfx-tab-pane .control-buttons-tab .jfx-rippler{
-    	-jfx-rippler-fill: -contrast-color;
+    -jfx-rippler-fill: -contrast-color;
 }
 
 .jfx-button{

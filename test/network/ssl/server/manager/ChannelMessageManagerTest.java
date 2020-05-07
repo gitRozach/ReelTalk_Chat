@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import database.protobuf.server.ChannelMessageDatabase;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
-import protobuf.ClientMessages.ClientFileMessageBase;
+import protobuf.ClientMessages.FileMessageBase;
 import protobuf.wrapper.ClientMessages;
 
 class ChannelMessageManagerTest {
@@ -30,15 +30,15 @@ class ChannelMessageManagerTest {
 
 	@Test
 	public void addMessage_addItemsAndCheckIfListIsSorted() throws IOException {
-//		ProtobufFileDatabase<ClientChannel> cdb = new ProtobufFileDatabase<ClientChannel>(ClientChannel.class);
+//		ProtobufFileDatabase<Channel> cdb = new ProtobufFileDatabase<Channel>(Channel.class);
 //		cdb.loadFileItems("src/clientData/channels.txt");
 //		cdb.clear();
 //		
-//		ClientChannel c1 = ClientChannels.newPublicTextChannel(1, "Text 1", 10, Collections.emptyList());
-//		ClientChannel c2 = ClientChannels.newPublicTextChannel(2, "Text 2", 10, Collections.emptyList());
-//		ClientChannel c3 = ClientChannels.newPublicTextChannel(3, "Text 3", 10, Collections.emptyList());
-//		ClientChannel v4 = ClientChannels.newPublicVoiceChannel(4, "Voice 4", 10, Collections.emptyList());
-//		ClientChannel v5 = ClientChannels.newPublicVoiceChannel(5, "Voice 5", 10, Collections.emptyList());
+//		Channel c1 = ClientChannels.newPublicTextChannel(1, "Text 1", 10, Collections.emptyList());
+//		Channel c2 = ClientChannels.newPublicTextChannel(2, "Text 2", 10, Collections.emptyList());
+//		Channel c3 = ClientChannels.newPublicTextChannel(3, "Text 3", 10, Collections.emptyList());
+//		Channel v4 = ClientChannels.newPublicVoiceChannel(4, "Voice 4", 10, Collections.emptyList());
+//		Channel v5 = ClientChannels.newPublicVoiceChannel(5, "Voice 5", 10, Collections.emptyList());
 //		
 //		cdb.addItem(c1);
 //		cdb.addItem(c2);
@@ -51,12 +51,12 @@ class ChannelMessageManagerTest {
 		database.loadFileItems("test/testresources/channelMessageManager/addChannelMessages.txt");
 		database.clear();
 		
-		ClientFileMessageBase file1 = ClientFileMessageBase.newBuilder().setFileName("file1").setIsDownloadMessage(true).build();
-		ClientFileMessageBase file2 = ClientFileMessageBase.newBuilder().setFileName("file2").setIsDownloadMessage(true).build();
-		ClientFileMessageBase file3 = ClientFileMessageBase.newBuilder().setFileName("file3").setIsDownloadMessage(true).build();
-		ClientFileMessageBase file4 = ClientFileMessageBase.newBuilder().setFileName("file4").setIsDownloadMessage(true).build();
-		ClientFileMessageBase file5 = ClientFileMessageBase.newBuilder().setFileName("file5").setIsDownloadMessage(true).build();
-		List<ClientFileMessageBase> files = new ArrayList<>();
+		FileMessageBase file1 = FileMessageBase.newBuilder().setFileName("file1").setIsDownloadMessage(true).build();
+		FileMessageBase file2 = FileMessageBase.newBuilder().setFileName("file2").setIsDownloadMessage(true).build();
+		FileMessageBase file3 = FileMessageBase.newBuilder().setFileName("file3").setIsDownloadMessage(true).build();
+		FileMessageBase file4 = FileMessageBase.newBuilder().setFileName("file4").setIsDownloadMessage(true).build();
+		FileMessageBase file5 = FileMessageBase.newBuilder().setFileName("file5").setIsDownloadMessage(true).build();
+		List<FileMessageBase> files = new ArrayList<>();
 		files.add(file1);
 		files.add(file2);
 		files.add(file3);

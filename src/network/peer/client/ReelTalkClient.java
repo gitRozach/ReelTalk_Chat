@@ -12,17 +12,22 @@ import network.peer.manager.ReelTalkClientProfileManager;
 import network.peer.manager.ReelTalkConfigurationManager;
 import network.peer.manager.ReelTalkMessageManager;
 import network.peer.manager.ReelTalkRequestManager;
+import protobuf.ClientEvents.ChannelJoinEvent;
 import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
-import protobuf.ClientEvents.ClientChannelJoinEvent;
-import protobuf.ClientEvents.ClientLoginEvent;
-import protobuf.ClientEvents.ClientProfileGetEvent;
+import protobuf.ClientEvents.ClientJoinedChannelEvent;
+import protobuf.ClientEvents.ClientLeftChannelEvent;
+import protobuf.ClientEvents.ClientLoggedInEvent;
+import protobuf.ClientEvents.ClientLoggedOutEvent;
+import protobuf.ClientEvents.LoginEvent;
+import protobuf.ClientEvents.LogoutEvent;
+import protobuf.ClientEvents.ProfileGetEvent;
 
 public class ReelTalkClient extends SecuredProtobufClient {
 	protected ReelTalkIdentityManager identityManager;
+	protected ReelTalkClientProfileManager profileManager;
 	protected ReelTalkConfigurationManager configManager;
 	protected ReelTalkChannelManager channelManager;
-	protected ReelTalkClientProfileManager profileManager;
 	protected ReelTalkMessageManager messageManager;
 	protected ReelTalkRequestManager requestManager;
 	
@@ -114,7 +119,13 @@ public class ReelTalkClient extends SecuredProtobufClient {
 		Message event = message.getMessage();
 		if(event == null)
 			return;
-		if(event instanceof ClientProfileGetEvent) {
+		else if(event instanceof ProfileGetEvent) {
+			
+		}
+		else if(event instanceof ClientJoinedChannelEvent) {
+			
+		}
+		else if(event instanceof ClientLeftChannelEvent) {
 			
 		}
 		else if(event instanceof ChannelMessagePostEvent) {
@@ -123,14 +134,23 @@ public class ReelTalkClient extends SecuredProtobufClient {
 		else if(event instanceof ChannelMessageGetEvent) {
 			
 		}
-		else if(event instanceof ClientChannelJoinEvent) {
+		else if(event instanceof ChannelJoinEvent) {
 
 		}
-		else if(event instanceof ClientLoginEvent) {
-			ClientLoginEvent loginEvent = (ClientLoginEvent) event;
+		else if(event instanceof ClientLoggedInEvent) {
+			
+		}
+		else if(event instanceof ClientLoggedOutEvent) {
+			
+		}
+		else if(event instanceof LoginEvent) {
+			LoginEvent loginEvent = (LoginEvent) event;
 			identityManager.setClientAccount(loginEvent.getAccount());
 			channelManager.addChannels(loginEvent.getServerChannelList());
 			profileManager.addClients(loginEvent.getMemberProfileList());
+		}
+		else if(event instanceof LogoutEvent) {
+			
 		}
 	}
 	

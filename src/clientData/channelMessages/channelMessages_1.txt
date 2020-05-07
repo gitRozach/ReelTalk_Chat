@@ -1,212 +1,45 @@
-l
+[
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+xd"Rozach(ƒŒÃ™.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+jajut"Rozett(çß¾Æ™.^
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
+jungs"Rozett(×ë¾Æ™.l
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage.
-(Die erste Nachricht"Rozach(ÓğÈ—.]
+(HAHAHAHAHHHHAHAHAHA"Rozett(¨ƒ¿Æ™.”
+:type.googleapis.com/protobuf.clientmessages.ChannelMessageV
+P;:A7: :A7: :A7: :A7: :A7: :A7: :A7: :A7: :A7: :A7: :A7: :A7:"Rozett(İ©¿Æ™.e
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage'
+!shit happens"Rozett(’Ï¿Æ™.]
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage
-Jojo"Rozach(Û”È—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(¢È—.h
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage*
-$BOAH BESCHISSEN"Rozach(¦šèÈ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(ËªèÈ—.`
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
-JA MAN!"Rozach(“ÖË—.y
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage;
-5 endlich funktioniert der scheiÃŸ"Rozach(¼ÌÖË—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(¶ÕÖË—.v
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage8
-2UND NOCHMAL EIN COUNTER JUNGS"Rozach(ñèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-1"Rozach(¬ªèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-2"Rozach(®èÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-3"Rozach(¦²èÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-4"Rozach(ì»èÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-5"Rozach(ˆÁèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-6"Rozach(«ÅèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-7"Rozach(ÇÊèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-8"Rozach(†ÕèÍ—.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-9"Rozach(´ŞèÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-10"Rozach(ÎåèÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-11"Rozach(–ëèÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-12"Rozach(êñèÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-13"Rozach(½øèÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-14"Rozach(äéÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-15"Rozach(ˆŒéÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-16"Rozach(Ç”éÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-17"Rozach(Ì›éÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-18"Rozach(ä§éÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-19"Rozach(ø®éÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-20"Rozach(ª»éÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-21"Rozach(Ï‘êÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-22"Rozach(Ç–êÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-23"Rozach(ı¡êÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-24"Rozach(¸ªêÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-25"Rozach(ö²êÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-26"Rozach(Ü¼êÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-27"Rozach(¦ÆêÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-28"Rozach(ºÍêÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-29"Rozach(ÚêÍ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-30"Rozach(ÁâêÍ—.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-JOJO!"Rozach( æÃ»˜.y
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage;
-5 JAUAJAUA :A22: :A22: :A22: :A22:"Rozach(¿ğÄ»˜.f
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
-"Hallo Rozach!"Rozett(®â•Å˜.f
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage(
-"Hallo Rozach!"Rozett(®â•Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozett(ÿ—–Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozett(ÿ—–Å˜.g
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
-#HALLO DU SPAST"Rozach(¾™—Å˜.g
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
-#HALLO DU SPAST"Rozach(¾™—Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-"xd""Rozach(ŠÏ—Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-"xd""Rozach(ŠÏ—Å˜.d
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
- HAHAHAHHAHH"Rozach(¥˜Å˜.d
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage&
- HAHAHAHHAHH"Rozach(¥˜Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-hehe"Rozett(˜«˜Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-hehe"Rozett(˜«˜Å˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-fÃ¼Ã¼"Rozach(Áà£Å˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-fÃ¼Ã¼"Rozach(Áà£Å˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-fÃ¼Ã¼"Rozach(ıë£Å˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-fÃ¼Ã¼"Rozach(ıë£Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-2x"Rozach(‚‰¤Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-2x"Rozach(‚‰¤Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-jaja"Rozett(Û ¤Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-jaja"Rozett(Û ¤Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozett(Ÿ©¤Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozett(Ÿ©¤Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-HEHE"Rozett(Ú³¤Å˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-HEHE"Rozett(Ú³¤Å˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(ûí˜.`
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
-fÃ¼Ã¼Ã¼"Rozach(ÅÕŸí˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(±äŸí˜.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-fÃ¼"Rozach(Ãªí˜.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-fÃ¼"Rozach(Ãªí˜.g
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
-#:A1: :A1: :A1:"Rozach(ÈˆÁí˜.‚
-:type.googleapis.com/protobuf.clientmessages.ChannelMessageD
->):G8: :G54: :G79: :G38: :H12: :H12: :A128:"Rozach(•ìÁí˜.h
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage*
-$:A1: :A1: :A1:"Hendrik(íĞõ˜.†
-:type.googleapis.com/protobuf.clientmessages.ChannelMessageH
-B,:B7: :B64: :G9: :G1: :A50: :A50: :A50: :A50:"Hendrik(šÁ–õ˜.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-hehe"Rozach(ä£Š“™.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-UND?"Rozach(ïïš“™.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-UND?"Rozach(ïïš“™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-hmm"Rozach(Ï›“™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-hmm"Rozach(Ï›“™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Æéô“™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(öïô“™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Õöô“™._
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
-gehts?"Rozach(¸Ûù“™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-YAS"Rozach(şæù“™.W
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-"Rozach(«ÿù“™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-SAS"Rozach(ãú“™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(£ú“™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xdd"Rozach(ö±—•™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(‚«ß•™.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-huhu"Rozach(½»ß•™.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-1"Rozach(Ãß•™.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-2"Rozach(ĞÅß•™.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-3"Rozach(¸Êß•™.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-4"Rozach(åÑß•™.Z
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-5"Rozach(Õß•™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-lol"Rozach(˜ßß•™.m
+:D7:"Rozett(ï˜ÀÆ™.m
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage/
-):A128: :A128: :A128:"Rozach(ã³î•™._
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
-:A136:"Rozach(‰Åî•™.j
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
-&:A29: :A29: :A29:"Rozach(ú¡„–™.p
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage2
-,:A106B: :A106B: :A106B:"Rozach(ÄÈ„–™.j
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
-&DA SIND WA WIEDER"Rozach(¼Ö“–™.a
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage#
-DU HAKEN"Rozach(î“–™.`
+):D42B: :D42B: :D42B:"Rozett(´ÖÀÆ™.g
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage)
+#:A101: :A102B:"Rozett(„ÁÆ™.`
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage"
-	JAJA KOMM"Jenn(÷’”–™.d
+:A111B:"Rozett(‰óÔÆ™.W
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage
+"Rozett( óÔÆ™.`
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage"
+:A110B:"Rozett(­˜ÕÆ™.p
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage2
+,:A104B: :A104B: :A104B:"Rozett(À¼ÕÆ™.j
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage,
+&:A93: :A93: :A93:"Rozett(–ÂòÌ™.p
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage2
+,:A111B: :A111B: :A111B:"Rozett(ì¢öÌ™.d
 :type.googleapis.com/protobuf.clientmessages.ChannelMessage&
- HALD DE FRESS"Jenn(õ»”–™.ã
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage¤
-ƒMAN JUNGS ! :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A45: :A124A: :A124A: :A124A:"
-Rudi Gause(×“¬—™.
+ Hallo leude"Rozett(™ŒÎ™.ˆ
+:type.googleapis.com/protobuf.clientmessages.ChannelMessageJ
+D/:A123B: :A123C: :A123D: :A123E: :A123F: :A123A:"Rozett(°ıŒÎ™.ˆ
+:type.googleapis.com/protobuf.clientmessages.ChannelMessageJ
+D/:A117A: :A117B: :A117C: :A118D: :A118E: :A118F:"Rozach(ı€äç™.l
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage.
+(:F1: :F1: :F1: :F1:"Rozett(Ü“òç™.{
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage=
+7":D33F: :D33F: :D33F: :D33F: :D33F:"Rozett(ˆ¹óç™.{
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage=
+7":D34A: :D34A: :D34A: :D34A: :D34A:"Rozett(‡óóç™.b
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
+	:A3: :A3:"Rozett(ƒ©Áë™.

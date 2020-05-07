@@ -1,35 +1,3 @@
-i
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage+
-%Hallo Channel 2!"Rozach(‡ßÈ—.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(çÈ—.b
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage$
-	JAUAJAUA!"Rozach(‡ È—.r
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage4
-.:A1: :A1: :A1: :A1: haha"Hendrik(ì‹õ˜.r
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage4
-.:A1: :A1: :A1: :A1: haha"Hendrik(ì‹õ˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-haha"Hendrik(ø¨Œõ˜.^
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage 
-haha"Hendrik(ø¨Œõ˜.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Â°ÿ’™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Â°ÿ’™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Â°ÿ’™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Â°ÿ’™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Â°ÿ’™.\
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-lul"Rozach(ÄŠ“™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Éãú“™._
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage!
-:A129:"Rozach(‹„„–™.[
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-xd"Rozach(Ó—¨—™.]
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage
-jojo"Rozett(İ…©—™.
+h
+:type.googleapis.com/protobuf.clientmessages.ChannelMessage*
+$Hallo Channel 2"Rozach(ÃÄŒÃ™.

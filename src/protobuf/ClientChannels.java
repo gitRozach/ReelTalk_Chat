@@ -15,6 +15,110 @@ public final class ClientChannels {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * Protobuf enum {@code protobuf.clientchannels.ChannelCommunicationType}
+   */
+  public enum ChannelCommunicationType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>VOICE = 0;</code>
+     */
+    VOICE(0),
+    /**
+     * <code>TEXT = 1;</code>
+     */
+    TEXT(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>VOICE = 0;</code>
+     */
+    public static final int VOICE_VALUE = 0;
+    /**
+     * <code>TEXT = 1;</code>
+     */
+    public static final int TEXT_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ChannelCommunicationType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ChannelCommunicationType forNumber(int value) {
+      switch (value) {
+        case 0: return VOICE;
+        case 1: return TEXT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ChannelCommunicationType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ChannelCommunicationType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ChannelCommunicationType>() {
+            public ChannelCommunicationType findValueByNumber(int number) {
+              return ChannelCommunicationType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return protobuf.ClientChannels.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ChannelCommunicationType[] VALUES = values();
+
+    public static ChannelCommunicationType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ChannelCommunicationType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:protobuf.clientchannels.ChannelCommunicationType)
+  }
+
+  /**
    * Protobuf enum {@code protobuf.clientchannels.ChannelRestrictionType}
    */
   public enum ChannelRestrictionType
@@ -110,7 +214,7 @@ public final class ClientChannels {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return protobuf.ClientChannels.getDescriptor().getEnumTypes().get(0);
+      return protobuf.ClientChannels.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final ChannelRestrictionType[] VALUES = values();
@@ -136,131 +240,27 @@ public final class ClientChannels {
     // @@protoc_insertion_point(enum_scope:protobuf.clientchannels.ChannelRestrictionType)
   }
 
-  /**
-   * Protobuf enum {@code protobuf.clientchannels.ChannelCommunicationType}
-   */
-  public enum ChannelCommunicationType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>VOICE = 0;</code>
-     */
-    VOICE(0),
-    /**
-     * <code>TEXT = 1;</code>
-     */
-    TEXT(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>VOICE = 0;</code>
-     */
-    public static final int VOICE_VALUE = 0;
-    /**
-     * <code>TEXT = 1;</code>
-     */
-    public static final int TEXT_VALUE = 1;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static ChannelCommunicationType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static ChannelCommunicationType forNumber(int value) {
-      switch (value) {
-        case 0: return VOICE;
-        case 1: return TEXT;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<ChannelCommunicationType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ChannelCommunicationType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ChannelCommunicationType>() {
-            public ChannelCommunicationType findValueByNumber(int number) {
-              return ChannelCommunicationType.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return protobuf.ClientChannels.getDescriptor().getEnumTypes().get(1);
-    }
-
-    private static final ChannelCommunicationType[] VALUES = values();
-
-    public static ChannelCommunicationType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private ChannelCommunicationType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:protobuf.clientchannels.ChannelCommunicationType)
-  }
-
   public interface ChannelBaseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:protobuf.clientchannels.ChannelBase)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 channelId = 1;</code>
-     * @return The channelId.
+     * <code>int32 id = 1;</code>
+     * @return The id.
      */
-    int getChannelId();
+    int getId();
 
     /**
-     * <code>string channelName = 2;</code>
-     * @return The channelName.
+     * <code>string name = 2;</code>
+     * @return The name.
      */
-    java.lang.String getChannelName();
+    java.lang.String getName();
     /**
-     * <code>string channelName = 2;</code>
-     * @return The bytes for channelName.
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
-        getChannelNameBytes();
+        getNameBytes();
   }
   /**
    * Protobuf type {@code protobuf.clientchannels.ChannelBase}
@@ -275,7 +275,7 @@ public final class ClientChannels {
       super(builder);
     }
     private ChannelBase() {
-      channelName_ = "";
+      name_ = "";
     }
 
     @java.lang.Override
@@ -310,13 +310,13 @@ public final class ClientChannels {
               break;
             case 8: {
 
-              channelId_ = input.readInt32();
+              id_ = input.readInt32();
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              channelName_ = s;
+              name_ = s;
               break;
             }
             default: {
@@ -351,46 +351,46 @@ public final class ClientChannels {
               protobuf.ClientChannels.ChannelBase.class, protobuf.ClientChannels.ChannelBase.Builder.class);
     }
 
-    public static final int CHANNELID_FIELD_NUMBER = 1;
-    private int channelId_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
     /**
-     * <code>int32 channelId = 1;</code>
-     * @return The channelId.
+     * <code>int32 id = 1;</code>
+     * @return The id.
      */
-    public int getChannelId() {
-      return channelId_;
+    public int getId() {
+      return id_;
     }
 
-    public static final int CHANNELNAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object channelName_;
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
     /**
-     * <code>string channelName = 2;</code>
-     * @return The channelName.
+     * <code>string name = 2;</code>
+     * @return The name.
      */
-    public java.lang.String getChannelName() {
-      java.lang.Object ref = channelName_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        channelName_ = s;
+        name_ = s;
         return s;
       }
     }
     /**
-     * <code>string channelName = 2;</code>
-     * @return The bytes for channelName.
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
-        getChannelNameBytes() {
-      java.lang.Object ref = channelName_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        channelName_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -411,11 +411,11 @@ public final class ClientChannels {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (channelId_ != 0) {
-        output.writeInt32(1, channelId_);
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
       }
-      if (!getChannelNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, channelName_);
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       unknownFields.writeTo(output);
     }
@@ -426,12 +426,12 @@ public final class ClientChannels {
       if (size != -1) return size;
 
       size = 0;
-      if (channelId_ != 0) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, channelId_);
+          .computeInt32Size(1, id_);
       }
-      if (!getChannelNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, channelName_);
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -448,10 +448,10 @@ public final class ClientChannels {
       }
       protobuf.ClientChannels.ChannelBase other = (protobuf.ClientChannels.ChannelBase) obj;
 
-      if (getChannelId()
-          != other.getChannelId()) return false;
-      if (!getChannelName()
-          .equals(other.getChannelName())) return false;
+      if (getId()
+          != other.getId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -463,10 +463,10 @@ public final class ClientChannels {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CHANNELID_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelId();
-      hash = (37 * hash) + CHANNELNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getChannelName().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -600,9 +600,9 @@ public final class ClientChannels {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        channelId_ = 0;
+        id_ = 0;
 
-        channelName_ = "";
+        name_ = "";
 
         return this;
       }
@@ -630,8 +630,8 @@ public final class ClientChannels {
       @java.lang.Override
       public protobuf.ClientChannels.ChannelBase buildPartial() {
         protobuf.ClientChannels.ChannelBase result = new protobuf.ClientChannels.ChannelBase(this);
-        result.channelId_ = channelId_;
-        result.channelName_ = channelName_;
+        result.id_ = id_;
+        result.name_ = name_;
         onBuilt();
         return result;
       }
@@ -680,11 +680,11 @@ public final class ClientChannels {
 
       public Builder mergeFrom(protobuf.ClientChannels.ChannelBase other) {
         if (other == protobuf.ClientChannels.ChannelBase.getDefaultInstance()) return this;
-        if (other.getChannelId() != 0) {
-          setChannelId(other.getChannelId());
+        if (other.getId() != 0) {
+          setId(other.getId());
         }
-        if (!other.getChannelName().isEmpty()) {
-          channelName_ = other.channelName_;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -716,108 +716,108 @@ public final class ClientChannels {
         return this;
       }
 
-      private int channelId_ ;
+      private int id_ ;
       /**
-       * <code>int32 channelId = 1;</code>
-       * @return The channelId.
+       * <code>int32 id = 1;</code>
+       * @return The id.
        */
-      public int getChannelId() {
-        return channelId_;
+      public int getId() {
+        return id_;
       }
       /**
-       * <code>int32 channelId = 1;</code>
-       * @param value The channelId to set.
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setChannelId(int value) {
+      public Builder setId(int value) {
         
-        channelId_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 channelId = 1;</code>
+       * <code>int32 id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChannelId() {
+      public Builder clearId() {
         
-        channelId_ = 0;
+        id_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object channelName_ = "";
+      private java.lang.Object name_ = "";
       /**
-       * <code>string channelName = 2;</code>
-       * @return The channelName.
+       * <code>string name = 2;</code>
+       * @return The name.
        */
-      public java.lang.String getChannelName() {
-        java.lang.Object ref = channelName_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          channelName_ = s;
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string channelName = 2;</code>
-       * @return The bytes for channelName.
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
-          getChannelNameBytes() {
-        java.lang.Object ref = channelName_;
+          getNameBytes() {
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          channelName_ = b;
+          name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string channelName = 2;</code>
-       * @param value The channelName to set.
+       * <code>string name = 2;</code>
+       * @param value The name to set.
        * @return This builder for chaining.
        */
-      public Builder setChannelName(
+      public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        channelName_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string channelName = 2;</code>
+       * <code>string name = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChannelName() {
+      public Builder clearName() {
         
-        channelName_ = getDefaultInstance().getChannelName();
+        name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>string channelName = 2;</code>
-       * @param value The bytes for channelName to set.
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
-      public Builder setChannelNameBytes(
+      public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        channelName_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -869,688 +869,6 @@ public final class ClientChannels {
 
     @java.lang.Override
     public protobuf.ClientChannels.ChannelBase getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ChannelMembersOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientchannels.ChannelMembers)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 maxMembers = 1;</code>
-     * @return The maxMembers.
-     */
-    int getMaxMembers();
-
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @return A list containing the memberId.
-     */
-    java.util.List<java.lang.Integer> getMemberIdList();
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @return The count of memberId.
-     */
-    int getMemberIdCount();
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @param index The index of the element to return.
-     * @return The memberId at the given index.
-     */
-    int getMemberId(int index);
-  }
-  /**
-   * Protobuf type {@code protobuf.clientchannels.ChannelMembers}
-   */
-  public  static final class ChannelMembers extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientchannels.ChannelMembers)
-      ChannelMembersOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ChannelMembers.newBuilder() to construct.
-    private ChannelMembers(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ChannelMembers() {
-      memberId_ = emptyIntList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ChannelMembers();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ChannelMembers(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              maxMembers_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                memberId_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              memberId_.addInt(input.readInt32());
-              break;
-            }
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                memberId_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                memberId_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          memberId_.makeImmutable(); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ChannelMembers_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ChannelMembers_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.ClientChannels.ChannelMembers.class, protobuf.ClientChannels.ChannelMembers.Builder.class);
-    }
-
-    public static final int MAXMEMBERS_FIELD_NUMBER = 1;
-    private int maxMembers_;
-    /**
-     * <code>int32 maxMembers = 1;</code>
-     * @return The maxMembers.
-     */
-    public int getMaxMembers() {
-      return maxMembers_;
-    }
-
-    public static final int MEMBERID_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.IntList memberId_;
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @return A list containing the memberId.
-     */
-    public java.util.List<java.lang.Integer>
-        getMemberIdList() {
-      return memberId_;
-    }
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @return The count of memberId.
-     */
-    public int getMemberIdCount() {
-      return memberId_.size();
-    }
-    /**
-     * <code>repeated int32 memberId = 2;</code>
-     * @param index The index of the element to return.
-     * @return The memberId at the given index.
-     */
-    public int getMemberId(int index) {
-      return memberId_.getInt(index);
-    }
-    private int memberIdMemoizedSerializedSize = -1;
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (maxMembers_ != 0) {
-        output.writeInt32(1, maxMembers_);
-      }
-      if (getMemberIdList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(memberIdMemoizedSerializedSize);
-      }
-      for (int i = 0; i < memberId_.size(); i++) {
-        output.writeInt32NoTag(memberId_.getInt(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (maxMembers_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, maxMembers_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < memberId_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(memberId_.getInt(i));
-        }
-        size += dataSize;
-        if (!getMemberIdList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        memberIdMemoizedSerializedSize = dataSize;
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protobuf.ClientChannels.ChannelMembers)) {
-        return super.equals(obj);
-      }
-      protobuf.ClientChannels.ChannelMembers other = (protobuf.ClientChannels.ChannelMembers) obj;
-
-      if (getMaxMembers()
-          != other.getMaxMembers()) return false;
-      if (!getMemberIdList()
-          .equals(other.getMemberIdList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MAXMEMBERS_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxMembers();
-      if (getMemberIdCount() > 0) {
-        hash = (37 * hash) + MEMBERID_FIELD_NUMBER;
-        hash = (53 * hash) + getMemberIdList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protobuf.ClientChannels.ChannelMembers parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protobuf.ClientChannels.ChannelMembers prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.clientchannels.ChannelMembers}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientchannels.ChannelMembers)
-        protobuf.ClientChannels.ChannelMembersOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ChannelMembers_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ChannelMembers_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.ClientChannels.ChannelMembers.class, protobuf.ClientChannels.ChannelMembers.Builder.class);
-      }
-
-      // Construct using protobuf.ClientChannels.ChannelMembers.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        maxMembers_ = 0;
-
-        memberId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ChannelMembers_descriptor;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientChannels.ChannelMembers getDefaultInstanceForType() {
-        return protobuf.ClientChannels.ChannelMembers.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protobuf.ClientChannels.ChannelMembers build() {
-        protobuf.ClientChannels.ChannelMembers result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protobuf.ClientChannels.ChannelMembers buildPartial() {
-        protobuf.ClientChannels.ChannelMembers result = new protobuf.ClientChannels.ChannelMembers(this);
-        int from_bitField0_ = bitField0_;
-        result.maxMembers_ = maxMembers_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          memberId_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.memberId_ = memberId_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientChannels.ChannelMembers) {
-          return mergeFrom((protobuf.ClientChannels.ChannelMembers)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.ClientChannels.ChannelMembers other) {
-        if (other == protobuf.ClientChannels.ChannelMembers.getDefaultInstance()) return this;
-        if (other.getMaxMembers() != 0) {
-          setMaxMembers(other.getMaxMembers());
-        }
-        if (!other.memberId_.isEmpty()) {
-          if (memberId_.isEmpty()) {
-            memberId_ = other.memberId_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureMemberIdIsMutable();
-            memberId_.addAll(other.memberId_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.ClientChannels.ChannelMembers parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientChannels.ChannelMembers) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int maxMembers_ ;
-      /**
-       * <code>int32 maxMembers = 1;</code>
-       * @return The maxMembers.
-       */
-      public int getMaxMembers() {
-        return maxMembers_;
-      }
-      /**
-       * <code>int32 maxMembers = 1;</code>
-       * @param value The maxMembers to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMaxMembers(int value) {
-        
-        maxMembers_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 maxMembers = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMaxMembers() {
-        
-        maxMembers_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.Internal.IntList memberId_ = emptyIntList();
-      private void ensureMemberIdIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          memberId_ = mutableCopy(memberId_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @return A list containing the memberId.
-       */
-      public java.util.List<java.lang.Integer>
-          getMemberIdList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(memberId_) : memberId_;
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @return The count of memberId.
-       */
-      public int getMemberIdCount() {
-        return memberId_.size();
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @param index The index of the element to return.
-       * @return The memberId at the given index.
-       */
-      public int getMemberId(int index) {
-        return memberId_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The memberId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMemberId(
-          int index, int value) {
-        ensureMemberIdIsMutable();
-        memberId_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @param value The memberId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addMemberId(int value) {
-        ensureMemberIdIsMutable();
-        memberId_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @param values The memberId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllMemberId(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureMemberIdIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, memberId_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 memberId = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMemberId() {
-        memberId_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:protobuf.clientchannels.ChannelMembers)
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.clientchannels.ChannelMembers)
-    private static final protobuf.ClientChannels.ChannelMembers DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protobuf.ClientChannels.ChannelMembers();
-    }
-
-    public static protobuf.ClientChannels.ChannelMembers getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ChannelMembers>
-        PARSER = new com.google.protobuf.AbstractParser<ChannelMembers>() {
-      @java.lang.Override
-      public ChannelMembers parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ChannelMembers(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ChannelMembers> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ChannelMembers> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protobuf.ClientChannels.ChannelMembers getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2342,8 +1660,8 @@ public final class ClientChannels {
 
   }
 
-  public interface ClientChannelOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientchannels.ClientChannel)
+  public interface ChannelOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientchannels.Channel)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2362,59 +1680,80 @@ public final class ClientChannels {
     protobuf.ClientChannels.ChannelBaseOrBuilder getBaseOrBuilder();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     * @return Whether the members field is set.
+     * <code>int32 maxMembers = 2;</code>
+     * @return The maxMembers.
      */
-    boolean hasMembers();
-    /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     * @return The members.
-     */
-    protobuf.ClientChannels.ChannelMembers getMembers();
-    /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     */
-    protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder();
+    int getMaxMembers();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+     * <code>repeated int32 memberId = 3;</code>
+     * @return A list containing the memberId.
+     */
+    java.util.List<java.lang.Integer> getMemberIdList();
+    /**
+     * <code>repeated int32 memberId = 3;</code>
+     * @return The count of memberId.
+     */
+    int getMemberIdCount();
+    /**
+     * <code>repeated int32 memberId = 3;</code>
+     * @param index The index of the element to return.
+     * @return The memberId at the given index.
+     */
+    int getMemberId(int index);
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+     * @return The enum numeric value on the wire for communicationType.
+     */
+    int getCommunicationTypeValue();
+    /**
+     * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+     * @return The communicationType.
+     */
+    protobuf.ClientChannels.ChannelCommunicationType getCommunicationType();
+
+    /**
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     int getRestrictionTypeValue();
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
      * @return The restrictionType.
      */
     protobuf.ClientChannels.ChannelRestrictionType getRestrictionType();
 
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      * @return Whether the memberVerification field is set.
      */
     boolean hasMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      * @return The memberVerification.
      */
     protobuf.ClientChannels.ChannelMemberVerification getMemberVerification();
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      */
     protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder();
   }
   /**
-   * Protobuf type {@code protobuf.clientchannels.ClientChannel}
+   * Protobuf type {@code protobuf.clientchannels.Channel}
    */
-  public  static final class ClientChannel extends
+  public  static final class Channel extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientchannels.ClientChannel)
-      ClientChannelOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientchannels.Channel)
+      ChannelOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientChannel.newBuilder() to construct.
-    private ClientChannel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Channel.newBuilder() to construct.
+    private Channel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientChannel() {
+    private Channel() {
+      memberId_ = emptyIntList();
+      communicationType_ = 0;
       restrictionType_ = 0;
     }
 
@@ -2422,7 +1761,7 @@ public final class ClientChannels {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientChannel();
+      return new Channel();
     }
 
     @java.lang.Override
@@ -2430,7 +1769,7 @@ public final class ClientChannels {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientChannel(
+    private Channel(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2438,6 +1777,7 @@ public final class ClientChannels {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2461,26 +1801,45 @@ public final class ClientChannels {
 
               break;
             }
-            case 18: {
-              protobuf.ClientChannels.ChannelMembers.Builder subBuilder = null;
-              if (members_ != null) {
-                subBuilder = members_.toBuilder();
-              }
-              members_ = input.readMessage(protobuf.ClientChannels.ChannelMembers.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(members_);
-                members_ = subBuilder.buildPartial();
-              }
+            case 16: {
 
+              maxMembers_ = input.readInt32();
               break;
             }
             case 24: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                memberId_ = newIntList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              memberId_.addInt(input.readInt32());
+              break;
+            }
+            case 26: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                memberId_ = newIntList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                memberId_.addInt(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              communicationType_ = rawValue;
+              break;
+            }
+            case 40: {
               int rawValue = input.readEnum();
 
               restrictionType_ = rawValue;
               break;
             }
-            case 34: {
+            case 50: {
               protobuf.ClientChannels.ChannelMemberVerification.Builder subBuilder = null;
               if (memberVerification_ != null) {
                 subBuilder = memberVerification_.toBuilder();
@@ -2508,21 +1867,24 @@ public final class ClientChannels {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          memberId_.makeImmutable(); // C
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ClientChannel_descriptor;
+      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_Channel_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ClientChannel_fieldAccessorTable
+      return protobuf.ClientChannels.internal_static_protobuf_clientchannels_Channel_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientChannels.ClientChannel.class, protobuf.ClientChannels.ClientChannel.Builder.class);
+              protobuf.ClientChannels.Channel.class, protobuf.ClientChannels.Channel.Builder.class);
     }
 
     public static final int BASE_FIELD_NUMBER = 1;
@@ -2548,40 +1910,73 @@ public final class ClientChannels {
       return getBase();
     }
 
-    public static final int MEMBERS_FIELD_NUMBER = 2;
-    private protobuf.ClientChannels.ChannelMembers members_;
+    public static final int MAXMEMBERS_FIELD_NUMBER = 2;
+    private int maxMembers_;
     /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     * @return Whether the members field is set.
+     * <code>int32 maxMembers = 2;</code>
+     * @return The maxMembers.
      */
-    public boolean hasMembers() {
-      return members_ != null;
-    }
-    /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     * @return The members.
-     */
-    public protobuf.ClientChannels.ChannelMembers getMembers() {
-      return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
-    }
-    /**
-     * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-     */
-    public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
-      return getMembers();
+    public int getMaxMembers() {
+      return maxMembers_;
     }
 
-    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 3;
+    public static final int MEMBERID_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.IntList memberId_;
+    /**
+     * <code>repeated int32 memberId = 3;</code>
+     * @return A list containing the memberId.
+     */
+    public java.util.List<java.lang.Integer>
+        getMemberIdList() {
+      return memberId_;
+    }
+    /**
+     * <code>repeated int32 memberId = 3;</code>
+     * @return The count of memberId.
+     */
+    public int getMemberIdCount() {
+      return memberId_.size();
+    }
+    /**
+     * <code>repeated int32 memberId = 3;</code>
+     * @param index The index of the element to return.
+     * @return The memberId at the given index.
+     */
+    public int getMemberId(int index) {
+      return memberId_.getInt(index);
+    }
+    private int memberIdMemoizedSerializedSize = -1;
+
+    public static final int COMMUNICATIONTYPE_FIELD_NUMBER = 4;
+    private int communicationType_;
+    /**
+     * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+     * @return The enum numeric value on the wire for communicationType.
+     */
+    public int getCommunicationTypeValue() {
+      return communicationType_;
+    }
+    /**
+     * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+     * @return The communicationType.
+     */
+    public protobuf.ClientChannels.ChannelCommunicationType getCommunicationType() {
+      @SuppressWarnings("deprecation")
+      protobuf.ClientChannels.ChannelCommunicationType result = protobuf.ClientChannels.ChannelCommunicationType.valueOf(communicationType_);
+      return result == null ? protobuf.ClientChannels.ChannelCommunicationType.UNRECOGNIZED : result;
+    }
+
+    public static final int RESTRICTIONTYPE_FIELD_NUMBER = 5;
     private int restrictionType_;
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
      * @return The enum numeric value on the wire for restrictionType.
      */
     public int getRestrictionTypeValue() {
       return restrictionType_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+     * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
      * @return The restrictionType.
      */
     public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
@@ -2590,24 +1985,24 @@ public final class ClientChannels {
       return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
     }
 
-    public static final int MEMBERVERIFICATION_FIELD_NUMBER = 4;
+    public static final int MEMBERVERIFICATION_FIELD_NUMBER = 6;
     private protobuf.ClientChannels.ChannelMemberVerification memberVerification_;
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      * @return Whether the memberVerification field is set.
      */
     public boolean hasMemberVerification() {
       return memberVerification_ != null;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      * @return The memberVerification.
      */
     public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
       return memberVerification_ == null ? protobuf.ClientChannels.ChannelMemberVerification.getDefaultInstance() : memberVerification_;
     }
     /**
-     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+     * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
      */
     public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
       return getMemberVerification();
@@ -2627,17 +2022,28 @@ public final class ClientChannels {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (base_ != null) {
         output.writeMessage(1, getBase());
       }
-      if (members_ != null) {
-        output.writeMessage(2, getMembers());
+      if (maxMembers_ != 0) {
+        output.writeInt32(2, maxMembers_);
+      }
+      if (getMemberIdList().size() > 0) {
+        output.writeUInt32NoTag(26);
+        output.writeUInt32NoTag(memberIdMemoizedSerializedSize);
+      }
+      for (int i = 0; i < memberId_.size(); i++) {
+        output.writeInt32NoTag(memberId_.getInt(i));
+      }
+      if (communicationType_ != protobuf.ClientChannels.ChannelCommunicationType.VOICE.getNumber()) {
+        output.writeEnum(4, communicationType_);
       }
       if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
-        output.writeEnum(3, restrictionType_);
+        output.writeEnum(5, restrictionType_);
       }
       if (memberVerification_ != null) {
-        output.writeMessage(4, getMemberVerification());
+        output.writeMessage(6, getMemberVerification());
       }
       unknownFields.writeTo(output);
     }
@@ -2652,17 +2058,35 @@ public final class ClientChannels {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBase());
       }
-      if (members_ != null) {
+      if (maxMembers_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getMembers());
+          .computeInt32Size(2, maxMembers_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < memberId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(memberId_.getInt(i));
+        }
+        size += dataSize;
+        if (!getMemberIdList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        memberIdMemoizedSerializedSize = dataSize;
+      }
+      if (communicationType_ != protobuf.ClientChannels.ChannelCommunicationType.VOICE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, communicationType_);
       }
       if (restrictionType_ != protobuf.ClientChannels.ChannelRestrictionType.PUBLIC.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, restrictionType_);
+          .computeEnumSize(5, restrictionType_);
       }
       if (memberVerification_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getMemberVerification());
+          .computeMessageSize(6, getMemberVerification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2674,21 +2098,21 @@ public final class ClientChannels {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientChannels.ClientChannel)) {
+      if (!(obj instanceof protobuf.ClientChannels.Channel)) {
         return super.equals(obj);
       }
-      protobuf.ClientChannels.ClientChannel other = (protobuf.ClientChannels.ClientChannel) obj;
+      protobuf.ClientChannels.Channel other = (protobuf.ClientChannels.Channel) obj;
 
       if (hasBase() != other.hasBase()) return false;
       if (hasBase()) {
         if (!getBase()
             .equals(other.getBase())) return false;
       }
-      if (hasMembers() != other.hasMembers()) return false;
-      if (hasMembers()) {
-        if (!getMembers()
-            .equals(other.getMembers())) return false;
-      }
+      if (getMaxMembers()
+          != other.getMaxMembers()) return false;
+      if (!getMemberIdList()
+          .equals(other.getMemberIdList())) return false;
+      if (communicationType_ != other.communicationType_) return false;
       if (restrictionType_ != other.restrictionType_) return false;
       if (hasMemberVerification() != other.hasMemberVerification()) return false;
       if (hasMemberVerification()) {
@@ -2710,10 +2134,14 @@ public final class ClientChannels {
         hash = (37 * hash) + BASE_FIELD_NUMBER;
         hash = (53 * hash) + getBase().hashCode();
       }
-      if (hasMembers()) {
-        hash = (37 * hash) + MEMBERS_FIELD_NUMBER;
-        hash = (53 * hash) + getMembers().hashCode();
+      hash = (37 * hash) + MAXMEMBERS_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxMembers();
+      if (getMemberIdCount() > 0) {
+        hash = (37 * hash) + MEMBERID_FIELD_NUMBER;
+        hash = (53 * hash) + getMemberIdList().hashCode();
       }
+      hash = (37 * hash) + COMMUNICATIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + communicationType_;
       hash = (37 * hash) + RESTRICTIONTYPE_FIELD_NUMBER;
       hash = (53 * hash) + restrictionType_;
       if (hasMemberVerification()) {
@@ -2725,69 +2153,69 @@ public final class ClientChannels {
       return hash;
     }
 
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(byte[] data)
+    public static protobuf.ClientChannels.Channel parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(java.io.InputStream input)
+    public static protobuf.ClientChannels.Channel parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientChannels.ClientChannel parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientChannels.Channel parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientChannels.ClientChannel parseDelimitedFrom(
+    public static protobuf.ClientChannels.Channel parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientChannels.ClientChannel parseFrom(
+    public static protobuf.ClientChannels.Channel parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2800,7 +2228,7 @@ public final class ClientChannels {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientChannels.ClientChannel prototype) {
+    public static Builder newBuilder(protobuf.ClientChannels.Channel prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2816,26 +2244,26 @@ public final class ClientChannels {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientchannels.ClientChannel}
+     * Protobuf type {@code protobuf.clientchannels.Channel}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientchannels.ClientChannel)
-        protobuf.ClientChannels.ClientChannelOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientchannels.Channel)
+        protobuf.ClientChannels.ChannelOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ClientChannel_descriptor;
+        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_Channel_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ClientChannel_fieldAccessorTable
+        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_Channel_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientChannels.ClientChannel.class, protobuf.ClientChannels.ClientChannel.Builder.class);
+                protobuf.ClientChannels.Channel.class, protobuf.ClientChannels.Channel.Builder.class);
       }
 
-      // Construct using protobuf.ClientChannels.ClientChannel.newBuilder()
+      // Construct using protobuf.ClientChannels.Channel.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2859,12 +2287,12 @@ public final class ClientChannels {
           base_ = null;
           baseBuilder_ = null;
         }
-        if (membersBuilder_ == null) {
-          members_ = null;
-        } else {
-          members_ = null;
-          membersBuilder_ = null;
-        }
+        maxMembers_ = 0;
+
+        memberId_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        communicationType_ = 0;
+
         restrictionType_ = 0;
 
         if (memberVerificationBuilder_ == null) {
@@ -2879,17 +2307,17 @@ public final class ClientChannels {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_ClientChannel_descriptor;
+        return protobuf.ClientChannels.internal_static_protobuf_clientchannels_Channel_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientChannels.ClientChannel getDefaultInstanceForType() {
-        return protobuf.ClientChannels.ClientChannel.getDefaultInstance();
+      public protobuf.ClientChannels.Channel getDefaultInstanceForType() {
+        return protobuf.ClientChannels.Channel.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientChannels.ClientChannel build() {
-        protobuf.ClientChannels.ClientChannel result = buildPartial();
+      public protobuf.ClientChannels.Channel build() {
+        protobuf.ClientChannels.Channel result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2897,18 +2325,21 @@ public final class ClientChannels {
       }
 
       @java.lang.Override
-      public protobuf.ClientChannels.ClientChannel buildPartial() {
-        protobuf.ClientChannels.ClientChannel result = new protobuf.ClientChannels.ClientChannel(this);
+      public protobuf.ClientChannels.Channel buildPartial() {
+        protobuf.ClientChannels.Channel result = new protobuf.ClientChannels.Channel(this);
+        int from_bitField0_ = bitField0_;
         if (baseBuilder_ == null) {
           result.base_ = base_;
         } else {
           result.base_ = baseBuilder_.build();
         }
-        if (membersBuilder_ == null) {
-          result.members_ = members_;
-        } else {
-          result.members_ = membersBuilder_.build();
+        result.maxMembers_ = maxMembers_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          memberId_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
+        result.memberId_ = memberId_;
+        result.communicationType_ = communicationType_;
         result.restrictionType_ = restrictionType_;
         if (memberVerificationBuilder_ == null) {
           result.memberVerification_ = memberVerification_;
@@ -2953,21 +2384,34 @@ public final class ClientChannels {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientChannels.ClientChannel) {
-          return mergeFrom((protobuf.ClientChannels.ClientChannel)other);
+        if (other instanceof protobuf.ClientChannels.Channel) {
+          return mergeFrom((protobuf.ClientChannels.Channel)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientChannels.ClientChannel other) {
-        if (other == protobuf.ClientChannels.ClientChannel.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientChannels.Channel other) {
+        if (other == protobuf.ClientChannels.Channel.getDefaultInstance()) return this;
         if (other.hasBase()) {
           mergeBase(other.getBase());
         }
-        if (other.hasMembers()) {
-          mergeMembers(other.getMembers());
+        if (other.getMaxMembers() != 0) {
+          setMaxMembers(other.getMaxMembers());
+        }
+        if (!other.memberId_.isEmpty()) {
+          if (memberId_.isEmpty()) {
+            memberId_ = other.memberId_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureMemberIdIsMutable();
+            memberId_.addAll(other.memberId_);
+          }
+          onChanged();
+        }
+        if (other.communicationType_ != 0) {
+          setCommunicationTypeValue(other.getCommunicationTypeValue());
         }
         if (other.restrictionType_ != 0) {
           setRestrictionTypeValue(other.getRestrictionTypeValue());
@@ -2990,11 +2434,11 @@ public final class ClientChannels {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientChannels.ClientChannel parsedMessage = null;
+        protobuf.ClientChannels.Channel parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientChannels.ClientChannel) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientChannels.Channel) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3003,6 +2447,7 @@ public final class ClientChannels {
         }
         return this;
       }
+      private int bitField0_;
 
       private protobuf.ClientChannels.ChannelBase base_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3123,135 +2568,177 @@ public final class ClientChannels {
         return baseBuilder_;
       }
 
-      private protobuf.ClientChannels.ChannelMembers members_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> membersBuilder_;
+      private int maxMembers_ ;
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       * @return Whether the members field is set.
+       * <code>int32 maxMembers = 2;</code>
+       * @return The maxMembers.
        */
-      public boolean hasMembers() {
-        return membersBuilder_ != null || members_ != null;
+      public int getMaxMembers() {
+        return maxMembers_;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       * @return The members.
+       * <code>int32 maxMembers = 2;</code>
+       * @param value The maxMembers to set.
+       * @return This builder for chaining.
        */
-      public protobuf.ClientChannels.ChannelMembers getMembers() {
-        if (membersBuilder_ == null) {
-          return members_ == null ? protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
-        } else {
-          return membersBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       */
-      public Builder setMembers(protobuf.ClientChannels.ChannelMembers value) {
-        if (membersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          members_ = value;
-          onChanged();
-        } else {
-          membersBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       */
-      public Builder setMembers(
-          protobuf.ClientChannels.ChannelMembers.Builder builderForValue) {
-        if (membersBuilder_ == null) {
-          members_ = builderForValue.build();
-          onChanged();
-        } else {
-          membersBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       */
-      public Builder mergeMembers(protobuf.ClientChannels.ChannelMembers value) {
-        if (membersBuilder_ == null) {
-          if (members_ != null) {
-            members_ =
-              protobuf.ClientChannels.ChannelMembers.newBuilder(members_).mergeFrom(value).buildPartial();
-          } else {
-            members_ = value;
-          }
-          onChanged();
-        } else {
-          membersBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       */
-      public Builder clearMembers() {
-        if (membersBuilder_ == null) {
-          members_ = null;
-          onChanged();
-        } else {
-          members_ = null;
-          membersBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
-       */
-      public protobuf.ClientChannels.ChannelMembers.Builder getMembersBuilder() {
+      public Builder setMaxMembers(int value) {
         
+        maxMembers_ = value;
         onChanged();
-        return getMembersFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+       * <code>int32 maxMembers = 2;</code>
+       * @return This builder for chaining.
        */
-      public protobuf.ClientChannels.ChannelMembersOrBuilder getMembersOrBuilder() {
-        if (membersBuilder_ != null) {
-          return membersBuilder_.getMessageOrBuilder();
-        } else {
-          return members_ == null ?
-              protobuf.ClientChannels.ChannelMembers.getDefaultInstance() : members_;
-        }
+      public Builder clearMaxMembers() {
+        
+        maxMembers_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList memberId_ = emptyIntList();
+      private void ensureMemberIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          memberId_ = mutableCopy(memberId_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMembers members = 2;</code>
+       * <code>repeated int32 memberId = 3;</code>
+       * @return A list containing the memberId.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder> 
-          getMembersFieldBuilder() {
-        if (membersBuilder_ == null) {
-          membersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientChannels.ChannelMembers, protobuf.ClientChannels.ChannelMembers.Builder, protobuf.ClientChannels.ChannelMembersOrBuilder>(
-                  getMembers(),
-                  getParentForChildren(),
-                  isClean());
-          members_ = null;
+      public java.util.List<java.lang.Integer>
+          getMemberIdList() {
+        return ((bitField0_ & 0x00000001) != 0) ?
+                 java.util.Collections.unmodifiableList(memberId_) : memberId_;
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @return The count of memberId.
+       */
+      public int getMemberIdCount() {
+        return memberId_.size();
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @param index The index of the element to return.
+       * @return The memberId at the given index.
+       */
+      public int getMemberId(int index) {
+        return memberId_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The memberId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMemberId(
+          int index, int value) {
+        ensureMemberIdIsMutable();
+        memberId_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @param value The memberId to add.
+       * @return This builder for chaining.
+       */
+      public Builder addMemberId(int value) {
+        ensureMemberIdIsMutable();
+        memberId_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @param values The memberId to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllMemberId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureMemberIdIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, memberId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 memberId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMemberId() {
+        memberId_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private int communicationType_ = 0;
+      /**
+       * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+       * @return The enum numeric value on the wire for communicationType.
+       */
+      public int getCommunicationTypeValue() {
+        return communicationType_;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+       * @param value The enum numeric value on the wire for communicationType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommunicationTypeValue(int value) {
+        communicationType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+       * @return The communicationType.
+       */
+      public protobuf.ClientChannels.ChannelCommunicationType getCommunicationType() {
+        @SuppressWarnings("deprecation")
+        protobuf.ClientChannels.ChannelCommunicationType result = protobuf.ClientChannels.ChannelCommunicationType.valueOf(communicationType_);
+        return result == null ? protobuf.ClientChannels.ChannelCommunicationType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+       * @param value The communicationType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommunicationType(protobuf.ClientChannels.ChannelCommunicationType value) {
+        if (value == null) {
+          throw new NullPointerException();
         }
-        return membersBuilder_;
+        
+        communicationType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.protobuf.clientchannels.ChannelCommunicationType communicationType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommunicationType() {
+        
+        communicationType_ = 0;
+        onChanged();
+        return this;
       }
 
       private int restrictionType_ = 0;
       /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
        * @return The enum numeric value on the wire for restrictionType.
        */
       public int getRestrictionTypeValue() {
         return restrictionType_;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
        * @param value The enum numeric value on the wire for restrictionType to set.
        * @return This builder for chaining.
        */
@@ -3261,7 +2748,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
        * @return The restrictionType.
        */
       public protobuf.ClientChannels.ChannelRestrictionType getRestrictionType() {
@@ -3270,7 +2757,7 @@ public final class ClientChannels {
         return result == null ? protobuf.ClientChannels.ChannelRestrictionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
        * @param value The restrictionType to set.
        * @return This builder for chaining.
        */
@@ -3284,7 +2771,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 3;</code>
+       * <code>.protobuf.clientchannels.ChannelRestrictionType restrictionType = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearRestrictionType() {
@@ -3298,14 +2785,14 @@ public final class ClientChannels {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> memberVerificationBuilder_;
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        * @return Whether the memberVerification field is set.
        */
       public boolean hasMemberVerification() {
         return memberVerificationBuilder_ != null || memberVerification_ != null;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        * @return The memberVerification.
        */
       public protobuf.ClientChannels.ChannelMemberVerification getMemberVerification() {
@@ -3316,7 +2803,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public Builder setMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
         if (memberVerificationBuilder_ == null) {
@@ -3332,7 +2819,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public Builder setMemberVerification(
           protobuf.ClientChannels.ChannelMemberVerification.Builder builderForValue) {
@@ -3346,7 +2833,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public Builder mergeMemberVerification(protobuf.ClientChannels.ChannelMemberVerification value) {
         if (memberVerificationBuilder_ == null) {
@@ -3364,7 +2851,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public Builder clearMemberVerification() {
         if (memberVerificationBuilder_ == null) {
@@ -3378,7 +2865,7 @@ public final class ClientChannels {
         return this;
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public protobuf.ClientChannels.ChannelMemberVerification.Builder getMemberVerificationBuilder() {
         
@@ -3386,7 +2873,7 @@ public final class ClientChannels {
         return getMemberVerificationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       public protobuf.ClientChannels.ChannelMemberVerificationOrBuilder getMemberVerificationOrBuilder() {
         if (memberVerificationBuilder_ != null) {
@@ -3397,7 +2884,7 @@ public final class ClientChannels {
         }
       }
       /**
-       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 4;</code>
+       * <code>.protobuf.clientchannels.ChannelMemberVerification memberVerification = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ClientChannels.ChannelMemberVerification, protobuf.ClientChannels.ChannelMemberVerification.Builder, protobuf.ClientChannels.ChannelMemberVerificationOrBuilder> 
@@ -3425,41 +2912,41 @@ public final class ClientChannels {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientchannels.ClientChannel)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientchannels.Channel)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientchannels.ClientChannel)
-    private static final protobuf.ClientChannels.ClientChannel DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientchannels.Channel)
+    private static final protobuf.ClientChannels.Channel DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientChannels.ClientChannel();
+      DEFAULT_INSTANCE = new protobuf.ClientChannels.Channel();
     }
 
-    public static protobuf.ClientChannels.ClientChannel getDefaultInstance() {
+    public static protobuf.ClientChannels.Channel getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientChannel>
-        PARSER = new com.google.protobuf.AbstractParser<ClientChannel>() {
+    private static final com.google.protobuf.Parser<Channel>
+        PARSER = new com.google.protobuf.AbstractParser<Channel>() {
       @java.lang.Override
-      public ClientChannel parsePartialFrom(
+      public Channel parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientChannel(input, extensionRegistry);
+        return new Channel(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientChannel> parser() {
+    public static com.google.protobuf.Parser<Channel> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientChannel> getParserForType() {
+    public com.google.protobuf.Parser<Channel> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientChannels.ClientChannel getDefaultInstanceForType() {
+    public protobuf.ClientChannels.Channel getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3471,20 +2958,15 @@ public final class ClientChannels {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientchannels_ChannelBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientchannels_ChannelMembers_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientchannels_ChannelMembers_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientchannels_ChannelMemberVerification_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientchannels_ChannelMemberVerification_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientchannels_ClientChannel_descriptor;
+    internal_static_protobuf_clientchannels_Channel_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientchannels_ClientChannel_fieldAccessorTable;
+      internal_static_protobuf_clientchannels_Channel_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3495,23 +2977,23 @@ public final class ClientChannels {
   static {
     java.lang.String[] descriptorData = {
       "\n\035protobuf/ClientChannels.proto\022\027protobu" +
-      "f.clientchannels\"5\n\013ChannelBase\022\021\n\tchann" +
-      "elId\030\001 \001(\005\022\023\n\013channelName\030\002 \001(\t\"6\n\016Chann" +
-      "elMembers\022\022\n\nmaxMembers\030\001 \001(\005\022\020\n\010memberI" +
-      "d\030\002 \003(\005\"D\n\031ChannelMemberVerification\022\025\n\r" +
-      "invitationKey\030\001 \003(\t\022\020\n\010password\030\002 \001(\t\"\227\002" +
-      "\n\rClientChannel\0222\n\004base\030\001 \001(\0132$.protobuf" +
-      ".clientchannels.ChannelBase\0228\n\007members\030\002" +
-      " \001(\0132\'.protobuf.clientchannels.ChannelMe" +
-      "mbers\022H\n\017restrictionType\030\003 \001(\0162/.protobu" +
-      "f.clientchannels.ChannelRestrictionType\022" +
-      "N\n\022memberVerification\030\004 \001(\01322.protobuf.c" +
-      "lientchannels.ChannelMemberVerification*" +
-      "`\n\026ChannelRestrictionType\022\n\n\006PUBLIC\020\000\022\025\n" +
-      "\021PASSWORD_REQUIRED\020\001\022\022\n\016WHITELIST_ONLY\020\002" +
-      "\022\017\n\013INVITE_ONLY\020\003*/\n\030ChannelCommunicatio" +
-      "nType\022\t\n\005VOICE\020\000\022\010\n\004TEXT\020\001B\032\n\010protobufB\016" +
-      "ClientChannelsb\006proto3"
+      "f.clientchannels\"\'\n\013ChannelBase\022\n\n\002id\030\001 " +
+      "\001(\005\022\014\n\004name\030\002 \001(\t\"D\n\031ChannelMemberVerifi" +
+      "cation\022\025\n\rinvitationKey\030\001 \003(\t\022\020\n\010passwor" +
+      "d\030\002 \001(\t\"\313\002\n\007Channel\0222\n\004base\030\001 \001(\0132$.prot" +
+      "obuf.clientchannels.ChannelBase\022\022\n\nmaxMe" +
+      "mbers\030\002 \001(\005\022\020\n\010memberId\030\003 \003(\005\022L\n\021communi" +
+      "cationType\030\004 \001(\01621.protobuf.clientchanne" +
+      "ls.ChannelCommunicationType\022H\n\017restricti" +
+      "onType\030\005 \001(\0162/.protobuf.clientchannels.C" +
+      "hannelRestrictionType\022N\n\022memberVerificat" +
+      "ion\030\006 \001(\01322.protobuf.clientchannels.Chan" +
+      "nelMemberVerification*/\n\030ChannelCommunic" +
+      "ationType\022\t\n\005VOICE\020\000\022\010\n\004TEXT\020\001*`\n\026Channe" +
+      "lRestrictionType\022\n\n\006PUBLIC\020\000\022\025\n\021PASSWORD" +
+      "_REQUIRED\020\001\022\022\n\016WHITELIST_ONLY\020\002\022\017\n\013INVIT" +
+      "E_ONLY\020\003B\032\n\010protobufB\016ClientChannelsb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3522,25 +3004,19 @@ public final class ClientChannels {
     internal_static_protobuf_clientchannels_ChannelBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientchannels_ChannelBase_descriptor,
-        new java.lang.String[] { "ChannelId", "ChannelName", });
-    internal_static_protobuf_clientchannels_ChannelMembers_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_protobuf_clientchannels_ChannelMembers_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientchannels_ChannelMembers_descriptor,
-        new java.lang.String[] { "MaxMembers", "MemberId", });
+        new java.lang.String[] { "Id", "Name", });
     internal_static_protobuf_clientchannels_ChannelMemberVerification_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_protobuf_clientchannels_ChannelMemberVerification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientchannels_ChannelMemberVerification_descriptor,
         new java.lang.String[] { "InvitationKey", "Password", });
-    internal_static_protobuf_clientchannels_ClientChannel_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_protobuf_clientchannels_ClientChannel_fieldAccessorTable = new
+    internal_static_protobuf_clientchannels_Channel_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_protobuf_clientchannels_Channel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientchannels_ClientChannel_descriptor,
-        new java.lang.String[] { "Base", "Members", "RestrictionType", "MemberVerification", });
+        internal_static_protobuf_clientchannels_Channel_descriptor,
+        new java.lang.String[] { "Base", "MaxMembers", "MemberId", "CommunicationType", "RestrictionType", "MemberVerification", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

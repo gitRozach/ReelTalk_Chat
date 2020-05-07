@@ -42,36 +42,31 @@ public class EmojiTextField extends ScrollPane {
 	}
 	
 	private void initStyleClass() {
-		getStyleClass().add("smiley-text-field");
-		inputFlowPane.getStyleClass().add("smiley-flow-pane");
+		getStyleClass().add("emoji-scroll-pane");
+		inputField.getStyleClass().add("emoji-text-field");
+		inputFlowPane.getStyleClass().add("emoji-flow-pane");
 	}
 	
 	private void initProperties() {
 		oldCaretPositionProperty = new SimpleIntegerProperty(0);
-		
 		currentIndexProperty = new SimpleIntegerProperty(0);
-		currentIndexProperty.addListener((obs, oldV, newV) -> {
-			System.out.println("New Index: " + newV.intValue());
-		});
-		
 	}
 	
 	private void initInputField(String initText) {
 		inputField = new TextField(initText);
-		inputField.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/OpenSansEmoji.ttf"), 15f));
-		inputField.caretPositionProperty().addListener((obs, oldV, newV) -> {
-			setOldCaretPosition(oldV.intValue());
-		});
+		inputField.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/OpenSansEmoji.ttf"), 17d));
+		inputField.caretPositionProperty().addListener((obs, oldV, newV) -> setOldCaretPosition(oldV.intValue()));
 		inputField.setPrefWidth(initText.length() == 0 ? 10d : initText.length() * 15d);
 		inputField.textProperty().addListener((obs, oldV, newV) -> {
 			  Platform.runLater(() -> {
 			        Text text = new Text(newV);
 			        text.setFont(inputField.getFont());
-			        double width = text.getLayoutBounds().getWidth()
-			                + inputField.getPadding().getLeft() + inputField.getPadding().getRight()
-			                + 5d; // Add some spacing
+			        double width = 	text.getLayoutBounds().getWidth()
+					                + inputField.getPadding().getLeft() 
+					                + inputField.getPadding().getRight()
+					                + 5d;
 			        inputField.setPrefWidth(width);
-			        inputField.positionCaret(inputField.getCaretPosition()); // If you remove this line, it flashes a little bit
+			        inputField.positionCaret(inputField.getCaretPosition());
 			    });
 		});
 	}
@@ -92,7 +87,6 @@ public class EmojiTextField extends ScrollPane {
 	
 	private void initRoot() {
 		setContent(inputFlowPane);
-		setFitToWidth(true);
 		setFitToWidth(true);
 	}
 	

@@ -12,17 +12,16 @@ import org.junit.jupiter.api.Test;
 import protobuf.ClientChannels.ChannelBase;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
-import protobuf.ClientMessages.ClientFileMessageBase;
-import protobuf.ClientMessages.ClientMessageBase;
-import protobuf.ClientMessages.ClientProfileComment;
-import protobuf.ClientMessages.ClientProfileCommentAnswer;
+import protobuf.ClientMessages.FileMessageBase;
+import protobuf.ClientMessages.MessageBase;
 import protobuf.ClientMessages.PrivateMessage;
-import protobuf.wrapper.ClientMessages;
+import protobuf.ClientMessages.ProfileComment;
+import protobuf.ClientMessages.ProfileCommentAnswer;
 
 class ClientMessageTest {
 	@Test
 	public void clientMessageBaseDefaultInstance_checkDefaultMessageValues() {
-		ClientMessageBase defaultBase = ClientMessageBase.getDefaultInstance();
+		MessageBase defaultBase = MessageBase.getDefaultInstance();
 		assertEquals(defaultBase.getMessageId(), 0);
 		assertEquals(defaultBase.getMessageText(), "");
 		assertEquals(defaultBase.getSenderId(), 0);
@@ -32,7 +31,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newClientMessageBase_checkMessageValues() {
-		ClientMessageBase base = ClientMessages.newClientMessageBase(1, "Hallo", 11, "Jann", new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis());
+		MessageBase base = ClientMessages.newMessageBase(1, "Hallo", 11, "Jann", new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis());
 		assertEquals(base.getMessageId(), 1);
 		assertEquals(base.getMessageText(), "Hallo");
 		assertEquals(base.getSenderId(), 11);
@@ -43,7 +42,7 @@ class ClientMessageTest {
 	@Test
 	public void channelMessageDefaultInstance_checkDefaultChannelMessageValues() {
 		ChannelMessage defaultMessage = ChannelMessage.getDefaultInstance();
-		assertEquals(defaultMessage.getMessageBase(), ClientMessageBase.getDefaultInstance());
+		assertEquals(defaultMessage.getMessageBase(), MessageBase.getDefaultInstance());
 		assertEquals(defaultMessage.getChannelBase(), ChannelBase.getDefaultInstance());
 		assertEquals(defaultMessage.getAttachedFileMessageCount(), 0);
 		assertEquals(defaultMessage.getMessageAnswerCount(), 0);
@@ -51,19 +50,19 @@ class ClientMessageTest {
 	
 	@Test
 	public void newChannelMessage_checkChannelMessageValues() {
-		ClientFileMessageBase fileToAttach = ClientFileMessageBase.newBuilder()	.setMessageId(1)
+		FileMessageBase fileToAttach = FileMessageBase.newBuilder()	.setMessageId(1)
 																				.setFileName("readme.txt")
 																				.setFilePath("/clients/files/Channel 5/readme.txt")
 																				.setIsDownloadMessage(true)
 																				.build();
-		List<ClientFileMessageBase> attachedFiles = new ArrayList<ClientFileMessageBase>();
+		List<FileMessageBase> attachedFiles = new ArrayList<FileMessageBase>();
 		attachedFiles.add(fileToAttach);
 		ChannelMessage defaultMessage = ClientMessages.newChannelMessage(1, "Hallo", 11, "Jann", 5, new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis(), attachedFiles);																		
 		assertEquals(defaultMessage.getMessageBase().getMessageId(), 1);
 		assertEquals(defaultMessage.getMessageBase().getMessageText(), "Hallo");
 		assertEquals(defaultMessage.getMessageBase().getSenderId(), 11);
 		assertEquals(defaultMessage.getMessageBase().getSenderUsername(), "Jann");
-		assertEquals(defaultMessage.getChannelBase().getChannelId(), 5);
+		assertEquals(defaultMessage.getChannelBase().getId(), 5);
 		assertEquals(defaultMessage.getMessageBase().getTimestampMillis(), new GregorianCalendar(2020, 3, 1, 11, 30, 0).getTimeInMillis());
 		assertEquals(defaultMessage.getAttachedFileMessage(0), fileToAttach);
 		assertEquals(defaultMessage.getMessageAnswerCount(), 0);
@@ -77,8 +76,8 @@ class ClientMessageTest {
 		assertEquals(defaultAnswer.getMessageBase().getSenderId(), 0);
 		assertEquals(defaultAnswer.getMessageBase().getSenderUsername(), "");
 		assertEquals(defaultAnswer.getMessageBase().getTimestampMillis(), 0L);
-		assertEquals(defaultAnswer.getChannelBase().getChannelId(), 0);
-		assertEquals(defaultAnswer.getChannelBase().getChannelName(), "");
+		assertEquals(defaultAnswer.getChannelBase().getId(), 0);
+		assertEquals(defaultAnswer.getChannelBase().getName(), "");
 		assertEquals(defaultAnswer.getMessageToAnswerId(), 0);
 	}
 	
@@ -90,8 +89,8 @@ class ClientMessageTest {
 		assertEquals(answer.getMessageBase().getSenderId(), 11);
 		assertEquals(answer.getMessageBase().getSenderUsername(), "Jann");
 		assertEquals(answer.getMessageBase().getTimestampMillis(), 0L);
-		assertEquals(answer.getChannelBase().getChannelId(), 5);
-		assertEquals(answer.getChannelBase().getChannelName(), "");
+		assertEquals(answer.getChannelBase().getId(), 5);
+		assertEquals(answer.getChannelBase().getName(), "");
 		assertEquals(answer.getMessageToAnswerId(), 1);
 	}
 	
@@ -123,7 +122,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void clientProfileCommentDefaultInstance_checkDefaultProfileCommentValues() {
-		ClientProfileComment defaultComment = ClientProfileComment.getDefaultInstance();
+		ProfileComment defaultComment = ProfileComment.getDefaultInstance();
 		assertEquals(defaultComment.getMessageBase().getMessageId(), 0);
 		assertEquals(defaultComment.getMessageBase().getMessageText(), "");
 		assertEquals(defaultComment.getMessageBase().getSenderId(), 0);
@@ -136,7 +135,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void newClientProfileComment_checkProfileCommentValues() {
-		ClientProfileComment comment = ClientMessages.newClientProfileComment(1, "Kommentar", 12, "Rozach", 11, 0L, Collections.emptyList());
+		ProfileComment comment = ClientMessages.newProfileComment(1, "Kommentar", 12, "Rozach", 11, 0L, Collections.emptyList());
 		assertEquals(comment.getMessageBase().getMessageId(), 1);
 		assertEquals(comment.getMessageBase().getMessageText(), "Kommentar");
 		assertEquals(comment.getMessageBase().getSenderId(), 12);
@@ -149,7 +148,7 @@ class ClientMessageTest {
 	
 	@Test
 	public void clientProfileCommentAnswerDefaultInstance_checkDefaultProfileCommentAnswerValues() {
-		ClientProfileCommentAnswer defaultAnswer = ClientProfileCommentAnswer.getDefaultInstance();
+		ProfileCommentAnswer defaultAnswer = ProfileCommentAnswer.getDefaultInstance();
 		assertEquals(defaultAnswer.getMessageBase().getMessageId(), 0);
 		assertEquals(defaultAnswer.getMessageBase().getMessageText(), "");
 		assertEquals(defaultAnswer.getMessageBase().getSenderId(), 0);
@@ -162,7 +161,7 @@ class ClientMessageTest {
 
 	@Test
 	public void newClientProfileCommentAnswer_checkProfileCommentAnswerValues() {
-		ClientProfileCommentAnswer answer = ClientMessages.newClientProfileCommentAnswer(1, "Antwort", 11, "Jann", 11, 1, 0L);
+		ProfileCommentAnswer answer = ClientMessages.newProfileCommentAnswer(1, "Antwort", 11, "Jann", 11, 1, 0L);
 		assertEquals(answer.getMessageBase().getMessageId(), 1);
 		assertEquals(answer.getMessageBase().getMessageText(), "Antwort");
 		assertEquals(answer.getMessageBase().getSenderId(), 11);

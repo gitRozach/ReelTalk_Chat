@@ -14,8 +14,8 @@ public final class ClientMessages {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ClientMessageBaseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientMessageBase)
+  public interface MessageBaseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.MessageBase)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -61,18 +61,18 @@ public final class ClientMessages {
     long getTimestampMillis();
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ClientMessageBase}
+   * Protobuf type {@code protobuf.clientmessages.MessageBase}
    */
-  public  static final class ClientMessageBase extends
+  public  static final class MessageBase extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientMessageBase)
-      ClientMessageBaseOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.MessageBase)
+      MessageBaseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientMessageBase.newBuilder() to construct.
-    private ClientMessageBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use MessageBase.newBuilder() to construct.
+    private MessageBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientMessageBase() {
+    private MessageBase() {
       messageText_ = "";
       senderUsername_ = "";
     }
@@ -81,7 +81,7 @@ public final class ClientMessages {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientMessageBase();
+      return new MessageBase();
     }
 
     @java.lang.Override
@@ -89,7 +89,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientMessageBase(
+    private MessageBase(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -155,15 +155,15 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientMessageBase_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_MessageBase_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_MessageBase_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ClientMessageBase.class, protobuf.ClientMessages.ClientMessageBase.Builder.class);
+              protobuf.ClientMessages.MessageBase.class, protobuf.ClientMessages.MessageBase.Builder.class);
     }
 
     public static final int MESSAGEID_FIELD_NUMBER = 1;
@@ -334,10 +334,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ClientMessageBase)) {
+      if (!(obj instanceof protobuf.ClientMessages.MessageBase)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ClientMessageBase other = (protobuf.ClientMessages.ClientMessageBase) obj;
+      protobuf.ClientMessages.MessageBase other = (protobuf.ClientMessages.MessageBase) obj;
 
       if (getMessageId()
           != other.getMessageId()) return false;
@@ -376,69 +376,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(byte[] data)
+    public static protobuf.ClientMessages.MessageBase parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.MessageBase parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.MessageBase parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseDelimitedFrom(
+    public static protobuf.ClientMessages.MessageBase parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientMessageBase parseFrom(
+    public static protobuf.ClientMessages.MessageBase parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -451,7 +451,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ClientMessageBase prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.MessageBase prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -467,26 +467,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ClientMessageBase}
+     * Protobuf type {@code protobuf.clientmessages.MessageBase}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientMessageBase)
-        protobuf.ClientMessages.ClientMessageBaseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.MessageBase)
+        protobuf.ClientMessages.MessageBaseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientMessageBase_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_MessageBase_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_MessageBase_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ClientMessageBase.class, protobuf.ClientMessages.ClientMessageBase.Builder.class);
+                protobuf.ClientMessages.MessageBase.class, protobuf.ClientMessages.MessageBase.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ClientMessageBase.newBuilder()
+      // Construct using protobuf.ClientMessages.MessageBase.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -520,17 +520,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientMessageBase_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_MessageBase_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientMessageBase getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ClientMessageBase.getDefaultInstance();
+      public protobuf.ClientMessages.MessageBase getDefaultInstanceForType() {
+        return protobuf.ClientMessages.MessageBase.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientMessageBase build() {
-        protobuf.ClientMessages.ClientMessageBase result = buildPartial();
+      public protobuf.ClientMessages.MessageBase build() {
+        protobuf.ClientMessages.MessageBase result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -538,8 +538,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientMessageBase buildPartial() {
-        protobuf.ClientMessages.ClientMessageBase result = new protobuf.ClientMessages.ClientMessageBase(this);
+      public protobuf.ClientMessages.MessageBase buildPartial() {
+        protobuf.ClientMessages.MessageBase result = new protobuf.ClientMessages.MessageBase(this);
         result.messageId_ = messageId_;
         result.messageText_ = messageText_;
         result.senderId_ = senderId_;
@@ -583,16 +583,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ClientMessageBase) {
-          return mergeFrom((protobuf.ClientMessages.ClientMessageBase)other);
+        if (other instanceof protobuf.ClientMessages.MessageBase) {
+          return mergeFrom((protobuf.ClientMessages.MessageBase)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ClientMessageBase other) {
-        if (other == protobuf.ClientMessages.ClientMessageBase.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.MessageBase other) {
+        if (other == protobuf.ClientMessages.MessageBase.getDefaultInstance()) return this;
         if (other.getMessageId() != 0) {
           setMessageId(other.getMessageId());
         }
@@ -625,11 +625,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ClientMessageBase parsedMessage = null;
+        protobuf.ClientMessages.MessageBase parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ClientMessageBase) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.MessageBase) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -893,48 +893,48 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientMessageBase)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.MessageBase)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientMessageBase)
-    private static final protobuf.ClientMessages.ClientMessageBase DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.MessageBase)
+    private static final protobuf.ClientMessages.MessageBase DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientMessageBase();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.MessageBase();
     }
 
-    public static protobuf.ClientMessages.ClientMessageBase getDefaultInstance() {
+    public static protobuf.ClientMessages.MessageBase getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientMessageBase>
-        PARSER = new com.google.protobuf.AbstractParser<ClientMessageBase>() {
+    private static final com.google.protobuf.Parser<MessageBase>
+        PARSER = new com.google.protobuf.AbstractParser<MessageBase>() {
       @java.lang.Override
-      public ClientMessageBase parsePartialFrom(
+      public MessageBase parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientMessageBase(input, extensionRegistry);
+        return new MessageBase(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientMessageBase> parser() {
+    public static com.google.protobuf.Parser<MessageBase> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientMessageBase> getParserForType() {
+    public com.google.protobuf.Parser<MessageBase> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ClientMessageBase getDefaultInstanceForType() {
+    public protobuf.ClientMessages.MessageBase getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientFileMessageBaseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientFileMessageBase)
+  public interface FileMessageBaseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.FileMessageBase)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -998,18 +998,18 @@ public final class ClientMessages {
         int index);
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ClientFileMessageBase}
+   * Protobuf type {@code protobuf.clientmessages.FileMessageBase}
    */
-  public  static final class ClientFileMessageBase extends
+  public  static final class FileMessageBase extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientFileMessageBase)
-      ClientFileMessageBaseOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.FileMessageBase)
+      FileMessageBaseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientFileMessageBase.newBuilder() to construct.
-    private ClientFileMessageBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FileMessageBase.newBuilder() to construct.
+    private FileMessageBase(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientFileMessageBase() {
+    private FileMessageBase() {
       fileName_ = "";
       filePath_ = "";
       loadedByClient_ = java.util.Collections.emptyList();
@@ -1019,7 +1019,7 @@ public final class ClientMessages {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientFileMessageBase();
+      return new FileMessageBase();
     }
 
     @java.lang.Override
@@ -1027,7 +1027,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientFileMessageBase(
+    private FileMessageBase(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1101,15 +1101,15 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_FileMessageBase_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientFileMessageBase_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_FileMessageBase_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ClientFileMessageBase.class, protobuf.ClientMessages.ClientFileMessageBase.Builder.class);
+              protobuf.ClientMessages.FileMessageBase.class, protobuf.ClientMessages.FileMessageBase.Builder.class);
     }
 
     public static final int MESSAGEID_FIELD_NUMBER = 1;
@@ -1305,10 +1305,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ClientFileMessageBase)) {
+      if (!(obj instanceof protobuf.ClientMessages.FileMessageBase)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ClientFileMessageBase other = (protobuf.ClientMessages.ClientFileMessageBase) obj;
+      protobuf.ClientMessages.FileMessageBase other = (protobuf.ClientMessages.FileMessageBase) obj;
 
       if (getMessageId()
           != other.getMessageId()) return false;
@@ -1349,69 +1349,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(byte[] data)
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.FileMessageBase parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseDelimitedFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientFileMessageBase parseFrom(
+    public static protobuf.ClientMessages.FileMessageBase parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1424,7 +1424,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ClientFileMessageBase prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.FileMessageBase prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1440,26 +1440,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ClientFileMessageBase}
+     * Protobuf type {@code protobuf.clientmessages.FileMessageBase}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientFileMessageBase)
-        protobuf.ClientMessages.ClientFileMessageBaseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.FileMessageBase)
+        protobuf.ClientMessages.FileMessageBaseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_FileMessageBase_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientFileMessageBase_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_FileMessageBase_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ClientFileMessageBase.class, protobuf.ClientMessages.ClientFileMessageBase.Builder.class);
+                protobuf.ClientMessages.FileMessageBase.class, protobuf.ClientMessages.FileMessageBase.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ClientFileMessageBase.newBuilder()
+      // Construct using protobuf.ClientMessages.FileMessageBase.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1498,17 +1498,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_FileMessageBase_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientFileMessageBase getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance();
+      public protobuf.ClientMessages.FileMessageBase getDefaultInstanceForType() {
+        return protobuf.ClientMessages.FileMessageBase.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientFileMessageBase build() {
-        protobuf.ClientMessages.ClientFileMessageBase result = buildPartial();
+      public protobuf.ClientMessages.FileMessageBase build() {
+        protobuf.ClientMessages.FileMessageBase result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1516,8 +1516,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientFileMessageBase buildPartial() {
-        protobuf.ClientMessages.ClientFileMessageBase result = new protobuf.ClientMessages.ClientFileMessageBase(this);
+      public protobuf.ClientMessages.FileMessageBase buildPartial() {
+        protobuf.ClientMessages.FileMessageBase result = new protobuf.ClientMessages.FileMessageBase(this);
         int from_bitField0_ = bitField0_;
         result.messageId_ = messageId_;
         result.isDownloadMessage_ = isDownloadMessage_;
@@ -1570,16 +1570,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ClientFileMessageBase) {
-          return mergeFrom((protobuf.ClientMessages.ClientFileMessageBase)other);
+        if (other instanceof protobuf.ClientMessages.FileMessageBase) {
+          return mergeFrom((protobuf.ClientMessages.FileMessageBase)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ClientFileMessageBase other) {
-        if (other == protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.FileMessageBase other) {
+        if (other == protobuf.ClientMessages.FileMessageBase.getDefaultInstance()) return this;
         if (other.getMessageId() != 0) {
           setMessageId(other.getMessageId());
         }
@@ -1635,11 +1635,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ClientFileMessageBase parsedMessage = null;
+        protobuf.ClientMessages.FileMessageBase parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ClientFileMessageBase) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.FileMessageBase) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2114,41 +2114,41 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientFileMessageBase)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.FileMessageBase)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientFileMessageBase)
-    private static final protobuf.ClientMessages.ClientFileMessageBase DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.FileMessageBase)
+    private static final protobuf.ClientMessages.FileMessageBase DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientFileMessageBase();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.FileMessageBase();
     }
 
-    public static protobuf.ClientMessages.ClientFileMessageBase getDefaultInstance() {
+    public static protobuf.ClientMessages.FileMessageBase getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientFileMessageBase>
-        PARSER = new com.google.protobuf.AbstractParser<ClientFileMessageBase>() {
+    private static final com.google.protobuf.Parser<FileMessageBase>
+        PARSER = new com.google.protobuf.AbstractParser<FileMessageBase>() {
       @java.lang.Override
-      public ClientFileMessageBase parsePartialFrom(
+      public FileMessageBase parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientFileMessageBase(input, extensionRegistry);
+        return new FileMessageBase(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientFileMessageBase> parser() {
+    public static com.google.protobuf.Parser<FileMessageBase> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientFileMessageBase> getParserForType() {
+    public com.google.protobuf.Parser<FileMessageBase> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ClientFileMessageBase getDefaultInstanceForType() {
+    public protobuf.ClientMessages.FileMessageBase getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2159,19 +2159,19 @@ public final class ClientMessages {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     boolean hasMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    protobuf.ClientMessages.MessageBase getMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+    protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
      * <code>.protobuf.clientchannels.ChannelBase channelBase = 2;</code>
@@ -2189,27 +2189,27 @@ public final class ClientMessages {
     protobuf.ClientChannels.ChannelBaseOrBuilder getChannelBaseOrBuilder();
 
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    java.util.List<protobuf.ClientMessages.ClientFileMessageBase> 
+    java.util.List<protobuf.ClientMessages.FileMessageBase> 
         getAttachedFileMessageList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index);
+    protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index);
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
     int getAttachedFileMessageCount();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+    java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
         getAttachedFileMessageOrBuilderList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+    protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
         int index);
 
     /**
@@ -2285,11 +2285,11 @@ public final class ClientMessages {
               done = true;
               break;
             case 10: {
-              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              protobuf.ClientMessages.MessageBase.Builder subBuilder = null;
               if (messageBase_ != null) {
                 subBuilder = messageBase_.toBuilder();
               }
-              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              messageBase_ = input.readMessage(protobuf.ClientMessages.MessageBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(messageBase_);
                 messageBase_ = subBuilder.buildPartial();
@@ -2312,11 +2312,11 @@ public final class ClientMessages {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ClientFileMessageBase>();
+                attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.FileMessageBase>();
                 mutable_bitField0_ |= 0x00000001;
               }
               attachedFileMessage_.add(
-                  input.readMessage(protobuf.ClientMessages.ClientFileMessageBase.parser(), extensionRegistry));
+                  input.readMessage(protobuf.ClientMessages.FileMessageBase.parser(), extensionRegistry));
               break;
             }
             case 34: {
@@ -2367,25 +2367,25 @@ public final class ClientMessages {
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    private protobuf.ClientMessages.MessageBase messageBase_;
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     public boolean hasMessageBase() {
       return messageBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
-      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    public protobuf.ClientMessages.MessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+    public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
       return getMessageBase();
     }
 
@@ -2413,36 +2413,36 @@ public final class ClientMessages {
     }
 
     public static final int ATTACHEDFILEMESSAGE_FIELD_NUMBER = 3;
-    private java.util.List<protobuf.ClientMessages.ClientFileMessageBase> attachedFileMessage_;
+    private java.util.List<protobuf.ClientMessages.FileMessageBase> attachedFileMessage_;
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public java.util.List<protobuf.ClientMessages.ClientFileMessageBase> getAttachedFileMessageList() {
+    public java.util.List<protobuf.ClientMessages.FileMessageBase> getAttachedFileMessageList() {
       return attachedFileMessage_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+    public java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
         getAttachedFileMessageOrBuilderList() {
       return attachedFileMessage_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
     public int getAttachedFileMessageCount() {
       return attachedFileMessage_.size();
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index) {
+    public protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index) {
       return attachedFileMessage_.get(index);
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+    public protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
         int index) {
       return attachedFileMessage_.get(index);
     }
@@ -2939,31 +2939,31 @@ public final class ClientMessages {
       }
       private int bitField0_;
 
-      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private protobuf.ClientMessages.MessageBase messageBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> messageBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return Whether the messageBase field is set.
        */
       public boolean hasMessageBase() {
         return messageBaseBuilder_ != null || messageBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return The messageBase.
        */
-      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      public protobuf.ClientMessages.MessageBase getMessageBase() {
         if (messageBaseBuilder_ == null) {
-          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+          return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         } else {
           return messageBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder setMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2977,10 +2977,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder setMessageBase(
-          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.MessageBase.Builder builderForValue) {
         if (messageBaseBuilder_ == null) {
           messageBase_ = builderForValue.build();
           onChanged();
@@ -2991,13 +2991,13 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder mergeMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (messageBase_ != null) {
             messageBase_ =
-              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+              protobuf.ClientMessages.MessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
           } else {
             messageBase_ = value;
           }
@@ -3009,7 +3009,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder clearMessageBase() {
         if (messageBaseBuilder_ == null) {
@@ -3023,33 +3023,33 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+      public protobuf.ClientMessages.MessageBase.Builder getMessageBaseBuilder() {
         
         onChanged();
         return getMessageBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
         if (messageBaseBuilder_ != null) {
           return messageBaseBuilder_.getMessageOrBuilder();
         } else {
           return messageBase_ == null ?
-              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+              protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> 
           getMessageBaseFieldBuilder() {
         if (messageBaseBuilder_ == null) {
           messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+              protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder>(
                   getMessageBase(),
                   getParentForChildren(),
                   isClean());
@@ -3177,22 +3177,22 @@ public final class ClientMessages {
         return channelBaseBuilder_;
       }
 
-      private java.util.List<protobuf.ClientMessages.ClientFileMessageBase> attachedFileMessage_ =
+      private java.util.List<protobuf.ClientMessages.FileMessageBase> attachedFileMessage_ =
         java.util.Collections.emptyList();
       private void ensureAttachedFileMessageIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ClientFileMessageBase>(attachedFileMessage_);
+          attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.FileMessageBase>(attachedFileMessage_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> attachedFileMessageBuilder_;
+          protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder> attachedFileMessageBuilder_;
 
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientFileMessageBase> getAttachedFileMessageList() {
+      public java.util.List<protobuf.ClientMessages.FileMessageBase> getAttachedFileMessageList() {
         if (attachedFileMessageBuilder_ == null) {
           return java.util.Collections.unmodifiableList(attachedFileMessage_);
         } else {
@@ -3200,7 +3200,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public int getAttachedFileMessageCount() {
         if (attachedFileMessageBuilder_ == null) {
@@ -3210,9 +3210,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index) {
+      public protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index) {
         if (attachedFileMessageBuilder_ == null) {
           return attachedFileMessage_.get(index);
         } else {
@@ -3220,10 +3220,10 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder setAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase value) {
+          int index, protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3237,10 +3237,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder setAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          int index, protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.set(index, builderForValue.build());
@@ -3251,9 +3251,9 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public Builder addAttachedFileMessage(protobuf.ClientMessages.ClientFileMessageBase value) {
+      public Builder addAttachedFileMessage(protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3267,10 +3267,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase value) {
+          int index, protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3284,10 +3284,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.add(builderForValue.build());
@@ -3298,10 +3298,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          int index, protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.add(index, builderForValue.build());
@@ -3312,10 +3312,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAllAttachedFileMessage(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ClientFileMessageBase> values) {
+          java.lang.Iterable<? extends protobuf.ClientMessages.FileMessageBase> values) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -3327,7 +3327,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder clearAttachedFileMessage() {
         if (attachedFileMessageBuilder_ == null) {
@@ -3340,7 +3340,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder removeAttachedFileMessage(int index) {
         if (attachedFileMessageBuilder_ == null) {
@@ -3353,16 +3353,16 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder getAttachedFileMessageBuilder(
+      public protobuf.ClientMessages.FileMessageBase.Builder getAttachedFileMessageBuilder(
           int index) {
         return getAttachedFileMessageFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+      public protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
           int index) {
         if (attachedFileMessageBuilder_ == null) {
           return attachedFileMessage_.get(index);  } else {
@@ -3370,9 +3370,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
            getAttachedFileMessageOrBuilderList() {
         if (attachedFileMessageBuilder_ != null) {
           return attachedFileMessageBuilder_.getMessageOrBuilderList();
@@ -3381,33 +3381,33 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder addAttachedFileMessageBuilder() {
+      public protobuf.ClientMessages.FileMessageBase.Builder addAttachedFileMessageBuilder() {
         return getAttachedFileMessageFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance());
+            protobuf.ClientMessages.FileMessageBase.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder addAttachedFileMessageBuilder(
+      public protobuf.ClientMessages.FileMessageBase.Builder addAttachedFileMessageBuilder(
           int index) {
         return getAttachedFileMessageFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance());
+            index, protobuf.ClientMessages.FileMessageBase.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientFileMessageBase.Builder> 
+      public java.util.List<protobuf.ClientMessages.FileMessageBase.Builder> 
            getAttachedFileMessageBuilderList() {
         return getAttachedFileMessageFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+          protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder> 
           getAttachedFileMessageFieldBuilder() {
         if (attachedFileMessageBuilder_ == null) {
           attachedFileMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder>(
+              protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder>(
                   attachedFileMessage_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -3714,19 +3714,19 @@ public final class ClientMessages {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     boolean hasMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    protobuf.ClientMessages.MessageBase getMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+    protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
      * <code>.protobuf.clientchannels.ChannelBase channelBase = 2;</code>
@@ -3795,11 +3795,11 @@ public final class ClientMessages {
               done = true;
               break;
             case 10: {
-              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              protobuf.ClientMessages.MessageBase.Builder subBuilder = null;
               if (messageBase_ != null) {
                 subBuilder = messageBase_.toBuilder();
               }
-              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              messageBase_ = input.readMessage(protobuf.ClientMessages.MessageBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(messageBase_);
                 messageBase_ = subBuilder.buildPartial();
@@ -3858,25 +3858,25 @@ public final class ClientMessages {
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    private protobuf.ClientMessages.MessageBase messageBase_;
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     public boolean hasMessageBase() {
       return messageBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
-      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    public protobuf.ClientMessages.MessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+    public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
       return getMessageBase();
     }
 
@@ -4275,31 +4275,31 @@ public final class ClientMessages {
         return this;
       }
 
-      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private protobuf.ClientMessages.MessageBase messageBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> messageBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return Whether the messageBase field is set.
        */
       public boolean hasMessageBase() {
         return messageBaseBuilder_ != null || messageBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return The messageBase.
        */
-      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      public protobuf.ClientMessages.MessageBase getMessageBase() {
         if (messageBaseBuilder_ == null) {
-          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+          return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         } else {
           return messageBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder setMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4313,10 +4313,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder setMessageBase(
-          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.MessageBase.Builder builderForValue) {
         if (messageBaseBuilder_ == null) {
           messageBase_ = builderForValue.build();
           onChanged();
@@ -4327,13 +4327,13 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder mergeMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (messageBase_ != null) {
             messageBase_ =
-              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+              protobuf.ClientMessages.MessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
           } else {
             messageBase_ = value;
           }
@@ -4345,7 +4345,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder clearMessageBase() {
         if (messageBaseBuilder_ == null) {
@@ -4359,33 +4359,33 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+      public protobuf.ClientMessages.MessageBase.Builder getMessageBaseBuilder() {
         
         onChanged();
         return getMessageBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
         if (messageBaseBuilder_ != null) {
           return messageBaseBuilder_.getMessageOrBuilder();
         } else {
           return messageBase_ == null ?
-              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+              protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> 
           getMessageBaseFieldBuilder() {
         if (messageBaseBuilder_ == null) {
           messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+              protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder>(
                   getMessageBase(),
                   getParentForChildren(),
                   isClean());
@@ -4600,19 +4600,19 @@ public final class ClientMessages {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     boolean hasMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    protobuf.ClientMessages.MessageBase getMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+    protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
      * <code>.protobuf.clientidentities.ClientBase clientBase = 2;</code>
@@ -4630,27 +4630,27 @@ public final class ClientMessages {
     protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
 
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    java.util.List<protobuf.ClientMessages.ClientFileMessageBase> 
+    java.util.List<protobuf.ClientMessages.FileMessageBase> 
         getAttachedFileMessageList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index);
+    protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index);
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
     int getAttachedFileMessageCount();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+    java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
         getAttachedFileMessageOrBuilderList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+    protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
         int index);
   }
   /**
@@ -4701,11 +4701,11 @@ public final class ClientMessages {
               done = true;
               break;
             case 10: {
-              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              protobuf.ClientMessages.MessageBase.Builder subBuilder = null;
               if (messageBase_ != null) {
                 subBuilder = messageBase_.toBuilder();
               }
-              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              messageBase_ = input.readMessage(protobuf.ClientMessages.MessageBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(messageBase_);
                 messageBase_ = subBuilder.buildPartial();
@@ -4728,11 +4728,11 @@ public final class ClientMessages {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ClientFileMessageBase>();
+                attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.FileMessageBase>();
                 mutable_bitField0_ |= 0x00000001;
               }
               attachedFileMessage_.add(
-                  input.readMessage(protobuf.ClientMessages.ClientFileMessageBase.parser(), extensionRegistry));
+                  input.readMessage(protobuf.ClientMessages.FileMessageBase.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -4771,25 +4771,25 @@ public final class ClientMessages {
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    private protobuf.ClientMessages.MessageBase messageBase_;
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     public boolean hasMessageBase() {
       return messageBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
-      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    public protobuf.ClientMessages.MessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+    public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
       return getMessageBase();
     }
 
@@ -4817,36 +4817,36 @@ public final class ClientMessages {
     }
 
     public static final int ATTACHEDFILEMESSAGE_FIELD_NUMBER = 3;
-    private java.util.List<protobuf.ClientMessages.ClientFileMessageBase> attachedFileMessage_;
+    private java.util.List<protobuf.ClientMessages.FileMessageBase> attachedFileMessage_;
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public java.util.List<protobuf.ClientMessages.ClientFileMessageBase> getAttachedFileMessageList() {
+    public java.util.List<protobuf.ClientMessages.FileMessageBase> getAttachedFileMessageList() {
       return attachedFileMessage_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+    public java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
         getAttachedFileMessageOrBuilderList() {
       return attachedFileMessage_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
     public int getAttachedFileMessageCount() {
       return attachedFileMessage_.size();
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index) {
+    public protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index) {
       return attachedFileMessage_.get(index);
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+     * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
      */
-    public protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+    public protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
         int index) {
       return attachedFileMessage_.get(index);
     }
@@ -5253,31 +5253,31 @@ public final class ClientMessages {
       }
       private int bitField0_;
 
-      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private protobuf.ClientMessages.MessageBase messageBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> messageBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return Whether the messageBase field is set.
        */
       public boolean hasMessageBase() {
         return messageBaseBuilder_ != null || messageBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return The messageBase.
        */
-      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      public protobuf.ClientMessages.MessageBase getMessageBase() {
         if (messageBaseBuilder_ == null) {
-          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+          return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         } else {
           return messageBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder setMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5291,10 +5291,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder setMessageBase(
-          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.MessageBase.Builder builderForValue) {
         if (messageBaseBuilder_ == null) {
           messageBase_ = builderForValue.build();
           onChanged();
@@ -5305,13 +5305,13 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder mergeMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (messageBase_ != null) {
             messageBase_ =
-              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+              protobuf.ClientMessages.MessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
           } else {
             messageBase_ = value;
           }
@@ -5323,7 +5323,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder clearMessageBase() {
         if (messageBaseBuilder_ == null) {
@@ -5337,33 +5337,33 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+      public protobuf.ClientMessages.MessageBase.Builder getMessageBaseBuilder() {
         
         onChanged();
         return getMessageBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
         if (messageBaseBuilder_ != null) {
           return messageBaseBuilder_.getMessageOrBuilder();
         } else {
           return messageBase_ == null ?
-              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+              protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> 
           getMessageBaseFieldBuilder() {
         if (messageBaseBuilder_ == null) {
           messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+              protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder>(
                   getMessageBase(),
                   getParentForChildren(),
                   isClean());
@@ -5491,22 +5491,22 @@ public final class ClientMessages {
         return clientBaseBuilder_;
       }
 
-      private java.util.List<protobuf.ClientMessages.ClientFileMessageBase> attachedFileMessage_ =
+      private java.util.List<protobuf.ClientMessages.FileMessageBase> attachedFileMessage_ =
         java.util.Collections.emptyList();
       private void ensureAttachedFileMessageIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.ClientFileMessageBase>(attachedFileMessage_);
+          attachedFileMessage_ = new java.util.ArrayList<protobuf.ClientMessages.FileMessageBase>(attachedFileMessage_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> attachedFileMessageBuilder_;
+          protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder> attachedFileMessageBuilder_;
 
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientFileMessageBase> getAttachedFileMessageList() {
+      public java.util.List<protobuf.ClientMessages.FileMessageBase> getAttachedFileMessageList() {
         if (attachedFileMessageBuilder_ == null) {
           return java.util.Collections.unmodifiableList(attachedFileMessage_);
         } else {
@@ -5514,7 +5514,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public int getAttachedFileMessageCount() {
         if (attachedFileMessageBuilder_ == null) {
@@ -5524,9 +5524,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase getAttachedFileMessage(int index) {
+      public protobuf.ClientMessages.FileMessageBase getAttachedFileMessage(int index) {
         if (attachedFileMessageBuilder_ == null) {
           return attachedFileMessage_.get(index);
         } else {
@@ -5534,10 +5534,10 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder setAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase value) {
+          int index, protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5551,10 +5551,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder setAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          int index, protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.set(index, builderForValue.build());
@@ -5565,9 +5565,9 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public Builder addAttachedFileMessage(protobuf.ClientMessages.ClientFileMessageBase value) {
+      public Builder addAttachedFileMessage(protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5581,10 +5581,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase value) {
+          int index, protobuf.ClientMessages.FileMessageBase value) {
         if (attachedFileMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5598,10 +5598,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.add(builderForValue.build());
@@ -5612,10 +5612,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAttachedFileMessage(
-          int index, protobuf.ClientMessages.ClientFileMessageBase.Builder builderForValue) {
+          int index, protobuf.ClientMessages.FileMessageBase.Builder builderForValue) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           attachedFileMessage_.add(index, builderForValue.build());
@@ -5626,10 +5626,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder addAllAttachedFileMessage(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ClientFileMessageBase> values) {
+          java.lang.Iterable<? extends protobuf.ClientMessages.FileMessageBase> values) {
         if (attachedFileMessageBuilder_ == null) {
           ensureAttachedFileMessageIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -5641,7 +5641,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder clearAttachedFileMessage() {
         if (attachedFileMessageBuilder_ == null) {
@@ -5654,7 +5654,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
       public Builder removeAttachedFileMessage(int index) {
         if (attachedFileMessageBuilder_ == null) {
@@ -5667,16 +5667,16 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder getAttachedFileMessageBuilder(
+      public protobuf.ClientMessages.FileMessageBase.Builder getAttachedFileMessageBuilder(
           int index) {
         return getAttachedFileMessageFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
+      public protobuf.ClientMessages.FileMessageBaseOrBuilder getAttachedFileMessageOrBuilder(
           int index) {
         if (attachedFileMessageBuilder_ == null) {
           return attachedFileMessage_.get(index);  } else {
@@ -5684,9 +5684,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<? extends protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.FileMessageBaseOrBuilder> 
            getAttachedFileMessageOrBuilderList() {
         if (attachedFileMessageBuilder_ != null) {
           return attachedFileMessageBuilder_.getMessageOrBuilderList();
@@ -5695,33 +5695,33 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder addAttachedFileMessageBuilder() {
+      public protobuf.ClientMessages.FileMessageBase.Builder addAttachedFileMessageBuilder() {
         return getAttachedFileMessageFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance());
+            protobuf.ClientMessages.FileMessageBase.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public protobuf.ClientMessages.ClientFileMessageBase.Builder addAttachedFileMessageBuilder(
+      public protobuf.ClientMessages.FileMessageBase.Builder addAttachedFileMessageBuilder(
           int index) {
         return getAttachedFileMessageFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ClientFileMessageBase.getDefaultInstance());
+            index, protobuf.ClientMessages.FileMessageBase.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientFileMessageBase attachedFileMessage = 3;</code>
+       * <code>repeated .protobuf.clientmessages.FileMessageBase attachedFileMessage = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientFileMessageBase.Builder> 
+      public java.util.List<protobuf.ClientMessages.FileMessageBase.Builder> 
            getAttachedFileMessageBuilderList() {
         return getAttachedFileMessageFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder> 
+          protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder> 
           getAttachedFileMessageFieldBuilder() {
         if (attachedFileMessageBuilder_ == null) {
           attachedFileMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ClientFileMessageBase, protobuf.ClientMessages.ClientFileMessageBase.Builder, protobuf.ClientMessages.ClientFileMessageBaseOrBuilder>(
+              protobuf.ClientMessages.FileMessageBase, protobuf.ClientMessages.FileMessageBase.Builder, protobuf.ClientMessages.FileMessageBaseOrBuilder>(
                   attachedFileMessage_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -5783,24 +5783,24 @@ public final class ClientMessages {
 
   }
 
-  public interface ClientProfileCommentOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientProfileComment)
+  public interface ProfileCommentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ProfileComment)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     boolean hasMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    protobuf.ClientMessages.MessageBase getMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+    protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
      * <code>.protobuf.clientidentities.ClientBase clientBase = 2;</code>
@@ -5818,42 +5818,42 @@ public final class ClientMessages {
     protobuf.ClientIdentities.ClientBaseOrBuilder getClientBaseOrBuilder();
 
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> 
+    java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> 
         getCommentAnswerList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index);
+    protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index);
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
     int getCommentAnswerCount();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+    java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
         getCommentAnswerOrBuilderList();
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+    protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ClientProfileComment}
+   * Protobuf type {@code protobuf.clientmessages.ProfileComment}
    */
-  public  static final class ClientProfileComment extends
+  public  static final class ProfileComment extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientProfileComment)
-      ClientProfileCommentOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ProfileComment)
+      ProfileCommentOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientProfileComment.newBuilder() to construct.
-    private ClientProfileComment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ProfileComment.newBuilder() to construct.
+    private ProfileComment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientProfileComment() {
+    private ProfileComment() {
       commentAnswer_ = java.util.Collections.emptyList();
     }
 
@@ -5861,7 +5861,7 @@ public final class ClientMessages {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientProfileComment();
+      return new ProfileComment();
     }
 
     @java.lang.Override
@@ -5869,7 +5869,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientProfileComment(
+    private ProfileComment(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5889,11 +5889,11 @@ public final class ClientMessages {
               done = true;
               break;
             case 10: {
-              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              protobuf.ClientMessages.MessageBase.Builder subBuilder = null;
               if (messageBase_ != null) {
                 subBuilder = messageBase_.toBuilder();
               }
-              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              messageBase_ = input.readMessage(protobuf.ClientMessages.MessageBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(messageBase_);
                 messageBase_ = subBuilder.buildPartial();
@@ -5916,11 +5916,11 @@ public final class ClientMessages {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>();
+                commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ProfileCommentAnswer>();
                 mutable_bitField0_ |= 0x00000001;
               }
               commentAnswer_.add(
-                  input.readMessage(protobuf.ClientMessages.ClientProfileCommentAnswer.parser(), extensionRegistry));
+                  input.readMessage(protobuf.ClientMessages.ProfileCommentAnswer.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -5947,37 +5947,37 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ClientProfileComment.class, protobuf.ClientMessages.ClientProfileComment.Builder.class);
+              protobuf.ClientMessages.ProfileComment.class, protobuf.ClientMessages.ProfileComment.Builder.class);
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    private protobuf.ClientMessages.MessageBase messageBase_;
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     public boolean hasMessageBase() {
       return messageBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
-      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    public protobuf.ClientMessages.MessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+    public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
       return getMessageBase();
     }
 
@@ -6005,36 +6005,36 @@ public final class ClientMessages {
     }
 
     public static final int COMMENTANSWER_FIELD_NUMBER = 3;
-    private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> commentAnswer_;
+    private java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> commentAnswer_;
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getCommentAnswerList() {
+    public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> getCommentAnswerList() {
       return commentAnswer_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+    public java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
         getCommentAnswerOrBuilderList() {
       return commentAnswer_;
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
     public int getCommentAnswerCount() {
       return commentAnswer_.size();
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index) {
+    public protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index) {
       return commentAnswer_.get(index);
     }
     /**
-     * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+     * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
      */
-    public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+    public protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
         int index) {
       return commentAnswer_.get(index);
     }
@@ -6093,10 +6093,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ClientProfileComment)) {
+      if (!(obj instanceof protobuf.ClientMessages.ProfileComment)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ClientProfileComment other = (protobuf.ClientMessages.ClientProfileComment) obj;
+      protobuf.ClientMessages.ProfileComment other = (protobuf.ClientMessages.ProfileComment) obj;
 
       if (hasMessageBase() != other.hasMessageBase()) return false;
       if (hasMessageBase()) {
@@ -6138,69 +6138,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(byte[] data)
+    public static protobuf.ClientMessages.ProfileComment parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ProfileComment parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ProfileComment parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseDelimitedFrom(
+    public static protobuf.ClientMessages.ProfileComment parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileComment parseFrom(
+    public static protobuf.ClientMessages.ProfileComment parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6213,7 +6213,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ClientProfileComment prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.ProfileComment prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6229,26 +6229,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ClientProfileComment}
+     * Protobuf type {@code protobuf.clientmessages.ProfileComment}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientProfileComment)
-        protobuf.ClientMessages.ClientProfileCommentOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ProfileComment)
+        protobuf.ClientMessages.ProfileCommentOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ClientProfileComment.class, protobuf.ClientMessages.ClientProfileComment.Builder.class);
+                protobuf.ClientMessages.ProfileComment.class, protobuf.ClientMessages.ProfileComment.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ClientProfileComment.newBuilder()
+      // Construct using protobuf.ClientMessages.ProfileComment.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6291,17 +6291,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileComment_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileComment getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ClientProfileComment.getDefaultInstance();
+      public protobuf.ClientMessages.ProfileComment getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ProfileComment.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileComment build() {
-        protobuf.ClientMessages.ClientProfileComment result = buildPartial();
+      public protobuf.ClientMessages.ProfileComment build() {
+        protobuf.ClientMessages.ProfileComment result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6309,8 +6309,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileComment buildPartial() {
-        protobuf.ClientMessages.ClientProfileComment result = new protobuf.ClientMessages.ClientProfileComment(this);
+      public protobuf.ClientMessages.ProfileComment buildPartial() {
+        protobuf.ClientMessages.ProfileComment result = new protobuf.ClientMessages.ProfileComment(this);
         int from_bitField0_ = bitField0_;
         if (messageBaseBuilder_ == null) {
           result.messageBase_ = messageBase_;
@@ -6369,16 +6369,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ClientProfileComment) {
-          return mergeFrom((protobuf.ClientMessages.ClientProfileComment)other);
+        if (other instanceof protobuf.ClientMessages.ProfileComment) {
+          return mergeFrom((protobuf.ClientMessages.ProfileComment)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ClientProfileComment other) {
-        if (other == protobuf.ClientMessages.ClientProfileComment.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.ProfileComment other) {
+        if (other == protobuf.ClientMessages.ProfileComment.getDefaultInstance()) return this;
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
@@ -6426,11 +6426,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ClientProfileComment parsedMessage = null;
+        protobuf.ClientMessages.ProfileComment parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ClientProfileComment) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.ProfileComment) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6441,31 +6441,31 @@ public final class ClientMessages {
       }
       private int bitField0_;
 
-      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private protobuf.ClientMessages.MessageBase messageBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> messageBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return Whether the messageBase field is set.
        */
       public boolean hasMessageBase() {
         return messageBaseBuilder_ != null || messageBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return The messageBase.
        */
-      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      public protobuf.ClientMessages.MessageBase getMessageBase() {
         if (messageBaseBuilder_ == null) {
-          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+          return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         } else {
           return messageBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder setMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6479,10 +6479,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder setMessageBase(
-          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.MessageBase.Builder builderForValue) {
         if (messageBaseBuilder_ == null) {
           messageBase_ = builderForValue.build();
           onChanged();
@@ -6493,13 +6493,13 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder mergeMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (messageBase_ != null) {
             messageBase_ =
-              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+              protobuf.ClientMessages.MessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
           } else {
             messageBase_ = value;
           }
@@ -6511,7 +6511,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder clearMessageBase() {
         if (messageBaseBuilder_ == null) {
@@ -6525,33 +6525,33 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+      public protobuf.ClientMessages.MessageBase.Builder getMessageBaseBuilder() {
         
         onChanged();
         return getMessageBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
         if (messageBaseBuilder_ != null) {
           return messageBaseBuilder_.getMessageOrBuilder();
         } else {
           return messageBase_ == null ?
-              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+              protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> 
           getMessageBaseFieldBuilder() {
         if (messageBaseBuilder_ == null) {
           messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+              protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder>(
                   getMessageBase(),
                   getParentForChildren(),
                   isClean());
@@ -6679,22 +6679,22 @@ public final class ClientMessages {
         return clientBaseBuilder_;
       }
 
-      private java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> commentAnswer_ =
+      private java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> commentAnswer_ =
         java.util.Collections.emptyList();
       private void ensureCommentAnswerIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ClientProfileCommentAnswer>(commentAnswer_);
+          commentAnswer_ = new java.util.ArrayList<protobuf.ClientMessages.ProfileCommentAnswer>(commentAnswer_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> commentAnswerBuilder_;
+          protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> commentAnswerBuilder_;
 
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer> getCommentAnswerList() {
+      public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer> getCommentAnswerList() {
         if (commentAnswerBuilder_ == null) {
           return java.util.Collections.unmodifiableList(commentAnswer_);
         } else {
@@ -6702,7 +6702,7 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public int getCommentAnswerCount() {
         if (commentAnswerBuilder_ == null) {
@@ -6712,9 +6712,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ClientProfileCommentAnswer getCommentAnswer(int index) {
+      public protobuf.ClientMessages.ProfileCommentAnswer getCommentAnswer(int index) {
         if (commentAnswerBuilder_ == null) {
           return commentAnswer_.get(index);
         } else {
@@ -6722,10 +6722,10 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder setCommentAnswer(
-          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+          int index, protobuf.ClientMessages.ProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6739,10 +6739,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder setCommentAnswer(
-          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+          int index, protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.set(index, builderForValue.build());
@@ -6753,9 +6753,9 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public Builder addCommentAnswer(protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+      public Builder addCommentAnswer(protobuf.ClientMessages.ProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6769,10 +6769,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          int index, protobuf.ClientMessages.ClientProfileCommentAnswer value) {
+          int index, protobuf.ClientMessages.ProfileCommentAnswer value) {
         if (commentAnswerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6786,10 +6786,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+          protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.add(builderForValue.build());
@@ -6800,10 +6800,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addCommentAnswer(
-          int index, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder builderForValue) {
+          int index, protobuf.ClientMessages.ProfileCommentAnswer.Builder builderForValue) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           commentAnswer_.add(index, builderForValue.build());
@@ -6814,10 +6814,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder addAllCommentAnswer(
-          java.lang.Iterable<? extends protobuf.ClientMessages.ClientProfileCommentAnswer> values) {
+          java.lang.Iterable<? extends protobuf.ClientMessages.ProfileCommentAnswer> values) {
         if (commentAnswerBuilder_ == null) {
           ensureCommentAnswerIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -6829,7 +6829,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder clearCommentAnswer() {
         if (commentAnswerBuilder_ == null) {
@@ -6842,7 +6842,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
       public Builder removeCommentAnswer(int index) {
         if (commentAnswerBuilder_ == null) {
@@ -6855,16 +6855,16 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder getCommentAnswerBuilder(
+      public protobuf.ClientMessages.ProfileCommentAnswer.Builder getCommentAnswerBuilder(
           int index) {
         return getCommentAnswerFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
+      public protobuf.ClientMessages.ProfileCommentAnswerOrBuilder getCommentAnswerOrBuilder(
           int index) {
         if (commentAnswerBuilder_ == null) {
           return commentAnswer_.get(index);  } else {
@@ -6872,9 +6872,9 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<? extends protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+      public java.util.List<? extends protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
            getCommentAnswerOrBuilderList() {
         if (commentAnswerBuilder_ != null) {
           return commentAnswerBuilder_.getMessageOrBuilderList();
@@ -6883,33 +6883,33 @@ public final class ClientMessages {
         }
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addCommentAnswerBuilder() {
+      public protobuf.ClientMessages.ProfileCommentAnswer.Builder addCommentAnswerBuilder() {
         return getCommentAnswerFieldBuilder().addBuilder(
-            protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+            protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public protobuf.ClientMessages.ClientProfileCommentAnswer.Builder addCommentAnswerBuilder(
+      public protobuf.ClientMessages.ProfileCommentAnswer.Builder addCommentAnswerBuilder(
           int index) {
         return getCommentAnswerFieldBuilder().addBuilder(
-            index, protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance());
+            index, protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance());
       }
       /**
-       * <code>repeated .protobuf.clientmessages.ClientProfileCommentAnswer commentAnswer = 3;</code>
+       * <code>repeated .protobuf.clientmessages.ProfileCommentAnswer commentAnswer = 3;</code>
        */
-      public java.util.List<protobuf.ClientMessages.ClientProfileCommentAnswer.Builder> 
+      public java.util.List<protobuf.ClientMessages.ProfileCommentAnswer.Builder> 
            getCommentAnswerBuilderList() {
         return getCommentAnswerFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder> 
+          protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder> 
           getCommentAnswerFieldBuilder() {
         if (commentAnswerBuilder_ == null) {
           commentAnswerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protobuf.ClientMessages.ClientProfileCommentAnswer, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder, protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder>(
+              protobuf.ClientMessages.ProfileCommentAnswer, protobuf.ClientMessages.ProfileCommentAnswer.Builder, protobuf.ClientMessages.ProfileCommentAnswerOrBuilder>(
                   commentAnswer_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -6931,64 +6931,64 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientProfileComment)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ProfileComment)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientProfileComment)
-    private static final protobuf.ClientMessages.ClientProfileComment DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ProfileComment)
+    private static final protobuf.ClientMessages.ProfileComment DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientProfileComment();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ProfileComment();
     }
 
-    public static protobuf.ClientMessages.ClientProfileComment getDefaultInstance() {
+    public static protobuf.ClientMessages.ProfileComment getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientProfileComment>
-        PARSER = new com.google.protobuf.AbstractParser<ClientProfileComment>() {
+    private static final com.google.protobuf.Parser<ProfileComment>
+        PARSER = new com.google.protobuf.AbstractParser<ProfileComment>() {
       @java.lang.Override
-      public ClientProfileComment parsePartialFrom(
+      public ProfileComment parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientProfileComment(input, extensionRegistry);
+        return new ProfileComment(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientProfileComment> parser() {
+    public static com.google.protobuf.Parser<ProfileComment> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientProfileComment> getParserForType() {
+    public com.google.protobuf.Parser<ProfileComment> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ClientProfileComment getDefaultInstanceForType() {
+    public protobuf.ClientMessages.ProfileComment getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientProfileCommentAnswerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ClientProfileCommentAnswer)
+  public interface ProfileCommentAnswerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.clientmessages.ProfileCommentAnswer)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     boolean hasMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    protobuf.ClientMessages.ClientMessageBase getMessageBase();
+    protobuf.ClientMessages.MessageBase getMessageBase();
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder();
+    protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder();
 
     /**
      * <code>.protobuf.clientidentities.ClientBase clientBase = 2;</code>
@@ -7012,25 +7012,25 @@ public final class ClientMessages {
     int getCommentToAnswerId();
   }
   /**
-   * Protobuf type {@code protobuf.clientmessages.ClientProfileCommentAnswer}
+   * Protobuf type {@code protobuf.clientmessages.ProfileCommentAnswer}
    */
-  public  static final class ClientProfileCommentAnswer extends
+  public  static final class ProfileCommentAnswer extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ClientProfileCommentAnswer)
-      ClientProfileCommentAnswerOrBuilder {
+      // @@protoc_insertion_point(message_implements:protobuf.clientmessages.ProfileCommentAnswer)
+      ProfileCommentAnswerOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientProfileCommentAnswer.newBuilder() to construct.
-    private ClientProfileCommentAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ProfileCommentAnswer.newBuilder() to construct.
+    private ProfileCommentAnswer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientProfileCommentAnswer() {
+    private ProfileCommentAnswer() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientProfileCommentAnswer();
+      return new ProfileCommentAnswer();
     }
 
     @java.lang.Override
@@ -7038,7 +7038,7 @@ public final class ClientMessages {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientProfileCommentAnswer(
+    private ProfileCommentAnswer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7057,11 +7057,11 @@ public final class ClientMessages {
               done = true;
               break;
             case 10: {
-              protobuf.ClientMessages.ClientMessageBase.Builder subBuilder = null;
+              protobuf.ClientMessages.MessageBase.Builder subBuilder = null;
               if (messageBase_ != null) {
                 subBuilder = messageBase_.toBuilder();
               }
-              messageBase_ = input.readMessage(protobuf.ClientMessages.ClientMessageBase.parser(), extensionRegistry);
+              messageBase_ = input.readMessage(protobuf.ClientMessages.MessageBase.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(messageBase_);
                 messageBase_ = subBuilder.buildPartial();
@@ -7108,37 +7108,37 @@ public final class ClientMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable
+      return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.ClientMessages.ClientProfileCommentAnswer.class, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder.class);
+              protobuf.ClientMessages.ProfileCommentAnswer.class, protobuf.ClientMessages.ProfileCommentAnswer.Builder.class);
     }
 
     public static final int MESSAGEBASE_FIELD_NUMBER = 1;
-    private protobuf.ClientMessages.ClientMessageBase messageBase_;
+    private protobuf.ClientMessages.MessageBase messageBase_;
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return Whether the messageBase field is set.
      */
     public boolean hasMessageBase() {
       return messageBase_ != null;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      * @return The messageBase.
      */
-    public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
-      return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+    public protobuf.ClientMessages.MessageBase getMessageBase() {
+      return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
     }
     /**
-     * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+     * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
      */
-    public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+    public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
       return getMessageBase();
     }
 
@@ -7229,10 +7229,10 @@ public final class ClientMessages {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protobuf.ClientMessages.ClientProfileCommentAnswer)) {
+      if (!(obj instanceof protobuf.ClientMessages.ProfileCommentAnswer)) {
         return super.equals(obj);
       }
-      protobuf.ClientMessages.ClientProfileCommentAnswer other = (protobuf.ClientMessages.ClientProfileCommentAnswer) obj;
+      protobuf.ClientMessages.ProfileCommentAnswer other = (protobuf.ClientMessages.ProfileCommentAnswer) obj;
 
       if (hasMessageBase() != other.hasMessageBase()) return false;
       if (hasMessageBase()) {
@@ -7272,69 +7272,69 @@ public final class ClientMessages {
       return hash;
     }
 
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(byte[] data)
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseDelimitedFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer parseFrom(
+    public static protobuf.ClientMessages.ProfileCommentAnswer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7347,7 +7347,7 @@ public final class ClientMessages {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protobuf.ClientMessages.ClientProfileCommentAnswer prototype) {
+    public static Builder newBuilder(protobuf.ClientMessages.ProfileCommentAnswer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7363,26 +7363,26 @@ public final class ClientMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code protobuf.clientmessages.ClientProfileCommentAnswer}
+     * Protobuf type {@code protobuf.clientmessages.ProfileCommentAnswer}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ClientProfileCommentAnswer)
-        protobuf.ClientMessages.ClientProfileCommentAnswerOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protobuf.clientmessages.ProfileCommentAnswer)
+        protobuf.ClientMessages.ProfileCommentAnswerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.ClientMessages.ClientProfileCommentAnswer.class, protobuf.ClientMessages.ClientProfileCommentAnswer.Builder.class);
+                protobuf.ClientMessages.ProfileCommentAnswer.class, protobuf.ClientMessages.ProfileCommentAnswer.Builder.class);
       }
 
-      // Construct using protobuf.ClientMessages.ClientProfileCommentAnswer.newBuilder()
+      // Construct using protobuf.ClientMessages.ProfileCommentAnswer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7420,17 +7420,17 @@ public final class ClientMessages {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
+        return protobuf.ClientMessages.internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstanceForType() {
-        return protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance();
+      public protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstanceForType() {
+        return protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileCommentAnswer build() {
-        protobuf.ClientMessages.ClientProfileCommentAnswer result = buildPartial();
+      public protobuf.ClientMessages.ProfileCommentAnswer build() {
+        protobuf.ClientMessages.ProfileCommentAnswer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7438,8 +7438,8 @@ public final class ClientMessages {
       }
 
       @java.lang.Override
-      public protobuf.ClientMessages.ClientProfileCommentAnswer buildPartial() {
-        protobuf.ClientMessages.ClientProfileCommentAnswer result = new protobuf.ClientMessages.ClientProfileCommentAnswer(this);
+      public protobuf.ClientMessages.ProfileCommentAnswer buildPartial() {
+        protobuf.ClientMessages.ProfileCommentAnswer result = new protobuf.ClientMessages.ProfileCommentAnswer(this);
         if (messageBaseBuilder_ == null) {
           result.messageBase_ = messageBase_;
         } else {
@@ -7489,16 +7489,16 @@ public final class ClientMessages {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.ClientMessages.ClientProfileCommentAnswer) {
-          return mergeFrom((protobuf.ClientMessages.ClientProfileCommentAnswer)other);
+        if (other instanceof protobuf.ClientMessages.ProfileCommentAnswer) {
+          return mergeFrom((protobuf.ClientMessages.ProfileCommentAnswer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.ClientMessages.ClientProfileCommentAnswer other) {
-        if (other == protobuf.ClientMessages.ClientProfileCommentAnswer.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.ClientMessages.ProfileCommentAnswer other) {
+        if (other == protobuf.ClientMessages.ProfileCommentAnswer.getDefaultInstance()) return this;
         if (other.hasMessageBase()) {
           mergeMessageBase(other.getMessageBase());
         }
@@ -7523,11 +7523,11 @@ public final class ClientMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.ClientMessages.ClientProfileCommentAnswer parsedMessage = null;
+        protobuf.ClientMessages.ProfileCommentAnswer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.ClientMessages.ClientProfileCommentAnswer) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.ClientMessages.ProfileCommentAnswer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7537,31 +7537,31 @@ public final class ClientMessages {
         return this;
       }
 
-      private protobuf.ClientMessages.ClientMessageBase messageBase_;
+      private protobuf.ClientMessages.MessageBase messageBase_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> messageBaseBuilder_;
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> messageBaseBuilder_;
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return Whether the messageBase field is set.
        */
       public boolean hasMessageBase() {
         return messageBaseBuilder_ != null || messageBase_ != null;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        * @return The messageBase.
        */
-      public protobuf.ClientMessages.ClientMessageBase getMessageBase() {
+      public protobuf.ClientMessages.MessageBase getMessageBase() {
         if (messageBaseBuilder_ == null) {
-          return messageBase_ == null ? protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+          return messageBase_ == null ? protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         } else {
           return messageBaseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder setMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder setMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7575,10 +7575,10 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder setMessageBase(
-          protobuf.ClientMessages.ClientMessageBase.Builder builderForValue) {
+          protobuf.ClientMessages.MessageBase.Builder builderForValue) {
         if (messageBaseBuilder_ == null) {
           messageBase_ = builderForValue.build();
           onChanged();
@@ -7589,13 +7589,13 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public Builder mergeMessageBase(protobuf.ClientMessages.ClientMessageBase value) {
+      public Builder mergeMessageBase(protobuf.ClientMessages.MessageBase value) {
         if (messageBaseBuilder_ == null) {
           if (messageBase_ != null) {
             messageBase_ =
-              protobuf.ClientMessages.ClientMessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
+              protobuf.ClientMessages.MessageBase.newBuilder(messageBase_).mergeFrom(value).buildPartial();
           } else {
             messageBase_ = value;
           }
@@ -7607,7 +7607,7 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       public Builder clearMessageBase() {
         if (messageBaseBuilder_ == null) {
@@ -7621,33 +7621,33 @@ public final class ClientMessages {
         return this;
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBase.Builder getMessageBaseBuilder() {
+      public protobuf.ClientMessages.MessageBase.Builder getMessageBaseBuilder() {
         
         onChanged();
         return getMessageBaseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
-      public protobuf.ClientMessages.ClientMessageBaseOrBuilder getMessageBaseOrBuilder() {
+      public protobuf.ClientMessages.MessageBaseOrBuilder getMessageBaseOrBuilder() {
         if (messageBaseBuilder_ != null) {
           return messageBaseBuilder_.getMessageOrBuilder();
         } else {
           return messageBase_ == null ?
-              protobuf.ClientMessages.ClientMessageBase.getDefaultInstance() : messageBase_;
+              protobuf.ClientMessages.MessageBase.getDefaultInstance() : messageBase_;
         }
       }
       /**
-       * <code>.protobuf.clientmessages.ClientMessageBase messageBase = 1;</code>
+       * <code>.protobuf.clientmessages.MessageBase messageBase = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder> 
+          protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder> 
           getMessageBaseFieldBuilder() {
         if (messageBaseBuilder_ == null) {
           messageBaseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              protobuf.ClientMessages.ClientMessageBase, protobuf.ClientMessages.ClientMessageBase.Builder, protobuf.ClientMessages.ClientMessageBaseOrBuilder>(
+              protobuf.ClientMessages.MessageBase, protobuf.ClientMessages.MessageBase.Builder, protobuf.ClientMessages.MessageBaseOrBuilder>(
                   getMessageBase(),
                   getParentForChildren(),
                   isClean());
@@ -7817,56 +7817,56 @@ public final class ClientMessages {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ClientProfileCommentAnswer)
+      // @@protoc_insertion_point(builder_scope:protobuf.clientmessages.ProfileCommentAnswer)
     }
 
-    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ClientProfileCommentAnswer)
-    private static final protobuf.ClientMessages.ClientProfileCommentAnswer DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protobuf.clientmessages.ProfileCommentAnswer)
+    private static final protobuf.ClientMessages.ProfileCommentAnswer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protobuf.ClientMessages.ClientProfileCommentAnswer();
+      DEFAULT_INSTANCE = new protobuf.ClientMessages.ProfileCommentAnswer();
     }
 
-    public static protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstance() {
+    public static protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ClientProfileCommentAnswer>
-        PARSER = new com.google.protobuf.AbstractParser<ClientProfileCommentAnswer>() {
+    private static final com.google.protobuf.Parser<ProfileCommentAnswer>
+        PARSER = new com.google.protobuf.AbstractParser<ProfileCommentAnswer>() {
       @java.lang.Override
-      public ClientProfileCommentAnswer parsePartialFrom(
+      public ProfileCommentAnswer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientProfileCommentAnswer(input, extensionRegistry);
+        return new ProfileCommentAnswer(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientProfileCommentAnswer> parser() {
+    public static com.google.protobuf.Parser<ProfileCommentAnswer> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientProfileCommentAnswer> getParserForType() {
+    public com.google.protobuf.Parser<ProfileCommentAnswer> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protobuf.ClientMessages.ClientProfileCommentAnswer getDefaultInstanceForType() {
+    public protobuf.ClientMessages.ProfileCommentAnswer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ClientMessageBase_descriptor;
+    internal_static_protobuf_clientmessages_MessageBase_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_MessageBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor;
+    internal_static_protobuf_clientmessages_FileMessageBase_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ClientFileMessageBase_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_FileMessageBase_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_clientmessages_ChannelMessage_descriptor;
   private static final 
@@ -7883,15 +7883,15 @@ public final class ClientMessages {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_clientmessages_PrivateMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ClientProfileComment_descriptor;
+    internal_static_protobuf_clientmessages_ProfileComment_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor;
+    internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable;
+      internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7904,42 +7904,40 @@ public final class ClientMessages {
       "\n\035protobuf/ClientMessages.proto\022\027protobu" +
       "f.clientmessages\032\037protobuf/ClientIdentit" +
       "ies.proto\032\035protobuf/ClientChannels.proto" +
-      "\"~\n\021ClientMessageBase\022\021\n\tmessageId\030\001 \001(\005" +
-      "\022\023\n\013messageText\030\002 \001(\t\022\020\n\010senderId\030\003 \001(\005\022" +
-      "\026\n\016senderUsername\030\004 \001(\t\022\027\n\017timestampMill" +
-      "is\030\005 \001(\003\"\250\001\n\025ClientFileMessageBase\022\021\n\tme" +
-      "ssageId\030\001 \001(\005\022\031\n\021isDownloadMessage\030\002 \001(\010" +
-      "\022\020\n\010fileName\030\003 \001(\t\022\020\n\010filePath\030\004 \001(\t\022=\n\016" +
-      "loadedByClient\030\005 \003(\0132%.protobuf.clientid" +
-      "entities.ClientBase\"\237\002\n\016ChannelMessage\022?" +
-      "\n\013messageBase\030\001 \001(\0132*.protobuf.clientmes" +
-      "sages.ClientMessageBase\0229\n\013channelBase\030\002" +
-      " \001(\0132$.protobuf.clientchannels.ChannelBa" +
-      "se\022K\n\023attachedFileMessage\030\003 \003(\0132..protob" +
-      "uf.clientmessages.ClientFileMessageBase\022" +
-      "D\n\rmessageAnswer\030\004 \003(\0132-.protobuf.client" +
-      "messages.ChannelMessageAnswer\"\255\001\n\024Channe" +
-      "lMessageAnswer\022?\n\013messageBase\030\001 \001(\0132*.pr" +
-      "otobuf.clientmessages.ClientMessageBase\022" +
-      "9\n\013channelBase\030\002 \001(\0132$.protobuf.clientch" +
-      "annels.ChannelBase\022\031\n\021messageToAnswerId\030" +
-      "\003 \001(\005\"\331\001\n\016PrivateMessage\022?\n\013messageBase\030" +
-      "\001 \001(\0132*.protobuf.clientmessages.ClientMe" +
-      "ssageBase\0229\n\nclientBase\030\002 \001(\0132%.protobuf" +
-      ".clientidentities.ClientBase\022K\n\023attached" +
-      "FileMessage\030\003 \003(\0132..protobuf.clientmessa" +
-      "ges.ClientFileMessageBase\"\336\001\n\024ClientProf" +
-      "ileComment\022?\n\013messageBase\030\001 \001(\0132*.protob" +
-      "uf.clientmessages.ClientMessageBase\0229\n\nc" +
-      "lientBase\030\002 \001(\0132%.protobuf.clientidentit" +
-      "ies.ClientBase\022J\n\rcommentAnswer\030\003 \003(\01323." +
-      "protobuf.clientmessages.ClientProfileCom" +
-      "mentAnswer\"\263\001\n\032ClientProfileCommentAnswe" +
-      "r\022?\n\013messageBase\030\001 \001(\0132*.protobuf.client" +
-      "messages.ClientMessageBase\0229\n\nclientBase" +
-      "\030\002 \001(\0132%.protobuf.clientidentities.Clien" +
-      "tBase\022\031\n\021commentToAnswerId\030\003 \001(\005B\032\n\010prot" +
-      "obufB\016ClientMessagesb\006proto3"
+      "\"x\n\013MessageBase\022\021\n\tmessageId\030\001 \001(\005\022\023\n\013me" +
+      "ssageText\030\002 \001(\t\022\020\n\010senderId\030\003 \001(\005\022\026\n\016sen" +
+      "derUsername\030\004 \001(\t\022\027\n\017timestampMillis\030\005 \001" +
+      "(\003\"\242\001\n\017FileMessageBase\022\021\n\tmessageId\030\001 \001(" +
+      "\005\022\031\n\021isDownloadMessage\030\002 \001(\010\022\020\n\010fileName" +
+      "\030\003 \001(\t\022\020\n\010filePath\030\004 \001(\t\022=\n\016loadedByClie" +
+      "nt\030\005 \003(\0132%.protobuf.clientidentities.Cli" +
+      "entBase\"\223\002\n\016ChannelMessage\0229\n\013messageBas" +
+      "e\030\001 \001(\0132$.protobuf.clientmessages.Messag" +
+      "eBase\0229\n\013channelBase\030\002 \001(\0132$.protobuf.cl" +
+      "ientchannels.ChannelBase\022E\n\023attachedFile" +
+      "Message\030\003 \003(\0132(.protobuf.clientmessages." +
+      "FileMessageBase\022D\n\rmessageAnswer\030\004 \003(\0132-" +
+      ".protobuf.clientmessages.ChannelMessageA" +
+      "nswer\"\247\001\n\024ChannelMessageAnswer\0229\n\013messag" +
+      "eBase\030\001 \001(\0132$.protobuf.clientmessages.Me" +
+      "ssageBase\0229\n\013channelBase\030\002 \001(\0132$.protobu" +
+      "f.clientchannels.ChannelBase\022\031\n\021messageT" +
+      "oAnswerId\030\003 \001(\005\"\315\001\n\016PrivateMessage\0229\n\013me" +
+      "ssageBase\030\001 \001(\0132$.protobuf.clientmessage" +
+      "s.MessageBase\0229\n\nclientBase\030\002 \001(\0132%.prot" +
+      "obuf.clientidentities.ClientBase\022E\n\023atta" +
+      "chedFileMessage\030\003 \003(\0132(.protobuf.clientm" +
+      "essages.FileMessageBase\"\314\001\n\016ProfileComme" +
+      "nt\0229\n\013messageBase\030\001 \001(\0132$.protobuf.clien" +
+      "tmessages.MessageBase\0229\n\nclientBase\030\002 \001(" +
+      "\0132%.protobuf.clientidentities.ClientBase" +
+      "\022D\n\rcommentAnswer\030\003 \003(\0132-.protobuf.clien" +
+      "tmessages.ProfileCommentAnswer\"\247\001\n\024Profi" +
+      "leCommentAnswer\0229\n\013messageBase\030\001 \001(\0132$.p" +
+      "rotobuf.clientmessages.MessageBase\0229\n\ncl" +
+      "ientBase\030\002 \001(\0132%.protobuf.clientidentiti" +
+      "es.ClientBase\022\031\n\021commentToAnswerId\030\003 \001(\005" +
+      "B\032\n\010protobufB\016ClientMessagesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7947,17 +7945,17 @@ public final class ClientMessages {
           protobuf.ClientIdentities.getDescriptor(),
           protobuf.ClientChannels.getDescriptor(),
         });
-    internal_static_protobuf_clientmessages_ClientMessageBase_descriptor =
+    internal_static_protobuf_clientmessages_MessageBase_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_protobuf_clientmessages_ClientMessageBase_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_MessageBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ClientMessageBase_descriptor,
+        internal_static_protobuf_clientmessages_MessageBase_descriptor,
         new java.lang.String[] { "MessageId", "MessageText", "SenderId", "SenderUsername", "TimestampMillis", });
-    internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor =
+    internal_static_protobuf_clientmessages_FileMessageBase_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_protobuf_clientmessages_ClientFileMessageBase_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_FileMessageBase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ClientFileMessageBase_descriptor,
+        internal_static_protobuf_clientmessages_FileMessageBase_descriptor,
         new java.lang.String[] { "MessageId", "IsDownloadMessage", "FileName", "FilePath", "LoadedByClient", });
     internal_static_protobuf_clientmessages_ChannelMessage_descriptor =
       getDescriptor().getMessageTypes().get(2);
@@ -7977,17 +7975,17 @@ public final class ClientMessages {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_clientmessages_PrivateMessage_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "AttachedFileMessage", });
-    internal_static_protobuf_clientmessages_ClientProfileComment_descriptor =
+    internal_static_protobuf_clientmessages_ProfileComment_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_protobuf_clientmessages_ClientProfileComment_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ProfileComment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ClientProfileComment_descriptor,
+        internal_static_protobuf_clientmessages_ProfileComment_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "CommentAnswer", });
-    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor =
+    internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_fieldAccessorTable = new
+    internal_static_protobuf_clientmessages_ProfileCommentAnswer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protobuf_clientmessages_ClientProfileCommentAnswer_descriptor,
+        internal_static_protobuf_clientmessages_ProfileCommentAnswer_descriptor,
         new java.lang.String[] { "MessageBase", "ClientBase", "CommentToAnswerId", });
     protobuf.ClientIdentities.getDescriptor();
     protobuf.ClientChannels.getDescriptor();

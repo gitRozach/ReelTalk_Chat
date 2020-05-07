@@ -524,6 +524,18 @@ public class LoginView extends StackPane {
 		return tabPane;
 	}
 	
+	public VBox getLoginContainer() {
+		return loginContainer;
+	}
+	
+	public VBox getRegisterContainer() {
+		return registerContainer;
+	}
+	
+	public VBox getHostContainer() {
+		return hostContainer;
+	}
+	
 	public JFXTextField getLoginAddressField() {
 		return loginAddressField;
 	}

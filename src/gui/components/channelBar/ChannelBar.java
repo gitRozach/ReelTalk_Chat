@@ -15,6 +15,7 @@ import gui.components.channelBar.channelBarItems.TextChannelBarItem;
 import gui.components.channelBar.channelBarItems.VoiceChannelBarItem;
 import handler.ObjectEventHandler;
 import handler.events.ObjectEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -29,6 +30,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import utils.FXUtils;
 
 public class ChannelBar extends StackPane {
@@ -67,7 +69,13 @@ public class ChannelBar extends StackPane {
 	}
 
 	private void initServerBar() {
-		serverBarBox = new HBox();
+		FontAwesomeIconView serverIcon = new FontAwesomeIconView(FontAwesomeIcon.SERVER);
+		serverIcon.setGlyphSize(30d);
+		
+		serverBarBox = new HBox(10d);
+		serverBarBox.setPadding(new Insets(10d));
+		serverBarBox.setAlignment(Pos.CENTER_LEFT);
+		serverBarBox.getChildren().addAll(serverIcon);
 		FXUtils.setFixedHeightOf(serverBarBox, 50d);
 	}
 	
@@ -83,24 +91,24 @@ public class ChannelBar extends StackPane {
 		phoneIcon.setWrappingWidth(25d);
 		
 		microphoneButton = new JFXButton("", microphoneIconEnabled);
-		microphoneButton.prefWidthProperty().bind(widthProperty().divide(4d));
+		microphoneButton.prefWidthProperty().bind(widthProperty().divide(3d));
 		FXUtils.setFixedHeightOf(microphoneButton, 40d);
 		speakersButton = new JFXButton("", headphonesIcon);
-		speakersButton.prefWidthProperty().bind(widthProperty().divide(4d));
+		speakersButton.prefWidthProperty().bind(widthProperty().divide(3d));
 		FXUtils.setFixedHeightOf(speakersButton, 40d);
 		callButton = new JFXButton("", phoneIcon);
-		callButton.prefWidthProperty().bind(widthProperty().divide(2d));
+		callButton.prefWidthProperty().bind(widthProperty().divide(3d));
 		FXUtils.setFixedHeightOf(callButton, 40d);
 		
-		buttonBox = new HBox(10d);
+		buttonBox = new HBox(0d);
 		buttonBox.getStyleClass().add("buttonBox");
 		buttonBox.setAlignment(Pos.CENTER_LEFT);
 		buttonBox.getChildren().addAll(microphoneButton, speakersButton, callButton);		
-		HBox.setHgrow(callButton, Priority.ALWAYS);
 	}
 	
 	private void initChannels() {
 		channelView = new JFXTreeView<ChannelBarItem>(new TreeItem<ChannelBarItem>(null));
+		channelView.setPadding(new Insets(10d));
 		channelView.setFocusTraversable(false);
 		channelView.setCellFactory((TreeView<ChannelBarItem> param) -> new ChannelCell());
 		channelView.setShowRoot(false);
@@ -299,25 +307,23 @@ public class ChannelBar extends StackPane {
 			else if(item instanceof TextChannelBarItem) {
 				TextChannelBarItem text = (TextChannelBarItem)item;
 				getStyleClass().add("channel-tree-cell");
+				setFont(Font.font(14d));
 				setText(text.getChannelName());
 				setGraphic(new FontAwesomeIconView(FontAwesomeIcon.HASHTAG));
 				setOnMouseClicked(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, text) {
 																		private static final long serialVersionUID = -8246283748073868549L;
 				}));
-				setPrefWidth(200d);
-				setPrefHeight(50d);
 				addEventHandler(TreeItem.branchCollapsedEvent(), a -> a.getTreeItem().setExpanded(true));
 			}
 			else if(item instanceof VoiceChannelBarItem) {
 				VoiceChannelBarItem voice = (VoiceChannelBarItem)item;
 				getStyleClass().add("channel-tree-cell");
+				setFont(Font.font(14d));
 				setText(voice.getChannelName());
 				setGraphic(new FontAwesomeIconView(FontAwesomeIcon.VOLUME_DOWN));
 				setOnMouseReleased(a -> onChannelClickedHandler.handle(	new ObjectEvent<ChannelBarChannelItem>(ObjectEvent.ANY, voice) {
 																		private static final long serialVersionUID = -8246283748073868549L;
 				}));
-				setPrefWidth(200d);
-				setPrefHeight(50d);
 				addEventHandler(TreeItem.branchCollapsedEvent(), a -> a.getTreeItem().setExpanded(true));
 			}
 		}
@@ -327,19 +333,15 @@ public class ChannelBar extends StackPane {
 				updateEmptyItem();
 			else {
 				ChannelBarClientItem clientItem = (ChannelBarClientItem) item;
-				setText(clientItem.getClientName());
-				
 				Image pic = new Image("/resources/icons/member.png", 24d, 24d, true, true);
 				Circle profilePic = new Circle(12d);
 				profilePic.setFill(new ImagePattern(pic));
 				profilePic.setStroke(Color.GREEN);
 				profilePic.setStrokeWidth(2d);
-				
 				HBox graphicBox = new HBox(profilePic, FXUtils.createHorizontalSpacer(10d));
-				
+				setFont(Font.font(13d));
+				setText(clientItem.getClientName());
 				setGraphic(graphicBox);
-				setPrefWidth(150d);
-				setPrefHeight(50d);
 			}
 			
 			if(item instanceof MemberChannelBarItem) {

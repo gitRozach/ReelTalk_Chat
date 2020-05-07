@@ -19,37 +19,44 @@ import network.peer.manager.ReelTalkChannelManager;
 import network.peer.manager.ReelTalkClientProfileManager;
 import network.peer.manager.ReelTalkConfigurationManager;
 import network.peer.server.manager.ReelTalkServerDatabaseManager;
-import protobuf.ClientChannels.ClientChannel;
+import protobuf.ClientChannels.Channel;
+import protobuf.ClientChannels.ChannelBase;
+import protobuf.ClientEvents.ChannelJoinEvent;
+import protobuf.ClientEvents.ChannelLeaveEvent;
 import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
-import protobuf.ClientEvents.ClientChannelJoinEvent;
-import protobuf.ClientEvents.ClientChannelLeaveEvent;
-import protobuf.ClientEvents.ClientLoginEvent;
-import protobuf.ClientEvents.ClientRequestRejectedEvent;
+import protobuf.ClientEvents.ClientJoinedChannelEvent;
+import protobuf.ClientEvents.ClientLeftChannelEvent;
+import protobuf.ClientEvents.ClientLoggedInEvent;
+import protobuf.ClientEvents.EventBase;
+import protobuf.ClientEvents.LoginEvent;
+import protobuf.ClientEvents.RequestRejectedEvent;
 import protobuf.ClientIdentities.ClientAccount;
 import protobuf.ClientIdentities.ClientBadges;
+import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientIdentities.ClientFriends;
 import protobuf.ClientIdentities.ClientGroups;
 import protobuf.ClientIdentities.ClientImages;
 import protobuf.ClientIdentities.ClientProfile;
 import protobuf.ClientIdentities.ClientStatus;
 import protobuf.ClientMessages.ChannelMessage;
-import protobuf.ClientMessages.ClientFileMessageBase;
+import protobuf.ClientMessages.FileMessageBase;
 import protobuf.ClientRequests.ChannelFileDownloadRequest;
 import protobuf.ClientRequests.ChannelFileUploadRequest;
 import protobuf.ClientRequests.ChannelJoinRequest;
 import protobuf.ClientRequests.ChannelLeaveRequest;
 import protobuf.ClientRequests.ChannelMessageGetRequest;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
-import protobuf.ClientRequests.ClientLoginRequest;
-import protobuf.ClientRequests.ClientLogoutRequest;
-import protobuf.ClientRequests.ClientProfileGetRequest;
-import protobuf.ClientRequests.ClientRegistrationRequest;
+import protobuf.ClientRequests.LoginRequest;
+import protobuf.ClientRequests.LogoutRequest;
 import protobuf.ClientRequests.PingMeasurementRequest;
 import protobuf.ClientRequests.PrivateFileDownloadRequest;
 import protobuf.ClientRequests.PrivateFileUploadRequest;
 import protobuf.ClientRequests.PrivateMessageGetRequest;
 import protobuf.ClientRequests.PrivateMessagePostRequest;
+import protobuf.ClientRequests.ProfileGetRequest;
+import protobuf.ClientRequests.RegistrationRequest;
+import protobuf.wrapper.ClientChannels;
 import protobuf.wrapper.ClientEvents;
 import protobuf.wrapper.ClientIdentities;
 import protobuf.wrapper.ClientMessages;
@@ -81,13 +88,31 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		logger.info(databaseManager.getProfileCommentDatabase().size() + " profile comments loaded.");
 	}
 	
+	public int sendMessageToChannel(int channelId, Message message) {
+		int sendMessagesCounter = 0;
+		
+		return sendMessagesCounter;
+	}
+	
+	public boolean sendMessageToClient(int clientId, Message message) {
+		return true;
+	}
+	
+	public void sendMessageToAllClients(Message message) {
+		
+	}
+	
+	public void sendMessageToAllClientsExcept(int clientId, Message message) {
+		
+	}
+	
 	public boolean checkLogin(String username, String password) {
 		return login(username, password) != null;
 	}
 	
 	public ClientAccount login(String username, String password) {
 		List<ClientAccount> accounts = databaseManager.getClientAccountDatabase().getByUsernameAndPassword(username, password);
-		return accounts.isEmpty() ? null : accounts.get(0);
+		return accounts.isEmpty() ? null : accounts.get(accounts.size() - 1);
 	}
 	
 	private void initDatabaseManager() throws IOException {
@@ -159,7 +184,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void handleReceivedMessage(ProtobufMessage receivedMessage) {
 		if(!receivedMessage.hasSocketChannel() || !receivedMessage.hasMessage())
 			return;
-		if(ClientRequests.isClientRequest(receivedMessage.getMessage().getClass()))
+		if(ClientRequests.isRequest(receivedMessage.getMessage().getClass()))
 			handleRequest(getLocalSelectionKey(receivedMessage.getSocketChannel()), receivedMessage.getMessage());
 	}
 	
@@ -191,14 +216,14 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		case "PrivateMessagePostRequest":
 			handlePrivateMessagePostRequest(clientKey, (PrivateMessagePostRequest)request);
 			break;
-		case "ClientLoginRequest":
-			handleClientLoginRequest(clientKey, (ClientLoginRequest)request);
+		case "LoginRequest":
+			handleLoginRequest(clientKey, (LoginRequest)request);
 			break;
-		case "ClientLogoutRequest":
-			handleClientLogoutRequest(clientKey, (ClientLogoutRequest)request);
+		case "LogoutRequest":
+			handleLogoutRequest(clientKey, (LogoutRequest)request);
 			break;
-		case "ClientRegistrationRequest":
-			handleClientRegistrationRequest(clientKey, (ClientRegistrationRequest)request);
+		case "RegistrationRequest":
+			handleRegistrationRequest(clientKey, (RegistrationRequest)request);
 			break;
 		case "ChannelFileDownloadRequest":
 			handleChannelFileDownloadRequest(clientKey, (ChannelFileDownloadRequest)request);
@@ -212,11 +237,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		case "PrivateFileUploadRequest":
 			handlePrivateFileUploadRequest(clientKey, (PrivateFileUploadRequest)request);
 			break;
-		case "ClientPingMeasurementRequest":
+		case "PingMeasurementRequest":
 			handlePingMeasurementRequest(clientKey, (PingMeasurementRequest)request);
 			break;
-		case "ClientProfileRequest":
-			handleClientProfileGetRequest(clientKey, (ClientProfileGetRequest)request);
+		case "ProfileGetRequest":
+			handleProfileGetRequest(clientKey, (ProfileGetRequest)request);
 			break;
 		case "ClientChannelRequest":
 			break;
@@ -232,7 +257,8 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void handleChannelJoinRequest(SelectionKey clientKey, ChannelJoinRequest request) {
 		if(request == null)
 			return;
-		int channelId = request.getChannelBase().getChannelId();
+		int channelId = request.getChannelBase().getId();
+		String channelName = request.getChannelBase().getName();
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
 		ClientAccount clientAccount = login(clientUsername, clientPassword);
@@ -244,12 +270,20 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			List<ChannelMessage> channelMessages = messageDb.getChannelMessages(20);
 			if(channelMessages == null)
 				channelMessages = Collections.emptyList();
-			ClientChannelJoinEvent joinEvent = ClientEvents.newClientChannelJoinEvent(1, channelId, channelMessages);
+			ChannelJoinEvent joinEvent = ClientEvents.newChannelJoinEvent(1, channelId, channelMessages);
 			sendMessage(clientKey, joinEvent);
-			System.out.println("Server sent: " + joinEvent.toByteArray().length + " bytes");
+			
+			int clientId = clientAccount.getProfile().getBase().getId();
+			EventBase eventBase = ClientEvents.newEventBase(1, clientId);
+			ChannelBase channelBase = ClientChannels.newChannelBase(channelId, channelName);
+			ClientBase clientBase = ClientIdentities.newClientBase(clientId, clientUsername);
+			ClientJoinedChannelEvent leftEvent = ClientJoinedChannelEvent.newBuilder().setEventBase(eventBase).setChannelBase(channelBase).setClientBase(clientBase).build();
+			for(SelectionKey key : selector.keys())
+				if(key.channel() instanceof SocketChannel)
+					sendMessage(key, leftEvent);
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -257,18 +291,28 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void handleChannelLeaveRequest(SelectionKey clientKey, ChannelLeaveRequest request) {
 		if(request == null)
 			return;
-		int channelId = request.getChannelBase().getChannelId();
+		int channelId = request.getChannelBase().getId();
+		String channelName = request.getChannelBase().getName();
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
 		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
 		if(clientAccount != null) {
 			channelManager.removeClientFromChannel(clientAccount.getProfile().getBase().getId(), channelId);
-			ClientChannelLeaveEvent leaveEvent = ClientEvents.newClientChannelLeaveEvent(1, channelId, clientAccount.getProfile());
+			ChannelLeaveEvent leaveEvent = ClientEvents.newChannelLeaveEvent(1, channelId, clientAccount.getProfile());
 			sendMessage(clientKey, leaveEvent);
+			
+			int clientId = clientAccount.getProfile().getBase().getId();
+			EventBase eventBase = ClientEvents.newEventBase(1, clientId);
+			ChannelBase channelBase = ClientChannels.newChannelBase(channelId, channelName);
+			ClientBase clientBase = ClientIdentities.newClientBase(clientId, clientUsername);
+			ClientLeftChannelEvent leftEvent = ClientLeftChannelEvent.newBuilder().setEventBase(eventBase).setChannelBase(channelBase).setClientBase(clientBase).build();
+			for(SelectionKey key : selector.keys())
+				if(key.channel() instanceof SocketChannel)
+					sendMessage(key, leftEvent);
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -286,7 +330,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			sendMessage(clientKey, channelMessage);
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -297,9 +341,9 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		int messageId = 1;
 		String messageText = request.getMessageText();
 		long messageTime = System.currentTimeMillis();
-		int channelId = request.getChannelBase().getChannelId();
+		int channelId = request.getChannelBase().getId();
 		int eventId = request.getRequestBase().getRequestId();
-		Collection<ClientFileMessageBase> attachedFiles = Collections.emptyList();
+		Collection<FileMessageBase> attachedFiles = Collections.emptyList();
 		ClientAccount clientAccount = null;
 		
 		if((clientAccount = login(clientUsername, clientPassword)) != null) {
@@ -315,43 +359,51 @@ public class ReelTalkServer extends SecuredProtobufServer {
 					sendMessage(key, eventMessage);
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(eventId, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(eventId, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
-	private void handleClientLoginRequest(SelectionKey clientKey, ClientLoginRequest request) {
+	private void handleLoginRequest(SelectionKey clientKey, LoginRequest request) {
 		String clientUsername = request.getRequestBase().getUsername();
 		String clientPassword = request.getRequestBase().getPassword();
 		ClientAccount clientAccount = login(clientUsername, clientPassword);
 		
 		if(clientAccount != null) {
-			List<ClientChannel> serverChannels = channelManager.getChannels();//databaseManager.getClientChannelDatabase().getLoadedItems();
+			List<Channel> serverChannels = channelManager.getChannels();//databaseManager.getClientChannelDatabase().getLoadedItems();
 			List<ClientProfile> serverMembers = new ArrayList<ClientProfile>();
 			serverMembers.addAll(clientManager.getOnlineMembers());
 			serverMembers.addAll(clientManager.getOfflineMembers());
-			ClientLoginEvent loginEvent = ClientEvents.newClientLoginEvent(1, clientAccount, serverChannels, serverMembers);
+			
+			LoginEvent loginEvent = ClientEvents.newLoginEvent(1, clientAccount, serverChannels, serverMembers);
 			sendMessage(clientKey, loginEvent);
-			System.out.println("Server sent: " + loginEvent.toByteArray().length + " bytes");
+			
+			int clientId = clientAccount.getProfile().getBase().getId();
+			EventBase eventBase = EventBase.newBuilder().setEventId(1).setEventTimestamp(System.currentTimeMillis()).build();
+			ClientBase clientBase = ClientBase.newBuilder().setId(clientId).setUsername(clientUsername).build();
+			for(SelectionKey key : selector.keys())
+				if(key.channel() instanceof SocketChannel)
+					sendMessage(key, ClientLoggedInEvent.newBuilder().setEventBase(eventBase).setClientBase(clientBase).build());
+			//System.out.println("Server sent: " + loginEvent.toByteArray().length + " bytes");
 		}
 		else {
 			//RequestType hinzufuegen, damit Rejections zugeordnet werden koennen
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
-	private void handleClientLogoutRequest(SelectionKey clientKey, ClientLogoutRequest request) {
+	private void handleLogoutRequest(SelectionKey clientKey, LogoutRequest request) {
 		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
-	private void handleClientRegistrationRequest(SelectionKey clientKey, ClientRegistrationRequest request) {
+	private void handleRegistrationRequest(SelectionKey clientKey, RegistrationRequest request) {
 		String clientUsername = request.getUsername();
 		String clientPassword = request.getPassword();
 		String clientPasswordRepeat = request.getPasswordRepeat();
@@ -368,11 +420,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 																			ClientIdentities.newClientDate());
 			ClientAccount newAccount = ClientIdentities.newClientAccount(newProfile, clientPassword);
 			if(databaseManager.getClientAccountDatabase().addItem(newAccount)) {
-				List<ClientChannel> serverChannels = databaseManager.getClientChannelDatabase().getLoadedItems();
+				List<Channel> serverChannels = databaseManager.getClientChannelDatabase().getLoadedItems();
 				List<ClientProfile> serverMembers = new ArrayList<ClientProfile>();
 				for(ClientAccount currentAccount : databaseManager.getClientAccountDatabase().getLoadedItems())
 					serverMembers.add(currentAccount.getProfile());
-				ClientLoginEvent loginEvent = ClientEvents.newClientLoginEvent(1, newAccount, serverChannels, serverMembers);
+				LoginEvent loginEvent = ClientEvents.newLoginEvent(1, newAccount, serverChannels, serverMembers);
 				sendMessage(clientKey, loginEvent);
 				System.out.println("Server sent: " + loginEvent.toByteArray().length + " bytes");
 			}
@@ -381,7 +433,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			//RequestType hinzufuegen, damit Rejections zugeordnet werden koennen
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -391,7 +443,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -401,7 +453,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -411,7 +463,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -421,7 +473,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -431,7 +483,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -441,7 +493,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
@@ -451,17 +503,17 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
-	private void handleClientProfileGetRequest(SelectionKey clientKey, ClientProfileGetRequest request) {
+	private void handleProfileGetRequest(SelectionKey clientKey, ProfileGetRequest request) {
 		if(checkLogin(request.getRequestBase().getUsername(), request.getRequestBase().getPassword())) {
 			
 		}
 		else {
-			ClientRequestRejectedEvent rejMessage = ClientEvents.newClientRequestRejectedEvent(1, "Invalid login data.");
+			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
 			sendMessage(clientKey, rejMessage);
 		}
 	}

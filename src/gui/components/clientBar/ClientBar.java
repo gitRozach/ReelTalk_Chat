@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXTabPane;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gui.components.LoadableStackPane;
-import gui.components.clientBar.items.ClientBarItem;
 import gui.components.clientBar.items.ClientBarMemberItem;
 import gui.components.clientBar.items.FriendClientBarItem;
 import gui.components.clientBar.items.MemberClientBarItem;
@@ -36,7 +35,7 @@ public class ClientBar extends LoadableStackPane {
 	private HBox profileImageBox;
 	private VBox levelImagesBox;
 	
-	private ImageView profilePictureView;
+	private Circle profilePictureCircle;
 	private Label profileNameLabel;
 	private ImageView adminLevelView;
 	private ImageView profileLevelView;
@@ -56,11 +55,11 @@ public class ClientBar extends LoadableStackPane {
 	private JFXButton imageViewerButton;
 
 	private JFXTabPane clientTabPane;
-	private JFXListView<ClientBarItem> friendsView;
+	private JFXListView<ClientBarMemberItem> friendsView;
 	private Tab friendsTab;
-	private JFXListView<ClientBarItem> membersView;
+	private JFXListView<ClientBarMemberItem> membersView;
 	private Tab membersTab;
-	private JFXListView<ClientBarItem> onlineView;
+	private JFXListView<ClientBarMemberItem> onlineView;
 	private Tab onlineTab;
 
 	public ClientBar() {
@@ -170,8 +169,11 @@ public class ClientBar extends LoadableStackPane {
 	
 	private void initProfileBox() {
 		Image profileImage = new Image("/resources/icons/member.png", 128d, 128d, true, true);
-		profilePictureView = new ImageView(profileImage);
-		profilePictureView.setTranslateX(20d);
+		profilePictureCircle = new Circle(64d);
+		profilePictureCircle.setFill(new ImagePattern(profileImage));
+		profilePictureCircle.setStroke(Color.GREEN);
+		profilePictureCircle.setStrokeWidth(2d);
+		profilePictureCircle.setTranslateX(20d);
 		
 		Image adminLevelImage = new Image("/resources/icons/rank_admin.png", 32d, 32d, true, true);
 		adminLevelView = new ImageView(adminLevelImage);
@@ -187,13 +189,13 @@ public class ClientBar extends LoadableStackPane {
 		levelImagesBox.setSpacing(10d);
 		levelImagesBox.setAlignment(Pos.TOP_CENTER);
 		
-		profileImageBox = new HBox(profilePictureView, levelImagesBox);
+		profileImageBox = new HBox(profilePictureCircle, levelImagesBox);
 		profileImageBox.setAlignment(Pos.CENTER);
 		profileImageBox.setSpacing(10d);
 		profileImageBox.setPadding(new Insets(10d, 0d, 10d, 0d));
 		
 		profileNameLabel = new Label("Rouman");
-		profileNameLabel.setFont(Font.font("Tahoma", 16d));
+		profileNameLabel.setFont(Font.font(18d));
 		
 		FontAwesomeIconView messagesIcon = new FontAwesomeIconView(FontAwesomeIcon.ENVELOPE);
 		messagesIcon.setGlyphSize(25d);
@@ -364,21 +366,21 @@ public class ClientBar extends LoadableStackPane {
 	}
 	
 	private void initFriendsView() {
-		friendsView = new JFXListView<ClientBarItem>();
+		friendsView = new JFXListView<ClientBarMemberItem>();
 		friendsView.setCenterShape(true);
-		friendsView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
+		friendsView.setCellFactory((ListView<ClientBarMemberItem> param) -> new ClientCell());
 	}
 	
 	private void initMembersView() {
-		membersView = new JFXListView<ClientBarItem>();
+		membersView = new JFXListView<ClientBarMemberItem>();
 		membersView.setCenterShape(true);
-		membersView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
+		membersView.setCellFactory((ListView<ClientBarMemberItem> param) -> new ClientCell());
 	}
 	
 	private void initOnlineView() {
-		onlineView = new JFXListView<ClientBarItem>();
+		onlineView = new JFXListView<ClientBarMemberItem>();
 		onlineView.setCenterShape(true);
-		onlineView.setCellFactory((ListView<ClientBarItem> param) -> new ClientCell());
+		onlineView.setCellFactory((ListView<ClientBarMemberItem> param) -> new ClientCell());
 	}
 
 	private void initMediaBox() {
@@ -408,12 +410,16 @@ public class ClientBar extends LoadableStackPane {
 		return levelImagesBox;
 	}
 
-	public ImageView getProfilePictureView() {
-		return profilePictureView;
+	public Circle getProfilePictureCircle() {
+		return profilePictureCircle;
 	}
 	
-	public void setProfilePictureView(ImageView value) {
-		profilePictureView = value;
+	public void setProfilePicture(Image value) {
+		profilePictureCircle = new Circle(64d);
+		profilePictureCircle.setFill(new ImagePattern(value));
+		profilePictureCircle.setStroke(Color.GREEN);
+		profilePictureCircle.setStrokeWidth(2d);
+		profilePictureCircle.setTranslateX(20d);
 	}
 
 	public Label getProfileNameLabel() {
@@ -488,7 +494,7 @@ public class ClientBar extends LoadableStackPane {
 		return clientTabPane;
 	}
 
-	public JFXListView<ClientBarItem> getFriendsView() {
+	public JFXListView<ClientBarMemberItem> getFriendsView() {
 		return friendsView;
 	}
 
@@ -496,7 +502,7 @@ public class ClientBar extends LoadableStackPane {
 		return friendsTab;
 	}
 
-	public JFXListView<ClientBarItem> getNonFriendsView() {
+	public JFXListView<ClientBarMemberItem> getNonFriendsView() {
 		return membersView;
 	}
 
@@ -504,7 +510,7 @@ public class ClientBar extends LoadableStackPane {
 		return membersTab;
 	}
 
-	public JFXListView<ClientBarItem> getOnlineView() {
+	public JFXListView<ClientBarMemberItem> getOnlineView() {
 		return onlineView;
 	}
 
@@ -512,7 +518,7 @@ public class ClientBar extends LoadableStackPane {
 		return onlineTab;
 	}
 
-	private class ClientCell extends JFXListCell<ClientBarItem> {
+	private class ClientCell extends JFXListCell<ClientBarMemberItem> {
 		
 		public ClientCell() {
 			super();
@@ -520,19 +526,38 @@ public class ClientBar extends LoadableStackPane {
 		}
 		
 		@Override
-		public void updateItem(ClientBarItem item, boolean empty) {
+		public void updateItem(ClientBarMemberItem item, boolean empty) {
 			super.updateItem(item, empty);
 			if (empty)
 				updateEmptyItem();
 			else if (item instanceof ClientBarMemberItem){
 				ClientBarMemberItem member = (ClientBarMemberItem)item;
+				Color borderColor = null;
+				switch(member.getClientStatus()) {
+				case ONLINE:
+					borderColor = Color.GREEN;
+					break;
+				case OFFLINE:
+					borderColor = Color.DIMGRAY;
+					break;
+				case AFK:
+					borderColor = Color.ORANGE;
+					break;
+				case BUSY:
+					borderColor = Color.ORANGERED;
+					break;
+				default:
+					borderColor = Color.DIMGRAY;
+					break;
+				}
+				
 				setText(member.getUsername());
 				
-				Image pic = new Image("/resources/icons/member.png", 32d, 32d, true, true);
+				Image pic = new Image(member.getProfilePicture(), 32d, 32d, true, true);
 				Circle profilePic = new Circle(16d);
 				profilePic.setFill(new ImagePattern(pic));
-				profilePic.setStroke(Color.GREEN);
-				profilePic.setStrokeWidth(1d);
+				profilePic.setStroke(borderColor);
+				profilePic.setStrokeWidth(2d);
 				
 				HBox graphicBox = new HBox(profilePic, FXUtils.createHorizontalSpacer(10d));
 				graphicBox.setPadding(new Insets(0d, 0d, 0d, 10d));

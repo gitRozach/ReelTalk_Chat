@@ -9,12 +9,15 @@ import java.io.InputStream;
 import java.util.Comparator;
 
 import com.google.protobuf.Message;
+import com.jfoenix.controls.JFXListView;
 
 import apps.audioPlayer.AudioPlayer;
 import gui.components.LoadableStackPane;
 import gui.components.channelBar.channelBarItems.ChannelBarChannelItem;
 import gui.components.channelBar.channelBarItems.MemberChannelBarItem;
 import gui.components.channelBar.channelBarItems.TextChannelBarItem;
+import gui.components.clientBar.items.ClientBarMemberItem;
+import gui.components.clientBar.items.MemberClientBarItem;
 import gui.components.messages.ChatViewMessage;
 import gui.views.ChatView;
 import gui.views.HostView;
@@ -23,23 +26,32 @@ import handler.ObjectEventHandler;
 import handler.events.ObjectEvent;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import network.messages.ProtobufMessage;
 import network.peer.client.ReelTalkClient;
 import network.peer.server.ReelTalkServer;
-import protobuf.ClientChannels.ClientChannel;
+import protobuf.ClientChannels.Channel;
+import protobuf.ClientEvents.ChannelGetEvent;
+import protobuf.ClientEvents.ChannelJoinEvent;
+import protobuf.ClientEvents.ChannelLeaveEvent;
 import protobuf.ClientEvents.ChannelMessageGetEvent;
 import protobuf.ClientEvents.ChannelMessagePostEvent;
-import protobuf.ClientEvents.ClientChannelGetEvent;
-import protobuf.ClientEvents.ClientChannelJoinEvent;
-import protobuf.ClientEvents.ClientChannelLeaveEvent;
-import protobuf.ClientEvents.ClientLoginEvent;
-import protobuf.ClientEvents.ClientRequestRejectedEvent;
+import protobuf.ClientEvents.ClientJoinedChannelEvent;
+import protobuf.ClientEvents.ClientLeftChannelEvent;
+import protobuf.ClientEvents.ClientLoggedInEvent;
+import protobuf.ClientEvents.ClientLoggedOutEvent;
+import protobuf.ClientEvents.LoginEvent;
+import protobuf.ClientEvents.RequestRejectedEvent;
 import protobuf.ClientIdentities.ClientProfile;
+import protobuf.ClientIdentities.ClientStatus;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientRequests.ChannelMessagePostRequest;
 import protobuf.wrapper.ClientRequests;
@@ -49,6 +61,11 @@ public class ReelTalkSession extends Application {
 	public static final String HOST_PROTOCOL = "TLSv1.2";
 	public static final String HOST_ADDRESS = "localhost";
 	public static final int HOST_PORT = 2199;
+	
+	private BooleanProperty loginControlsEnabledProperty;
+	private BooleanProperty registerControlsEnabledProperty;
+	private BooleanProperty hostControlsEnabledProperty;
+	private volatile int currentChannelId;
 	
 	private Stage window;
 	private LoadableStackPane rootPane;
@@ -60,12 +77,10 @@ public class ReelTalkSession extends Application {
 	private ReelTalkServer chatServer;
 	private ReelTalkClient chatClient;
 	
-	private volatile int currentChannelId;
-	
-	static final Comparator<ClientChannel> ClientChannelComparator = new Comparator<ClientChannel>() {
+	static final Comparator<Channel> ClientChannelComparator = new Comparator<Channel>() {
 		@Override
-		public int compare(ClientChannel o1, ClientChannel o2) {
-			return o1.getBase().getChannelId() - o2.getBase().getChannelId();
+		public int compare(Channel o1, Channel o2) {
+			return o1.getBase().getId() - o2.getBase().getId();
 		}
 	};
 	
@@ -187,6 +202,9 @@ public class ReelTalkSession extends Application {
 	}
 	
 	private void initProperties() {
+		loginControlsEnabledProperty = new SimpleBooleanProperty(true);
+		registerControlsEnabledProperty = new SimpleBooleanProperty(true);
+		hostControlsEnabledProperty = new SimpleBooleanProperty(true);
 		currentChannelId = -1;
 	}
 	
@@ -220,6 +238,27 @@ public class ReelTalkSession extends Application {
 	
 	private void initLoginView() {
 		loginView = new LoginView(true, window);
+		loginView.getLoginContainer().disableProperty().bind(loginControlsEnabledProperty.not());
+		loginView.getLoginContainer().addEventFilter(KeyEvent.KEY_PRESSED, l -> {
+			if(l.getCode() == KeyCode.ENTER) {
+				onLoginButtonClicked(); 
+				l.consume();
+			}
+		});
+		loginView.getRegisterContainer().disableProperty().bind(registerControlsEnabledProperty.not());
+		loginView.getRegisterContainer().addEventFilter(KeyEvent.KEY_PRESSED, r -> {
+			if(r.getCode() == KeyCode.ENTER) {
+				onRegisterButtonClicked(); 
+				r.consume();
+			}
+		});
+		loginView.getHostContainer().disableProperty().bind(hostControlsEnabledProperty.not());
+		loginView.getHostContainer().addEventFilter(KeyEvent.KEY_PRESSED, h -> {
+			if(h.getCode() == KeyCode.ENTER) {
+				onHostButtonClicked(); 
+				h.consume();
+			}
+		});
 		loginView.getLoginButton().setOnAction(login -> onLoginButtonClicked());
 		loginView.getLoginCancelButton().setOnAction(cancelLogin -> onLoginCancelButtonClicked());
 		loginView.getRegisterButton().setOnAction(register -> onRegisterButtonClicked());
@@ -262,19 +301,20 @@ public class ReelTalkSession extends Application {
 		});
 	}
 	
-	public void onLoginButtonClicked() {
-		String address = loginView.getLoginAddressText();
-		int port = Integer.parseInt(loginView.getLoginPortText());
-		String username = loginView.getLoginUsernameText();
-		String password = loginView.getLoginPasswordText();
-		
-		ThreadUtils.createNewThread(() -> {			
+	public void onLoginButtonClicked() {		
+		ThreadUtils.createNewThread(() -> {
+			String address = loginView.getLoginAddressText();
+			String port = loginView.getLoginPortText();
+			String username = loginView.getLoginUsernameText();
+			String password = loginView.getLoginPasswordText();
+			
+			setLoginControlsEnabled(false);
 			rootPane.setLoading(true);
 			ThreadUtils.sleep(1000L);
 			try {
 				if(chatClient != null)
 					chatClient.close();
-				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, port);
+				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, Integer.parseInt(port));
 				initChatClientEventHandlers();
 
 				if(chatClient.connect())
@@ -288,6 +328,9 @@ public class ReelTalkSession extends Application {
 				rootPane.setLoading(false);
 				rootPane.showPopup(e.getMessage());
 			}
+			finally {
+				setLoginControlsEnabled(true);
+			}
 		}, true);
 	}
 	
@@ -296,19 +339,20 @@ public class ReelTalkSession extends Application {
 	}
 	
 	public void onRegisterButtonClicked() {
-		String address = loginView.getRegisterAddressText();
-		int port = Integer.parseInt(loginView.getRegisterPortText());
-		String username = loginView.getRegisterUsernameText();
-		String password = loginView.getRegisterPasswordText();
-		String passwordRepeat = loginView.getRegisterPasswordRepeatText();
-		
-		ThreadUtils.createNewThread(() -> {			
+		ThreadUtils.createNewThread(() -> {
+			String address = loginView.getRegisterAddressText();
+			String port = loginView.getRegisterPortText();
+			String username = loginView.getRegisterUsernameText();
+			String password = loginView.getRegisterPasswordText();
+			String passwordRepeat = loginView.getRegisterPasswordRepeatText();
+			
+			setRegisterControlsEnabled(false);
 			rootPane.setLoading(true);
 			ThreadUtils.sleep(1000L);
 			try {
 				if(chatClient != null)
 					chatClient.close();
-				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, port);
+				chatClient = new ReelTalkClient(HOST_PROTOCOL, address, Integer.parseInt(port));
 				initChatClientEventHandlers();
 				if(chatClient.connect())
 					chatClient.sendMessage(ClientRequests.newRegistrationRequest(1, username, password, passwordRepeat, ""));
@@ -321,6 +365,9 @@ public class ReelTalkSession extends Application {
 				rootPane.setLoading(false);
 				rootPane.showPopup(e.getMessage());
 			}
+			finally {
+				setRegisterControlsEnabled(true);
+			}
 		}, true);
 	}
 	
@@ -329,8 +376,10 @@ public class ReelTalkSession extends Application {
 	}
 	
 	public void onHostButtonClicked() {
-		String port = loginView.getHostPortText();
-		ThreadUtils.createNewThread(() -> {			
+		ThreadUtils.createNewThread(() -> {
+			String port = loginView.getHostPortText();
+			
+			setHostControlsEnabled(false);
 			rootPane.setLoading(true);
 			ThreadUtils.sleep(1000L);
 			try {
@@ -344,6 +393,9 @@ public class ReelTalkSession extends Application {
 			catch(Exception e) {
 				rootPane.setLoading(false);
 				rootPane.showPopup(e.getMessage());
+			}
+			finally {
+				setHostControlsEnabled(true);
 			}
 		}, true);
 	}
@@ -377,34 +429,42 @@ public class ReelTalkSession extends Application {
 		if(reception == null || !reception.hasMessage())
 			return;
 		Message message = reception.getMessage();
-		if(message instanceof ClientRequestRejectedEvent)
-			onClientRequestRejectedEvent((ClientRequestRejectedEvent) message);
-		else if(message instanceof ClientLoginEvent)
-			onClientLoginEvent((ClientLoginEvent) message);
+		if(message instanceof RequestRejectedEvent)
+			onRequestRejectedEvent((RequestRejectedEvent) message);
+		else if(message instanceof LoginEvent)
+			onLoginEvent((LoginEvent) message);
+		else if(message instanceof ClientLoggedInEvent)
+			onClientLoggedInEvent((ClientLoggedInEvent) message);
+		else if(message instanceof ClientLoggedOutEvent)
+			onClientLoggedOutEvent((ClientLoggedOutEvent) message);
 		else if(message instanceof ChannelMessagePostEvent)
 			onChannelMessagePostEvent((ChannelMessagePostEvent) message);
 		else if(message instanceof ChannelMessageGetEvent)
 			onChannelMessageGetEvent((ChannelMessageGetEvent) message);
-		else if(message instanceof ClientChannelJoinEvent)
-			onClientChannelJoinEvent((ClientChannelJoinEvent) message);
-		else if(message instanceof ClientChannelLeaveEvent)
-			onClientChannelLeaveEvent((ClientChannelLeaveEvent) message);
-		else if(message instanceof ClientChannelGetEvent)
-			onClientChannelGetEvent((ClientChannelGetEvent) message);
+		else if(message instanceof ChannelJoinEvent)
+			onChannelJoinEvent((ChannelJoinEvent) message);
+		else if(message instanceof ChannelLeaveEvent)
+			onChannelLeaveEvent((ChannelLeaveEvent) message);
+		else if(message instanceof ClientJoinedChannelEvent)
+			onClientJoinedChannelEvent((ClientJoinedChannelEvent) message);
+		else if(message instanceof ClientLeftChannelEvent)
+			onClientLeftChannelEvent((ClientLeftChannelEvent) message);
+		else if(message instanceof ChannelGetEvent)
+			onChannelGetEvent((ChannelGetEvent) message);
 	}
 	
-	public void onClientRequestRejectedEvent(ClientRequestRejectedEvent event) {
+	public void onRequestRejectedEvent(RequestRejectedEvent event) {
 		rootPane.setLoading(false);
 		rootPane.showPopup(event.getRejectionMessage());
 	}
 	
-	public void onClientLoginEvent(ClientLoginEvent event) {
+	public void onLoginEvent(LoginEvent event) {
 		chatView.getClientBar().setProfileName(event.getAccount().getProfile().getBase().getUsername());
-		for(ClientChannel currentChannel : event.getServerChannelList()) {
-			int channelId = currentChannel.getBase().getChannelId();
+		for(Channel currentChannel : event.getServerChannelList()) {
+			int channelId = currentChannel.getBase().getId();
 		
-			chatView.getChannelBar().addChannel(new TextChannelBarItem(channelId, currentChannel.getBase().getChannelName()));
-			for(Integer memberId : currentChannel.getMembers().getMemberIdList()) {
+			chatView.getChannelBar().addChannel(new TextChannelBarItem(channelId, currentChannel.getBase().getName()));
+			for(Integer memberId : currentChannel.getMemberIdList()) {
 				ClientProfile memberProfile = chatClient.getProfileManager().getClientProfileById(memberId);
 				if(!chatView.getChannelBar().channelContainsClientWithId(channelId, memberId))
 					chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(memberId, memberProfile.getBase().getUsername()));
@@ -414,6 +474,41 @@ public class ReelTalkSession extends Application {
 			chatView.getClientBar().addMemberItem(currentProfile.getBase().getId(), currentProfile.getBase().getUsername());
 		loadView(chatView);
 		setWindowMinSize(1000d, 900d);
+	}
+	
+	public void onClientLoggedInEvent(ClientLoggedInEvent event) {
+		int clientId = event.getClientBase().getId();
+		String clientUsername = event.getClientBase().getUsername();
+		ClientStatus clientStatus = ClientStatus.ONLINE;
+		
+		JFXListView<ClientBarMemberItem> memberList = chatView.getClientBar().getNonFriendsView();
+		for(int i = 0; i < memberList.getItems().size(); ++i) {
+			if(memberList.getItems().get(i).getId() == clientId) {
+				ClientBarMemberItem newItem = new MemberClientBarItem(clientId, clientUsername);
+				newItem.setClientStatus(clientStatus);
+				chatView.getClientBar().getNonFriendsView().getItems().set(i, newItem);
+				return;
+			}
+		}
+	}
+	
+	public void onClientLoggedOutEvent(ClientLoggedOutEvent event) {
+		int clientId = event.getClientBase().getId();
+		String clientUsername = event.getClientBase().getUsername();
+		ClientStatus clientStatus = ClientStatus.OFFLINE;
+		
+		//STATTDESSEN:
+		//ClientStatusChangedEvent schicken und den ClientStatus vom Server mit dem des Clients synchronisieren
+		
+		JFXListView<ClientBarMemberItem> memberList = chatView.getClientBar().getNonFriendsView();
+		for(int i = 0; i < memberList.getItems().size(); ++i) {
+			if(memberList.getItems().get(i).getId() == clientId) {
+				ClientBarMemberItem newItem = new MemberClientBarItem(clientId, clientUsername);
+				newItem.setClientStatus(clientStatus);
+				chatView.getClientBar().getNonFriendsView().getItems().set(i, newItem);
+				return;
+			}
+		}
 	}
 	
 	public void onChannelMessagePostEvent(ChannelMessagePostEvent event) {
@@ -438,8 +533,8 @@ public class ReelTalkSession extends Application {
 		chatView.getMessageView().setLoading(false);
 	}
 	
-	public void onClientChannelJoinEvent(ClientChannelJoinEvent event) {
-		int channelId = event.getChannelBase().getChannelId();
+	public void onChannelJoinEvent(ChannelJoinEvent event) {
+		int channelId = event.getChannelBase().getId();
 		int clientId = chatClient.getIdentityManager().getClientId();
 		String clientUsername = chatClient.getIdentityManager().getClientUsername();
 		
@@ -458,15 +553,66 @@ public class ReelTalkSession extends Application {
 		chatView.getMessageView().setLoading(false);
 	}
 	
-	public void onClientChannelLeaveEvent(ClientChannelLeaveEvent event) {
-		int channelId = event.getChannelBase().getChannelId();
+	public void onChannelLeaveEvent(ChannelLeaveEvent event) {
+		int channelId = event.getChannelBase().getId();
 		int clientId = event.getProfile().getBase().getId();
 		if(chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
 			chatView.getChannelBar().removeClientFromChannel(clientId, channelId);
 	}
 	
-	public void onClientChannelGetEvent(ClientChannelGetEvent event) {
-		for(ClientChannel currentChannel : event.getChannelList())
-			chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getChannelId(), currentChannel.getBase().getChannelName()));
+	public void onClientJoinedChannelEvent(ClientJoinedChannelEvent event) {
+		int channelId = event.getChannelBase().getId();
+		int clientId = event.getClientBase().getId();
+		String clientUsername = event.getClientBase().getUsername();
+		if(!chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
+			chatView.getChannelBar().addClient(channelId, new MemberChannelBarItem(clientId, clientUsername));
+	}
+	
+	public void onClientLeftChannelEvent(ClientLeftChannelEvent event) {
+		int channelId = event.getChannelBase().getId();
+		int clientId = event.getClientBase().getId();
+		if(chatView.getChannelBar().channelContainsClientWithId(channelId, clientId))
+			chatView.getChannelBar().removeClientFromChannel(clientId, channelId);
+	}
+	
+	public void onChannelGetEvent(ChannelGetEvent event) {
+		for(Channel currentChannel : event.getChannelList())
+			chatView.getChannelBar().addChannel(new TextChannelBarItem(currentChannel.getBase().getId(), currentChannel.getBase().getName()));
+	}
+	
+	public BooleanProperty loginControlsEnabledProperty() {
+		return loginControlsEnabledProperty;
+	}
+	
+	public boolean isLoginControlsEnabled() {
+		return loginControlsEnabledProperty.get();
+	}
+	
+	public void setLoginControlsEnabled(boolean value) {
+		loginControlsEnabledProperty.set(value);
+	}
+	
+	public BooleanProperty registerControlsEnabledProperty() {
+		return registerControlsEnabledProperty;
+	}
+	
+	public boolean isRegisterControlsEnabled() {
+		return registerControlsEnabledProperty.get();
+	}
+	
+	public void setRegisterControlsEnabled(boolean value) {
+		registerControlsEnabledProperty.set(value);
+	}
+	
+	public BooleanProperty hostControlsEnabledProperty() {
+		return hostControlsEnabledProperty;
+	}
+	
+	public boolean isHostControlsEnabled() {
+		return hostControlsEnabledProperty.get();
+	}
+	
+	public void setHostControlsEnabled(boolean value) {
+		hostControlsEnabledProperty.set(value);
 	}
 }

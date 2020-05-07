@@ -8,25 +8,25 @@ import protobuf.ClientChannels.ChannelBase;
 import protobuf.ClientIdentities.ClientBase;
 import protobuf.ClientMessages.ChannelMessage;
 import protobuf.ClientMessages.ChannelMessageAnswer;
-import protobuf.ClientMessages.ClientFileMessageBase;
-import protobuf.ClientMessages.ClientMessageBase;
-import protobuf.ClientMessages.ClientProfileComment;
-import protobuf.ClientMessages.ClientProfileCommentAnswer;
+import protobuf.ClientMessages.FileMessageBase;
+import protobuf.ClientMessages.MessageBase;
 import protobuf.ClientMessages.PrivateMessage;
+import protobuf.ClientMessages.ProfileComment;
+import protobuf.ClientMessages.ProfileCommentAnswer;
 
 public class ClientMessages {	
 	
 	public static String[] getRegisteredTypeNames() {
-		return new String[] {	"ClientMessageBase",
-								"ClientFileMessageBase",
+		return new String[] {	"MessageBase",
+								"FileMessageBase",
 								"ChannelMessage",
 								"ChannelMessageAnswer",
 								"PrivateMessage",
-								"ClientProfileComment",
-								"ClientProfileCommentAnswer"};
+								"ProfileComment",
+								"ProfileCommentAnswer"};
 	}
 	
-	public static boolean isClientMessage(Class<? extends GeneratedMessageV3> messageClass) {
+	public static boolean isMessage(Class<? extends GeneratedMessageV3> messageClass) {
 		if(messageClass == null)
 			return false;
 		for(String registeredTypeName : getRegisteredTypeNames())
@@ -35,17 +35,17 @@ public class ClientMessages {
 		return false;
 	}
 	
-	public static ClientMessageBase newClientMessageBase(	int messageId, 
-															String messageText, 
-															int senderId, 
-															String senderUsername,
-															long timestampMillis) {
-		return ClientMessageBase.newBuilder()	.setMessageId(messageId)
-												.setMessageText(messageText)
-												.setSenderId(senderId)
-												.setSenderUsername(senderUsername)
-												.setTimestampMillis(timestampMillis)
-												.build();
+	public static MessageBase newMessageBase(	int messageId, 
+												String messageText, 
+												int senderId, 
+												String senderUsername,
+												long timestampMillis) {
+		return MessageBase.newBuilder()	.setMessageId(messageId)
+										.setMessageText(messageText)
+										.setSenderId(senderId)
+										.setSenderUsername(senderUsername)
+										.setTimestampMillis(timestampMillis)
+										.build();
 	}
 	
 	public static ChannelMessage newChannelMessage(	int messageId,
@@ -54,9 +54,9 @@ public class ClientMessages {
 													String senderUsername,
 													int channelId,
 													long timestampMillis,
-													Collection<ClientFileMessageBase> attachedFiles) {
-		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(channelId).build();
-		ClientMessageBase messageBase = newClientMessageBase(messageId, messageText, senderId, senderUsername, timestampMillis);
+													Collection<FileMessageBase> attachedFiles) {
+		ChannelBase channelBase = ChannelBase.newBuilder().setId(channelId).build();
+		MessageBase messageBase = newMessageBase(messageId, messageText, senderId, senderUsername, timestampMillis);
 		return ChannelMessage.newBuilder()	.setChannelBase(channelBase)
 											.setMessageBase(messageBase)
 											.addAllAttachedFileMessage(attachedFiles)
@@ -72,8 +72,8 @@ public class ClientMessages {
 																int channelId,
 																int messageToAnswerId,
 																long timestampMillis) {
-		ChannelBase channelBase = ChannelBase.newBuilder().setChannelId(channelId).build();
-		ClientMessageBase messageBase = newClientMessageBase(answerId, answerText, senderId, senderUsername, timestampMillis);
+		ChannelBase channelBase = ChannelBase.newBuilder().setId(channelId).build();
+		MessageBase messageBase = newMessageBase(answerId, answerText, senderId, senderUsername, timestampMillis);
 		return ChannelMessageAnswer.newBuilder().setChannelBase(channelBase)
 												.setMessageBase(messageBase)
 												.setMessageToAnswerId(messageToAnswerId)
@@ -86,42 +86,42 @@ public class ClientMessages {
 													String senderUsername,
 													int receiverId,
 													long timestampMillis,
-													Collection<ClientFileMessageBase> attachedFiles) {
+													Collection<FileMessageBase> attachedFiles) {
 		ClientBase clientBase = ClientBase.newBuilder().setId(receiverId).build();
-		ClientMessageBase messageBase = newClientMessageBase(messageId, messageText, senderId, senderUsername, timestampMillis);
+		MessageBase messageBase = newMessageBase(messageId, messageText, senderId, senderUsername, timestampMillis);
 		return PrivateMessage.newBuilder()	.setClientBase(clientBase)
 											.setMessageBase(messageBase)
 											.addAllAttachedFileMessage(attachedFiles)
 											.build();
 	}
 	
-	public static ClientProfileComment newClientProfileComment(	int commentId,
-																String commentText,
+	public static ProfileComment newProfileComment(	int commentId,
+													String commentText,
+													int senderId,
+													String senderUsername,
+													int receiverId,
+													long timestampMillis,
+													Collection<ProfileCommentAnswer> commentAnswers) {
+		ClientBase clientBase = ClientBase.newBuilder().setId(receiverId).build();
+		MessageBase messageBase = newMessageBase(commentId, commentText, senderId, senderUsername, timestampMillis);
+		return ProfileComment.newBuilder()	.setClientBase(clientBase)
+											.setMessageBase(messageBase)
+											.addAllCommentAnswer(commentAnswers)
+											.build();
+	}
+	
+	public static ProfileCommentAnswer newProfileCommentAnswer(	int answerId,
+																String answerText,
 																int senderId,
 																String senderUsername,
 																int receiverId,
-																long timestampMillis,
-																Collection<ClientProfileCommentAnswer> commentAnswers) {
+																int commentToAnswerId,
+																long timestampMillis) {
 		ClientBase clientBase = ClientBase.newBuilder().setId(receiverId).build();
-		ClientMessageBase messageBase = newClientMessageBase(commentId, commentText, senderId, senderUsername, timestampMillis);
-		return ClientProfileComment.newBuilder().setClientBase(clientBase)
-												.setMessageBase(messageBase)
-												.addAllCommentAnswer(commentAnswers)
-												.build();
-	}
-	
-	public static ClientProfileCommentAnswer newClientProfileCommentAnswer(	int answerId,
-																			String answerText,
-																			int senderId,
-																			String senderUsername,
-																			int receiverId,
-																			int commentToAnswerId,
-																			long timestampMillis) {
-		ClientBase clientBase = ClientBase.newBuilder().setId(receiverId).build();
-		ClientMessageBase messageBase = newClientMessageBase(answerId, answerText, senderId, senderUsername, timestampMillis);
-		return ClientProfileCommentAnswer.newBuilder()	.setClientBase(clientBase)
-														.setMessageBase(messageBase)
-														.setCommentToAnswerId(commentToAnswerId)
-														.build();
+		MessageBase messageBase = newMessageBase(answerId, answerText, senderId, senderUsername, timestampMillis);
+		return ProfileCommentAnswer.newBuilder()	.setClientBase(clientBase)
+													.setMessageBase(messageBase)
+													.setCommentToAnswerId(commentToAnswerId)
+													.build();
 	}
 }

@@ -5,13 +5,13 @@ option java_package = "protobuf";
 option java_outer_classname = "ClientChannels";
 
 message ChannelBase {
-	int32 channelId = 1;
-	string channelName = 2;
+	int32 id = 1;
+	string name = 2;
 }
 
-message ChannelMembers {
-	int32 maxMembers = 1;
-	repeated int32 memberId = 2;
+enum ChannelCommunicationType {
+	VOICE = 0;
+	TEXT = 1;
 }
 
 enum ChannelRestrictionType {
@@ -26,14 +26,11 @@ message ChannelMemberVerification {
 	string password = 2;
 }
 
-enum ChannelCommunicationType {
-	VOICE = 0;
-	TEXT = 1;
-}
-
-message ClientChannel {
+message Channel {
 	ChannelBase base = 1;
-	ChannelMembers members = 2;
-	ChannelRestrictionType restrictionType = 3;
-	ChannelMemberVerification memberVerification = 4;
+	int32 maxMembers = 2;
+	repeated int32 memberId = 3;
+	ChannelCommunicationType communicationType = 4;
+	ChannelRestrictionType restrictionType = 5;
+	ChannelMemberVerification memberVerification = 6;
 }

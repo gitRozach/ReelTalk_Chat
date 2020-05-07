@@ -5,19 +5,19 @@ import java.util.Collection;
 
 import com.google.protobuf.GeneratedMessageV3;
 
+import protobuf.ClientChannels.Channel;
 import protobuf.ClientChannels.ChannelBase;
+import protobuf.ClientChannels.ChannelCommunicationType;
 import protobuf.ClientChannels.ChannelMemberVerification;
-import protobuf.ClientChannels.ChannelMembers;
 import protobuf.ClientChannels.ChannelRestrictionType;
-import protobuf.ClientChannels.ClientChannel;
 
 public class ClientChannels {
 	
 	public static String[] getRegisteredTypeNames() {
-		return new String[] {"ClientChannel"};
+		return new String[] {"Channel"};
 	}
 	
-	public static boolean isClientChannel(Class<? extends GeneratedMessageV3> messageClass) {
+	public static boolean isChannel(Class<? extends GeneratedMessageV3> messageClass) {
 		if(messageClass == null)
 			return false;
 		for(String registeredTypeName : getRegisteredTypeNames())
@@ -26,17 +26,16 @@ public class ClientChannels {
 		return false;
 	}
 	
-	public static ClientChannel addMemberIdToChannel(ClientChannel channel, Integer id) {
+	public static Channel addMemberIdToChannel(Channel channel, Integer id) {
 		return addMemberIdsToChannel(channel, Arrays.asList(id));
 	}
 	
-	public static ClientChannel addMemberIdsToChannel(ClientChannel channel, Collection<Integer> memberIds) {
-		ChannelMembers members = channel.getMembers().toBuilder().addAllMemberId(memberIds).build();
-		return channel.toBuilder().setMembers(members).build();
+	public static Channel addMemberIdsToChannel(Channel channel, Collection<Integer> memberIds) {
+		return channel.toBuilder().addAllMemberId(memberIds).build();
 	}
 	
 	public static ChannelBase newChannelBase(int channelId, String channelName) {
-		return ChannelBase.newBuilder().setChannelId(channelId).setChannelName(channelName).build();
+		return ChannelBase.newBuilder().setId(channelId).setName(channelName).build();
 	}
 	
 	public static ChannelMemberVerification newChannelMemberPasswordVerification(String password) {
@@ -47,7 +46,7 @@ public class ClientChannels {
 		return ChannelMemberVerification.newBuilder().addAllInvitationKey(invitationKeys).build();
 	}
 	
-	public static ClientChannel newPublicTextChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
+	public static Channel newPublicTextChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
 		return newTextChannel(	id, 
 								name, 
 								ChannelRestrictionType.PUBLIC, 
@@ -56,7 +55,7 @@ public class ClientChannels {
 								memberIds);
 	}
 	
-	public static ClientChannel newPasswordSecuredTextChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
+	public static Channel newPasswordSecuredTextChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
 		return newTextChannel(	id, 
 								name, 
 								ChannelRestrictionType.PASSWORD_REQUIRED, 
@@ -65,26 +64,27 @@ public class ClientChannels {
 								memberIds);
 	}
 	
-	public static ClientChannel newTextChannel(	int id,
-												String name,
-												ChannelRestrictionType type, 
-												ChannelMemberVerification verification, 
-												int maxMembers,
-												Collection<Integer> memberIds) {
+	public static Channel newTextChannel(	int id,
+											String name,
+											ChannelRestrictionType type, 
+											ChannelMemberVerification verification, 
+											int maxMembers,
+											Collection<Integer> memberIds) {
 		ChannelBase base = newChannelBase(id, name);
-		ChannelMembers members = ChannelMembers.newBuilder().setMaxMembers(maxMembers).addAllMemberId(memberIds).build();
-		return ClientChannel.newBuilder()	.setBase(base)
-										.setMembers(members)
-										.setRestrictionType(type)
-										.setMemberVerification(verification)
-										.build();
+		return Channel.newBuilder()	.setBase(base)
+									.setMaxMembers(maxMembers)
+									.addAllMemberId(memberIds)
+									.setCommunicationType(ChannelCommunicationType.TEXT)
+									.setRestrictionType(type)
+									.setMemberVerification(verification)
+									.build();
 	}
 	
-	public static ClientChannel newPublicVoiceChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
+	public static Channel newPublicVoiceChannel(int id, String name, int maxMembers, Collection<Integer> memberIds) {
 		return newVoiceChannel(id, name, ChannelRestrictionType.PUBLIC, ChannelMemberVerification.getDefaultInstance(), maxMembers, memberIds);
 	}
 	
-	public static ClientChannel newPasswordSecuredVoiceChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
+	public static Channel newPasswordSecuredVoiceChannel(int id, String name, String password, int maxMembers, Collection<Integer> memberIds) {
 		return newVoiceChannel(	id, 
 								name, 
 								ChannelRestrictionType.PASSWORD_REQUIRED, 
@@ -93,18 +93,19 @@ public class ClientChannels {
 								memberIds);	
 	}
 	
-	public static ClientChannel newVoiceChannel(int id,
-												String name,
-												ChannelRestrictionType type,
-												ChannelMemberVerification verification,
-												int maxMembers,
-												Collection<Integer> memberIds) {
+	public static Channel newVoiceChannel(	int id,
+											String name,
+											ChannelRestrictionType type,
+											ChannelMemberVerification verification,
+											int maxMembers,
+											Collection<Integer> memberIds) {
 		ChannelBase base = newChannelBase(id, name);
-		ChannelMembers members = ChannelMembers.newBuilder().setMaxMembers(maxMembers).addAllMemberId(memberIds).build();
-		return ClientChannel.newBuilder()	.setBase(base)
-											.setMembers(members)
-											.setRestrictionType(type)
-											.setMemberVerification(verification)
-											.build();
+		return Channel.newBuilder()	.setBase(base)
+									.setMaxMembers(maxMembers)
+									.addAllMemberId(memberIds)
+									.setCommunicationType(ChannelCommunicationType.VOICE)
+									.setRestrictionType(type)
+									.setMemberVerification(verification)
+									.build();
 	}
 }

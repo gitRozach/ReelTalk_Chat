@@ -2,6 +2,10 @@ package gui.components.messageField;
 
 import com.jfoenix.controls.JFXNodesList;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import gui.animations.Animations;
 import gui.components.messageField.items.EmojiMessageItem;
 import handler.ObjectEventHandler;
@@ -13,8 +17,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -29,11 +31,11 @@ public class MessageField extends VBox {
 	
 	private HBox messageBox;
 	private EmojiTextField emojiTextField;
-	private ImageView emojiButton;
+	private MaterialDesignIconView emojiButton;
 	private JFXNodesList fileButtons;
-	private ImageView fileButton;
-	private ImageView fileButton1;
-	private ImageView fileButton2;
+	private FontAwesomeIconView fileButton;
+	private FontAwesomeIconView fileButton1;
+	private FontAwesomeIconView fileButton2;
 	
 	private EmojiTabPane emojiPane;
 
@@ -70,9 +72,10 @@ public class MessageField extends VBox {
 	
 	private void initControls() {
 		emojiTextField = new EmojiTextField();
-		FXUtils.setFixedHeightOf(emojiTextField, 50d);
+		FXUtils.setFixedHeightOf(emojiTextField, 60d);
 
-		emojiButton = new ImageView(new Image("/resources/icons/img_smiley.png"));
+		emojiButton = new MaterialDesignIconView(MaterialDesignIcon.EMOTICON);//new ImageView(new Image("/resources/icons/img_smiley.png"));
+		emojiButton.setGlyphSize(40d);
 		emojiButton.setSmooth(true);
 		emojiButton.getStyleClass().add("smiley-button");
 		emojiButton.setPickOnBounds(true);
@@ -82,19 +85,22 @@ public class MessageField extends VBox {
 		fileButtons.setRotate(90d);
 		fileButtons.setSpacing(10d);
 		
-		fileButton = new ImageView(new Image("/resources/icons/img_file.png"));
+		fileButton = new FontAwesomeIconView(FontAwesomeIcon.PLUS_CIRCLE);
+		fileButton.setGlyphSize(40d);
 		fileButton.setSmooth(true);
 		fileButton.getStyleClass().add("file-button");
 		fileButton.setPickOnBounds(true);
 		fileButton.setOnMouseClicked(a -> onFileButtonClicked.handle(a));
 		
-		fileButton1 = new ImageView(new Image("/resources/icons/img_file.png"));
+		fileButton1 = new FontAwesomeIconView(FontAwesomeIcon.FILE_IMAGE_ALT);
+		fileButton1.setGlyphSize(25d);
 		fileButton1.setSmooth(true);
 		fileButton1.getStyleClass().add("file-button");
 		fileButton1.setPickOnBounds(true);
 		fileButton1.setOnMouseClicked(a -> onFileButtonClicked.handle(a));
 		
-		fileButton2 = new ImageView(new Image("/resources/icons/img_file.png"));
+		fileButton2 = new FontAwesomeIconView(FontAwesomeIcon.FILE_AUDIO_ALT);
+		fileButton2.setGlyphSize(25d);
 		fileButton2.setSmooth(true);
 		fileButton2.getStyleClass().add("file-button");
 		fileButton2.setPickOnBounds(true);
@@ -115,14 +121,16 @@ public class MessageField extends VBox {
 	}
 	
 	private void initMessageBox() {
-		messageBox = new HBox();
+		messageBox = new HBox(10d);
 		messageBox.setFillHeight(true);
 		messageBox.getStyleClass().add("message-box");
 		messageBox.setOnDragOver(getOnDragOver());
 		messageBox.setOnDragDropped(getOnDragDropped());
-		messageBox.setPadding(new Insets(5d, 10d, 5d, 5d));
 		messageBox.getChildren().addAll(emojiButton, emojiTextField, fileButtons);
 		HBox.setHgrow(emojiTextField, Priority.ALWAYS);
+		HBox.setMargin(emojiButton, new Insets(15d, 0d, 0d, 10d));
+		HBox.setMargin(emojiTextField, new Insets(15d, 0d, 0d, 0d));
+		HBox.setMargin(fileButtons, new Insets(15d, 15d, 0d, 0d));
 	}
 	
 	private void initAnimations() {
@@ -139,6 +147,7 @@ public class MessageField extends VBox {
 		onEnterPressed = (keyEvent -> {});
 		onEmojiButtonClicked = mouseEvent -> onEmojiButtonClicked(mouseEvent);
 		onFileButtonClicked = mouseEvent -> onFileButtonClicked(mouseEvent);
+		messageBox.setOnMouseClicked(a -> emojiTextField.getInputField().requestFocus());
 		setOnEmojiPressed(new ObjectEventHandler<String>() {
 			@Override
 			public void handle(ObjectEvent<String> event) {
@@ -189,14 +198,14 @@ public class MessageField extends VBox {
 	}
 
 	public void openEmojiPane() {
-		if (!isOpen() && showEmojiTabPaneAnimation != null && hideEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
+		if (!isOpen() && hideEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
 			setOpen(true);
 			showEmojiTabPaneAnimation.playFromStart();
 		}
 	}
 
 	public void closeEmojiPane() {
-		if (isOpen() && hideEmojiTabPaneAnimation != null && showEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
+		if (isOpen() && showEmojiTabPaneAnimation.getStatus() != Status.RUNNING) {
 			setOpen(false);
 			hideEmojiTabPaneAnimation.playFromStart();
 		}
@@ -272,11 +281,11 @@ public class MessageField extends VBox {
 		return emojiTextField;
 	}
 
-	public ImageView getEmojiButton() {
+	public MaterialDesignIconView getEmojiButton() {
 		return emojiButton;
 	}
 
-	public ImageView getFileButton() {
+	public FontAwesomeIconView getFileButton() {
 		return fileButton;
 	}
 }
