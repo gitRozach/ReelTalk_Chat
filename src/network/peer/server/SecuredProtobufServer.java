@@ -8,9 +8,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.net.ssl.SSLEngine;
 
@@ -18,44 +16,35 @@ import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
 import network.peer.SecuredProtobufPeer;
-import network.peer.callbacks.LoggerCallback;
 import utils.LoopingRunnable;
 import utils.ThreadUtils;
 
 public class SecuredProtobufServer extends SecuredProtobufPeer {
 	protected volatile boolean active;
 	protected volatile int receptionCounter;
-	protected volatile boolean connected;
 
 	protected ServerSocketChannel serverSocketChannel;
 	protected Selector selector;
-	protected Queue<ProtobufMessage> orderedBytes;
-	
-	protected ServerProtobufReader receiver;
-	protected ServerProtobufWriter sender;
 
 	public SecuredProtobufServer(String protocol, String hostAddress, int hostPort) throws Exception {
 		super(protocol);
 		initServerSSLContext();
 		initBuffers();
 		
-		setPeerCallback(new LoggerCallback(logger));
-		
+		active = true;
+		receptionCounter = 0;
 		selector = SelectorProvider.provider().openSelector();
 		serverSocketChannel = ServerSocketChannel.open();
 		serverSocketChannel.configureBlocking(false);
 		serverSocketChannel.bind(new InetSocketAddress(hostAddress, hostPort));
 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-		orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
-		receiver = new ServerProtobufReader(1L);
-		sender = new ServerProtobufWriter(1L);
-		active = true;
-		receptionCounter = 0;
+		protobufReader = new ServerProtobufReader(1L);
+		protobufWriter = new ServerProtobufWriter(1L);
 	}
 
 	public void start() {
-		ioExecutor.submit(receiver);
-		ioExecutor.submit(sender);
+		ioExecutor.submit(protobufReader);
+		ioExecutor.submit(protobufWriter);
 		logger.info("Der Server ist gestartet.");
 	}
 
@@ -63,29 +52,28 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 		logger.fine("Der Server wird jetzt heruntergefahren...");
 		active = false;
 		serverSocketChannel.socket().close();
-		serverSocketChannel.close();
 		asyncTaskExecutor.shutdown();
-		sender.stop();
-		receiver.stop();
+		protobufReader.stop();
+		protobufWriter.stop();
 		ioExecutor.shutdown();
 		selector.wakeup();
 		logger.info("Der Server wurde heruntergefahren.");
 	}
 
-	public void enableByteSender(boolean value) {
-		if (sender.isRunning() == value)
+	public void enableMessageSender(boolean value) {
+		if (protobufWriter.isRunning() == value)
 			return;
-		sender.setRunning(value);
+		protobufWriter.setRunning(value);
 		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(sender);
+			ioExecutor.submit(protobufWriter);
 	}
 
-	public void enableByteReceiver(boolean value) {
-		if (receiver.isRunning() == value)
+	public void enableMessageReceiver(boolean value) {
+		if (protobufReader.isRunning() == value)
 			return;
-		receiver.setRunning(value);
+		protobufReader.setRunning(value);
 		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(receiver);
+			ioExecutor.submit(protobufReader);
 	}
 
 	private boolean accept(SelectionKey key) {
@@ -125,19 +113,10 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 		if(localClientChannel == null || localClientChannel.keyFor(selector) == null)
 			return null;
 		return (SSLEngine)localClientChannel.keyFor(selector).attachment();
-//		Iterator<SelectionKey> keyIt = selector.keys().iterator();
-//		while (keyIt.hasNext()) {
-//			SelectionKey currentKey = keyIt.next();
-//			if (!(currentKey.channel() instanceof SocketChannel))
-//				continue;
-//			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(localClientChannel.getLocalAddress()))
-//				return (SSLEngine) currentKey.attachment();
-//		}
-//		return null;
 	}
 	
-	public SocketChannel getLocalSocketChannel(SocketChannel remoteClientChannel) throws IOException {
-		if(remoteClientChannel == null || !remoteClientChannel.isOpen())
+	public SocketChannel getLocalSocketChannel(SocketChannel remoteSocketChannel) throws IOException {
+		if(remoteSocketChannel == null || !remoteSocketChannel.isOpen())
 			return null;
 		Iterator<SelectionKey> keyIt = selector.keys().iterator();
 		while (keyIt.hasNext()) {
@@ -148,8 +127,8 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 			}
 			if (!(currentKey.channel() instanceof SocketChannel))
 				continue;
-			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(remoteClientChannel.getLocalAddress()) &&
-				((SocketChannel) currentKey.channel()).getLocalAddress().equals(remoteClientChannel.getRemoteAddress()))
+			if (((SocketChannel) currentKey.channel()).getRemoteAddress().equals(remoteSocketChannel.getLocalAddress()) &&
+				((SocketChannel) currentKey.channel()).getLocalAddress().equals(remoteSocketChannel.getRemoteAddress()))
 				return (SocketChannel) currentKey.channel();
 		}
 		return null;
@@ -159,46 +138,46 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 		return localClientChannel.keyFor(selector);
 	}
 
-	public boolean hasReceivableBytes() {
-		return peekReceptionBytes() != null;
+//	public boolean hasReceivableBytes() {
+//		return peekReceptionBytes() != null;
+//	}
+//
+//	public ProtobufMessage peekReceptionBytes() {
+//		if(receivedMessages.isEmpty())
+//			return null;
+//		return receivedMessages.get(0);
+//	}
+//
+//	public ProtobufMessage pollReceptionBytes() {
+//		if(receivedMessages.isEmpty())
+//			return null;
+//		return receivedMessages.remove(0);
+//	}
+	
+	public boolean hasOrderedMessage() {
+		return orderedMessages.peek() != null;
 	}
 
-	public ProtobufMessage peekReceptionBytes() {
-		if(receivedMessages.isEmpty())
-			return null;
-		return receivedMessages.get(0);
+	public ProtobufMessage peekOrderedMessage() {
+		return orderedMessages.peek();
 	}
 
-	public ProtobufMessage pollReceptionBytes() {
-		if(receivedMessages.isEmpty())
-			return null;
-		return receivedMessages.remove(0);
+	public ProtobufMessage dequeueOrderedMessage() {
+		return orderedMessages.poll();
 	}
 	
-	public boolean hasOrderedBytes() {
-		return peekOrderedBytes() != null;
-	}
-
-	public ProtobufMessage peekOrderedBytes() {
-		return orderedBytes.peek();
-	}
-
-	public ProtobufMessage pollOrderedBytes() {
-		return orderedBytes.poll();
-	}
-	
-	public boolean sendMessage(SelectionKey clientKey, Message message) {
+	public boolean enqueueOrderedMessage(SelectionKey clientKey, Message message) {
 		if(clientKey == null)
 			return false;
-		return sendMessage((SocketChannel)clientKey.channel(), message);
+		return enqueueOrderedMessage((SocketChannel)clientKey.channel(), message);
 	}
 	
-	public boolean sendMessage(SocketChannel clientChannel, Message message) {
+	public boolean enqueueOrderedMessage(SocketChannel clientChannel, Message message) {
 		if(clientChannel == null || message == null)
 			return false;
 		if(!clientChannel.isOpen())
 			return false;
-		return orderedBytes.offer(new ProtobufMessage(clientChannel, message));
+		return orderedMessages.offer(new ProtobufMessage(clientChannel, message));
 	}
 	
 	@Override
@@ -264,14 +243,14 @@ public class SecuredProtobufServer extends SecuredProtobufPeer {
 			while (isRunning()) {
 				try {
 					ProtobufMessage currentMessage = null;
-					if ((currentMessage = peekOrderedBytes()) != null) {
+					if ((currentMessage = peekOrderedMessage()) != null) {
 						if(!currentMessage.hasSocketChannel() || !currentMessage.hasMessage()) {
-							pollOrderedBytes();
+							dequeueOrderedMessage();
 							continue;
 						}
 						SelectionKey clientKey = currentMessage.getSocketChannel().keyFor(selector);
 						if(write((SocketChannel) clientKey.channel(), (SSLEngine) clientKey.attachment(), currentMessage.getMessage()) > 0)
-							pollOrderedBytes();
+							dequeueOrderedMessage();
 					}
 				} 
 				catch (Exception e) {

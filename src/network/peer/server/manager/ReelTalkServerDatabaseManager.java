@@ -22,7 +22,7 @@ public class ReelTalkServerDatabaseManager extends ProtobufFileDatabaseManager {
 	protected final String PRIVATE_MESSAGE_DATABASE_NAME = "privateMessageDatabase";
 	protected final String PROFILE_COMMENT_DATABASE_NAME = "profileCommentDatabase";
 
-	public ReelTalkServerDatabaseManager() throws IOException {
+	public ReelTalkServerDatabaseManager() {
 		super();
 		initDatabases();
 		registerDatabases();
