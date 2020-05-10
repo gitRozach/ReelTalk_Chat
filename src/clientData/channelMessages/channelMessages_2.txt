@@ -1,3 +1,0 @@
-h
-:type.googleapis.com/protobuf.clientmessages.ChannelMessage*
-$Hallo Channel 2"Rozach(�ČÙ.

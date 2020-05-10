@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.net.ssl.SSLEngine;
 
-import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Message;
 
 import network.messages.ProtobufMessage;
@@ -26,8 +25,8 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     protected SocketChannel socketChannel;
     protected Queue<ProtobufMessage> orderedBytes;
     
-    protected ClientProtobufWriter sender;
-    protected ClientProtobufReader receiver;
+    protected LoopingRunnable protobufSender;
+    protected LoopingRunnable protobufReceiver;
 
     public SecuredProtobufClient(String protocol, String hostAddress, int hostPort) throws Exception  {
     	super(protocol);
@@ -43,8 +42,8 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
         engine.setUseClientMode(true);
         
         orderedBytes = new ConcurrentLinkedQueue<ProtobufMessage>();
-        sender = new ClientProtobufWriter(1L);
-        receiver = new ClientProtobufReader(1L);
+        protobufSender = new ClientProtobufWriter(10L);
+        protobufReceiver = new ClientProtobufReader(10L);
     }
 
     public boolean connect() {
@@ -57,8 +56,8 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 	    		
 	    	engine.beginHandshake();
 	    	if(doHandshake(socketChannel, engine)) {
-	    		ioExecutor.submit(sender);
-	        	ioExecutor.submit(receiver);
+	    		ioExecutor.submit(protobufSender);
+	        	ioExecutor.submit(protobufReceiver);
 	        	setConnected(true);
 	        	return true;
 	    	}
@@ -91,19 +90,19 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     }
     
     public void enableByteSender(boolean value) {
-		if (sender.isRunning() == value)
+		if (protobufSender.isRunning() == value)
 			return;
-		sender.setRunning(value);
+		protobufSender.setRunning(value);
 		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(sender);
+			ioExecutor.submit(protobufSender);
 	}
 
 	public void enableByteReceiver(boolean value) {
-		if (receiver.isRunning() == value)
+		if (protobufReceiver.isRunning() == value)
 			return;
-		receiver.setRunning(value);
+		protobufReceiver.setRunning(value);
 		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(receiver);
+			ioExecutor.submit(protobufReceiver);
 	}
 	
 	public boolean hasReceivableBytes() {
@@ -111,15 +110,11 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 	}
     
     public ProtobufMessage peekReceptionBytes() {
-    	if(receivedMessages.isEmpty())
-    		return null;
-    	return receivedMessages.get(0);
+    	return receivedMessages.isEmpty() ? null : receivedMessages.get(0);
     }
     
     public ProtobufMessage pollReceptionBytes() {
-    	if(receivedMessages.isEmpty())
-    		return null;
-    	return receivedMessages.remove(0);
+    	return receivedMessages.isEmpty() ? null : receivedMessages.remove(0);
     }
     
     public boolean hasOrderedBytes() {
@@ -134,11 +129,10 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 		return orderedBytes.poll();
 	}
     
-    public void sendMessage(GeneratedMessageV3 message) {
-    	if(message == null)
-    		return;
-    	orderedBytes.offer(new ProtobufMessage(getChannel(), message));
-    	ThreadUtils.sleep(1L);
+    public void sendMessage(Message message) {
+    	if(message != null)
+    		orderedBytes.offer(new ProtobufMessage(getChannel(), message));
+    	ThreadUtils.sleep(10L);
     }
     
     @Override
@@ -148,8 +142,8 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
 
     public void disconnect() throws IOException {
         logger.fine("About to close connection with the server...");
-        sender.stop();
-        receiver.stop();
+        protobufSender.stop();
+        protobufReceiver.stop();
         closeConnection(socketChannel, engine);
         asyncTaskExecutor.shutdown();
         ioExecutor.shutdown();

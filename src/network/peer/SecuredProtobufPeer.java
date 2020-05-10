@@ -223,8 +223,8 @@ public abstract class SecuredProtobufPeer implements Closeable {
     protected Message read(SocketChannel socketChannel, SSLEngine engine) {
     	synchronized (readLock) {
     		try {
-    			int readBytes = 0;
-    			if((readBytes = readEncryptedBytes(socketChannel)) > 0) {
+    			//int readBytes = 0;
+    			if((readEncryptedBytes(socketChannel)) > 0) {
     				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
 	    			Any rawMessage = Any.parseFrom(receptionBuffer);
 					Class<? extends Message> messageClass = ProtobufUtils.getClassOf(rawMessage);
@@ -237,8 +237,8 @@ public abstract class SecuredProtobufPeer implements Closeable {
 						peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
 	    			return message;
     			}
-    			if(readBytes == -1)
-    				handleEndOfStream(socketChannel, engine);
+//    			if(readBytes == -1)
+//    				handleEndOfStream(socketChannel, engine);
     			return null;
     		}
     		catch(Exception e) {
@@ -299,6 +299,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 			return writtenBytes;
 		}
 		catch(IOException io) {
+			io.printStackTrace();
 			return -1;
 		}
 	}
@@ -316,6 +317,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
         	return socketChannel.read(peerNetworkBuffer);
         } 
         catch(IOException io) {
+        	io.printStackTrace();
         	return -1;
         }
 	}
@@ -332,6 +334,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 			return engine.wrap(myApplicationBuffer, myNetworkBuffer);
 		} 
 		catch (SSLException ssle) {
+			ssle.printStackTrace();
 			return null;
 		}
 	}
@@ -435,6 +438,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 	    	return false;
     	}
     	catch(IOException io) {
+    		io.printStackTrace();
     		return false;
     	}
     }
