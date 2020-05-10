@@ -95,11 +95,11 @@ class SecuredMessageServerClientTest {
 			LoginEvent eventMessage = ClientEvents.newLoginEvent(1, createSampleAccount());
 			
 			for(int i = 0; i < 100; ++i) {
-				server.enqueueOrderedMessage(client1.getChannel(), eventMessage);
-				server.enqueueOrderedMessage(client2.getChannel(), eventMessage);
-				server.enqueueOrderedMessage(client3.getChannel(), eventMessage);
-				server.enqueueOrderedMessage(client4.getChannel(), eventMessage);
-				server.enqueueOrderedMessage(client5.getChannel(), eventMessage);
+				server.sendMessage(client1.getChannel(), eventMessage);
+				server.sendMessage(client2.getChannel(), eventMessage);
+				server.sendMessage(client3.getChannel(), eventMessage);
+				server.sendMessage(client4.getChannel(), eventMessage);
+				server.sendMessage(client5.getChannel(), eventMessage);
 			}
 			for(int a = 0; a < 100; ++a) {
 				Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client1.hasReceivableBytes());
@@ -134,7 +134,7 @@ class SecuredMessageServerClientTest {
 			
 			Thread.sleep(250L);
 			
-			server.enqueueOrderedMessage(client.getChannel(), eventMessage);
+			server.sendMessage(client.getChannel(), eventMessage);
 			Awaitility.await().atMost(Duration.ofSeconds(5L)).until(() -> client.hasReceivableBytes());
 			Message reception = client.readMessage();
 			assertTrue(reception.getClass().equals(eventMessage.getClass()));

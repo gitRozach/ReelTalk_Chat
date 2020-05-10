@@ -58,6 +58,7 @@ public class ReelTalkClient extends SecuredProtobufClient {
     
     public void initialize() {
     	initManagers();
+		initHandlers();
 		initCallbacks();
     }
 	
@@ -68,6 +69,25 @@ public class ReelTalkClient extends SecuredProtobufClient {
 		profileManager = new ReelTalkClientProfileManager();
 		messageManager = new ReelTalkMessageManager();
 		requestManager = new ReelTalkRequestManager();
+	}
+
+	private void initHandlers() {
+		onMessageReceivedHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onMessageSentHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onMessageTimedOutHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onConnectionLostHandler = new ObjectEventHandler<Throwable>() {
+			@Override
+			public void handle(ObjectEvent<Throwable> event) {}
+		};
 	}
 	
 	private void initCallbacks() {

@@ -10,7 +10,7 @@ import database.protobuf.ProtobufFileDatabase;
 public class ProtobufFileDatabaseManager implements Closeable {
 	private List<ProtobufFileDatabase<?>> registeredDatabases;
 	
-	public ProtobufFileDatabaseManager() {
+	public ProtobufFileDatabaseManager() throws IOException {
 		registeredDatabases = new ArrayList<ProtobufFileDatabase<?>>();
 	}
 	

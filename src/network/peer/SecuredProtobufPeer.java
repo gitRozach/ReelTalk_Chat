@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -34,33 +32,19 @@ import javax.net.ssl.TrustManagerFactory;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 
-import handler.ObjectEventHandler;
-import handler.events.ObjectEvent;
 import network.messages.ProtobufMessage;
-import network.peer.callbacks.LoggerCallback;
 import network.peer.callbacks.PeerCallback;
-import utils.LoopingRunnable;
 import utils.ProtobufUtils;
 
 public abstract class SecuredProtobufPeer implements Closeable {
 	private final Object handshakeLock = new Object();
     private final Object readLock = new Object();
     private final Object writeLock = new Object();
-    
-    protected Logger logger;
-    protected PeerCallback peerCallback;    
-    
-	protected volatile boolean connected;
-    protected volatile boolean bufferingReceivedMessages;
-	protected volatile boolean bufferingSentMessages;
-    protected volatile boolean receptionHandlerEnabled;
-    protected volatile boolean sendingHandlerEnabled;
-    
-    protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
-	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
-	protected ObjectEventHandler<ProtobufMessage> onMessageTimedOutHandler;
-	protected ObjectEventHandler<Throwable> onConnectionLostHandler;
-
+	    
+	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
+	
+	protected PeerCallback peerCallback;
+	
 	protected String protocol;
 	protected SSLContext context;
 	
@@ -69,34 +53,27 @@ public abstract class SecuredProtobufPeer implements Closeable {
     protected ByteBuffer peerApplicationBuffer;
     protected ByteBuffer peerNetworkBuffer;
     
-    protected Queue<ProtobufMessage> orderedMessages;
+    protected volatile boolean bufferingReceivedMessages;
+	protected volatile boolean bufferingSentMessages;
+    protected volatile boolean receptionHandlerEnabled;
+    protected volatile boolean sendingHandlerEnabled;
+    
     protected List<ProtobufMessage> receivedMessages;
     protected List<ProtobufMessage> sentMessages;
     
     protected ExecutorService asyncTaskExecutor;
     protected ExecutorService ioExecutor;
     
-    protected LoopingRunnable protobufReader;
-    protected LoopingRunnable protobufWriter;
-    
     public SecuredProtobufPeer(String sslProtocol) throws Exception {
-    	initHandlers();
     	protocol = sslProtocol;
     	context = SSLContext.getInstance(protocol);
-    	
-    	logger = Logger.getLogger(getClass().getSimpleName());
-    	peerCallback = new LoggerCallback(logger);
-    	connected = false;
     	bufferingReceivedMessages = false;
     	bufferingSentMessages = false;
     	receptionHandlerEnabled = true;
     	sendingHandlerEnabled = true;
-    	
-    	orderedMessages = new ConcurrentLinkedQueue<ProtobufMessage>();
     	receivedMessages = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
         sentMessages = Collections.synchronizedList(new ArrayList<ProtobufMessage>());
-    	
-        asyncTaskExecutor = Executors.newSingleThreadExecutor();
+    	asyncTaskExecutor = Executors.newSingleThreadExecutor();
     	ioExecutor = Executors.newCachedThreadPool();
     }
     /**
@@ -136,25 +113,6 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		peerApplicationBuffer = ByteBuffer.allocate(applicationBufferSize);
 		peerNetworkBuffer = ByteBuffer.allocate(networkBufferSize);
     }
-    
-    private void initHandlers() {
-		onMessageReceivedHandler = new ObjectEventHandler<ProtobufMessage>() {
-			@Override
-			public void handle(ObjectEvent<ProtobufMessage> event) {}
-		};
-		onMessageSentHandler = new ObjectEventHandler<ProtobufMessage>() {
-			@Override
-			public void handle(ObjectEvent<ProtobufMessage> event) {}
-		};
-		onMessageTimedOutHandler = new ObjectEventHandler<ProtobufMessage>() {
-			@Override
-			public void handle(ObjectEvent<ProtobufMessage> event) {}
-		};
-		onConnectionLostHandler = new ObjectEventHandler<Throwable>() {
-			@Override
-			public void handle(ObjectEvent<Throwable> event) {}
-		};
-	}
     
     protected void resizeApplicationBuffer(int newApplicationBufferSize) {
     	resizeApplicationBuffer(newApplicationBufferSize, true);
@@ -526,11 +484,11 @@ public abstract class SecuredProtobufPeer implements Closeable {
     	return socketChannel == null ? false : !socketChannel.isConnected();
     }
     
-    protected PeerCallback getPeerCallback() {
+    public PeerCallback getPeerCallback() {
     	return peerCallback;
     }
     
-    protected void setPeerCallback(PeerCallback callback) {
+    public void setPeerCallback(PeerCallback callback) {
     	peerCallback = callback;
     }
     
@@ -564,30 +522,6 @@ public abstract class SecuredProtobufPeer implements Closeable {
     
     public void setBufferingSentMessages(boolean value) {
     	bufferingSentMessages = value;
-    }
-    
-    public void enableProtobufReader(boolean value) {
-		if (protobufReader.isRunning() == value)
-			return;
-		protobufReader.setRunning(value);
-		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(protobufReader);
-	}
-
-	public void enableProtobufWriter(boolean value) {
-		if (protobufWriter.isRunning() == value)
-			return;
-		protobufWriter.setRunning(value);
-		if(value && !ioExecutor.isShutdown())
-			ioExecutor.submit(protobufWriter);
-	}
-	
-    protected void setConnected(boolean value) {
-    	connected = value;
-    }
-    
-    public boolean isConnected() {
-    	return connected;
     }
 
     /**

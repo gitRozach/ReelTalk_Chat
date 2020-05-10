@@ -1,5 +1,6 @@
 package network.peer.server;
 
+import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
@@ -66,10 +67,25 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	protected ReelTalkServerDatabaseManager databaseManager;
 	protected ReelTalkClientProfileManager clientManager;
 	protected ReelTalkChannelManager channelManager;
+	
+	protected ObjectEventHandler<ProtobufMessage> onMessageReceivedHandler;
+	protected ObjectEventHandler<ProtobufMessage> onMessageSentHandler;
+	protected ObjectEventHandler<ProtobufMessage> onMessageTimedOutHandler;
+	protected ObjectEventHandler<Throwable> onConnectionLostHandler;
 
 	public ReelTalkServer(String protocol, String hostAddress, int port) throws Exception {
 		super(protocol, hostAddress, port);
-		initialize();
+		initConfigurationManager();
+		initDatabaseManager();
+		initClientManager();
+		initChannelManager();
+		initHandlers();
+		initCallbacks();
+		logger.info(databaseManager.getClientAccountDatabase().size() + " clients loaded.");
+		logger.info(databaseManager.getClientChannelDatabase().size() + " channels loaded.");
+		logger.info(databaseManager.getChannelMessageDatabase().size() + " channel messages loaded.");
+		logger.info(databaseManager.getPrivateMessageDatabase().size() + " private messages loaded.");
+		logger.info(databaseManager.getProfileCommentDatabase().size() + " profile comments loaded.");
 	}
 	
 	public int sendMessageToChannel(int channelId, Message message) {
@@ -99,24 +115,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		return accounts.isEmpty() ? null : accounts.get(accounts.size() - 1);
 	}
 	
-	public void initialize() {
-		initManagers();
-		initCallbacks();
-		logger.info(databaseManager.getClientAccountDatabase().size() + " clients loaded.");
-		logger.info(databaseManager.getClientChannelDatabase().size() + " channels loaded.");
-		logger.info(databaseManager.getChannelMessageDatabase().size() + " channel messages loaded.");
-		logger.info(databaseManager.getPrivateMessageDatabase().size() + " private messages loaded.");
-		logger.info(databaseManager.getProfileCommentDatabase().size() + " profile comments loaded.");
-	}
-	
-	private void initManagers() {
-		initConfigurationManager();
-		initDatabaseManager();
-		initClientManager();
-		initChannelManager();
-	}
-	
-	private void initDatabaseManager() {
+	private void initDatabaseManager() throws IOException {
 		databaseManager = new ReelTalkServerDatabaseManager();
 		databaseManager.getClientAccountDatabase().loadFileItems("src/clientData/accounts.txt");
 		databaseManager.getClientChannelDatabase().loadFileItems("src/clientData/channels.txt");
@@ -136,6 +135,25 @@ public class ReelTalkServer extends SecuredProtobufServer {
 	private void initChannelManager() {
 		channelManager = new ReelTalkChannelManager();
 		channelManager.addChannels(databaseManager.getClientChannelDatabase().getItems());			
+	}
+	
+	private void initHandlers() {
+		onMessageReceivedHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onMessageSentHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onMessageTimedOutHandler = new ObjectEventHandler<ProtobufMessage>() {
+			@Override
+			public void handle(ObjectEvent<ProtobufMessage> event) {}
+		};
+		onConnectionLostHandler = new ObjectEventHandler<Throwable>() {
+			@Override
+			public void handle(ObjectEvent<Throwable> event) {}
+		};
 	}
 	
 	private void initCallbacks() {
@@ -250,7 +268,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			if(channelMessages == null)
 				channelMessages = Collections.emptyList();
 			ChannelJoinEvent joinEvent = ClientEvents.newChannelJoinEvent(1, channelId, channelMessages);
-			enqueueOrderedMessage(clientKey, joinEvent);
+			sendMessage(clientKey, joinEvent);
 			
 			int clientId = clientAccount.getProfile().getBase().getId();
 			EventBase eventBase = ClientEvents.newEventBase(1, clientId);
@@ -259,11 +277,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			ClientJoinedChannelEvent leftEvent = ClientJoinedChannelEvent.newBuilder().setEventBase(eventBase).setChannelBase(channelBase).setClientBase(clientBase).build();
 			for(SelectionKey key : selector.keys())
 				if(key.channel() instanceof SocketChannel)
-					enqueueOrderedMessage(key, leftEvent);
+					sendMessage(key, leftEvent);
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -279,7 +297,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		if(clientAccount != null) {
 			System.out.println("Channel leave result: " + channelManager.removeClientFromChannel(clientAccount.getProfile().getBase().getId(), channelId));
 			ChannelLeaveEvent leaveEvent = ClientEvents.newChannelLeaveEvent(1, channelId, clientAccount.getProfile());
-			enqueueOrderedMessage(clientKey, leaveEvent);
+			sendMessage(clientKey, leaveEvent);
 			
 			int clientId = clientAccount.getProfile().getBase().getId();
 			EventBase eventBase = ClientEvents.newEventBase(1, clientId);
@@ -288,11 +306,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			ClientLeftChannelEvent leftEvent = ClientLeftChannelEvent.newBuilder().setEventBase(eventBase).setChannelBase(channelBase).setClientBase(clientBase).build();
 			for(SelectionKey key : selector.keys())
 				if(key.channel() instanceof SocketChannel)
-					enqueueOrderedMessage(key, leftEvent);
+					sendMessage(key, leftEvent);
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -306,11 +324,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			if(startIndex < 0 || startIndex > endIndex)
 				return;
 			ChannelMessageGetEvent channelMessage = ClientEvents.newChannelMessageGetEvent(1, 1, databaseManager.getChannelMessageDatabase().getItems(startIndex, endIndex));
-			enqueueOrderedMessage(clientKey, channelMessage);
+			sendMessage(clientKey, channelMessage);
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -335,11 +353,11 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			ChannelMessagePostEvent eventMessage = ClientEvents.newChannelMessagePostEvent(eventId, clientId, messages);
 			for(SelectionKey key : selector.keys())
 				if(key.channel() instanceof SocketChannel)
-					enqueueOrderedMessage(key, eventMessage);
+					sendMessage(key, eventMessage);
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(eventId, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -355,20 +373,20 @@ public class ReelTalkServer extends SecuredProtobufServer {
 			serverMembers.addAll(clientManager.getOfflineMembers());
 			
 			LoginEvent loginEvent = ClientEvents.newLoginEvent(1, clientAccount, serverChannels, serverMembers);
-			enqueueOrderedMessage(clientKey, loginEvent);
+			sendMessage(clientKey, loginEvent);
 			
 			int clientId = clientAccount.getProfile().getBase().getId();
 			EventBase eventBase = EventBase.newBuilder().setEventId(1).setEventTimestamp(System.currentTimeMillis()).build();
 			ClientBase clientBase = ClientBase.newBuilder().setId(clientId).setUsername(clientUsername).build();
 			for(SelectionKey key : selector.keys())
 				if(key.channel() instanceof SocketChannel)
-					enqueueOrderedMessage(key, ClientLoggedInEvent.newBuilder().setEventBase(eventBase).setClientBase(clientBase).build());
+					sendMessage(key, ClientLoggedInEvent.newBuilder().setEventBase(eventBase).setClientBase(clientBase).build());
 			//System.out.println("Server sent: " + loginEvent.toByteArray().length + " bytes");
 		}
 		else {
 			//RequestType hinzufuegen, damit Rejections zugeordnet werden koennen
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -378,7 +396,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -404,7 +422,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 				for(ClientAccount currentAccount : databaseManager.getClientAccountDatabase().getLoadedItems())
 					serverMembers.add(currentAccount.getProfile());
 				LoginEvent loginEvent = ClientEvents.newLoginEvent(1, newAccount, serverChannels, serverMembers);
-				enqueueOrderedMessage(clientKey, loginEvent);
+				sendMessage(clientKey, loginEvent);
 				System.out.println("Server sent: " + loginEvent.toByteArray().length + " bytes");
 			}
 			else
@@ -413,7 +431,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		else {
 			//RequestType hinzufuegen, damit Rejections zugeordnet werden koennen
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -423,7 +441,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -433,7 +451,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -443,7 +461,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -453,7 +471,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -463,7 +481,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -473,7 +491,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -483,7 +501,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
@@ -493,7 +511,7 @@ public class ReelTalkServer extends SecuredProtobufServer {
 		}
 		else {
 			RequestRejectedEvent rejMessage = ClientEvents.newRequestRejectedEvent(1, "Invalid login data.");
-			enqueueOrderedMessage(clientKey, rejMessage);
+			sendMessage(clientKey, rejMessage);
 		}
 	}
 	
