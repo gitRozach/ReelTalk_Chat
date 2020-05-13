@@ -223,8 +223,8 @@ public abstract class SecuredProtobufPeer implements Closeable {
     protected Message read(SocketChannel socketChannel, SSLEngine engine) {
     	synchronized (readLock) {
     		try {
-    			//int readBytes = 0;
-    			if((readEncryptedBytes(socketChannel)) > 0) {
+    			int readBytes = 0;
+    			if((readBytes = readEncryptedBytes(socketChannel)) > 0) {
     				byte[] receptionBuffer = retrieveDecryptedBytes(socketChannel, engine);
 	    			Any rawMessage = Any.parseFrom(receptionBuffer);
 					Class<? extends Message> messageClass = ProtobufUtils.getClassOf(rawMessage);
@@ -237,8 +237,8 @@ public abstract class SecuredProtobufPeer implements Closeable {
 						peerCallback.messageReceived(new ProtobufMessage(socketChannel, message));
 	    			return message;
     			}
-//    			if(readBytes == -1)
-//    				handleEndOfStream(socketChannel, engine);
+    			if(readBytes == -1)
+    				handleEndOfStream(socketChannel, engine);
     			return null;
     		}
     		catch(Exception e) {
@@ -273,7 +273,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		} 
     }
     
-    protected byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) {
+    protected synchronized byte[] retrieveDecryptedBytes(SocketChannel socketChannel, SSLEngine engine) {
         while (peerNetworkBuffer.hasRemaining()) {
         	SSLEngineResult result = decryptBufferedBytes(engine, true);
             if(result == null)
@@ -288,7 +288,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
         return null;
     }
 
-	protected synchronized int writeEncryptedBytes(SocketChannel clientChannel) {
+	protected int writeEncryptedBytes(SocketChannel clientChannel) {
 		if(!clientChannel.isOpen())
 			return -1;
 		try {
@@ -339,7 +339,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		}
 	}
 	
-	protected SSLEngineResult decryptBufferedBytes(SSLEngine engine, boolean flipNetworkBuffer) {
+	protected synchronized SSLEngineResult decryptBufferedBytes(SSLEngine engine, boolean flipNetworkBuffer) {
 		try {
 			if(flipNetworkBuffer)
 				peerNetworkBuffer.flip();
@@ -451,7 +451,7 @@ public abstract class SecuredProtobufPeer implements Closeable {
 		putBytesIntoBufferAndFlip(data, offset, data.length - offset, true);
     }
     
-    protected synchronized void putBytesIntoBufferAndFlip(byte[] data, int offset, int length, boolean clearBufferBeforeAdding) {
+    protected void putBytesIntoBufferAndFlip(byte[] data, int offset, int length, boolean clearBufferBeforeAdding) {
     	if(clearBufferBeforeAdding)
 			myApplicationBuffer.clear();
     	myApplicationBuffer.put(data, offset, length);

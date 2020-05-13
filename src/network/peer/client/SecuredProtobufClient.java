@@ -132,7 +132,7 @@ public class SecuredProtobufClient extends SecuredProtobufPeer {
     public void sendMessage(Message message) {
     	if(message != null)
     		orderedBytes.offer(new ProtobufMessage(getChannel(), message));
-    	ThreadUtils.sleep(10L);
+    	ThreadUtils.sleep(100L);
     }
     
     @Override

@@ -421,6 +421,7 @@ public class ReelTalkSession extends Application {
 			String password = chatClient.getIdentityManager().getClientPassword();
 			
 			chatClient.sendMessage(ClientRequests.newChannelLeaveRequest(1, username, password, currentChannelId));
+			
 			chatView.getMessageView().clear();
 			chatView.getMessageView().setLoading(true);
 			chatClient.sendMessage(ClientRequests.newChannelJoinRequest(1, username, password, channelId));
